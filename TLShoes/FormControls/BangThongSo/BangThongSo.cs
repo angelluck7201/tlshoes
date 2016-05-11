@@ -20,9 +20,9 @@ namespace TLShoes.FormControls.BangThongSo
         {
             InitializeComponent();
 
-            BangThongSo_DonHang.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
-            BangThongSo_DonHang.DisplayMember = "MaHang";
-            BangThongSo_DonHang.ValueMember = "Id";
+            BangThongSo_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
+            BangThongSo_DonHangId.DisplayMember = "MaHang";
+            BangThongSo_DonHangId.ValueMember = "Id";
 
             BangThongSo_MaPhomId.DataSource = new BindingSource(SF.Get<NguyenLieuViewModel>().GetList().Where(s => s.LoaiNguyenLieu.Ten == "PHOM").ToList(), null);
             BangThongSo_MaPhomId.DisplayMember = "MaNguyenLieu";
@@ -34,17 +34,18 @@ namespace TLShoes.FormControls.BangThongSo
 
             if (data != null)
             {
-                BangThongSo_DonHang.SelectedValue = data.DonHangId;
-                BangThongSo_MaPhomId.SelectedValue = data.MaPhomId;
-                BangThongSo_PhanXuongId.SelectedValue = data.PhanXuongId;
-                BangThongSo_NgayKy.Text = TimeHelper.TimestampToString(data.NgayKy);
-                BangThongSo_NgayXacNhan.Text = TimeHelper.TimestampToString(data.NgayXacNhan);
+                InitFormData(data);
+                //BangThongSo_DonHangId.SelectedValue = data.DonHangId;
+                //BangThongSo_MaPhomId.SelectedValue = data.MaPhomId;
+                //BangThongSo_PhanXuongId.SelectedValue = data.PhanXuongId;
+                //BangThongSo_NgayKy.Text = TimeHelper.TimestampToString(data.NgayKy);
+                //BangThongSo_NgayXacNhan.Text = TimeHelper.TimestampToString(data.NgayXacNhan);
 
-                ChiTietThongSo = new BindingList<ChiTietThongSo>(data.ChiTietThongSoes.ToList());
-                defaultInfo.Controls["Id"].Text = data.Id.ToString();
-                defaultInfo.Controls["AuthorId"].Text = data.AuthorId.ToString();
-                defaultInfo.Controls["CreatedDate"].Text = TimeHelper.TimestampToString(data.CreatedDate);
-                defaultInfo.Controls["ModifiedDate"].Text = TimeHelper.TimestampToString(data.ModifiedDate);
+                //ChiTietThongSo = new BindingList<ChiTietThongSo>(data.ChiTietThongSoes.ToList());
+                //defaultInfo.Controls["Id"].Text = data.Id.ToString();
+                //defaultInfo.Controls["AuthorId"].Text = data.AuthorId.ToString();
+                //defaultInfo.Controls["CreatedDate"].Text = TimeHelper.TimestampToString(data.CreatedDate);
+                //defaultInfo.Controls["ModifiedDate"].Text = TimeHelper.TimestampToString(data.ModifiedDate);
             }
 
             repositoryItemLookUpEdit1.NullText = "";
@@ -72,6 +73,7 @@ namespace TLShoes.FormControls.BangThongSo
                 MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
                 return false;
             }
+            var test = CRUD.GetFormObject<TLShoes.BangThongSo>(this);
             var id = CommonHelper.StringToInt(defaultInfo.Controls["Id"].Text);
             // Save Don hang
             var saveData = SF.Get<BangThongSoViewModel>().GetDetail(id);
@@ -80,7 +82,7 @@ namespace TLShoes.FormControls.BangThongSo
                 saveData = new TLShoes.BangThongSo();
             }
 
-            saveData.DonHangId = (long)BangThongSo_DonHang.SelectedValue;
+            saveData.DonHangId = (long)BangThongSo_DonHangId.SelectedValue;
             saveData.MaPhomId = (long)BangThongSo_MaPhomId.SelectedValue;
             saveData.PhanXuongId = (long)BangThongSo_PhanXuongId.SelectedValue;
             saveData.NgayKy = TimeHelper.DateTimeToTimeStamp(BangThongSo_NgayKy.Value);
@@ -100,20 +102,20 @@ namespace TLShoes.FormControls.BangThongSo
             return true;
         }
 
-        public override void ClearData()
-        {
-            defaultInfo.Controls["Id"].Text = "";
-            defaultInfo.Controls["AuthorId"].Text = "";
-            defaultInfo.Controls["CreatedDate"].Text = "";
-            defaultInfo.Controls["ModifiedDate"].Text = "";
+        //public override void ClearData()
+        //{
+        //    defaultInfo.Controls["Id"].Text = "";
+        //    defaultInfo.Controls["AuthorId"].Text = "";
+        //    defaultInfo.Controls["CreatedDate"].Text = "";
+        //    defaultInfo.Controls["ModifiedDate"].Text = "";
 
-            BangThongSo_PhanXuongId.SelectedIndex = 0;
-            BangThongSo_DonHang.SelectedIndex = 0;
-            BangThongSo_MaPhomId.SelectedIndex = 0;
-            BangThongSo_NgayKy.Text = "";
-            BangThongSo_NgayXacNhan.Text = "";
+        //    BangThongSo_PhanXuongId.SelectedIndex = 0;
+        //    BangThongSo_DonHangId.SelectedIndex = 0;
+        //    BangThongSo_MaPhomId.SelectedIndex = 0;
+        //    BangThongSo_NgayKy.Text = "";
+        //    BangThongSo_NgayXacNhan.Text = "";
 
-            ChiTietThongSo.Clear();
-        }
+        //    ChiTietThongSo.Clear();
+        //}
     }
 }

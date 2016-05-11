@@ -31,8 +31,8 @@ namespace TLShoes.FormControls.BangThongSo
         private void InitializeComponent()
         {
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
-            this.BangThongSo_DonHang = new System.Windows.Forms.ComboBox();
-            this.lblDonHangId = new DevExpress.XtraEditors.LabelControl();
+            this.BangThongSo_DonHangId = new System.Windows.Forms.ComboBox();
+            this.lblDonHang = new DevExpress.XtraEditors.LabelControl();
             this.BangThongSo_MaPhomId = new System.Windows.Forms.ComboBox();
             this.lblMaPhomId = new DevExpress.XtraEditors.LabelControl();
             this.BangThongSo_PhanXuongId = new System.Windows.Forms.ComboBox();
@@ -65,21 +65,21 @@ namespace TLShoes.FormControls.BangThongSo
             this.defaultInfo.Size = new System.Drawing.Size(425, 150);
             this.defaultInfo.TabIndex = 26;
             // 
-            // BangThongSo_DonHang
+            // BangThongSo_DonHangId
             // 
-            this.BangThongSo_DonHang.FormattingEnabled = true;
-            this.BangThongSo_DonHang.Location = new System.Drawing.Point(126, 181);
-            this.BangThongSo_DonHang.Name = "BangThongSo_DonHang";
-            this.BangThongSo_DonHang.Size = new System.Drawing.Size(529, 24);
-            this.BangThongSo_DonHang.TabIndex = 81;
+            this.BangThongSo_DonHangId.FormattingEnabled = true;
+            this.BangThongSo_DonHangId.Location = new System.Drawing.Point(126, 181);
+            this.BangThongSo_DonHangId.Name = "BangThongSo_DonHangId";
+            this.BangThongSo_DonHangId.Size = new System.Drawing.Size(529, 24);
+            this.BangThongSo_DonHangId.TabIndex = 81;
             // 
-            // lblDonHangId
+            // lblDonHang
             // 
-            this.lblDonHangId.Location = new System.Drawing.Point(12, 181);
-            this.lblDonHangId.Name = "lblDonHangId";
-            this.lblDonHangId.Size = new System.Drawing.Size(56, 16);
-            this.lblDonHangId.TabIndex = 80;
-            this.lblDonHangId.Text = "Đơn Hàng";
+            this.lblDonHang.Location = new System.Drawing.Point(12, 181);
+            this.lblDonHang.Name = "lblDonHang";
+            this.lblDonHang.Size = new System.Drawing.Size(56, 16);
+            this.lblDonHang.TabIndex = 80;
+            this.lblDonHang.Text = "Đơn Hàng";
             // 
             // BangThongSo_MaPhomId
             // 
@@ -222,7 +222,6 @@ namespace TLShoes.FormControls.BangThongSo
             this.btnSaveContinue.Size = new System.Drawing.Size(131, 23);
             this.btnSaveContinue.TabIndex = 93;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
-            this.btnSaveContinue.Click += new EventHandler(this.btnSaveContinue_Click);
             // 
             // btnCancel
             // 
@@ -231,7 +230,6 @@ namespace TLShoes.FormControls.BangThongSo
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 92;
             this.btnCancel.Text = "Hủy";
-            this.btnCancel.Click+= new EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -240,7 +238,6 @@ namespace TLShoes.FormControls.BangThongSo
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 91;
             this.btnSave.Text = "Lưu";
-            this.btnSave.Click+=new EventHandler(this.btnSave_Click);
             // 
             // ucBangThongSo
             // 
@@ -258,8 +255,8 @@ namespace TLShoes.FormControls.BangThongSo
             this.Controls.Add(this.lblPhanXuongId);
             this.Controls.Add(this.BangThongSo_MaPhomId);
             this.Controls.Add(this.lblMaPhomId);
-            this.Controls.Add(this.BangThongSo_DonHang);
-            this.Controls.Add(this.lblDonHangId);
+            this.Controls.Add(this.BangThongSo_DonHangId);
+            this.Controls.Add(this.lblDonHang);
             this.Controls.Add(this.defaultInfo);
             this.Name = "ucBangThongSo";
             this.Size = new System.Drawing.Size(1059, 426);
@@ -275,8 +272,8 @@ namespace TLShoes.FormControls.BangThongSo
         #endregion
 
         private Form.DefaultInfo defaultInfo;
-        private System.Windows.Forms.ComboBox BangThongSo_DonHang;
-        private DevExpress.XtraEditors.LabelControl lblDonHangId;
+        private System.Windows.Forms.ComboBox BangThongSo_DonHangId;
+        private DevExpress.XtraEditors.LabelControl lblDonHang;
         private System.Windows.Forms.ComboBox BangThongSo_MaPhomId;
         private DevExpress.XtraEditors.LabelControl lblMaPhomId;
         private System.Windows.Forms.ComboBox BangThongSo_PhanXuongId;
