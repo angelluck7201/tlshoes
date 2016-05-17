@@ -10,14 +10,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using TLShoes.Common;
+using TLShoes.FormControls;
 using TLShoes.ViewModels;
 
 
 namespace TLShoes
 {
-    public partial class ucDonHang : UserControl
+    public partial class ucDonHang : BaseUserControl
     {
-        public static BindingList<ChiTietDonHang> ChiTietDonhang = new BindingList<ChiTietDonHang>(); 
+        public static BindingList<ChiTietDonHang> ChiTietDonhang = new BindingList<ChiTietDonHang>();
+
+        public static Dictionary<string, string> GopYDict = new Dictionary<string, string>()
+        {
+            {"Bp Vật Tư",""},
+            {"Px Chặt",""},
+            {"Px May",""},
+            {"Px Gò",""},
+            {"Px Đe",""},
+            {"QC",""},
+            {"Công Nghệ",""},
+            {"Mẫu",""},
+            {"Kho Vật Tư",""}, 
+            {"Tổ Phụ Trợ",""},
+            {"Kho Thành Phẩm",""},
+        };
+
         public ucDonHang(DonHang data = null)
         {
             ChiTietDonhang.Clear();
@@ -27,35 +44,31 @@ namespace TLShoes
             DonHang_KhachHangId.DataSource = new BindingSource(SF.Get<KhachHangViewModel>().GetList(), null);
             DonHang_KhachHangId.DisplayMember = "TenCongTy";
             DonHang_KhachHangId.ValueMember = "Id";
+
+            DonHang_MaPhomId.DataSource = new BindingSource(SF.Get<NguyenLieuViewModel>().GetList().Where(s => s.LoaiNguyenLieu.Ten == "PHOM").ToList(), null);
+            DonHang_MaPhomId.DisplayMember = "MaNguyenLieu";
+            DonHang_MaPhomId.ValueMember = "Id";
+
+            HideAllGopY();
+            Init(data);
             if (data != null)
             {
-                DonHang_KhachHangId.SelectedValue = data.KhachHangId;
-                DonHang_MaHang.Text = data.MaHang;
-                DonHang_OrderNo.Text = data.OrderNo;
-                DonHang_NgayNhan.Text = TimeHelper.TimestampToString(data.NgayNhan);
-                DonHang_NgayXuat.Text = TimeHelper.TimestampToString(data.NgayXuat);
-                if (!string.IsNullOrEmpty(data.HinhAnh))
-                {
-                    DonHang_Hinh.Image = Image.FromFile(data.HinhAnh);
-                }
-
-                var gopY = data.GopYKhachHangs.FirstOrDefault();
-                if (gopY != null)
-                {
-                    GopYKhacHang_PXChat.Text = gopY.XuongChat;
-                    GopYKhacHang_PXDe.Text = gopY.XuongDe;
-                    GopYKhacHang_PXGo.Text = gopY.XuongGo;
-                    GopYKhacHang_QC.Text = gopY.Qc;
-                    GopYKhacHang_PXMay.Text = gopY.XuongMay;
-                    GopYKhacHang_VatTu.Text = gopY.VatTu;
-                }
+                GopYDict["BP Vật Tư"] = data.GopYVatTu;
+                GopYDict["Px Chặt"] = data.GopYXuongChat;
+                GopYDict["Px May"] = data.GopYXuongMay;
+                GopYDict["Px Gò"] = data.GopYXuongGo;
+                GopYDict["Px Đe"] = data.GopYXuongDe;
+                GopYDict["QC"] = data.GopYQc;
+                GopYDict["Công Nghệ"] = data.GopYCongNghe;
+                GopYDict["Mẫu"] = data.GopYMau;
+                GopYDict["Kho Vật Tư"] = data.GopYKhoVatTu;
+                GopYDict["Tổ Phụ Trợ"] = data.GopYPhuTro;
+                GopYDict["Kho Thành Phẩm"] = data.GopYKhoThanhPham;
 
                 ChiTietDonhang = new BindingList<ChiTietDonHang>(data.ChiTietDonHangs.ToList());
-                defaultInfo.Controls["Id"].Text = data.Id.ToString();
-                defaultInfo.Controls["AuthorId"].Text = data.AuthorId.ToString();
-                defaultInfo.Controls["CreatedDate"].Text = TimeHelper.TimestampToString(data.CreatedDate);
-                defaultInfo.Controls["ModifiedDate"].Text = TimeHelper.TimestampToString(data.ModifiedDate);
             }
+
+            gridGopY.DataSource = GopYDict;
 
             repositoryItemLookUpEdit1.NullText = "";
             repositoryItemLookUpEdit1.Properties.DataSource = SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.MAU).Select(s => new { s.Ten, s.Id }).ToList();
@@ -67,10 +80,26 @@ namespace TLShoes
             repositoryItemLookUpEdit1.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
 
             gridControl.DataSource = ChiTietDonhang;
-
         }
 
-        public bool SaveData()
+        private void HideAllGopY()
+        {
+            DonHang_GopYCongNghe.Hide();
+            DonHang_GopYKhoVatTu.Hide();
+            DonHang_GopYKhoThanhPham.Hide();
+            DonHang_GopYMau.Hide();
+            DonHang_GopYPhuTro.Hide();
+            DonHang_GopYXuongGo.Hide();
+            DonHang_GopYXuongChat.Hide();
+            DonHang_GopYXuongDe.Hide();
+            DonHang_GopYXuongMay.Hide();
+            DonHang_GopYVatTu.Hide();
+            DonHang_GopYQC.Hide();
+
+            lblGopY.Text = "";
+        }
+
+        public override bool SaveData()
         {
             var validateResult = ValidateInput();
             if (!string.IsNullOrEmpty(validateResult))
@@ -78,42 +107,9 @@ namespace TLShoes
                 MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
                 return false;
             }
-            var id = CommonHelper.StringToInt(defaultInfo.Controls["Id"].Text);
-            // Save Don hang
-            var saveData = SF.Get<DonHangViewModel>().GetDetail(id);
-            if (saveData == null)
-            {
-                saveData = new DonHang();
-            }
-
-            saveData.KhachHangId = (long)DonHang_KhachHangId.SelectedValue;
-            saveData.MaHang = DonHang_MaHang.Text;
-            saveData.OrderNo = DonHang_OrderNo.Text;
-            saveData.NgayNhan = TimeHelper.DateTimeToTimeStamp(DonHang_NgayNhan.Value);
-            saveData.NgayXuat = TimeHelper.DateTimeToTimeStamp(DonHang_NgayXuat.Value);
-            if (DonHang_Hinh.Image != null)
-            {
-                saveData.HinhAnh = CommonHelper.ImageSave(DonHang_Hinh.Image);
-            }
-            CRUD.DecorateSaveData(saveData);
+            var saveData = CRUD.GetFormObject<DonHang>(FormControls);
             SF.Get<DonHangViewModel>().Save(saveData);
-            id = saveData.Id;
-
-            // Save gop y
-            var saveGopY = SF.Get<GopYKhachHangViewModel>().GetDetail(id);
-            if (saveGopY == null)
-            {
-                saveGopY = new GopYKhachHang();
-            }
-            saveGopY.DonHangId = id;
-            saveGopY.Qc = GopYKhacHang_QC.Text;
-            saveGopY.VatTu = GopYKhacHang_VatTu.Text;
-            saveGopY.XuongChat = GopYKhacHang_PXChat.Text;
-            saveGopY.XuongDe = GopYKhacHang_PXDe.Text;
-            saveGopY.XuongGo = GopYKhacHang_PXGo.Text;
-            saveGopY.XuongMay = GopYKhacHang_PXMay.Text;
-            CRUD.DecorateSaveData(saveGopY);
-            SF.Get<GopYKhachHangViewModel>().Save(saveGopY);
+            var id = saveData.Id;
 
             // Save Chi Tiet Don Hang
             foreach (var chitiet in ChiTietDonhang)
@@ -123,28 +119,6 @@ namespace TLShoes
                 SF.Get<ChiTietDonHangViewModel>().Save(chitiet);
             }
             return true;
-        }
-
-        public void ClearData()
-        {
-            defaultInfo.Controls["Id"].Text = "";
-            defaultInfo.Controls["AuthorId"].Text = "";
-            defaultInfo.Controls["CreatedDate"].Text = "";
-            defaultInfo.Controls["ModifiedDate"].Text = "";
-            DonHang_KhachHangId.SelectedIndex = 0;
-            DonHang_MaHang.Text = "";
-            DonHang_OrderNo.Text = "";
-            DonHang_NgayNhan.Text = "";
-            DonHang_NgayXuat.Text = "";
-            DonHang_Hinh.Image = null;
-
-            GopYKhacHang_PXChat.Text = "";
-            GopYKhacHang_PXDe.Text = "";
-            GopYKhacHang_PXGo.Text = "";
-            GopYKhacHang_PXMay.Text = "";
-            GopYKhacHang_QC.Text = "";
-            GopYKhacHang_VatTu.Text = "";
-            ChiTietDonhang.Clear();
         }
 
         public string ValidateInput()
@@ -172,32 +146,90 @@ namespace TLShoes
             return string.Empty;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        public override void btnSave_Click(object sender, EventArgs e)
         {
             if (SaveData())
             {
-                this.ParentForm.Close();
+                var parentForm = this.ParentForm;
+                if (parentForm != null) parentForm.Close();
                 ChiTietDonhang.Clear();
             }
         }
 
-        private void btnSaveContinue_Click(object sender, EventArgs e)
+        public override void btnCancel_Click(object sender, EventArgs e)
         {
-            if (SaveData())
-            {
-                ClearData();
-            }
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.ParentForm.Close();
+            var parentForm = this.ParentForm;
+            if (parentForm != null) parentForm.Close();
             ChiTietDonhang.Clear();
         }
 
-        private void ucDonHang_Load(object sender, EventArgs e)
+        private void gridView1_Click(object sender, EventArgs e)
         {
+            int selectedRow = gridView1.FocusedRowHandle;
+            dynamic data = gridView1.GetRow(selectedRow);
+            HideAllGopY();
+            switch ((string)data.Key)
+            {
+                case "Bp Vật Tư":
+                    DonHang_GopYVatTu.Show();
+                    lblGopY.Text = "Vật Tư";
+                    break;
+                case "Px Chặt":
+                    DonHang_GopYXuongChat.Show();
+                    lblGopY.Text = "Xưởng Chặt";
+                    break;
+                case "Px May":
+                    DonHang_GopYXuongMay.Show();
+                    lblGopY.Text = "Xưởng May";
+                    break;
+                case "Px Gò":
+                    DonHang_GopYXuongGo.Show();
+                    lblGopY.Text = "Xưởng Gò";
+                    break;
+                case "Px Đe":
+                    DonHang_GopYXuongDe.Show();
+                    lblGopY.Text = "Xưởng Đe";
+                    break;
+                case "QC":
+                    DonHang_GopYQC.Show();
+                    lblGopY.Text = "Bp QC";
+                    break;
+                case "Công Nghệ":
+                    DonHang_GopYCongNghe.Show();
+                    lblGopY.Text = "Công Nghệ";
+                    break;
+                case "Mẫu":
+                    DonHang_GopYMau.Show();
+                    lblGopY.Text = "Mẫu";
+                    break;
+                case "Kho Vật Tư":
+                    DonHang_GopYKhoVatTu.Show();
+                    lblGopY.Text = "Kho Vật Tư";
+                    break;
+                case "Tổ Phụ Trợ":
+                    DonHang_GopYPhuTro.Show();
+                    lblGopY.Text = "Tổ Phụ Trợ";
+                    break;
+                case "Kho Thành Phẩm":
+                    DonHang_GopYKhoThanhPham.Show();
+                    lblGopY.Text = "Kho Thành Phẩm";
+                    break;
+            }
+            GopYDict["Bp Vật Tư"] = DonHang_GopYVatTu.Text;
+            GopYDict["Px Chặt"] = DonHang_GopYXuongChat.Text;
+            GopYDict["Px May"] = DonHang_GopYXuongMay.Text;
+            GopYDict["Px Gò"] = DonHang_GopYXuongGo.Text;
+            GopYDict["Px Đe"] = DonHang_GopYXuongDe.Text;
+            GopYDict["QC"] = DonHang_GopYQC.Text;
+            GopYDict["Công Nghệ"] = DonHang_GopYCongNghe.Text;
+            GopYDict["Mẫu"] = DonHang_GopYMau.Text;
+            GopYDict["Kho Vật Tư"] = DonHang_GopYKhoVatTu.Text;
+            GopYDict["Tổ Phụ Trợ"] = DonHang_GopYPhuTro.Text;
+            GopYDict["Kho Thành Phẩm"] = DonHang_GopYKhoThanhPham.Text;
 
+            gridGopY.DataSource = null;
+            gridGopY.DataSource = GopYDict;
+            gridView1.FocusedRowHandle = selectedRow;
         }
     }
 }

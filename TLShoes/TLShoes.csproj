@@ -112,9 +112,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BangThongSo.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
     <Compile Include="BaoCaoPhanXuong.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -127,15 +124,9 @@
     <Compile Include="ChiTietNguyenLieu.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
-    <Compile Include="ChiTietThongSo.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
     <Compile Include="Common\CommonHelper.cs" />
     <Compile Include="Common\CRUD.cs" />
     <Compile Include="Common\TimeHelper.cs" />
-    <Compile Include="CongCuDungCu.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
     <Compile Include="CongNgheSanXuat.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -303,6 +294,36 @@
     <Compile Include="FormControls\KhachHang\KhachHangList.Designer.cs">
       <DependentUpon>KhachHangList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormControls\MauTest\TongHopMauTestList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\MauTest\TongHopMauTestList.Designer.cs">
+      <DependentUpon>TongHopMauTestList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\MauTest\MauThuDao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\MauTest\MauThuDao.Designer.cs">
+      <DependentUpon>MauThuDao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\MauTest\MauThuDaoList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\MauTest\MauThuDaoList.Designer.cs">
+      <DependentUpon>MauThuDaoList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\MauTest\MauSanXuatList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\MauTest\MauSanXuatList.Designer.cs">
+      <DependentUpon>MauSanXuatList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\MauTest\MauSanXuat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\MauTest\MauSanXuat.Designer.cs">
+      <DependentUpon>MauSanXuat.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormControls\MauTest\MauTest.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -328,9 +349,6 @@
       <DependentUpon>NguyenLieuList.cs</DependentUpon>
     </Compile>
     <Compile Include="FormControls\ObserverControl.cs" />
-    <Compile Include="GopYKhachHang.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
     <Compile Include="KeHoachSanXuat.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -340,7 +358,13 @@
     <Compile Include="MauDoi.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="MauSanXuat.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="MauTest.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MauThuDao.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="NguyenLieu.cs">
@@ -358,6 +382,8 @@
     <Compile Include="ViewModels\BaoCaoPhanXuongViewModel.cs" />
     <Compile Include="ViewModels\ChiTietThongSoViewModel.cs" />
     <Compile Include="ViewModels\ChiLenhViewModel.cs" />
+    <Compile Include="ViewModels\MauThuDaoViewModel.cs" />
+    <Compile Include="ViewModels\MauSanXuatViewModel.cs" />
     <Compile Include="ViewModels\NguyenLieuChiLenhViewModel.cs" />
     <Compile Include="ViewModels\NguyenLieuViewModel.cs" />
     <Compile Include="ViewModels\KeHoachSanXuatViewModel.cs" />
@@ -470,6 +496,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\MauTest\TongHopMauTestList.resx">
+      <DependentUpon>TongHopMauTestList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\MauTest\MauThuDao.resx">
+      <DependentUpon>MauThuDao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\MauTest\MauThuDaoList.resx">
+      <DependentUpon>MauThuDaoList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\MauTest\MauSanXuatList.resx">
+      <DependentUpon>MauSanXuatList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\MauTest\MauSanXuat.resx">
+      <DependentUpon>MauSanXuat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\MauTest\MauTest.resx">
       <DependentUpon>MauTest.cs</DependentUpon>

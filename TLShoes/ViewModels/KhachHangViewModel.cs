@@ -22,12 +22,29 @@ namespace TLShoes.ViewModels
 
         public void GetDataSource(GridControl control)
         {
-            control.DataSource = GetList().Select(s => new { s.Id, s.TenCongTy, s.Dienthoai, s.DiaChi }).ToList();
+            control.DataSource = GetList().Select(s => new
+            {
+                s.Id,
+                s.TenCongTy,
+                s.Dienthoai,
+                s.Fax,
+                s.Email,
+                s.MatHang,
+                DanhGia = (new List<int?>() { s.Gia, s.DichVuGiaoHang, s.DatTestHoa, s.DatTestLy, s.DichVuHauMai, s.DungThoiGian, s.DichVuHauMai, s.DungYeuCauKyThuat, s.Khac }.Where(a => a > 0).Average())
+            }).ToList();
         }
 
         public void Save(object data)
         {
-            DbContext.KhachHangs.AddOrUpdate((KhachHang)data);
+            dynamic dynamicData = data;
+            if (dynamicData.Id == 0)
+            {
+                DbContext.KhachHangs.Add((KhachHang)data);
+            }
+            else
+            {
+                DbContext.KhachHangs.AddOrUpdate((KhachHang)data);
+            }
             DbContext.SaveChanges();
         }
     }

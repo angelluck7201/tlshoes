@@ -17,8 +17,8 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NguyenLieu()
         {
-            this.BangThongSoes = new HashSet<BangThongSo>();
             this.ChiTietNguyenLieux = new HashSet<ChiTietNguyenLieu>();
+            this.DonHangs = new HashSet<DonHang>();
         }
     
         public long Id { get; set; }
@@ -31,15 +31,15 @@ namespace TLShoes
         public string MaNguyenLieu { get; set; }
         public Nullable<long> DonViTinh { get; set; }
         public string DacTinh { get; set; }
-        public Nullable<int> SoLuong { get; set; }
+        public Nullable<float> SoLuong { get; set; }
         public string GhiChu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BangThongSo> BangThongSoes { get; set; }
-        public virtual DanhMuc TenDonViTinh { get; set; }
+        public virtual ICollection<ChiTietNguyenLieu> ChiTietNguyenLieux { get; set; }
+        public virtual DanhMuc DanhMuc { get; set; }
         public virtual DanhMuc LoaiNguyenLieu { get; set; }
         public virtual UserAccount UserAccount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietNguyenLieu> ChiTietNguyenLieux { get; set; }
+        public virtual ICollection<DonHang> DonHangs { get; set; }
     }
 }

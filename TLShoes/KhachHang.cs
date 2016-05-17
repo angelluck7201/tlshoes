@@ -29,7 +29,20 @@ namespace TLShoes
         public string TenNguoiDaiDien { get; set; }
         public string DiaChi { get; set; }
         public string Dienthoai { get; set; }
+        public string Fax { get; set; }
+        public string Email { get; set; }
+        public string MatHang { get; set; }
+        public Nullable<int> DungYeuCauKyThuat { get; set; }
+        public Nullable<int> DungThoiGian { get; set; }
+        public Nullable<int> DungMau { get; set; }
+        public Nullable<int> DatTestHoa { get; set; }
+        public Nullable<int> Gia { get; set; }
+        public Nullable<int> DichVuGiaoHang { get; set; }
+        public Nullable<int> DichVuHauMai { get; set; }
+        public Nullable<int> Khac { get; set; }
         public string GhiChu { get; set; }
+        public string GhiChuNoiBo { get; set; }
+        public Nullable<int> DatTestLy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }

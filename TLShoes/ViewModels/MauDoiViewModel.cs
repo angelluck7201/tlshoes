@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 using TLShoes.Common;
 
@@ -29,7 +30,38 @@ namespace TLShoes.ViewModels
 
         public void GetDataSource(GridControl control)
         {
-            control.DataSource = GetList().Select(s => new { s.Id, s.DonHang.MaHang, NgayNhanFormat = TimeHelper.TimestampToString(s.NgayNhan), MauNgayFormat = TimeHelper.TimestampToString(s.MauNgay) }).ToList();
+            control.DataSource = GetList().Select(s => new { s.Id, s.DonHang.MaHang, NgayNhanFormat = TimeHelper.TimestampToString(s.NgayNhan, "d"), MauNgayFormat = TimeHelper.TimestampToString(s.MauNgay, "d") }).ToList();
+        }
+
+        public void GetDataSummarySource(GridControl control)
+        {
+            var listResult = new List<SummaryTest>();
+            foreach (var maudoi in GetList())
+            {
+                var item = new SummaryTest();
+                item.MaHang = maudoi.DonHang.MaHang;
+                item.NgayNhan = TimeHelper.TimestampToString(maudoi.NgayNhan, "d");
+                var mauTest = SF.Get<MauTestViewModel>().GetList().FirstOrDefault(s => s.DonHangId == maudoi.DonHangId);
+                if (mauTest != null)
+                {
+                    item.TestLy = mauTest.DanhMuc.Ten;
+                    item.TestHoa = mauTest.DanhMuc1.Ten;
+                }
+
+                var mauSanXuat = SF.Get<MauSanXuatViewModel>().GetList().FirstOrDefault(s => s.DonHangId == maudoi.DonHangId);
+                if (mauSanXuat != null)
+                {
+                    item.MauSanXuat = mauSanXuat.DanhMuc.Ten;
+                }
+
+                var mauThuDao = SF.Get<MauThuDaoViewModel>().GetList().FirstOrDefault(s => s.DonHangId == maudoi.DonHangId);
+                if (mauThuDao != null)
+                {
+                    item.MauThuDao = TimeHelper.TimestampToString(mauThuDao.NgayHoanThanh, "d");
+                }
+                listResult.Add(item);
+            }
+            control.DataSource = listResult;
         }
 
         public void Save(object data)
@@ -44,6 +76,16 @@ namespace TLShoes.ViewModels
                 DbContext.MauDois.AddOrUpdate((MauDoi)data);
             }
             DbContext.SaveChanges();
+        }
+
+        public class SummaryTest
+        {
+            public string MaHang { get; set; }
+            public string NgayNhan { get; set; }
+            public string TestLy { get; set; }
+            public string TestHoa { get; set; }
+            public string MauSanXuat { get; set; }
+            public string MauThuDao { get; set; }
         }
     }
 }

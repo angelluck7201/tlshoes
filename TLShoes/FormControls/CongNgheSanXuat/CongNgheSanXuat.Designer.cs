@@ -31,7 +31,7 @@
             this.CongNgheSanXuat_DonHangId = new System.Windows.Forms.ComboBox();
             this.CongNgheSanXuat_MauDoiId = new System.Windows.Forms.ComboBox();
             this.lblMauDoiId = new DevExpress.XtraEditors.LabelControl();
-            this.CongNgheSanXuat_PhanLoaiThuRap = new System.Windows.Forms.ComboBox();
+            this.CongNgheSanXuat_PhanLoaiThuRapId = new System.Windows.Forms.ComboBox();
             this.lblPhanLoaiThuRap = new DevExpress.XtraEditors.LabelControl();
             this.CongNgheSanXuat_YKienThuRap = new System.Windows.Forms.RichTextBox();
             this.lblYKienThuRap = new DevExpress.XtraEditors.LabelControl();
@@ -46,6 +46,12 @@
             this.lblNgayDuyet = new DevExpress.XtraEditors.LabelControl();
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
             this.lblDonHangId = new DevExpress.XtraEditors.LabelControl();
+            this.lblCongNgheDuocDuyet = new DevExpress.XtraEditors.LabelControl();
+            this.lblBangThongSo = new DevExpress.XtraEditors.LabelControl();
+            this.CongNgheSanXuat_HinhCongNgheDuocDuyet = new DevExpress.XtraEditors.PictureEdit();
+            this.CongNgheSanXuat_HinhBangThongSo = new DevExpress.XtraEditors.PictureEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CongNgheSanXuat_HinhBangThongSo.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // CongNgheSanXuat_DonHangId
@@ -67,19 +73,19 @@
             // 
             // lblMauDoiId
             // 
-            this.lblMauDoiId.Location = new System.Drawing.Point(12, 227);
+            this.lblMauDoiId.Location = new System.Drawing.Point(12, 230);
             this.lblMauDoiId.Name = "lblMauDoiId";
-            this.lblMauDoiId.Size = new System.Drawing.Size(49, 17);
+            this.lblMauDoiId.Size = new System.Drawing.Size(85, 17);
             this.lblMauDoiId.TabIndex = 43;
-            this.lblMauDoiId.Text = "Mẫu Đối";
+            this.lblMauDoiId.Text = "Mẫu Đối Ngày";
             // 
-            // CongNgheSanXuat_PhanLoaiThuRap
+            // CongNgheSanXuat_PhanLoaiThuRapId
             // 
-            this.CongNgheSanXuat_PhanLoaiThuRap.FormattingEnabled = true;
-            this.CongNgheSanXuat_PhanLoaiThuRap.Location = new System.Drawing.Point(142, 266);
-            this.CongNgheSanXuat_PhanLoaiThuRap.Name = "CongNgheSanXuat_PhanLoaiThuRap";
-            this.CongNgheSanXuat_PhanLoaiThuRap.Size = new System.Drawing.Size(529, 24);
-            this.CongNgheSanXuat_PhanLoaiThuRap.TabIndex = 46;
+            this.CongNgheSanXuat_PhanLoaiThuRapId.FormattingEnabled = true;
+            this.CongNgheSanXuat_PhanLoaiThuRapId.Location = new System.Drawing.Point(142, 266);
+            this.CongNgheSanXuat_PhanLoaiThuRapId.Name = "CongNgheSanXuat_PhanLoaiThuRapId";
+            this.CongNgheSanXuat_PhanLoaiThuRapId.Size = new System.Drawing.Size(529, 24);
+            this.CongNgheSanXuat_PhanLoaiThuRapId.TabIndex = 46;
             // 
             // lblPhanLoaiThuRap
             // 
@@ -139,30 +145,27 @@
             // 
             // btnSaveContinue
             // 
-            this.btnSaveContinue.Location = new System.Drawing.Point(378, 607);
+            this.btnSaveContinue.Location = new System.Drawing.Point(378, 855);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(131, 23);
             this.btnSaveContinue.TabIndex = 70;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
-            this.btnSaveContinue.Click += new System.EventHandler(this.btnSaveContinue_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(596, 607);
+            this.btnCancel.Location = new System.Drawing.Point(596, 855);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 69;
             this.btnCancel.Text = "Hủy";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(515, 607);
+            this.btnSave.Location = new System.Drawing.Point(515, 855);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 68;
             this.btnSave.Text = "Lưu";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // CongNgheSanXuat_NgayDuyet
             // 
@@ -194,10 +197,48 @@
             this.lblDonHangId.TabIndex = 41;
             this.lblDonHangId.Text = "Đơn Hàng";
             // 
+            // lblCongNgheDuocDuyet
+            // 
+            this.lblCongNgheDuocDuyet.Location = new System.Drawing.Point(118, 807);
+            this.lblCongNgheDuocDuyet.Name = "lblCongNgheDuocDuyet";
+            this.lblCongNgheDuocDuyet.Size = new System.Drawing.Size(149, 17);
+            this.lblCongNgheDuocDuyet.TabIndex = 79;
+            this.lblCongNgheDuocDuyet.Text = "Công Nghệ Được Duyệt";
+            // 
+            // lblBangThongSo
+            // 
+            this.lblBangThongSo.Location = new System.Drawing.Point(476, 807);
+            this.lblBangThongSo.Name = "lblBangThongSo";
+            this.lblBangThongSo.Size = new System.Drawing.Size(95, 17);
+            this.lblBangThongSo.TabIndex = 80;
+            this.lblBangThongSo.Text = "Bảng Thông Số";
+            // 
+            // CongNgheSanXuat_HinhCongNgheDuocDuyet
+            // 
+            this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Location = new System.Drawing.Point(61, 608);
+            this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Name = "CongNgheSanXuat_HinhCongNgheDuocDuyet";
+            this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Size = new System.Drawing.Size(253, 180);
+            this.CongNgheSanXuat_HinhCongNgheDuocDuyet.TabIndex = 81;
+            // 
+            // CongNgheSanXuat_HinhBangThongSo
+            // 
+            this.CongNgheSanXuat_HinhBangThongSo.Location = new System.Drawing.Point(391, 608);
+            this.CongNgheSanXuat_HinhBangThongSo.Name = "CongNgheSanXuat_HinhBangThongSo";
+            this.CongNgheSanXuat_HinhBangThongSo.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.CongNgheSanXuat_HinhBangThongSo.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.CongNgheSanXuat_HinhBangThongSo.Size = new System.Drawing.Size(253, 180);
+            this.CongNgheSanXuat_HinhBangThongSo.TabIndex = 82;
+            // 
             // ucCongNgheSanXuat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CongNgheSanXuat_HinhBangThongSo);
+            this.Controls.Add(this.CongNgheSanXuat_HinhCongNgheDuocDuyet);
+            this.Controls.Add(this.lblBangThongSo);
+            this.Controls.Add(this.lblCongNgheDuocDuyet);
             this.Controls.Add(this.CongNgheSanXuat_NgayDuyet);
             this.Controls.Add(this.lblNgayDuyet);
             this.Controls.Add(this.btnSaveContinue);
@@ -209,7 +250,7 @@
             this.Controls.Add(this.lblPhanLoaiThuDao);
             this.Controls.Add(this.CongNgheSanXuat_YKienThuRap);
             this.Controls.Add(this.lblYKienThuRap);
-            this.Controls.Add(this.CongNgheSanXuat_PhanLoaiThuRap);
+            this.Controls.Add(this.CongNgheSanXuat_PhanLoaiThuRapId);
             this.Controls.Add(this.lblPhanLoaiThuRap);
             this.Controls.Add(this.CongNgheSanXuat_MauDoiId);
             this.Controls.Add(this.lblMauDoiId);
@@ -217,7 +258,9 @@
             this.Controls.Add(this.lblDonHangId);
             this.Controls.Add(this.defaultInfo);
             this.Name = "ucCongNgheSanXuat";
-            this.Size = new System.Drawing.Size(722, 653);
+            this.Size = new System.Drawing.Size(722, 902);
+            ((System.ComponentModel.ISupportInitialize)(this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CongNgheSanXuat_HinhBangThongSo.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,7 +272,7 @@
         private System.Windows.Forms.ComboBox CongNgheSanXuat_DonHangId;
         private System.Windows.Forms.ComboBox CongNgheSanXuat_MauDoiId;
         private DevExpress.XtraEditors.LabelControl lblMauDoiId;
-        private System.Windows.Forms.ComboBox CongNgheSanXuat_PhanLoaiThuRap;
+        private System.Windows.Forms.ComboBox CongNgheSanXuat_PhanLoaiThuRapId;
         private DevExpress.XtraEditors.LabelControl lblPhanLoaiThuRap;
         private System.Windows.Forms.RichTextBox CongNgheSanXuat_YKienThuRap;
         private DevExpress.XtraEditors.LabelControl lblYKienThuRap;
@@ -243,5 +286,9 @@
         private System.Windows.Forms.DateTimePicker CongNgheSanXuat_NgayDuyet;
         private DevExpress.XtraEditors.LabelControl lblNgayDuyet;
         private DevExpress.XtraEditors.LabelControl lblDonHangId;
+        private DevExpress.XtraEditors.LabelControl lblCongNgheDuocDuyet;
+        private DevExpress.XtraEditors.LabelControl lblBangThongSo;
+        private DevExpress.XtraEditors.PictureEdit CongNgheSanXuat_HinhCongNgheDuocDuyet;
+        private DevExpress.XtraEditors.PictureEdit CongNgheSanXuat_HinhBangThongSo;
     }
 }

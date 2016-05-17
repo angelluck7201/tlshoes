@@ -39,6 +39,10 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +69,11 @@
             this.gridColumn5,
             this.gridColumn6,
             this.gridColumn7,
-            this.gridColumn8});
+            this.gridColumn8,
+            this.gridColumn10,
+            this.gridColumn11,
+            this.gridColumn9,
+            this.gridColumn12});
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
@@ -79,8 +87,6 @@
             this.Id.Caption = "Id";
             this.Id.FieldName = "Id";
             this.Id.Name = "Id";
-            this.Id.Visible = true;
-            this.Id.VisibleIndex = 0;
             // 
             // gridColumn1
             // 
@@ -88,7 +94,7 @@
             this.gridColumn1.FieldName = "MaHang";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 1;
+            this.gridColumn1.VisibleIndex = 0;
             // 
             // gridColumn2
             // 
@@ -96,7 +102,7 @@
             this.gridColumn2.FieldName = "NgayKiemHangFormat";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.VisibleIndex = 1;
             // 
             // gridColumn3
             // 
@@ -104,7 +110,7 @@
             this.gridColumn3.FieldName = "NgayBatDauPxChatFormat";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 5;
+            this.gridColumn3.VisibleIndex = 4;
             // 
             // gridColumn4
             // 
@@ -112,7 +118,7 @@
             this.gridColumn4.FieldName = "NgayHoanThanhPxChatFormat";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
+            this.gridColumn4.VisibleIndex = 3;
             // 
             // gridColumn5
             // 
@@ -120,7 +126,7 @@
             this.gridColumn5.FieldName = "NgayBatDauPxMayFormat";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.VisibleIndex = 2;
             // 
             // gridColumn6
             // 
@@ -128,7 +134,7 @@
             this.gridColumn6.FieldName = "NgayHoanThanhPxMayFormat";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 6;
+            this.gridColumn6.VisibleIndex = 5;
             // 
             // gridColumn7
             // 
@@ -136,7 +142,7 @@
             this.gridColumn7.FieldName = "NgayBatDauToPhuTroFormat";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 7;
+            this.gridColumn7.VisibleIndex = 6;
             // 
             // gridColumn8
             // 
@@ -144,7 +150,39 @@
             this.gridColumn8.FieldName = "NgayHoanThanhToPhuTroFormat";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 8;
+            this.gridColumn8.VisibleIndex = 11;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Bắt Đầu Px Đe";
+            this.gridColumn10.FieldName = "NgayBatDauPxDeFormat";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 7;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Hoàn Thành Px Đe";
+            this.gridColumn11.FieldName = "NgayHoanThanhPxDeFormat";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 10;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Bắt Đầu Bp Vật Tư";
+            this.gridColumn9.FieldName = "NgayBatDauBpVatTuFormat";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 8;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Hoàn Thành Bp Vật Tư";
+            this.gridColumn12.FieldName = "NgayHoanThanhBpVatTuFormat";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 9;
             // 
             // ucKeHoachSanXuatList
             // 
@@ -172,5 +210,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
     }
 }

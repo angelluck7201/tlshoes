@@ -17,41 +17,40 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserAccount()
         {
-            this.BangThongSoes = new HashSet<BangThongSo>();
             this.BaoCaoPhanXuongs = new HashSet<BaoCaoPhanXuong>();
+            this.ChiLenhs = new HashSet<ChiLenh>();
+            this.ChiLenhs1 = new HashSet<ChiLenh>();
             this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
-            this.ChiTietThongSoes = new HashSet<ChiTietThongSo>();
-            this.CongCuDungCus = new HashSet<CongCuDungCu>();
+            this.ChiTietNguyenLieux = new HashSet<ChiTietNguyenLieu>();
             this.CongNgheSanXuats = new HashSet<CongNgheSanXuat>();
             this.DanhMucs = new HashSet<DanhMuc>();
             this.DonHangs = new HashSet<DonHang>();
-            this.GopYKhachHangs = new HashSet<GopYKhachHang>();
             this.KeHoachSanXuats = new HashSet<KeHoachSanXuat>();
             this.KhachHangs = new HashSet<KhachHang>();
             this.MauDois = new HashSet<MauDoi>();
+            this.MauSanXuats = new HashSet<MauSanXuat>();
             this.MauTests = new HashSet<MauTest>();
+            this.MauThuDaos = new HashSet<MauThuDao>();
             this.NguyenLieux = new HashSet<NguyenLieu>();
-            this.ChiTietNguyenLieux = new HashSet<ChiTietNguyenLieu>();
             this.NguyenLieuChiLenhs = new HashSet<NguyenLieuChiLenh>();
-            this.ChiLenhs = new HashSet<ChiLenh>();
-            this.ChiLenhs1 = new HashSet<ChiLenh>();
         }
     
         public long Id { get; set; }
         public Nullable<long> CreatedDate { get; set; }
         public Nullable<long> ModifiedDate { get; set; }
         public Nullable<bool> IsActived { get; set; }
+        public string TenNguoiDung { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BangThongSo> BangThongSoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaoCaoPhanXuong> BaoCaoPhanXuongs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiLenh> ChiLenhs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiLenh> ChiLenhs1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietThongSo> ChiTietThongSoes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CongCuDungCu> CongCuDungCus { get; set; }
+        public virtual ICollection<ChiTietNguyenLieu> ChiTietNguyenLieux { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CongNgheSanXuat> CongNgheSanXuats { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -59,24 +58,20 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GopYKhachHang> GopYKhachHangs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KeHoachSanXuat> KeHoachSanXuats { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MauDoi> MauDois { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MauSanXuat> MauSanXuats { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MauTest> MauTests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MauThuDao> MauThuDaos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NguyenLieu> NguyenLieux { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietNguyenLieu> ChiTietNguyenLieux { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NguyenLieuChiLenh> NguyenLieuChiLenhs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiLenh> ChiLenhs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiLenh> ChiLenhs1 { get; set; }
     }
 }

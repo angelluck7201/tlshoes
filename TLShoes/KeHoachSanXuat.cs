@@ -29,6 +29,10 @@ namespace TLShoes
         public Nullable<long> NgayHoanThanhPxMay { get; set; }
         public Nullable<long> NgayBatDauPxGo { get; set; }
         public Nullable<long> NgayHoanThanhPxGo { get; set; }
+        public Nullable<long> NgayBatDauPxDe { get; set; }
+        public Nullable<long> NgayHoanThanhPxDe { get; set; }
+        public Nullable<long> NgayBatDauBpVatTu { get; set; }
+        public Nullable<long> NgayHoanThanhBpVatTu { get; set; }
         public string GhiChu { get; set; }
     
         public virtual DonHang DonHang { get; set; }

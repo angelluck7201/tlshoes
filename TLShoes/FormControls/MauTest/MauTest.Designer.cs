@@ -31,9 +31,9 @@
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
             this.MauTest_DonHangId = new System.Windows.Forms.ComboBox();
             this.lblDonHangId = new DevExpress.XtraEditors.LabelControl();
-            this.MauTest_NgayKetQuaTestLy = new System.Windows.Forms.DateTimePicker();
+            this.MauTest_NgayKetquaTestLy = new System.Windows.Forms.DateTimePicker();
             this.lblNgayKetQuaTestLy = new DevExpress.XtraEditors.LabelControl();
-            this.MauTest_NgayKetQuaTestHoa = new System.Windows.Forms.DateTimePicker();
+            this.MauTest_NgayKetquaTestHoa = new System.Windows.Forms.DateTimePicker();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lblPhanLoaiTestLyId = new DevExpress.XtraEditors.LabelControl();
             this.MauTest_PhanLoaiTestLyId = new System.Windows.Forms.ComboBox();
@@ -46,6 +46,8 @@
             this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.MauTest_NgayGuiMau = new System.Windows.Forms.DateTimePicker();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.SuspendLayout();
             // 
             // defaultInfo
@@ -71,31 +73,31 @@
             this.lblDonHangId.TabIndex = 39;
             this.lblDonHangId.Text = "Đơn Hàng";
             // 
-            // MauTest_NgayKetQuaTestLy
+            // MauTest_NgayKetquaTestLy
             // 
-            this.MauTest_NgayKetQuaTestLy.Location = new System.Drawing.Point(144, 217);
-            this.MauTest_NgayKetQuaTestLy.Name = "MauTest_NgayKetQuaTestLy";
-            this.MauTest_NgayKetQuaTestLy.Size = new System.Drawing.Size(529, 22);
-            this.MauTest_NgayKetQuaTestLy.TabIndex = 42;
+            this.MauTest_NgayKetquaTestLy.Location = new System.Drawing.Point(142, 267);
+            this.MauTest_NgayKetquaTestLy.Name = "MauTest_NgayKetquaTestLy";
+            this.MauTest_NgayKetquaTestLy.Size = new System.Drawing.Size(529, 22);
+            this.MauTest_NgayKetquaTestLy.TabIndex = 42;
             // 
             // lblNgayKetQuaTestLy
             // 
-            this.lblNgayKetQuaTestLy.Location = new System.Drawing.Point(14, 217);
+            this.lblNgayKetQuaTestLy.Location = new System.Drawing.Point(12, 267);
             this.lblNgayKetQuaTestLy.Name = "lblNgayKetQuaTestLy";
             this.lblNgayKetQuaTestLy.Size = new System.Drawing.Size(93, 16);
             this.lblNgayKetQuaTestLy.TabIndex = 41;
             this.lblNgayKetQuaTestLy.Text = "Ngày KQ Test Lý";
             // 
-            // MauTest_NgayKetQuaTestHoa
+            // MauTest_NgayKetquaTestHoa
             // 
-            this.MauTest_NgayKetQuaTestHoa.Location = new System.Drawing.Point(144, 413);
-            this.MauTest_NgayKetQuaTestHoa.Name = "MauTest_NgayKetQuaTestHoa";
-            this.MauTest_NgayKetQuaTestHoa.Size = new System.Drawing.Size(529, 22);
-            this.MauTest_NgayKetQuaTestHoa.TabIndex = 44;
+            this.MauTest_NgayKetquaTestHoa.Location = new System.Drawing.Point(144, 470);
+            this.MauTest_NgayKetquaTestHoa.Name = "MauTest_NgayKetquaTestHoa";
+            this.MauTest_NgayKetquaTestHoa.Size = new System.Drawing.Size(529, 22);
+            this.MauTest_NgayKetquaTestHoa.TabIndex = 44;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(14, 413);
+            this.labelControl1.Location = new System.Drawing.Point(14, 470);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(103, 16);
             this.labelControl1.TabIndex = 43;
@@ -103,7 +105,7 @@
             // 
             // lblPhanLoaiTestLyId
             // 
-            this.lblPhanLoaiTestLyId.Location = new System.Drawing.Point(14, 255);
+            this.lblPhanLoaiTestLyId.Location = new System.Drawing.Point(14, 311);
             this.lblPhanLoaiTestLyId.Name = "lblPhanLoaiTestLyId";
             this.lblPhanLoaiTestLyId.Size = new System.Drawing.Size(108, 17);
             this.lblPhanLoaiTestLyId.TabIndex = 45;
@@ -112,14 +114,14 @@
             // MauTest_PhanLoaiTestLyId
             // 
             this.MauTest_PhanLoaiTestLyId.FormattingEnabled = true;
-            this.MauTest_PhanLoaiTestLyId.Location = new System.Drawing.Point(144, 255);
+            this.MauTest_PhanLoaiTestLyId.Location = new System.Drawing.Point(144, 311);
             this.MauTest_PhanLoaiTestLyId.Name = "MauTest_PhanLoaiTestLyId";
             this.MauTest_PhanLoaiTestLyId.Size = new System.Drawing.Size(529, 24);
             this.MauTest_PhanLoaiTestLyId.TabIndex = 46;
             // 
             // MauTest_KetQuaTestLy
             // 
-            this.MauTest_KetQuaTestLy.Location = new System.Drawing.Point(144, 298);
+            this.MauTest_KetQuaTestLy.Location = new System.Drawing.Point(144, 356);
             this.MauTest_KetQuaTestLy.Name = "MauTest_KetQuaTestLy";
             this.MauTest_KetQuaTestLy.Size = new System.Drawing.Size(529, 96);
             this.MauTest_KetQuaTestLy.TabIndex = 60;
@@ -127,7 +129,7 @@
             // 
             // lblKetQuaTestLy
             // 
-            this.lblKetQuaTestLy.Location = new System.Drawing.Point(14, 298);
+            this.lblKetQuaTestLy.Location = new System.Drawing.Point(14, 356);
             this.lblKetQuaTestLy.Name = "lblKetQuaTestLy";
             this.lblKetQuaTestLy.Size = new System.Drawing.Size(89, 16);
             this.lblKetQuaTestLy.TabIndex = 59;
@@ -135,7 +137,7 @@
             // 
             // MauTest_KetQuaTestHoa
             // 
-            this.MauTest_KetQuaTestHoa.Location = new System.Drawing.Point(144, 500);
+            this.MauTest_KetQuaTestHoa.Location = new System.Drawing.Point(144, 550);
             this.MauTest_KetQuaTestHoa.Name = "MauTest_KetQuaTestHoa";
             this.MauTest_KetQuaTestHoa.Size = new System.Drawing.Size(529, 96);
             this.MauTest_KetQuaTestHoa.TabIndex = 64;
@@ -143,7 +145,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(14, 500);
+            this.labelControl2.Location = new System.Drawing.Point(14, 550);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(99, 16);
             this.labelControl2.TabIndex = 63;
@@ -152,14 +154,14 @@
             // MauTest_PhanLoaiTestHoaId
             // 
             this.MauTest_PhanLoaiTestHoaId.FormattingEnabled = true;
-            this.MauTest_PhanLoaiTestHoaId.Location = new System.Drawing.Point(144, 457);
+            this.MauTest_PhanLoaiTestHoaId.Location = new System.Drawing.Point(144, 510);
             this.MauTest_PhanLoaiTestHoaId.Name = "MauTest_PhanLoaiTestHoaId";
             this.MauTest_PhanLoaiTestHoaId.Size = new System.Drawing.Size(529, 24);
             this.MauTest_PhanLoaiTestHoaId.TabIndex = 62;
             // 
             // lblPhanLoaiTestHoaId
             // 
-            this.lblPhanLoaiTestHoaId.Location = new System.Drawing.Point(14, 457);
+            this.lblPhanLoaiTestHoaId.Location = new System.Drawing.Point(14, 510);
             this.lblPhanLoaiTestHoaId.Name = "lblPhanLoaiTestHoaId";
             this.lblPhanLoaiTestHoaId.Size = new System.Drawing.Size(117, 17);
             this.lblPhanLoaiTestHoaId.TabIndex = 61;
@@ -167,35 +169,49 @@
             // 
             // btnSaveContinue
             // 
-            this.btnSaveContinue.Location = new System.Drawing.Point(376, 616);
+            this.btnSaveContinue.Location = new System.Drawing.Point(378, 670);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(131, 23);
             this.btnSaveContinue.TabIndex = 67;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
-            this.btnSaveContinue.Click += new System.EventHandler(this.btnSaveContinue_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(594, 616);
+            this.btnCancel.Location = new System.Drawing.Point(596, 670);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 66;
             this.btnCancel.Text = "Hủy";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(513, 616);
+            this.btnSave.Location = new System.Drawing.Point(515, 670);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 65;
             this.btnSave.Text = "Lưu";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // MauTest_NgayGuiMau
+            // 
+            this.MauTest_NgayGuiMau.Location = new System.Drawing.Point(144, 222);
+            this.MauTest_NgayGuiMau.Name = "MauTest_NgayGuiMau";
+            this.MauTest_NgayGuiMau.Size = new System.Drawing.Size(529, 22);
+            this.MauTest_NgayGuiMau.TabIndex = 69;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(14, 222);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(85, 17);
+            this.labelControl3.TabIndex = 68;
+            this.labelControl3.Text = "Ngày Gửi Mẫu";
             // 
             // ucMauTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.MauTest_NgayGuiMau);
+            this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.btnSaveContinue);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -207,15 +223,15 @@
             this.Controls.Add(this.lblKetQuaTestLy);
             this.Controls.Add(this.MauTest_PhanLoaiTestLyId);
             this.Controls.Add(this.lblPhanLoaiTestLyId);
-            this.Controls.Add(this.MauTest_NgayKetQuaTestHoa);
+            this.Controls.Add(this.MauTest_NgayKetquaTestHoa);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.MauTest_NgayKetQuaTestLy);
+            this.Controls.Add(this.MauTest_NgayKetquaTestLy);
             this.Controls.Add(this.lblNgayKetQuaTestLy);
             this.Controls.Add(this.MauTest_DonHangId);
             this.Controls.Add(this.lblDonHangId);
             this.Controls.Add(this.defaultInfo);
             this.Name = "ucMauTest";
-            this.Size = new System.Drawing.Size(689, 672);
+            this.Size = new System.Drawing.Size(689, 718);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,9 +242,9 @@
         private Form.DefaultInfo defaultInfo;
         private System.Windows.Forms.ComboBox MauTest_DonHangId;
         private DevExpress.XtraEditors.LabelControl lblDonHangId;
-        private System.Windows.Forms.DateTimePicker MauTest_NgayKetQuaTestLy;
+        private System.Windows.Forms.DateTimePicker MauTest_NgayKetquaTestLy;
         private DevExpress.XtraEditors.LabelControl lblNgayKetQuaTestLy;
-        private System.Windows.Forms.DateTimePicker MauTest_NgayKetQuaTestHoa;
+        private System.Windows.Forms.DateTimePicker MauTest_NgayKetquaTestHoa;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl lblPhanLoaiTestLyId;
         private System.Windows.Forms.ComboBox MauTest_PhanLoaiTestLyId;
@@ -241,5 +257,7 @@
         private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
+        private System.Windows.Forms.DateTimePicker MauTest_NgayGuiMau;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
     }
 }

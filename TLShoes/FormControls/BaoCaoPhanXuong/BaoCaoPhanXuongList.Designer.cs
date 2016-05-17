@@ -36,6 +36,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +47,7 @@
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(724, 606);
+            this.gridControl.Size = new System.Drawing.Size(760, 606);
             this.gridControl.TabIndex = 6;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -59,6 +60,7 @@
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
+            this.gridColumn6,
             this.gridColumn5});
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridView.GridControl = this.gridControl;
@@ -73,8 +75,6 @@
             this.Id.Caption = "Id";
             this.Id.FieldName = "Id";
             this.Id.Name = "Id";
-            this.Id.Visible = true;
-            this.Id.VisibleIndex = 0;
             // 
             // gridColumn1
             // 
@@ -82,7 +82,7 @@
             this.gridColumn1.FieldName = "MaHang";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 1;
+            this.gridColumn1.VisibleIndex = 0;
             // 
             // gridColumn2
             // 
@@ -90,7 +90,7 @@
             this.gridColumn2.FieldName = "Ten";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.VisibleIndex = 1;
             // 
             // gridColumn3
             // 
@@ -114,7 +114,15 @@
             this.gridColumn5.FieldName = "BaoCaoNgayFormat";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.VisibleIndex = 2;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "SL Đơn Hàng";
+            this.gridColumn6.FieldName = "SoLuongDonHang";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 3;
             // 
             // ucBaoCaoPhanXuongList
             // 
@@ -122,7 +130,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gridControl);
             this.Name = "ucBaoCaoPhanXuongList";
-            this.Size = new System.Drawing.Size(724, 606);
+            this.Size = new System.Drawing.Size(760, 606);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             this.ResumeLayout(false);
@@ -139,6 +147,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
 
     }
 }

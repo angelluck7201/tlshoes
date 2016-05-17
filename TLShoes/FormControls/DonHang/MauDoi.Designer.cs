@@ -42,6 +42,9 @@ namespace TLShoes.FormControls.DonHang
             this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.lblHinh = new DevExpress.XtraEditors.LabelControl();
+            this.MauDoi_HinhAnh = new DevExpress.XtraEditors.PictureEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.MauDoi_HinhAnh.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // defaultInfo
@@ -56,7 +59,7 @@ namespace TLShoes.FormControls.DonHang
             this.MauDoi_DonHangId.FormattingEnabled = true;
             this.MauDoi_DonHangId.Location = new System.Drawing.Point(118, 197);
             this.MauDoi_DonHangId.Name = "MauDoi_DonHangId";
-            this.MauDoi_DonHangId.Size = new System.Drawing.Size(421, 24);
+            this.MauDoi_DonHangId.Size = new System.Drawing.Size(278, 24);
             this.MauDoi_DonHangId.TabIndex = 40;
             // 
             // lblDonHangId
@@ -69,16 +72,16 @@ namespace TLShoes.FormControls.DonHang
             // 
             // MauDoi_MauNgay
             // 
-            this.MauDoi_MauNgay.Location = new System.Drawing.Point(118, 281);
+            this.MauDoi_MauNgay.Location = new System.Drawing.Point(118, 290);
             this.MauDoi_MauNgay.Name = "MauDoi_MauNgay";
-            this.MauDoi_MauNgay.Size = new System.Drawing.Size(421, 22);
+            this.MauDoi_MauNgay.Size = new System.Drawing.Size(278, 22);
             this.MauDoi_MauNgay.TabIndex = 44;
             // 
             // MauDoi_NgayNhan
             // 
             this.MauDoi_NgayNhan.Location = new System.Drawing.Point(118, 240);
             this.MauDoi_NgayNhan.Name = "MauDoi_NgayNhan";
-            this.MauDoi_NgayNhan.Size = new System.Drawing.Size(421, 22);
+            this.MauDoi_NgayNhan.Size = new System.Drawing.Size(278, 22);
             this.MauDoi_NgayNhan.TabIndex = 43;
             // 
             // lblNgayNhan
@@ -91,7 +94,7 @@ namespace TLShoes.FormControls.DonHang
             // 
             // lblMauNgay
             // 
-            this.lblMauNgay.Location = new System.Drawing.Point(7, 281);
+            this.lblMauNgay.Location = new System.Drawing.Point(11, 290);
             this.lblMauNgay.Name = "lblMauNgay";
             this.lblMauNgay.Size = new System.Drawing.Size(61, 17);
             this.lblMauNgay.TabIndex = 41;
@@ -99,15 +102,15 @@ namespace TLShoes.FormControls.DonHang
             // 
             // MauDoi_GhiChu
             // 
-            this.MauDoi_GhiChu.Location = new System.Drawing.Point(118, 331);
+            this.MauDoi_GhiChu.Location = new System.Drawing.Point(118, 338);
             this.MauDoi_GhiChu.Name = "MauDoi_GhiChu";
-            this.MauDoi_GhiChu.Size = new System.Drawing.Size(421, 96);
+            this.MauDoi_GhiChu.Size = new System.Drawing.Size(278, 96);
             this.MauDoi_GhiChu.TabIndex = 60;
             this.MauDoi_GhiChu.Text = "";
             // 
             // lblGhiChu
             // 
-            this.lblGhiChu.Location = new System.Drawing.Point(11, 331);
+            this.lblGhiChu.Location = new System.Drawing.Point(11, 338);
             this.lblGhiChu.Name = "lblGhiChu";
             this.lblGhiChu.Size = new System.Drawing.Size(44, 16);
             this.lblGhiChu.TabIndex = 59;
@@ -115,35 +118,52 @@ namespace TLShoes.FormControls.DonHang
             // 
             // btnSaveContinue
             // 
-            this.btnSaveContinue.Location = new System.Drawing.Point(246, 468);
+            this.btnSaveContinue.Location = new System.Drawing.Point(377, 503);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(131, 23);
             this.btnSaveContinue.TabIndex = 63;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
-            this.btnSaveContinue.Click += new EventHandler(this.btnSaveContinue_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(464, 468);
+            this.btnCancel.Location = new System.Drawing.Point(595, 503);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 62;
             this.btnCancel.Text = "Hủy";
-            this.btnCancel.Click += new EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(383, 468);
+            this.btnSave.Location = new System.Drawing.Point(514, 503);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 61;
             this.btnSave.Text = "Lưu";
-            this.btnSave.Click += new EventHandler(this.btnSave_Click);
+            // 
+            // lblHinh
+            // 
+            this.lblHinh.Location = new System.Drawing.Point(534, 417);
+            this.lblHinh.Name = "lblHinh";
+            this.lblHinh.Size = new System.Drawing.Size(55, 17);
+            this.lblHinh.TabIndex = 64;
+            this.lblHinh.Text = "Hình Ảnh";
+            // 
+            // MauDoi_HinhAnh
+            // 
+            this.MauDoi_HinhAnh.Location = new System.Drawing.Point(459, 188);
+            this.MauDoi_HinhAnh.Name = "MauDoi_HinhAnh";
+            this.MauDoi_HinhAnh.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.MauDoi_HinhAnh.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.MauDoi_HinhAnh.Size = new System.Drawing.Size(214, 214);
+            this.MauDoi_HinhAnh.TabIndex = 65;
+            this.MauDoi_HinhAnh.TabStop = true;
             // 
             // ucMauDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblHinh);
+            this.Controls.Add(this.MauDoi_HinhAnh);
             this.Controls.Add(this.btnSaveContinue);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -157,7 +177,8 @@ namespace TLShoes.FormControls.DonHang
             this.Controls.Add(this.lblDonHangId);
             this.Controls.Add(this.defaultInfo);
             this.Name = "ucMauDoi";
-            this.Size = new System.Drawing.Size(555, 509);
+            this.Size = new System.Drawing.Size(709, 544);
+            ((System.ComponentModel.ISupportInitialize)(this.MauDoi_HinhAnh.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,5 +198,7 @@ namespace TLShoes.FormControls.DonHang
         private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
+        private DevExpress.XtraEditors.LabelControl lblHinh;
+        private DevExpress.XtraEditors.PictureEdit MauDoi_HinhAnh;
     }
 }

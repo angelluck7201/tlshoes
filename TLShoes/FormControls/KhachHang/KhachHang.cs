@@ -8,32 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TLShoes.Common;
+using TLShoes.FormControls;
 using TLShoes.ViewModels;
 
 namespace TLShoes.Form
 {
-    public partial class ucKhachHang : UserControl
+    public partial class ucKhachHang : BaseUserControl
     {
 
         public ucKhachHang(KhachHang data = null)
         {
             InitializeComponent();
-
-            if (data != null)
-            {
-                KhachHang_TenCongTy.Text = data.TenCongTy;
-                KhachHang_TenNguoiDaiDien.Text = data.TenNguoiDaiDien;
-                KhachHang_DienThoai.Text = data.Dienthoai;
-                KhachHang_DiaChi.Text = data.DiaChi;
-                KhachHang_GhiChu.Text = data.GhiChu;
-                defaultInfo.Controls["Id"].Text = data.Id.ToString();
-                defaultInfo.Controls["AuthorId"].Text = data.AuthorId.ToString();
-                defaultInfo.Controls["CreatedDate"].Text = TimeHelper.TimestampToString(data.CreatedDate);
-                defaultInfo.Controls["ModifiedDate"].Text = TimeHelper.TimestampToString(data.ModifiedDate);
-            }
+            Init(data);
         }
 
-        public bool SaveData()
+        public override bool SaveData()
         {
             var validateResult = ValidateInput();
             if (!string.IsNullOrEmpty(validateResult))
@@ -41,34 +30,11 @@ namespace TLShoes.Form
                 MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
                 return false;
             }
-            var id = CommonHelper.StringToInt(defaultInfo.Controls["Id"].Text);
 
-            var saveData = SF.Get<KhachHangViewModel>().GetDetail(id);
-            if (saveData == null)
-            {
-                saveData = new KhachHang();
-            }
+            var saveData = CRUD.GetFormObject<KhachHang>(FormControls);
 
-            saveData.TenNguoiDaiDien = KhachHang_TenNguoiDaiDien.Text;
-            saveData.TenCongTy = KhachHang_TenCongTy.Text;
-            saveData.Dienthoai = KhachHang_DienThoai.Text;
-            saveData.GhiChu = KhachHang_GhiChu.Text;
-            CRUD.DecorateSaveData(saveData);
             SF.Get<KhachHangViewModel>().Save(saveData);
             return true;
-        }
-
-        public void ClearData()
-        {
-            defaultInfo.Controls["Id"].Text = "";
-            defaultInfo.Controls["AuthorId"].Text = "";
-            defaultInfo.Controls["CreatedDate"].Text = "";
-            defaultInfo.Controls["ModifiedDate"].Text = "";
-            KhachHang_TenNguoiDaiDien.Text = "";
-            KhachHang_TenCongTy.Text = "";
-            KhachHang_GhiChu.Text = "";
-            KhachHang_GhiChu.Text = "";
-
         }
 
         public string ValidateInput()
@@ -77,32 +43,102 @@ namespace TLShoes.Form
             {
                 return lblTenCongTy.Text;
             }
-            if (string.IsNullOrEmpty(KhachHang_DienThoai.Text))
+            if (string.IsNullOrEmpty(KhachHang_Dienthoai.Text))
             {
                 return lblDienThoai.Text;
             }
             return string.Empty;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        #region Update total assessment
+
+        private void UpdateTotalAssessment()
         {
-            if (SaveData())
+            var updateData = new List<decimal>();
+            if (KhachHang_DungThoiGian.Rating > 0)
             {
-                this.ParentForm.Close();
+                updateData.Add(KhachHang_DungThoiGian.Rating);
             }
+            if (KhachHang_DatTestHoa.Rating > 0)
+            {
+                updateData.Add(KhachHang_DatTestHoa.Rating);
+            }
+            if (KhachHang_DatTestLy.Rating > 0)
+            {
+                updateData.Add(KhachHang_DatTestLy.Rating);
+            }
+            if (KhachHang_DichVuGiaoHang.Rating > 0)
+            {
+                updateData.Add(KhachHang_DichVuGiaoHang.Rating);
+            }
+            if (KhachHang_DichVuHauMai.Rating > 0)
+            {
+                updateData.Add(KhachHang_DichVuHauMai.Rating);
+            }
+            if (KhachHang_DungMau.Rating > 0)
+            {
+                updateData.Add(KhachHang_DungMau.Rating);
+            }
+            if (KhachHang_DungYeuCauKyThuat.Rating > 0)
+            {
+                updateData.Add(KhachHang_DungYeuCauKyThuat.Rating);
+            }
+            if (KhachHang_Gia.Rating > 0)
+            {
+                updateData.Add(KhachHang_Gia.Rating);
+            }
+            if (KhachHang_Khac.Rating > 0)
+            {
+                updateData.Add(KhachHang_Khac.Rating);
+            }
+
+            DanhGiaTongThe.Rating = updateData.Average();
         }
 
-        private void btnSaveContinue_Click(object sender, EventArgs e)
+        private void KhachHang_DungThoiGian_EditValueChanged(object sender, EventArgs e)
         {
-            if (SaveData())
-            {
-                ClearData();
-            }
+            UpdateTotalAssessment();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void KhachHang_DungMau_EditValueChanged(object sender, EventArgs e)
         {
-            this.ParentForm.Close();
+            UpdateTotalAssessment();
         }
+
+        private void KhachHang_DatTestLy_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void KhachHang_DatTestHoa_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void KhachHang_DungYeuCauKyThuat_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void KhachHang_Gia_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void KhachHang_DichVuGiaoHang_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void KhachHang_DichVuHauMai_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void KhachHang_Khac_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+        #endregion
     }
 }

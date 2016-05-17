@@ -32,7 +32,8 @@ namespace TLShoes.ViewModels
                     s.DanhMuc.Ten,
                     s.SanLuongThucHien,
                     s.SanLuongKhoan,
-                    BaoCaoNgayFormat = TimeHelper.TimestampToString(s.BaoCaoNgay),
+                    SoLuongDonHang = s.DonHang.ChiTietDonHangs.Sum(a=>a.SoLuong),
+                    BaoCaoNgayFormat = TimeHelper.TimestampToString(s.BaoCaoNgay,"d"),
                 }).ToList();
         }
 

@@ -34,8 +34,13 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemRatingControl1 = new DevExpress.XtraEditors.Repository.RepositoryItemRatingControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRatingControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
@@ -44,6 +49,8 @@
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
+            this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemRatingControl1});
             this.gridControl.Size = new System.Drawing.Size(656, 480);
             this.gridControl.TabIndex = 1;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -55,7 +62,10 @@
             this.Id,
             this.gridColumn1,
             this.gridColumn2,
-            this.gridColumn3});
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6});
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
@@ -90,11 +100,43 @@
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "Địa chỉ";
-            this.gridColumn3.FieldName = "DiaChi";
+            this.gridColumn3.Caption = "Mặt Hàng";
+            this.gridColumn3.FieldName = "MatHang";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 3;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Fax";
+            this.gridColumn4.FieldName = "Fax";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 4;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Email";
+            this.gridColumn5.FieldName = "Email";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 5;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Đánh giá";
+            this.gridColumn6.ColumnEdit = this.repositoryItemRatingControl1;
+            this.gridColumn6.FieldName = "DanhGia";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 6;
+            // 
+            // repositoryItemRatingControl1
+            // 
+            this.repositoryItemRatingControl1.AutoHeight = false;
+            this.repositoryItemRatingControl1.FillPrecision = DevExpress.XtraEditors.RatingItemFillPrecision.Exact;
+            this.repositoryItemRatingControl1.Name = "repositoryItemRatingControl1";
+            this.repositoryItemRatingControl1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
             // 
             // ucKhachHangList
             // 
@@ -105,6 +147,7 @@
             this.Size = new System.Drawing.Size(656, 480);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRatingControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -117,5 +160,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRatingControl repositoryItemRatingControl1;
     }
 }

@@ -25,23 +25,21 @@ namespace TLShoes
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BangThongSo> BangThongSoes { get; set; }
         public virtual DbSet<BaoCaoPhanXuong> BaoCaoPhanXuongs { get; set; }
+        public virtual DbSet<ChiLenh> ChiLenhs { get; set; }
         public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
-        public virtual DbSet<ChiTietThongSo> ChiTietThongSoes { get; set; }
-        public virtual DbSet<CongCuDungCu> CongCuDungCus { get; set; }
+        public virtual DbSet<ChiTietNguyenLieu> ChiTietNguyenLieux { get; set; }
         public virtual DbSet<CongNgheSanXuat> CongNgheSanXuats { get; set; }
         public virtual DbSet<DanhMuc> DanhMucs { get; set; }
         public virtual DbSet<DonHang> DonHangs { get; set; }
-        public virtual DbSet<GopYKhachHang> GopYKhachHangs { get; set; }
         public virtual DbSet<KeHoachSanXuat> KeHoachSanXuats { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<MauDoi> MauDois { get; set; }
+        public virtual DbSet<MauSanXuat> MauSanXuats { get; set; }
         public virtual DbSet<MauTest> MauTests { get; set; }
+        public virtual DbSet<MauThuDao> MauThuDaos { get; set; }
         public virtual DbSet<NguyenLieu> NguyenLieux { get; set; }
-        public virtual DbSet<UserAccount> UserAccounts { get; set; }
-        public virtual DbSet<ChiTietNguyenLieu> ChiTietNguyenLieux { get; set; }
         public virtual DbSet<NguyenLieuChiLenh> NguyenLieuChiLenhs { get; set; }
-        public virtual DbSet<ChiLenh> ChiLenhs { get; set; }
+        public virtual DbSet<UserAccount> UserAccounts { get; set; }
     }
 }

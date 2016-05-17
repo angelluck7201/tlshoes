@@ -16,8 +16,11 @@ using TLShoes.FormControls.ChiLenh;
 using TLShoes.FormControls.CongNgheSanXuat;
 using TLShoes.FormControls.DonHang;
 using TLShoes.FormControls.KeHoachSanXuat;
+using TLShoes.FormControls.MauSanXuat;
 using TLShoes.FormControls.MauTest;
+using TLShoes.FormControls.MauThuDao;
 using TLShoes.FormControls.NguyenLieu;
+using TLShoes.FormControls.TongHopMauTest;
 using TLShoes.ViewModels;
 
 namespace TLShoes
@@ -28,56 +31,22 @@ namespace TLShoes
         public static Type currentModel;
         public static string currentForm;
         public static Type currentControl;
+        public static string currentFormName = "";
 
         public Main()
         {
             InitializeComponent();
 
-            InitDanhMuc();
+            InitDefault<ucDanhMucList, ucDanhMuc, DanhMuc>();
         }
 
-        private void InitDanhMuc()
-        {
-            var ucList = FormFactory<ucDanhMucList>.Get();
-            currentControl = typeof(ucDanhMuc);
-            currentModel = typeof(DanhMuc);
-            currentForm = "ucDanhMucList";
-            GenerateUltilsForm(ucList);
-        }
-
-        private void InitKhacHang()
-        {
-            var ucList = FormFactory<ucKhachHangList>.Get();
-            currentControl = typeof(ucKhachHang);
-            currentModel = typeof(KhachHang);
-            currentForm = "ucKhachHangList";
-            GenerateUltilsForm(ucList);
-        }
-
-        private void InitDonHang()
-        {
-            var ucList = FormFactory<ucDonHangList>.Get();
-            currentControl = typeof(ucDonHang);
-            currentModel = typeof(DonHang);
-            currentForm = "ucDonHangList";
-            GenerateUltilsForm(ucList);
-        }
-
-        private void InitMauDoi()
-        {
-            var ucList = FormFactory<ucMauDoiList>.Get();
-            currentControl = typeof(ucMauDoi);
-            currentModel = typeof(MauDoi);
-            currentForm = "ucMauDoiList";
-            GenerateUltilsForm(ucList);
-        }
-
-        private void InitDefault<T, T1, T2>() where T : UserControl, new()
+        private void InitDefault<T, T1, T2>(string formName = "") where T : UserControl, new()
         {
             var ucList = FormFactory<T>.Get();
             currentControl = typeof(T1);
             currentModel = typeof(T2);
             currentForm = typeof(T).Name;
+            currentFormName = formName;
             GenerateUltilsForm(ucList);
         }
 
@@ -107,6 +76,7 @@ namespace TLShoes
             var defaultForm = new DefaultForm();
             defaultForm.Height = addForm.Height + 50;
             defaultForm.Width = addForm.Width + 50;
+            defaultForm.Text = currentFormName;
 
             defaultForm.Controls.Add(addForm);
             addForm.Dock = DockStyle.Fill;
@@ -115,57 +85,75 @@ namespace TLShoes
 
         private void navDanhMuc_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            InitDanhMuc();
+            InitDefault<ucDanhMucList, ucDanhMuc, DanhMuc>("Danh Mục");
         }
 
         private void navKhachHang_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            InitKhacHang();
+            InitDefault<ucKhachHangList, ucKhachHang, KhachHang>("Khách Hàng");
         }
 
         private void navDonHang_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            InitDonHang();
+            InitDefault<ucDonHangList, ucDonHang, DonHang>("Đơn Hàng");
         }
 
         private void navMauDoi_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            InitMauDoi();
+            InitDefault<ucMauDoiList, ucMauDoi, MauDoi>("Mẫu Đối");
         }
 
         private void navMauTest_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            InitDefault<ucMauTestList, ucMauTest, MauTest>();
+            InitDefault<ucMauTestList, ucMauTest, MauTest>("Mẫu Test");
         }
 
         private void navCongNgheSanXuat_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            InitDefault<ucCongNgheSanXuatList, ucCongNgheSanXuat, CongNgheSanXuat>();
+            InitDefault<ucCongNgheSanXuatList, ucCongNgheSanXuat, CongNgheSanXuat>("Công Nghệ Sản Xuất");
         }
 
         private void navBaoCaoPhanXuong_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            InitDefault<ucBaoCaoPhanXuongList, ucBaoCaoPhanXuong, BaoCaoPhanXuong>();
+            InitDefault<ucBaoCaoPhanXuongList, ucBaoCaoPhanXuong, BaoCaoPhanXuong>("Báo Cáo Phân Xưởng");
         }
 
         private void navKeHoachSanXuat_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            InitDefault<ucKeHoachSanXuatList, ucKeHoachSanXuat, KeHoachSanXuat>();
+            InitDefault<ucKeHoachSanXuatList, ucKeHoachSanXuat, KeHoachSanXuat>("Kế Hoạch Sản Xuất");
         }
 
         private void navNguyenLieu_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            InitDefault<ucNguyenLieuList, ucNguyenLieu, NguyenLieu>();
+            InitDefault<ucNguyenLieuList, ucNguyenLieu, NguyenLieu>("Nguyên Liệu");
         }
 
         private void navBangThongSo_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            InitDefault<ucBangThongSoList, ucBangThongSo, BangThongSo>();
+           // InitDefault<ucBangThongSoList, ucBangThongSo, BangThongSo>();
         }
 
         private void navChiLenh_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            InitDefault<ucChiLenhList, ucChiLenh, ChiLenh>();
+            //InitDefault<ucChiLenhList, ucChiLenh, ChiLenh>("Chỉ Lệnh");
+        }
+
+        private void navMauSanXuat_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucMauSanXuatList, ucMauSanXuat, MauSanXuat>("Mẫu Sản Xuất");
+        }
+
+        private void navMauThuDao_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucMauThuDaoList, ucMauThuDao, MauThuDao>("Mẫu Thử Dao");
+        }
+
+        private void navTongHop_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            var ucList = FormFactory<ucTongHopMauTestList>.Get();
+            currentForm = typeof(ucTongHopMauTestList).Name;
+            GenerateUltilsForm(ucList);
+            ObserverControl.PulishAction("Refresh");
         }
     }
 }

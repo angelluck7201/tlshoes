@@ -220,3 +220,8 @@ C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.NguyenLieu
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.Properties.Resources.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.csproj.GenerateResource.Cache
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.exe.licenses
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.MauThuDao.ucMauThuDao.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.MauThuDao.ucMauThuDaoList.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.MauSanXuat.ucMauSanXuatList.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.MauSanXuat.ucMauSanXuat.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.TongHopMauTest.ucTongHopMauTestList.resources

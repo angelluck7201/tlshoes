@@ -28,9 +28,9 @@ namespace TLShoes.ViewModels
                 {
                     s.Id,
                     s.DonHang.MaHang,
-                    NgayKetQuaTestLyFormat = TimeHelper.TimestampToString(s.NgayKetquaTestLy),
+                    NgayKetQuaTestLyFormat = TimeHelper.TimestampToString(s.NgayKetquaTestLy, "d"),
                     PhanLoaiTestLy = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiTestLyId).Ten,
-                    NgayKetQuaTestHoaFormat = TimeHelper.TimestampToString(s.NgayKetquaTestHoa),
+                    NgayKetQuaTestHoaFormat = TimeHelper.TimestampToString(s.NgayKetquaTestHoa, "d"),
                     PhanLoaiTestHoa = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiTestHoaId).Ten,
                 }).ToList();
         }

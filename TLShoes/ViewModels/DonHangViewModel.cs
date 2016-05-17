@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.Mvvm.Native;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using TLShoes.Common;
@@ -14,7 +16,15 @@ namespace TLShoes.ViewModels
     {
         public List<DonHang> GetList()
         {
-            return DbContext.DonHangs.ToList();
+            var listDonHang = DbContext.DonHangs.ToList();
+            foreach (var donhang in listDonHang)
+            {
+                if (!donhang.MaHang.Contains("-"))
+                {
+                    donhang.MaHang = string.Format("{0}-{1}", donhang.NguyenLieu.MaNguyenLieu, donhang.MaHang);
+                }   
+            }
+            return listDonHang;
         }
         public DonHang GetDetail(long id)
         {
@@ -23,7 +33,17 @@ namespace TLShoes.ViewModels
 
         public void GetDataSource(GridControl control)
         {
-            control.DataSource = GetList().Select(s => new { s.Id, s.MaHang, s.OrderNo, s.KhachHang.TenCongTy, NgayNhanFormat = TimeHelper.TimestampToString(s.NgayNhan), NgayXuatFormat = TimeHelper.TimestampToString(s.NgayXuat) }).ToList();
+            control.DataSource = GetList().Select(s => new
+            {
+                s.Id,
+                s.MaHang,
+                s.OrderNo,
+                s.KhachHang.TenCongTy,
+                NgayNhanFormat = TimeHelper.TimestampToString(s.NgayNhan, "d"),
+                NgayXuatFormat = TimeHelper.TimestampToString(s.NgayXuat, "d"),
+                SoLuong = s.ChiTietDonHangs.Sum(d => d.SoLuong),
+                Hinh = s.HinhAnh
+            }).ToList();
         }
 
         public void Save(object data)
@@ -31,7 +51,7 @@ namespace TLShoes.ViewModels
             dynamic dynamicData = data;
             if (dynamicData.Id == 0)
             {
-                DbContext.DonHangs.Add((DonHang) data);
+                DbContext.DonHangs.Add((DonHang)data);
             }
             else
             {

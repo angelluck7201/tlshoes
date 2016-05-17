@@ -87,7 +87,7 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Mẫu Đối";
-            this.gridColumn2.FieldName = "MauDoiId";
+            this.gridColumn2.FieldName = "MauDoiNgayFormat";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;

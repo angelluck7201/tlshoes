@@ -12,7 +12,7 @@ namespace TLShoes
     using System;
     using System.Collections.Generic;
     
-    public partial class CongCuDungCu
+    public partial class MauThuDao
     {
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
@@ -20,12 +20,11 @@ namespace TLShoes
         public Nullable<long> ModifiedDate { get; set; }
         public Nullable<bool> IsActived { get; set; }
         public Nullable<long> DonHangId { get; set; }
-        public Nullable<long> BangThongSoId { get; set; }
-        public Nullable<long> RapHoaNgay { get; set; }
+        public Nullable<long> NgayBatDau { get; set; }
+        public Nullable<long> NgayHoanThanh { get; set; }
         public string GhiChu { get; set; }
     
-        public virtual BangThongSo BangThongSo { get; set; }
-        public virtual UserAccount UserAccount { get; set; }
         public virtual DonHang DonHang { get; set; }
+        public virtual UserAccount UserAccount { get; set; }
     }
 }

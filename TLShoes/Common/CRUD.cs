@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Utils.Controls;
+using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting.Native;
 using TLShoes.ViewModels;
+using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace TLShoes.Common
 {
@@ -70,23 +75,41 @@ namespace TLShoes.Common
             return saveObject;
         }
 
-        public static T GetFormObject<T>(Control parentForm) where T : new()
+        public static List<Control> GetAllChild(Control parenControl)
+        {
+            var result = new List<Control>();
+            foreach (Control control in parenControl.Controls)
+            {
+                result.Add(control);
+                if (control.HasChildren)
+                {
+                    result.AddRange(GetAllChild(control));
+                }
+            }
+
+            result.RemoveAll(s => string.IsNullOrEmpty(s.Name));
+            return result;
+        }
+
+        public static T GetFormObject<T>(List<Control> controls) where T : new()
         {
             var data = new T();
             var modelName = typeof(T);
-            foreach (Control control in parentForm.Controls)
+            foreach (Control control in controls)
             {
-                if (control.Name == "defaultInfo")
+                var controlName = control.Name;
+
+                if (controlName == "Id")
                 {
-                    var defaultInfo = control.Controls;
-                    DecorateSaveData(data, defaultInfo["Id"].Text.IsEmpty());
+                    ReflectionSet(data, "Id", CommonHelper.StringToInt(control.Text));
+                    DecorateSaveData(data, control.Text.IsEmpty());
                     continue;
                 }
 
-                if (!IsSaveData(control.Name, modelName)) continue;
+                if (!IsSaveData(controlName, modelName)) continue;
 
-                var saveName = GetUIModelName(control.Name);
                 object fieldData = GetControlValue(control);
+                var saveName = GetUIModelName(controlName);
 
                 if (fieldData != null)
                 {
@@ -109,6 +132,15 @@ namespace TLShoes.Common
                 case "DateTimePicker":
                     result = TimeHelper.DateTimeToTimeStamp((control as DateTimePicker).Value);
                     break;
+                case "RatingControl":
+                    result = (int)(control as RatingControl).Rating;
+                    break;
+                case "ImageEdit":
+                    result = CommonHelper.ImageSave((control as ImageEdit).Image);
+                    break;
+                case "PictureEdit":
+                    result = CommonHelper.ImageSave((control as PictureEdit).Image);
+                    break;
                 default:
                     result = control.Text;
                     break;
@@ -124,6 +156,15 @@ namespace TLShoes.Common
             {
                 case "ComboBox":
                     (control as ComboBox).SelectedIndex = 0;
+                    break;
+                case "RatingControl":
+                    (control as RatingControl).Rating = 0;
+                    break;
+                case "ImageEdit":
+                     (control as ImageEdit).Image = null;
+                    break;
+                case "PictureEdit":
+                    (control as PictureEdit).Image = null;
                     break;
                 case "DateTimePicker":
                 case "TextBox":
@@ -144,12 +185,28 @@ namespace TLShoes.Common
                 case "DateTimePicker":
                     control.Text = TimeHelper.TimestampToString((long)value);
                     break;
+                case "RatingControl":
+                    (control as RatingControl).Rating = decimal.Parse(value.ToString());
+                    break;
+                case "ImageEdit":
+                    var imagePath = value.ToString();
+                    if (File.Exists(imagePath))
+                    {
+                        (control as ImageEdit).Image = Image.FromFile(imagePath);
+                    }
+                    break;
+                case "PictureEdit":
+                    var pciturePath = value.ToString();
+                    if (File.Exists(pciturePath))
+                    {
+                        (control as PictureEdit).Image = Image.FromFile(pciturePath);
+                    }
+                    break;
                 default:
                     control.Text = value.ToString();
                     break;
             }
         }
-
 
         public static void DecorateSaveData(object data, bool isNew = true)
         {

@@ -20,12 +20,12 @@ namespace TLShoes.Common
             return (long)diff.TotalMilliseconds;
         }
 
-        public static string TimestampToString(long? time)
+        public static string TimestampToString(long? time, string format = "G")
         {
             if (time > 0)
             {
                 var date = new DateTime(1970, 1, 1).AddMilliseconds(Convert.ToDouble(time)).AddHours(7);
-                return date.ToString("G");
+                return date.ToString(format);
             }
             return string.Empty;
         }

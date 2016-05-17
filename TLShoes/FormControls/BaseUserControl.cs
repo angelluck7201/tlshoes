@@ -10,28 +10,62 @@ namespace TLShoes.FormControls
 {
     public class BaseUserControl : UserControl
     {
+        public const string FormButton = "panelButtons";
+        public const string FormData = "navBarData";
+        public List<Control> FormControls = new List<Control>();
+
+        public void Init(object data = null)
+        {
+            FormControls = CRUD.GetAllChild(this);
+            InitAction();
+            if (data != null)
+            {
+                InitFormData(data);
+            }
+        }
+
         public virtual bool SaveData()
         {
             return true;
+        }
+
+        public void InitAction()
+        {
+            var saveButton = FormControls.FirstOrDefault(s => s.Name == "btnSave");
+            if (saveButton != null)
+            {
+                saveButton.Click += new EventHandler(btnSave_Click);
+            }
+            var saveContinueButton = FormControls.FirstOrDefault(s => s.Name == "btnSaveContinue");
+            if (saveContinueButton != null)
+            {
+                saveContinueButton.Click += new EventHandler(btnSaveContinue_Click);
+            }
+
+            var cancelButton = FormControls.FirstOrDefault(s => s.Name == "btnCancel");
+            if (cancelButton != null)
+            {
+                cancelButton.Click += new EventHandler(btnCancel_Click);
+            }
         }
 
         public void InitFormData(object data)
         {
             if (data != null)
             {
-                foreach (Control control in this.Controls)
+                foreach (Control control in FormControls)
                 {
-                    if (control.Name == "defaultInfo")
+                    if (control.Name == "Id" ||
+                        control.Name == "AuthorId" ||
+                        control.Name == "CreatedDate" ||
+                        control.Name == "ModifiedDate" ||
+                        control.Name == "IsActived")
                     {
-                        foreach (Control defaultControl in control.Controls)
+                        var defaultData = CRUD.ReflectionGet(data, control.Name);
+                        if (defaultData != null)
                         {
-                            var defaultData = CRUD.ReflectionGet(data, defaultControl.Name);
-                            if (defaultData != null)
-                            {
-                                CRUD.SetControlValue(defaultControl, defaultData);
-                            }
+                            CRUD.SetControlValue(control, defaultData);
                         }
-                        continue;
                     }
                     else
                     {
@@ -50,19 +84,9 @@ namespace TLShoes.FormControls
 
         public virtual void ClearData()
         {
-            foreach (Control control in this.Controls)
+            foreach (Control control in FormControls)
             {
-                if (control.Controls.Count > 0)
-                {
-                    foreach (var o in control.Controls)
-                    {
-                        CRUD.ClearControlValue((Control)o);
-                    }
-                }
-                else
-                {
-                    CRUD.ClearControlValue(control);
-                }
+                CRUD.ClearControlValue(control);
             }
         }
 

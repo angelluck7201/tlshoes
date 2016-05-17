@@ -29,15 +29,19 @@ namespace TLShoes.ViewModels
                 {
                     s.Id,
                     s.DonHang.MaHang,
-                    NgayKiemHangFormat = TimeHelper.TimestampToString(s.NgayKiemHang),
-                    NgayBatDauPxChatFormat = TimeHelper.TimestampToString(s.NgayBatDauPxChat),
-                    NgayHoanThanhPxChatFormat = TimeHelper.TimestampToString(s.NgayHoanThanhPxChat),
-                    NgayBatDauToPhuTroFormat = TimeHelper.TimestampToString(s.NgayBatDauToPhuTro),
-                    NgayHoanThanhToPhuTroFormat = TimeHelper.TimestampToString(s.NgayHoanThanhToPhuTro),
-                    NgayBatDauPxMayFormat = TimeHelper.TimestampToString(s.NgayBatDauPxMay),
-                    NgayHoanThanhPxMayFormat = TimeHelper.TimestampToString(s.NgayHoanThanhPxMay),
-                    NgayBatDauPxGoFormat = TimeHelper.TimestampToString(s.NgayBatDauPxGo),
-                    NgayHoanThanhPxGoFormat = TimeHelper.TimestampToString(s.NgayHoanThanhPxGo),
+                    NgayKiemHangFormat = TimeHelper.TimestampToString(s.NgayKiemHang, "d"),
+                    NgayBatDauPxChatFormat = TimeHelper.TimestampToString(s.NgayBatDauPxChat, "d"),
+                    NgayHoanThanhPxChatFormat = TimeHelper.TimestampToString(s.NgayHoanThanhPxChat, "d"),
+                    NgayBatDauToPhuTroFormat = TimeHelper.TimestampToString(s.NgayBatDauToPhuTro, "d"),
+                    NgayHoanThanhToPhuTroFormat = TimeHelper.TimestampToString(s.NgayHoanThanhToPhuTro, "d"),
+                    NgayBatDauPxMayFormat = TimeHelper.TimestampToString(s.NgayBatDauPxMay, "d"),
+                    NgayHoanThanhPxMayFormat = TimeHelper.TimestampToString(s.NgayHoanThanhPxMay, "d"),
+                    NgayBatDauPxGoFormat = TimeHelper.TimestampToString(s.NgayBatDauPxGo, "d"),
+                    NgayHoanThanhPxGoFormat = TimeHelper.TimestampToString(s.NgayHoanThanhPxGo, "d"),
+                    NgayBatDauPxDeFormat = TimeHelper.TimestampToString(s.NgayBatDauPxDe, "d"),
+                    NgayHoanThanhPxDeFormat = TimeHelper.TimestampToString(s.NgayHoanThanhPxDe, "d"),
+                    NgayBatDauBpVatTuFormat = TimeHelper.TimestampToString(s.NgayBatDauBpVatTu, "d"),
+                    NgayHoanThanhBpVatTuFormat = TimeHelper.TimestampToString(s.NgayHoanThanhBpVatTu, "d"),
                 }).ToList();
         }
 

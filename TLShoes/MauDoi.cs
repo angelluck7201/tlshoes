@@ -26,6 +26,7 @@ namespace TLShoes
         public Nullable<long> ModifiedDate { get; set; }
         public Nullable<bool> IsActived { get; set; }
         public Nullable<long> DonHangId { get; set; }
+        public string HinhAnh { get; set; }
         public Nullable<long> NgayNhan { get; set; }
         public Nullable<long> MauNgay { get; set; }
         public string GhiChu { get; set; }
