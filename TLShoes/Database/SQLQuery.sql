@@ -268,7 +268,14 @@ ChiLenhId bigint foreign key references ChiLenh(Id),
 ChiTietId bigint foreign key references DanhMuc(Id),
 QuyCach nvarchar(10),
 MauId bigint foreign key references DanhMuc(Id),
+DinhMucChuan int,
+DinhMucThuc int,
 );
+
+--alter table NguyenLieuChiLenh
+--add DinhMucChuan int
+--alter table NguyenLieuChiLenh
+--add DinhMucThuc int
 
 create table ChiTietNguyenLieu(
 Id bigint primary key identity(1,1),

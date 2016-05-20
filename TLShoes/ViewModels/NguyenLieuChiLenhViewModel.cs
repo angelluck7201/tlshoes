@@ -31,14 +31,21 @@ namespace TLShoes.ViewModels
                 .Select(s => new
                 {
                     s.Id,
+                    s.PhanXuongId,
                     PhanXuong = s.PhanXuong.Ten,
+                    s.MauId,
                     Mau = s.Mau.Ten,
                     s.QuyCach,
+                    s.ChiTietId,
+                    ChiTiet = s.ChiTiet.Ten,
+                    s.DinhMucThuc,
+                    s.DinhMucChuan,
                     NguyenLieu = NguyenLieuFormat(s.ChiTietNguyenLieux.ToList()),
+                    ChiTietNguyenLieuList = s.ChiTietNguyenLieux,
                 }).ToList();
         }
 
-        public void GetDataSource(BindingList<ShowData> data)
+        public void GetDataSource(ref BindingList<ShowData> data)
         {
             var listData = GetList();
             var listShowData = new List<ShowData>();
@@ -47,10 +54,17 @@ namespace TLShoes.ViewModels
                 listShowData.Add(new ShowData()
                 {
                     Id = item.Id,
+                    PhanXuongId = item.PhanXuongId,
                     PhanXuong = item.PhanXuong.Ten,
+                    MauId = item.MauId,
                     Mau = item.Mau.Ten,
                     QuyCach = item.QuyCach,
-                    NguyenLieu = NguyenLieuFormat(item.ChiTietNguyenLieux.ToList())
+                    ChiTietId = item.ChiTietId,
+                    ChiTiet = item.ChiTiet.Ten,
+                    DinhMucChuan = (int)item.DinhMucChuan,
+                    DinhMucThuc = (int)item.DinhMucThuc,
+                    NguyenLieu = NguyenLieuFormat(item.ChiTietNguyenLieux.ToList()),
+                    ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(item.ChiTietNguyenLieux.ToList()),
                 });
             }
             data = new BindingList<ShowData>(listShowData);
@@ -59,19 +73,31 @@ namespace TLShoes.ViewModels
 
         public string NguyenLieuFormat(List<ChiTietNguyenLieu> data)
         {
-            var result = new StringBuilder();
-            foreach (var item in data)
+            var tenNguyenLieu = "";
+            foreach (var nguyenlieu in data)
             {
-                if (item.NguyenLieu != null)
+                var nguyenLieuInfo = SF.Get<NguyenLieuViewModel>().GetDetail((long)nguyenlieu.ChiTietNguyenLieuId);
+                if (nguyenLieuInfo != null)
                 {
-                    result.Append(string.Format("{0} {1}", item.NguyenLieu.Ten, item.GhiChu));
-                    result.AppendLine();
+                    if (string.IsNullOrEmpty(tenNguyenLieu))
+                    {
+                        tenNguyenLieu = nguyenLieuInfo.Ten;
+                    }
+                    else
+                    {
+                        tenNguyenLieu = string.Format("{0} - {1}", tenNguyenLieu, nguyenLieuInfo.Ten);
+                    }
+
+                    if (!string.IsNullOrEmpty(nguyenlieu.GhiChu))
+                    {
+                        tenNguyenLieu = string.Format("{0} ({1})", tenNguyenLieu, nguyenlieu.GhiChu);
+                    }
                 }
             }
-            return result.ToString();
+            return tenNguyenLieu;
         }
 
-        public void Save(object data)
+        public void Save(object data, bool isSubmit = true)
         {
             dynamic dynamicData = data;
             if (dynamicData.Id == 0)
@@ -82,16 +108,24 @@ namespace TLShoes.ViewModels
             {
                 DbContext.NguyenLieuChiLenhs.AddOrUpdate((NguyenLieuChiLenh)data);
             }
-            DbContext.SaveChanges();
+
+            if (isSubmit)
+            {
+                DbContext.SaveChanges();
+            }
         }
 
-        public class ShowData
+        public class ShowData : NguyenLieuChiLenh
         {
             public long Id { get; set; }
             public string PhanXuong { get; set; }
             public string QuyCach { get; set; }
             public string NguyenLieu { get; set; }
-            public string Mau { get; set; } 
+            public string Mau { get; set; }
+            public string ChiTiet { get; set; }
+            public int DinhMucChuan { get; set; }
+            public int DinhMucThuc { get; set; }
+            public BindingList<ChiTietNguyenLieu> ChiTietNguyenLieuList { get; set; }
         }
     }
 }

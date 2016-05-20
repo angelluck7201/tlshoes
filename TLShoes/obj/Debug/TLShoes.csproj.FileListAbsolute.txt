@@ -225,3 +225,4 @@ C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.MauThuDao.
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.MauSanXuat.ucMauSanXuatList.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.MauSanXuat.ucMauSanXuat.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.TongHopMauTest.ucTongHopMauTestList.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.ChiLenh.ucNguyenLieuChiLenh.resources

@@ -39,7 +39,7 @@ namespace TLShoes.FormControls.ChiLenh
 
         private void ChiTietNguyenLieuForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.chiLenh.OnClosePopup(NguyenLieuList.ToList());
+           // this.chiLenh.OnClosePopup(NguyenLieuList.ToList());
         }
     }
 }

@@ -82,9 +82,16 @@ namespace TLShoes.FormControls
             }
         }
 
-        public virtual void ClearData()
+        public virtual void ClearData(string modelControl = "")
         {
-            foreach (Control control in FormControls)
+            var clearControl = FormControls;
+
+            if (!string.IsNullOrEmpty(modelControl))
+            {
+                clearControl = clearControl.Where(s => s.Name.Contains(modelControl)).ToList();
+            }
+
+            foreach (Control control in clearControl)
             {
                 CRUD.ClearControlValue(control);
             }

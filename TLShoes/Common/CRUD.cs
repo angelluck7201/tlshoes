@@ -42,8 +42,24 @@ namespace TLShoes.Common
             PropertyInfo prop = data.GetType().GetProperty(pro, BindingFlags.Public | BindingFlags.Instance);
             if (null != prop && prop.CanWrite)
             {
-                prop.SetValue(data, value, null);
+                var fieldType = prop.PropertyType.Name;
+
+                if (fieldType == "String")
+                {
+                    prop.SetValue(data, value, null);
+                }
+                else
+                {
+                    var targetType = IsNullableType(prop.PropertyType) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType;
+                    value = Convert.ChangeType(CommonHelper.StringToInt(value), targetType);
+                    prop.SetValue(data, value);
+                }
             }
+        }
+
+        private static bool IsNullableType(Type type)
+        {
+            return type.IsGenericType && type.GetGenericTypeDefinition().Equals(typeof(Nullable<>));
         }
 
         public static object ReflectionGet(object data, string fieldName)
@@ -161,7 +177,7 @@ namespace TLShoes.Common
                     (control as RatingControl).Rating = 0;
                     break;
                 case "ImageEdit":
-                     (control as ImageEdit).Image = null;
+                    (control as ImageEdit).Image = null;
                     break;
                 case "PictureEdit":
                     (control as PictureEdit).Image = null;
@@ -169,6 +185,7 @@ namespace TLShoes.Common
                 case "DateTimePicker":
                 case "TextBox":
                 case "RichTextBox":
+                case "TextEdit":
                     control.Text = "";
                     break;
             }

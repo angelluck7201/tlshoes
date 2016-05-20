@@ -16,6 +16,12 @@ namespace TLShoes.Common
             return valueDefault;
         }
 
+        public static long? StringToInt(object item, long valueDefault = 0)
+        {
+            Int64.TryParse(item.ToString(), out valueDefault);
+            return valueDefault;
+        }
+
         public static string ImageSave(Image image, string name = "")
         {
             var id = name;

@@ -10,16 +10,25 @@ using TLShoes.Common;
 
 namespace TLShoes.ViewModels
 {
-    public class ChiLenhViewModel : BaseModel, IViewModel<ChiLenh>
+    public class ChiTietNguyenLieuViewModel : BaseModel, IViewModel<ChiTietNguyenLieu>
     {
-        public List<ChiLenh> GetList()
+        public List<ChiTietNguyenLieu> GetList()
         {
-            return DbContext.ChiLenhs.ToList();
+            return DbContext.ChiTietNguyenLieux.ToList();
         }
 
-        public ChiLenh GetDetail(long id)
+        public ChiTietNguyenLieu GetDetail(long id)
         {
-            return DbContext.ChiLenhs.Find(id);
+            return DbContext.ChiTietNguyenLieux.Find(id);
+        }
+
+        public void Delete(long id)
+        {
+            var removeItem = GetDetail(id);
+            if (removeItem != null)
+            {
+                DbContext.ChiTietNguyenLieux.Remove(removeItem);                
+            }
         }
 
         public void GetDataSource(GridControl control)
@@ -28,9 +37,8 @@ namespace TLShoes.ViewModels
                 .Select(s => new
                 {
                     s.Id,
-                    s.DonHang.MaHang,
-                    NguoiDuyet = s.AuthorId,
-                    NgayDuyetFormat = TimeHelper.TimestampToString(s.NgayDuyet),
+                    s.NguyenLieu.Ten,
+                    s.GhiChu
                 }).ToList();
         }
 
@@ -39,11 +47,11 @@ namespace TLShoes.ViewModels
             dynamic dynamicData = data;
             if (dynamicData.Id == 0)
             {
-                DbContext.ChiLenhs.Add((ChiLenh)data);
+                DbContext.ChiTietNguyenLieux.Add((ChiTietNguyenLieu)data);
             }
             else
             {
-                DbContext.ChiLenhs.AddOrUpdate((ChiLenh)data);
+                DbContext.ChiTietNguyenLieux.AddOrUpdate((ChiTietNguyenLieu)data);
             }
             DbContext.SaveChanges();
         }

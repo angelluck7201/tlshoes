@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
 using TLShoes.Common;
 using TLShoes.ViewModels;
 
@@ -16,8 +18,9 @@ namespace TLShoes.FormControls.ChiLenh
 {
     public partial class ucChiLenh : BaseUserControl
     {
-        private int currentRow = -1;
         private BindingList<NguyenLieuChiLenhViewModel.ShowData> NguyenLieuChiLenhList = new BindingList<NguyenLieuChiLenhViewModel.ShowData>();
+        private BindingList<ChiTietNguyenLieu> ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>();
+
         public ucChiLenh(TLShoes.ChiLenh data = null)
         {
             InitializeComponent();
@@ -26,40 +29,41 @@ namespace TLShoes.FormControls.ChiLenh
             ChiLenh_DonHangId.DisplayMember = "MaHang";
             ChiLenh_DonHangId.ValueMember = "Id";
 
+            NguyenLieuChiLenh_PhanXuongId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.PHAN_XUONG), null);
+            NguyenLieuChiLenh_PhanXuongId.DisplayMember = "Ten";
+            NguyenLieuChiLenh_PhanXuongId.ValueMember = "Id";
+
+            NguyenLieuChiLenh_MauId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.MAU), null);
+            NguyenLieuChiLenh_MauId.DisplayMember = "Ten";
+            NguyenLieuChiLenh_MauId.ValueMember = "Id";
+
+            NguyenLieuChiLenh_ChiTietId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.CHI_TIET), null);
+            NguyenLieuChiLenh_ChiTietId.DisplayMember = "Ten";
+            NguyenLieuChiLenh_ChiTietId.ValueMember = "Id";
+
+            Init(data);
+
             if (data != null)
             {
-                ChiLenh_DonHangId.SelectedValue = data.DonHangId;
-                SF.Get<NguyenLieuChiLenhViewModel>().GetDataSource(NguyenLieuChiLenhList);
-
-                defaultInfo.Controls["Id"].Text = data.Id.ToString();
-                defaultInfo.Controls["AuthorId"].Text = data.AuthorId.ToString();
-                defaultInfo.Controls["CreatedDate"].Text = TimeHelper.TimestampToString(data.CreatedDate);
-                defaultInfo.Controls["ModifiedDate"].Text = TimeHelper.TimestampToString(data.ModifiedDate);
+                SF.Get<NguyenLieuChiLenhViewModel>().GetDataSource(ref NguyenLieuChiLenhList);
             }
-            
-           gridControl.DataSource = NguyenLieuChiLenhList;
 
-            MauLookUp.NullText = "";
-            MauLookUp.Properties.DataSource = SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.MAU).Select(s => new { s.Ten, s.Id }).ToList();
-            MauLookUp.PopulateColumns();
-            MauLookUp.ShowHeader = false;
-            MauLookUp.Columns["Id"].Visible = false;
-            MauLookUp.Properties.DisplayMember = "Ten";
-            MauLookUp.Properties.ValueMember = "Id";
-            MauLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            gridControl.DataSource = NguyenLieuChiLenhList;
+            gridNguyenLieu.DataSource = ChiTietNguyenLieuList;
 
-            PhanXuongLookUp.NullText = "";
-            PhanXuongLookUp.Properties.DataSource = SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.PHAN_XUONG).Select(s => new { s.Ten, s.Id }).ToList();
-            PhanXuongLookUp.PopulateColumns();
-            PhanXuongLookUp.ShowHeader = false;
-            PhanXuongLookUp.Columns["Id"].Visible = false;
-            PhanXuongLookUp.Properties.DisplayMember = "Ten";
-            PhanXuongLookUp.Properties.ValueMember = "Id";
-            PhanXuongLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            NguyenLieuLookUp.NullText = "";
+            NguyenLieuLookUp.Properties.DataSource = SF.Get<NguyenLieuViewModel>().GetList().Select(s => new { s.Ten, s.Id }).ToList();
+            NguyenLieuLookUp.PopulateColumns();
+            NguyenLieuLookUp.ShowHeader = false;
+            NguyenLieuLookUp.Columns["Id"].Visible = false;
+            NguyenLieuLookUp.Properties.DisplayMember = "Ten";
+            NguyenLieuLookUp.Properties.ValueMember = "Id";
+            NguyenLieuLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
 
+            btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
         }
 
-        public bool SaveData()
+        public override bool SaveData()
         {
             var validateResult = ValidateInput();
             if (!string.IsNullOrEmpty(validateResult))
@@ -67,25 +71,50 @@ namespace TLShoes.FormControls.ChiLenh
                 MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
                 return false;
             }
-            var id = CommonHelper.StringToInt(defaultInfo.Controls["Id"].Text);
+
             // Save Don hang
-            var saveData = SF.Get<ChiLenhViewModel>().GetDetail(id);
-            if (saveData == null)
-            {
-                saveData = new TLShoes.ChiLenh();
-            }
-
-            saveData.DonHangId= (long)ChiLenh_DonHangId.SelectedValue;
-            CRUD.DecorateSaveData(saveData);
+            var saveData = CRUD.GetFormObject<TLShoes.ChiLenh>(FormControls);
             SF.Get<ChiLenhViewModel>().Save(saveData);
-            id = saveData.Id;
 
-            // Save Chi Tiet Don Hang
-            foreach (var chitiet in NguyenLieuChiLenhList)
+            // Save nguyen lieu chi lenh
+            foreach (var nguyenlieu in NguyenLieuChiLenhList)
             {
-                //chitiet. = id;
-                CRUD.DecorateSaveData(chitiet);
-                SF.Get<ChiTietDonHangViewModel>().Save(chitiet);
+                var nguyenlieuChiLenh = new NguyenLieuChiLenh();
+                nguyenlieuChiLenh.Id = nguyenlieu.Id;
+                nguyenlieuChiLenh.PhanXuongId = nguyenlieu.PhanXuongId;
+                nguyenlieuChiLenh.ChiLenhId = saveData.Id;
+                nguyenlieuChiLenh.ChiTietId = nguyenlieu.ChiTietId;
+                nguyenlieuChiLenh.QuyCach = nguyenlieu.QuyCach;
+                nguyenlieuChiLenh.MauId = nguyenlieu.MauId;
+                nguyenlieuChiLenh.DinhMucChuan = nguyenlieu.DinhMucChuan;
+                nguyenlieuChiLenh.DinhMucThuc = nguyenlieu.DinhMucThuc;
+
+                CRUD.DecorateSaveData(nguyenlieuChiLenh);
+                SF.Get<NguyenLieuChiLenhViewModel>().Save(nguyenlieuChiLenh);
+
+                // Save chi tiet nguyen lieu
+                var currentItem = new List<long>();
+                foreach (var chitiet in nguyenlieu.ChiTietNguyenLieuList)
+                {
+                    var chitietNguyenLieu = new ChiTietNguyenLieu();
+                    chitietNguyenLieu.Id = chitiet.Id;
+                    chitietNguyenLieu.ChiTietNguyenLieuId = chitiet.ChiTietNguyenLieuId;
+                    chitietNguyenLieu.NguyenLieuChiLenhId = nguyenlieuChiLenh.Id;
+                    chitietNguyenLieu.GhiChu = chitiet.GhiChu;
+                    CRUD.DecorateSaveData(chitietNguyenLieu);
+                    SF.Get<ChiTietNguyenLieuViewModel>().Save(chitietNguyenLieu);
+                    currentItem.Add(chitietNguyenLieu.Id);
+                }
+
+                // Clear deleted data
+                var listChiTietDelete = SF.Get<ChiTietNguyenLieuViewModel>().GetList().Where(s => s.NguyenLieuChiLenhId == nguyenlieuChiLenh.Id);
+                foreach (var deleteItem in listChiTietDelete)
+                {
+                    if (!currentItem.Contains(deleteItem.Id))
+                    {
+                        SF.Get<ChiTietNguyenLieuViewModel>().Delete(deleteItem.Id);
+                    }
+                }
             }
             return true;
         }
@@ -97,46 +126,50 @@ namespace TLShoes.FormControls.ChiLenh
 
         private void gridView_Click(object sender, EventArgs e)
         {
-            var columnName = gridView.FocusedColumn.FieldName;
-            if (columnName == "NguyenLieu")
-            {
-                currentRow = gridView.FocusedRowHandle;
-                var data = gridView.GetRow(currentRow) as NguyenLieuChiLenh;
+            var data = gridView.GetRow(gridView.FocusedRowHandle) as NguyenLieuChiLenhViewModel.ShowData;
+            NguyenLieuChiLenh_ChiTietId.SelectedValue = data.ChiTietId;
+            NguyenLieuChiLenh_DinhMucChuan.Text = data.DinhMucChuan.ToString();
+            NguyenLieuChiLenh_DinhMucThuc.Text = data.DinhMucThuc.ToString();
+            NguyenLieuChiLenh_MauId.SelectedValue = data.MauId;
+            NguyenLieuChiLenh_QuyCach.Text = data.QuyCach;
+            NguyenLieuChiLenh_PhanXuongId.SelectedValue = data.PhanXuongId;
+            ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(data.ChiTietNguyenLieuList.ToList());
 
-                var defaultForm = new ChiTietNguyenLieuForm(this, data);
-                defaultForm.Show();
-            }
+            gridNguyenLieu.DataSource = ChiTietNguyenLieuList;
         }
 
-        public void OnClosePopup(List<ChiTietNguyenLieu> data = null)
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (data != null)
-            {
-                gridView.SetRowCellValue(currentRow, "NguyenLieu", SF.Get<NguyenLieuChiLenhViewModel>().NguyenLieuFormat(data));
+            var saveData = CRUD.GetFormObject<NguyenLieuChiLenh>(FormControls);
+            var tenNguyenLieu = SF.Get<NguyenLieuChiLenhViewModel>().NguyenLieuFormat(ChiTietNguyenLieuList.ToList());
 
-                gridControl.Refresh();
+            var chitiet = NguyenLieuChiLenhList.FirstOrDefault(s => s.ChiTietId == saveData.ChiTietId);
+            if (chitiet == null)
+            {
+                chitiet = new NguyenLieuChiLenhViewModel.ShowData();
+                NguyenLieuChiLenhList.Add(chitiet);
             }
+            chitiet.ChiTiet = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.ChiTietId).Ten;
+            chitiet.PhanXuong = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.PhanXuongId).Ten;
+            chitiet.Mau = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.MauId).Ten;
+            chitiet.NguyenLieu = tenNguyenLieu;
+            chitiet.QuyCach = saveData.QuyCach;
+            chitiet.DinhMucChuan = (int)saveData.DinhMucChuan;
+            chitiet.DinhMucThuc = (int)saveData.DinhMucThuc;
+            chitiet.ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(ChiTietNguyenLieuList.ToList());
+            chitiet.ChiTietId = saveData.ChiTietId;
+            chitiet.PhanXuongId = saveData.PhanXuongId;
+            chitiet.MauId = saveData.MauId;
+
+            gridControl.RefreshDataSource();
+
+            ChiTietNguyenLieuList.Clear();
+            ClearData("NguyenLieuChiLenh");
         }
 
-        public override void btnSave_Click(object sender, EventArgs e)
+        private void btnDeleteNguyenLieu_Click(object sender, EventArgs e)
         {
-            if (SaveData())
-            {
-                this.ParentForm.Close();
-            }
-        }
-
-        public override void btnSaveContinue_Click(object sender, EventArgs e)
-        {
-            if (SaveData())
-            {
-                ClearData();
-            }
-        }
-
-        public override void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.ParentForm.Close();
+            gridViewNguyenLieu.DeleteRow(gridViewNguyenLieu.FocusedRowHandle);
         }
     }
 }

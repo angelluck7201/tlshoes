@@ -135,7 +135,7 @@ namespace TLShoes
 
         private void navChiLenh_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            //InitDefault<ucChiLenhList, ucChiLenh, ChiLenh>("Chỉ Lệnh");
+            InitDefault<ucChiLenhList, ucChiLenh, ChiLenh>("Chỉ Lệnh");
         }
 
         private void navMauSanXuat_LinkClicked(object sender, NavBarLinkEventArgs e)

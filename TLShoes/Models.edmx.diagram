@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="GiayTLModel.BaoCaoPhanXuong" Width="1.5" PointX="7.5" PointY="38" />
         <EntityTypeShape EntityType="GiayTLModel.ChiLenh" Width="1.5" PointX="7.5" PointY="30.25" />
         <EntityTypeShape EntityType="GiayTLModel.ChiTietDonHang" Width="1.5" PointX="13.5" PointY="37.25" />
-        <EntityTypeShape EntityType="GiayTLModel.ChiTietNguyenLieu" Width="1.5" PointX="16" PointY="35.125" />
+        <EntityTypeShape EntityType="GiayTLModel.ChiTietNguyenLieu" Width="1.5" PointX="16.625" PointY="35.125" />
         <EntityTypeShape EntityType="GiayTLModel.CongNgheSanXuat" Width="1.5" PointX="7.5" PointY="42.625" />
         <EntityTypeShape EntityType="GiayTLModel.DanhMuc" Width="1.5" PointX="3" PointY="47.25" />
         <EntityTypeShape EntityType="GiayTLModel.DonHang" Width="1.5" PointX="5.25" PointY="29" />

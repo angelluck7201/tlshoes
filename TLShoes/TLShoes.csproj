@@ -190,6 +190,12 @@
     <Compile Include="FormControls\ChiLenh\ChiTietNguyenLieuForm.Designer.cs">
       <DependentUpon>ChiTietNguyenLieuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormControls\ChiLenh\NguyenLieuChiLenh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\ChiLenh\NguyenLieuChiLenh.Designer.cs">
+      <DependentUpon>NguyenLieuChiLenh.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormControls\CongNgheSanXuat\CongNgheSanXuat.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -382,6 +388,7 @@
     <Compile Include="ViewModels\BaoCaoPhanXuongViewModel.cs" />
     <Compile Include="ViewModels\ChiTietThongSoViewModel.cs" />
     <Compile Include="ViewModels\ChiLenhViewModel.cs" />
+    <Compile Include="ViewModels\ChiTietNguyenLieuViewModel.cs" />
     <Compile Include="ViewModels\MauThuDaoViewModel.cs" />
     <Compile Include="ViewModels\MauSanXuatViewModel.cs" />
     <Compile Include="ViewModels\NguyenLieuChiLenhViewModel.cs" />
@@ -442,6 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\ChiLenh\ChiTietNguyenLieuForm.resx">
       <DependentUpon>ChiTietNguyenLieuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\ChiLenh\NguyenLieuChiLenh.resx">
+      <DependentUpon>NguyenLieuChiLenh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\CongNgheSanXuat\CongNgheSanXuat.resx">
       <DependentUpon>CongNgheSanXuat.cs</DependentUpon>

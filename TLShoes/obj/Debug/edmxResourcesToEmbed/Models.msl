@@ -268,6 +268,8 @@
     <EntitySetMapping Name="NguyenLieuChiLenhs">
       <EntityTypeMapping TypeName="GiayTLModel.NguyenLieuChiLenh">
         <MappingFragment StoreEntitySet="NguyenLieuChiLenh">
+          <ScalarProperty Name="DinhMucThuc" ColumnName="DinhMucThuc" />
+          <ScalarProperty Name="DinhMucChuan" ColumnName="DinhMucChuan" />
           <ScalarProperty Name="MauId" ColumnName="MauId" />
           <ScalarProperty Name="QuyCach" ColumnName="QuyCach" />
           <ScalarProperty Name="ChiTietId" ColumnName="ChiTietId" />

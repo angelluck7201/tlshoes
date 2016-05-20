@@ -269,6 +269,8 @@
           <Property Name="ChiTietId" Type="bigint" />
           <Property Name="QuyCach" Type="nvarchar" MaxLength="10" />
           <Property Name="MauId" Type="bigint" />
+          <Property Name="DinhMucChuan" Type="int" />
+          <Property Name="DinhMucThuc" Type="int" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -1514,6 +1516,8 @@
           <NavigationProperty Name="Mau" Relationship="GiayTLModel.FK__NguyenLie__MauId__46E78A0C" FromRole="NguyenLieuChiLenh" ToRole="DanhMuc" />
           <NavigationProperty Name="PhanXuong" Relationship="GiayTLModel.FK__NguyenLie__PhanX__440B1D61" FromRole="NguyenLieuChiLenh" ToRole="DanhMuc" />
           <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__NguyenLie__Autho__4316F928" FromRole="NguyenLieuChiLenh" ToRole="UserAccount" />
+          <Property Name="DinhMucChuan" Type="Int32" />
+          <Property Name="DinhMucThuc" Type="Int32" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -2330,6 +2334,8 @@
           <EntitySetMapping Name="NguyenLieuChiLenhs">
             <EntityTypeMapping TypeName="GiayTLModel.NguyenLieuChiLenh">
               <MappingFragment StoreEntitySet="NguyenLieuChiLenh">
+                <ScalarProperty Name="DinhMucThuc" ColumnName="DinhMucThuc" />
+                <ScalarProperty Name="DinhMucChuan" ColumnName="DinhMucChuan" />
                 <ScalarProperty Name="MauId" ColumnName="MauId" />
                 <ScalarProperty Name="QuyCach" ColumnName="QuyCach" />
                 <ScalarProperty Name="ChiTietId" ColumnName="ChiTietId" />

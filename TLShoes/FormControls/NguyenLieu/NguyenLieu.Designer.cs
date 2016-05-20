@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
-            this.NguyenLieu_LoaiNguyenLieu = new System.Windows.Forms.ComboBox();
+            this.NguyenLieu_LoaiNguyenLieuId = new System.Windows.Forms.ComboBox();
             this.lblLoaiNguyenLieuId = new DevExpress.XtraEditors.LabelControl();
             this.NguyenLieu_Ten = new System.Windows.Forms.TextBox();
             this.lblTen = new DevExpress.XtraEditors.LabelControl();
@@ -53,13 +53,13 @@
             this.defaultInfo.Size = new System.Drawing.Size(425, 150);
             this.defaultInfo.TabIndex = 78;
             // 
-            // NguyenLieu_LoaiNguyenLieu
+            // NguyenLieu_LoaiNguyenLieuId
             // 
-            this.NguyenLieu_LoaiNguyenLieu.FormattingEnabled = true;
-            this.NguyenLieu_LoaiNguyenLieu.Location = new System.Drawing.Point(165, 192);
-            this.NguyenLieu_LoaiNguyenLieu.Name = "NguyenLieu_LoaiNguyenLieu";
-            this.NguyenLieu_LoaiNguyenLieu.Size = new System.Drawing.Size(529, 24);
-            this.NguyenLieu_LoaiNguyenLieu.TabIndex = 81;
+            this.NguyenLieu_LoaiNguyenLieuId.FormattingEnabled = true;
+            this.NguyenLieu_LoaiNguyenLieuId.Location = new System.Drawing.Point(165, 192);
+            this.NguyenLieu_LoaiNguyenLieuId.Name = "NguyenLieu_LoaiNguyenLieuId";
+            this.NguyenLieu_LoaiNguyenLieuId.Size = new System.Drawing.Size(529, 24);
+            this.NguyenLieu_LoaiNguyenLieuId.TabIndex = 81;
             // 
             // lblLoaiNguyenLieuId
             // 
@@ -154,7 +154,6 @@
             this.btnSaveContinue.Size = new System.Drawing.Size(131, 23);
             this.btnSaveContinue.TabIndex = 97;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
-            this.btnSaveContinue.Click += new System.EventHandler(this.btnSaveContinue_Click);
             // 
             // btnCancel
             // 
@@ -163,7 +162,6 @@
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 96;
             this.btnCancel.Text = "Hủy";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -172,7 +170,6 @@
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 95;
             this.btnSave.Text = "Lưu";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // ucNguyenLieu
             // 
@@ -191,7 +188,7 @@
             this.Controls.Add(this.lblMaNguyenLieu);
             this.Controls.Add(this.NguyenLieu_Ten);
             this.Controls.Add(this.lblTen);
-            this.Controls.Add(this.NguyenLieu_LoaiNguyenLieu);
+            this.Controls.Add(this.NguyenLieu_LoaiNguyenLieuId);
             this.Controls.Add(this.lblLoaiNguyenLieuId);
             this.Controls.Add(this.defaultInfo);
             this.Name = "ucNguyenLieu";
@@ -204,7 +201,7 @@
         #endregion
 
         private Form.DefaultInfo defaultInfo;
-        private System.Windows.Forms.ComboBox NguyenLieu_LoaiNguyenLieu;
+        private System.Windows.Forms.ComboBox NguyenLieu_LoaiNguyenLieuId;
         private DevExpress.XtraEditors.LabelControl lblLoaiNguyenLieuId;
         private System.Windows.Forms.TextBox NguyenLieu_Ten;
         private DevExpress.XtraEditors.LabelControl lblTen;
