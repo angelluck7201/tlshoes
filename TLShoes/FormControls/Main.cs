@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
+using System.Runtime.CompilerServices;
 using DevExpress.XtraNavBar;
 using TLShoes.Form;
 using TLShoes.FormControls.BangThongSo;
@@ -37,7 +38,7 @@ namespace TLShoes
         {
             InitializeComponent();
 
-            InitDefault<ucDanhMucList, ucDanhMuc, DanhMuc>();
+            InitDefault<ucDanhMucList, ucDanhMuc, DanhMuc>("Danh Mục");
         }
 
         private void InitDefault<T, T1, T2>(string formName = "") where T : UserControl, new()
@@ -47,14 +48,14 @@ namespace TLShoes
             currentModel = typeof(T2);
             currentForm = typeof(T).Name;
             currentFormName = formName;
+
+            groupBoxView.Text = string.Format("{0} {1}", "Danh sách", formName);
             GenerateUltilsForm(ucList);
         }
 
         private void GenerateUltilsForm(UserControl controlList)
         {
-            navGroupList.GroupClientHeight = this.Height;
-
-            navContainerList.Controls.Add(controlList);
+            groupBoxView.Controls.Add(controlList);
             controlList.Dock = DockStyle.Fill;
             controlList.BringToFront();
         }
@@ -69,18 +70,22 @@ namespace TLShoes
             ShowPopupInfo();
         }
 
-        public static void ShowPopupInfo(object data = null)
+        public void ShowPopupInfo(object data = null)
         {
             var addForm = (UserControl)Activator.CreateInstance(currentControl, data);
 
             var defaultForm = new DefaultForm();
+
             defaultForm.Height = addForm.Height + 50;
-            defaultForm.Width = addForm.Width + 50;
+            defaultForm.Width = addForm.Width + 15;
             defaultForm.Text = currentFormName;
 
             defaultForm.Controls.Add(addForm);
             addForm.Dock = DockStyle.Fill;
             defaultForm.Show();
+
+            this.Enabled = false;
+            ObserverControl.Regist("Close", currentForm, () => { this.Enabled = true; });
         }
 
         private void navDanhMuc_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -130,7 +135,7 @@ namespace TLShoes
 
         private void navBangThongSo_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-           // InitDefault<ucBangThongSoList, ucBangThongSo, BangThongSo>();
+            // InitDefault<ucBangThongSoList, ucBangThongSo, BangThongSo>();
         }
 
         private void navChiLenh_LinkClicked(object sender, NavBarLinkEventArgs e)
@@ -160,4 +165,3 @@ namespace TLShoes
 
 
 
- 

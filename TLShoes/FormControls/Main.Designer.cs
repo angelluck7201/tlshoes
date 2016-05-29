@@ -49,27 +49,23 @@
             this.navHuongDanGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBangThongSo = new DevExpress.XtraNavBar.NavBarItem();
             this.navChiLenh = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarControlUltils = new DevExpress.XtraNavBar.NavBarControl();
-            this.navGroupUltils = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navContainerUltils = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.navUltils = new DevExpress.XtraNavBar.NavBarGroup();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.navContainerList = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
-            this.navGroupList = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navUltils = new DevExpress.XtraNavBar.NavBarGroup();
+            this.groupBoxView = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControlMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControlUltils)).BeginInit();
-            this.navBarControlUltils.SuspendLayout();
-            this.navContainerUltils.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // navBarControlMenu
             // 
-            this.navBarControlMenu.ActiveGroup = this.navBarMauDoi;
+            this.navBarControlMenu.ActiveGroup = this.navDanhMucGroup;
+            this.navBarControlMenu.Appearance.GroupHeaderActive.Font = new System.Drawing.Font("Tahoma", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.navBarControlMenu.Appearance.GroupHeaderActive.Options.UseFont = true;
+            this.navBarControlMenu.Appearance.Item.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.navBarControlMenu.Appearance.Item.Options.UseFont = true;
             this.navBarControlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControlMenu.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.navDanhMucGroup,
@@ -99,12 +95,11 @@
             this.navBarControlMenu.Size = new System.Drawing.Size(333, 753);
             this.navBarControlMenu.TabIndex = 2;
             this.navBarControlMenu.Text = "navBarControl1";
-            this.navBarControlMenu.View = new DevExpress.XtraNavBar.ViewInfo.SkinNavigationPaneViewInfoRegistrator();
+            this.navBarControlMenu.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Visual Studio 2013 Dark");
             // 
             // navBarMauDoi
             // 
             this.navBarMauDoi.Caption = "Mẫu Đối";
-            this.navBarMauDoi.Expanded = true;
             this.navBarMauDoi.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navMauDoi),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navMauTest),
@@ -146,6 +141,7 @@
             // navDanhMucGroup
             // 
             this.navDanhMucGroup.Caption = "Danh Mục";
+            this.navDanhMucGroup.Expanded = true;
             this.navDanhMucGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navDanhMuc),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navNguyenLieu)});
@@ -236,115 +232,71 @@
             this.navChiLenh.Name = "navChiLenh";
             this.navChiLenh.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navChiLenh_LinkClicked);
             // 
-            // navBarControlUltils
+            // navUltils
             // 
-            this.navBarControlUltils.ActiveGroup = this.navGroupUltils;
-            this.navBarControlUltils.Controls.Add(this.navContainerUltils);
-            this.navBarControlUltils.Controls.Add(this.navContainerList);
-            this.navBarControlUltils.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.navBarControlUltils.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.navGroupUltils,
-            this.navGroupList});
-            this.navBarControlUltils.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
-            this.navBarItem1});
-            this.navBarControlUltils.Location = new System.Drawing.Point(333, 0);
-            this.navBarControlUltils.LookAndFeel.SkinName = "Visual Studio 2013 Light";
-            this.navBarControlUltils.Name = "navBarControlUltils";
-            this.navBarControlUltils.OptionsNavPane.ExpandedWidth = 1249;
-            this.navBarControlUltils.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.ExplorerBar;
-            this.navBarControlUltils.Size = new System.Drawing.Size(1249, 753);
-            this.navBarControlUltils.TabIndex = 4;
-            this.navBarControlUltils.Text = "navBarControl2";
-            this.navBarControlUltils.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinExplorerBarViewInfoRegistrator("Office 2013 Light Gray");
+            this.navUltils.Caption = "navBarGroup1";
+            this.navUltils.Name = "navUltils";
             // 
-            // navGroupUltils
+            // splitContainerControl1
             // 
-            this.navGroupUltils.Caption = "Các Tiện Ích";
-            this.navGroupUltils.ControlContainer = this.navContainerUltils;
-            this.navGroupUltils.Expanded = true;
-            this.navGroupUltils.GroupClientHeight = 72;
-            this.navGroupUltils.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
-            this.navGroupUltils.Name = "navGroupUltils";
-            // 
-            // navContainerUltils
-            // 
-            this.navContainerUltils.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.navContainerUltils.Appearance.Options.UseBackColor = true;
-            this.navContainerUltils.Controls.Add(this.panelControl1);
-            this.navContainerUltils.Name = "navContainerUltils";
-            this.navContainerUltils.Size = new System.Drawing.Size(1239, 63);
-            this.navContainerUltils.TabIndex = 1;
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Appearance.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panelControl1.Appearance.BackColor2 = System.Drawing.SystemColors.ButtonHighlight;
-            this.panelControl1.Appearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panelControl1.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panelControl1.Appearance.Options.UseBackColor = true;
-            this.panelControl1.Appearance.Options.UseBorderColor = true;
-            this.panelControl1.Appearance.Options.UseForeColor = true;
-            this.panelControl1.Controls.Add(this.btnRefresh);
-            this.panelControl1.Controls.Add(this.btnSave);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(0, 0);
-            this.panelControl1.LookAndFeel.SkinMaskColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panelControl1.LookAndFeel.SkinName = "Visual Studio 2013 Light";
-            this.panelControl1.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1239, 63);
-            this.panelControl1.TabIndex = 7;
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Horizontal = false;
+            this.splitContainerControl1.IsSplitterFixed = true;
+            this.splitContainerControl1.Location = new System.Drawing.Point(333, 0);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.btnRefresh);
+            this.splitContainerControl1.Panel1.Controls.Add(this.btnSave);
+            this.splitContainerControl1.Panel1.Text = "panelButton";
+            this.splitContainerControl1.Panel2.Controls.Add(this.groupBoxView);
+            this.splitContainerControl1.Panel2.Text = "panelView";
+            this.splitContainerControl1.Size = new System.Drawing.Size(1249, 753);
+            this.splitContainerControl1.SplitterPosition = 64;
+            this.splitContainerControl1.TabIndex = 9;
+            this.splitContainerControl1.Text = "splitContainerControl1";
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnRefresh.Appearance.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnRefresh.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btnRefresh.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Appearance.Options.UseBackColor = true;
             this.btnRefresh.Appearance.Options.UseFont = true;
-            this.btnRefresh.Location = new System.Drawing.Point(144, 15);
+            this.btnRefresh.Appearance.Options.UseForeColor = true;
+            this.btnRefresh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnRefresh.Location = new System.Drawing.Point(132, 12);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(117, 31);
-            this.btnRefresh.TabIndex = 6;
+            this.btnRefresh.TabIndex = 8;
             this.btnRefresh.Text = "Làm Mới ";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Appearance.Options.UseBackColor = true;
             this.btnSave.Appearance.Options.UseFont = true;
-            this.btnSave.Location = new System.Drawing.Point(20, 15);
+            this.btnSave.Appearance.Options.UseForeColor = true;
+            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnSave.Location = new System.Drawing.Point(19, 12);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(98, 31);
-            this.btnSave.TabIndex = 5;
+            this.btnSave.Size = new System.Drawing.Size(107, 31);
+            this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Thêm";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // navContainerList
+            // groupBoxView
             // 
-            this.navContainerList.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.navContainerList.Appearance.Options.UseBackColor = true;
-            this.navContainerList.Name = "navContainerList";
-            this.navContainerList.Size = new System.Drawing.Size(1239, 586);
-            this.navContainerList.TabIndex = 2;
-            // 
-            // navGroupList
-            // 
-            this.navGroupList.Caption = "Danh Sách";
-            this.navGroupList.ControlContainer = this.navContainerList;
-            this.navGroupList.Expanded = true;
-            this.navGroupList.GroupClientHeight = 595;
-            this.navGroupList.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
-            this.navGroupList.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1)});
-            this.navGroupList.Name = "navGroupList";
-            // 
-            // navBarItem1
-            // 
-            this.navBarItem1.Caption = "navBarItem1";
-            this.navBarItem1.Name = "navBarItem1";
-            // 
-            // navUltils
-            // 
-            this.navUltils.Caption = "navBarGroup1";
-            this.navUltils.Name = "navUltils";
+            this.groupBoxView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxView.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.groupBoxView.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.groupBoxView.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxView.Name = "groupBoxView";
+            this.groupBoxView.Size = new System.Drawing.Size(1249, 683);
+            this.groupBoxView.TabIndex = 0;
+            this.groupBoxView.TabStop = false;
+            this.groupBoxView.Text = "groupBox1";
             // 
             // Main
             // 
@@ -353,18 +305,15 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1582, 753);
-            this.Controls.Add(this.navBarControlUltils);
+            this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.navBarControlMenu);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TL Shoes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.navBarControlMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControlUltils)).EndInit();
-            this.navBarControlUltils.ResumeLayout(false);
-            this.navContainerUltils.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -376,16 +325,7 @@
         private DevExpress.XtraNavBar.NavBarGroup navDonHangGroup;
         private DevExpress.XtraNavBar.NavBarGroup navTestGroup;
         private DevExpress.XtraNavBar.NavBarItem navDanhMuc;
-        private DevExpress.XtraNavBar.NavBarControl navBarControlUltils;
         private DevExpress.XtraNavBar.NavBarGroup navUltils;
-        private DevExpress.XtraNavBar.NavBarGroupControlContainer navContainerUltils;
-        private DevExpress.XtraNavBar.NavBarGroup navGroupUltils;
-        private DevExpress.XtraNavBar.NavBarGroup navGroupList;
-        private DevExpress.XtraNavBar.NavBarGroupControlContainer navContainerList;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem1;
-        private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.SimpleButton btnRefresh;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraNavBar.NavBarItem navKhachHang;
         private DevExpress.XtraNavBar.NavBarItem navDonHang;
         private DevExpress.XtraNavBar.NavBarItem navMauTest;
@@ -402,6 +342,10 @@
         private DevExpress.XtraNavBar.NavBarItem navMauThuDao;
         private DevExpress.XtraNavBar.NavBarItem navMauDoi;
         private DevExpress.XtraNavBar.NavBarItem navTongHop;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
+        private DevExpress.XtraEditors.SimpleButton btnSave;
+        private System.Windows.Forms.GroupBox groupBoxView;
     }
 }
 

@@ -14,7 +14,7 @@ namespace TLShoes
 
         public static void Regist(string registerPublish, string registerSubscrire, Action action)
         {
-            var register = RegisterList.FirstOrDefault(s => s.RegisterPublish == registerPublish && s.RegisterSubcrise == registerSubscrire);
+            var register = RegisterList.FirstOrDefault(s => s.RegisterPublish == registerPublish && s.RegisterSubcrise == registerSubscrire && s.Action == action);
             if (register == null)
             {
                 register = new EventObserver(registerPublish, registerSubscrire, action);
