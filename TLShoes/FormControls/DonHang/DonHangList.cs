@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.Utils;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Views.Grid;
 using TLShoes.ViewModels;
@@ -19,8 +20,8 @@ namespace TLShoes.Form
         public ucDonHangList()
         {
             InitializeComponent();
+            ReloadData();
 
-            SF.Get<DonHangViewModel>().GetDataSource(gridControl);
             ObserverControl.Regist("ucDonHang", "ucDonHangList", ReloadData);
             ObserverControl.Regist("Refresh", "ucDonHangList", ReloadData);
             ObserverControl.Regist("Close", "ucDonHangList", ReloadData);
@@ -40,41 +41,41 @@ namespace TLShoes.Form
 
         private void gridView_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
         {
-        //    if (e.Column.FieldName == "Hinh" && e.IsGetData)
-        //    {
+            //    if (e.Column.FieldName == "Hinh" && e.IsGetData)
+            //    {
 
-        //        GridView view = sender as GridView;
+            //        GridView view = sender as GridView;
 
-        //        string colorName = (string)view.GetRowCellValue(e, "Color");
+            //        string colorName = (string)view.GetRowCellValue(e, "Color");
 
-        //        string fileName = GetFileName(colorName).ToLower();
+            //        string fileName = GetFileName(colorName).ToLower();
 
-        //        if (!Images.ContainsKey(fileName))
-        //        {
+            //        if (!Images.ContainsKey(fileName))
+            //        {
 
-        //            Image img = null;
+            //            Image img = null;
 
-        //            try
-        //            {
+            //            try
+            //            {
 
-        //                string filePath = DevExpress.Utils.FilesHelper.FindingFileName(Application.StartupPath, ImageDir + fileName, false);
+            //                string filePath = DevExpress.Utils.FilesHelper.FindingFileName(Application.StartupPath, ImageDir + fileName, false);
 
-        //                img = Image.FromFile(filePath);
+            //                img = Image.FromFile(filePath);
 
-        //            }
+            //            }
 
-        //            catch
-        //            {
+            //            catch
+            //            {
 
-        //            }
+            //            }
 
-        //            Images.Add(fileName, img);
+            //            Images.Add(fileName, img);
 
-        //        }
+            //        }
 
-        //        e.Value = Images[fileName];
+            //        e.Value = Images[fileName];
 
-        //    }
+            //    }
         }
     }
 }

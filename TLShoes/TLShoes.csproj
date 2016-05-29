@@ -126,6 +126,8 @@
     </Compile>
     <Compile Include="Common\CommonHelper.cs" />
     <Compile Include="Common\CRUD.cs" />
+    <Compile Include="Common\FileHelper.cs" />
+    <Compile Include="Common\PrimitiveConvert.cs" />
     <Compile Include="Common\TimeHelper.cs" />
     <Compile Include="CongNgheSanXuat.cs">
       <DependentUpon>Models.tt</DependentUpon>
@@ -584,6 +586,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Image\default.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

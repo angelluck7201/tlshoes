@@ -20,6 +20,11 @@ namespace TLShoes.ViewModels
             return DbContext.NguyenLieuChiLenhs.ToList();
         }
 
+        public List<NguyenLieuChiLenh> GetList(long chilenhId)
+        {
+            return DbContext.NguyenLieuChiLenhs.Where(s => s.ChiLenhId == chilenhId).ToList();
+        }
+
         public NguyenLieuChiLenh GetDetail(long id)
         {
             return DbContext.NguyenLieuChiLenhs.Find(id);
@@ -45,9 +50,9 @@ namespace TLShoes.ViewModels
                 }).ToList();
         }
 
-        public void GetDataSource(ref BindingList<ShowData> data)
+        public void GetDataSource(long chilenhId, ref BindingList<ShowData> data)
         {
-            var listData = GetList();
+            var listData = GetList(chilenhId);
             var listShowData = new List<ShowData>();
             foreach (var item in listData)
             {
@@ -61,8 +66,8 @@ namespace TLShoes.ViewModels
                     QuyCach = item.QuyCach,
                     ChiTietId = item.ChiTietId,
                     ChiTiet = item.ChiTiet.Ten,
-                    DinhMucChuan = (int)item.DinhMucChuan,
-                    DinhMucThuc = (int)item.DinhMucThuc,
+                    DinhMucChuan = (float)item.DinhMucChuan,
+                    DinhMucThuc = (float)item.DinhMucThuc,
                     NguyenLieu = NguyenLieuFormat(item.ChiTietNguyenLieux.ToList()),
                     ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(item.ChiTietNguyenLieux.ToList()),
                 });
@@ -123,8 +128,8 @@ namespace TLShoes.ViewModels
             public string NguyenLieu { get; set; }
             public string Mau { get; set; }
             public string ChiTiet { get; set; }
-            public int DinhMucChuan { get; set; }
-            public int DinhMucThuc { get; set; }
+            public float DinhMucChuan { get; set; }
+            public float DinhMucThuc { get; set; }
             public BindingList<ChiTietNguyenLieu> ChiTietNguyenLieuList { get; set; }
         }
     }

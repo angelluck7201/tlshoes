@@ -24,9 +24,9 @@ namespace TLShoes
             this.MauSanXuats = new HashSet<MauSanXuat>();
             this.MauTests = new HashSet<MauTest>();
             this.MauTests1 = new HashSet<MauTest>();
-            this.NguyenLieuChiLenhs = new HashSet<NguyenLieuChiLenh>();
             this.NguyenLieux = new HashSet<NguyenLieu>();
             this.NguyenLieux1 = new HashSet<NguyenLieu>();
+            this.NguyenLieuChiLenhs = new HashSet<NguyenLieuChiLenh>();
             this.NguyenLieuChiLenhs1 = new HashSet<NguyenLieuChiLenh>();
             this.NguyenLieuChiLenhs2 = new HashSet<NguyenLieuChiLenh>();
         }
@@ -56,11 +56,11 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MauTest> MauTests1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NguyenLieuChiLenh> NguyenLieuChiLenhs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NguyenLieu> NguyenLieux { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NguyenLieu> NguyenLieux1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NguyenLieuChiLenh> NguyenLieuChiLenhs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NguyenLieuChiLenh> NguyenLieuChiLenhs1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

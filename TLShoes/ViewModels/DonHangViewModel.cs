@@ -22,13 +22,24 @@ namespace TLShoes.ViewModels
                 if (!donhang.MaHang.Contains("-"))
                 {
                     donhang.MaHang = string.Format("{0}-{1}", donhang.NguyenLieu.MaNguyenLieu, donhang.MaHang);
-                }   
+                }
             }
             return listDonHang;
         }
         public DonHang GetDetail(long id)
         {
             return DbContext.DonHangs.Find(id);
+        }
+
+        public int TongDonHang(long id)
+        {
+            var result = 0;
+            var donhang = GetDetail(id);
+            if (donhang != null && donhang.ChiTietDonHangs != null)
+            {
+                result = (int)donhang.ChiTietDonHangs.Sum(s => s.SoLuong);
+            }
+            return result;
         }
 
         public void GetDataSource(GridControl control)
@@ -42,7 +53,7 @@ namespace TLShoes.ViewModels
                 NgayNhanFormat = TimeHelper.TimestampToString(s.NgayNhan, "d"),
                 NgayXuatFormat = TimeHelper.TimestampToString(s.NgayXuat, "d"),
                 SoLuong = s.ChiTietDonHangs.Sum(d => d.SoLuong),
-                Hinh = s.HinhAnh
+                Hinh = FileHelper.ImageFromFile(s.HinhAnh)
             }).ToList();
         }
 

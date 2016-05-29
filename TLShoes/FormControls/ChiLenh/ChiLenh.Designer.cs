@@ -44,7 +44,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDinhMuc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -108,6 +108,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.ChiLenh_DonHangId.Name = "ChiLenh_DonHangId";
             this.ChiLenh_DonHangId.Size = new System.Drawing.Size(302, 24);
             this.ChiLenh_DonHangId.TabIndex = 40;
+            this.ChiLenh_DonHangId.SelectedValueChanged += new System.EventHandler(this.ChiLenh_DonHangId_SelectedValueChanged);
             // 
             // lblDonHangId
             // 
@@ -143,15 +144,19 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridColumn2,
             this.gridColumn4,
             this.gridColumn5,
-            this.gridColumn7,
+            this.colDinhMuc,
             this.gridColumn13,
             this.gridColumn12,
             this.gridColumn10,
             this.gridColumn9});
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridView.GridControl = this.gridControl;
+            this.gridView.GroupCount = 1;
             this.gridView.Name = "gridView";
+            this.gridView.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
+            this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView.Click += new System.EventHandler(this.gridView_Click);
             // 
             // Id
@@ -175,7 +180,8 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridColumn11.FieldName = "ChiTiet";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 1;
+            this.gridColumn11.VisibleIndex = 0;
+            this.gridColumn11.Width = 160;
             // 
             // colNguyenLieu
             // 
@@ -183,8 +189,8 @@ namespace TLShoes.FormControls.ChiLenh
             this.colNguyenLieu.FieldName = "NguyenLieu";
             this.colNguyenLieu.Name = "colNguyenLieu";
             this.colNguyenLieu.Visible = true;
-            this.colNguyenLieu.VisibleIndex = 2;
-            this.colNguyenLieu.Width = 375;
+            this.colNguyenLieu.VisibleIndex = 1;
+            this.colNguyenLieu.Width = 437;
             // 
             // gridColumn2
             // 
@@ -192,7 +198,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridColumn2.FieldName = "Mau";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.VisibleIndex = 2;
             this.gridColumn2.Width = 103;
             // 
             // gridColumn4
@@ -201,7 +207,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridColumn4.FieldName = "QuyCach";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
+            this.gridColumn4.VisibleIndex = 3;
             // 
             // gridColumn5
             // 
@@ -209,17 +215,17 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridColumn5.FieldName = "DinhMucChuan";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 5;
+            this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 115;
             // 
-            // gridColumn7
+            // colDinhMuc
             // 
-            this.gridColumn7.Caption = "Định Mức";
-            this.gridColumn7.FieldName = "DinhMucThuc";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
-            this.gridColumn7.Width = 122;
+            this.colDinhMuc.Caption = "Định Mức";
+            this.colDinhMuc.FieldName = "DinhMucThuc";
+            this.colDinhMuc.Name = "colDinhMuc";
+            this.colDinhMuc.Visible = true;
+            this.colDinhMuc.VisibleIndex = 5;
+            this.colDinhMuc.Width = 128;
             // 
             // gridColumn13
             // 
@@ -430,6 +436,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.NguyenLieuChiLenh_DinhMucChuan.Name = "NguyenLieuChiLenh_DinhMucChuan";
             this.NguyenLieuChiLenh_DinhMucChuan.Size = new System.Drawing.Size(307, 22);
             this.NguyenLieuChiLenh_DinhMucChuan.TabIndex = 65;
+            this.NguyenLieuChiLenh_DinhMucChuan.TextChanged += new System.EventHandler(this.NguyenLieuChiLenh_DinhMucChuan_TextChanged);
             // 
             // NguyenLieuChiLenh_MauId
             // 
@@ -573,7 +580,7 @@ namespace TLShoes.FormControls.ChiLenh
         private System.Windows.Forms.ComboBox NguyenLieuChiLenh_PhanXuongId;
         private DevExpress.XtraEditors.LabelControl lblPhanXuongId;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn colDinhMuc;
         private System.Windows.Forms.ComboBox NguyenLieuChiLenh_ChiTietId;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;

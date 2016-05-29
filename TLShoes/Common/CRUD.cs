@@ -42,16 +42,23 @@ namespace TLShoes.Common
             PropertyInfo prop = data.GetType().GetProperty(pro, BindingFlags.Public | BindingFlags.Instance);
             if (null != prop && prop.CanWrite)
             {
-                var fieldType = prop.PropertyType.Name;
+                var fieldType = prop.PropertyType;
 
-                if (fieldType == "String")
+                if (fieldType == typeof(string))
                 {
                     prop.SetValue(data, value, null);
                 }
                 else
                 {
                     var targetType = IsNullableType(prop.PropertyType) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType;
-                    value = Convert.ChangeType(CommonHelper.StringToInt(value), targetType);
+                    if (targetType == typeof(float))
+                    {
+                        value = Convert.ChangeType(PrimitiveConvert.StringToFloat(value), targetType);
+                    }
+                    else
+                    {
+                        value = Convert.ChangeType(PrimitiveConvert.StringToInt(value), targetType);
+                    }
                     prop.SetValue(data, value);
                 }
             }
@@ -117,7 +124,7 @@ namespace TLShoes.Common
 
                 if (controlName == "Id")
                 {
-                    ReflectionSet(data, "Id", CommonHelper.StringToInt(control.Text));
+                    ReflectionSet(data, "Id", PrimitiveConvert.StringToInt(control.Text));
                     DecorateSaveData(data, control.Text.IsEmpty());
                     continue;
                 }
@@ -152,10 +159,10 @@ namespace TLShoes.Common
                     result = (int)(control as RatingControl).Rating;
                     break;
                 case "ImageEdit":
-                    result = CommonHelper.ImageSave((control as ImageEdit).Image);
+                    result = FileHelper.ImageSave((control as ImageEdit).Image);
                     break;
                 case "PictureEdit":
-                    result = CommonHelper.ImageSave((control as PictureEdit).Image);
+                    result = FileHelper.ImageSave((control as PictureEdit).Image);
                     break;
                 default:
                     result = control.Text;

@@ -51,7 +51,7 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
                 MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
                 return false;
             }
-            var id = CommonHelper.StringToInt(defaultInfo.Controls["Id"].Text);
+            var id = PrimitiveConvert.StringToInt(defaultInfo.Controls["Id"].Text);
 
             var saveData = SF.Get<BaoCaoPhanXuongViewModel>().GetDetail(id);
             if (saveData == null)

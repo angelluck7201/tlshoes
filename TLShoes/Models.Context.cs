@@ -39,7 +39,7 @@ namespace TLShoes
         public virtual DbSet<MauTest> MauTests { get; set; }
         public virtual DbSet<MauThuDao> MauThuDaos { get; set; }
         public virtual DbSet<NguyenLieu> NguyenLieux { get; set; }
-        public virtual DbSet<NguyenLieuChiLenh> NguyenLieuChiLenhs { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
+        public virtual DbSet<NguyenLieuChiLenh> NguyenLieuChiLenhs { get; set; }
     }
 }

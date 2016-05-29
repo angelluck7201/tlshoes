@@ -264,8 +264,8 @@
     <Property Name="ChiTietId" Type="bigint" />
     <Property Name="QuyCach" Type="nvarchar" MaxLength="10" />
     <Property Name="MauId" Type="bigint" />
-    <Property Name="DinhMucChuan" Type="int" />
-    <Property Name="DinhMucThuc" Type="int" />
+    <Property Name="DinhMucChuan" Type="real" />
+    <Property Name="DinhMucThuc" Type="real" />
   </EntityType>
   <EntityType Name="UserAccount">
     <Key>

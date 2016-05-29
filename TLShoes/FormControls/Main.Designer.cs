@@ -34,6 +34,7 @@
             this.navMauTest = new DevExpress.XtraNavBar.NavBarItem();
             this.navMauSanXuat = new DevExpress.XtraNavBar.NavBarItem();
             this.navMauThuDao = new DevExpress.XtraNavBar.NavBarItem();
+            this.navTongHop = new DevExpress.XtraNavBar.NavBarItem();
             this.navDanhMucGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.navDanhMuc = new DevExpress.XtraNavBar.NavBarItem();
             this.navNguyenLieu = new DevExpress.XtraNavBar.NavBarItem();
@@ -58,7 +59,6 @@
             this.navGroupList = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.navUltils = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navTongHop = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControlMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControlUltils)).BeginInit();
             this.navBarControlUltils.SuspendLayout();
@@ -93,14 +93,13 @@
             this.navMauThuDao,
             this.navTongHop});
             this.navBarControlMenu.Location = new System.Drawing.Point(0, 0);
-            this.navBarControlMenu.LookAndFeel.SkinName = "Visual Studio 2013 Dark";
             this.navBarControlMenu.Name = "navBarControlMenu";
-            this.navBarControlMenu.OptionsNavPane.ExpandedWidth = 208;
+            this.navBarControlMenu.OptionsNavPane.ExpandedWidth = 333;
             this.navBarControlMenu.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControlMenu.Size = new System.Drawing.Size(208, 753);
+            this.navBarControlMenu.Size = new System.Drawing.Size(333, 753);
             this.navBarControlMenu.TabIndex = 2;
             this.navBarControlMenu.Text = "navBarControl1";
-            this.navBarControlMenu.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Office 2013 Light Gray");
+            this.navBarControlMenu.View = new DevExpress.XtraNavBar.ViewInfo.SkinNavigationPaneViewInfoRegistrator();
             // 
             // navBarMauDoi
             // 
@@ -137,6 +136,12 @@
             this.navMauThuDao.Caption = "Mẫu Thử Dao";
             this.navMauThuDao.Name = "navMauThuDao";
             this.navMauThuDao.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navMauThuDao_LinkClicked);
+            // 
+            // navTongHop
+            // 
+            this.navTongHop.Caption = "Tổng Hợp";
+            this.navTongHop.Name = "navTongHop";
+            this.navTongHop.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navTongHop_LinkClicked);
             // 
             // navDanhMucGroup
             // 
@@ -242,11 +247,12 @@
             this.navGroupList});
             this.navBarControlUltils.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.navBarItem1});
-            this.navBarControlUltils.Location = new System.Drawing.Point(208, 0);
+            this.navBarControlUltils.Location = new System.Drawing.Point(333, 0);
+            this.navBarControlUltils.LookAndFeel.SkinName = "Visual Studio 2013 Light";
             this.navBarControlUltils.Name = "navBarControlUltils";
-            this.navBarControlUltils.OptionsNavPane.ExpandedWidth = 1374;
+            this.navBarControlUltils.OptionsNavPane.ExpandedWidth = 1249;
             this.navBarControlUltils.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.ExplorerBar;
-            this.navBarControlUltils.Size = new System.Drawing.Size(1374, 753);
+            this.navBarControlUltils.Size = new System.Drawing.Size(1249, 753);
             this.navBarControlUltils.TabIndex = 4;
             this.navBarControlUltils.Text = "navBarControl2";
             this.navBarControlUltils.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinExplorerBarViewInfoRegistrator("Office 2013 Light Gray");
@@ -256,7 +262,7 @@
             this.navGroupUltils.Caption = "Các Tiện Ích";
             this.navGroupUltils.ControlContainer = this.navContainerUltils;
             this.navGroupUltils.Expanded = true;
-            this.navGroupUltils.GroupClientHeight = 50;
+            this.navGroupUltils.GroupClientHeight = 72;
             this.navGroupUltils.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
             this.navGroupUltils.Name = "navGroupUltils";
             // 
@@ -266,33 +272,47 @@
             this.navContainerUltils.Appearance.Options.UseBackColor = true;
             this.navContainerUltils.Controls.Add(this.panelControl1);
             this.navContainerUltils.Name = "navContainerUltils";
-            this.navContainerUltils.Size = new System.Drawing.Size(1364, 41);
+            this.navContainerUltils.Size = new System.Drawing.Size(1239, 63);
             this.navContainerUltils.TabIndex = 1;
             // 
             // panelControl1
             // 
+            this.panelControl1.Appearance.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panelControl1.Appearance.BackColor2 = System.Drawing.SystemColors.ButtonHighlight;
+            this.panelControl1.Appearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panelControl1.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panelControl1.Appearance.Options.UseBackColor = true;
+            this.panelControl1.Appearance.Options.UseBorderColor = true;
+            this.panelControl1.Appearance.Options.UseForeColor = true;
             this.panelControl1.Controls.Add(this.btnRefresh);
             this.panelControl1.Controls.Add(this.btnSave);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelControl1.Location = new System.Drawing.Point(1150, 0);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.LookAndFeel.SkinMaskColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panelControl1.LookAndFeel.SkinName = "Visual Studio 2013 Light";
+            this.panelControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(214, 41);
+            this.panelControl1.Size = new System.Drawing.Size(1239, 63);
             this.panelControl1.TabIndex = 7;
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(120, 5);
+            this.btnRefresh.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnRefresh.Appearance.Options.UseFont = true;
+            this.btnRefresh.Location = new System.Drawing.Point(144, 15);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.Size = new System.Drawing.Size(117, 31);
             this.btnRefresh.TabIndex = 6;
             this.btnRefresh.Text = "Làm Mới ";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(21, 5);
+            this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnSave.Appearance.Options.UseFont = true;
+            this.btnSave.Location = new System.Drawing.Point(20, 15);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(98, 31);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Thêm";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -302,7 +322,7 @@
             this.navContainerList.Appearance.BackColor = System.Drawing.SystemColors.Control;
             this.navContainerList.Appearance.Options.UseBackColor = true;
             this.navContainerList.Name = "navContainerList";
-            this.navContainerList.Size = new System.Drawing.Size(1364, 586);
+            this.navContainerList.Size = new System.Drawing.Size(1239, 586);
             this.navContainerList.TabIndex = 2;
             // 
             // navGroupList
@@ -326,23 +346,18 @@
             this.navUltils.Caption = "navBarGroup1";
             this.navUltils.Name = "navUltils";
             // 
-            // navTongHop
-            // 
-            this.navTongHop.Caption = "Tổng Hợp";
-            this.navTongHop.Name = "navTongHop";
-            this.navTongHop.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navTongHop_LinkClicked);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1582, 753);
             this.Controls.Add(this.navBarControlUltils);
             this.Controls.Add(this.navBarControlMenu);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main Form";
+            this.Text = "TL Shoes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.navBarControlMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControlUltils)).EndInit();

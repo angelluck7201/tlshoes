@@ -20,6 +20,7 @@ namespace TLShoes.FormControls.ChiLenh
     {
         private BindingList<NguyenLieuChiLenhViewModel.ShowData> NguyenLieuChiLenhList = new BindingList<NguyenLieuChiLenhViewModel.ShowData>();
         private BindingList<ChiTietNguyenLieu> ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>();
+        private static int TongDonHang = 0;
 
         public ucChiLenh(TLShoes.ChiLenh data = null)
         {
@@ -37,15 +38,15 @@ namespace TLShoes.FormControls.ChiLenh
             NguyenLieuChiLenh_MauId.DisplayMember = "Ten";
             NguyenLieuChiLenh_MauId.ValueMember = "Id";
 
-            NguyenLieuChiLenh_ChiTietId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.CHI_TIET), null);
             NguyenLieuChiLenh_ChiTietId.DisplayMember = "Ten";
             NguyenLieuChiLenh_ChiTietId.ValueMember = "Id";
+            NguyenLieuChiLenh_ChiTietId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.CHI_TIET), null);
 
             Init(data);
 
             if (data != null)
             {
-                SF.Get<NguyenLieuChiLenhViewModel>().GetDataSource(ref NguyenLieuChiLenhList);
+                SF.Get<NguyenLieuChiLenhViewModel>().GetDataSource(data.Id, ref NguyenLieuChiLenhList);
             }
 
             gridControl.DataSource = NguyenLieuChiLenhList;
@@ -154,8 +155,8 @@ namespace TLShoes.FormControls.ChiLenh
             chitiet.Mau = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.MauId).Ten;
             chitiet.NguyenLieu = tenNguyenLieu;
             chitiet.QuyCach = saveData.QuyCach;
-            chitiet.DinhMucChuan = (int)saveData.DinhMucChuan;
-            chitiet.DinhMucThuc = (int)saveData.DinhMucThuc;
+            chitiet.DinhMucChuan = (float)saveData.DinhMucChuan;
+            chitiet.DinhMucThuc = (float)saveData.DinhMucThuc;
             chitiet.ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(ChiTietNguyenLieuList.ToList());
             chitiet.ChiTietId = saveData.ChiTietId;
             chitiet.PhanXuongId = saveData.PhanXuongId;
@@ -170,6 +171,29 @@ namespace TLShoes.FormControls.ChiLenh
         private void btnDeleteNguyenLieu_Click(object sender, EventArgs e)
         {
             gridViewNguyenLieu.DeleteRow(gridViewNguyenLieu.FocusedRowHandle);
+        }
+
+        private void NguyenLieuChiLenh_DinhMucChuan_TextChanged(object sender, EventArgs e)
+        {
+            var editDinhMucChuan = PrimitiveConvert.StringToFloat(NguyenLieuChiLenh_DinhMucChuan.Text);
+            NguyenLieuChiLenh_DinhMucThuc.Text = (TongDonHang * editDinhMucChuan / 1000f).ToString();
+        }
+
+        private void ChiLenh_DonHangId_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ChiLenh_DonHangId.SelectedValue != null)
+                {
+                    TongDonHang = SF.Get<DonHangViewModel>().TongDonHang((long) ChiLenh_DonHangId.SelectedValue);
+                    lblDinhMucThuc.Text = string.Format("{0} {1}", "Định Mức", TongDonHang);
+                    gridView.Columns[7].Caption = lblDinhMucThuc.Text;
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
         }
     }
 }
