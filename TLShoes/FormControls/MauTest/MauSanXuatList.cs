@@ -33,7 +33,7 @@ namespace TLShoes.FormControls.MauSanXuat
         {
             dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
             var info = SF.Get<MauSanXuatViewModel>().GetDetail(data.Id);
-            Main.ShowPopupInfo(info);
+            FormFactory<Main>.Get().ShowPopupInfo(info);
         }
     }
 }

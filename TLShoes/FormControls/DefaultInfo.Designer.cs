@@ -40,33 +40,37 @@
             // 
             // labelControl1
             // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelControl1.Location = new System.Drawing.Point(5, 7);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(11, 16);
+            this.labelControl1.Size = new System.Drawing.Size(13, 16);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Id";
             // 
             // labelControl2
             // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelControl2.Location = new System.Drawing.Point(5, 49);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(59, 17);
+            this.labelControl2.Size = new System.Drawing.Size(66, 17);
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Ngày Tạo";
             // 
             // labelControl3
             // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelControl3.Location = new System.Drawing.Point(5, 125);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(44, 17);
+            this.labelControl3.Size = new System.Drawing.Size(49, 17);
             this.labelControl3.TabIndex = 2;
             this.labelControl3.Text = "Tác Giả";
             // 
             // labelControl4
             // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.labelControl4.Location = new System.Drawing.Point(5, 87);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(99, 17);
+            this.labelControl4.Size = new System.Drawing.Size(111, 17);
             this.labelControl4.TabIndex = 6;
             this.labelControl4.Text = "Ngày Chỉnh Sửa";
             // 

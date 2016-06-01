@@ -33,7 +33,7 @@ namespace TLShoes.FormControls.MauThuDao
         {
             dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
             var info = SF.Get<MauThuDaoViewModel>().GetDetail(data.Id);
-            Main.ShowPopupInfo(info);
+            FormFactory<Main>.Get().ShowPopupInfo(info);
         }
     }
 }

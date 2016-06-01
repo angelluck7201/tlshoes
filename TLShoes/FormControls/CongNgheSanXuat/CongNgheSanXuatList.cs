@@ -35,7 +35,7 @@ namespace TLShoes.FormControls.CongNgheSanXuat
         {
             dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
             var info = SF.Get<CongNgheSanXuatViewModel>().GetDetail(data.Id);
-            Main.ShowPopupInfo(info);
+            FormFactory<Main>.Get().ShowPopupInfo(info);
         }
     }
 }

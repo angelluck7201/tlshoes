@@ -146,23 +146,6 @@ namespace TLShoes
             return string.Empty;
         }
 
-        public override void btnSave_Click(object sender, EventArgs e)
-        {
-            if (SaveData())
-            {
-                var parentForm = this.ParentForm;
-                if (parentForm != null) parentForm.Close();
-                ChiTietDonhang.Clear();
-            }
-        }
-
-        public override void btnCancel_Click(object sender, EventArgs e)
-        {
-            var parentForm = this.ParentForm;
-            if (parentForm != null) parentForm.Close();
-            ChiTietDonhang.Clear();
-        }
-
         private void gridView1_Click(object sender, EventArgs e)
         {
             int selectedRow = gridView1.FocusedRowHandle;

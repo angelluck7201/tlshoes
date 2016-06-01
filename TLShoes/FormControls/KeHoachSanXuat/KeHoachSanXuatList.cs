@@ -34,7 +34,7 @@ namespace TLShoes.FormControls.KeHoachSanXuat
         {
             dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
             var info = SF.Get<KeHoachSanXuatViewModel>().GetDetail(data.Id);
-            Main.ShowPopupInfo(info);
+            FormFactory<Main>.Get().ShowPopupInfo(info);
         }
     }
 }

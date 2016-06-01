@@ -34,7 +34,7 @@ namespace TLShoes.FormControls.MauTest
         {
             dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
             var info = SF.Get<MauTestViewModel>().GetDetail(data.Id);
-            Main.ShowPopupInfo(info);
+            FormFactory<Main>.Get().ShowPopupInfo(info);
         }
     }
 }

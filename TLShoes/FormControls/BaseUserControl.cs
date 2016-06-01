@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TLShoes.Common;
+using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls
 {
@@ -55,16 +56,33 @@ namespace TLShoes.FormControls
             {
                 foreach (Control control in FormControls)
                 {
-                    if (control.Name == "Id" ||
-                        control.Name == "AuthorId" ||
-                        control.Name == "CreatedDate" ||
-                        control.Name == "ModifiedDate" ||
-                        control.Name == "IsActived")
+                    if (control.Name == "Id")
                     {
                         var defaultData = CRUD.ReflectionGet(data, control.Name);
                         if (defaultData != null)
                         {
                             CRUD.SetControlValue(control, defaultData);
+                        }
+                    }
+                    else if (control.Name == "AuthorId")
+                    {
+                        var defaultData = CRUD.ReflectionGet(data, control.Name);
+                        if (defaultData != null)
+                        {
+                            var userInfo = SF.Get<UserAccountViewModel>().GetDetail((long)defaultData);
+                            if (userInfo != null)
+                            {
+                                CRUD.SetControlValue(control, userInfo.TenNguoiDung);
+                            }
+                        }
+                    }
+                    else if (control.Name == "CreatedDate" ||
+                            control.Name == "ModifiedDate")
+                    {
+                        var defaultData = CRUD.ReflectionGet(data, control.Name);
+                        if (defaultData != null)
+                        {
+                            CRUD.SetControlValue(control, TimeHelper.TimestampToString((long)defaultData));
                         }
                     }
                     else

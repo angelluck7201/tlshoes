@@ -33,7 +33,7 @@ namespace TLShoes.FormControls.DonHang
         {
             dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
             var info = SF.Get<MauDoiViewModel>().GetDetail(data.Id);
-            Main.ShowPopupInfo(info);
+            FormFactory<Main>.Get().ShowPopupInfo(info);
         }
 
         private void ucMauDoiList_Load(object sender, EventArgs e)

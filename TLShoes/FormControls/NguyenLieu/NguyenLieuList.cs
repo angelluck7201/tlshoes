@@ -34,7 +34,7 @@ namespace TLShoes.FormControls.NguyenLieu
         {
             dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
             var info = SF.Get<NguyenLieuViewModel>().GetDetail(data.Id);
-            Main.ShowPopupInfo(info);
+            FormFactory<Main>.Get().ShowPopupInfo(info);
         }
 
     }

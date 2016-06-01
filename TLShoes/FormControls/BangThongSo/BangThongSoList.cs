@@ -33,7 +33,7 @@ namespace TLShoes.FormControls.BangThongSo
         //{
         //    dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
         //    var info = SF.Get<BangThongSoViewModel>().GetDetail(data.Id);
-        //    Main.ShowPopupInfo(info);
+        //    FormFactory<Main>.Get().ShowPopupInfo(info);
         //}
     }
 }

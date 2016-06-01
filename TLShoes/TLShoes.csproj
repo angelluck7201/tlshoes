@@ -391,6 +391,7 @@
     <Compile Include="ViewModels\ChiTietThongSoViewModel.cs" />
     <Compile Include="ViewModels\ChiLenhViewModel.cs" />
     <Compile Include="ViewModels\ChiTietNguyenLieuViewModel.cs" />
+    <Compile Include="ViewModels\UserAccountViewModel.cs" />
     <Compile Include="ViewModels\MauThuDaoViewModel.cs" />
     <Compile Include="ViewModels\MauSanXuatViewModel.cs" />
     <Compile Include="ViewModels\NguyenLieuChiLenhViewModel.cs" />
