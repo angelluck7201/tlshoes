@@ -35,9 +35,11 @@ namespace TLShoes.Common
                 Directory.CreateDirectory(ImagePath);
             }
             var path = Path.Combine(ImagePath, id);
+           // DeleteFile(path);
             image.Save(path);
             return path;
         }
+
 
         public static Image ImageFromFile(string filePath)
         {

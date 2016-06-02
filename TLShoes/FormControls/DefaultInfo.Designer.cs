@@ -41,7 +41,7 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Location = new System.Drawing.Point(5, 7);
+            this.labelControl1.Location = new System.Drawing.Point(31, 34);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(13, 16);
             this.labelControl1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl2.Location = new System.Drawing.Point(5, 49);
+            this.labelControl2.Location = new System.Drawing.Point(31, 76);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(66, 17);
             this.labelControl2.TabIndex = 1;
@@ -59,7 +59,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl3.Location = new System.Drawing.Point(5, 125);
+            this.labelControl3.Location = new System.Drawing.Point(31, 152);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(49, 17);
             this.labelControl3.TabIndex = 2;
@@ -68,7 +68,7 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl4.Location = new System.Drawing.Point(5, 87);
+            this.labelControl4.Location = new System.Drawing.Point(31, 114);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(111, 17);
             this.labelControl4.TabIndex = 6;
@@ -77,7 +77,7 @@
             // Id
             // 
             this.Id.AutoSize = true;
-            this.Id.Location = new System.Drawing.Point(145, 7);
+            this.Id.Location = new System.Drawing.Point(171, 34);
             this.Id.Name = "Id";
             this.Id.Size = new System.Drawing.Size(0, 17);
             this.Id.TabIndex = 7;
@@ -85,7 +85,7 @@
             // CreatedDate
             // 
             this.CreatedDate.AutoSize = true;
-            this.CreatedDate.Location = new System.Drawing.Point(145, 49);
+            this.CreatedDate.Location = new System.Drawing.Point(171, 76);
             this.CreatedDate.Name = "CreatedDate";
             this.CreatedDate.Size = new System.Drawing.Size(0, 17);
             this.CreatedDate.TabIndex = 8;
@@ -93,7 +93,7 @@
             // ModifiedDate
             // 
             this.ModifiedDate.AutoSize = true;
-            this.ModifiedDate.Location = new System.Drawing.Point(145, 87);
+            this.ModifiedDate.Location = new System.Drawing.Point(171, 114);
             this.ModifiedDate.Name = "ModifiedDate";
             this.ModifiedDate.Size = new System.Drawing.Size(0, 17);
             this.ModifiedDate.TabIndex = 9;
@@ -101,7 +101,7 @@
             // AuthorId
             // 
             this.AuthorId.AutoSize = true;
-            this.AuthorId.Location = new System.Drawing.Point(145, 125);
+            this.AuthorId.Location = new System.Drawing.Point(171, 152);
             this.AuthorId.Name = "AuthorId";
             this.AuthorId.Size = new System.Drawing.Size(0, 17);
             this.AuthorId.TabIndex = 10;
@@ -119,7 +119,7 @@
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Name = "DefaultInfo";
-            this.Size = new System.Drawing.Size(406, 150);
+            this.Size = new System.Drawing.Size(406, 193);
             this.ResumeLayout(false);
             this.PerformLayout();
 

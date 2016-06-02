@@ -159,10 +159,10 @@ namespace TLShoes.Common
                     result = (int)(control as RatingControl).Rating;
                     break;
                 case "ImageEdit":
-                    result = FileHelper.ImageSave((control as ImageEdit).Image);
+                    result = FileHelper.ImageSave((control as ImageEdit).Image, (control as ImageEdit).Tag.ToString());
                     break;
                 case "PictureEdit":
-                    result = FileHelper.ImageSave((control as PictureEdit).Image);
+                    result = FileHelper.ImageSave((control as PictureEdit).Image, (control as PictureEdit).Tag.ToString());
                     break;
                 default:
                     result = control.Text;
@@ -217,13 +217,15 @@ namespace TLShoes.Common
                     if (File.Exists(imagePath))
                     {
                         (control as ImageEdit).Image = Image.FromFile(imagePath);
+                        (control as ImageEdit).Tag = imagePath.Split('\\').Last();
                     }
                     break;
                 case "PictureEdit":
-                    var pciturePath = value.ToString();
-                    if (File.Exists(pciturePath))
+                    var picturePath = value.ToString();
+                    if (File.Exists(picturePath))
                     {
-                        (control as PictureEdit).Image = Image.FromFile(pciturePath);
+                        (control as PictureEdit).Image = Image.FromFile(picturePath);
+                        (control as PictureEdit).Tag = picturePath.Split('\\').Last();
                     }
                     break;
                 default:
