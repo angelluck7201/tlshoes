@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Entity;
-using System.Runtime.CompilerServices;
 using DevExpress.XtraNavBar;
 using TLShoes.Form;
-using TLShoes.FormControls.BangThongSo;
 using TLShoes.FormControls.BaoCaoPhanXuong;
 using TLShoes.FormControls.ChiLenh;
 using TLShoes.FormControls.CongNgheSanXuat;
@@ -22,12 +12,13 @@ using TLShoes.FormControls.MauTest;
 using TLShoes.FormControls.MauThuDao;
 using TLShoes.FormControls.NguyenLieu;
 using TLShoes.FormControls.TongHopMauTest;
-using TLShoes.ViewModels;
 
 namespace TLShoes
 {
     public partial class Main : System.Windows.Forms.Form
     {
+        public const string CURRENT_VERSION = "1.0";
+
         private static GiayTLEntities dbContext;
         public static Type currentModel;
         public static string currentForm;

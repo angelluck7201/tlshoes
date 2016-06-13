@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
+using TLShoes.Common;
 
 namespace TLShoes
 {
@@ -16,6 +15,14 @@ namespace TLShoes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+#if !DEBUG
+            // Add the event handler for handling UI thread exceptions to the event.
+            Application.ThreadException += new ThreadExceptionEventHandler(ErrorControl.UIThreadException);
+
+            // Set the unhandled exception mode to force all Windows Forms errors to go through
+            // our handler.
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+#endif
             Application.Run(FormFactory<Main>.Get());
         }
     }

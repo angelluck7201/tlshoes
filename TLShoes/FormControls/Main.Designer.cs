@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.navBarControlMenu = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarMauDoi = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navMauDoi = new DevExpress.XtraNavBar.NavBarItem();
-            this.navMauTest = new DevExpress.XtraNavBar.NavBarItem();
-            this.navMauSanXuat = new DevExpress.XtraNavBar.NavBarItem();
-            this.navMauThuDao = new DevExpress.XtraNavBar.NavBarItem();
-            this.navTongHop = new DevExpress.XtraNavBar.NavBarItem();
+            this.navHuongDanGroup = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navChiLenh = new DevExpress.XtraNavBar.NavBarItem();
             this.navDanhMucGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.navDanhMuc = new DevExpress.XtraNavBar.NavBarItem();
             this.navNguyenLieu = new DevExpress.XtraNavBar.NavBarItem();
@@ -46,9 +43,12 @@
             this.navKeHoach = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBaoCaoPhanXuong = new DevExpress.XtraNavBar.NavBarItem();
             this.navKeHoachSanXuat = new DevExpress.XtraNavBar.NavBarItem();
-            this.navHuongDanGroup = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBangThongSo = new DevExpress.XtraNavBar.NavBarItem();
-            this.navChiLenh = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarMauDoi = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navMauDoi = new DevExpress.XtraNavBar.NavBarItem();
+            this.navMauTest = new DevExpress.XtraNavBar.NavBarItem();
+            this.navMauSanXuat = new DevExpress.XtraNavBar.NavBarItem();
+            this.navMauThuDao = new DevExpress.XtraNavBar.NavBarItem();
+            this.navTongHop = new DevExpress.XtraNavBar.NavBarItem();
             this.navUltils = new DevExpress.XtraNavBar.NavBarGroup();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
@@ -61,7 +61,7 @@
             // 
             // navBarControlMenu
             // 
-            this.navBarControlMenu.ActiveGroup = this.navDanhMucGroup;
+            this.navBarControlMenu.ActiveGroup = this.navHuongDanGroup;
             this.navBarControlMenu.Appearance.GroupHeaderActive.Font = new System.Drawing.Font("Tahoma", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
             this.navBarControlMenu.Appearance.GroupHeaderActive.Options.UseFont = true;
             this.navBarControlMenu.Appearance.Item.Font = new System.Drawing.Font("Tahoma", 9F);
@@ -83,7 +83,6 @@
             this.navBaoCaoPhanXuong,
             this.navKeHoachSanXuat,
             this.navNguyenLieu,
-            this.navBangThongSo,
             this.navChiLenh,
             this.navMauSanXuat,
             this.navMauThuDao,
@@ -97,51 +96,23 @@
             this.navBarControlMenu.Text = "navBarControl1";
             this.navBarControlMenu.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Visual Studio 2013 Dark");
             // 
-            // navBarMauDoi
+            // navHuongDanGroup
             // 
-            this.navBarMauDoi.Caption = "Mẫu Đối";
-            this.navBarMauDoi.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navMauDoi),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navMauTest),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navMauSanXuat),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navMauThuDao),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navTongHop)});
-            this.navBarMauDoi.Name = "navBarMauDoi";
+            this.navHuongDanGroup.Caption = "Hướng Dẫn/Chỉ Lệnh";
+            this.navHuongDanGroup.Expanded = true;
+            this.navHuongDanGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navChiLenh)});
+            this.navHuongDanGroup.Name = "navHuongDanGroup";
             // 
-            // navMauDoi
+            // navChiLenh
             // 
-            this.navMauDoi.Caption = "Mẫu Đối";
-            this.navMauDoi.Name = "navMauDoi";
-            this.navMauDoi.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navMauDoi_LinkClicked);
-            // 
-            // navMauTest
-            // 
-            this.navMauTest.Caption = "Mẫu Test";
-            this.navMauTest.Name = "navMauTest";
-            this.navMauTest.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navMauTest_LinkClicked);
-            // 
-            // navMauSanXuat
-            // 
-            this.navMauSanXuat.Caption = "Mẫu Sản Xuất";
-            this.navMauSanXuat.Name = "navMauSanXuat";
-            this.navMauSanXuat.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navMauSanXuat_LinkClicked);
-            // 
-            // navMauThuDao
-            // 
-            this.navMauThuDao.Caption = "Mẫu Thử Dao";
-            this.navMauThuDao.Name = "navMauThuDao";
-            this.navMauThuDao.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navMauThuDao_LinkClicked);
-            // 
-            // navTongHop
-            // 
-            this.navTongHop.Caption = "Tổng Hợp";
-            this.navTongHop.Name = "navTongHop";
-            this.navTongHop.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navTongHop_LinkClicked);
+            this.navChiLenh.Caption = "Chỉ Lệnh";
+            this.navChiLenh.Name = "navChiLenh";
+            this.navChiLenh.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navChiLenh_LinkClicked);
             // 
             // navDanhMucGroup
             // 
             this.navDanhMucGroup.Caption = "Danh Mục";
-            this.navDanhMucGroup.Expanded = true;
             this.navDanhMucGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navDanhMuc),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navNguyenLieu)});
@@ -212,25 +183,46 @@
             this.navKeHoachSanXuat.Name = "navKeHoachSanXuat";
             this.navKeHoachSanXuat.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navKeHoachSanXuat_LinkClicked);
             // 
-            // navHuongDanGroup
+            // navBarMauDoi
             // 
-            this.navHuongDanGroup.Caption = "Hướng Dẫn/Chỉ Lệnh";
-            this.navHuongDanGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBangThongSo),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navChiLenh)});
-            this.navHuongDanGroup.Name = "navHuongDanGroup";
+            this.navBarMauDoi.Caption = "Mẫu Đối";
+            this.navBarMauDoi.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navMauDoi),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navMauTest),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navMauSanXuat),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navMauThuDao),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navTongHop)});
+            this.navBarMauDoi.Name = "navBarMauDoi";
             // 
-            // navBangThongSo
+            // navMauDoi
             // 
-            this.navBangThongSo.Caption = "Bảng Thông Số";
-            this.navBangThongSo.Name = "navBangThongSo";
-            this.navBangThongSo.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBangThongSo_LinkClicked);
+            this.navMauDoi.Caption = "Mẫu Đối";
+            this.navMauDoi.Name = "navMauDoi";
+            this.navMauDoi.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navMauDoi_LinkClicked);
             // 
-            // navChiLenh
+            // navMauTest
             // 
-            this.navChiLenh.Caption = "Chỉ Lệnh";
-            this.navChiLenh.Name = "navChiLenh";
-            this.navChiLenh.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navChiLenh_LinkClicked);
+            this.navMauTest.Caption = "Mẫu Test";
+            this.navMauTest.Name = "navMauTest";
+            this.navMauTest.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navMauTest_LinkClicked);
+            // 
+            // navMauSanXuat
+            // 
+            this.navMauSanXuat.Caption = "Mẫu Sản Xuất";
+            this.navMauSanXuat.Name = "navMauSanXuat";
+            this.navMauSanXuat.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navMauSanXuat_LinkClicked);
+            // 
+            // navMauThuDao
+            // 
+            this.navMauThuDao.Caption = "Mẫu Thử Dao";
+            this.navMauThuDao.Name = "navMauThuDao";
+            this.navMauThuDao.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navMauThuDao_LinkClicked);
+            // 
+            // navTongHop
+            // 
+            this.navTongHop.Caption = "Tổng Hợp";
+            this.navTongHop.Name = "navTongHop";
+            this.navTongHop.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navTongHop_LinkClicked);
             // 
             // navUltils
             // 
@@ -307,6 +299,7 @@
             this.ClientSize = new System.Drawing.Size(1582, 753);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.navBarControlMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TL Shoes";
@@ -335,7 +328,6 @@
         private DevExpress.XtraNavBar.NavBarItem navKeHoachSanXuat;
         private DevExpress.XtraNavBar.NavBarItem navNguyenLieu;
         private DevExpress.XtraNavBar.NavBarGroup navHuongDanGroup;
-        private DevExpress.XtraNavBar.NavBarItem navBangThongSo;
         private DevExpress.XtraNavBar.NavBarItem navChiLenh;
         private DevExpress.XtraNavBar.NavBarGroup navBarMauDoi;
         private DevExpress.XtraNavBar.NavBarItem navMauSanXuat;

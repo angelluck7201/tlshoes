@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DevExpress.XtraGrid;
-using DevExpress.XtraGrid.Views.Grid;
-using TLShoes.Common;
-
-namespace TLShoes.ViewModels
+﻿namespace TLShoes.ViewModels
 {
     //public class BangThongSoViewModel : BaseModel, IViewModel<BangThongSo>
     //{

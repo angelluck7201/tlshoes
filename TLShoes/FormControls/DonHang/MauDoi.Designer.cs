@@ -60,7 +60,7 @@ namespace TLShoes.FormControls.DonHang
             this.MauDoi_DonHangId.Location = new System.Drawing.Point(179, 34);
             this.MauDoi_DonHangId.Name = "MauDoi_DonHangId";
             this.MauDoi_DonHangId.Size = new System.Drawing.Size(486, 24);
-            this.MauDoi_DonHangId.TabIndex = 40;
+            this.MauDoi_DonHangId.TabIndex = 0;
             // 
             // lblDonHangId
             // 
@@ -76,14 +76,14 @@ namespace TLShoes.FormControls.DonHang
             this.MauDoi_MauNgay.Location = new System.Drawing.Point(179, 127);
             this.MauDoi_MauNgay.Name = "MauDoi_MauNgay";
             this.MauDoi_MauNgay.Size = new System.Drawing.Size(486, 23);
-            this.MauDoi_MauNgay.TabIndex = 44;
+            this.MauDoi_MauNgay.TabIndex = 3;
             // 
             // MauDoi_NgayNhan
             // 
             this.MauDoi_NgayNhan.Location = new System.Drawing.Point(179, 77);
             this.MauDoi_NgayNhan.Name = "MauDoi_NgayNhan";
             this.MauDoi_NgayNhan.Size = new System.Drawing.Size(486, 23);
-            this.MauDoi_NgayNhan.TabIndex = 43;
+            this.MauDoi_NgayNhan.TabIndex = 1;
             // 
             // lblNgayNhan
             // 
@@ -108,7 +108,7 @@ namespace TLShoes.FormControls.DonHang
             this.MauDoi_GhiChu.Location = new System.Drawing.Point(179, 175);
             this.MauDoi_GhiChu.Name = "MauDoi_GhiChu";
             this.MauDoi_GhiChu.Size = new System.Drawing.Size(486, 96);
-            this.MauDoi_GhiChu.TabIndex = 60;
+            this.MauDoi_GhiChu.TabIndex = 4;
             this.MauDoi_GhiChu.Text = "";
             // 
             // lblGhiChu
@@ -133,10 +133,10 @@ namespace TLShoes.FormControls.DonHang
             // 
             this.MauDoi_HinhAnh.Location = new System.Drawing.Point(257, 298);
             this.MauDoi_HinhAnh.Name = "MauDoi_HinhAnh";
-            this.MauDoi_HinhAnh.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.MauDoi_HinhAnh.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.True;
             this.MauDoi_HinhAnh.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.MauDoi_HinhAnh.Size = new System.Drawing.Size(214, 214);
-            this.MauDoi_HinhAnh.TabIndex = 65;
+            this.MauDoi_HinhAnh.TabIndex = 5;
             this.MauDoi_HinhAnh.TabStop = true;
             // 
             // xtraTabControl1
@@ -190,7 +190,7 @@ namespace TLShoes.FormControls.DonHang
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.defaultInfo);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(701, 443);
+            this.xtraTabPage1.Size = new System.Drawing.Size(701, 558);
             this.xtraTabPage1.Text = "Thông tin người dùng";
             // 
             // defaultInfo
@@ -198,7 +198,7 @@ namespace TLShoes.FormControls.DonHang
             this.defaultInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defaultInfo.Location = new System.Drawing.Point(0, 0);
             this.defaultInfo.Name = "defaultInfo";
-            this.defaultInfo.Size = new System.Drawing.Size(701, 443);
+            this.defaultInfo.Size = new System.Drawing.Size(701, 558);
             this.defaultInfo.TabIndex = 11;
             // 
             // btnCancel
@@ -213,7 +213,7 @@ namespace TLShoes.FormControls.DonHang
             this.btnCancel.Location = new System.Drawing.Point(2, 625);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 67;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Hủy";
             // 
             // btnSave
@@ -228,7 +228,7 @@ namespace TLShoes.FormControls.DonHang
             this.btnSave.Location = new System.Drawing.Point(451, 625);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 68;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Lưu";
             // 
             // btnSaveContinue
@@ -243,7 +243,7 @@ namespace TLShoes.FormControls.DonHang
             this.btnSaveContinue.Location = new System.Drawing.Point(532, 625);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 69;
+            this.btnSaveContinue.TabIndex = 0;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // ucMauDoi

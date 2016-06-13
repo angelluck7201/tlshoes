@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TLShoes.Common;
 using TLShoes.ViewModels;
@@ -32,22 +30,25 @@ namespace TLShoes.FormControls
 
         public void InitAction()
         {
-            var saveButton = FormControls.FirstOrDefault(s => s.Name == "btnSave");
-            if (saveButton != null)
+            foreach (var control in FormControls)
             {
-                saveButton.Click += new EventHandler(btnSave_Click);
-            }
-            var saveContinueButton = FormControls.FirstOrDefault(s => s.Name == "btnSaveContinue");
-            if (saveContinueButton != null)
-            {
-                saveContinueButton.Click += new EventHandler(btnSaveContinue_Click);
-            }
-
-            var cancelButton = FormControls.FirstOrDefault(s => s.Name == "btnCancel");
-            if (cancelButton != null)
-            {
-                cancelButton.Click += new EventHandler(btnCancel_Click);
-            }
+                if (control.Name == "btnSave")
+                {
+                    control.Click += new EventHandler(btnSave_Click);
+                }
+                else if (control.Name == "btnSaveContinue")
+                {
+                    control.Click += new EventHandler(btnSaveContinue_Click);
+                }
+                else if (control.Name == "btnCancel")
+                {
+                    control.Click += new EventHandler(btnCancel_Click);
+                }
+                else if (control.GetType().Name == "ImageEdit" || control.GetType().Name == "PictureEdit")
+                {
+                    control.DoubleClick += new EventHandler(FileHelper.ShowImagePopup);
+                }
+            }          
         }
 
         public void InitFormData(object data)

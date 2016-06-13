@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 
 namespace TLShoes.Common
 {
     public class FileHelper
     {
+        public static float LIMIT_SIZE = 800;
+        public static string FLAG_ROTATE = "FLAG_ROTATE";
         public static string DefaultImagePath
         {
             get { return Path.Combine(ImagePath, "default.png"); }
@@ -20,12 +23,55 @@ namespace TLShoes.Common
             get { return Path.Combine(Environment.CurrentDirectory, "image"); }
         }
 
+        public static void ShowImagePopup(object sender, EventArgs e)
+        {
+            var control = sender as Control;
+            var senderType = control.GetType().Name;
+            if (senderType == "PictureEdit")
+            {
+                ShowImagePopup((control as PictureEdit).Image);
+            }
+            else if (senderType == "ImageEdit")
+            {
+                ShowImagePopup((control as ImageEdit).Image);
+            }
+        }
 
-        public static string ImageSave(Image image, string name = "")
+        public static void ShowImagePopup(Image image)
+        {
+            if (image == null) return;
+            var imageForm = new DefaultForm();
+            var pictureEdit = new PictureEdit();
+
+            var adjustImage = AdjustSize(image.Width, image.Height);
+            pictureEdit.Image = image;
+            pictureEdit.Properties.SizeMode = PictureSizeMode.Squeeze;
+            pictureEdit.Dock = DockStyle.Fill;
+
+            imageForm.Controls.Add(pictureEdit);
+            imageForm.Width = adjustImage.Key;
+            imageForm.Height = adjustImage.Value;
+
+            imageForm.Show();
+        }
+
+        public static KeyValuePair<int, int> AdjustSize(int width, int height)
+        {
+            var maxInput = Math.Max(width, height);
+            if (LIMIT_SIZE < maxInput)
+            {
+                var adjustFactor = LIMIT_SIZE / maxInput;
+                return new KeyValuePair<int, int>((int)(width * adjustFactor), (int)(height * adjustFactor));
+            }
+            return new KeyValuePair<int, int>(width, height);
+        }
+
+
+        public static string ImageSave(Image image, object name)
         {
             if (image == null) return string.Empty;
             var id = name;
-            if (string.IsNullOrEmpty(id))
+            if (id == null)
             {
                 id = Guid.NewGuid().ToString();
             }
@@ -34,25 +80,50 @@ namespace TLShoes.Common
             {
                 Directory.CreateDirectory(ImagePath);
             }
-            var path = Path.Combine(ImagePath, id);
-           // DeleteFile(path);
+            var path = Path.Combine(ImagePath, id.ToString());
+            DeleteFile(path);
             image.Save(path);
             return path;
         }
 
+        public static void DeleteFile(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
+
+        public static void SetImage(PictureEdit imageContainer, string imagePath)
+        {
+            //using (new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+            //{
+            var image = ImageFromFile(imagePath);
+            imageContainer.Image = image;
+            imageContainer.Tag = imagePath.Split('\\').Last();
+            imageContainer.ToolTipTitle = FLAG_ROTATE;
+            //}
+        }
 
         public static Image ImageFromFile(string filePath)
         {
             Image image = null;
             try
             {
-                image = Image.FromFile(filePath);
-                return image;
+                using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    image = Image.FromStream(stream);
+                }
             }
             catch (Exception e)
             {
-                return Image.FromFile(DefaultImagePath);
+                using (var stream = new FileStream(DefaultImagePath, FileMode.Open, FileAccess.Read))
+                {
+                    image = Image.FromStream(stream);
+                }
             }
+            return image;
+
         }
     }
 }

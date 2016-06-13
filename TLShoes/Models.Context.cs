@@ -41,5 +41,6 @@ namespace TLShoes
         public virtual DbSet<NguyenLieu> NguyenLieux { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
         public virtual DbSet<NguyenLieuChiLenh> NguyenLieuChiLenhs { get; set; }
+        public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
     }
 }

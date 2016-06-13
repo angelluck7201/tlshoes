@@ -2,6 +2,14 @@
 Create database GiayTL;
 use GiayTL;
 
+create table ErrorLog(
+Id bigint primary key identity(1,1),
+CreatedDate nvarchar(50),
+AppVersion nvarchar(20),
+Messagelog nvarchar(max),
+);
+
+
 create table UserAccount(
 Id bigint primary key identity(1,1),
 CreatedDate bigint,

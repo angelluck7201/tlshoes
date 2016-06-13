@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.Utils.Controls;
 using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting.Native;
-using TLShoes.ViewModels;
 using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace TLShoes.Common
@@ -59,7 +53,7 @@ namespace TLShoes.Common
                     {
                         value = Convert.ChangeType(PrimitiveConvert.StringToInt(value), targetType);
                     }
-                    prop.SetValue(data, value);
+                    prop.SetValue(data, value, null);
                 }
             }
         }
@@ -159,10 +153,18 @@ namespace TLShoes.Common
                     result = (int)(control as RatingControl).Rating;
                     break;
                 case "ImageEdit":
-                    result = FileHelper.ImageSave((control as ImageEdit).Image, (control as ImageEdit).Tag.ToString());
+                    var imageEdit = control as ImageEdit;
+                    if (imageEdit != null && imageEdit.Image != null)
+                    {
+                        result = FileHelper.ImageSave(imageEdit.Image, imageEdit.Tag);
+                    }
                     break;
                 case "PictureEdit":
-                    result = FileHelper.ImageSave((control as PictureEdit).Image, (control as PictureEdit).Tag.ToString());
+                    var pictureEdit = control as PictureEdit;
+                    if (pictureEdit != null && pictureEdit.Image != null)
+                    {
+                        result = FileHelper.ImageSave(pictureEdit.Image, pictureEdit.Tag);                        
+                    }
                     break;
                 default:
                     result = control.Text;
@@ -212,20 +214,20 @@ namespace TLShoes.Common
                 case "RatingControl":
                     (control as RatingControl).Rating = decimal.Parse(value.ToString());
                     break;
-                case "ImageEdit":
-                    var imagePath = value.ToString();
-                    if (File.Exists(imagePath))
-                    {
-                        (control as ImageEdit).Image = Image.FromFile(imagePath);
-                        (control as ImageEdit).Tag = imagePath.Split('\\').Last();
-                    }
-                    break;
+                //case "ImageEdit":
+                //    var imagePath = value.ToString();
+                //    if (File.Exists(imagePath))
+                //    {
+                //        var imageContainer = (control as ImageEdit);
+                //        FileHelper.SetImage(imageContainer, imagePath);
+                //    }
+                //    break;
                 case "PictureEdit":
                     var picturePath = value.ToString();
                     if (File.Exists(picturePath))
                     {
-                        (control as PictureEdit).Image = Image.FromFile(picturePath);
-                        (control as PictureEdit).Tag = picturePath.Split('\\').Last();
+                        var imageContainer = (control as PictureEdit);
+                        FileHelper.SetImage(imageContainer, picturePath);
                     }
                     break;
                 default:

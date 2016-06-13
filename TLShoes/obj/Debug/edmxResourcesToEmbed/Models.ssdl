@@ -116,6 +116,15 @@
     <Property Name="GopYPhuTro" Type="nvarchar" MaxLength="1000" />
     <Property Name="GopYKhoThanhPham" Type="nvarchar" MaxLength="1000" />
   </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="AppVersion" Type="nvarchar" MaxLength="20" />
+    <Property Name="Messagelog" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="KeHoachSanXuat">
     <Key>
       <PropertyRef Name="Id" />
@@ -801,6 +810,7 @@
     <EntitySet Name="CongNgheSanXuat" EntityType="Self.CongNgheSanXuat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KeHoachSanXuat" EntityType="Self.KeHoachSanXuat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MauDoi" EntityType="Self.MauDoi" Schema="dbo" store:Type="Tables" />

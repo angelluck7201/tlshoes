@@ -189,6 +189,7 @@
       <End Role="UserAccount" EntitySet="UserAccounts" />
       <End Role="NguyenLieuChiLenh" EntitySet="NguyenLieuChiLenhs" />
     </AssociationSet>
+    <EntitySet Name="ErrorLogs" EntityType="GiayTLModel.ErrorLog" />
   </EntityContainer>
   <EntityType Name="BaoCaoPhanXuong">
     <Key>
@@ -1069,4 +1070,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AppVersion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Messagelog" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

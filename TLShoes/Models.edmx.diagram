@@ -64,6 +64,7 @@
         <AssociationConnector Association="GiayTLModel.FK__NguyenLie__MauId__47DBAE45" />
         <AssociationConnector Association="GiayTLModel.FK__NguyenLie__PhanX__44FF419A" />
         <AssociationConnector Association="GiayTLModel.FK__NguyenLie__Autho__440B1D61" />
+        <EntityTypeShape EntityType="GiayTLModel.ErrorLog" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
