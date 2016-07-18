@@ -12,6 +12,14 @@ namespace TLShoes.ViewModels
         {
             return DbContext.MauThuDaos.ToList();
         }
+
+        public List<MauThuDao> GetList(long donHangId)
+        {
+            return
+                DbContext.MauThuDaos.Where(s => s.DonHangId == donHangId)
+                    .ToList();
+        }
+
         public MauThuDao GetDetail(long id)
         {
             return DbContext.MauThuDaos.Find(id);
@@ -24,8 +32,10 @@ namespace TLShoes.ViewModels
                 {
                     s.Id,
                     s.DonHang.MaHang,
+                    SoDH = s.DonHang.OrderNo,
                     NgayBatDauFormat = TimeHelper.TimestampToString(s.NgayBatDau, "d"),
                     NgayHoanThanhFormat = TimeHelper.TimestampToString(s.NgayHoanThanh, "d"),
+                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh)
                 }).ToList();
         }
 

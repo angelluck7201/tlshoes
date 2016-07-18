@@ -5,13 +5,20 @@ using TLShoes.Form;
 using TLShoes.FormControls.BaoCaoPhanXuong;
 using TLShoes.FormControls.ChiLenh;
 using TLShoes.FormControls.CongNgheSanXuat;
+using TLShoes.FormControls.DanhGia;
+using TLShoes.FormControls.DonDatHang;
 using TLShoes.FormControls.DonHang;
 using TLShoes.FormControls.KeHoachSanXuat;
+using TLShoes.FormControls.MauDanhGia;
 using TLShoes.FormControls.MauSanXuat;
 using TLShoes.FormControls.MauTest;
 using TLShoes.FormControls.MauThuDao;
 using TLShoes.FormControls.NguyenLieu;
+using TLShoes.FormControls.NhaCungCap;
+using TLShoes.FormControls.NhapKho;
 using TLShoes.FormControls.TongHopMauTest;
+using TLShoes.FormControls.ToTrinh;
+using TLShoes.FormControls.XuatKho;
 
 namespace TLShoes
 {
@@ -148,8 +155,51 @@ namespace TLShoes
         {
             var ucList = FormFactory<ucTongHopMauTestList>.Get();
             currentForm = typeof(ucTongHopMauTestList).Name;
+            currentControl = typeof(ucTongHopMauTest);
             GenerateUltilsForm(ucList);
             ObserverControl.PulishAction("Refresh");
+        }
+
+        private void navPhieuNhapKho_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucNhapKhoList, ucNhapKho, PhieuNhapKho>("Phiếu Nhập Kho");
+        }
+
+        private void navPhieuXuatKho_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucXuatKhoList, ucXuatKho, PhieuXuatKho>("Phiếu Xuất Kho");
+        }
+
+        private void navToTrinh_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucToTrinhList, ucToTrinh, ToTrinh>("Tờ Trình");
+        }
+
+        private void navTongHopBaoCao_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            var ucList = new ucBaoCaoTongHop();
+            currentControl = typeof(ucBaoCaoTongHop);
+            GenerateUltilsForm(ucList);
+        }
+
+        private void navNhaCungCap_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucNhaCungCapList, ucNhaCungCap, NhaCungCap>("Nhà Cung Cấp");
+        }
+
+        private void navDonDatHang_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucDonDatHangList, ucDonDatHang, DonDatHang>("Đơn Đặt Hàng");
+        }
+
+        private void navMauDanhGia_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucMauDanhGiaList, ucMauDanhGia, MauDanhGia>("Mẫu Đánh Giá");
+        }
+
+        private void navDanhGia_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucDanhGiaList, ucDanhGia, DanhGia>("QC Đánh Giá");
         }
     }
 }

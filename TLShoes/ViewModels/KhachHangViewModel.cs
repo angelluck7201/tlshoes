@@ -22,6 +22,7 @@ namespace TLShoes.ViewModels
             {
                 s.Id,
                 s.TenCongTy,
+                s.TenNguoiDaiDien,
                 s.Dienthoai,
                 s.Fax,
                 s.Email,

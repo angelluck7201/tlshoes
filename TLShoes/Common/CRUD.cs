@@ -144,7 +144,16 @@ namespace TLShoes.Common
             switch (controlType.Name)
             {
                 case "ComboBox":
-                    result = (long)(control as ComboBox).SelectedValue;
+                    var comboboxData = (control as ComboBox).SelectedValue;
+                    if (comboboxData is Enum)
+                    {
+                        result = comboboxData.ToString();
+                    }
+                    else
+                    {
+                        result = (long) comboboxData;
+                    }
+                    
                     break;
                 case "DateTimePicker":
                     result = TimeHelper.DateTimeToTimeStamp((control as DateTimePicker).Value);

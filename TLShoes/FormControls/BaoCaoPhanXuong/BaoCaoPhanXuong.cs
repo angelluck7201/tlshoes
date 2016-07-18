@@ -14,7 +14,7 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
             BaoCaoPhanXuong_DonHangId.DisplayMember = "MaHang";
             BaoCaoPhanXuong_DonHangId.ValueMember = "Id";
 
-            BaoCaoPhanXuong_PhanXuongId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.PHAN_XUONG), null);
+            BaoCaoPhanXuong_PhanXuongId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_XUONG), null);
             BaoCaoPhanXuong_PhanXuongId.DisplayMember = "Ten";
             BaoCaoPhanXuong_PhanXuongId.ValueMember = "Id";
 

@@ -34,16 +34,19 @@
             this.lblNgayKetQuaTestLy = new DevExpress.XtraEditors.LabelControl();
             this.lblPhanLoaiTestLyId = new DevExpress.XtraEditors.LabelControl();
             this.MauSanXuat_PhanLoaiKetQua = new System.Windows.Forms.ComboBox();
-            this.MauSanXuat_GhiChu = new System.Windows.Forms.RichTextBox();
-            this.lblGhiChu = new DevExpress.XtraEditors.LabelControl();
             this.MauSanXuat_NgayGuiMau = new System.Windows.Forms.DateTimePicker();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.MauSanXuat_KetQua = new System.Windows.Forms.RichTextBox();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.txtGopY = new System.Windows.Forms.RichTextBox();
+            this.lblGopY = new DevExpress.XtraEditors.LabelControl();
+            this.gridGopY = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
@@ -51,6 +54,9 @@
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridGopY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // MauSanXuat_DonHangId
@@ -66,9 +72,9 @@
             this.lblDonHangId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.lblDonHangId.Location = new System.Drawing.Point(41, 33);
             this.lblDonHangId.Name = "lblDonHangId";
-            this.lblDonHangId.Size = new System.Drawing.Size(63, 16);
+            this.lblDonHangId.Size = new System.Drawing.Size(56, 16);
             this.lblDonHangId.TabIndex = 39;
-            this.lblDonHangId.Text = "Đơn Hàng";
+            this.lblDonHangId.Text = "Mã Hàng";
             // 
             // MauSanXuat_NgayKetqua
             // 
@@ -103,23 +109,6 @@
             this.MauSanXuat_PhanLoaiKetQua.Size = new System.Drawing.Size(514, 24);
             this.MauSanXuat_PhanLoaiKetQua.TabIndex = 46;
             // 
-            // MauSanXuat_GhiChu
-            // 
-            this.MauSanXuat_GhiChu.Location = new System.Drawing.Point(169, 319);
-            this.MauSanXuat_GhiChu.Name = "MauSanXuat_GhiChu";
-            this.MauSanXuat_GhiChu.Size = new System.Drawing.Size(514, 96);
-            this.MauSanXuat_GhiChu.TabIndex = 64;
-            this.MauSanXuat_GhiChu.Text = "";
-            // 
-            // lblGhiChu
-            // 
-            this.lblGhiChu.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblGhiChu.Location = new System.Drawing.Point(41, 321);
-            this.lblGhiChu.Name = "lblGhiChu";
-            this.lblGhiChu.Size = new System.Drawing.Size(94, 16);
-            this.lblGhiChu.TabIndex = 63;
-            this.lblGhiChu.Text = "Ghi Chú Các BP";
-            // 
             // MauSanXuat_NgayGuiMau
             // 
             this.MauSanXuat_NgayGuiMau.Location = new System.Drawing.Point(171, 76);
@@ -136,23 +125,6 @@
             this.labelControl3.TabIndex = 68;
             this.labelControl3.Text = "Ngày Gửi Mẫu";
             // 
-            // MauSanXuat_KetQua
-            // 
-            this.MauSanXuat_KetQua.Location = new System.Drawing.Point(169, 208);
-            this.MauSanXuat_KetQua.Name = "MauSanXuat_KetQua";
-            this.MauSanXuat_KetQua.Size = new System.Drawing.Size(514, 96);
-            this.MauSanXuat_KetQua.TabIndex = 71;
-            this.MauSanXuat_KetQua.Text = "";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Location = new System.Drawing.Point(39, 210);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(114, 17);
-            this.labelControl1.TabIndex = 70;
-            this.labelControl1.Text = "Ghi Chú Kết Quả";
-            // 
             // xtraTabControl1
             // 
             this.xtraTabControl1.Appearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
@@ -168,7 +140,8 @@
             this.xtraTabControl1.TabIndex = 72;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPage2
             // 
@@ -185,17 +158,13 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
             this.xtraTabPage2.Controls.Add(this.lblDonHangId);
-            this.xtraTabPage2.Controls.Add(this.MauSanXuat_KetQua);
             this.xtraTabPage2.Controls.Add(this.MauSanXuat_DonHangId);
-            this.xtraTabPage2.Controls.Add(this.labelControl1);
             this.xtraTabPage2.Controls.Add(this.lblNgayKetQuaTestLy);
             this.xtraTabPage2.Controls.Add(this.MauSanXuat_NgayGuiMau);
             this.xtraTabPage2.Controls.Add(this.MauSanXuat_NgayKetqua);
             this.xtraTabPage2.Controls.Add(this.labelControl3);
             this.xtraTabPage2.Controls.Add(this.lblPhanLoaiTestLyId);
             this.xtraTabPage2.Controls.Add(this.MauSanXuat_PhanLoaiKetQua);
-            this.xtraTabPage2.Controls.Add(this.lblGhiChu);
-            this.xtraTabPage2.Controls.Add(this.MauSanXuat_GhiChu);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(701, 443);
             this.xtraTabPage2.Text = "Mẫu sản xuất";
@@ -216,6 +185,83 @@
             this.defaultInfo.Name = "defaultInfo";
             this.defaultInfo.Size = new System.Drawing.Size(701, 443);
             this.defaultInfo.TabIndex = 11;
+            // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Appearance.Header.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage3.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage3.Appearance.Header.Options.UseBackColor = true;
+            this.xtraTabPage3.Appearance.Header.Options.UseFont = true;
+            this.xtraTabPage3.Appearance.HeaderActive.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage3.Appearance.HeaderActive.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage3.Appearance.HeaderActive.Options.UseBackColor = true;
+            this.xtraTabPage3.Appearance.HeaderActive.Options.UseFont = true;
+            this.xtraTabPage3.Controls.Add(this.txtGopY);
+            this.xtraTabPage3.Controls.Add(this.lblGopY);
+            this.xtraTabPage3.Controls.Add(this.gridGopY);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(701, 443);
+            this.xtraTabPage3.Text = "Góp Ý";
+            // 
+            // txtGopY
+            // 
+            this.txtGopY.Location = new System.Drawing.Point(159, 304);
+            this.txtGopY.Name = "txtGopY";
+            this.txtGopY.Size = new System.Drawing.Size(529, 96);
+            this.txtGopY.TabIndex = 78;
+            this.txtGopY.Text = "";
+            this.txtGopY.Leave += new System.EventHandler(this.txtGopY_Leave);
+            // 
+            // lblGopY
+            // 
+            this.lblGopY.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblGopY.Location = new System.Drawing.Point(39, 304);
+            this.lblGopY.Name = "lblGopY";
+            this.lblGopY.Size = new System.Drawing.Size(17, 16);
+            this.lblGopY.TabIndex = 77;
+            this.lblGopY.Text = "QC";
+            // 
+            // gridGopY
+            // 
+            this.gridGopY.Location = new System.Drawing.Point(18, 15);
+            this.gridGopY.MainView = this.gridView1;
+            this.gridGopY.Name = "gridGopY";
+            this.gridGopY.Size = new System.Drawing.Size(670, 269);
+            this.gridGopY.TabIndex = 76;
+            this.gridGopY.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn4,
+            this.gridColumn5});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.GridControl = this.gridGopY;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsCustomization.AllowFilter = false;
+            this.gridView1.OptionsView.RowAutoHeight = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.Click += new System.EventHandler(this.gridView1_Click);
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Bộ Phận";
+            this.gridColumn4.FieldName = "BoPhan";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 0;
+            this.gridColumn4.Width = 147;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Góp Ý";
+            this.gridColumn5.FieldName = "GopY";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 1;
+            this.gridColumn5.Width = 482;
             // 
             // btnCancel
             // 
@@ -278,6 +324,10 @@
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
             this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
+            this.xtraTabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridGopY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -290,12 +340,8 @@
         private DevExpress.XtraEditors.LabelControl lblNgayKetQuaTestLy;
         private DevExpress.XtraEditors.LabelControl lblPhanLoaiTestLyId;
         private System.Windows.Forms.ComboBox MauSanXuat_PhanLoaiKetQua;
-        private System.Windows.Forms.RichTextBox MauSanXuat_GhiChu;
-        private DevExpress.XtraEditors.LabelControl lblGhiChu;
         private System.Windows.Forms.DateTimePicker MauSanXuat_NgayGuiMau;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private System.Windows.Forms.RichTextBox MauSanXuat_KetQua;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
@@ -303,5 +349,12 @@
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private System.Windows.Forms.RichTextBox txtGopY;
+        private DevExpress.XtraEditors.LabelControl lblGopY;
+        private DevExpress.XtraGrid.GridControl gridGopY;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
     }
 }

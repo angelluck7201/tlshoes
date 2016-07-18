@@ -33,10 +33,10 @@
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSize = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ChiTietDonHang_Mau = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.DonHang_HinhAnh = new DevExpress.XtraEditors.PictureEdit();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
@@ -122,18 +122,23 @@
             // 
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Id,
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3});
+            this.colSize,
+            this.colMau,
+            this.colSoLuong});
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridView.GridControl = this.gridControl;
+            this.gridView.GroupCount = 1;
             this.gridView.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", null, "Tổng Cộng")});
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", null, "(TỔNG={0:0.##})")});
             this.gridView.Name = "gridView";
+            this.gridView.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Inplace;
             this.gridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
-            this.gridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            this.gridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
             this.gridView.OptionsView.ShowFooter = true;
+            this.gridView.OptionsView.ShowGroupedColumns = true;
+            this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colMau, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // Id
             // 
@@ -141,22 +146,22 @@
             this.Id.FieldName = "Id";
             this.Id.Name = "Id";
             // 
-            // gridColumn1
+            // colSize
             // 
-            this.gridColumn1.Caption = "Size";
-            this.gridColumn1.FieldName = "Size";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.colSize.Caption = "Size";
+            this.colSize.FieldName = "Size";
+            this.colSize.Name = "colSize";
+            this.colSize.Visible = true;
+            this.colSize.VisibleIndex = 0;
             // 
-            // gridColumn2
+            // colMau
             // 
-            this.gridColumn2.Caption = "Màu";
-            this.gridColumn2.ColumnEdit = this.repositoryItemLookUpEdit1;
-            this.gridColumn2.FieldName = "MauId";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.colMau.Caption = "Màu";
+            this.colMau.ColumnEdit = this.repositoryItemLookUpEdit1;
+            this.colMau.FieldName = "MauId";
+            this.colMau.Name = "colMau";
+            this.colMau.Visible = true;
+            this.colMau.VisibleIndex = 1;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -165,15 +170,15 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             // 
-            // gridColumn3
+            // colSoLuong
             // 
-            this.gridColumn3.Caption = "Số Lượng";
-            this.gridColumn3.FieldName = "SoLuong";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            this.colSoLuong.Caption = "Số Lượng";
+            this.colSoLuong.FieldName = "SoLuong";
+            this.colSoLuong.Name = "colSoLuong";
+            this.colSoLuong.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", "TỔNG={0:0.##}")});
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.colSoLuong.Visible = true;
+            this.colSoLuong.VisibleIndex = 2;
             // 
             // ChiTietDonHang_Mau
             // 
@@ -612,9 +617,9 @@
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
         private DevExpress.XtraGrid.Columns.GridColumn Id;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn colSize;
+        private DevExpress.XtraGrid.Columns.GridColumn colMau;
+        private DevExpress.XtraGrid.Columns.GridColumn colSoLuong;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox ChiTietDonHang_Mau;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraEditors.PictureEdit DonHang_HinhAnh;

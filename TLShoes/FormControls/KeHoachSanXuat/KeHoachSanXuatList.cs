@@ -25,7 +25,7 @@ namespace TLShoes.FormControls.KeHoachSanXuat
 
         private void gridView_DoubleClick(object sender, EventArgs e)
         {
-            dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
+            dynamic data = bandedGridView1.GetRow(bandedGridView1.FocusedRowHandle);
             var info = SF.Get<KeHoachSanXuatViewModel>().GetDetail(data.Id);
             FormFactory<Main>.Get().ShowPopupInfo(info);
         }

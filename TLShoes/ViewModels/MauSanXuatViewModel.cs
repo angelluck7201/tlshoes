@@ -12,6 +12,12 @@ namespace TLShoes.ViewModels
         {
             return DbContext.MauSanXuats.ToList();
         }
+
+        public List<MauSanXuat> GetList(long donHangId)
+        {
+            return
+                DbContext.MauSanXuats.Where(s => s.DonHangId == donHangId).OrderByDescending(s => s.NgayKetqua).ToList();
+        } 
         public MauSanXuat GetDetail(long id)
         {
             return DbContext.MauSanXuats.Find(id);
@@ -24,9 +30,25 @@ namespace TLShoes.ViewModels
                 {
                     s.Id,
                     s.DonHang.MaHang,
+                    SoDH = s.DonHang.OrderNo,
                     NgayGuiMauFormat = TimeHelper.TimestampToString(s.NgayGuiMau, "d"),
                     NgayKetQuaFormat = TimeHelper.TimestampToString(s.NgayKetqua, "d"),
                     PhanLoaiKetQua = s.DanhMuc.Ten,
+                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh)
+                }).ToList();
+        }
+
+        public void GetDataSource(GridControl control, long donHangId)
+        {
+            control.DataSource = GetList(donHangId)
+                .Select(s => new
+                {
+                    s.Id,
+                    s.DonHang.MaHang,
+                    NgayGuiMauFormat = TimeHelper.TimestampToString(s.NgayGuiMau, "d"),
+                    NgayKetQuaFormat = TimeHelper.TimestampToString(s.NgayKetqua, "d"),
+                    PhanLoaiKetQua = s.DanhMuc.Ten,
+                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh)
                 }).ToList();
         }
 

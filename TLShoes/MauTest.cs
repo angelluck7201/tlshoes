@@ -27,7 +27,16 @@ namespace TLShoes
         public Nullable<long> NgayKetquaTestHoa { get; set; }
         public string KetQuaTestHoa { get; set; }
         public Nullable<long> PhanLoaiTestHoaId { get; set; }
-        public string GhiChu { get; set; }
+        public string GopYCongNghe { get; set; }
+        public string GopYMau { get; set; }
+        public string GopYQc { get; set; }
+        public string GopYKhoVatTu { get; set; }
+        public string GopYVatTu { get; set; }
+        public string GopYPhuTro { get; set; }
+        public string GopYXuongChat { get; set; }
+        public string GopYXuongMay { get; set; }
+        public string GopYXuongDe { get; set; }
+        public string GopYXuongGo { get; set; }
     
         public virtual DanhMuc DanhMuc { get; set; }
         public virtual DanhMuc DanhMuc1 { get; set; }

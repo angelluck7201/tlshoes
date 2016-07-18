@@ -19,11 +19,11 @@ namespace TLShoes.FormControls.CongNgheSanXuat
             CongNgheSanXuat_MauDoiId.ValueMember = "Id";
             CongNgheSanXuat_MauDoiId.DisplayMember = "MauDoiNgayFormat";
 
-            CongNgheSanXuat_PhanLoaiThuRapId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.PHAN_LOAI_TEST), null);
+            CongNgheSanXuat_PhanLoaiThuRapId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
             CongNgheSanXuat_PhanLoaiThuRapId.DisplayMember = "Ten";
             CongNgheSanXuat_PhanLoaiThuRapId.ValueMember = "Id";
 
-            CongNgheSanXuat_PhanLoaiThuDao.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.PHAN_LOAI_TEST), null);
+            CongNgheSanXuat_PhanLoaiThuDao.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
             CongNgheSanXuat_PhanLoaiThuDao.DisplayMember = "Ten";
             CongNgheSanXuat_PhanLoaiThuDao.ValueMember = "Id";
 

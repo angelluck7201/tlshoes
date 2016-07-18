@@ -10,11 +10,11 @@ namespace TLShoes.FormControls.NguyenLieu
         {
             InitializeComponent();
 
-            NguyenLieu_LoaiNguyenLieuId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.LOAI_NGUYEN_LIEU), null);
+            NguyenLieu_LoaiNguyenLieuId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.LOAI_NGUYEN_LIEU), null);
             NguyenLieu_LoaiNguyenLieuId.DisplayMember = "Ten";
             NguyenLieu_LoaiNguyenLieuId.ValueMember = "Id";
 
-            NguyenLieu_DonViTinh.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.DON_VI_TINH), null);
+            NguyenLieu_DonViTinh.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.DON_VI_TINH), null);
             NguyenLieu_DonViTinh.DisplayMember = "Ten";
             NguyenLieu_DonViTinh.ValueMember = "Id";
 

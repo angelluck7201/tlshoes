@@ -10,7 +10,7 @@ namespace TLShoes
         public ucDanhMuc(TLShoes.DanhMuc danhMuc = null)
         {
             InitializeComponent();
-            DanhMuc_Loai.DataSource = new BindingSource(DanhMucViewModel.LoaiDanhMucDic, null);
+            DanhMuc_Loai.DataSource = new BindingSource(Define.LoaiDanhMucDic, null);
             DanhMuc_Loai.DisplayMember = "Value";
             DanhMuc_Loai.ValueMember = "Key";
 
@@ -18,7 +18,7 @@ namespace TLShoes
             {
                 DanhMuc_Ten.Text = danhMuc.Ten;
                 DanhMuc_GhiChu.Text = danhMuc.GhiChu;
-                DanhMuc_Loai.SelectedValue = Enum.Parse(typeof(DanhMucViewModel.LoaiDanhMuc),danhMuc.Loai);
+                DanhMuc_Loai.SelectedValue = Enum.Parse(typeof(Define.LoaiDanhMuc),danhMuc.Loai);
                 defaultInfo.Controls["Id"].Text = danhMuc.Id.ToString();
                 defaultInfo.Controls["AuthorId"].Text = danhMuc.AuthorId.ToString();
                 defaultInfo.Controls["CreatedDate"].Text = TimeHelper.TimestampToString(danhMuc.CreatedDate);

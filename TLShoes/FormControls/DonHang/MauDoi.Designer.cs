@@ -67,9 +67,9 @@ namespace TLShoes.FormControls.DonHang
             this.lblDonHangId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.lblDonHangId.Location = new System.Drawing.Point(39, 34);
             this.lblDonHangId.Name = "lblDonHangId";
-            this.lblDonHangId.Size = new System.Drawing.Size(63, 16);
+            this.lblDonHangId.Size = new System.Drawing.Size(56, 16);
             this.lblDonHangId.TabIndex = 39;
-            this.lblDonHangId.Text = "Đơn Hàng";
+            this.lblDonHangId.Text = "Mã Hàng";
             // 
             // MauDoi_MauNgay
             // 

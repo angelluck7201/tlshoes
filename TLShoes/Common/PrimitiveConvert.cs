@@ -21,5 +21,12 @@ namespace TLShoes.Common
             float.TryParse(item.ToString(), out valueDefault);
             return valueDefault;
         }
+
+        public static T StringToEnum<T>(string item) where T : struct, IConvertible
+        {
+            T result = default(T);
+            Enum.TryParse<T>(item, out result);
+            return result;
+        }
     }
 }

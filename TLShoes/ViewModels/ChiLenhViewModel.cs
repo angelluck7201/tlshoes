@@ -25,6 +25,7 @@ namespace TLShoes.ViewModels
                 {
                     s.Id,
                     s.DonHang.MaHang,
+                    SoDH = s.DonHang.OrderNo,
                     NguoiDuyet = s.AuthorId,
                     NgayDuyetFormat = TimeHelper.TimestampToString(s.NgayDuyet),
                 }).ToList();

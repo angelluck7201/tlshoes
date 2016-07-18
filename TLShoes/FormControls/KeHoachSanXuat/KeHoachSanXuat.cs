@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Linq;
+using System.Windows.Forms;
 using TLShoes.Common;
 using TLShoes.ViewModels;
 
@@ -10,13 +11,13 @@ namespace TLShoes.FormControls.KeHoachSanXuat
         {
             InitializeComponent();
 
-
             KeHoachSanXuat_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
             KeHoachSanXuat_DonHangId.DisplayMember = "MaHang";
             KeHoachSanXuat_DonHangId.ValueMember = "Id";
-
+            
             Init(data);
-         }
+            LoadDonhang();
+        }
 
         public override bool SaveData()
         {
@@ -31,11 +32,29 @@ namespace TLShoes.FormControls.KeHoachSanXuat
             return true;
         }
 
-      
+
 
         public string ValidateInput()
         {
             return string.Empty;
+        }
+
+        private void KeHoachSanXuat_DonHangId_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+           LoadDonhang();
+        }
+
+        private void LoadDonhang()
+        {
+            var donHangId = KeHoachSanXuat_DonHangId.SelectedValue;
+            if (donHangId != null)
+            {
+                var donHang = SF.Get<DonHangViewModel>().GetDetail((long)donHangId);
+                if (donHang == null) return;
+                SoDH.Text = donHang.OrderNo;
+                DonHangImage.Image = FileHelper.ImageFromFile(donHang.HinhAnh);
+                gridControl.DataSource = donHang.ChiTietDonHangs.Select(s => new { s.SoLuong, MauId = s.DanhMuc.Ten, s.Size });
+            }
         }
     }
 }

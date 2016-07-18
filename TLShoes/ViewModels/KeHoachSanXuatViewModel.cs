@@ -25,6 +25,7 @@ namespace TLShoes.ViewModels
                 {
                     s.Id,
                     s.DonHang.MaHang,
+                    s.DonHang.OrderNo,
                     NgayKiemHangFormat = TimeHelper.TimestampToString(s.NgayKiemHang, "d"),
                     NgayBatDauPxChatFormat = TimeHelper.TimestampToString(s.NgayBatDauPxChat, "d"),
                     NgayHoanThanhPxChatFormat = TimeHelper.TimestampToString(s.NgayHoanThanhPxChat, "d"),
@@ -38,6 +39,7 @@ namespace TLShoes.ViewModels
                     NgayHoanThanhPxDeFormat = TimeHelper.TimestampToString(s.NgayHoanThanhPxDe, "d"),
                     NgayBatDauBpVatTuFormat = TimeHelper.TimestampToString(s.NgayBatDauBpVatTu, "d"),
                     NgayHoanThanhBpVatTuFormat = TimeHelper.TimestampToString(s.NgayHoanThanhBpVatTu, "d"),
+                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh)
                 }).ToList();
         }
 

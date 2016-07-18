@@ -66,7 +66,7 @@ namespace TLShoes
             gridGopY.DataSource = GopYDict;
 
             repositoryItemLookUpEdit1.NullText = "";
-            repositoryItemLookUpEdit1.Properties.DataSource = SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.MAU).Select(s => new { s.Ten, s.Id }).ToList();
+            repositoryItemLookUpEdit1.Properties.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU).Select(s => new { s.Ten, s.Id }).ToList();
             repositoryItemLookUpEdit1.PopulateColumns();
             repositoryItemLookUpEdit1.ShowHeader = false;
             repositoryItemLookUpEdit1.Columns["Id"].Visible = false;

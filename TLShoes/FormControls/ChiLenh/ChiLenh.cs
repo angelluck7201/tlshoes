@@ -23,17 +23,17 @@ namespace TLShoes.FormControls.ChiLenh
             ChiLenh_DonHangId.DisplayMember = "MaHang";
             ChiLenh_DonHangId.ValueMember = "Id";
 
-            NguyenLieuChiLenh_PhanXuongId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.PHAN_XUONG), null);
+            NguyenLieuChiLenh_PhanXuongId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_XUONG), null);
             NguyenLieuChiLenh_PhanXuongId.DisplayMember = "Ten";
             NguyenLieuChiLenh_PhanXuongId.ValueMember = "Id";
 
-            NguyenLieuChiLenh_MauId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.MAU), null);
+            NguyenLieuChiLenh_MauId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU), null);
             NguyenLieuChiLenh_MauId.DisplayMember = "Ten";
             NguyenLieuChiLenh_MauId.ValueMember = "Id";
 
             NguyenLieuChiLenh_ChiTietId.DisplayMember = "Ten";
             NguyenLieuChiLenh_ChiTietId.ValueMember = "Id";
-            NguyenLieuChiLenh_ChiTietId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(DanhMucViewModel.LoaiDanhMuc.CHI_TIET), null);
+            NguyenLieuChiLenh_ChiTietId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.CHI_TIET), null);
 
             Init(data);
 

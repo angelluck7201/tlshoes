@@ -31,7 +31,7 @@ namespace TLShoes.FormControls.ChiLenh
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucChiLenh));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ChiLenh_DonHangId = new System.Windows.Forms.ComboBox();
             this.lblDonHangId = new DevExpress.XtraEditors.LabelControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -115,9 +115,9 @@ namespace TLShoes.FormControls.ChiLenh
             this.lblDonHangId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.lblDonHangId.Location = new System.Drawing.Point(32, 34);
             this.lblDonHangId.Name = "lblDonHangId";
-            this.lblDonHangId.Size = new System.Drawing.Size(63, 16);
+            this.lblDonHangId.Size = new System.Drawing.Size(56, 16);
             this.lblDonHangId.TabIndex = 39;
-            this.lblDonHangId.Text = "Đơn Hàng";
+            this.lblDonHangId.Text = "Mã Hàng";
             // 
             // gridControl
             // 
@@ -371,14 +371,16 @@ namespace TLShoes.FormControls.ChiLenh
             // btnDeleteNguyenLieu
             // 
             this.btnDeleteNguyenLieu.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Appearance.Image")));
+            this.btnDeleteNguyenLieu.Appearance.Options.UseImage = true;
             this.btnDeleteNguyenLieu.AutoHeight = false;
-            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
-            serializableAppearanceObject1.Options.UseBackColor = true;
-            serializableAppearanceObject1.Options.UseBorderColor = true;
+            serializableAppearanceObject2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject2.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
+            serializableAppearanceObject2.Options.UseBackColor = true;
+            serializableAppearanceObject2.Options.UseBorderColor = true;
+            serializableAppearanceObject2.Options.UseImage = true;
             this.btnDeleteNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteNguyenLieu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteNguyenLieu.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDeleteNguyenLieu.Name = "btnDeleteNguyenLieu";
@@ -550,7 +552,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.defaultInfo);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(701, 443);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1093, 871);
             this.xtraTabPage1.Text = "Thông tin người dùng";
             // 
             // defaultInfo
@@ -558,7 +560,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.defaultInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defaultInfo.Location = new System.Drawing.Point(0, 0);
             this.defaultInfo.Name = "defaultInfo";
-            this.defaultInfo.Size = new System.Drawing.Size(701, 443);
+            this.defaultInfo.Size = new System.Drawing.Size(1093, 871);
             this.defaultInfo.TabIndex = 11;
             // 
             // btnCancel

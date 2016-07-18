@@ -81,8 +81,13 @@ namespace TLShoes.Common
                 Directory.CreateDirectory(ImagePath);
             }
             var path = Path.Combine(ImagePath, id.ToString());
-            DeleteFile(path);
-            image.Save(path);
+
+            // Ignore save file if not update image
+            if (IsFileInUse(path))
+            {
+                DeleteFile(path);
+                image.Save(path);
+            }
             return path;
         }
 
@@ -92,6 +97,22 @@ namespace TLShoes.Common
             {
                 File.Delete(filePath);
             }
+        }
+        public static bool IsFileInUse(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+                throw new ArgumentException("'path' cannot be null or empty.", "path");
+
+            try
+            {
+                using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read)) { }
+            }
+            catch (IOException)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public static void SetImage(PictureEdit imageContainer, string imagePath)

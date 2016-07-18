@@ -1,4 +1,5 @@
-﻿using TLShoes.ViewModels;
+﻿using System;
+using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.TongHopMauTest
 {
@@ -21,6 +22,12 @@ namespace TLShoes.FormControls.TongHopMauTest
         public void ReloadData()
         {
             SF.Get<MauDoiViewModel>().GetDataSummarySource(gridControl);
+        }
+
+        private void gridView_DoubleClick(object sender, EventArgs e)
+        {
+            dynamic data = bandedGridView1.GetRow(bandedGridView1.FocusedRowHandle);
+            FormFactory<Main>.Get().ShowPopupInfo(data.Id);
         }
     }
 }
