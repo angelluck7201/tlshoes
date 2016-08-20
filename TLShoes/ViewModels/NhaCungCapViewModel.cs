@@ -26,7 +26,7 @@ namespace TLShoes.ViewModels
 
         public void GetDataSource(GridControl control)
         {
-            control.DataSource = GetList().Select(s => new
+            control.DataSource = DbContext.NhaCungCaps.Select(s => new
             {
                 s.Id,
                 s.TenCongTy,
@@ -37,6 +37,20 @@ namespace TLShoes.ViewModels
                 s.MatHang,
                 DanhGia = (new List<int?>() { s.Gia, s.DichVuGiaoHang, s.DatTestHoa, s.DatTestLy, s.DichVuHauMai, s.DungThoiGian, s.DichVuHauMai, s.DungYeuCauKyThuat, s.Khac }.Where(a => a > 0).Average())
             }).ToList();
+        }
+
+        public void GetSummary(GridControl control)
+        {
+            control.DataSource = GetList().SelectMany(n => n.NhaCungCapVatTus).Select(s => new
+          {
+              Id = s.NhaCungCapId,
+              NhaCungCap = s.NhaCungCap.TenCongTy,
+              GiaBanTuNgay = TimeHelper.TimestampToString(s.GiaBanTuNgay, "d"),
+              GiaBanDenNgay = TimeHelper.TimestampToString(s.GiaBanDenNgay, "d"),
+              s.DonGia,
+              NguyenLieu = s.NguyenLieu.Ten,
+              DanhGia = (new List<int?>() { s.NhaCungCap.Gia, s.NhaCungCap.DichVuGiaoHang, s.NhaCungCap.DatTestHoa, s.NhaCungCap.DatTestLy, s.NhaCungCap.DichVuHauMai, s.NhaCungCap.DungThoiGian, s.NhaCungCap.DichVuHauMai, s.NhaCungCap.DungYeuCauKyThuat, s.NhaCungCap.Khac }.Where(a => a > 0).Average())
+          }).ToList();
         }
 
         public void Save(object data)

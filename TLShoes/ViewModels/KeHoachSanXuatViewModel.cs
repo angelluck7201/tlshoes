@@ -26,6 +26,7 @@ namespace TLShoes.ViewModels
                     s.Id,
                     s.DonHang.MaHang,
                     s.DonHang.OrderNo,
+                    SoLuong = s.DonHang.ChiTietDonHangs.Sum(a => a.SoLuong),
                     NgayKiemHangFormat = TimeHelper.TimestampToString(s.NgayKiemHang, "d"),
                     NgayBatDauPxChatFormat = TimeHelper.TimestampToString(s.NgayBatDauPxChat, "d"),
                     NgayHoanThanhPxChatFormat = TimeHelper.TimestampToString(s.NgayHoanThanhPxChat, "d"),

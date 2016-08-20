@@ -65,7 +65,7 @@ namespace TLShoes.ViewModels
                     item.BoPhan = phanxuong.Key.Ten;
                     item.Khoan = (int)phanxuong.Sum(s => s.SanLuongKhoan);
                     item.ThucHien = (int)phanxuong.Sum(s => s.SanLuongThucHien);
-                    item.Ton = item.Khoan - item.ThucHien;
+                    item.Ton = item.ThucHien - item.Khoan;
                     listData.Add(item);
                 }
             }

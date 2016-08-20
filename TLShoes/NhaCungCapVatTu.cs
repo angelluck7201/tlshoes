@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using TLShoes.Common;
-
 namespace TLShoes
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class NhaCungCapVatTu
     {
         public long Id { get; set; }
@@ -27,37 +25,9 @@ namespace TLShoes
         public string DonVi { get; set; }
         public Nullable<long> GiaBanTuNgay { get; set; }
         public Nullable<long> GiaBanDenNgay { get; set; }
-
+    
         public virtual NguyenLieu NguyenLieu { get; set; }
         public virtual NhaCungCap NhaCungCap { get; set; }
         public virtual UserAccount UserAccount { get; set; }
-
-        public string GiaBanTuNgayFormat
-        {
-            get
-            {
-                var data = 0L;
-                if (GiaBanTuNgay != null)
-                {
-                    data = (long)GiaBanTuNgay;
-                }
-                return TimeHelper.TimestampToString(data, "d");
-            }
-            set { GiaBanTuNgay = TimeHelper.StringToTimeStamp(value); }
-        }
-
-        public string GiaBanDenNgayFormat
-        {
-            get
-            {
-                var data = 0L;
-                if (GiaBanDenNgay != null)
-                {
-                    data = (long)GiaBanDenNgay;
-                }
-                return TimeHelper.TimestampToString(data, "d");
-            }
-            set { GiaBanDenNgay = TimeHelper.StringToTimeStamp(value); }
-        }
     }
 }

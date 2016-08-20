@@ -28,6 +28,7 @@ namespace TLShoes.ViewModels
             control.DataSource = GetList().Select(s => new
             {
                 s.Id,
+                s.NguyenLieuId,
                 s.NguyenLieu.Ten,
                 s.BoSung,
                 s.ThuHoi,

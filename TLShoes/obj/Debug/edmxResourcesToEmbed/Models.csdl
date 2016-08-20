@@ -175,7 +175,6 @@
     </AssociationSet>
     <EntitySet Name="ChiTietNhapKhoes" EntityType="GiayTLModel.ChiTietNhapKho" />
     <EntitySet Name="ChiTietXuatKhoes" EntityType="GiayTLModel.ChiTietXuatKho" />
-    <EntitySet Name="PhieuXuatKhoes" EntityType="GiayTLModel.PhieuXuatKho" />
     <AssociationSet Name="FK__ChiTietNh__Autho__0F624AF8" Association="GiayTLModel.FK__ChiTietNh__Autho__0F624AF8">
       <End Role="UserAccount" EntitySet="UserAccounts" />
       <End Role="ChiTietNhapKho" EntitySet="ChiTietNhapKhoes" />
@@ -191,18 +190,6 @@
     <AssociationSet Name="FK__ChiTietXu__Nguye__19DFD96B" Association="GiayTLModel.FK__ChiTietXu__Nguye__19DFD96B">
       <End Role="NguyenLieu" EntitySet="NguyenLieux" />
       <End Role="ChiTietXuatKho" EntitySet="ChiTietXuatKhoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ChiTietXu__Phieu__18EBB532" Association="GiayTLModel.FK__ChiTietXu__Phieu__18EBB532">
-      <End Role="PhieuXuatKho" EntitySet="PhieuXuatKhoes" />
-      <End Role="ChiTietXuatKho" EntitySet="ChiTietXuatKhoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__PhieuXuat__DonHa__151B244E" Association="GiayTLModel.FK__PhieuXuat__DonHa__151B244E">
-      <End Role="DonHang" EntitySet="DonHangs" />
-      <End Role="PhieuXuatKho" EntitySet="PhieuXuatKhoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK__PhieuXuat__Autho__14270015" Association="GiayTLModel.FK__PhieuXuat__Autho__14270015">
-      <End Role="UserAccount" EntitySet="UserAccounts" />
-      <End Role="PhieuXuatKho" EntitySet="PhieuXuatKhoes" />
     </AssociationSet>
     <EntitySet Name="MauSanXuats" EntityType="GiayTLModel.MauSanXuat" />
     <EntitySet Name="MauTests" EntityType="GiayTLModel.MauTest" />
@@ -341,6 +328,84 @@
       <End Role="MauDanhGia" EntitySet="MauDanhGias" />
     </AssociationSet>
     <EntitySet Name="sysdiagrams" EntityType="GiayTLModel.sysdiagram" />
+    <EntitySet Name="ChiTietHuongDanDongGois" EntityType="GiayTLModel.ChiTietHuongDanDongGoi" />
+    <EntitySet Name="HuongDanDongGois" EntityType="GiayTLModel.HuongDanDongGoi" />
+    <EntitySet Name="MauHuongDanDongGois" EntityType="GiayTLModel.MauHuongDanDongGoi" />
+    <AssociationSet Name="FK__ChiTietHu__Autho__32767D0B" Association="GiayTLModel.FK__ChiTietHu__Autho__32767D0B">
+      <End Role="UserAccount" EntitySet="UserAccounts" />
+      <End Role="ChiTietHuongDanDongGoi" EntitySet="ChiTietHuongDanDongGois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietHu__DanhM__345EC57D" Association="GiayTLModel.FK__ChiTietHu__DanhM__345EC57D">
+      <End Role="DanhMuc" EntitySet="DanhMucs" />
+      <End Role="ChiTietHuongDanDongGoi" EntitySet="ChiTietHuongDanDongGois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietHu__DonVi__3552E9B6" Association="GiayTLModel.FK__ChiTietHu__DonVi__3552E9B6">
+      <End Role="DanhMuc" EntitySet="DanhMucs" />
+      <End Role="ChiTietHuongDanDongGoi" EntitySet="ChiTietHuongDanDongGois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietHu__MauHu__336AA144" Association="GiayTLModel.FK__ChiTietHu__MauHu__336AA144">
+      <End Role="MauHuongDanDongGoi" EntitySet="MauHuongDanDongGois" />
+      <End Role="ChiTietHuongDanDongGoi" EntitySet="ChiTietHuongDanDongGois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietHu__MauId__36470DEF" Association="GiayTLModel.FK__ChiTietHu__MauId__36470DEF">
+      <End Role="DanhMuc" EntitySet="DanhMucs" />
+      <End Role="ChiTietHuongDanDongGoi" EntitySet="ChiTietHuongDanDongGois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietHu__Nguye__373B3228" Association="GiayTLModel.FK__ChiTietHu__Nguye__373B3228">
+      <End Role="NguyenLieu" EntitySet="NguyenLieux" />
+      <End Role="ChiTietHuongDanDongGoi" EntitySet="ChiTietHuongDanDongGois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HuongDanD__DonHa__3B0BC30C" Association="GiayTLModel.FK__HuongDanD__DonHa__3B0BC30C">
+      <End Role="DonHang" EntitySet="DonHangs" />
+      <End Role="HuongDanDongGoi" EntitySet="HuongDanDongGois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HuongDanD__Autho__3A179ED3" Association="GiayTLModel.FK__HuongDanD__Autho__3A179ED3">
+      <End Role="UserAccount" EntitySet="UserAccounts" />
+      <End Role="HuongDanDongGoi" EntitySet="HuongDanDongGois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MauHuongD__Khach__2F9A1060" Association="GiayTLModel.FK__MauHuongD__Khach__2F9A1060">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="MauHuongDanDongGoi" EntitySet="MauHuongDanDongGois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MauHuongD__Autho__2EA5EC27" Association="GiayTLModel.FK__MauHuongD__Autho__2EA5EC27">
+      <End Role="UserAccount" EntitySet="UserAccounts" />
+      <End Role="MauHuongDanDongGoi" EntitySet="MauHuongDanDongGois" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HuongDanD__MauDo__3BFFE745" Association="GiayTLModel.FK__HuongDanD__MauDo__3BFFE745">
+      <End Role="MauHuongDanDongGoi" EntitySet="MauHuongDanDongGois" />
+      <End Role="HuongDanDongGoi" EntitySet="HuongDanDongGois" />
+    </AssociationSet>
+    <EntitySet Name="PhieuXuatKhoes" EntityType="GiayTLModel.PhieuXuatKho" />
+    <AssociationSet Name="FK__ChiTietXu__Phieu__18EBB532" Association="GiayTLModel.FK__ChiTietXu__Phieu__18EBB532">
+      <End Role="PhieuXuatKho" EntitySet="PhieuXuatKhoes" />
+      <End Role="ChiTietXuatKho" EntitySet="ChiTietXuatKhoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuXuat__DonHa__40C49C62" Association="GiayTLModel.FK__PhieuXuat__DonHa__40C49C62">
+      <End Role="DonHang" EntitySet="DonHangs" />
+      <End Role="PhieuXuatKho" EntitySet="PhieuXuatKhoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuXuat__Autho__14270015" Association="GiayTLModel.FK__PhieuXuat__Autho__14270015">
+      <End Role="UserAccount" EntitySet="UserAccounts" />
+      <End Role="PhieuXuatKho" EntitySet="PhieuXuatKhoes" />
+    </AssociationSet>
+    <EntitySet Name="NhatKyThayDois" EntityType="GiayTLModel.NhatKyThayDoi" />
+    <AssociationSet Name="FK__NhatKyTha__Autho__54CB950F" Association="GiayTLModel.FK__NhatKyTha__Autho__54CB950F">
+      <End Role="UserAccount" EntitySet="UserAccounts" />
+      <End Role="NhatKyThayDoi" EntitySet="NhatKyThayDois" />
+    </AssociationSet>
+    <EntitySet Name="MauDoiHinhs" EntityType="GiayTLModel.MauDoiHinh" />
+    <AssociationSet Name="FK__MauDoiHin__MauDo__68D28DBC" Association="GiayTLModel.FK__MauDoiHin__MauDo__68D28DBC">
+      <End Role="MauDoi" EntitySet="MauDois" />
+      <End Role="MauDoiHinh" EntitySet="MauDoiHinhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MauDoiHin__Autho__67DE6983" Association="GiayTLModel.FK__MauDoiHin__Autho__67DE6983">
+      <End Role="UserAccount" EntitySet="UserAccounts" />
+      <End Role="MauDoiHinh" EntitySet="MauDoiHinhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuNhap__DanhG__6ABAD62E" Association="GiayTLModel.FK__PhieuNhap__DanhG__6ABAD62E">
+      <End Role="DanhGia" EntitySet="DanhGias" />
+      <End Role="PhieuNhapKho" EntitySet="PhieuNhapKhoes" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="BaoCaoPhanXuong">
     <Key>
@@ -462,6 +527,9 @@
     <NavigationProperty Name="MauTests1" Relationship="GiayTLModel.FK__MauTest__PhanLoa__2BFE89A6" FromRole="DanhMuc" ToRole="MauTest" />
     <NavigationProperty Name="ChiTietDanhGias" Relationship="GiayTLModel.FK__ChiTietDa__TieuC__56E8E7AB" FromRole="DanhMuc" ToRole="ChiTietDanhGia" />
     <NavigationProperty Name="ChiTietMauDanhGias" Relationship="GiayTLModel.FK__ChiTietMa__TieuC__4D5F7D71" FromRole="DanhMuc" ToRole="ChiTietMauDanhGia" />
+    <NavigationProperty Name="ChiTietHuongDanDongGois" Relationship="GiayTLModel.FK__ChiTietHu__DanhM__345EC57D" FromRole="DanhMuc" ToRole="ChiTietHuongDanDongGoi" />
+    <NavigationProperty Name="ChiTietHuongDanDongGois1" Relationship="GiayTLModel.FK__ChiTietHu__DonVi__3552E9B6" FromRole="DanhMuc" ToRole="ChiTietHuongDanDongGoi" />
+    <NavigationProperty Name="ChiTietHuongDanDongGois2" Relationship="GiayTLModel.FK__ChiTietHu__MauId__36470DEF" FromRole="DanhMuc" ToRole="ChiTietHuongDanDongGoi" />
   </EntityType>
   <EntityType Name="DonHang">
     <Key>
@@ -500,10 +568,11 @@
     <Property Name="MaPhomId" Type="Int64" />
     <NavigationProperty Name="NguyenLieu" Relationship="GiayTLModel.FK__DonHang__MaPhomI__1DE57479" FromRole="DonHang" ToRole="NguyenLieu" />
     <NavigationProperty Name="ChiTietToTrinhs" Relationship="GiayTLModel.FK__ChiTietTo__DonHa__75A278F5" FromRole="DonHang" ToRole="ChiTietToTrinh" />
-    <NavigationProperty Name="PhieuXuatKhoes" Relationship="GiayTLModel.FK__PhieuXuat__DonHa__151B244E" FromRole="DonHang" ToRole="PhieuXuatKho" />
     <NavigationProperty Name="MauSanXuats" Relationship="GiayTLModel.FK__MauSanXua__DonHa__2FCF1A8A" FromRole="DonHang" ToRole="MauSanXuat" />
     <NavigationProperty Name="MauTests" Relationship="GiayTLModel.FK__MauTest__DonHang__2A164134" FromRole="DonHang" ToRole="MauTest" />
     <NavigationProperty Name="MauThuDaos" Relationship="GiayTLModel.FK__MauThuDao__DonHa__3493CFA7" FromRole="DonHang" ToRole="MauThuDao" />
+    <NavigationProperty Name="HuongDanDongGois" Relationship="GiayTLModel.FK__HuongDanD__DonHa__3B0BC30C" FromRole="DonHang" ToRole="HuongDanDongGoi" />
+    <NavigationProperty Name="PhieuXuatKhoes" Relationship="GiayTLModel.FK__PhieuXuat__DonHa__40C49C62" FromRole="DonHang" ToRole="PhieuXuatKho" />
   </EntityType>
   <EntityType Name="KeHoachSanXuat">
     <Key>
@@ -561,6 +630,7 @@
     <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__KhachHang__Autho__15502E78" FromRole="KhachHang" ToRole="UserAccount" />
     <Property Name="GhiChuNoiBo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
     <Property Name="DatTestLy" Type="Int32" />
+    <NavigationProperty Name="MauHuongDanDongGois" Relationship="GiayTLModel.FK__MauHuongD__Khach__2F9A1060" FromRole="KhachHang" ToRole="MauHuongDanDongGoi" />
   </EntityType>
   <EntityType Name="MauDoi">
     <Key>
@@ -579,6 +649,7 @@
     <NavigationProperty Name="CongNgheSanXuats" Relationship="GiayTLModel.FK__CongNgheS__MauDo__398D8EEE" FromRole="MauDoi" ToRole="CongNgheSanXuat" />
     <NavigationProperty Name="DonHang" Relationship="GiayTLModel.FK__MauDoi__DonHangI__21B6055D" FromRole="MauDoi" ToRole="DonHang" />
     <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__MauDoi__AuthorId__20C1E124" FromRole="MauDoi" ToRole="UserAccount" />
+    <NavigationProperty Name="MauDoiHinhs" Relationship="GiayTLModel.FK__MauDoiHin__MauDo__68D28DBC" FromRole="MauDoi" ToRole="MauDoiHinh" />
   </EntityType>
   <EntityType Name="NguyenLieu">
     <Key>
@@ -606,6 +677,7 @@
     <NavigationProperty Name="ChiTietXuatKhoes" Relationship="GiayTLModel.FK__ChiTietXu__Nguye__19DFD96B" FromRole="NguyenLieu" ToRole="ChiTietXuatKho" />
     <NavigationProperty Name="NhaCungCapVatTus" Relationship="GiayTLModel.FK__NhaCungCa__Nguye__5BAD9CC8" FromRole="NguyenLieu" ToRole="NhaCungCapVatTu" />
     <NavigationProperty Name="ChiTietDonDatHangs" Relationship="GiayTLModel.FK__ChiTietDo__Nguye__7849DB76" FromRole="NguyenLieu" ToRole="ChiTietDonDatHang" />
+    <NavigationProperty Name="ChiTietHuongDanDongGois" Relationship="GiayTLModel.FK__ChiTietHu__Nguye__373B3228" FromRole="NguyenLieu" ToRole="ChiTietHuongDanDongGoi" />
   </EntityType>
   <EntityType Name="UserAccount">
     <Key>
@@ -633,7 +705,6 @@
     <NavigationProperty Name="ToTrinhs" Relationship="GiayTLModel.FK__ToTrinh__AuthorI__6FE99F9F" FromRole="UserAccount" ToRole="ToTrinh" />
     <NavigationProperty Name="ChiTietNhapKhoes" Relationship="GiayTLModel.FK__ChiTietNh__Autho__0F624AF8" FromRole="UserAccount" ToRole="ChiTietNhapKho" />
     <NavigationProperty Name="ChiTietXuatKhoes" Relationship="GiayTLModel.FK__ChiTietXu__Autho__17F790F9" FromRole="UserAccount" ToRole="ChiTietXuatKho" />
-    <NavigationProperty Name="PhieuXuatKhoes" Relationship="GiayTLModel.FK__PhieuXuat__Autho__14270015" FromRole="UserAccount" ToRole="PhieuXuatKho" />
     <NavigationProperty Name="MauSanXuats" Relationship="GiayTLModel.FK__MauSanXua__Autho__2EDAF651" FromRole="UserAccount" ToRole="MauSanXuat" />
     <NavigationProperty Name="MauTests" Relationship="GiayTLModel.FK__MauTest__AuthorI__29221CFB" FromRole="UserAccount" ToRole="MauTest" />
     <NavigationProperty Name="MauThuDaos" Relationship="GiayTLModel.FK__MauThuDao__Autho__339FAB6E" FromRole="UserAccount" ToRole="MauThuDao" />
@@ -646,6 +717,12 @@
     <NavigationProperty Name="ChiTietDonDatHangs" Relationship="GiayTLModel.FK__ChiTietDo__Autho__756D6ECB" FromRole="UserAccount" ToRole="ChiTietDonDatHang" />
     <NavigationProperty Name="DonDatHangs" Relationship="GiayTLModel.FK__DonDatHan__Autho__43D61337" FromRole="UserAccount" ToRole="DonDatHang" />
     <NavigationProperty Name="MauDanhGias" Relationship="GiayTLModel.FK__MauDanhGi__Autho__489AC854" FromRole="UserAccount" ToRole="MauDanhGia" />
+    <NavigationProperty Name="ChiTietHuongDanDongGois" Relationship="GiayTLModel.FK__ChiTietHu__Autho__32767D0B" FromRole="UserAccount" ToRole="ChiTietHuongDanDongGoi" />
+    <NavigationProperty Name="HuongDanDongGois" Relationship="GiayTLModel.FK__HuongDanD__Autho__3A179ED3" FromRole="UserAccount" ToRole="HuongDanDongGoi" />
+    <NavigationProperty Name="MauHuongDanDongGois" Relationship="GiayTLModel.FK__MauHuongD__Autho__2EA5EC27" FromRole="UserAccount" ToRole="MauHuongDanDongGoi" />
+    <NavigationProperty Name="PhieuXuatKhoes" Relationship="GiayTLModel.FK__PhieuXuat__Autho__14270015" FromRole="UserAccount" ToRole="PhieuXuatKho" />
+    <NavigationProperty Name="NhatKyThayDois" Relationship="GiayTLModel.FK__NhatKyTha__Autho__54CB950F" FromRole="UserAccount" ToRole="NhatKyThayDoi" />
+    <NavigationProperty Name="MauDoiHinhs" Relationship="GiayTLModel.FK__MauDoiHin__Autho__67DE6983" FromRole="UserAccount" ToRole="MauDoiHinh" />
   </EntityType>
   <Association Name="FK__BaoCaoPha__Autho__52593CB8">
     <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
@@ -1218,27 +1295,6 @@
     <NavigationProperty Name="NguyenLieu" Relationship="GiayTLModel.FK__ChiTietXu__Nguye__19DFD96B" FromRole="ChiTietXuatKho" ToRole="NguyenLieu" />
     <NavigationProperty Name="PhieuXuatKho" Relationship="GiayTLModel.FK__ChiTietXu__Phieu__18EBB532" FromRole="ChiTietXuatKho" ToRole="PhieuXuatKho" />
   </EntityType>
-  <EntityType Name="PhieuXuatKho">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AuthorId" Type="Int64" />
-    <Property Name="CreatedDate" Type="Int64" />
-    <Property Name="ModifiedDate" Type="Int64" />
-    <Property Name="IsActived" Type="Boolean" />
-    <Property Name="DonHangId" Type="Int64" />
-    <Property Name="NguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="BoPhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LyDo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Kho" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NgayXuat" Type="Int64" />
-    <NavigationProperty Name="ChiTietXuatKhoes" Relationship="GiayTLModel.FK__ChiTietXu__Phieu__18EBB532" FromRole="PhieuXuatKho" ToRole="ChiTietXuatKho" />
-    <NavigationProperty Name="DonHang" Relationship="GiayTLModel.FK__PhieuXuat__DonHa__151B244E" FromRole="PhieuXuatKho" ToRole="DonHang" />
-    <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__PhieuXuat__Autho__14270015" FromRole="PhieuXuatKho" ToRole="UserAccount" />
-    <Property Name="LoaiXuat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
   <Association Name="FK__ChiTietNh__Autho__0F624AF8">
     <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
     <End Type="GiayTLModel.ChiTietNhapKho" Role="ChiTietNhapKho" Multiplicity="*" />
@@ -1284,42 +1340,6 @@
       </Principal>
       <Dependent Role="ChiTietXuatKho">
         <PropertyRef Name="NguyenLieuId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ChiTietXu__Phieu__18EBB532">
-    <End Type="GiayTLModel.PhieuXuatKho" Role="PhieuXuatKho" Multiplicity="0..1" />
-    <End Type="GiayTLModel.ChiTietXuatKho" Role="ChiTietXuatKho" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PhieuXuatKho">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ChiTietXuatKho">
-        <PropertyRef Name="PhieuXuatKhoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__PhieuXuat__DonHa__151B244E">
-    <End Type="GiayTLModel.DonHang" Role="DonHang" Multiplicity="0..1" />
-    <End Type="GiayTLModel.PhieuXuatKho" Role="PhieuXuatKho" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DonHang">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PhieuXuatKho">
-        <PropertyRef Name="DonHangId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__PhieuXuat__Autho__14270015">
-    <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
-    <End Type="GiayTLModel.PhieuXuatKho" Role="PhieuXuatKho" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="UserAccount">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PhieuXuatKho">
-        <PropertyRef Name="AuthorId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1566,6 +1586,8 @@
     <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__DanhGia__AuthorI__503BEA1C" FromRole="DanhGia" ToRole="UserAccount" />
     <NavigationProperty Name="DonDatHang" Relationship="GiayTLModel.FK__DanhGia__DonDatH__51300E55" FromRole="DanhGia" ToRole="DonDatHang" />
     <NavigationProperty Name="MauDanhGia" Relationship="GiayTLModel.FK__DanhGia__MauDanh__5224328E" FromRole="DanhGia" ToRole="MauDanhGia" />
+    <Property Name="SoPhieu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhieuNhapKhoes" Relationship="GiayTLModel.FK__PhieuNhap__DanhG__6ABAD62E" FromRole="DanhGia" ToRole="PhieuNhapKho" />
   </EntityType>
   <EntityType Name="NhaCungCap">
     <Key>
@@ -1615,6 +1637,9 @@
     <Property Name="NgayNhap" Type="Int64" />
     <NavigationProperty Name="ChiTietNhapKhoes" Relationship="GiayTLModel.FK__ChiTietNh__Phieu__10566F31" FromRole="PhieuNhapKho" ToRole="ChiTietNhapKho" />
     <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__PhieuNhap__Autho__0C85DE4D" FromRole="PhieuNhapKho" ToRole="UserAccount" />
+    <Property Name="SoPhieu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DanhGiaId" Type="Int64" />
+    <NavigationProperty Name="DanhGia" Relationship="GiayTLModel.FK__PhieuNhap__DanhG__6ABAD62E" FromRole="PhieuNhapKho" ToRole="DanhGia" />
   </EntityType>
   <Association Name="FK__ChiTietDa__Autho__55009F39">
     <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
@@ -1852,6 +1877,15 @@
     <NavigationProperty Name="DanhGias" Relationship="GiayTLModel.FK__DanhGia__DonDatH__51300E55" FromRole="DonDatHang" ToRole="DanhGia" />
     <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__DonDatHan__Autho__43D61337" FromRole="DonDatHang" ToRole="UserAccount" />
     <NavigationProperty Name="NhaCungCap" Relationship="GiayTLModel.FK__DonDatHan__NhaCu__44CA3770" FromRole="DonDatHang" ToRole="NhaCungCap" />
+    <Property Name="DungYeuCauKyThuat" Type="Int32" />
+    <Property Name="DungThoiGian" Type="Int32" />
+    <Property Name="DungMau" Type="Int32" />
+    <Property Name="DatTestLy" Type="Int32" />
+    <Property Name="DatTestHoa" Type="Int32" />
+    <Property Name="Gia" Type="Int32" />
+    <Property Name="DichVuGiaoHang" Type="Int32" />
+    <Property Name="DichVuHauMai" Type="Int32" />
+    <Property Name="Khac" Type="Int32" />
   </EntityType>
   <Association Name="FK__ChiTietDo__DonDa__76619304">
     <End Type="GiayTLModel.DonDatHang" Role="DonDatHang" Multiplicity="0..1" />
@@ -1962,4 +1996,337 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <EntityType Name="ChiTietHuongDanDongGoi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorId" Type="Int64" />
+    <Property Name="CreatedDate" Type="Int64" />
+    <Property Name="ModifiedDate" Type="Int64" />
+    <Property Name="IsActived" Type="Boolean" />
+    <Property Name="MauHuongDanDongGoiId" Type="Int64" />
+    <Property Name="DanhMucId" Type="Int64" />
+    <Property Name="DonViTinhId" Type="Int64" />
+    <Property Name="KichThuoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MauId" Type="Int64" />
+    <Property Name="NguyenLieuId" Type="Int64" />
+    <Property Name="CachSuDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ViTriSuDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="HinhMauDinhKem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__ChiTietHu__Autho__32767D0B" FromRole="ChiTietHuongDanDongGoi" ToRole="UserAccount" />
+    <NavigationProperty Name="DanhMuc" Relationship="GiayTLModel.FK__ChiTietHu__DanhM__345EC57D" FromRole="ChiTietHuongDanDongGoi" ToRole="DanhMuc" />
+    <NavigationProperty Name="DonViTinh" Relationship="GiayTLModel.FK__ChiTietHu__DonVi__3552E9B6" FromRole="ChiTietHuongDanDongGoi" ToRole="DanhMuc" />
+    <NavigationProperty Name="MauHuongDanDongGoi" Relationship="GiayTLModel.FK__ChiTietHu__MauHu__336AA144" FromRole="ChiTietHuongDanDongGoi" ToRole="MauHuongDanDongGoi" />
+    <NavigationProperty Name="Mau" Relationship="GiayTLModel.FK__ChiTietHu__MauId__36470DEF" FromRole="ChiTietHuongDanDongGoi" ToRole="DanhMuc" />
+    <NavigationProperty Name="NguyenLieu" Relationship="GiayTLModel.FK__ChiTietHu__Nguye__373B3228" FromRole="ChiTietHuongDanDongGoi" ToRole="NguyenLieu" />
+  </EntityType>
+  <EntityType Name="HuongDanDongGoi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorId" Type="Int64" />
+    <Property Name="CreatedDate" Type="Int64" />
+    <Property Name="ModifiedDate" Type="Int64" />
+    <Property Name="IsActived" Type="Boolean" />
+    <Property Name="DonHangId" Type="Int64" />
+    <Property Name="CachDong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DongAssorment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SoDoi" Type="Int32" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DonHang" Relationship="GiayTLModel.FK__HuongDanD__DonHa__3B0BC30C" FromRole="HuongDanDongGoi" ToRole="DonHang" />
+    <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__HuongDanD__Autho__3A179ED3" FromRole="HuongDanDongGoi" ToRole="UserAccount" />
+    <Property Name="MauDongGoiId" Type="Int64" />
+    <NavigationProperty Name="MauHuongDanDongGoi" Relationship="GiayTLModel.FK__HuongDanD__MauDo__3BFFE745" FromRole="HuongDanDongGoi" ToRole="MauHuongDanDongGoi" />
+    <Property Name="SoLuong" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MauHuongDanDongGoi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorId" Type="Int64" />
+    <Property Name="CreatedDate" Type="Int64" />
+    <Property Name="ModifiedDate" Type="Int64" />
+    <Property Name="IsActived" Type="Boolean" />
+    <Property Name="KhachHangId" Type="Int64" />
+    <Property Name="ApDungTuNgay" Type="Int64" />
+    <Property Name="ApDungDenNgay" Type="Int64" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChiTietHuongDanDongGois" Relationship="GiayTLModel.FK__ChiTietHu__MauHu__336AA144" FromRole="MauHuongDanDongGoi" ToRole="ChiTietHuongDanDongGoi" />
+    <NavigationProperty Name="KhachHang" Relationship="GiayTLModel.FK__MauHuongD__Khach__2F9A1060" FromRole="MauHuongDanDongGoi" ToRole="KhachHang" />
+    <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__MauHuongD__Autho__2EA5EC27" FromRole="MauHuongDanDongGoi" ToRole="UserAccount" />
+    <Property Name="TenMau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HuongDanDongGois" Relationship="GiayTLModel.FK__HuongDanD__MauDo__3BFFE745" FromRole="MauHuongDanDongGoi" ToRole="HuongDanDongGoi" />
+  </EntityType>
+  <Association Name="FK__ChiTietHu__Autho__32767D0B">
+    <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="GiayTLModel.ChiTietHuongDanDongGoi" Role="ChiTietHuongDanDongGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietHuongDanDongGoi">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietHu__DanhM__345EC57D">
+    <End Type="GiayTLModel.DanhMuc" Role="DanhMuc" Multiplicity="0..1" />
+    <End Type="GiayTLModel.ChiTietHuongDanDongGoi" Role="ChiTietHuongDanDongGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMuc">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietHuongDanDongGoi">
+        <PropertyRef Name="DanhMucId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietHu__DonVi__3552E9B6">
+    <End Type="GiayTLModel.DanhMuc" Role="DanhMuc" Multiplicity="0..1" />
+    <End Type="GiayTLModel.ChiTietHuongDanDongGoi" Role="ChiTietHuongDanDongGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMuc">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietHuongDanDongGoi">
+        <PropertyRef Name="DonViTinhId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietHu__MauHu__336AA144">
+    <End Type="GiayTLModel.MauHuongDanDongGoi" Role="MauHuongDanDongGoi" Multiplicity="0..1" />
+    <End Type="GiayTLModel.ChiTietHuongDanDongGoi" Role="ChiTietHuongDanDongGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MauHuongDanDongGoi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietHuongDanDongGoi">
+        <PropertyRef Name="MauHuongDanDongGoiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietHu__MauId__36470DEF">
+    <End Type="GiayTLModel.DanhMuc" Role="DanhMuc" Multiplicity="0..1" />
+    <End Type="GiayTLModel.ChiTietHuongDanDongGoi" Role="ChiTietHuongDanDongGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMuc">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietHuongDanDongGoi">
+        <PropertyRef Name="MauId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietHu__Nguye__373B3228">
+    <End Type="GiayTLModel.NguyenLieu" Role="NguyenLieu" Multiplicity="0..1" />
+    <End Type="GiayTLModel.ChiTietHuongDanDongGoi" Role="ChiTietHuongDanDongGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguyenLieu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietHuongDanDongGoi">
+        <PropertyRef Name="NguyenLieuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HuongDanD__DonHa__3B0BC30C">
+    <End Type="GiayTLModel.DonHang" Role="DonHang" Multiplicity="0..1" />
+    <End Type="GiayTLModel.HuongDanDongGoi" Role="HuongDanDongGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HuongDanDongGoi">
+        <PropertyRef Name="DonHangId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HuongDanD__Autho__3A179ED3">
+    <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="GiayTLModel.HuongDanDongGoi" Role="HuongDanDongGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HuongDanDongGoi">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MauHuongD__Khach__2F9A1060">
+    <End Type="GiayTLModel.KhachHang" Role="KhachHang" Multiplicity="0..1" />
+    <End Type="GiayTLModel.MauHuongDanDongGoi" Role="MauHuongDanDongGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MauHuongDanDongGoi">
+        <PropertyRef Name="KhachHangId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MauHuongD__Autho__2EA5EC27">
+    <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="GiayTLModel.MauHuongDanDongGoi" Role="MauHuongDanDongGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MauHuongDanDongGoi">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HuongDanD__MauDo__3BFFE745">
+    <End Type="GiayTLModel.MauHuongDanDongGoi" Role="MauHuongDanDongGoi" Multiplicity="0..1" />
+    <End Type="GiayTLModel.HuongDanDongGoi" Role="HuongDanDongGoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MauHuongDanDongGoi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HuongDanDongGoi">
+        <PropertyRef Name="MauDongGoiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PhieuXuatKho">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorId" Type="Int64" />
+    <Property Name="CreatedDate" Type="Int64" />
+    <Property Name="ModifiedDate" Type="Int64" />
+    <Property Name="IsActived" Type="Boolean" />
+    <Property Name="NguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BoPhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LyDo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Kho" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayXuat" Type="Int64" />
+    <Property Name="LoaiXuat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DonHangId" Type="Int64" />
+    <NavigationProperty Name="ChiTietXuatKhoes" Relationship="GiayTLModel.FK__ChiTietXu__Phieu__18EBB532" FromRole="PhieuXuatKho" ToRole="ChiTietXuatKho" />
+    <NavigationProperty Name="DonHang" Relationship="GiayTLModel.FK__PhieuXuat__DonHa__40C49C62" FromRole="PhieuXuatKho" ToRole="DonHang" />
+    <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__PhieuXuat__Autho__14270015" FromRole="PhieuXuatKho" ToRole="UserAccount" />
+    <Property Name="SoPhieu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__ChiTietXu__Phieu__18EBB532">
+    <End Type="GiayTLModel.PhieuXuatKho" Role="PhieuXuatKho" Multiplicity="0..1" />
+    <End Type="GiayTLModel.ChiTietXuatKho" Role="ChiTietXuatKho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuXuatKho">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietXuatKho">
+        <PropertyRef Name="PhieuXuatKhoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuXuat__DonHa__40C49C62">
+    <End Type="GiayTLModel.DonHang" Role="DonHang" Multiplicity="0..1" />
+    <End Type="GiayTLModel.PhieuXuatKho" Role="PhieuXuatKho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhieuXuatKho">
+        <PropertyRef Name="DonHangId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuXuat__Autho__14270015">
+    <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="GiayTLModel.PhieuXuatKho" Role="PhieuXuatKho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhieuXuatKho">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="NhatKyThayDoi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorId" Type="Int64" />
+    <Property Name="CreatedDate" Type="Int64" />
+    <Property Name="ModifiedDate" Type="Int64" />
+    <Property Name="IsActived" Type="Boolean" />
+    <Property Name="ModelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemId" Type="Int64" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__NhatKyTha__Autho__54CB950F" FromRole="NhatKyThayDoi" ToRole="UserAccount" />
+  </EntityType>
+  <Association Name="FK__NhatKyTha__Autho__54CB950F">
+    <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="GiayTLModel.NhatKyThayDoi" Role="NhatKyThayDoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NhatKyThayDoi">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MauDoiHinh">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorId" Type="Int64" />
+    <Property Name="CreatedDate" Type="Int64" />
+    <Property Name="ModifiedDate" Type="Int64" />
+    <Property Name="IsActived" Type="Boolean" />
+    <Property Name="MauDoiId" Type="Int64" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MauDoi" Relationship="GiayTLModel.FK__MauDoiHin__MauDo__68D28DBC" FromRole="MauDoiHinh" ToRole="MauDoi" />
+    <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__MauDoiHin__Autho__67DE6983" FromRole="MauDoiHinh" ToRole="UserAccount" />
+  </EntityType>
+  <Association Name="FK__MauDoiHin__MauDo__68D28DBC">
+    <End Type="GiayTLModel.MauDoi" Role="MauDoi" Multiplicity="0..1" />
+    <End Type="GiayTLModel.MauDoiHinh" Role="MauDoiHinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MauDoi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MauDoiHinh">
+        <PropertyRef Name="MauDoiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MauDoiHin__Autho__67DE6983">
+    <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="GiayTLModel.MauDoiHinh" Role="MauDoiHinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MauDoiHinh">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuNhap__DanhG__6ABAD62E">
+    <End Type="GiayTLModel.DanhGia" Role="DanhGia" Multiplicity="0..1" />
+    <End Type="GiayTLModel.PhieuNhapKho" Role="PhieuNhapKho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhGia">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhieuNhapKho">
+        <PropertyRef Name="DanhGiaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

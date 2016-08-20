@@ -33,5 +33,13 @@ namespace TLShoes.ViewModels
             DbContext.DanhMucs.AddOrUpdate((DanhMuc)data);
             DbContext.SaveChanges();
         }
+
+        #region Validate
+
+        public bool CheckDuplicate(string data)
+        {
+            return DbContext.DanhMucs.Any(s => s.Ten == data);
+        }
+#endregion
     }
 }

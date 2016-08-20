@@ -152,9 +152,9 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
             this.lblDonHangId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.lblDonHangId.Location = new System.Drawing.Point(37, 25);
             this.lblDonHangId.Name = "lblDonHangId";
-            this.lblDonHangId.Size = new System.Drawing.Size(63, 16);
+            this.lblDonHangId.Size = new System.Drawing.Size(56, 16);
             this.lblDonHangId.TabIndex = 78;
-            this.lblDonHangId.Text = "Đơn Hàng";
+            this.lblDonHangId.Text = "Mã Hàng";
             // 
             // xtraTabControl1
             // 

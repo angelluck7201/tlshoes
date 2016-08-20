@@ -18,6 +18,7 @@ namespace TLShoes
         public MauDoi()
         {
             this.CongNgheSanXuats = new HashSet<CongNgheSanXuat>();
+            this.MauDoiHinhs = new HashSet<MauDoiHinh>();
         }
     
         public long Id { get; set; }
@@ -35,5 +36,7 @@ namespace TLShoes
         public virtual ICollection<CongNgheSanXuat> CongNgheSanXuats { get; set; }
         public virtual DonHang DonHang { get; set; }
         public virtual UserAccount UserAccount { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MauDoiHinh> MauDoiHinhs { get; set; }
     }
 }

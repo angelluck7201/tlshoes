@@ -30,9 +30,12 @@ namespace TLShoes
         public string LyDo { get; set; }
         public string Kho { get; set; }
         public Nullable<long> NgayNhap { get; set; }
+        public string SoPhieu { get; set; }
+        public Nullable<long> DanhGiaId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietNhapKho> ChiTietNhapKhoes { get; set; }
         public virtual UserAccount UserAccount { get; set; }
+        public virtual DanhGia DanhGia { get; set; }
     }
 }

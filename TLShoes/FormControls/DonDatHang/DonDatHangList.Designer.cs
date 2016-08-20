@@ -36,8 +36,12 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DanhGia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemRatingControl1 = new DevExpress.XtraEditors.Repository.RepositoryItemRatingControl();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRatingControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
@@ -46,6 +50,8 @@
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
+            this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemRatingControl1});
             this.gridControl.Size = new System.Drawing.Size(852, 520);
             this.gridControl.TabIndex = 0;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -59,10 +65,15 @@
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
-            this.gridColumn6});
+            this.gridColumn6,
+            this.DanhGia,
+            this.gridColumn7});
             this.gridView.GridControl = this.gridControl;
+            this.gridView.GroupCount = 1;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
+            this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
             // 
             // gridColumn1
@@ -111,6 +122,30 @@
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 4;
             // 
+            // DanhGia
+            // 
+            this.DanhGia.Caption = "Đánh Giá";
+            this.DanhGia.ColumnEdit = this.repositoryItemRatingControl1;
+            this.DanhGia.FieldName = "DanhGia";
+            this.DanhGia.Name = "DanhGia";
+            this.DanhGia.Visible = true;
+            this.DanhGia.VisibleIndex = 5;
+            // 
+            // repositoryItemRatingControl1
+            // 
+            this.repositoryItemRatingControl1.AutoHeight = false;
+            this.repositoryItemRatingControl1.FillPrecision = DevExpress.XtraEditors.RatingItemFillPrecision.Exact;
+            this.repositoryItemRatingControl1.Name = "repositoryItemRatingControl1";
+            this.repositoryItemRatingControl1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Số Đơn ĐH";
+            this.gridColumn7.FieldName = "SoDonDH";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 0;
+            // 
             // ucDonDatHangList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -120,6 +155,7 @@
             this.Size = new System.Drawing.Size(852, 520);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRatingControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -134,5 +170,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn DanhGia;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRatingControl repositoryItemRatingControl1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
     }
 }

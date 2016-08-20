@@ -25,7 +25,13 @@ namespace TLShoes.Common
             DON_VI_TINH,
             PHAN_XUONG,
             LOAI_NGUYEN_LIEU,
-            TIEU_CHI_QC
+            TIEU_CHI_QC,
+        }
+
+        public enum ModelType
+        {
+            CHILENH,
+            HUONG_DAN_DONG_GOI
         }
 
         public static Dictionary<LoaiDanhMuc, string> LoaiDanhMucDic = new Dictionary<LoaiDanhMuc, string>()
@@ -69,6 +75,18 @@ namespace TLShoes.Common
         {
             {LoaiXuat.TRONG_CHI_LENH, "TRONG CHỈ LỆNH"},
             {LoaiXuat.NGOAI_CHI_LENH, "NGOÀI CHỈ LỆNH"},
-           };
+         };
+
+        public enum LoaiDong
+        {
+            ASSORTMENT,
+            SOLID
+        }
+
+        public static Dictionary<LoaiDong, string> LoaiDongDic = new Dictionary<LoaiDong, string>()
+        {
+            {LoaiDong.ASSORTMENT, "ASSORTMENT"},
+            {LoaiDong.SOLID, "SOLID"},
+         };
     }
 }

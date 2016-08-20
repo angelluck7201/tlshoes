@@ -40,6 +40,7 @@ namespace TLShoes.FormControls.ChiLenh
             if (data != null)
             {
                 SF.Get<NguyenLieuChiLenhViewModel>().GetDataSource(data.Id, ref NguyenLieuChiLenhList);
+                SF.Get<NhatKyThayDoiViewModel>().GetDataSource(gridNhatKy, Define.ModelType.CHILENH, data.Id);
             }
 
             gridControl.DataSource = NguyenLieuChiLenhList;
@@ -110,11 +111,25 @@ namespace TLShoes.FormControls.ChiLenh
                     }
                 }
             }
+
+            var nhatKyThayDoi = new NhatKyThayDoi();
+            nhatKyThayDoi.GhiChu = LyDoThayDoi.Text;
+            nhatKyThayDoi.ModelName = Define.ModelType.CHILENH.ToString();
+            nhatKyThayDoi.ItemId = saveData.Id;
+            CRUD.DecorateSaveData(nhatKyThayDoi);
+            SF.Get<NhatKyThayDoiViewModel>().Save(nhatKyThayDoi);
             return true;
         }
 
         public string ValidateInput()
         {
+            if (!string.IsNullOrEmpty(defaultInfo.Controls["Id"].Text))
+            {
+                if (string.IsNullOrEmpty(LyDoThayDoi.Text))
+                {
+                    return "lý do thay đổi";
+                }
+            }
             return string.Empty;
         }
 

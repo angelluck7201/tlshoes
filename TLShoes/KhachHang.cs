@@ -18,6 +18,7 @@ namespace TLShoes
         public KhachHang()
         {
             this.DonHangs = new HashSet<DonHang>();
+            this.MauHuongDanDongGois = new HashSet<MauHuongDanDongGoi>();
         }
     
         public long Id { get; set; }
@@ -47,5 +48,7 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }
         public virtual UserAccount UserAccount { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MauHuongDanDongGoi> MauHuongDanDongGois { get; set; }
     }
 }

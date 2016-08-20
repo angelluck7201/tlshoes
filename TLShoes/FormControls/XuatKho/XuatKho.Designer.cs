@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucXuatKho));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.SoDH = new System.Windows.Forms.TextBox();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.PhieuXuatKho_LoaiXuat = new System.Windows.Forms.ComboBox();
             this.lblLoaiXuat = new DevExpress.XtraEditors.LabelControl();
             this.PhieuXuatKho_Kho = new System.Windows.Forms.ComboBox();
@@ -84,7 +86,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(3, 3);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(708, 610);
+            this.xtraTabControl1.Size = new System.Drawing.Size(708, 697);
             this.xtraTabControl1.TabIndex = 115;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -105,6 +107,8 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.xtraTabPage2.Controls.Add(this.SoDH);
+            this.xtraTabPage2.Controls.Add(this.labelControl1);
             this.xtraTabPage2.Controls.Add(this.PhieuXuatKho_LoaiXuat);
             this.xtraTabPage2.Controls.Add(this.lblLoaiXuat);
             this.xtraTabPage2.Controls.Add(this.PhieuXuatKho_Kho);
@@ -122,15 +126,32 @@
             this.xtraTabPage2.Controls.Add(this.lblNgayXuat);
             this.xtraTabPage2.Controls.Add(this.lblKho);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(701, 574);
+            this.xtraTabPage2.Size = new System.Drawing.Size(701, 661);
             this.xtraTabPage2.Text = "Phiếu Nhập Kho";
+            // 
+            // SoDH
+            // 
+            this.SoDH.Enabled = false;
+            this.SoDH.Location = new System.Drawing.Point(178, 80);
+            this.SoDH.Name = "SoDH";
+            this.SoDH.Size = new System.Drawing.Size(509, 23);
+            this.SoDH.TabIndex = 124;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Location = new System.Drawing.Point(24, 82);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(44, 17);
+            this.labelControl1.TabIndex = 122;
+            this.labelControl1.Text = "Số ĐH";
             // 
             // PhieuXuatKho_LoaiXuat
             // 
             this.PhieuXuatKho_LoaiXuat.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.PhieuXuatKho_LoaiXuat.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.PhieuXuatKho_LoaiXuat.FormattingEnabled = true;
-            this.PhieuXuatKho_LoaiXuat.Location = new System.Drawing.Point(179, 407);
+            this.PhieuXuatKho_LoaiXuat.Location = new System.Drawing.Point(179, 442);
             this.PhieuXuatKho_LoaiXuat.Name = "PhieuXuatKho_LoaiXuat";
             this.PhieuXuatKho_LoaiXuat.Size = new System.Drawing.Size(508, 24);
             this.PhieuXuatKho_LoaiXuat.TabIndex = 121;
@@ -138,7 +159,7 @@
             // lblLoaiXuat
             // 
             this.lblLoaiXuat.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblLoaiXuat.Location = new System.Drawing.Point(30, 413);
+            this.lblLoaiXuat.Location = new System.Drawing.Point(30, 448);
             this.lblLoaiXuat.Name = "lblLoaiXuat";
             this.lblLoaiXuat.Size = new System.Drawing.Size(65, 17);
             this.lblLoaiXuat.TabIndex = 120;
@@ -149,7 +170,7 @@
             this.PhieuXuatKho_Kho.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.PhieuXuatKho_Kho.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.PhieuXuatKho_Kho.FormattingEnabled = true;
-            this.PhieuXuatKho_Kho.Location = new System.Drawing.Point(179, 307);
+            this.PhieuXuatKho_Kho.Location = new System.Drawing.Point(179, 342);
             this.PhieuXuatKho_Kho.Name = "PhieuXuatKho_Kho";
             this.PhieuXuatKho_Kho.Size = new System.Drawing.Size(508, 24);
             this.PhieuXuatKho_Kho.TabIndex = 119;
@@ -170,17 +191,18 @@
             this.PhieuXuatKho_DonHangId.Name = "PhieuXuatKho_DonHangId";
             this.PhieuXuatKho_DonHangId.Size = new System.Drawing.Size(509, 24);
             this.PhieuXuatKho_DonHangId.TabIndex = 118;
+            this.PhieuXuatKho_DonHangId.SelectedIndexChanged += new System.EventHandler(this.PhieuXuatKho_DonHangId_SelectedIndexChanged);
             // 
             // PhieuXuatKho_BoPhan
             // 
-            this.PhieuXuatKho_BoPhan.Location = new System.Drawing.Point(178, 255);
+            this.PhieuXuatKho_BoPhan.Location = new System.Drawing.Point(178, 290);
             this.PhieuXuatKho_BoPhan.Name = "PhieuXuatKho_BoPhan";
             this.PhieuXuatKho_BoPhan.Size = new System.Drawing.Size(509, 23);
             this.PhieuXuatKho_BoPhan.TabIndex = 116;
             // 
             // PhieuXuatKho_DiaChi
             // 
-            this.PhieuXuatKho_DiaChi.Location = new System.Drawing.Point(178, 138);
+            this.PhieuXuatKho_DiaChi.Location = new System.Drawing.Point(178, 173);
             this.PhieuXuatKho_DiaChi.Name = "PhieuXuatKho_DiaChi";
             this.PhieuXuatKho_DiaChi.Size = new System.Drawing.Size(509, 96);
             this.PhieuXuatKho_DiaChi.TabIndex = 114;
@@ -188,14 +210,14 @@
             // 
             // PhieuXuatKho_NgayXuat
             // 
-            this.PhieuXuatKho_NgayXuat.Location = new System.Drawing.Point(178, 357);
+            this.PhieuXuatKho_NgayXuat.Location = new System.Drawing.Point(178, 392);
             this.PhieuXuatKho_NgayXuat.Name = "PhieuXuatKho_NgayXuat";
             this.PhieuXuatKho_NgayXuat.Size = new System.Drawing.Size(509, 23);
             this.PhieuXuatKho_NgayXuat.TabIndex = 113;
             // 
             // PhieuXuatKho_NguoiNhan
             // 
-            this.PhieuXuatKho_NguoiNhan.Location = new System.Drawing.Point(178, 88);
+            this.PhieuXuatKho_NguoiNhan.Location = new System.Drawing.Point(178, 123);
             this.PhieuXuatKho_NguoiNhan.Name = "PhieuXuatKho_NguoiNhan";
             this.PhieuXuatKho_NguoiNhan.Size = new System.Drawing.Size(509, 23);
             this.PhieuXuatKho_NguoiNhan.TabIndex = 112;
@@ -203,7 +225,7 @@
             // lblNguoiNhan
             // 
             this.lblNguoiNhan.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNguoiNhan.Location = new System.Drawing.Point(27, 88);
+            this.lblNguoiNhan.Location = new System.Drawing.Point(27, 123);
             this.lblNguoiNhan.Name = "lblNguoiNhan";
             this.lblNguoiNhan.Size = new System.Drawing.Size(83, 17);
             this.lblNguoiNhan.TabIndex = 80;
@@ -212,7 +234,7 @@
             // lblDiaChi
             // 
             this.lblDiaChi.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDiaChi.Location = new System.Drawing.Point(29, 141);
+            this.lblDiaChi.Location = new System.Drawing.Point(29, 176);
             this.lblDiaChi.Name = "lblDiaChi";
             this.lblDiaChi.Size = new System.Drawing.Size(48, 17);
             this.lblDiaChi.TabIndex = 88;
@@ -220,7 +242,7 @@
             // 
             // PhieuXuatKho_LyDo
             // 
-            this.PhieuXuatKho_LyDo.Location = new System.Drawing.Point(178, 453);
+            this.PhieuXuatKho_LyDo.Location = new System.Drawing.Point(178, 488);
             this.PhieuXuatKho_LyDo.Name = "PhieuXuatKho_LyDo";
             this.PhieuXuatKho_LyDo.Size = new System.Drawing.Size(509, 96);
             this.PhieuXuatKho_LyDo.TabIndex = 91;
@@ -229,7 +251,7 @@
             // lblBoPhan
             // 
             this.lblBoPhan.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblBoPhan.Location = new System.Drawing.Point(29, 258);
+            this.lblBoPhan.Location = new System.Drawing.Point(29, 293);
             this.lblBoPhan.Name = "lblBoPhan";
             this.lblBoPhan.Size = new System.Drawing.Size(58, 17);
             this.lblBoPhan.TabIndex = 96;
@@ -238,7 +260,7 @@
             // lblLyDo
             // 
             this.lblLyDo.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblLyDo.Location = new System.Drawing.Point(30, 456);
+            this.lblLyDo.Location = new System.Drawing.Point(30, 491);
             this.lblLyDo.Name = "lblLyDo";
             this.lblLyDo.Size = new System.Drawing.Size(36, 16);
             this.lblLyDo.TabIndex = 99;
@@ -247,7 +269,7 @@
             // lblNgayXuat
             // 
             this.lblNgayXuat.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNgayXuat.Location = new System.Drawing.Point(29, 363);
+            this.lblNgayXuat.Location = new System.Drawing.Point(29, 398);
             this.lblNgayXuat.Name = "lblNgayXuat";
             this.lblNgayXuat.Size = new System.Drawing.Size(73, 17);
             this.lblNgayXuat.TabIndex = 105;
@@ -256,7 +278,7 @@
             // lblKho
             // 
             this.lblKho.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblKho.Location = new System.Drawing.Point(29, 311);
+            this.lblKho.Location = new System.Drawing.Point(29, 346);
             this.lblKho.Name = "lblKho";
             this.lblKho.Size = new System.Drawing.Size(24, 16);
             this.lblKho.TabIndex = 102;
@@ -268,7 +290,7 @@
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.defaultInfo);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(701, 574);
+            this.xtraTabPage1.Size = new System.Drawing.Size(701, 661);
             this.xtraTabPage1.Text = "Thông tin người dùng";
             // 
             // defaultInfo
@@ -276,7 +298,7 @@
             this.defaultInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defaultInfo.Location = new System.Drawing.Point(0, 0);
             this.defaultInfo.Name = "defaultInfo";
-            this.defaultInfo.Size = new System.Drawing.Size(701, 574);
+            this.defaultInfo.Size = new System.Drawing.Size(701, 661);
             this.defaultInfo.TabIndex = 11;
             // 
             // xtraTabPage3
@@ -291,7 +313,7 @@
             this.xtraTabPage3.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage3.Controls.Add(this.gridNguyenLieu);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(701, 574);
+            this.xtraTabPage3.Size = new System.Drawing.Size(701, 661);
             this.xtraTabPage3.Text = "Chi Tiết";
             // 
             // gridNguyenLieu
@@ -369,14 +391,14 @@
             this.btnDeleteNguyenLieu.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Appearance.Image")));
             this.btnDeleteNguyenLieu.Appearance.Options.UseImage = true;
             this.btnDeleteNguyenLieu.AutoHeight = false;
-            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
-            serializableAppearanceObject1.Options.UseBackColor = true;
-            serializableAppearanceObject1.Options.UseBorderColor = true;
-            serializableAppearanceObject1.Options.UseImage = true;
+            serializableAppearanceObject2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject2.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
+            serializableAppearanceObject2.Options.UseBackColor = true;
+            serializableAppearanceObject2.Options.UseBorderColor = true;
+            serializableAppearanceObject2.Options.UseImage = true;
             this.btnDeleteNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteNguyenLieu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteNguyenLieu.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDeleteNguyenLieu.Name = "btnDeleteNguyenLieu";
@@ -391,7 +413,7 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(445, 632);
+            this.btnSave.Location = new System.Drawing.Point(445, 719);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 117;
@@ -406,7 +428,7 @@
             this.btnSaveContinue.Appearance.Options.UseFont = true;
             this.btnSaveContinue.Appearance.Options.UseForeColor = true;
             this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(526, 632);
+            this.btnSaveContinue.Location = new System.Drawing.Point(526, 719);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
             this.btnSaveContinue.TabIndex = 118;
@@ -421,7 +443,7 @@
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
             this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(6, 632);
+            this.btnCancel.Location = new System.Drawing.Point(6, 719);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 119;
@@ -437,7 +459,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucXuatKho";
-            this.Size = new System.Drawing.Size(715, 706);
+            this.Size = new System.Drawing.Size(715, 757);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
@@ -486,5 +508,7 @@
         private System.Windows.Forms.ComboBox PhieuXuatKho_Kho;
         private System.Windows.Forms.ComboBox PhieuXuatKho_LoaiXuat;
         private DevExpress.XtraEditors.LabelControl lblLoaiXuat;
+        private System.Windows.Forms.TextBox SoDH;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

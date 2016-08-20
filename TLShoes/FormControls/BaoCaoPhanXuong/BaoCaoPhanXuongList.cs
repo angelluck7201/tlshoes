@@ -27,7 +27,7 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
         {
             dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
             var info = SF.Get<BaoCaoPhanXuongViewModel>().GetDetail(data.Id);
-            FormFactory<Main>.Get().ShowPopupInfo(info);
+            FormFactory<Main>.Get().ShowPopupInfo(new ucBaoCaoPhanXuong(info));
         }
 
     }

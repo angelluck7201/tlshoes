@@ -45,7 +45,7 @@
             this.lblFax = new DevExpress.XtraEditors.LabelControl();
             this.lblEmail = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.defaultInfo1 = new TLShoes.Form.DefaultInfo();
+            this.defaultInfo1 = new DefaultInfo();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lblTongThe = new DevExpress.XtraEditors.LabelControl();

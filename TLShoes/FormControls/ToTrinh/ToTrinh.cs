@@ -84,6 +84,7 @@ namespace TLShoes.FormControls.ToTrinh
 
                 ToTrinh_BoSung.Text = xuatKhoBoSung.ToString();
                 ToTrinh_ThuHoi.Text = thuHoi.ToString();
+                ToTrinh_TonToTrinh.Text = tonToTrinh.ToString();
                 ToTrinh_TonTheKho.Text = tonTheKho.ToString();
                 ToTrinh_DuKien.Text = "0";
                 if (luyKe < 0)

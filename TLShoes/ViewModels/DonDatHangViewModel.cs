@@ -14,6 +14,11 @@ namespace TLShoes.ViewModels
             return DbContext.DonDatHangs.ToList();
         }
 
+        public List<DonDatHang> GetListByNhaCungCap(long nhaCungCapId)
+        {
+            return DbContext.DonDatHangs.Where(s => s.NhaCungCapId == nhaCungCapId).ToList();
+        }
+
         public List<ChiTietDonDatHang> GetList(long donDatHangId)
         {
             return GetDetail(donDatHangId).ChiTietDonDatHangs.ToList();
@@ -29,11 +34,13 @@ namespace TLShoes.ViewModels
             control.DataSource = GetList().Select(s => new
             {
                 s.Id,
+                SoDonDH = s.SoDH,
                 NhaCungCap = s.NhaCungCap.TenCongTy,
                 NgayDatHang = TimeHelper.TimestampToString(s.NgayDatHang, "d"),
                 NgayGiaoHang = TimeHelper.TimestampToString(s.NgayGiaoHang, "d"),
                 SoLuong = s.ChiTietDonDatHangs.Sum(a => a.SoLuong),
                 SoLuongThuc = s.ChiTietDonDatHangs.Sum(a => a.SoLuongThuc),
+                DanhGia = (new List<int?>() { s.Gia, s.DichVuGiaoHang, s.DatTestHoa, s.DatTestLy, s.DichVuHauMai, s.DungThoiGian, s.DichVuHauMai, s.DungYeuCauKyThuat, s.Khac }.Where(a => a > 0).Average())
 
             }).ToList();
         }

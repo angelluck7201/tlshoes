@@ -18,6 +18,11 @@ namespace TLShoes.ViewModels
             return DbContext.MauDois.Where(s => s.DonHangId == donHangId).ToList();
         }
 
+        public List<MauDoiHinh> GetHinhMauDoi(long mauDoiId)
+        {
+            return DbContext.MauDoiHinhs.Where(s => s.MauDoiId == mauDoiId).ToList();
+        } 
+
         public MauDoi GetDetail(long id)
         {
             return DbContext.MauDois.Find(id);
@@ -110,6 +115,16 @@ namespace TLShoes.ViewModels
             else
             {
                 DbContext.MauDois.AddOrUpdate((MauDoi)data);
+            }
+            DbContext.SaveChanges();
+        }
+
+        public void SaveHinh(List<MauDoiHinh> listHinh, long mauDoiId)
+        {
+            foreach (var hinh in listHinh)
+            {
+                hinh.MauDoiId = mauDoiId;
+                DbContext.MauDoiHinhs.AddOrUpdate(hinh);
             }
             DbContext.SaveChanges();
         }

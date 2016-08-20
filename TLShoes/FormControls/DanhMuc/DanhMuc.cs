@@ -31,7 +31,7 @@ namespace TLShoes
             var validateResult = ValidateInput();
             if (!string.IsNullOrEmpty(validateResult))
             {
-                MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
+                MessageBox.Show(validateResult);
                 return false;
             }
             var id = PrimitiveConvert.StringToInt(defaultInfo.Controls["Id"].Text);
@@ -65,7 +65,11 @@ namespace TLShoes
         {
             if (string.IsNullOrEmpty(DanhMuc_Ten.Text))
             {
-                return lblTen.Text;
+                return string.Format("{0} {1}!", "Không được phép để trống", lblTen.Text);
+            }
+            if (SF.Get<DanhMucViewModel>().CheckDuplicate(DanhMuc_Ten.Text))
+            {
+                return string.Format("{0} {1}!", DanhMuc_Ten.Text, "đã tồn tại trong hệ thống");
             }
             return string.Empty;
         }

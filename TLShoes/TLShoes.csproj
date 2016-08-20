@@ -96,6 +96,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <Private>True</Private>
     </Reference>
@@ -144,6 +145,9 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="ChiTietDonHang.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChiTietHuongDanDongGoi.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="ChiTietMauDanhGia.cs">
@@ -266,6 +270,12 @@
     <Compile Include="FormControls\BaoCaoPhanXuong\BaoCaoTongHop.Designer.cs">
       <DependentUpon>BaoCaoTongHop.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormControls\NhatKyThayDoi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\NhatKyThayDoi.Designer.cs">
+      <DependentUpon>NhatKyThayDoi.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormControls\DanhGia\DanhGia.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -289,6 +299,30 @@
     </Compile>
     <Compile Include="FormControls\DonDatHang\DonDatHangList.Designer.cs">
       <DependentUpon>DonDatHangList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\HuongDanDongGoi\HuongDanDongGoi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\HuongDanDongGoi\HuongDanDongGoi.Designer.cs">
+      <DependentUpon>HuongDanDongGoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\HuongDanDongGoi\HuongDanDongGoiList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\HuongDanDongGoi\HuongDanDongGoiList.Designer.cs">
+      <DependentUpon>HuongDanDongGoiList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\HuongDanDongGoi\MauHuongDanDongGoi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\HuongDanDongGoi\MauHuongDanDongGoi.Designer.cs">
+      <DependentUpon>MauHuongDanDongGoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\HuongDanDongGoi\MauHuongDanDongGoiList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\HuongDanDongGoi\MauHuongDanDongGoiList.Designer.cs">
+      <DependentUpon>MauHuongDanDongGoiList.cs</DependentUpon>
     </Compile>
     <Compile Include="FormControls\MauDanhGia\MauDanhGia.cs">
       <SubType>UserControl</SubType>
@@ -319,6 +353,12 @@
     </Compile>
     <Compile Include="FormControls\NhaCungCap\NhaCungCapList.Designer.cs">
       <DependentUpon>NhaCungCapList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\NhaCungCap\TongHopNhaCungCap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\NhaCungCap\TongHopNhaCungCap.Designer.cs">
+      <DependentUpon>TongHopNhaCungCap.cs</DependentUpon>
     </Compile>
     <Compile Include="FormControls\ToTrinh\ToTrinhList.cs">
       <SubType>UserControl</SubType>
@@ -503,6 +543,9 @@
     <Compile Include="FormControls\ToTrinh\ToTrinh.Designer.cs">
       <DependentUpon>ToTrinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="HuongDanDongGoi.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="KeHoachSanXuat.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -513,6 +556,12 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="MauDoi.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MauDoiHinh.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MauHuongDanDongGoi.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="MauSanXuat.cs">
@@ -534,6 +583,9 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="NhaCungCapVatTu.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NhatKyThayDoi.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="PhieuNhapKho.cs">
@@ -561,6 +613,9 @@
     <Compile Include="ViewModels\ChiTietToTrinhViewModel.cs" />
     <Compile Include="ViewModels\ChiTietXuatKhoViewModel.cs" />
     <Compile Include="ViewModels\ChiTietNhapKhoViewModel.cs" />
+    <Compile Include="ViewModels\NhatKyThayDoiViewModel.cs" />
+    <Compile Include="ViewModels\HuongDanDongGoiViewModel.cs" />
+    <Compile Include="ViewModels\MauHuongDanDongGoiViewModel.cs" />
     <Compile Include="ViewModels\DanhGiaViewModel.cs" />
     <Compile Include="ViewModels\MauDanhGiaViewModel.cs" />
     <Compile Include="ViewModels\DonDatHangViewModel.cs" />
@@ -642,6 +697,9 @@
     <EmbeddedResource Include="FormControls\BaoCaoPhanXuong\BaoCaoTongHop.resx">
       <DependentUpon>BaoCaoTongHop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\NhatKyThayDoi.resx">
+      <DependentUpon>NhatKyThayDoi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormControls\DanhGia\DanhGia.resx">
       <DependentUpon>DanhGia.cs</DependentUpon>
     </EmbeddedResource>
@@ -653,6 +711,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\DonDatHang\DonDatHangList.resx">
       <DependentUpon>DonDatHangList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\HuongDanDongGoi\HuongDanDongGoi.resx">
+      <DependentUpon>HuongDanDongGoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\HuongDanDongGoi\HuongDanDongGoiList.resx">
+      <DependentUpon>HuongDanDongGoiList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\HuongDanDongGoi\MauHuongDanDongGoi.resx">
+      <DependentUpon>MauHuongDanDongGoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\HuongDanDongGoi\MauHuongDanDongGoiList.resx">
+      <DependentUpon>MauHuongDanDongGoiList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\MauDanhGia\MauDanhGia.resx">
       <DependentUpon>MauDanhGia.cs</DependentUpon>
@@ -668,6 +738,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\NhaCungCap\NhaCungCapList.resx">
       <DependentUpon>NhaCungCapList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\NhaCungCap\TongHopNhaCungCap.resx">
+      <DependentUpon>TongHopNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\ToTrinh\ToTrinhList.resx">
       <DependentUpon>ToTrinhList.cs</DependentUpon>

@@ -88,9 +88,9 @@
             this.lblNgayKetQuaTestLy.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.lblNgayKetQuaTestLy.Location = new System.Drawing.Point(39, 123);
             this.lblNgayKetQuaTestLy.Name = "lblNgayKetQuaTestLy";
-            this.lblNgayKetQuaTestLy.Size = new System.Drawing.Size(104, 16);
+            this.lblNgayKetQuaTestLy.Size = new System.Drawing.Size(53, 16);
             this.lblNgayKetQuaTestLy.TabIndex = 41;
-            this.lblNgayKetQuaTestLy.Text = "Ngày KQ Test Lý";
+            this.lblNgayKetQuaTestLy.Text = "Ngày KQ";
             // 
             // lblPhanLoaiTestLyId
             // 

@@ -574,6 +574,7 @@
             // 
             // NhaCungCap_Khac
             // 
+            this.NhaCungCap_Khac.Enabled = false;
             this.NhaCungCap_Khac.Location = new System.Drawing.Point(186, 193);
             this.NhaCungCap_Khac.Name = "NhaCungCap_Khac";
             this.NhaCungCap_Khac.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -590,7 +591,7 @@
             // lblDichVuHauMai
             // 
             this.lblDichVuHauMai.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDichVuHauMai.Location = new System.Drawing.Point(359, 142);
+            this.lblDichVuHauMai.Location = new System.Drawing.Point(359, 148);
             this.lblDichVuHauMai.Name = "lblDichVuHauMai";
             this.lblDichVuHauMai.Size = new System.Drawing.Size(111, 17);
             this.lblDichVuHauMai.TabIndex = 63;
@@ -598,7 +599,8 @@
             // 
             // NhaCungCap_DichVuHauMai
             // 
-            this.NhaCungCap_DichVuHauMai.Location = new System.Drawing.Point(513, 141);
+            this.NhaCungCap_DichVuHauMai.Enabled = false;
+            this.NhaCungCap_DichVuHauMai.Location = new System.Drawing.Point(513, 147);
             this.NhaCungCap_DichVuHauMai.Name = "NhaCungCap_DichVuHauMai";
             this.NhaCungCap_DichVuHauMai.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
             this.NhaCungCap_DichVuHauMai.Rating = new decimal(new int[] {
@@ -614,7 +616,7 @@
             // lblDichVuGiaoHang
             // 
             this.lblDichVuGiaoHang.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDichVuGiaoHang.Location = new System.Drawing.Point(359, 107);
+            this.lblDichVuGiaoHang.Location = new System.Drawing.Point(359, 113);
             this.lblDichVuGiaoHang.Name = "lblDichVuGiaoHang";
             this.lblDichVuGiaoHang.Size = new System.Drawing.Size(127, 17);
             this.lblDichVuGiaoHang.TabIndex = 61;
@@ -622,7 +624,8 @@
             // 
             // NhaCungCap_DichVuGiaoHang
             // 
-            this.NhaCungCap_DichVuGiaoHang.Location = new System.Drawing.Point(513, 105);
+            this.NhaCungCap_DichVuGiaoHang.Enabled = false;
+            this.NhaCungCap_DichVuGiaoHang.Location = new System.Drawing.Point(513, 111);
             this.NhaCungCap_DichVuGiaoHang.Name = "NhaCungCap_DichVuGiaoHang";
             this.NhaCungCap_DichVuGiaoHang.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
             this.NhaCungCap_DichVuGiaoHang.Rating = new decimal(new int[] {
@@ -646,6 +649,7 @@
             // 
             // NhaCungCap_Gia
             // 
+            this.NhaCungCap_Gia.Enabled = false;
             this.NhaCungCap_Gia.Location = new System.Drawing.Point(186, 154);
             this.NhaCungCap_Gia.Name = "NhaCungCap_Gia";
             this.NhaCungCap_Gia.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -670,6 +674,7 @@
             // 
             // NhaCungCap_DungYeuCauKyThuat
             // 
+            this.NhaCungCap_DungYeuCauKyThuat.Enabled = false;
             this.NhaCungCap_DungYeuCauKyThuat.Location = new System.Drawing.Point(186, 115);
             this.NhaCungCap_DungYeuCauKyThuat.Name = "NhaCungCap_DungYeuCauKyThuat";
             this.NhaCungCap_DungYeuCauKyThuat.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -686,7 +691,7 @@
             // lblDatTestHoa
             // 
             this.lblDatTestHoa.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDatTestHoa.Location = new System.Drawing.Point(359, 72);
+            this.lblDatTestHoa.Location = new System.Drawing.Point(359, 78);
             this.lblDatTestHoa.Name = "lblDatTestHoa";
             this.lblDatTestHoa.Size = new System.Drawing.Size(91, 17);
             this.lblDatTestHoa.TabIndex = 53;
@@ -694,7 +699,8 @@
             // 
             // NhaCungCap_DatTestHoa
             // 
-            this.NhaCungCap_DatTestHoa.Location = new System.Drawing.Point(513, 69);
+            this.NhaCungCap_DatTestHoa.Enabled = false;
+            this.NhaCungCap_DatTestHoa.Location = new System.Drawing.Point(513, 75);
             this.NhaCungCap_DatTestHoa.Name = "NhaCungCap_DatTestHoa";
             this.NhaCungCap_DatTestHoa.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
             this.NhaCungCap_DatTestHoa.Rating = new decimal(new int[] {
@@ -718,6 +724,7 @@
             // 
             // NhaCungCap_DungMau
             // 
+            this.NhaCungCap_DungMau.Enabled = false;
             this.NhaCungCap_DungMau.Location = new System.Drawing.Point(186, 76);
             this.NhaCungCap_DungMau.Name = "NhaCungCap_DungMau";
             this.NhaCungCap_DungMau.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -742,6 +749,7 @@
             // 
             // NhaCungCap_DatTestLy
             // 
+            this.NhaCungCap_DatTestLy.Enabled = false;
             this.NhaCungCap_DatTestLy.Location = new System.Drawing.Point(513, 33);
             this.NhaCungCap_DatTestLy.Name = "NhaCungCap_DatTestLy";
             this.NhaCungCap_DatTestLy.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -766,6 +774,7 @@
             // 
             // NhaCungCap_DungThoiGian
             // 
+            this.NhaCungCap_DungThoiGian.Enabled = false;
             this.NhaCungCap_DungThoiGian.Location = new System.Drawing.Point(186, 37);
             this.NhaCungCap_DungThoiGian.Name = "NhaCungCap_DungThoiGian";
             this.NhaCungCap_DungThoiGian.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);

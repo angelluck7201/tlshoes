@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using DevExpress.XtraNavBar;
 using TLShoes.Form;
@@ -8,6 +9,7 @@ using TLShoes.FormControls.CongNgheSanXuat;
 using TLShoes.FormControls.DanhGia;
 using TLShoes.FormControls.DonDatHang;
 using TLShoes.FormControls.DonHang;
+using TLShoes.FormControls.HuongDanDongGoi;
 using TLShoes.FormControls.KeHoachSanXuat;
 using TLShoes.FormControls.MauDanhGia;
 using TLShoes.FormControls.MauSanXuat;
@@ -39,7 +41,18 @@ namespace TLShoes
             InitDefault<ucDanhMucList, ucDanhMuc, DanhMuc>("Danh Mục");
         }
 
-        private void InitDefault<T, T1, T2>(string formName = "") where T : UserControl, new()
+        private void InitDefault<T, T1>(string formName = "", List<string> buttonList = null) where T : UserControl, new()
+        {
+            var ucList = FormFactory<T>.Get();
+            currentControl = typeof(T1);
+            currentForm = typeof(T).Name;
+            currentFormName = formName;
+
+            groupBoxView.Text = string.Format("{0} {1}", "Danh sách", formName);
+            GenerateUltilsForm(ucList, buttonList);
+        }
+
+        private void InitDefault<T, T1, T2>(string formName = "", List<string> buttonList = null) where T : UserControl, new()
         {
             var ucList = FormFactory<T>.Get();
             currentControl = typeof(T1);
@@ -48,11 +61,24 @@ namespace TLShoes
             currentFormName = formName;
 
             groupBoxView.Text = string.Format("{0} {1}", "Danh sách", formName);
-            GenerateUltilsForm(ucList);
+            GenerateUltilsForm(ucList, buttonList);
         }
 
-        private void GenerateUltilsForm(UserControl controlList)
+        private void GenerateUltilsForm(UserControl controlList, List<string> buttonList = null)
         {
+            // Custome button
+            var parentControls = this.splitContainerControl1.Panel1.Controls;
+            foreach (Control control in parentControls)
+            {
+                if (buttonList != null && buttonList.Contains(control.Name))
+                {
+                    control.Visible = false;
+                }
+                else
+                {
+                    control.Visible = true;
+                }
+            }
             groupBoxView.Controls.Add(controlList);
             controlList.Dock = DockStyle.Fill;
             controlList.BringToFront();
@@ -153,11 +179,7 @@ namespace TLShoes
 
         private void navTongHop_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            var ucList = FormFactory<ucTongHopMauTestList>.Get();
-            currentForm = typeof(ucTongHopMauTestList).Name;
-            currentControl = typeof(ucTongHopMauTest);
-            GenerateUltilsForm(ucList);
-            ObserverControl.PulishAction("Refresh");
+            InitDefault<ucTongHopMauTestList, ucTongHopMauTest>("Tổng Hợp Mẫu Test", new List<string>() { "btnSave" });
         }
 
         private void navPhieuNhapKho_LinkClicked(object sender, NavBarLinkEventArgs e)
@@ -179,7 +201,8 @@ namespace TLShoes
         {
             var ucList = new ucBaoCaoTongHop();
             currentControl = typeof(ucBaoCaoTongHop);
-            GenerateUltilsForm(ucList);
+            groupBoxView.Text = "Tổng Hợp Báo Cáo";
+            GenerateUltilsForm(ucList, new List<string>() { "btnSave" });
         }
 
         private void navNhaCungCap_LinkClicked(object sender, NavBarLinkEventArgs e)
@@ -200,6 +223,24 @@ namespace TLShoes
         private void navDanhGia_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
             InitDefault<ucDanhGiaList, ucDanhGia, DanhGia>("QC Đánh Giá");
+        }
+
+        private void navMauHuongDanDongGoi_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucMauHuongDanDongGoiList, ucMauHuongDanDongGoi, MauHuongDanDongGoi>("Mẫu Hướng Dẫn Đóng Gói");
+        }
+
+        private void navHuongDanDongGoi_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucHuongDanDongGoiList, ucHuongDanDongGoi, HuongDanDongGoi>("Hướng Dẫn Đóng Gói");
+        }
+
+        private void navTongHopNguyenLieu_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            var ucList = new ucTongHopNhaCungCap();
+            currentControl = typeof(ucNhaCungCap);
+            groupBoxView.Text = "Tổng Hợp Nhà Cung Cấp";
+            GenerateUltilsForm(ucList, new List<string>() { "btnSave" });
         }
     }
 }

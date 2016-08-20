@@ -164,6 +164,18 @@ GhiChu nvarchar(1000),
 
 );
 
+create table MauDoiHinh(
+Id bigint primary key identity(1,1),
+AuthorId bigint foreign key references UserAccount(Id),
+CreatedDate bigint,
+ModifiedDate bigint,
+IsActived bit,
+
+MauDoiId bigint foreign key references MauDoi(Id),
+HinhAnh text,
+GhiChu nvarchar(1000),
+);
+
 drop table MauTest
 create table MauTest(
 Id bigint primary key identity(1,1),
@@ -418,10 +430,11 @@ NhuCau real,
 ThucTe real,
 )
 
-
+alter table PhieuNhapKho add SoPhieu nvarchar(20)
+alter table PhieuNhapKho add DanhGiaId bigint foreign key references DanhGia(Id)
 create table PhieuNhapKho(
 Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),nh
+AuthorId bigint foreign key references UserAccount(Id),
 CreatedDate bigint,
 ModifiedDate bigint,
 IsActived bit,
@@ -431,6 +444,8 @@ DiaChi nvarchar(100),
 LyDo nvarchar(100),
 Kho nvarchar(50),
 NgayNhap bigint,
+SoPhieu nvarchar(20),
+DanhGiaId bigint foreign key references DanhGia(Id)
 )
 
 
@@ -446,7 +461,10 @@ NguyenLieuId bigint foreign key references NguyenLieu(Id),
 SoLuong real,
 )
 
-
+alter table PhieuXuatKho drop constraint FK__PhieuXuat__ChiLe__3FD07829
+alter table PhieuXuatKho drop column ChiLenhId
+alter table PhieuXuatKho add  DonHangId bigint foreign key references DonHang(Id)
+alter table PhieuXuatKho add SoPhieu nvarchar(20)
 create table PhieuXuatKho(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),	
@@ -462,6 +480,7 @@ LyDo nvarchar(100),
 Kho nvarchar(50),
 LoaiXuat nvarchar(50),
 NgayXuat bigint,
+SoPhieu nvarchar(20),
 )
 
 create table ChiTietXuatKho(
@@ -520,7 +539,15 @@ GiaBanDenNgay bigint,
 )
 
 
-alter table DonDatHang add SoDH varchar(20)
+alter table DonDatHang add DungYeuCauKyThuat int
+alter table DonDatHang add DungThoiGian int
+alter table DonDatHang add DungMau int
+alter table DonDatHang add DatTestLy int
+alter table DonDatHang add DatTestHoa int
+alter table DonDatHang add Gia int
+alter table DonDatHang add DichVuGiaoHang int
+alter table DonDatHang add DichVuHauMai int
+alter table DonDatHang add Khac int
 create table DonDatHang(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -532,6 +559,15 @@ SoDH varchar(20),
 NhaCungCapId bigint foreign key references NhaCungCap(Id),
 NgayDatHang bigint,
 NgayGiaoHang bigint,
+DungYeuCauKyThuat int,
+DungThoiGian int,
+DungMau int,
+DatTestLy int,
+DatTestHoa int,
+Gia int,
+DichVuGiaoHang int,
+DichVuHauMai int,
+Khac int,
 )
 
 create table ChiTietDonDatHang(
@@ -571,7 +607,7 @@ MauDanhGiaId bigint foreign key references MauDanhGia(Id),
 TieuChiId bigint foreign key references DanhMuc(Id),
 )
 
-
+alter table DanhGia add SoPhieu nvarchar(20)
 create table DanhGia(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -581,6 +617,7 @@ IsActived bit,
 
 DonDatHangId bigint foreign key references DonDatHang(Id),
 MauDanhGiaId bigint foreign key references MauDanhGia(Id),
+SoPhieu nvarchar(20),
 SoLuongKiem float,
 BienPhapXuLy nvarchar(1000),
 NgayKiem bigint,
@@ -599,6 +636,63 @@ TieuChiId bigint foreign key references DanhMuc(Id),
 SoLuongKem float,
 GhiChu nvarchar(1000),
 )
+
+alter table MauHuongDanDongGoi alter column GhiChu nvarchar(1000)
+create table MauHuongDanDongGoi(
+Id bigint primary key identity(1,1),
+AuthorId bigint foreign key references UserAccount(Id),
+CreatedDate bigint,
+ModifiedDate bigint,
+IsActived bit,
+
+KhachHangId bigint foreign key references KhachHang(Id),
+TenMau nvarchar(50),
+ApDungTuNgay bigint,
+ApDungDenNgay bigint,
+GhiChu nvarchar(1000),
+)
+
+alter table ChiTietHuongDanDongGoi alter column GhiChu nvarchar(1000)
+create table ChiTietHuongDanDongGoi(
+Id bigint primary key identity(1,1),
+AuthorId bigint foreign key references UserAccount(Id),
+CreatedDate bigint,
+ModifiedDate bigint,
+IsActived bit,
+
+MauHuongDanDongGoiId bigint foreign key references MauHuongDanDongGoi(Id),
+DanhMucId bigint foreign key references DanhMuc(Id),
+DonViTinhId bigint foreign key references DanhMuc(Id),
+KichThuoc nvarchar(50),
+MauId bigint foreign key references DanhMuc(Id),
+NguyenLieuId bigint foreign key references NguyenLieu(Id),
+CachSuDung text,
+ViTriSuDung nvarchar(100),
+SoLuong int,
+HinhMauDinhKem text,
+GhiChu nvarchar(1000),
+
+)
+
+alter table HuongDanDongGoi alter column GhiChu nvarchar(1000)
+create table HuongDanDongGoi(
+Id bigint primary key identity(1,1),
+AuthorId bigint foreign key references UserAccount(Id),
+CreatedDate bigint,
+ModifiedDate bigint,
+IsActived bit,
+
+DonHangId bigint foreign key references DonHang(Id),
+MauDongGoiId bigint foreign key references MauHuongDanDongGoi(Id),
+CachDong nvarchar(50),
+DongAssorment text,
+SoLuong int,
+SoDoi int,
+GhiChu nvarchar(1000),
+)
+
+
+ 
 
 
 

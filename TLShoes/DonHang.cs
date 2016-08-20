@@ -24,10 +24,11 @@ namespace TLShoes
             this.KeHoachSanXuats = new HashSet<KeHoachSanXuat>();
             this.MauDois = new HashSet<MauDoi>();
             this.ChiTietToTrinhs = new HashSet<ChiTietToTrinh>();
-            this.PhieuXuatKhoes = new HashSet<PhieuXuatKho>();
             this.MauSanXuats = new HashSet<MauSanXuat>();
             this.MauTests = new HashSet<MauTest>();
             this.MauThuDaos = new HashSet<MauThuDao>();
+            this.HuongDanDongGois = new HashSet<HuongDanDongGoi>();
+            this.PhieuXuatKhoes = new HashSet<PhieuXuatKho>();
         }
     
         public long Id { get; set; }
@@ -72,12 +73,14 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhieuXuatKho> PhieuXuatKhoes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MauSanXuat> MauSanXuats { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MauTest> MauTests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MauThuDao> MauThuDaos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HuongDanDongGoi> HuongDanDongGois { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuXuatKho> PhieuXuatKhoes { get; set; }
     }
 }

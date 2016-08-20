@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure.Design;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using System.Configuration;
 
 namespace TLShoes.Common
 {
@@ -13,6 +15,21 @@ namespace TLShoes.Common
     {
         public static float LIMIT_SIZE = 800;
         public static string FLAG_ROTATE = "FLAG_ROTATE";
+
+
+        private static string _directorPath = "";
+        public static string DirectorPath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_directorPath))
+                {
+                    _directorPath = @ConfigurationManager.AppSettings["FilePath"];
+                }
+                return _directorPath;
+            }
+        }
+
         public static string DefaultImagePath
         {
             get { return Path.Combine(ImagePath, "default.png"); }
@@ -20,7 +37,10 @@ namespace TLShoes.Common
 
         public static string ImagePath
         {
-            get { return Path.Combine(Environment.CurrentDirectory, "image"); }
+            get
+            {
+                return Path.Combine(DirectorPath, "image");
+            }
         }
 
         public static void ShowImagePopup(object sender, EventArgs e)
@@ -83,11 +103,12 @@ namespace TLShoes.Common
             var path = Path.Combine(ImagePath, id.ToString());
 
             // Ignore save file if not update image
-            if (IsFileInUse(path))
-            {
-                DeleteFile(path);
-                image.Save(path);
-            }
+            //            if (IsFileInUse(path))
+            //            {
+            //                DeleteFile(path);
+            var saveImage = new Bitmap(image);
+            saveImage.Save(path);
+            //            }
             return path;
         }
 

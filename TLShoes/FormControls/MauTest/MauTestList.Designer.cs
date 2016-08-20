@@ -38,8 +38,8 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -115,7 +115,7 @@
             this.gridColumn2.FieldName = "PhanLoaiTestLy";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.VisibleIndex = 6;
             // 
             // gridColumn3
             // 
@@ -123,7 +123,7 @@
             this.gridColumn3.FieldName = "NgayKetQuaTestLyFormat";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 6;
+            this.gridColumn3.VisibleIndex = 5;
             // 
             // gridColumn4
             // 
@@ -131,7 +131,7 @@
             this.gridColumn4.FieldName = "PhanLoaiTestHoa";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 5;
+            this.gridColumn4.VisibleIndex = 4;
             // 
             // gridColumn5
             // 
@@ -139,15 +139,7 @@
             this.gridColumn5.FieldName = "NgayKetQuaTestHoaFormat";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
-            // 
-            // repositoryItemImageEdit1
-            // 
-            this.repositoryItemImageEdit1.AutoHeight = false;
-            this.repositoryItemImageEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageEdit1.Name = "repositoryItemImageEdit1";
-            this.repositoryItemImageEdit1.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.gridColumn5.VisibleIndex = 3;
             // 
             // gridColumn6
             // 
@@ -156,6 +148,14 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 2;
+            // 
+            // repositoryItemImageEdit1
+            // 
+            this.repositoryItemImageEdit1.AutoHeight = false;
+            this.repositoryItemImageEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageEdit1.Name = "repositoryItemImageEdit1";
+            this.repositoryItemImageEdit1.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             // 
             // ucMauTestList
             // 

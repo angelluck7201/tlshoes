@@ -269,9 +269,9 @@
             this.lblHaoHut.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.lblHaoHut.Location = new System.Drawing.Point(27, 305);
             this.lblHaoHut.Name = "lblHaoHut";
-            this.lblHaoHut.Size = new System.Drawing.Size(58, 17);
+            this.lblHaoHut.Size = new System.Drawing.Size(87, 17);
             this.lblHaoHut.TabIndex = 85;
-            this.lblHaoHut.Text = "Hao Hụt";
+            this.lblHaoHut.Text = "Hao Hụt(%)";
             // 
             // ToTrinh_HaoHut
             // 

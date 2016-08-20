@@ -242,3 +242,9 @@ C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.MauDanhGia
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.MauDanhGia.ucMauDanhGiaList.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.DanhGia.ucDanhGia.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.DanhGia.ucDanhGiaList.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.HuongDanDongGoi.ucMauHuongDanDongGoi.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.HuongDanDongGoi.ucMauHuongDanDongGoiList.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.HuongDanDongGoi.ucHuongDanDongGoi.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.HuongDanDongGoi.ucHuongDanDongGoiList.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.NhaCungCap.ucTongHopNhaCungCap.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.Form.NhatKyThayDoi.resources

@@ -30,6 +30,15 @@ namespace TLShoes
         public Nullable<long> NgayDatHang { get; set; }
         public Nullable<long> NgayGiaoHang { get; set; }
         public string SoDH { get; set; }
+        public Nullable<int> DungYeuCauKyThuat { get; set; }
+        public Nullable<int> DungThoiGian { get; set; }
+        public Nullable<int> DungMau { get; set; }
+        public Nullable<int> DatTestLy { get; set; }
+        public Nullable<int> DatTestHoa { get; set; }
+        public Nullable<int> Gia { get; set; }
+        public Nullable<int> DichVuGiaoHang { get; set; }
+        public Nullable<int> DichVuHauMai { get; set; }
+        public Nullable<int> Khac { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }

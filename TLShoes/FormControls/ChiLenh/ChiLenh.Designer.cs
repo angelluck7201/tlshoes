@@ -81,6 +81,14 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.lblLyDo = new DevExpress.XtraEditors.LabelControl();
+            this.LyDoThayDoi = new System.Windows.Forms.RichTextBox();
+            this.gridNhatKy = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChiLenh_Mau)).BeginInit();
@@ -99,6 +107,9 @@ namespace TLShoes.FormControls.ChiLenh
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridNhatKy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ChiLenh_DonHangId
@@ -509,7 +520,8 @@ namespace TLShoes.FormControls.ChiLenh
             this.xtraTabControl1.TabIndex = 72;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPage2
             // 
@@ -608,6 +620,86 @@ namespace TLShoes.FormControls.ChiLenh
             this.simpleButton1.TabIndex = 15;
             this.simpleButton1.Text = "Lưu Và Tiếp Tục";
             // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Appearance.Header.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage3.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage3.Appearance.Header.Options.UseBackColor = true;
+            this.xtraTabPage3.Appearance.Header.Options.UseFont = true;
+            this.xtraTabPage3.Appearance.HeaderActive.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage3.Appearance.HeaderActive.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage3.Appearance.HeaderActive.Options.UseBackColor = true;
+            this.xtraTabPage3.Appearance.HeaderActive.Options.UseFont = true;
+            this.xtraTabPage3.Controls.Add(this.lblLyDo);
+            this.xtraTabPage3.Controls.Add(this.LyDoThayDoi);
+            this.xtraTabPage3.Controls.Add(this.gridNhatKy);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(1093, 871);
+            this.xtraTabPage3.Text = "Nhật Ký Thay Đổi";
+            // 
+            // lblLyDo
+            // 
+            this.lblLyDo.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblLyDo.Location = new System.Drawing.Point(41, 30);
+            this.lblLyDo.Name = "lblLyDo";
+            this.lblLyDo.Size = new System.Drawing.Size(104, 17);
+            this.lblLyDo.TabIndex = 95;
+            this.lblLyDo.Text = "Lý Do Thay Đổi";
+            // 
+            // LyDoThayDoi
+            // 
+            this.LyDoThayDoi.Location = new System.Drawing.Point(169, 28);
+            this.LyDoThayDoi.Name = "LyDoThayDoi";
+            this.LyDoThayDoi.Size = new System.Drawing.Size(900, 100);
+            this.LyDoThayDoi.TabIndex = 96;
+            this.LyDoThayDoi.Text = "";
+            // 
+            // gridNhatKy
+            // 
+            this.gridNhatKy.Location = new System.Drawing.Point(31, 144);
+            this.gridNhatKy.MainView = this.gridView1;
+            this.gridNhatKy.Name = "gridNhatKy";
+            this.gridNhatKy.Size = new System.Drawing.Size(1038, 672);
+            this.gridNhatKy.TabIndex = 94;
+            this.gridNhatKy.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn7,
+            this.gridColumn15,
+            this.gridColumn16});
+            this.gridView1.GridControl = this.gridNhatKy;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsCustomization.AllowGroup = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Ngày Thay Đổi";
+            this.gridColumn7.FieldName = "CreatedDate";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 0;
+            this.gridColumn7.Width = 164;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Lý Do";
+            this.gridColumn15.FieldName = "GhiChu";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 1;
+            this.gridColumn15.Width = 518;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "Id";
+            this.gridColumn16.FieldName = "Id";
+            this.gridColumn16.Name = "gridColumn16";
+            // 
             // ucChiLenh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -639,6 +731,10 @@ namespace TLShoes.FormControls.ChiLenh
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
             this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
+            this.xtraTabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridNhatKy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -694,5 +790,13 @@ namespace TLShoes.FormControls.ChiLenh
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private DevExpress.XtraEditors.LabelControl lblLyDo;
+        private System.Windows.Forms.RichTextBox LyDoThayDoi;
+        private DevExpress.XtraGrid.GridControl gridNhatKy;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
     }
 }

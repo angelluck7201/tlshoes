@@ -36,8 +36,6 @@
             this.lblMaNguyenLieu = new DevExpress.XtraEditors.LabelControl();
             this.NguyenLieu_DonViTinh = new System.Windows.Forms.ComboBox();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.NguyenLieu_SoLuong = new System.Windows.Forms.TextBox();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.NguyenLieu_GhiChu = new System.Windows.Forms.RichTextBox();
             this.lblGhiChu = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
@@ -119,26 +117,9 @@
             this.labelControl1.TabIndex = 89;
             this.labelControl1.Text = "Đơn Vị Tính";
             // 
-            // NguyenLieu_SoLuong
-            // 
-            this.NguyenLieu_SoLuong.Location = new System.Drawing.Point(157, 189);
-            this.NguyenLieu_SoLuong.Name = "NguyenLieu_SoLuong";
-            this.NguyenLieu_SoLuong.Size = new System.Drawing.Size(529, 23);
-            this.NguyenLieu_SoLuong.TabIndex = 92;
-            this.NguyenLieu_SoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NguyenLieu_SoLuong_KeyPress);
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl2.Location = new System.Drawing.Point(27, 192);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(67, 17);
-            this.labelControl2.TabIndex = 91;
-            this.labelControl2.Text = "Số Lượng";
-            // 
             // NguyenLieu_GhiChu
             // 
-            this.NguyenLieu_GhiChu.Location = new System.Drawing.Point(157, 232);
+            this.NguyenLieu_GhiChu.Location = new System.Drawing.Point(157, 193);
             this.NguyenLieu_GhiChu.Name = "NguyenLieu_GhiChu";
             this.NguyenLieu_GhiChu.Size = new System.Drawing.Size(529, 96);
             this.NguyenLieu_GhiChu.TabIndex = 94;
@@ -147,7 +128,7 @@
             // lblGhiChu
             // 
             this.lblGhiChu.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblGhiChu.Location = new System.Drawing.Point(29, 236);
+            this.lblGhiChu.Location = new System.Drawing.Point(29, 197);
             this.lblGhiChu.Name = "lblGhiChu";
             this.lblGhiChu.Size = new System.Drawing.Size(47, 16);
             this.lblGhiChu.TabIndex = 93;
@@ -188,9 +169,7 @@
             this.xtraTabPage2.Controls.Add(this.lblLoaiNguyenLieuId);
             this.xtraTabPage2.Controls.Add(this.lblGhiChu);
             this.xtraTabPage2.Controls.Add(this.NguyenLieu_LoaiNguyenLieuId);
-            this.xtraTabPage2.Controls.Add(this.NguyenLieu_SoLuong);
             this.xtraTabPage2.Controls.Add(this.lblTen);
-            this.xtraTabPage2.Controls.Add(this.labelControl2);
             this.xtraTabPage2.Controls.Add(this.NguyenLieu_Ten);
             this.xtraTabPage2.Controls.Add(this.NguyenLieu_DonViTinh);
             this.xtraTabPage2.Controls.Add(this.lblMaNguyenLieu);
@@ -292,8 +271,6 @@
         private DevExpress.XtraEditors.LabelControl lblMaNguyenLieu;
         private System.Windows.Forms.ComboBox NguyenLieu_DonViTinh;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private System.Windows.Forms.TextBox NguyenLieu_SoLuong;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private System.Windows.Forms.RichTextBox NguyenLieu_GhiChu;
         private DevExpress.XtraEditors.LabelControl lblGhiChu;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;

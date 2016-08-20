@@ -44,6 +44,17 @@ namespace TLShoes.FormControls.DonHang
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.HinhId = new System.Windows.Forms.RichTextBox();
+            this.btnSaveHinh = new DevExpress.XtraEditors.SimpleButton();
+            this.GhiChuHinh = new System.Windows.Forms.RichTextBox();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.gridHinhAnh = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HinhHinh = new DevExpress.XtraEditors.PictureEdit();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
@@ -52,6 +63,10 @@ namespace TLShoes.FormControls.DonHang
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridHinhAnh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HinhHinh.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // MauDoi_DonHangId
@@ -143,7 +158,7 @@ namespace TLShoes.FormControls.DonHang
             // 
             this.xtraTabControl1.Appearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
             this.xtraTabControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.xtraTabControl1.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.xtraTabControl1.Appearance.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.xtraTabControl1.Appearance.Options.UseBorderColor = true;
             this.xtraTabControl1.Appearance.Options.UseFont = true;
             this.xtraTabControl1.Appearance.Options.UseForeColor = true;
@@ -154,7 +169,8 @@ namespace TLShoes.FormControls.DonHang
             this.xtraTabControl1.TabIndex = 66;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPage2
             // 
@@ -200,6 +216,120 @@ namespace TLShoes.FormControls.DonHang
             this.defaultInfo.Name = "defaultInfo";
             this.defaultInfo.Size = new System.Drawing.Size(701, 558);
             this.defaultInfo.TabIndex = 11;
+            // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Appearance.Header.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage3.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage3.Appearance.Header.Options.UseBackColor = true;
+            this.xtraTabPage3.Appearance.Header.Options.UseFont = true;
+            this.xtraTabPage3.Appearance.HeaderActive.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage3.Appearance.HeaderActive.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage3.Appearance.HeaderActive.Options.UseBackColor = true;
+            this.xtraTabPage3.Appearance.HeaderActive.Options.UseFont = true;
+            this.xtraTabPage3.Controls.Add(this.HinhId);
+            this.xtraTabPage3.Controls.Add(this.btnSaveHinh);
+            this.xtraTabPage3.Controls.Add(this.GhiChuHinh);
+            this.xtraTabPage3.Controls.Add(this.labelControl1);
+            this.xtraTabPage3.Controls.Add(this.gridHinhAnh);
+            this.xtraTabPage3.Controls.Add(this.HinhHinh);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(701, 558);
+            this.xtraTabPage3.Text = "Hình";
+            // 
+            // HinhId
+            // 
+            this.HinhId.Enabled = false;
+            this.HinhId.Location = new System.Drawing.Point(404, 483);
+            this.HinhId.Name = "HinhId";
+            this.HinhId.Size = new System.Drawing.Size(25, 21);
+            this.HinhId.TabIndex = 63;
+            this.HinhId.Text = "";
+            this.HinhId.Visible = false;
+            // 
+            // btnSaveHinh
+            // 
+            this.btnSaveHinh.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnSaveHinh.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnSaveHinh.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSaveHinh.Appearance.Options.UseBackColor = true;
+            this.btnSaveHinh.Appearance.Options.UseFont = true;
+            this.btnSaveHinh.Appearance.Options.UseForeColor = true;
+            this.btnSaveHinh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnSaveHinh.Location = new System.Drawing.Point(587, 478);
+            this.btnSaveHinh.Name = "btnSaveHinh";
+            this.btnSaveHinh.Size = new System.Drawing.Size(99, 30);
+            this.btnSaveHinh.TabIndex = 62;
+            this.btnSaveHinh.Text = "Lưu Hình";
+            this.btnSaveHinh.Click += new System.EventHandler(this.btnSaveHinh_Click);
+            // 
+            // GhiChuHinh
+            // 
+            this.GhiChuHinh.Location = new System.Drawing.Point(461, 28);
+            this.GhiChuHinh.Name = "GhiChuHinh";
+            this.GhiChuHinh.Size = new System.Drawing.Size(225, 142);
+            this.GhiChuHinh.TabIndex = 60;
+            this.GhiChuHinh.Text = "";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Location = new System.Drawing.Point(380, 28);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(47, 16);
+            this.labelControl1.TabIndex = 61;
+            this.labelControl1.Text = "Ghi Chú";
+            // 
+            // gridHinhAnh
+            // 
+            this.gridHinhAnh.Location = new System.Drawing.Point(22, 28);
+            this.gridHinhAnh.MainView = this.gridView1;
+            this.gridHinhAnh.Name = "gridHinhAnh";
+            this.gridHinhAnh.Size = new System.Drawing.Size(343, 480);
+            this.gridHinhAnh.TabIndex = 7;
+            this.gridHinhAnh.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3});
+            this.gridView1.GridControl = this.gridHinhAnh;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.Click += new System.EventHandler(this.gridView1_Click);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Ghi Chú";
+            this.gridColumn1.FieldName = "GhiChu";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Id";
+            this.gridColumn2.FieldName = "Id";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "gridColumn3";
+            this.gridColumn3.FieldName = "HinhAnh";
+            this.gridColumn3.Name = "gridColumn3";
+            // 
+            // HinhHinh
+            // 
+            this.HinhHinh.Location = new System.Drawing.Point(404, 194);
+            this.HinhHinh.Name = "HinhHinh";
+            this.HinhHinh.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.True;
+            this.HinhHinh.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.HinhHinh.Size = new System.Drawing.Size(282, 255);
+            this.HinhHinh.TabIndex = 6;
+            this.HinhHinh.TabStop = true;
             // 
             // btnCancel
             // 
@@ -263,6 +393,11 @@ namespace TLShoes.FormControls.DonHang
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
             this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
+            this.xtraTabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridHinhAnh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HinhHinh.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -286,5 +421,16 @@ namespace TLShoes.FormControls.DonHang
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private System.Windows.Forms.RichTextBox GhiChuHinh;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraGrid.GridControl gridHinhAnh;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.PictureEdit HinhHinh;
+        private DevExpress.XtraEditors.SimpleButton btnSaveHinh;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private System.Windows.Forms.RichTextBox HinhId;
     }
 }

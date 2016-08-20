@@ -37,6 +37,7 @@ namespace TLShoes.FormControls.XuatKho
                 SF.Get<ChiTietXuatKhoViewModel>().GetDataSource(data.Id, ref ChiTietXuatKhoList);
                 PhieuXuatKho_Kho.SelectedValue = PrimitiveConvert.StringToEnum<Define.Kho>(data.Kho);
                 PhieuXuatKho_LoaiXuat.SelectedValue = PrimitiveConvert.StringToEnum<Define.LoaiXuat>(data.LoaiXuat);
+                DonHangChange((long)data.DonHangId);
             }
 
             gridNguyenLieu.DataSource = ChiTietXuatKhoList;
@@ -62,6 +63,32 @@ namespace TLShoes.FormControls.XuatKho
                 return false;
             }
 
+            // Validate Xuat Kho
+            var donHangId = PhieuXuatKho_DonHangId.SelectedValue;
+            if (donHangId != null)
+            {
+                var validateMessage = "";
+                var chiLenhInfo = SF.Get<DonHangViewModel>().GetDetail((long)donHangId).ChiLenhs.FirstOrDefault();
+                if (chiLenhInfo != null)
+                {
+                    foreach (var chitiet in ChiTietXuatKhoList)
+                    {
+                        bool isOk = chiLenhInfo.NguyenLieuChiLenhs.Any(s => s.DinhMucThuc >= chitiet.SoLuong && s.ChiTietNguyenLieux.Any(a => a.NguyenLieu.Id == chitiet.NguyenLieuId));
+
+                        if (!isOk)
+                        {
+                            validateMessage += string.Format("{0} không phù hợp với chỉ lệnh \r\n", chitiet.NguyenLieu.Ten);
+                        }
+                    }
+                }
+                if (!string.IsNullOrEmpty(validateMessage))
+                {
+                    var confirmResult = MessageBox.Show(validateMessage, "Bạn có muốn chắc tiếp tục xuất kho", MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.No)
+                        return false;
+                }
+            }
+
             var saveData = CRUD.GetFormObject<PhieuXuatKho>(FormControls);
             SF.Get<PhieuXuatKhoViewModel>().Save(saveData);
 
@@ -84,14 +111,14 @@ namespace TLShoes.FormControls.XuatKho
                 {
                     SF.Get<ChiTietXuatKhoViewModel>().Delete(deleteItem.Id);
                 }
-            } 
-           
+            }
+
             return true;
         }
 
         public string ValidateInput()
         {
-            
+
             return string.Empty;
         }
 
@@ -99,7 +126,22 @@ namespace TLShoes.FormControls.XuatKho
         {
             gridViewNguyenLieu.DeleteRow(gridViewNguyenLieu.FocusedRowHandle);
         }
+
+        private void PhieuXuatKho_DonHangId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var donHangobj = PhieuXuatKho_DonHangId.SelectedValue;
+            if (donHangobj != null)
+            {
+                DonHangChange((long)donHangobj);
+            }
+        }
+
+        private void DonHangChange(long donHangId)
+        {
+            var donHangInfo = SF.Get<DonHangViewModel>().GetDetail(donHangId);
+            SoDH.Text = donHangInfo.OrderNo;
+        }
     }
 
-    
+
 }

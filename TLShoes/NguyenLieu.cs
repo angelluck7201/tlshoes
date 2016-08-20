@@ -24,6 +24,7 @@ namespace TLShoes
             this.ChiTietXuatKhoes = new HashSet<ChiTietXuatKho>();
             this.NhaCungCapVatTus = new HashSet<NhaCungCapVatTu>();
             this.ChiTietDonDatHangs = new HashSet<ChiTietDonDatHang>();
+            this.ChiTietHuongDanDongGois = new HashSet<ChiTietHuongDanDongGoi>();
         }
     
         public long Id { get; set; }
@@ -56,5 +57,7 @@ namespace TLShoes
         public virtual ICollection<NhaCungCapVatTu> NhaCungCapVatTus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietHuongDanDongGoi> ChiTietHuongDanDongGois { get; set; }
     }
 }

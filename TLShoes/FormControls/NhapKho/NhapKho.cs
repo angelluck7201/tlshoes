@@ -23,6 +23,10 @@ namespace TLShoes.FormControls.NhapKho
             PhieuNhapKho_Kho.DisplayMember = "Value";
             PhieuNhapKho_Kho.ValueMember = "Key";
 
+            PhieuNhapKho_DanhGiaId.DataSource = new BindingSource(SF.Get<DanhGiaViewModel>().GetList(), null);
+            PhieuNhapKho_DanhGiaId.DisplayMember = "SoPhieu";
+            PhieuNhapKho_DanhGiaId.ValueMember = "Id";
+
             if (data != null)
             {
                 SF.Get<ChiTietNhapKhoViewModel>().GetDataSource(data.Id, ref ChiTietNhapKhoList);
@@ -44,6 +48,7 @@ namespace TLShoes.FormControls.NhapKho
 
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
 
+            DanhGiaChange();
         }
 
         public override bool SaveData()
@@ -90,6 +95,48 @@ namespace TLShoes.FormControls.NhapKho
         {
             gridViewNguyenLieu.DeleteRow(gridViewNguyenLieu.FocusedRowHandle);
         }
+
+        private void NhapKho_DanhGiaId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DanhGiaChange();
+        }
+
+        private void PhieuNhapKho_Kho_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            KhoChange();
+        }
+
+        private void KhoChange()
+        {
+            var selectedValue = PhieuNhapKho_Kho.SelectedValue;
+            if (selectedValue != null)
+            {
+                var soPhieu = "";
+                foreach (var item in selectedValue.ToString().Split('_'))
+                {
+                    soPhieu += item[0];
+                }
+                var currentDate = DateTime.UtcNow;
+                soPhieu = string.Format("{0}_{1}_{2}", soPhieu, currentDate.Month, currentDate.Day);
+                PhieuNhapKho_SoPhieu.Text = soPhieu;
+            }
+        }
+
+        private void DanhGiaChange()
+        {
+            var selectedValue = PhieuNhapKho_DanhGiaId.SelectedValue;
+            if (selectedValue != null)
+            {
+                var danhGiaInfo = SF.Get<DanhGiaViewModel>().GetDetail((long)selectedValue);
+                lblSoDonHang.Text = string.Format("Số đơn hàng: {0}",danhGiaInfo.DonDatHang.SoDH);
+            }
+            else
+            {
+                lblSoDonHang.Text = "";
+            }
+        }
+
+     
     }
 
 

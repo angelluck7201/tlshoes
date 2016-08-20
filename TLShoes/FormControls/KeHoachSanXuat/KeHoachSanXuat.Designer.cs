@@ -530,7 +530,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucKeHoachSanXuat";
-            this.Size = new System.Drawing.Size(716, 729);
+            this.Size = new System.Drawing.Size(716, 678);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);

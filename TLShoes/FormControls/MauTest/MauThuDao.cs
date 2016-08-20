@@ -106,8 +106,7 @@ namespace TLShoes.FormControls.MauThuDao
         private void MauThuDao_DonHangId_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             var donHangId = MauThuDao_DonHangId.SelectedValue;
-            if (donHangId != null)
-            {
+            if (donHangId != null){
                 if (CurrentDonHang == (long)donHangId) return;
                 var donHang = SF.Get<DonHangViewModel>().GetDetail((long)donHangId);
                 if (donHang == null) return;
