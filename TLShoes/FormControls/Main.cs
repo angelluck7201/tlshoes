@@ -18,6 +18,7 @@ using TLShoes.FormControls.MauThuDao;
 using TLShoes.FormControls.NguyenLieu;
 using TLShoes.FormControls.NhaCungCap;
 using TLShoes.FormControls.NhapKho;
+using TLShoes.FormControls.TheKho;
 using TLShoes.FormControls.TongHopMauTest;
 using TLShoes.FormControls.ToTrinh;
 using TLShoes.FormControls.XuatKho;
@@ -34,9 +35,15 @@ namespace TLShoes
         public static Type currentControl;
         public static string currentFormName = "";
 
+        public static Dictionary<string, Control> FeaturesDict = new Dictionary<string, Control>();
+
         public Main()
         {
             InitializeComponent();
+
+            FeaturesDict.Add(btnSave.Name, btnSave);
+            FeaturesDict.Add(btnRefresh.Name, btnRefresh);
+            FeaturesDict.Add(btnExport.Name, btnExport);
 
             InitDefault<ucDanhMucList, ucDanhMuc, DanhMuc>("Danh Mục");
         }
@@ -94,6 +101,16 @@ namespace TLShoes
             ShowPopupInfo();
         }
 
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            var saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Excel |*.xls";
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                ObserverControl.PulishAction("Export", saveDialog.FileName);
+            }
+        }
+
         public void ShowPopupInfo(object data = null)
         {
             var addForm = (UserControl)Activator.CreateInstance(currentControl, data);
@@ -112,7 +129,7 @@ namespace TLShoes
             ObserverControl.Regist("Close", currentForm, () => { this.Enabled = true; });
         }
 
-        private void navDanhMuc_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        private void navDanhMuc_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
             InitDefault<ucDanhMucList, ucDanhMuc, DanhMuc>("Danh Mục");
         }
@@ -240,6 +257,14 @@ namespace TLShoes
             var ucList = new ucTongHopNhaCungCap();
             currentControl = typeof(ucNhaCungCap);
             groupBoxView.Text = "Tổng Hợp Nhà Cung Cấp";
+            GenerateUltilsForm(ucList, new List<string>() { "btnSave" });
+        }
+
+        private void navTheKho_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            var ucList = new ucTheKhoList();
+            currentControl = typeof(ucTheKhoList);
+            groupBoxView.Text = "Thẻ kho";
             GenerateUltilsForm(ucList, new List<string>() { "btnSave" });
         }
     }
