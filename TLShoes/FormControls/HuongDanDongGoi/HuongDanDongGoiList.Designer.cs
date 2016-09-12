@@ -86,6 +86,8 @@
             // 
             // gridColumn10
             // 
+            this.gridColumn10.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn10.AppearanceHeader.Options.UseFont = true;
             this.gridColumn10.Caption = "Khách Hàng";
             this.gridColumn10.FieldName = "TenCongTy";
             this.gridColumn10.Name = "gridColumn10";
@@ -94,6 +96,8 @@
             // 
             // gridColumn9
             // 
+            this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn9.AppearanceHeader.Options.UseFont = true;
             this.gridColumn9.Caption = "Số Đôi/Thùng";
             this.gridColumn9.FieldName = "DoiThung";
             this.gridColumn9.Name = "gridColumn9";
@@ -108,6 +112,8 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "Mã Hàng";
             this.gridColumn2.FieldName = "MaHang";
             this.gridColumn2.Name = "gridColumn2";
@@ -116,6 +122,8 @@
             // 
             // gridColumn4
             // 
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn4.AppearanceHeader.Options.UseFont = true;
             this.gridColumn4.Caption = "Hình";
             this.gridColumn4.ColumnEdit = this.repositoryItemPictureEdit1;
             this.gridColumn4.FieldName = "Hinh";
@@ -130,6 +138,8 @@
             // 
             // gridColumn5
             // 
+            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.Caption = "Số Thùng";
             this.gridColumn5.FieldName = "SoThung";
             this.gridColumn5.Name = "gridColumn5";
@@ -138,6 +148,8 @@
             // 
             // gridColumn6
             // 
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "Số Đơn Hàng";
             this.gridColumn6.FieldName = "SoDH";
             this.gridColumn6.Name = "gridColumn6";
@@ -146,6 +158,8 @@
             // 
             // gridColumn7
             // 
+            this.gridColumn7.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn7.AppearanceHeader.Options.UseFont = true;
             this.gridColumn7.Caption = "Cách Đóng";
             this.gridColumn7.FieldName = "CachDong";
             this.gridColumn7.Name = "gridColumn7";
@@ -154,6 +168,8 @@
             // 
             // gridColumn8
             // 
+            this.gridColumn8.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn8.AppearanceHeader.Options.UseFont = true;
             this.gridColumn8.Caption = "Đóng Assortment";
             this.gridColumn8.FieldName = "DongAssorment";
             this.gridColumn8.Name = "gridColumn8";
@@ -162,6 +178,8 @@
             // 
             // gridColumn3
             // 
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
             this.gridColumn3.Caption = "Số Lượng";
             this.gridColumn3.FieldName = "SoLuong";
             this.gridColumn3.Name = "gridColumn3";
@@ -170,6 +188,8 @@
             // 
             // gridColumn11
             // 
+            this.gridColumn11.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn11.AppearanceHeader.Options.UseFont = true;
             this.gridColumn11.Caption = "Tổng Đơn Hàng";
             this.gridColumn11.FieldName = "SoLuongDonHang";
             this.gridColumn11.Name = "gridColumn11";

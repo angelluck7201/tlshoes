@@ -10,16 +10,31 @@ namespace TLShoes.FormControls.DonHang
         {
             InitializeComponent();
 
-            SF.Get<MauDoiViewModel>().GetDataSource(gridControl);
+            ReloadData();
 
             ObserverControl.Regist("ucMauDoi", "ucMauDoiList", ReloadData);
             ObserverControl.Regist("Refresh", "ucMauDoiList", ReloadData);
             ObserverControl.Regist("Close", "ucMauDoiList", ReloadData);
+            ObserverControl.Regist("Export", "ucMauDoiList", Export);
+
         }
 
         public void ReloadData()
         {
             SF.Get<MauDoiViewModel>().GetDataSource(gridControl);
+            if (gridView.RowCount > 0)
+            {
+                Main.FeaturesDict["btnExport"].Visible = true;
+            }
+            else
+            {
+                Main.FeaturesDict["btnExport"].Visible = false;
+            }
+        }
+
+        public void Export(object filePath)
+        {
+            gridView.ExportToXls(filePath.ToString());
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)

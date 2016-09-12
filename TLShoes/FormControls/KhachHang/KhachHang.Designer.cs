@@ -45,7 +45,7 @@
             this.lblFax = new DevExpress.XtraEditors.LabelControl();
             this.lblEmail = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.defaultInfo1 = new DefaultInfo();
+            this.defaultInfo1 = new TLShoes.Form.DefaultInfo();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lblTongThe = new DevExpress.XtraEditors.LabelControl();
@@ -186,21 +186,21 @@
             this.KhachHang_Email.Location = new System.Drawing.Point(161, 218);
             this.KhachHang_Email.Name = "KhachHang_Email";
             this.KhachHang_Email.Size = new System.Drawing.Size(498, 22);
-            this.KhachHang_Email.TabIndex = 38;
+            this.KhachHang_Email.TabIndex = 5;
             // 
             // KhachHang_MatHang
             // 
             this.KhachHang_MatHang.Location = new System.Drawing.Point(161, 140);
             this.KhachHang_MatHang.Name = "KhachHang_MatHang";
             this.KhachHang_MatHang.Size = new System.Drawing.Size(498, 22);
-            this.KhachHang_MatHang.TabIndex = 40;
+            this.KhachHang_MatHang.TabIndex = 3;
             // 
             // KhachHang_TenNguoiDaiDien
             // 
             this.KhachHang_TenNguoiDaiDien.Location = new System.Drawing.Point(161, 179);
             this.KhachHang_TenNguoiDaiDien.Name = "KhachHang_TenNguoiDaiDien";
             this.KhachHang_TenNguoiDaiDien.Size = new System.Drawing.Size(498, 22);
-            this.KhachHang_TenNguoiDaiDien.TabIndex = 28;
+            this.KhachHang_TenNguoiDaiDien.TabIndex = 4;
             // 
             // lblTenNguoiDaiDien
             // 
@@ -216,7 +216,7 @@
             this.KhachHang_Dienthoai.Location = new System.Drawing.Point(161, 62);
             this.KhachHang_Dienthoai.Name = "KhachHang_Dienthoai";
             this.KhachHang_Dienthoai.Size = new System.Drawing.Size(498, 22);
-            this.KhachHang_Dienthoai.TabIndex = 31;
+            this.KhachHang_Dienthoai.TabIndex = 1;
             // 
             // lblDiaChi
             // 
@@ -232,14 +232,14 @@
             this.KhachHang_TenCongTy.Location = new System.Drawing.Point(161, 23);
             this.KhachHang_TenCongTy.Name = "KhachHang_TenCongTy";
             this.KhachHang_TenCongTy.Size = new System.Drawing.Size(498, 22);
-            this.KhachHang_TenCongTy.TabIndex = 34;
+            this.KhachHang_TenCongTy.TabIndex = 0;
             // 
             // KhachHang_DiaChi
             // 
             this.KhachHang_DiaChi.Location = new System.Drawing.Point(161, 257);
             this.KhachHang_DiaChi.Name = "KhachHang_DiaChi";
             this.KhachHang_DiaChi.Size = new System.Drawing.Size(498, 122);
-            this.KhachHang_DiaChi.TabIndex = 33;
+            this.KhachHang_DiaChi.TabIndex = 6;
             this.KhachHang_DiaChi.Text = "";
             // 
             // KhachHang_Fax
@@ -247,7 +247,7 @@
             this.KhachHang_Fax.Location = new System.Drawing.Point(161, 101);
             this.KhachHang_Fax.Name = "KhachHang_Fax";
             this.KhachHang_Fax.Size = new System.Drawing.Size(498, 22);
-            this.KhachHang_Fax.TabIndex = 36;
+            this.KhachHang_Fax.TabIndex = 2;
             // 
             // lblFax
             // 
@@ -370,6 +370,7 @@
             // 
             // KhachHang_Khac
             // 
+            this.KhachHang_Khac.Enabled = false;
             this.KhachHang_Khac.Location = new System.Drawing.Point(186, 193);
             this.KhachHang_Khac.Name = "KhachHang_Khac";
             this.KhachHang_Khac.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -394,6 +395,7 @@
             // 
             // KhachHang_DichVuHauMai
             // 
+            this.KhachHang_DichVuHauMai.Enabled = false;
             this.KhachHang_DichVuHauMai.Location = new System.Drawing.Point(513, 141);
             this.KhachHang_DichVuHauMai.Name = "KhachHang_DichVuHauMai";
             this.KhachHang_DichVuHauMai.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -418,6 +420,7 @@
             // 
             // KhachHang_DichVuGiaoHang
             // 
+            this.KhachHang_DichVuGiaoHang.Enabled = false;
             this.KhachHang_DichVuGiaoHang.Location = new System.Drawing.Point(513, 105);
             this.KhachHang_DichVuGiaoHang.Name = "KhachHang_DichVuGiaoHang";
             this.KhachHang_DichVuGiaoHang.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -442,6 +445,7 @@
             // 
             // KhachHang_Gia
             // 
+            this.KhachHang_Gia.Enabled = false;
             this.KhachHang_Gia.Location = new System.Drawing.Point(186, 154);
             this.KhachHang_Gia.Name = "KhachHang_Gia";
             this.KhachHang_Gia.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -466,6 +470,7 @@
             // 
             // KhachHang_DungYeuCauKyThuat
             // 
+            this.KhachHang_DungYeuCauKyThuat.Enabled = false;
             this.KhachHang_DungYeuCauKyThuat.Location = new System.Drawing.Point(186, 115);
             this.KhachHang_DungYeuCauKyThuat.Name = "KhachHang_DungYeuCauKyThuat";
             this.KhachHang_DungYeuCauKyThuat.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -490,6 +495,7 @@
             // 
             // KhachHang_DatTestHoa
             // 
+            this.KhachHang_DatTestHoa.Enabled = false;
             this.KhachHang_DatTestHoa.Location = new System.Drawing.Point(513, 69);
             this.KhachHang_DatTestHoa.Name = "KhachHang_DatTestHoa";
             this.KhachHang_DatTestHoa.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -514,6 +520,7 @@
             // 
             // KhachHang_DungMau
             // 
+            this.KhachHang_DungMau.Enabled = false;
             this.KhachHang_DungMau.Location = new System.Drawing.Point(186, 76);
             this.KhachHang_DungMau.Name = "KhachHang_DungMau";
             this.KhachHang_DungMau.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -538,6 +545,7 @@
             // 
             // KhachHang_DatTestLy
             // 
+            this.KhachHang_DatTestLy.Enabled = false;
             this.KhachHang_DatTestLy.Location = new System.Drawing.Point(513, 33);
             this.KhachHang_DatTestLy.Name = "KhachHang_DatTestLy";
             this.KhachHang_DatTestLy.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -562,6 +570,7 @@
             // 
             // KhachHang_DungThoiGian
             // 
+            this.KhachHang_DungThoiGian.Enabled = false;
             this.KhachHang_DungThoiGian.Location = new System.Drawing.Point(186, 37);
             this.KhachHang_DungThoiGian.Name = "KhachHang_DungThoiGian";
             this.KhachHang_DungThoiGian.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
@@ -639,7 +648,7 @@
             this.btnCancel.Location = new System.Drawing.Point(5, 501);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 32;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Hủy";
             // 
             // btnSave
@@ -654,7 +663,7 @@
             this.btnSave.Location = new System.Drawing.Point(446, 501);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 33;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
             // 
             // btnSaveContinue
@@ -669,7 +678,7 @@
             this.btnSaveContinue.Location = new System.Drawing.Point(527, 501);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 34;
+            this.btnSaveContinue.TabIndex = 1;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // ucKhachHang

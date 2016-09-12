@@ -40,6 +40,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.gridMauSanXuat = new DevExpress.XtraGrid.GridControl();
@@ -51,7 +52,6 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -128,6 +128,8 @@
             // 
             // colHinh
             // 
+            this.colHinh.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.colHinh.AppearanceHeader.Options.UseFont = true;
             this.colHinh.Caption = "Hình";
             this.colHinh.ColumnEdit = this.repositoryItemPictureEdit1;
             this.colHinh.FieldName = "Hinh";
@@ -149,6 +151,8 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
             this.gridColumn1.Caption = "Mã Hàng";
             this.gridColumn1.FieldName = "MaHang";
             this.gridColumn1.Name = "gridColumn1";
@@ -157,6 +161,8 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "Phân Loại Test Lý";
             this.gridColumn2.FieldName = "PhanLoaiTestLy";
             this.gridColumn2.Name = "gridColumn2";
@@ -165,6 +171,8 @@
             // 
             // gridColumn3
             // 
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
             this.gridColumn3.Caption = "Ngày Kết Quả Test Lý";
             this.gridColumn3.FieldName = "NgayKetQuaTestLyFormat";
             this.gridColumn3.Name = "gridColumn3";
@@ -173,6 +181,8 @@
             // 
             // gridColumn4
             // 
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn4.AppearanceHeader.Options.UseFont = true;
             this.gridColumn4.Caption = "Phân Loại Test Hóa";
             this.gridColumn4.FieldName = "PhanLoaiTestHoa";
             this.gridColumn4.Name = "gridColumn4";
@@ -181,11 +191,23 @@
             // 
             // gridColumn5
             // 
+            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.Caption = "Ngày Kết Quả Test Hóa";
             this.gridColumn5.FieldName = "NgayKetQuaTestHoaFormat";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn12.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn12.Caption = "Số ĐH";
+            this.gridColumn12.FieldName = "SoDH";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 2;
             // 
             // repositoryItemImageEdit1
             // 
@@ -235,6 +257,8 @@
             // 
             // gridColumn6
             // 
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "Hình";
             this.gridColumn6.ColumnEdit = this.repositoryItemPictureEdit2;
             this.gridColumn6.FieldName = "Hinh";
@@ -256,6 +280,8 @@
             // 
             // gridColumn8
             // 
+            this.gridColumn8.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn8.AppearanceHeader.Options.UseFont = true;
             this.gridColumn8.Caption = "Mã Hàng";
             this.gridColumn8.FieldName = "MaHang";
             this.gridColumn8.Name = "gridColumn8";
@@ -264,6 +290,8 @@
             // 
             // gridColumn9
             // 
+            this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn9.AppearanceHeader.Options.UseFont = true;
             this.gridColumn9.Caption = "Ngày Gửi Mẫu";
             this.gridColumn9.FieldName = "NgayGuiMauFormat";
             this.gridColumn9.Name = "gridColumn9";
@@ -272,6 +300,8 @@
             // 
             // gridColumn10
             // 
+            this.gridColumn10.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn10.AppearanceHeader.Options.UseFont = true;
             this.gridColumn10.Caption = "Ngày Kết Quả";
             this.gridColumn10.FieldName = "NgayKetQuaFormat";
             this.gridColumn10.Name = "gridColumn10";
@@ -280,22 +310,18 @@
             // 
             // gridColumn11
             // 
+            this.gridColumn11.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn11.AppearanceHeader.Options.UseFont = true;
             this.gridColumn11.Caption = "Phân Loại Kết Quả";
             this.gridColumn11.FieldName = "PhanLoaiKetQua";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 4;
             // 
-            // gridColumn12
-            // 
-            this.gridColumn12.Caption = "Số ĐH";
-            this.gridColumn12.FieldName = "SoDH";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 2;
-            // 
             // gridColumn13
             // 
+            this.gridColumn13.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn13.AppearanceHeader.Options.UseFont = true;
             this.gridColumn13.Caption = "Số ĐH";
             this.gridColumn13.FieldName = "SoDH";
             this.gridColumn13.Name = "gridColumn13";

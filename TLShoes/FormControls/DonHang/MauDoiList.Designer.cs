@@ -75,6 +75,8 @@
             // 
             // colHinh
             // 
+            this.colHinh.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.colHinh.AppearanceHeader.Options.UseFont = true;
             this.colHinh.Caption = "Hình";
             this.colHinh.ColumnEdit = this.repositoryItemPictureEdit1;
             this.colHinh.FieldName = "Hinh";
@@ -97,6 +99,8 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
             this.gridColumn1.Caption = "Mã Hàng";
             this.gridColumn1.FieldName = "MaHang";
             this.gridColumn1.Name = "gridColumn1";
@@ -105,22 +109,30 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "Ngày Xác Nhận";
             this.gridColumn2.FieldName = "NgayNhanFormat";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 3;
             // 
             // gridColumn3
             // 
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
             this.gridColumn3.Caption = "Mẫu Ngày";
             this.gridColumn3.FieldName = "MauNgayFormat";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 4;
             // 
             // gridColumn4
             // 
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn4.AppearanceHeader.Options.UseFont = true;
             this.gridColumn4.Caption = "Số ĐH";
             this.gridColumn4.FieldName = "SoDH";
             this.gridColumn4.Name = "gridColumn4";

@@ -406,6 +406,10 @@
       <End Role="DanhGia" EntitySet="DanhGias" />
       <End Role="PhieuNhapKho" EntitySet="PhieuNhapKhoes" />
     </AssociationSet>
+    <AssociationSet Name="FK__NguyenLie__MauId__7908F585" Association="GiayTLModel.FK__NguyenLie__MauId__7908F585">
+      <End Role="DanhMuc" EntitySet="DanhMucs" />
+      <End Role="NguyenLieu" EntitySet="NguyenLieux" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="BaoCaoPhanXuong">
     <Key>
@@ -530,6 +534,7 @@
     <NavigationProperty Name="ChiTietHuongDanDongGois" Relationship="GiayTLModel.FK__ChiTietHu__DanhM__345EC57D" FromRole="DanhMuc" ToRole="ChiTietHuongDanDongGoi" />
     <NavigationProperty Name="ChiTietHuongDanDongGois1" Relationship="GiayTLModel.FK__ChiTietHu__DonVi__3552E9B6" FromRole="DanhMuc" ToRole="ChiTietHuongDanDongGoi" />
     <NavigationProperty Name="ChiTietHuongDanDongGois2" Relationship="GiayTLModel.FK__ChiTietHu__MauId__36470DEF" FromRole="DanhMuc" ToRole="ChiTietHuongDanDongGoi" />
+    <NavigationProperty Name="NguyenLieux2" Relationship="GiayTLModel.FK__NguyenLie__MauId__7908F585" FromRole="DanhMuc" ToRole="NguyenLieu" />
   </EntityType>
   <EntityType Name="DonHang">
     <Key>
@@ -573,6 +578,15 @@
     <NavigationProperty Name="MauThuDaos" Relationship="GiayTLModel.FK__MauThuDao__DonHa__3493CFA7" FromRole="DonHang" ToRole="MauThuDao" />
     <NavigationProperty Name="HuongDanDongGois" Relationship="GiayTLModel.FK__HuongDanD__DonHa__3B0BC30C" FromRole="DonHang" ToRole="HuongDanDongGoi" />
     <NavigationProperty Name="PhieuXuatKhoes" Relationship="GiayTLModel.FK__PhieuXuat__DonHa__40C49C62" FromRole="DonHang" ToRole="PhieuXuatKho" />
+    <Property Name="DungYeuCauKyThuat" Type="Int32" />
+    <Property Name="DungThoiGian" Type="Int32" />
+    <Property Name="DungMau" Type="Int32" />
+    <Property Name="DatTestLy" Type="Int32" />
+    <Property Name="DatTestHoa" Type="Int32" />
+    <Property Name="Gia" Type="Int32" />
+    <Property Name="DichVuGiaoHang" Type="Int32" />
+    <Property Name="DichVuHauMai" Type="Int32" />
+    <Property Name="Khac" Type="Int32" />
   </EntityType>
   <EntityType Name="KeHoachSanXuat">
     <Key>
@@ -678,6 +692,9 @@
     <NavigationProperty Name="NhaCungCapVatTus" Relationship="GiayTLModel.FK__NhaCungCa__Nguye__5BAD9CC8" FromRole="NguyenLieu" ToRole="NhaCungCapVatTu" />
     <NavigationProperty Name="ChiTietDonDatHangs" Relationship="GiayTLModel.FK__ChiTietDo__Nguye__7849DB76" FromRole="NguyenLieu" ToRole="ChiTietDonDatHang" />
     <NavigationProperty Name="ChiTietHuongDanDongGois" Relationship="GiayTLModel.FK__ChiTietHu__Nguye__373B3228" FromRole="NguyenLieu" ToRole="ChiTietHuongDanDongGoi" />
+    <Property Name="MauId" Type="Int64" />
+    <Property Name="QuyCach" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DanhMuc2" Relationship="GiayTLModel.FK__NguyenLie__MauId__7908F585" FromRole="NguyenLieu" ToRole="DanhMuc" />
   </EntityType>
   <EntityType Name="UserAccount">
     <Key>
@@ -1278,6 +1295,7 @@
     <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__ChiTietNh__Autho__0F624AF8" FromRole="ChiTietNhapKho" ToRole="UserAccount" />
     <NavigationProperty Name="NguyenLieu" Relationship="GiayTLModel.FK__ChiTietNh__Nguye__114A936A" FromRole="ChiTietNhapKho" ToRole="NguyenLieu" />
     <NavigationProperty Name="PhieuNhapKho" Relationship="GiayTLModel.FK__ChiTietNh__Phieu__10566F31" FromRole="ChiTietNhapKho" ToRole="PhieuNhapKho" />
+    <Property Name="IsUpdateKho" Type="Boolean" />
   </EntityType>
   <EntityType Name="ChiTietXuatKho">
     <Key>
@@ -1294,6 +1312,7 @@
     <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__ChiTietXu__Autho__17F790F9" FromRole="ChiTietXuatKho" ToRole="UserAccount" />
     <NavigationProperty Name="NguyenLieu" Relationship="GiayTLModel.FK__ChiTietXu__Nguye__19DFD96B" FromRole="ChiTietXuatKho" ToRole="NguyenLieu" />
     <NavigationProperty Name="PhieuXuatKho" Relationship="GiayTLModel.FK__ChiTietXu__Phieu__18EBB532" FromRole="ChiTietXuatKho" ToRole="PhieuXuatKho" />
+    <Property Name="IsUpdateKho" Type="Boolean" />
   </EntityType>
   <Association Name="FK__ChiTietNh__Autho__0F624AF8">
     <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
@@ -2326,6 +2345,18 @@
       </Principal>
       <Dependent Role="PhieuNhapKho">
         <PropertyRef Name="DanhGiaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NguyenLie__MauId__7908F585">
+    <End Type="GiayTLModel.DanhMuc" Role="DanhMuc" Multiplicity="0..1" />
+    <End Type="GiayTLModel.NguyenLieu" Role="NguyenLieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMuc">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NguyenLieu">
+        <PropertyRef Name="MauId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

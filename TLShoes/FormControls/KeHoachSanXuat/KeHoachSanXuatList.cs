@@ -10,17 +10,31 @@ namespace TLShoes.FormControls.KeHoachSanXuat
         {
             InitializeComponent();
 
-            SF.Get<KeHoachSanXuatViewModel>().GetDataSource(gridControl);
+            ReloadData();
 
             ObserverControl.Regist("ucKeHoachSanXuat", "ucKeHoachSanXuatList", ReloadData);
             ObserverControl.Regist("Refresh", "ucKeHoachSanXuatList", ReloadData);
             ObserverControl.Regist("Close", "ucKeHoachSanXuatList", ReloadData);
+            ObserverControl.Regist("Export", "ucKeHoachSanXuatList", Export);
 
         }
 
         public void ReloadData()
         {
             SF.Get<KeHoachSanXuatViewModel>().GetDataSource(gridControl);
+            if (bandedGridView1.RowCount > 0)
+            {
+                Main.FeaturesDict["btnExport"].Visible = true;
+            }
+            else
+            {
+                Main.FeaturesDict["btnExport"].Visible = false;
+            }
+        }
+
+        public void Export(object filePath)
+        {
+            bandedGridView1.ExportToXls(filePath.ToString());
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)

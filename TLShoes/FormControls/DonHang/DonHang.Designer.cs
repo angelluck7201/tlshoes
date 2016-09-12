@@ -72,6 +72,28 @@
             this.DonHang_GopYXuongMay = new System.Windows.Forms.RichTextBox();
             this.DonHang_GopYXuongDe = new System.Windows.Forms.RichTextBox();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.lblTongThe = new DevExpress.XtraEditors.LabelControl();
+            this.DanhGiaTongThe = new DevExpress.XtraEditors.RatingControl();
+            this.lblKhac = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_Khac = new DevExpress.XtraEditors.RatingControl();
+            this.lblDichVuHauMai = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_DichVuHauMai = new DevExpress.XtraEditors.RatingControl();
+            this.lblDichVuGiaoHang = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_DichVuGiaoHang = new DevExpress.XtraEditors.RatingControl();
+            this.lblGia = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_Gia = new DevExpress.XtraEditors.RatingControl();
+            this.lblDungYeuCauKyThuat = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_DungYeuCauKyThuat = new DevExpress.XtraEditors.RatingControl();
+            this.lblDatTestHoa = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_DatTestHoa = new DevExpress.XtraEditors.RatingControl();
+            this.lblDungMau = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_DungMau = new DevExpress.XtraEditors.RatingControl();
+            this.lblDatTestLy = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_DatTestLy = new DevExpress.XtraEditors.RatingControl();
+            this.lblDungThoiGian = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_DungThoiGian = new DevExpress.XtraEditors.RatingControl();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
@@ -90,6 +112,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridGopY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.xtraTabPage4.SuspendLayout();
+            this.xtraTabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DanhGiaTongThe.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_Khac.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DichVuHauMai.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DichVuGiaoHang.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_Gia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DungYeuCauKyThuat.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DatTestHoa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DungMau.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DatTestLy.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DungThoiGian.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblHinh
@@ -214,7 +249,8 @@
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3,
-            this.xtraTabPage4});
+            this.xtraTabPage4,
+            this.xtraTabPage5});
             // 
             // xtraTabPage2
             // 
@@ -533,6 +569,293 @@
             this.xtraTabPage4.Size = new System.Drawing.Size(721, 556);
             this.xtraTabPage4.Text = "Đơn hàng";
             // 
+            // xtraTabPage5
+            // 
+            this.xtraTabPage5.Appearance.Header.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage5.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage5.Appearance.Header.Options.UseBackColor = true;
+            this.xtraTabPage5.Appearance.Header.Options.UseFont = true;
+            this.xtraTabPage5.Appearance.HeaderActive.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage5.Appearance.HeaderActive.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage5.Appearance.HeaderActive.Options.UseBackColor = true;
+            this.xtraTabPage5.Appearance.HeaderActive.Options.UseFont = true;
+            this.xtraTabPage5.Controls.Add(this.panelControl1);
+            this.xtraTabPage5.Controls.Add(this.lblKhac);
+            this.xtraTabPage5.Controls.Add(this.DonHang_Khac);
+            this.xtraTabPage5.Controls.Add(this.lblDichVuHauMai);
+            this.xtraTabPage5.Controls.Add(this.DonHang_DichVuHauMai);
+            this.xtraTabPage5.Controls.Add(this.lblDichVuGiaoHang);
+            this.xtraTabPage5.Controls.Add(this.DonHang_DichVuGiaoHang);
+            this.xtraTabPage5.Controls.Add(this.lblGia);
+            this.xtraTabPage5.Controls.Add(this.DonHang_Gia);
+            this.xtraTabPage5.Controls.Add(this.lblDungYeuCauKyThuat);
+            this.xtraTabPage5.Controls.Add(this.DonHang_DungYeuCauKyThuat);
+            this.xtraTabPage5.Controls.Add(this.lblDatTestHoa);
+            this.xtraTabPage5.Controls.Add(this.DonHang_DatTestHoa);
+            this.xtraTabPage5.Controls.Add(this.lblDungMau);
+            this.xtraTabPage5.Controls.Add(this.DonHang_DungMau);
+            this.xtraTabPage5.Controls.Add(this.lblDatTestLy);
+            this.xtraTabPage5.Controls.Add(this.DonHang_DatTestLy);
+            this.xtraTabPage5.Controls.Add(this.lblDungThoiGian);
+            this.xtraTabPage5.Controls.Add(this.DonHang_DungThoiGian);
+            this.xtraTabPage5.Name = "xtraTabPage5";
+            this.xtraTabPage5.Size = new System.Drawing.Size(721, 556);
+            this.xtraTabPage5.Text = "Đánh Giá";
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.lblTongThe);
+            this.panelControl1.Controls.Add(this.DanhGiaTongThe);
+            this.panelControl1.Location = new System.Drawing.Point(216, 309);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(343, 39);
+            this.panelControl1.TabIndex = 104;
+            // 
+            // lblTongThe
+            // 
+            this.lblTongThe.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblTongThe.Appearance.ForeColor = System.Drawing.Color.ForestGreen;
+            this.lblTongThe.Location = new System.Drawing.Point(23, 11);
+            this.lblTongThe.Name = "lblTongThe";
+            this.lblTongThe.Size = new System.Drawing.Size(132, 17);
+            this.lblTongThe.TabIndex = 59;
+            this.lblTongThe.Text = "Đánh Giá Tổng Thể";
+            // 
+            // DanhGiaTongThe
+            // 
+            this.DanhGiaTongThe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DanhGiaTongThe.Location = new System.Drawing.Point(211, 11);
+            this.DanhGiaTongThe.Name = "DanhGiaTongThe";
+            this.DanhGiaTongThe.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.DanhGiaTongThe.Properties.Appearance.Options.UseFont = true;
+            this.DanhGiaTongThe.Properties.FillPrecision = DevExpress.XtraEditors.RatingItemFillPrecision.Exact;
+            this.DanhGiaTongThe.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.DanhGiaTongThe.Properties.ReadOnly = true;
+            this.DanhGiaTongThe.Rating = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DanhGiaTongThe.Size = new System.Drawing.Size(87, 16);
+            this.DanhGiaTongThe.TabIndex = 58;
+            this.DanhGiaTongThe.Text = "ratingControl2";
+            // 
+            // lblKhac
+            // 
+            this.lblKhac.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblKhac.Location = new System.Drawing.Point(27, 186);
+            this.lblKhac.Name = "lblKhac";
+            this.lblKhac.Size = new System.Drawing.Size(31, 16);
+            this.lblKhac.TabIndex = 103;
+            this.lblKhac.Text = "Khác";
+            // 
+            // DonHang_Khac
+            // 
+            this.DonHang_Khac.Location = new System.Drawing.Point(181, 185);
+            this.DonHang_Khac.Name = "DonHang_Khac";
+            this.DonHang_Khac.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.DonHang_Khac.Rating = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DonHang_Khac.Size = new System.Drawing.Size(87, 16);
+            this.DonHang_Khac.TabIndex = 102;
+            this.DonHang_Khac.Text = "ratingControl2";
+            this.DonHang_Khac.EditValueChanged += new System.EventHandler(this.DonHang_Khac_EditValueChanged);
+            // 
+            // lblDichVuHauMai
+            // 
+            this.lblDichVuHauMai.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDichVuHauMai.Location = new System.Drawing.Point(449, 145);
+            this.lblDichVuHauMai.Name = "lblDichVuHauMai";
+            this.lblDichVuHauMai.Size = new System.Drawing.Size(111, 17);
+            this.lblDichVuHauMai.TabIndex = 101;
+            this.lblDichVuHauMai.Text = "Dịch Vụ Hậu Mãi";
+            // 
+            // DonHang_DichVuHauMai
+            // 
+            this.DonHang_DichVuHauMai.Location = new System.Drawing.Point(603, 144);
+            this.DonHang_DichVuHauMai.Name = "DonHang_DichVuHauMai";
+            this.DonHang_DichVuHauMai.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.DonHang_DichVuHauMai.Rating = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DonHang_DichVuHauMai.Size = new System.Drawing.Size(87, 16);
+            this.DonHang_DichVuHauMai.TabIndex = 100;
+            this.DonHang_DichVuHauMai.Text = "ratingControl2";
+            this.DonHang_DichVuHauMai.EditValueChanged += new System.EventHandler(this.DonHang_DichVuHauMai_EditValueChanged);
+            // 
+            // lblDichVuGiaoHang
+            // 
+            this.lblDichVuGiaoHang.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDichVuGiaoHang.Location = new System.Drawing.Point(449, 110);
+            this.lblDichVuGiaoHang.Name = "lblDichVuGiaoHang";
+            this.lblDichVuGiaoHang.Size = new System.Drawing.Size(127, 17);
+            this.lblDichVuGiaoHang.TabIndex = 99;
+            this.lblDichVuGiaoHang.Text = "Dịch Vụ Giao Hàng";
+            // 
+            // DonHang_DichVuGiaoHang
+            // 
+            this.DonHang_DichVuGiaoHang.Location = new System.Drawing.Point(603, 108);
+            this.DonHang_DichVuGiaoHang.Name = "DonHang_DichVuGiaoHang";
+            this.DonHang_DichVuGiaoHang.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.DonHang_DichVuGiaoHang.Rating = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DonHang_DichVuGiaoHang.Size = new System.Drawing.Size(87, 16);
+            this.DonHang_DichVuGiaoHang.TabIndex = 98;
+            this.DonHang_DichVuGiaoHang.Text = "ratingControl2";
+            this.DonHang_DichVuGiaoHang.EditValueChanged += new System.EventHandler(this.DonHang_DichVuGiaoHang_EditValueChanged);
+            // 
+            // lblGia
+            // 
+            this.lblGia.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblGia.Location = new System.Drawing.Point(27, 148);
+            this.lblGia.Name = "lblGia";
+            this.lblGia.Size = new System.Drawing.Size(19, 16);
+            this.lblGia.TabIndex = 97;
+            this.lblGia.Text = "Giá";
+            // 
+            // DonHang_Gia
+            // 
+            this.DonHang_Gia.Location = new System.Drawing.Point(181, 146);
+            this.DonHang_Gia.Name = "DonHang_Gia";
+            this.DonHang_Gia.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.DonHang_Gia.Rating = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DonHang_Gia.Size = new System.Drawing.Size(87, 16);
+            this.DonHang_Gia.TabIndex = 96;
+            this.DonHang_Gia.Text = "ratingControl2";
+            this.DonHang_Gia.EditValueChanged += new System.EventHandler(this.DonHang_Gia_EditValueChanged);
+            // 
+            // lblDungYeuCauKyThuat
+            // 
+            this.lblDungYeuCauKyThuat.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDungYeuCauKyThuat.Location = new System.Drawing.Point(27, 109);
+            this.lblDungYeuCauKyThuat.Name = "lblDungYeuCauKyThuat";
+            this.lblDungYeuCauKyThuat.Size = new System.Drawing.Size(105, 17);
+            this.lblDungYeuCauKyThuat.TabIndex = 95;
+            this.lblDungYeuCauKyThuat.Text = "Đúng Kỹ Thuật";
+            // 
+            // DonHang_DungYeuCauKyThuat
+            // 
+            this.DonHang_DungYeuCauKyThuat.Location = new System.Drawing.Point(181, 107);
+            this.DonHang_DungYeuCauKyThuat.Name = "DonHang_DungYeuCauKyThuat";
+            this.DonHang_DungYeuCauKyThuat.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.DonHang_DungYeuCauKyThuat.Rating = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DonHang_DungYeuCauKyThuat.Size = new System.Drawing.Size(87, 16);
+            this.DonHang_DungYeuCauKyThuat.TabIndex = 94;
+            this.DonHang_DungYeuCauKyThuat.Text = "ratingControl1";
+            this.DonHang_DungYeuCauKyThuat.EditValueChanged += new System.EventHandler(this.DonHang_DungYeuCauKyThuat_EditValueChanged);
+            // 
+            // lblDatTestHoa
+            // 
+            this.lblDatTestHoa.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDatTestHoa.Location = new System.Drawing.Point(449, 75);
+            this.lblDatTestHoa.Name = "lblDatTestHoa";
+            this.lblDatTestHoa.Size = new System.Drawing.Size(91, 17);
+            this.lblDatTestHoa.TabIndex = 93;
+            this.lblDatTestHoa.Text = "Đạt Test Hóa";
+            // 
+            // DonHang_DatTestHoa
+            // 
+            this.DonHang_DatTestHoa.Location = new System.Drawing.Point(603, 72);
+            this.DonHang_DatTestHoa.Name = "DonHang_DatTestHoa";
+            this.DonHang_DatTestHoa.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.DonHang_DatTestHoa.Rating = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DonHang_DatTestHoa.Size = new System.Drawing.Size(87, 16);
+            this.DonHang_DatTestHoa.TabIndex = 92;
+            this.DonHang_DatTestHoa.Text = "ratingControl1";
+            this.DonHang_DatTestHoa.EditValueChanged += new System.EventHandler(this.DonHang_DatTestHoa_EditValueChanged);
+            // 
+            // lblDungMau
+            // 
+            this.lblDungMau.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDungMau.Location = new System.Drawing.Point(27, 70);
+            this.lblDungMau.Name = "lblDungMau";
+            this.lblDungMau.Size = new System.Drawing.Size(71, 17);
+            this.lblDungMau.TabIndex = 91;
+            this.lblDungMau.Text = "Đúng Mẫu";
+            // 
+            // DonHang_DungMau
+            // 
+            this.DonHang_DungMau.Location = new System.Drawing.Point(181, 68);
+            this.DonHang_DungMau.Name = "DonHang_DungMau";
+            this.DonHang_DungMau.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.DonHang_DungMau.Rating = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DonHang_DungMau.Size = new System.Drawing.Size(87, 16);
+            this.DonHang_DungMau.TabIndex = 90;
+            this.DonHang_DungMau.Text = "ratingControl2";
+            this.DonHang_DungMau.EditValueChanged += new System.EventHandler(this.DonHang_DungMau_EditValueChanged);
+            // 
+            // lblDatTestLy
+            // 
+            this.lblDatTestLy.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDatTestLy.Location = new System.Drawing.Point(449, 40);
+            this.lblDatTestLy.Name = "lblDatTestLy";
+            this.lblDatTestLy.Size = new System.Drawing.Size(79, 17);
+            this.lblDatTestLy.TabIndex = 89;
+            this.lblDatTestLy.Text = "Đạt Test Lý";
+            // 
+            // DonHang_DatTestLy
+            // 
+            this.DonHang_DatTestLy.Location = new System.Drawing.Point(603, 36);
+            this.DonHang_DatTestLy.Name = "DonHang_DatTestLy";
+            this.DonHang_DatTestLy.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.DonHang_DatTestLy.Rating = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DonHang_DatTestLy.Size = new System.Drawing.Size(87, 16);
+            this.DonHang_DatTestLy.TabIndex = 88;
+            this.DonHang_DatTestLy.Text = "ratingControl1";
+            this.DonHang_DatTestLy.EditValueChanged += new System.EventHandler(this.DonHang_DatTestLy_EditValueChanged);
+            // 
+            // lblDungThoiGian
+            // 
+            this.lblDungThoiGian.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDungThoiGian.Location = new System.Drawing.Point(27, 31);
+            this.lblDungThoiGian.Name = "lblDungThoiGian";
+            this.lblDungThoiGian.Size = new System.Drawing.Size(106, 17);
+            this.lblDungThoiGian.TabIndex = 87;
+            this.lblDungThoiGian.Text = "Đúng Thời Gian";
+            // 
+            // DonHang_DungThoiGian
+            // 
+            this.DonHang_DungThoiGian.Location = new System.Drawing.Point(181, 29);
+            this.DonHang_DungThoiGian.Name = "DonHang_DungThoiGian";
+            this.DonHang_DungThoiGian.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.DonHang_DungThoiGian.Rating = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.DonHang_DungThoiGian.Size = new System.Drawing.Size(87, 16);
+            this.DonHang_DungThoiGian.TabIndex = 86;
+            this.DonHang_DungThoiGian.Text = "ratingControl1";
+            this.DonHang_DungThoiGian.EditValueChanged += new System.EventHandler(this.DonHang_DungThoiGian_EditValueChanged);
+            // 
             // btnCancel
             // 
             this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
@@ -606,6 +929,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridGopY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.xtraTabPage4.ResumeLayout(false);
+            this.xtraTabPage5.ResumeLayout(false);
+            this.xtraTabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DanhGiaTongThe.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_Khac.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DichVuHauMai.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DichVuGiaoHang.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_Gia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DungYeuCauKyThuat.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DatTestHoa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DungMau.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DatTestLy.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonHang_DungThoiGian.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -659,5 +997,27 @@
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.LabelControl lblTongThe;
+        private DevExpress.XtraEditors.RatingControl DanhGiaTongThe;
+        private DevExpress.XtraEditors.LabelControl lblKhac;
+        private DevExpress.XtraEditors.RatingControl DonHang_Khac;
+        private DevExpress.XtraEditors.LabelControl lblDichVuHauMai;
+        private DevExpress.XtraEditors.RatingControl DonHang_DichVuHauMai;
+        private DevExpress.XtraEditors.LabelControl lblDichVuGiaoHang;
+        private DevExpress.XtraEditors.RatingControl DonHang_DichVuGiaoHang;
+        private DevExpress.XtraEditors.LabelControl lblGia;
+        private DevExpress.XtraEditors.RatingControl DonHang_Gia;
+        private DevExpress.XtraEditors.LabelControl lblDungYeuCauKyThuat;
+        private DevExpress.XtraEditors.RatingControl DonHang_DungYeuCauKyThuat;
+        private DevExpress.XtraEditors.LabelControl lblDatTestHoa;
+        private DevExpress.XtraEditors.RatingControl DonHang_DatTestHoa;
+        private DevExpress.XtraEditors.LabelControl lblDungMau;
+        private DevExpress.XtraEditors.RatingControl DonHang_DungMau;
+        private DevExpress.XtraEditors.LabelControl lblDatTestLy;
+        private DevExpress.XtraEditors.RatingControl DonHang_DatTestLy;
+        private DevExpress.XtraEditors.LabelControl lblDungThoiGian;
+        private DevExpress.XtraEditors.RatingControl DonHang_DungThoiGian;
     }
 }

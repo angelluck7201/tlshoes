@@ -75,9 +75,13 @@ namespace TLShoes.FormControls.XuatKho
                     {
                         bool isOk = chiLenhInfo.NguyenLieuChiLenhs.Any(s => s.DinhMucThuc >= chitiet.SoLuong && s.ChiTietNguyenLieux.Any(a => a.NguyenLieu.Id == chitiet.NguyenLieuId));
 
-                        if (!isOk)
+                        if (!isOk && chitiet.NguyenLieuId != null)
                         {
-                            validateMessage += string.Format("{0} không phù hợp với chỉ lệnh \r\n", chitiet.NguyenLieu.Ten);
+                            var nguyenLieu = SF.Get<NguyenLieuViewModel>().GetDetail((long)chitiet.NguyenLieuId);
+                            if (nguyenLieu != null)
+                            {
+                                validateMessage += string.Format("{0} không phù hợp với chỉ lệnh \r\n", nguyenLieu.Ten);
+                            }
                         }
                     }
                 }
@@ -97,7 +101,14 @@ namespace TLShoes.FormControls.XuatKho
             var currentItem = new List<long>();
             foreach (var chitiet in ChiTietXuatKhoList)
             {
+                if (chitiet.IsUpdateKho == null || chitiet.IsUpdateKho == false)
+                {
+                    var nguyenLieu = chitiet.NguyenLieu;
+                    nguyenLieu.SoLuong -= chitiet.SoLuong;
+                    SF.Get<NguyenLieuViewModel>().Save(nguyenLieu);
+                }
                 chitiet.PhieuXuatKhoId = saveData.Id;
+                chitiet.IsUpdateKho = true;
                 CRUD.DecorateSaveData(chitiet);
                 SF.Get<ChiTietXuatKhoViewModel>().Save(chitiet);
                 currentItem.Add(chitiet.Id);

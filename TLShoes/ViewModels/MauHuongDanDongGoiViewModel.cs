@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Drawing;
 using System.Linq;
 using DevExpress.XtraGrid;
 using TLShoes.Common;
@@ -53,6 +54,26 @@ namespace TLShoes.ViewModels
         public void Delete(ChiTietHuongDanDongGoi data)
         {
             DbContext.ChiTietHuongDanDongGois.Remove(data);
+        }
+    }
+}
+
+namespace TLShoes
+{
+    public partial class ChiTietHuongDanDongGoi
+    {
+        private Image _hinhDinhKemFormat;
+        public Image HinhMauDinhKemFormat
+        {
+            get
+            {
+                if (_hinhDinhKemFormat == null)
+                {
+                    _hinhDinhKemFormat = FileHelper.ImageFromFile(HinhMauDinhKem);
+                }
+                return _hinhDinhKemFormat;
+            }
+            set { _hinhDinhKemFormat = value; }
         }
     }
 }

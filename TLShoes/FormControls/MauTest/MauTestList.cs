@@ -10,17 +10,30 @@ namespace TLShoes.FormControls.MauTest
         {
             InitializeComponent();
 
-
-            SF.Get<MauTestViewModel>().GetDataSource(gridControl);
+            ReloadData();
 
             ObserverControl.Regist("ucMauTest", "ucMauTestList", ReloadData);
             ObserverControl.Regist("Refresh", "ucMauTestList", ReloadData);
             ObserverControl.Regist("Close", "ucMauTestList", ReloadData);
+            ObserverControl.Regist("Export", "ucMauTestList", Export);
+
         }
 
         public void ReloadData()
         {
-            SF.Get<MauTestViewModel>().GetDataSource(gridControl);
+            SF.Get<MauTestViewModel>().GetDataSource(gridControl); if (gridView.RowCount > 0)
+            {
+                Main.FeaturesDict["btnExport"].Visible = true;
+            }
+            else
+            {
+                Main.FeaturesDict["btnExport"].Visible = false;
+            }
+        }
+
+        public void Export(object filePath)
+        {
+            gridView.ExportToXls(filePath.ToString());
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)

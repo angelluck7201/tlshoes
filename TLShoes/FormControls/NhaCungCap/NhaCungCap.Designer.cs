@@ -210,24 +210,24 @@
             // 
             // NhaCungCap_Email
             // 
-            this.NhaCungCap_Email.Location = new System.Drawing.Point(161, 218);
+            this.NhaCungCap_Email.Location = new System.Drawing.Point(191, 220);
             this.NhaCungCap_Email.Name = "NhaCungCap_Email";
-            this.NhaCungCap_Email.Size = new System.Drawing.Size(498, 22);
-            this.NhaCungCap_Email.TabIndex = 38;
+            this.NhaCungCap_Email.Size = new System.Drawing.Size(577, 22);
+            this.NhaCungCap_Email.TabIndex = 5;
             // 
             // NhaCungCap_MatHang
             // 
-            this.NhaCungCap_MatHang.Location = new System.Drawing.Point(161, 140);
+            this.NhaCungCap_MatHang.Location = new System.Drawing.Point(191, 142);
             this.NhaCungCap_MatHang.Name = "NhaCungCap_MatHang";
-            this.NhaCungCap_MatHang.Size = new System.Drawing.Size(498, 22);
-            this.NhaCungCap_MatHang.TabIndex = 40;
+            this.NhaCungCap_MatHang.Size = new System.Drawing.Size(577, 22);
+            this.NhaCungCap_MatHang.TabIndex = 3;
             // 
             // NhaCungCap_TenNguoiDaiDien
             // 
-            this.NhaCungCap_TenNguoiDaiDien.Location = new System.Drawing.Point(161, 179);
+            this.NhaCungCap_TenNguoiDaiDien.Location = new System.Drawing.Point(191, 181);
             this.NhaCungCap_TenNguoiDaiDien.Name = "NhaCungCap_TenNguoiDaiDien";
-            this.NhaCungCap_TenNguoiDaiDien.Size = new System.Drawing.Size(498, 22);
-            this.NhaCungCap_TenNguoiDaiDien.TabIndex = 28;
+            this.NhaCungCap_TenNguoiDaiDien.Size = new System.Drawing.Size(577, 22);
+            this.NhaCungCap_TenNguoiDaiDien.TabIndex = 4;
             // 
             // lblTenNguoiDaiDien
             // 
@@ -240,10 +240,10 @@
             // 
             // NhaCungCap_Dienthoai
             // 
-            this.NhaCungCap_Dienthoai.Location = new System.Drawing.Point(161, 62);
+            this.NhaCungCap_Dienthoai.Location = new System.Drawing.Point(191, 64);
             this.NhaCungCap_Dienthoai.Name = "NhaCungCap_Dienthoai";
-            this.NhaCungCap_Dienthoai.Size = new System.Drawing.Size(498, 22);
-            this.NhaCungCap_Dienthoai.TabIndex = 31;
+            this.NhaCungCap_Dienthoai.Size = new System.Drawing.Size(577, 22);
+            this.NhaCungCap_Dienthoai.TabIndex = 1;
             // 
             // lblDiaChi
             // 
@@ -256,25 +256,25 @@
             // 
             // NhaCungCap_TenCongTy
             // 
-            this.NhaCungCap_TenCongTy.Location = new System.Drawing.Point(161, 23);
+            this.NhaCungCap_TenCongTy.Location = new System.Drawing.Point(191, 25);
             this.NhaCungCap_TenCongTy.Name = "NhaCungCap_TenCongTy";
-            this.NhaCungCap_TenCongTy.Size = new System.Drawing.Size(498, 22);
-            this.NhaCungCap_TenCongTy.TabIndex = 34;
+            this.NhaCungCap_TenCongTy.Size = new System.Drawing.Size(577, 22);
+            this.NhaCungCap_TenCongTy.TabIndex = 0;
             // 
             // NhaCungCap_DiaChi
             // 
-            this.NhaCungCap_DiaChi.Location = new System.Drawing.Point(161, 257);
+            this.NhaCungCap_DiaChi.Location = new System.Drawing.Point(191, 259);
             this.NhaCungCap_DiaChi.Name = "NhaCungCap_DiaChi";
-            this.NhaCungCap_DiaChi.Size = new System.Drawing.Size(498, 122);
-            this.NhaCungCap_DiaChi.TabIndex = 33;
+            this.NhaCungCap_DiaChi.Size = new System.Drawing.Size(577, 122);
+            this.NhaCungCap_DiaChi.TabIndex = 6;
             this.NhaCungCap_DiaChi.Text = "";
             // 
             // NhaCungCap_Fax
             // 
-            this.NhaCungCap_Fax.Location = new System.Drawing.Point(161, 101);
+            this.NhaCungCap_Fax.Location = new System.Drawing.Point(191, 103);
             this.NhaCungCap_Fax.Name = "NhaCungCap_Fax";
-            this.NhaCungCap_Fax.Size = new System.Drawing.Size(498, 22);
-            this.NhaCungCap_Fax.TabIndex = 36;
+            this.NhaCungCap_Fax.Size = new System.Drawing.Size(577, 22);
+            this.NhaCungCap_Fax.TabIndex = 2;
             // 
             // lblFax
             // 
@@ -452,6 +452,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ItemDateEdit.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ItemDateEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.ItemDateEdit.Name = "ItemDateEdit";
             // 
             // gridColumn7
@@ -529,7 +530,7 @@
             // 
             this.panelControl1.Controls.Add(this.lblTongThe);
             this.panelControl1.Controls.Add(this.DanhGiaTongThe);
-            this.panelControl1.Location = new System.Drawing.Point(173, 270);
+            this.panelControl1.Location = new System.Drawing.Point(233, 280);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(343, 39);
             this.panelControl1.TabIndex = 66;
@@ -591,7 +592,7 @@
             // lblDichVuHauMai
             // 
             this.lblDichVuHauMai.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDichVuHauMai.Location = new System.Drawing.Point(359, 148);
+            this.lblDichVuHauMai.Location = new System.Drawing.Point(465, 143);
             this.lblDichVuHauMai.Name = "lblDichVuHauMai";
             this.lblDichVuHauMai.Size = new System.Drawing.Size(111, 17);
             this.lblDichVuHauMai.TabIndex = 63;
@@ -600,7 +601,7 @@
             // NhaCungCap_DichVuHauMai
             // 
             this.NhaCungCap_DichVuHauMai.Enabled = false;
-            this.NhaCungCap_DichVuHauMai.Location = new System.Drawing.Point(513, 147);
+            this.NhaCungCap_DichVuHauMai.Location = new System.Drawing.Point(619, 142);
             this.NhaCungCap_DichVuHauMai.Name = "NhaCungCap_DichVuHauMai";
             this.NhaCungCap_DichVuHauMai.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
             this.NhaCungCap_DichVuHauMai.Rating = new decimal(new int[] {
@@ -616,7 +617,7 @@
             // lblDichVuGiaoHang
             // 
             this.lblDichVuGiaoHang.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDichVuGiaoHang.Location = new System.Drawing.Point(359, 113);
+            this.lblDichVuGiaoHang.Location = new System.Drawing.Point(465, 108);
             this.lblDichVuGiaoHang.Name = "lblDichVuGiaoHang";
             this.lblDichVuGiaoHang.Size = new System.Drawing.Size(127, 17);
             this.lblDichVuGiaoHang.TabIndex = 61;
@@ -625,7 +626,7 @@
             // NhaCungCap_DichVuGiaoHang
             // 
             this.NhaCungCap_DichVuGiaoHang.Enabled = false;
-            this.NhaCungCap_DichVuGiaoHang.Location = new System.Drawing.Point(513, 111);
+            this.NhaCungCap_DichVuGiaoHang.Location = new System.Drawing.Point(619, 106);
             this.NhaCungCap_DichVuGiaoHang.Name = "NhaCungCap_DichVuGiaoHang";
             this.NhaCungCap_DichVuGiaoHang.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
             this.NhaCungCap_DichVuGiaoHang.Rating = new decimal(new int[] {
@@ -691,7 +692,7 @@
             // lblDatTestHoa
             // 
             this.lblDatTestHoa.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDatTestHoa.Location = new System.Drawing.Point(359, 78);
+            this.lblDatTestHoa.Location = new System.Drawing.Point(465, 73);
             this.lblDatTestHoa.Name = "lblDatTestHoa";
             this.lblDatTestHoa.Size = new System.Drawing.Size(91, 17);
             this.lblDatTestHoa.TabIndex = 53;
@@ -700,7 +701,7 @@
             // NhaCungCap_DatTestHoa
             // 
             this.NhaCungCap_DatTestHoa.Enabled = false;
-            this.NhaCungCap_DatTestHoa.Location = new System.Drawing.Point(513, 75);
+            this.NhaCungCap_DatTestHoa.Location = new System.Drawing.Point(619, 70);
             this.NhaCungCap_DatTestHoa.Name = "NhaCungCap_DatTestHoa";
             this.NhaCungCap_DatTestHoa.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
             this.NhaCungCap_DatTestHoa.Rating = new decimal(new int[] {
@@ -741,7 +742,7 @@
             // lblDatTestLy
             // 
             this.lblDatTestLy.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDatTestLy.Location = new System.Drawing.Point(359, 37);
+            this.lblDatTestLy.Location = new System.Drawing.Point(465, 32);
             this.lblDatTestLy.Name = "lblDatTestLy";
             this.lblDatTestLy.Size = new System.Drawing.Size(79, 17);
             this.lblDatTestLy.TabIndex = 49;
@@ -750,7 +751,7 @@
             // NhaCungCap_DatTestLy
             // 
             this.NhaCungCap_DatTestLy.Enabled = false;
-            this.NhaCungCap_DatTestLy.Location = new System.Drawing.Point(513, 33);
+            this.NhaCungCap_DatTestLy.Location = new System.Drawing.Point(619, 28);
             this.NhaCungCap_DatTestLy.Name = "NhaCungCap_DatTestLy";
             this.NhaCungCap_DatTestLy.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
             this.NhaCungCap_DatTestLy.Rating = new decimal(new int[] {
@@ -852,7 +853,7 @@
             this.btnCancel.Location = new System.Drawing.Point(4, 504);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 33;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Hủy";
             // 
             // btnSaveContinue
@@ -864,10 +865,10 @@
             this.btnSaveContinue.Appearance.Options.UseFont = true;
             this.btnSaveContinue.Appearance.Options.UseForeColor = true;
             this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(532, 504);
+            this.btnSaveContinue.Location = new System.Drawing.Point(623, 504);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 36;
+            this.btnSaveContinue.TabIndex = 1;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // btnSave
@@ -879,10 +880,10 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(451, 504);
+            this.btnSave.Location = new System.Drawing.Point(542, 504);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 35;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
             // 
             // ucNhaCungCap

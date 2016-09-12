@@ -15,16 +15,31 @@ namespace TLShoes.FormControls.DonDatHang
     {
         public ucDonDatHangList()
         {
-            InitializeComponent(); ReloadData();
+            InitializeComponent(); 
+            ReloadData();
 
             ObserverControl.Regist("ucDonDatHang", "ucDonDatHangList", ReloadData);
             ObserverControl.Regist("Refresh", "ucDonDatHangList", ReloadData);
             ObserverControl.Regist("Close", "ucDonDatHangList", ReloadData);
+            ObserverControl.Regist("Export", "ucDonDatHangList", Export);
         }
 
         public void ReloadData()
         {
             SF.Get<DonDatHangViewModel>().GetDataSource(gridControl);
+            if (gridView.RowCount > 0)
+            {
+                Main.FeaturesDict["btnExport"].Visible = true;
+            }
+            else
+            {
+                Main.FeaturesDict["btnExport"].Visible = false;
+            }
+        }
+
+        public void Export(object filePath)
+        {
+            gridView.ExportToXls(filePath.ToString());
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)

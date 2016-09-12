@@ -18,6 +18,10 @@ namespace TLShoes.FormControls.NguyenLieu
             NguyenLieu_DonViTinh.DisplayMember = "Ten";
             NguyenLieu_DonViTinh.ValueMember = "Id";
 
+            NguyenLieu_MauId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU), null);
+            NguyenLieu_MauId.DisplayMember = "Ten";
+            NguyenLieu_MauId.ValueMember = "Id";
+
             Init(data);
         }
         public override bool SaveData()

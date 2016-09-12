@@ -30,7 +30,7 @@ namespace TLShoes.ViewModels
                 s.LyDo,
                 Kho = Define.KhoDic[PrimitiveConvert.StringToEnum<Define.Kho>(s.Kho)],
                 LoaiXuat = Define.LoaiXuatDic[PrimitiveConvert.StringToEnum<Define.LoaiXuat>(s.LoaiXuat)],
-                NgayXuatFormat = TimeHelper.TimestampToString(s.NgayXuat, "d"),
+                NgayXuatFormat = TimeHelper.TimeStampToDateTime(s.NgayXuat, "d"),
             }).ToList();
         }
 

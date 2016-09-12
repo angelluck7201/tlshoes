@@ -20,6 +20,7 @@ namespace TLShoes.ViewModels
             }
             return listDonHang;
         }
+
         public DonHang GetDetail(long id)
         {
             return DbContext.DonHangs.Find(id);
@@ -44,8 +45,8 @@ namespace TLShoes.ViewModels
                 s.MaHang,
                 s.OrderNo,
                 s.KhachHang.TenCongTy,
-                NgayNhanFormat = TimeHelper.TimestampToString(s.NgayNhan, "d"),
-                NgayXuatFormat = TimeHelper.TimestampToString(s.NgayXuat, "d"),
+                NgayNhanFormat = TimeHelper.TimeStampToDateTime(s.NgayNhan, "d"),
+                NgayXuatFormat = TimeHelper.TimeStampToDateTime(s.NgayXuat, "d"),
                 SoLuong = s.ChiTietDonHangs.Sum(d => d.SoLuong),
                 Hinh = FileHelper.ImageFromFile(s.HinhAnh)
             }).ToList();

@@ -51,6 +51,9 @@ namespace TLShoes.ViewModels
             foreach (var dongia in donDatHang.ChiTietDonDatHangs)
             {
                 var vattu = new VatTuDonGia();
+                var nhaCungcap = dongia.NhaCungCap;
+                if (nhaCungcap == null) continue;
+
                 var donGiaNhaCungCap = dongia.NhaCungCap.NhaCungCapVatTus.FirstOrDefault(s => s.NguyenLieuId == dongia.NguyenLieuId);
                 if (donGiaNhaCungCap != null)
                 {

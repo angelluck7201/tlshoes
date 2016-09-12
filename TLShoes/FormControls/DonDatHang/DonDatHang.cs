@@ -27,6 +27,7 @@ namespace TLShoes.FormControls.DonDatHang
             DonDatHang_NhaCungCapId.DataSource = new BindingSource(SF.Get<NhaCungCapViewModel>().GetList(), null);
             DonDatHang_NhaCungCapId.DisplayMember = "TenCongTy";
             DonDatHang_NhaCungCapId.ValueMember = "Id";
+            DatHangVatTuList.Clear();
 
             Init(data);
             if (data != null)
@@ -63,10 +64,24 @@ namespace TLShoes.FormControls.DonDatHang
             var saveData = CRUD.GetFormObject<TLShoes.DonDatHang>(FormControls);
             SF.Get<DonDatHangViewModel>().Save(saveData);
 
+            // Clear deleted data
+            var listChiTietDelete = SF.Get<DonDatHangViewModel>().GetList(saveData.Id);
+            foreach (var deleteItem in listChiTietDelete)
+            {
+                if (DatHangVatTuList.All(s => s.Id != deleteItem.Id))
+                {
+                    SF.Get<DonDatHangViewModel>().Delete(deleteItem);
+                }
+            }
+
             // Save nguyen lieu chi lenh
             foreach (var nguyenlieu in DatHangVatTuList)
             {
                 var chitietDonDatHang = new ChiTietDonDatHang();
+                if (nguyenlieu.Id != 0)
+                {
+                    chitietDonDatHang.Id = nguyenlieu.Id;
+                }
                 chitietDonDatHang.DonDatHangId = saveData.Id;
                 chitietDonDatHang.NguyenLieuId = nguyenlieu.NguyenLieuId;
                 chitietDonDatHang.NhaCungCapId = nguyenlieu.NhaCungCapId;
@@ -78,16 +93,7 @@ namespace TLShoes.FormControls.DonDatHang
                 SF.Get<DonDatHangViewModel>().Save(chitietDonDatHang);
             }
 
-            // Clear deleted data
-            var listChiTietDelete = saveData.ChiTietDonDatHangs;
-            foreach (var deleteItem in listChiTietDelete)
-            {
-                if (DatHangVatTuList.All(s => s.Id != deleteItem.Id))
-                {
-                    SF.Get<DonDatHangViewModel>().Delete(deleteItem);
-                }
-            }
-
+      
             // Update danh gia nha cung cap
             // ToDo dua chay vao trong thread
             if (DonDatHang_NhaCungCapId.SelectedValue != null)
@@ -97,14 +103,14 @@ namespace TLShoes.FormControls.DonDatHang
                 {
                     var donHangNhaCungCap = SF.Get<DonDatHangViewModel>().GetListByNhaCungCap(nhaCungCap.Id);
                     nhaCungCap.Gia = (int)donHangNhaCungCap.Where(s => s.Gia > 0).Average(s => s.Gia);
-                    nhaCungCap.DungThoiGian = (int)donHangNhaCungCap.Where(s => s.Gia > 0).Average(s => s.DungThoiGian);
-                    nhaCungCap.DungYeuCauKyThuat = (int)donHangNhaCungCap.Where(s => s.Gia > 0).Average(s => s.DungYeuCauKyThuat);
-                    nhaCungCap.DungMau = (int)donHangNhaCungCap.Where(s => s.Gia > 0).Average(s => s.DungMau);
-                    nhaCungCap.Khac = (int)donHangNhaCungCap.Where(s => s.Gia > 0).Average(s => s.Khac);
-                    nhaCungCap.DatTestLy = (int)donHangNhaCungCap.Where(s => s.Gia > 0).Average(s => s.DatTestLy);
-                    nhaCungCap.DatTestHoa = (int)donHangNhaCungCap.Where(s => s.Gia > 0).Average(s => s.DatTestHoa);
-                    nhaCungCap.DichVuGiaoHang = (int)donHangNhaCungCap.Where(s => s.Gia > 0).Average(s => s.DichVuGiaoHang);
-                    nhaCungCap.DichVuHauMai = (int)donHangNhaCungCap.Where(s => s.Gia > 0).Average(s => s.DichVuHauMai);
+                    nhaCungCap.DungThoiGian = (int)donHangNhaCungCap.Where(s => s.DungThoiGian > 0).Average(s => s.DungThoiGian);
+                    nhaCungCap.DungYeuCauKyThuat = (int)donHangNhaCungCap.Where(s => s.DungYeuCauKyThuat > 0).Average(s => s.DungYeuCauKyThuat);
+                    nhaCungCap.DungMau = (int)donHangNhaCungCap.Where(s => s.DungMau > 0).Average(s => s.DungMau);
+                    nhaCungCap.Khac = (int)donHangNhaCungCap.Where(s => s.Khac > 0).Average(s => s.Khac);
+                    nhaCungCap.DatTestLy = (int)donHangNhaCungCap.Where(s => s.DatTestLy > 0).Average(s => s.DatTestLy);
+                    nhaCungCap.DatTestHoa = (int)donHangNhaCungCap.Where(s => s.DatTestHoa > 0).Average(s => s.DatTestHoa);
+                    nhaCungCap.DichVuGiaoHang = (int)donHangNhaCungCap.Where(s => s.DichVuGiaoHang > 0).Average(s => s.DichVuGiaoHang);
+                    nhaCungCap.DichVuHauMai = (int)donHangNhaCungCap.Where(s => s.DichVuHauMai > 0).Average(s => s.DichVuHauMai);
                     SF.Get<NhaCungCapViewModel>().Save(nhaCungCap);
                 }
             }

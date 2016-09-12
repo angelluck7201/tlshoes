@@ -38,6 +38,8 @@
             this.navDanhGia = new DevExpress.XtraNavBar.NavBarItem();
             this.navPhieuNhapKho = new DevExpress.XtraNavBar.NavBarItem();
             this.navPhieuXuatKho = new DevExpress.XtraNavBar.NavBarItem();
+            this.navTheKho = new DevExpress.XtraNavBar.NavBarItem();
+            this.navTongHopNguyenLieu = new DevExpress.XtraNavBar.NavBarItem();
             this.navDanhMucGroup = new DevExpress.XtraNavBar.NavBarGroup();
             this.navDanhMuc = new DevExpress.XtraNavBar.NavBarItem();
             this.navNguyenLieu = new DevExpress.XtraNavBar.NavBarItem();
@@ -62,10 +64,10 @@
             this.navTongHop = new DevExpress.XtraNavBar.NavBarItem();
             this.navUltils = new DevExpress.XtraNavBar.NavBarGroup();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.groupBoxView = new System.Windows.Forms.GroupBox();
-            this.navTongHopNguyenLieu = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControlMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -110,7 +112,8 @@
             this.navDanhGia,
             this.navMauHuongDanDongGoi,
             this.navHuongDanDongGoi,
-            this.navTongHopNguyenLieu});
+            this.navTongHopNguyenLieu,
+            this.navTheKho});
             this.navBarControlMenu.Location = new System.Drawing.Point(0, 0);
             this.navBarControlMenu.Name = "navBarControlMenu";
             this.navBarControlMenu.OptionsNavPane.ExpandedWidth = 333;
@@ -132,6 +135,7 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.navDanhGia),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navPhieuNhapKho),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navPhieuXuatKho),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navTheKho),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navTongHopNguyenLieu)});
             this.navBarQuanLyKho.Name = "navBarQuanLyKho";
             // 
@@ -176,6 +180,18 @@
             this.navPhieuXuatKho.Caption = "Xuất Kho";
             this.navPhieuXuatKho.Name = "navPhieuXuatKho";
             this.navPhieuXuatKho.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navPhieuXuatKho_LinkClicked);
+            // 
+            // navTheKho
+            // 
+            this.navTheKho.Caption = "Thẻ Kho";
+            this.navTheKho.Name = "navTheKho";
+            this.navTheKho.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navTheKho_LinkClicked);
+            // 
+            // navTongHopNguyenLieu
+            // 
+            this.navTongHopNguyenLieu.Caption = "Tổng Hợp Nguyên Liệu";
+            this.navTongHopNguyenLieu.Name = "navTongHopNguyenLieu";
+            this.navTongHopNguyenLieu.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navTongHopNguyenLieu_LinkClicked);
             // 
             // navDanhMucGroup
             // 
@@ -259,7 +275,7 @@
             // 
             // navHuongDanGroup
             // 
-            this.navHuongDanGroup.Caption = "Hướng Dẫn/Chỉ Lệnh";
+            this.navHuongDanGroup.Caption = "Hướng Dẫn Đóng Gói/Chỉ Lệnh";
             this.navHuongDanGroup.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navChiLenh),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navMauHuongDanDongGoi),
@@ -337,6 +353,7 @@
             this.splitContainerControl1.IsSplitterFixed = true;
             this.splitContainerControl1.Location = new System.Drawing.Point(333, 0);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.btnExport);
             this.splitContainerControl1.Panel1.Controls.Add(this.btnRefresh);
             this.splitContainerControl1.Panel1.Controls.Add(this.btnSave);
             this.splitContainerControl1.Panel1.Text = "panelButton";
@@ -346,6 +363,24 @@
             this.splitContainerControl1.SplitterPosition = 64;
             this.splitContainerControl1.TabIndex = 9;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnExport.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnExport.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btnExport.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btnExport.Appearance.Options.UseBackColor = true;
+            this.btnExport.Appearance.Options.UseFont = true;
+            this.btnExport.Appearance.Options.UseForeColor = true;
+            this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnExport.Location = new System.Drawing.Point(1121, 12);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(107, 31);
+            this.btnExport.TabIndex = 9;
+            this.btnExport.Text = "Xuất File";
+            this.btnExport.Visible = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnRefresh
             // 
@@ -390,12 +425,6 @@
             this.groupBoxView.TabIndex = 0;
             this.groupBoxView.TabStop = false;
             this.groupBoxView.Text = "groupBox1";
-            // 
-            // navTongHopNguyenLieu
-            // 
-            this.navTongHopNguyenLieu.Caption = "Tổng Hợp Nguyên Liệu";
-            this.navTongHopNguyenLieu.Name = "navTongHopNguyenLieu";
-            this.navTongHopNguyenLieu.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navTongHopNguyenLieu_LinkClicked);
             // 
             // Main
             // 
@@ -457,6 +486,8 @@
         private DevExpress.XtraNavBar.NavBarItem navMauHuongDanDongGoi;
         private DevExpress.XtraNavBar.NavBarItem navHuongDanDongGoi;
         private DevExpress.XtraNavBar.NavBarItem navTongHopNguyenLieu;
+        private DevExpress.XtraNavBar.NavBarItem navTheKho;
+        private DevExpress.XtraEditors.SimpleButton btnExport;
     }
 }
 

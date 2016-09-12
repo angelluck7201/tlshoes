@@ -45,8 +45,8 @@ namespace TLShoes.ViewModels
           {
               Id = s.NhaCungCapId,
               NhaCungCap = s.NhaCungCap.TenCongTy,
-              GiaBanTuNgay = TimeHelper.TimestampToString(s.GiaBanTuNgay, "d"),
-              GiaBanDenNgay = TimeHelper.TimestampToString(s.GiaBanDenNgay, "d"),
+              GiaBanTuNgay = TimeHelper.TimeStampToDateTime(s.GiaBanTuNgay, "d"),
+              GiaBanDenNgay = TimeHelper.TimeStampToDateTime(s.GiaBanDenNgay, "d"),
               s.DonGia,
               NguyenLieu = s.NguyenLieu.Ten,
               DanhGia = (new List<int?>() { s.NhaCungCap.Gia, s.NhaCungCap.DichVuGiaoHang, s.NhaCungCap.DatTestHoa, s.NhaCungCap.DatTestLy, s.NhaCungCap.DichVuHauMai, s.NhaCungCap.DungThoiGian, s.NhaCungCap.DichVuHauMai, s.NhaCungCap.DungYeuCauKyThuat, s.NhaCungCap.Khac }.Where(a => a > 0).Average())
@@ -103,5 +103,24 @@ namespace TLShoes.ViewModels
         {
             DbContext.NhaCungCapVatTus.Remove(data);
         }
+    }
+}
+
+namespace TLShoes
+{
+    public partial class NhaCungCapVatTu
+    {
+        public string GiaBanTuNgayFormat
+        {
+            get { return TimeHelper.TimestampToString(GiaBanTuNgay, "d"); }
+            set { GiaBanTuNgay = TimeHelper.StringToTimeStamp(value); }
+        }
+
+        public string GiaBanDenNgayFormat
+        {
+            get { return TimeHelper.TimestampToString(GiaBanDenNgay, "d"); }
+            set { GiaBanDenNgay = TimeHelper.StringToTimeStamp(value); }
+        }
+
     }
 }

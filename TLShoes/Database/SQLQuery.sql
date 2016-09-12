@@ -44,6 +44,7 @@ Loai nvarchar(20),
 GhiChu nvarchar(1000),
 );
 
+
 create table NguyenLieu(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -55,6 +56,8 @@ LoaiNguyenLieuId bigint foreign key references DanhMuc(Id),
 Ten nvarchar(100),
 MaNguyenLieu nvarchar(50),
 DonViTinh bigint foreign key references DanhMuc(Id),
+MauId bigint foreign key references DanhMuc(Id),
+QuyCach nvarchar(20),
 DacTinh nvarchar(50),
 SoLuong real,
 GhiChu nvarchar(1000),
@@ -89,7 +92,15 @@ GhiChu nvarchar(1000),
 
 
 
-
+alter table DonHang add DungYeuCauKyThuat int
+alter table DonHang add DungThoiGian int
+alter table DonHang add DungMau int
+alter table DonHang add DatTestLy int
+alter table DonHang add DatTestHoa int
+alter table DonHang add Gia int
+alter table DonHang add DichVuGiaoHang int
+alter table DonHang add DichVuHauMai int
+alter table DonHang add Khac int
 create table DonHang(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -116,6 +127,16 @@ GopYMau nvarchar(1000),
 GopYKhoVatTu nvarchar(1000),
 GopYPhuTro nvarchar(1000),
 GopYKhoThanhPham nvarchar(1000),
+
+DungYeuCauKyThuat int,
+DungThoiGian int,
+DungMau int,
+DatTestLy int,
+DatTestHoa int,
+Gia int,
+DichVuGiaoHang int,
+DichVuHauMai int,
+Khac int,
 
 );
 
@@ -176,7 +197,6 @@ HinhAnh text,
 GhiChu nvarchar(1000),
 );
 
-drop table MauTest
 create table MauTest(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -448,7 +468,7 @@ SoPhieu nvarchar(20),
 DanhGiaId bigint foreign key references DanhGia(Id)
 )
 
-
+alter table ChiTietNhapKho add IsUpdateKho bit
 create table ChiTietNhapKho(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),	
@@ -459,6 +479,7 @@ IsActived bit,
 PhieuNhapKhoId bigint foreign key references PhieuNhapKho(Id),
 NguyenLieuId bigint foreign key references NguyenLieu(Id),
 SoLuong real,
+IsUpdateKho bit,
 )
 
 alter table PhieuXuatKho drop constraint FK__PhieuXuat__ChiLe__3FD07829
@@ -483,6 +504,7 @@ NgayXuat bigint,
 SoPhieu nvarchar(20),
 )
 
+alter table ChiTietXuatKho add IsUpdateKho bit
 create table ChiTietXuatKho(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),	
@@ -493,6 +515,7 @@ IsActived bit,
 PhieuXuatKhoId bigint foreign key references PhieuXuatKho(Id),
 NguyenLieuId bigint foreign key references NguyenLieu(Id),
 SoLuong real,
+IsUpdateKho bit
 )
 
 

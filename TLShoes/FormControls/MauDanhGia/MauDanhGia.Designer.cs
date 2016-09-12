@@ -108,7 +108,7 @@
             this.TieuChiLookUp,
             this.btnDeleteTieuChi});
             this.gridTieuChi.Size = new System.Drawing.Size(658, 405);
-            this.gridTieuChi.TabIndex = 58;
+            this.gridTieuChi.TabIndex = 2;
             this.gridTieuChi.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewTieuChi});
             // 
@@ -184,7 +184,7 @@
             this.MauDanhGia_GhiChu.Location = new System.Drawing.Point(151, 63);
             this.MauDanhGia_GhiChu.Name = "MauDanhGia_GhiChu";
             this.MauDanhGia_GhiChu.Size = new System.Drawing.Size(529, 148);
-            this.MauDanhGia_GhiChu.TabIndex = 3;
+            this.MauDanhGia_GhiChu.TabIndex = 1;
             this.MauDanhGia_GhiChu.Text = "";
             // 
             // lblMauDanhGia
@@ -210,7 +210,7 @@
             this.MauDanhGia_TenMau.Location = new System.Drawing.Point(151, 23);
             this.MauDanhGia_TenMau.Name = "MauDanhGia_TenMau";
             this.MauDanhGia_TenMau.Size = new System.Drawing.Size(529, 22);
-            this.MauDanhGia_TenMau.TabIndex = 2;
+            this.MauDanhGia_TenMau.TabIndex = 0;
             // 
             // xtraTabPage1
             // 
@@ -241,7 +241,7 @@
             this.simpleButton1.Location = new System.Drawing.Point(517, 697);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(179, 30);
-            this.simpleButton1.TabIndex = 75;
+            this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "Lưu Và Tiếp Tục";
             // 
             // btnSave
@@ -256,7 +256,7 @@
             this.btnSave.Location = new System.Drawing.Point(431, 697);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 77;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
             // 
             // btnCancel
@@ -271,7 +271,7 @@
             this.btnCancel.Location = new System.Drawing.Point(9, 697);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 76;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Hủy";
             // 
             // ucMauDanhGia

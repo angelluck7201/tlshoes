@@ -88,6 +88,7 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -127,7 +128,7 @@
             this.btnSaveContinue.Location = new System.Drawing.Point(1143, 665);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 103;
+            this.btnSaveContinue.TabIndex = 1;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // btnSave
@@ -142,7 +143,7 @@
             this.btnSave.Location = new System.Drawing.Point(1057, 665);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 102;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
             // 
             // btnCancel
@@ -157,7 +158,7 @@
             this.btnCancel.Location = new System.Drawing.Point(4, 665);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 101;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Hủy";
             // 
             // xtraTabPage3
@@ -457,6 +458,7 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.xtraTabPage2.Controls.Add(this.labelControl1);
             this.xtraTabPage2.Controls.Add(this.gridToTrinh);
             this.xtraTabPage2.Controls.Add(this.btnNhaCungCap);
             this.xtraTabPage2.Controls.Add(this.DonDatHang_NgayGiaoHang);
@@ -478,7 +480,7 @@
             this.gridToTrinh.MainView = this.gridView2;
             this.gridToTrinh.Name = "gridToTrinh";
             this.gridToTrinh.Size = new System.Drawing.Size(399, 457);
-            this.gridToTrinh.TabIndex = 104;
+            this.gridToTrinh.TabIndex = 4;
             this.gridToTrinh.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
             // 
@@ -538,21 +540,21 @@
             this.DonDatHang_NgayGiaoHang.Location = new System.Drawing.Point(591, 26);
             this.DonDatHang_NgayGiaoHang.Name = "DonDatHang_NgayGiaoHang";
             this.DonDatHang_NgayGiaoHang.Size = new System.Drawing.Size(240, 23);
-            this.DonDatHang_NgayGiaoHang.TabIndex = 74;
+            this.DonDatHang_NgayGiaoHang.TabIndex = 1;
             // 
             // DonDatHang_NgayDatHang
             // 
             this.DonDatHang_NgayDatHang.Location = new System.Drawing.Point(167, 28);
             this.DonDatHang_NgayDatHang.Name = "DonDatHang_NgayDatHang";
             this.DonDatHang_NgayDatHang.Size = new System.Drawing.Size(240, 23);
-            this.DonDatHang_NgayDatHang.TabIndex = 73;
+            this.DonDatHang_NgayDatHang.TabIndex = 0;
             // 
             // DonDatHang_SoDH
             // 
             this.DonDatHang_SoDH.Location = new System.Drawing.Point(1020, 25);
             this.DonDatHang_SoDH.Name = "DonDatHang_SoDH";
             this.DonDatHang_SoDH.Size = new System.Drawing.Size(240, 22);
-            this.DonDatHang_SoDH.TabIndex = 72;
+            this.DonDatHang_SoDH.TabIndex = 2;
             // 
             // lblSoDH
             // 
@@ -572,7 +574,7 @@
             this.NguyenLieuLookUp,
             this.btnDeleteNguyenLieu});
             this.gridNguyenLieu.Size = new System.Drawing.Size(845, 457);
-            this.gridNguyenLieu.TabIndex = 57;
+            this.gridNguyenLieu.TabIndex = 5;
             this.gridNguyenLieu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewNguyenLieu,
             this.gridView1});
@@ -741,7 +743,7 @@
             this.DonDatHang_NhaCungCapId.Location = new System.Drawing.Point(591, 82);
             this.DonDatHang_NhaCungCapId.Name = "DonDatHang_NhaCungCapId";
             this.DonDatHang_NhaCungCapId.Size = new System.Drawing.Size(240, 24);
-            this.DonDatHang_NhaCungCapId.TabIndex = 59;
+            this.DonDatHang_NhaCungCapId.TabIndex = 3;
             // 
             // lblNgayDatHang
             // 
@@ -797,6 +799,16 @@
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3});
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.LimeGreen;
+            this.labelControl1.Location = new System.Drawing.Point(23, 108);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(275, 17);
+            this.labelControl1.TabIndex = 104;
+            this.labelControl1.Text = "*Nhấp đúp vào tên nguyên liệu để chọn";
             // 
             // ucDonDatHang
             // 
@@ -901,5 +913,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

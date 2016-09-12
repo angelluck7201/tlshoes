@@ -131,6 +131,7 @@
     <Property Name="PhieuNhapKhoId" Type="bigint" />
     <Property Name="NguyenLieuId" Type="bigint" />
     <Property Name="SoLuong" Type="real" />
+    <Property Name="IsUpdateKho" Type="bit" />
   </EntityType>
   <EntityType Name="ChiTietToTrinh">
     <Key>
@@ -158,6 +159,7 @@
     <Property Name="PhieuXuatKhoId" Type="bigint" />
     <Property Name="NguyenLieuId" Type="bigint" />
     <Property Name="SoLuong" Type="real" />
+    <Property Name="IsUpdateKho" Type="bit" />
   </EntityType>
   <EntityType Name="CongNgheSanXuat">
     <Key>
@@ -257,6 +259,15 @@
     <Property Name="GopYKhoVatTu" Type="nvarchar" MaxLength="1000" />
     <Property Name="GopYPhuTro" Type="nvarchar" MaxLength="1000" />
     <Property Name="GopYKhoThanhPham" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DungYeuCauKyThuat" Type="int" />
+    <Property Name="DungThoiGian" Type="int" />
+    <Property Name="DungMau" Type="int" />
+    <Property Name="DatTestLy" Type="int" />
+    <Property Name="DatTestHoa" Type="int" />
+    <Property Name="Gia" Type="int" />
+    <Property Name="DichVuGiaoHang" Type="int" />
+    <Property Name="DichVuHauMai" Type="int" />
+    <Property Name="Khac" Type="int" />
   </EntityType>
   <EntityType Name="ErrorLog">
     <Key>
@@ -484,6 +495,8 @@
     <Property Name="DacTinh" Type="nvarchar" MaxLength="50" />
     <Property Name="SoLuong" Type="real" />
     <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+    <Property Name="MauId" Type="bigint" />
+    <Property Name="QuyCach" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="NguyenLieuChiLenh">
     <Key>
@@ -1594,6 +1607,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__NguyenLie__MauId__7908F585">
+    <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1" />
+    <End Role="NguyenLieu" Type="Self.NguyenLieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMuc">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NguyenLieu">
+        <PropertyRef Name="MauId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__NguyenLie__PhanX__44FF419A">
     <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1" />
     <End Role="NguyenLieuChiLenh" Type="Self.NguyenLieuChiLenh" Multiplicity="*" />
@@ -2095,6 +2120,10 @@
     <AssociationSet Name="FK__NguyenLie__MauId__47DBAE45" Association="Self.FK__NguyenLie__MauId__47DBAE45">
       <End Role="DanhMuc" EntitySet="DanhMuc" />
       <End Role="NguyenLieuChiLenh" EntitySet="NguyenLieuChiLenh" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NguyenLie__MauId__7908F585" Association="Self.FK__NguyenLie__MauId__7908F585">
+      <End Role="DanhMuc" EntitySet="DanhMuc" />
+      <End Role="NguyenLieu" EntitySet="NguyenLieu" />
     </AssociationSet>
     <AssociationSet Name="FK__NguyenLie__PhanX__44FF419A" Association="Self.FK__NguyenLie__PhanX__44FF419A">
       <End Role="DanhMuc" EntitySet="DanhMuc" />

@@ -19,12 +19,26 @@ namespace TLShoes.FormControls.KeHoachSanXuat
         {
             InitializeComponent();
             ReloadData();
-        }
+            ObserverControl.Regist("Export", "ucBaoCaoTongHop", Export);
 
+        }
 
         public void ReloadData()
         {
             SF.Get<BaoCaoPhanXuongViewModel>().GetDataSummarySource(gridControl);
+            if (bandedGridView1.RowCount > 0)
+            {
+                Main.FeaturesDict["btnExport"].Visible = true;
+            }
+            else
+            {
+                Main.FeaturesDict["btnExport"].Visible = false;
+            }
+        }
+
+        public void Export(object filePath)
+        {
+            bandedGridView1.ExportToXls(filePath.ToString());
         }
 
         private void bandedGridView1_CellMerge(object sender, DevExpress.XtraGrid.Views.Grid.CellMergeEventArgs e)

@@ -75,6 +75,8 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "Khách Hàng";
             this.gridColumn2.FieldName = "KhachHang";
             this.gridColumn2.Name = "gridColumn2";
@@ -83,6 +85,8 @@
             // 
             // gridColumn3
             // 
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
             this.gridColumn3.Caption = "Từ Ngày";
             this.gridColumn3.FieldName = "ApDungTuNgay";
             this.gridColumn3.Name = "gridColumn3";
@@ -91,6 +95,8 @@
             // 
             // gridColumn4
             // 
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn4.AppearanceHeader.Options.UseFont = true;
             this.gridColumn4.Caption = "Đến Ngày";
             this.gridColumn4.FieldName = "ApDungDenNgay";
             this.gridColumn4.Name = "gridColumn4";
@@ -99,6 +105,8 @@
             // 
             // gridColumn5
             // 
+            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.Caption = "Ghi Chú";
             this.gridColumn5.FieldName = "GhiChu";
             this.gridColumn5.Name = "gridColumn5";
@@ -107,6 +115,8 @@
             // 
             // gridColumn6
             // 
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "Tên Mẫu";
             this.gridColumn6.FieldName = "TenMau";
             this.gridColumn6.Name = "gridColumn6";

@@ -16,6 +16,12 @@ namespace TLShoes.Common
             return (long)diff.TotalMilliseconds;
         }
 
+        public static DateTime TimeStampToDateTime(long? time, string format = "G")
+        {
+            DateTime baseDate = new DateTime(1970, 1, 1).AddMilliseconds(Convert.ToDouble(time)).AddHours(7);
+            return baseDate;
+        }
+
         public static long StringToTimeStamp(string time)
         {
             DateTime baseDate = new DateTime(1970, 1, 1);

@@ -31,7 +31,7 @@ namespace TLShoes.FormControls.ChiLenh
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucChiLenh));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ChiLenh_DonHangId = new System.Windows.Forms.ComboBox();
             this.lblDonHangId = new DevExpress.XtraEditors.LabelControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -48,11 +48,6 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ChiLenh_Mau = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.MauLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.PhanXuongLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.NguyenLieuContainer = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
-            this.repositoryItemPopupContainerEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit();
             this.btnSaveNguyenLieu = new DevExpress.XtraEditors.SimpleButton();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NguyenLieuLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -78,9 +73,6 @@ namespace TLShoes.FormControls.ChiLenh
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.lblLyDo = new DevExpress.XtraEditors.LabelControl();
             this.LyDoThayDoi = new System.Windows.Forms.RichTextBox();
@@ -89,13 +81,11 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChiLenh_Mau)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MauLookUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PhanXuongLookUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuContainer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuLookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuChiLenh_QuyCach.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewNguyenLieu)).BeginInit();
@@ -115,7 +105,7 @@ namespace TLShoes.FormControls.ChiLenh
             // ChiLenh_DonHangId
             // 
             this.ChiLenh_DonHangId.FormattingEnabled = true;
-            this.ChiLenh_DonHangId.Location = new System.Drawing.Point(143, 34);
+            this.ChiLenh_DonHangId.Location = new System.Drawing.Point(162, 34);
             this.ChiLenh_DonHangId.Name = "ChiLenh_DonHangId";
             this.ChiLenh_DonHangId.Size = new System.Drawing.Size(302, 24);
             this.ChiLenh_DonHangId.TabIndex = 40;
@@ -135,12 +125,6 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridControl.Location = new System.Drawing.Point(32, 409);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
-            this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.ChiLenh_Mau,
-            this.MauLookUp,
-            this.PhanXuongLookUp,
-            this.NguyenLieuContainer,
-            this.repositoryItemPopupContainerEdit1});
             this.gridControl.Size = new System.Drawing.Size(1038, 422);
             this.gridControl.TabIndex = 41;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -166,7 +150,8 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridView.GroupCount = 1;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.AutoExpandAllGroups = true;
-            this.gridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
+            this.gridView.OptionsBehavior.Editable = false;
+            this.gridView.OptionsDetail.EnableMasterViewMode = false;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView.Click += new System.EventHandler(this.gridView_Click);
@@ -263,41 +248,6 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridColumn9.FieldName = "ChiTietNguyenLieuList";
             this.gridColumn9.Name = "gridColumn9";
             // 
-            // ChiLenh_Mau
-            // 
-            this.ChiLenh_Mau.AutoHeight = false;
-            this.ChiLenh_Mau.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ChiLenh_Mau.Name = "ChiLenh_Mau";
-            // 
-            // MauLookUp
-            // 
-            this.MauLookUp.AutoHeight = false;
-            this.MauLookUp.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.MauLookUp.Name = "MauLookUp";
-            // 
-            // PhanXuongLookUp
-            // 
-            this.PhanXuongLookUp.AutoHeight = false;
-            this.PhanXuongLookUp.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PhanXuongLookUp.Name = "PhanXuongLookUp";
-            // 
-            // NguyenLieuContainer
-            // 
-            this.NguyenLieuContainer.AutoHeight = false;
-            this.NguyenLieuContainer.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.NguyenLieuContainer.Name = "NguyenLieuContainer";
-            // 
-            // repositoryItemPopupContainerEdit1
-            // 
-            this.repositoryItemPopupContainerEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemPopupContainerEdit1.HideSelection = false;
-            this.repositoryItemPopupContainerEdit1.Name = "repositoryItemPopupContainerEdit1";
-            // 
             // btnSaveNguyenLieu
             // 
             this.btnSaveNguyenLieu.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
@@ -306,7 +256,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnSaveNguyenLieu.Appearance.Options.UseBackColor = true;
             this.btnSaveNguyenLieu.Appearance.Options.UseFont = true;
             this.btnSaveNguyenLieu.Appearance.Options.UseForeColor = true;
-            this.btnSaveNguyenLieu.Location = new System.Drawing.Point(290, 356);
+            this.btnSaveNguyenLieu.Location = new System.Drawing.Point(309, 346);
             this.btnSaveNguyenLieu.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.btnSaveNguyenLieu.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnSaveNguyenLieu.Name = "btnSaveNguyenLieu";
@@ -343,7 +293,7 @@ namespace TLShoes.FormControls.ChiLenh
             // 
             // NguyenLieuChiLenh_QuyCach
             // 
-            this.NguyenLieuChiLenh_QuyCach.Location = new System.Drawing.Point(143, 176);
+            this.NguyenLieuChiLenh_QuyCach.Location = new System.Drawing.Point(162, 176);
             this.NguyenLieuChiLenh_QuyCach.Name = "NguyenLieuChiLenh_QuyCach";
             this.NguyenLieuChiLenh_QuyCach.Size = new System.Drawing.Size(307, 22);
             this.NguyenLieuChiLenh_QuyCach.TabIndex = 69;
@@ -384,14 +334,14 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnDeleteNguyenLieu.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Appearance.Image")));
             this.btnDeleteNguyenLieu.Appearance.Options.UseImage = true;
             this.btnDeleteNguyenLieu.AutoHeight = false;
-            serializableAppearanceObject2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject2.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
-            serializableAppearanceObject2.Options.UseBackColor = true;
-            serializableAppearanceObject2.Options.UseBorderColor = true;
-            serializableAppearanceObject2.Options.UseImage = true;
+            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
+            serializableAppearanceObject1.Options.UseBackColor = true;
+            serializableAppearanceObject1.Options.UseBorderColor = true;
+            serializableAppearanceObject1.Options.UseImage = true;
             this.btnDeleteNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteNguyenLieu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteNguyenLieu.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDeleteNguyenLieu.Name = "btnDeleteNguyenLieu";
@@ -430,14 +380,14 @@ namespace TLShoes.FormControls.ChiLenh
             // 
             // NguyenLieuChiLenh_DinhMucThuc
             // 
-            this.NguyenLieuChiLenh_DinhMucThuc.Location = new System.Drawing.Point(143, 303);
+            this.NguyenLieuChiLenh_DinhMucThuc.Location = new System.Drawing.Point(162, 303);
             this.NguyenLieuChiLenh_DinhMucThuc.Name = "NguyenLieuChiLenh_DinhMucThuc";
             this.NguyenLieuChiLenh_DinhMucThuc.Size = new System.Drawing.Size(307, 22);
             this.NguyenLieuChiLenh_DinhMucThuc.TabIndex = 66;
             // 
             // NguyenLieuChiLenh_DinhMucChuan
             // 
-            this.NguyenLieuChiLenh_DinhMucChuan.Location = new System.Drawing.Point(143, 257);
+            this.NguyenLieuChiLenh_DinhMucChuan.Location = new System.Drawing.Point(162, 257);
             this.NguyenLieuChiLenh_DinhMucChuan.Name = "NguyenLieuChiLenh_DinhMucChuan";
             this.NguyenLieuChiLenh_DinhMucChuan.Size = new System.Drawing.Size(307, 22);
             this.NguyenLieuChiLenh_DinhMucChuan.TabIndex = 65;
@@ -446,7 +396,7 @@ namespace TLShoes.FormControls.ChiLenh
             // NguyenLieuChiLenh_MauId
             // 
             this.NguyenLieuChiLenh_MauId.FormattingEnabled = true;
-            this.NguyenLieuChiLenh_MauId.Location = new System.Drawing.Point(143, 218);
+            this.NguyenLieuChiLenh_MauId.Location = new System.Drawing.Point(162, 218);
             this.NguyenLieuChiLenh_MauId.Name = "NguyenLieuChiLenh_MauId";
             this.NguyenLieuChiLenh_MauId.Size = new System.Drawing.Size(307, 24);
             this.NguyenLieuChiLenh_MauId.TabIndex = 64;
@@ -481,7 +431,7 @@ namespace TLShoes.FormControls.ChiLenh
             // NguyenLieuChiLenh_PhanXuongId
             // 
             this.NguyenLieuChiLenh_PhanXuongId.FormattingEnabled = true;
-            this.NguyenLieuChiLenh_PhanXuongId.Location = new System.Drawing.Point(143, 84);
+            this.NguyenLieuChiLenh_PhanXuongId.Location = new System.Drawing.Point(162, 84);
             this.NguyenLieuChiLenh_PhanXuongId.Name = "NguyenLieuChiLenh_PhanXuongId";
             this.NguyenLieuChiLenh_PhanXuongId.Size = new System.Drawing.Size(307, 24);
             this.NguyenLieuChiLenh_PhanXuongId.TabIndex = 59;
@@ -498,7 +448,7 @@ namespace TLShoes.FormControls.ChiLenh
             // NguyenLieuChiLenh_ChiTietId
             // 
             this.NguyenLieuChiLenh_ChiTietId.FormattingEnabled = true;
-            this.NguyenLieuChiLenh_ChiTietId.Location = new System.Drawing.Point(143, 131);
+            this.NguyenLieuChiLenh_ChiTietId.Location = new System.Drawing.Point(162, 131);
             this.NguyenLieuChiLenh_ChiTietId.Name = "NguyenLieuChiLenh_ChiTietId";
             this.NguyenLieuChiLenh_ChiTietId.Size = new System.Drawing.Size(307, 24);
             this.NguyenLieuChiLenh_ChiTietId.TabIndex = 71;
@@ -574,51 +524,6 @@ namespace TLShoes.FormControls.ChiLenh
             this.defaultInfo.Name = "defaultInfo";
             this.defaultInfo.Size = new System.Drawing.Size(1093, 871);
             this.defaultInfo.TabIndex = 11;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(4, 927);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 73;
-            this.btnCancel.Text = "Hủy";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnSave.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSave.Appearance.Options.UseBackColor = true;
-            this.btnSave.Appearance.Options.UseFont = true;
-            this.btnSave.Appearance.Options.UseForeColor = true;
-            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(832, 927);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 74;
-            this.btnSave.Text = "Lưu";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.ForestGreen;
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.simpleButton1.Location = new System.Drawing.Point(918, 927);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(179, 30);
-            this.simpleButton1.TabIndex = 15;
-            this.simpleButton1.Text = "Lưu Và Tiếp Tục";
             // 
             // xtraTabPage3
             // 
@@ -700,6 +605,51 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridColumn16.FieldName = "Id";
             this.gridColumn16.Name = "gridColumn16";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCancel.Appearance.Options.UseBackColor = true;
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.Appearance.Options.UseForeColor = true;
+            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnCancel.Location = new System.Drawing.Point(4, 927);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 30);
+            this.btnCancel.TabIndex = 73;
+            this.btnCancel.Text = "Hủy";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSave.Appearance.Options.UseBackColor = true;
+            this.btnSave.Appearance.Options.UseFont = true;
+            this.btnSave.Appearance.Options.UseForeColor = true;
+            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnSave.Location = new System.Drawing.Point(832, 927);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 30);
+            this.btnSave.TabIndex = 74;
+            this.btnSave.Text = "Lưu";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.ForestGreen;
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.simpleButton1.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.simpleButton1.Appearance.Options.UseBackColor = true;
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Appearance.Options.UseForeColor = true;
+            this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.simpleButton1.Location = new System.Drawing.Point(918, 927);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(179, 30);
+            this.simpleButton1.TabIndex = 15;
+            this.simpleButton1.Text = "Lưu Và Tiếp Tục";
+            // 
             // ucChiLenh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -714,11 +664,6 @@ namespace TLShoes.FormControls.ChiLenh
             this.Size = new System.Drawing.Size(1103, 972);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChiLenh_Mau)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MauLookUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PhanXuongLookUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuContainer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPopupContainerEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuLookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuChiLenh_QuyCach.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewNguyenLieu)).EndInit();
@@ -748,13 +693,8 @@ namespace TLShoes.FormControls.ChiLenh
         private DevExpress.XtraGrid.Columns.GridColumn Id;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit MauLookUp;
         private DevExpress.XtraGrid.Columns.GridColumn colNguyenLieu;
-        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox ChiLenh_Mau;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit PhanXuongLookUp;
-        private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit NguyenLieuContainer;
-        private DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit repositoryItemPopupContainerEdit1;
         private DevExpress.XtraEditors.SimpleButton btnSaveNguyenLieu;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit NguyenLieuLookUp;

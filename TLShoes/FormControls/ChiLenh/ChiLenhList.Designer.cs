@@ -74,6 +74,8 @@
             // 
             // gridColumn6
             // 
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "Mã Hàng";
             this.gridColumn6.FieldName = "MaHang";
             this.gridColumn6.Name = "gridColumn6";
@@ -82,6 +84,8 @@
             // 
             // gridColumn8
             // 
+            this.gridColumn8.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn8.AppearanceHeader.Options.UseFont = true;
             this.gridColumn8.Caption = "Ngày Duyệt";
             this.gridColumn8.FieldName = "NgayDuyetFormat";
             this.gridColumn8.Name = "gridColumn8";
@@ -90,6 +94,8 @@
             // 
             // gridColumn9
             // 
+            this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn9.AppearanceHeader.Options.UseFont = true;
             this.gridColumn9.Caption = "Người Duyệt";
             this.gridColumn9.FieldName = "NguoiDuyet";
             this.gridColumn9.Name = "gridColumn9";
@@ -98,6 +104,8 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
             this.gridColumn1.Caption = "Số ĐH";
             this.gridColumn1.FieldName = "SoDH";
             this.gridColumn1.Name = "gridColumn1";

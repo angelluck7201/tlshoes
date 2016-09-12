@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using DevExpress.XtraGrid;
@@ -35,8 +36,8 @@ namespace TLShoes.ViewModels
                 s.Id,
                 s.DonHang.MaHang,
                 SoDH = s.DonHang.OrderNo,
-                NgayNhanFormat = TimeHelper.TimestampToString(s.NgayNhan, "d"),
-                MauNgayFormat = TimeHelper.TimestampToString(s.MauNgay, "d"),
+                NgayNhanFormat = TimeHelper.TimeStampToDateTime(s.NgayNhan, "d"),
+                MauNgayFormat = TimeHelper.TimeStampToDateTime(s.MauNgay, "d"),
                 Hinh = FileHelper.ImageFromFile(s.HinhAnh)
             }).ToList();
         }
@@ -51,8 +52,8 @@ namespace TLShoes.ViewModels
                 item.MaHang = maudoi.DonHang.MaHang;
                 item.SoDonHang = maudoi.DonHang.OrderNo;
                 item.SoLuong = maudoi.DonHang.ChiTietDonHangs.Sum(s => (int)s.SoLuong);
-                item.MauDoiNgayGui = TimeHelper.TimestampToString(maudoi.NgayNhan, "d");
-                item.MauDoiNgayXacNhan = TimeHelper.TimestampToString(maudoi.MauNgay, "d");
+                item.MauDoiNgayGui = TimeHelper.TimeStampToDateTime(maudoi.NgayNhan, "d");
+                item.MauDoiNgayXacNhan = TimeHelper.TimeStampToDateTime(maudoi.MauNgay, "d");
                 item.Hinh = FileHelper.ImageFromFile(maudoi.DonHang.HinhAnh);
 
                 var mauTestList = SF.Get<MauTestViewModel>().GetList((long)maudoi.DonHangId).Take(3);
@@ -96,8 +97,8 @@ namespace TLShoes.ViewModels
                 var mauThuDao = SF.Get<MauThuDaoViewModel>().GetList((long)maudoi.DonHangId);
                 if (mauThuDao.Any())
                 {
-                    item.MauThuDaoBatDau = TimeHelper.TimestampToString(mauThuDao.OrderBy(s => s.NgayBatDau).First().NgayBatDau, "d");
-                    item.MauThuDaoHoanThanh = TimeHelper.TimestampToString(mauThuDao.OrderByDescending(s => s.NgayHoanThanh).First().NgayHoanThanh, "d");
+                    item.MauThuDaoBatDau = TimeHelper.TimeStampToDateTime(mauThuDao.OrderBy(s => s.NgayBatDau).First().NgayBatDau, "d");
+                    item.MauThuDaoHoanThanh = TimeHelper.TimeStampToDateTime(mauThuDao.OrderByDescending(s => s.NgayHoanThanh).First().NgayHoanThanh, "d");
                 }
 
                 listResult.Add(item);
@@ -136,13 +137,13 @@ namespace TLShoes.ViewModels
             public object Hinh { get; set; }
             public string SoDonHang { get; set; }
             public int SoLuong { get; set; }
-            public string MauDoiNgayGui { get; set; }
-            public string MauDoiNgayXacNhan { get; set; }
+            public DateTime MauDoiNgayGui { get; set; }
+            public DateTime MauDoiNgayXacNhan { get; set; }
             public string TestLy { get; set; }
             public string TestHoa { get; set; }
             public string MauSanXuat { get; set; }
-            public string MauThuDaoBatDau { get; set; }
-            public string MauThuDaoHoanThanh { get; set; }
+            public DateTime MauThuDaoBatDau { get; set; }
+            public DateTime MauThuDaoHoanThanh { get; set; }
         }
     }
 }

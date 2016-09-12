@@ -76,6 +76,8 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
             this.gridColumn1.Caption = "Người Giao";
             this.gridColumn1.FieldName = "NguoiGiao";
             this.gridColumn1.Name = "gridColumn1";
@@ -84,6 +86,8 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "Địa Chỉ";
             this.gridColumn2.FieldName = "DiaChi";
             this.gridColumn2.Name = "gridColumn2";
@@ -92,6 +96,8 @@
             // 
             // gridColumn4
             // 
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn4.AppearanceHeader.Options.UseFont = true;
             this.gridColumn4.Caption = "Lý Do";
             this.gridColumn4.FieldName = "LyDo";
             this.gridColumn4.Name = "gridColumn4";
@@ -100,6 +106,8 @@
             // 
             // gridColumn6
             // 
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "Kho";
             this.gridColumn6.FieldName = "Kho";
             this.gridColumn6.Name = "gridColumn6";
@@ -108,6 +116,8 @@
             // 
             // gridColumn5
             // 
+            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.Caption = "Ngày Nhập";
             this.gridColumn5.FieldName = "NgayNhapFormat";
             this.gridColumn5.Name = "gridColumn5";

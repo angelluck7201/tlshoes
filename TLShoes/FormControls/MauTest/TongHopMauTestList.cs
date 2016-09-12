@@ -9,7 +9,7 @@ namespace TLShoes.FormControls.TongHopMauTest
         {
             InitializeComponent();
 
-            SF.Get<MauDoiViewModel>().GetDataSummarySource(gridControl);
+            ReloadData();
 
             ObserverControl.Regist("ucMauTest", "ucTongHopMauTestList", ReloadData);
             ObserverControl.Regist("ucMauThuDao", "ucTongHopMauTestList", ReloadData);
@@ -17,11 +17,25 @@ namespace TLShoes.FormControls.TongHopMauTest
 
             ObserverControl.Regist("Refresh", "ucTongHopMauTestList", ReloadData);
             ObserverControl.Regist("Close", "ucTongHopMauTestList", ReloadData);
+            ObserverControl.Regist("Export", "ucTongHopMauTestList", Export);
         }
 
         public void ReloadData()
         {
             SF.Get<MauDoiViewModel>().GetDataSummarySource(gridControl);
+            if (bandedGridView1.RowCount > 0)
+            {
+                Main.FeaturesDict["btnExport"].Visible = true;
+            }
+            else
+            {
+                Main.FeaturesDict["btnExport"].Visible = false;
+            }
+        }
+
+        public void Export(object filePath)
+        {
+            bandedGridView1.ExportToXls(filePath.ToString());
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)

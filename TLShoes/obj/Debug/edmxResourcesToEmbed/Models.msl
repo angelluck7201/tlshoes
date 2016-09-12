@@ -98,6 +98,15 @@
     <EntitySetMapping Name="DonHangs">
       <EntityTypeMapping TypeName="GiayTLModel.DonHang">
         <MappingFragment StoreEntitySet="DonHang">
+          <ScalarProperty Name="Khac" ColumnName="Khac" />
+          <ScalarProperty Name="DichVuHauMai" ColumnName="DichVuHauMai" />
+          <ScalarProperty Name="DichVuGiaoHang" ColumnName="DichVuGiaoHang" />
+          <ScalarProperty Name="Gia" ColumnName="Gia" />
+          <ScalarProperty Name="DatTestHoa" ColumnName="DatTestHoa" />
+          <ScalarProperty Name="DatTestLy" ColumnName="DatTestLy" />
+          <ScalarProperty Name="DungMau" ColumnName="DungMau" />
+          <ScalarProperty Name="DungThoiGian" ColumnName="DungThoiGian" />
+          <ScalarProperty Name="DungYeuCauKyThuat" ColumnName="DungYeuCauKyThuat" />
           <ScalarProperty Name="MaPhomId" ColumnName="MaPhomId" />
           <ScalarProperty Name="GopYKhoThanhPham" ColumnName="GopYKhoThanhPham" />
           <ScalarProperty Name="GopYPhuTro" ColumnName="GopYPhuTro" />
@@ -198,6 +207,8 @@
     <EntitySetMapping Name="NguyenLieux">
       <EntityTypeMapping TypeName="GiayTLModel.NguyenLieu">
         <MappingFragment StoreEntitySet="NguyenLieu">
+          <ScalarProperty Name="QuyCach" ColumnName="QuyCach" />
+          <ScalarProperty Name="MauId" ColumnName="MauId" />
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="DacTinh" ColumnName="DacTinh" />
@@ -290,6 +301,7 @@
     <EntitySetMapping Name="ChiTietNhapKhoes">
       <EntityTypeMapping TypeName="GiayTLModel.ChiTietNhapKho">
         <MappingFragment StoreEntitySet="ChiTietNhapKho">
+          <ScalarProperty Name="IsUpdateKho" ColumnName="IsUpdateKho" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
           <ScalarProperty Name="PhieuNhapKhoId" ColumnName="PhieuNhapKhoId" />
@@ -304,6 +316,7 @@
     <EntitySetMapping Name="ChiTietXuatKhoes">
       <EntityTypeMapping TypeName="GiayTLModel.ChiTietXuatKho">
         <MappingFragment StoreEntitySet="ChiTietXuatKho">
+          <ScalarProperty Name="IsUpdateKho" ColumnName="IsUpdateKho" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
           <ScalarProperty Name="PhieuXuatKhoId" ColumnName="PhieuXuatKhoId" />

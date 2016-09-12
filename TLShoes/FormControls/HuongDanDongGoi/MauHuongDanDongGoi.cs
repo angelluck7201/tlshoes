@@ -89,6 +89,7 @@ namespace TLShoes.FormControls.HuongDanDongGoi
             foreach (var chitiet in ChiTietHuongDanList)
             {
                 chitiet.MauHuongDanDongGoiId = saveData.Id;
+                chitiet.HinhMauDinhKem = FileHelper.ImageSave(chitiet.HinhMauDinhKemFormat);
                 CRUD.DecorateSaveData(chitiet);
                 _viewModel.Save(chitiet);
             }
@@ -97,7 +98,8 @@ namespace TLShoes.FormControls.HuongDanDongGoi
             var mauHuongDan = _viewModel.GetDetail(saveData.Id);
             if (mauHuongDan != null)
             {
-                foreach (var chitiet in mauHuongDan.ChiTietHuongDanDongGois)
+                var chitietHuongDanDongGoi = mauHuongDan.ChiTietHuongDanDongGois.ToList();
+                foreach (var chitiet in chitietHuongDanDongGoi)
                 {
                     if (ChiTietHuongDanList.All(s => s.Id != chitiet.Id))
                     {

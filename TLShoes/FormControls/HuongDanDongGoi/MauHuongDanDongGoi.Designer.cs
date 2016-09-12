@@ -32,6 +32,8 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.MauHuongDanDongGoi_TenMau = new System.Windows.Forms.TextBox();
+            this.lblTenMau = new DevExpress.XtraEditors.LabelControl();
             this.gridHuongDan = new DevExpress.XtraGrid.GridControl();
             this.gridViewHuongDan = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,9 +52,10 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.HinhMauDinhKemImageEdit = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
+            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.repositoryItemSearchLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.HinhMauDinhKemImageEdit = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.MauHuongDanDongGoi_KhachHangId = new System.Windows.Forms.ComboBox();
@@ -67,8 +70,6 @@
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.lblTenMau = new DevExpress.XtraEditors.LabelControl();
-            this.MauHuongDanDongGoi_TenMau = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -79,9 +80,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnDeleteHuongDan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MauIdLookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuIdLookUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HinhMauDinhKemImageEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HinhMauDinhKemImageEdit)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,7 +98,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1147, 750);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1256, 750);
             this.xtraTabControl1.TabIndex = 115;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -129,8 +131,24 @@
             this.xtraTabPage2.Controls.Add(this.lblGhiChu);
             this.xtraTabPage2.Controls.Add(this.MauHuongDanDongGoi_GhiChu);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1140, 714);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1249, 714);
             this.xtraTabPage2.Text = "Mẫu Hướng Dẫn";
+            // 
+            // MauHuongDanDongGoi_TenMau
+            // 
+            this.MauHuongDanDongGoi_TenMau.Location = new System.Drawing.Point(141, 112);
+            this.MauHuongDanDongGoi_TenMau.Name = "MauHuongDanDongGoi_TenMau";
+            this.MauHuongDanDongGoi_TenMau.Size = new System.Drawing.Size(272, 23);
+            this.MauHuongDanDongGoi_TenMau.TabIndex = 3;
+            // 
+            // lblTenMau
+            // 
+            this.lblTenMau.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblTenMau.Location = new System.Drawing.Point(30, 112);
+            this.lblTenMau.Name = "lblTenMau";
+            this.lblTenMau.Size = new System.Drawing.Size(59, 17);
+            this.lblTenMau.TabIndex = 118;
+            this.lblTenMau.Text = "Tên Mẫu";
             // 
             // gridHuongDan
             // 
@@ -144,9 +162,10 @@
             this.NguyenLieuIdLookUp,
             this.DanhMucIdLookUp,
             this.DonViTinhIdLookUp,
-            this.HinhMauDinhKemImageEdit});
-            this.gridHuongDan.Size = new System.Drawing.Size(1100, 405);
-            this.gridHuongDan.TabIndex = 117;
+            this.HinhMauDinhKemImageEdit,
+            this.repositoryItemPictureEdit1});
+            this.gridHuongDan.Size = new System.Drawing.Size(1195, 405);
+            this.gridHuongDan.TabIndex = 5;
             this.gridHuongDan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewHuongDan});
             // 
@@ -173,7 +192,7 @@
             this.gridViewHuongDan.OptionsCustomization.AllowGroup = false;
             this.gridViewHuongDan.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
             this.gridViewHuongDan.OptionsView.ShowGroupPanel = false;
-            this.gridViewHuongDan.RowHeight = 80;
+            this.gridViewHuongDan.RowHeight = 160;
             this.gridViewHuongDan.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn3, DevExpress.Data.ColumnSortOrder.Descending)});
             // 
@@ -191,7 +210,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 96;
+            this.gridColumn1.Width = 93;
             // 
             // DonViTinhIdLookUp
             // 
@@ -208,7 +227,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 0;
-            this.gridColumn6.Width = 240;
+            this.gridColumn6.Width = 254;
             // 
             // DanhMucIdLookUp
             // 
@@ -223,7 +242,7 @@
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 9;
-            this.gridColumn14.Width = 45;
+            this.gridColumn14.Width = 43;
             // 
             // btnDeleteHuongDan
             // 
@@ -250,7 +269,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 82;
+            this.gridColumn2.Width = 85;
             // 
             // gridColumn4
             // 
@@ -260,7 +279,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 56;
+            this.gridColumn4.Width = 78;
             // 
             // MauIdLookUp
             // 
@@ -277,7 +296,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 126;
+            this.gridColumn5.Width = 159;
             // 
             // NguyenLieuIdLookUp
             // 
@@ -293,7 +312,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 5;
-            this.gridColumn7.Width = 206;
+            this.gridColumn7.Width = 197;
             // 
             // gridColumn8
             // 
@@ -302,7 +321,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 6;
-            this.gridColumn8.Width = 109;
+            this.gridColumn8.Width = 104;
             // 
             // gridColumn9
             // 
@@ -311,24 +330,23 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 7;
-            this.gridColumn9.Width = 57;
+            this.gridColumn9.Width = 74;
             // 
             // gridColumn10
             // 
             this.gridColumn10.Caption = "Hình";
-            this.gridColumn10.ColumnEdit = this.HinhMauDinhKemImageEdit;
-            this.gridColumn10.FieldName = "HinhMauDinhKem";
+            this.gridColumn10.ColumnEdit = this.repositoryItemPictureEdit1;
+            this.gridColumn10.FieldName = "HinhMauDinhKemFormat";
             this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.UnboundType = DevExpress.Data.UnboundColumnType.Object;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 8;
-            this.gridColumn10.Width = 63;
+            this.gridColumn10.Width = 88;
             // 
-            // HinhMauDinhKemImageEdit
+            // repositoryItemPictureEdit1
             // 
-            this.HinhMauDinhKemImageEdit.AutoHeight = false;
-            this.HinhMauDinhKemImageEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.HinhMauDinhKemImageEdit.Name = "HinhMauDinhKemImageEdit";
+            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
+            this.repositoryItemPictureEdit1.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             // 
             // repositoryItemSearchLookUpEdit1
             // 
@@ -345,6 +363,14 @@
             this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
+            // HinhMauDinhKemImageEdit
+            // 
+            this.HinhMauDinhKemImageEdit.AutoHeight = false;
+            this.HinhMauDinhKemImageEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.HinhMauDinhKemImageEdit.Name = "HinhMauDinhKemImageEdit";
+            this.HinhMauDinhKemImageEdit.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
@@ -357,7 +383,7 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Location = new System.Drawing.Point(978, 17);
+            this.labelControl1.Location = new System.Drawing.Point(1018, 16);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(68, 17);
             this.labelControl1.TabIndex = 115;
@@ -369,21 +395,21 @@
             this.MauHuongDanDongGoi_KhachHangId.Location = new System.Drawing.Point(141, 41);
             this.MauHuongDanDongGoi_KhachHangId.Name = "MauHuongDanDongGoi_KhachHangId";
             this.MauHuongDanDongGoi_KhachHangId.Size = new System.Drawing.Size(272, 24);
-            this.MauHuongDanDongGoi_KhachHangId.TabIndex = 114;
+            this.MauHuongDanDongGoi_KhachHangId.TabIndex = 0;
             // 
             // MauHuongDanDongGoi_ApDungDenNgay
             // 
-            this.MauHuongDanDongGoi_ApDungDenNgay.Location = new System.Drawing.Point(886, 40);
+            this.MauHuongDanDongGoi_ApDungDenNgay.Location = new System.Drawing.Point(945, 38);
             this.MauHuongDanDongGoi_ApDungDenNgay.Name = "MauHuongDanDongGoi_ApDungDenNgay";
-            this.MauHuongDanDongGoi_ApDungDenNgay.Size = new System.Drawing.Size(239, 23);
-            this.MauHuongDanDongGoi_ApDungDenNgay.TabIndex = 113;
+            this.MauHuongDanDongGoi_ApDungDenNgay.Size = new System.Drawing.Size(268, 23);
+            this.MauHuongDanDongGoi_ApDungDenNgay.TabIndex = 2;
             // 
             // MauHuongDanDongGoi_ApDungTuNgay
             // 
             this.MauHuongDanDongGoi_ApDungTuNgay.Location = new System.Drawing.Point(616, 39);
             this.MauHuongDanDongGoi_ApDungTuNgay.Name = "MauHuongDanDongGoi_ApDungTuNgay";
-            this.MauHuongDanDongGoi_ApDungTuNgay.Size = new System.Drawing.Size(239, 23);
-            this.MauHuongDanDongGoi_ApDungTuNgay.TabIndex = 112;
+            this.MauHuongDanDongGoi_ApDungTuNgay.Size = new System.Drawing.Size(268, 23);
+            this.MauHuongDanDongGoi_ApDungTuNgay.TabIndex = 1;
             // 
             // lblApDung
             // 
@@ -416,8 +442,8 @@
             // 
             this.MauHuongDanDongGoi_GhiChu.Location = new System.Drawing.Point(616, 110);
             this.MauHuongDanDongGoi_GhiChu.Name = "MauHuongDanDongGoi_GhiChu";
-            this.MauHuongDanDongGoi_GhiChu.Size = new System.Drawing.Size(509, 139);
-            this.MauHuongDanDongGoi_GhiChu.TabIndex = 91;
+            this.MauHuongDanDongGoi_GhiChu.Size = new System.Drawing.Size(597, 139);
+            this.MauHuongDanDongGoi_GhiChu.TabIndex = 4;
             this.MauHuongDanDongGoi_GhiChu.Text = "";
             // 
             // xtraTabPage1
@@ -426,7 +452,7 @@
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.defaultInfo);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1140, 714);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1249, 714);
             this.xtraTabPage1.Text = "Thông tin người dùng";
             // 
             // defaultInfo
@@ -434,7 +460,7 @@
             this.defaultInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defaultInfo.Location = new System.Drawing.Point(0, 0);
             this.defaultInfo.Name = "defaultInfo";
-            this.defaultInfo.Size = new System.Drawing.Size(1140, 714);
+            this.defaultInfo.Size = new System.Drawing.Size(1249, 714);
             this.defaultInfo.TabIndex = 11;
             // 
             // btnCancel
@@ -449,7 +475,7 @@
             this.btnCancel.Location = new System.Drawing.Point(3, 756);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 116;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Hủy";
             // 
             // btnSaveContinue
@@ -461,10 +487,10 @@
             this.btnSaveContinue.Appearance.Options.UseFont = true;
             this.btnSaveContinue.Appearance.Options.UseForeColor = true;
             this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(962, 756);
+            this.btnSaveContinue.Location = new System.Drawing.Point(1071, 756);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 119;
+            this.btnSaveContinue.TabIndex = 1;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // btnSave
@@ -476,27 +502,11 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(881, 756);
+            this.btnSave.Location = new System.Drawing.Point(990, 756);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 118;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
-            // 
-            // lblTenMau
-            // 
-            this.lblTenMau.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblTenMau.Location = new System.Drawing.Point(30, 112);
-            this.lblTenMau.Name = "lblTenMau";
-            this.lblTenMau.Size = new System.Drawing.Size(59, 17);
-            this.lblTenMau.TabIndex = 118;
-            this.lblTenMau.Text = "Tên Mẫu";
-            // 
-            // MauHuongDanDongGoi_TenMau
-            // 
-            this.MauHuongDanDongGoi_TenMau.Location = new System.Drawing.Point(141, 112);
-            this.MauHuongDanDongGoi_TenMau.Name = "MauHuongDanDongGoi_TenMau";
-            this.MauHuongDanDongGoi_TenMau.Size = new System.Drawing.Size(272, 23);
-            this.MauHuongDanDongGoi_TenMau.TabIndex = 119;
             // 
             // ucMauHuongDanDongGoi
             // 
@@ -508,7 +518,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucMauHuongDanDongGoi";
-            this.Size = new System.Drawing.Size(1150, 801);
+            this.Size = new System.Drawing.Size(1275, 801);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
@@ -520,9 +530,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnDeleteHuongDan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MauIdLookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuIdLookUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HinhMauDinhKemImageEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HinhMauDinhKemImageEdit)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -569,5 +580,6 @@
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.LabelControl lblTenMau;
         private System.Windows.Forms.TextBox MauHuongDanDongGoi_TenMau;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
     }
 }

@@ -48,7 +48,13 @@ namespace TLShoes.FormControls
                 {
                     control.DoubleClick += new EventHandler(FileHelper.ShowImagePopup);
                 }
-            }          
+
+                var controlType = control.GetType();
+                if (controlType.Name == "ComboBox")
+                {
+                    (control as ComboBox).DropDownStyle = ComboBoxStyle.DropDownList;
+                }
+            }
         }
 
         public void InitFormData(object data)

@@ -35,7 +35,7 @@
             this.NguyenLieu_MaNguyenLieu = new System.Windows.Forms.TextBox();
             this.lblMaNguyenLieu = new DevExpress.XtraEditors.LabelControl();
             this.NguyenLieu_DonViTinh = new System.Windows.Forms.ComboBox();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lblDonViTinh = new DevExpress.XtraEditors.LabelControl();
             this.NguyenLieu_GhiChu = new System.Windows.Forms.RichTextBox();
             this.lblGhiChu = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
@@ -45,10 +45,19 @@
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.NguyenLieu_MauId = new System.Windows.Forms.ComboBox();
+            this.lblMauId = new DevExpress.XtraEditors.LabelControl();
+            this.lblQuyCach = new DevExpress.XtraEditors.LabelControl();
+            this.NguyenLieu_QuyCach = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // NguyenLieu_LoaiNguyenLieuId
@@ -57,7 +66,7 @@
             this.NguyenLieu_LoaiNguyenLieuId.Location = new System.Drawing.Point(157, 15);
             this.NguyenLieu_LoaiNguyenLieuId.Name = "NguyenLieu_LoaiNguyenLieuId";
             this.NguyenLieu_LoaiNguyenLieuId.Size = new System.Drawing.Size(529, 24);
-            this.NguyenLieu_LoaiNguyenLieuId.TabIndex = 81;
+            this.NguyenLieu_LoaiNguyenLieuId.TabIndex = 0;
             // 
             // lblLoaiNguyenLieuId
             // 
@@ -73,7 +82,7 @@
             this.NguyenLieu_Ten.Location = new System.Drawing.Point(157, 59);
             this.NguyenLieu_Ten.Name = "NguyenLieu_Ten";
             this.NguyenLieu_Ten.Size = new System.Drawing.Size(529, 23);
-            this.NguyenLieu_Ten.TabIndex = 86;
+            this.NguyenLieu_Ten.TabIndex = 1;
             // 
             // lblTen
             // 
@@ -89,7 +98,7 @@
             this.NguyenLieu_MaNguyenLieu.Location = new System.Drawing.Point(157, 102);
             this.NguyenLieu_MaNguyenLieu.Name = "NguyenLieu_MaNguyenLieu";
             this.NguyenLieu_MaNguyenLieu.Size = new System.Drawing.Size(529, 23);
-            this.NguyenLieu_MaNguyenLieu.TabIndex = 88;
+            this.NguyenLieu_MaNguyenLieu.TabIndex = 2;
             // 
             // lblMaNguyenLieu
             // 
@@ -106,29 +115,29 @@
             this.NguyenLieu_DonViTinh.Location = new System.Drawing.Point(157, 145);
             this.NguyenLieu_DonViTinh.Name = "NguyenLieu_DonViTinh";
             this.NguyenLieu_DonViTinh.Size = new System.Drawing.Size(529, 24);
-            this.NguyenLieu_DonViTinh.TabIndex = 90;
+            this.NguyenLieu_DonViTinh.TabIndex = 3;
             // 
-            // labelControl1
+            // lblDonViTinh
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Location = new System.Drawing.Point(27, 148);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(80, 17);
-            this.labelControl1.TabIndex = 89;
-            this.labelControl1.Text = "Đơn Vị Tính";
+            this.lblDonViTinh.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDonViTinh.Location = new System.Drawing.Point(27, 148);
+            this.lblDonViTinh.Name = "lblDonViTinh";
+            this.lblDonViTinh.Size = new System.Drawing.Size(80, 17);
+            this.lblDonViTinh.TabIndex = 89;
+            this.lblDonViTinh.Text = "Đơn Vị Tính";
             // 
             // NguyenLieu_GhiChu
             // 
-            this.NguyenLieu_GhiChu.Location = new System.Drawing.Point(157, 193);
+            this.NguyenLieu_GhiChu.Location = new System.Drawing.Point(157, 275);
             this.NguyenLieu_GhiChu.Name = "NguyenLieu_GhiChu";
             this.NguyenLieu_GhiChu.Size = new System.Drawing.Size(529, 96);
-            this.NguyenLieu_GhiChu.TabIndex = 94;
+            this.NguyenLieu_GhiChu.TabIndex = 6;
             this.NguyenLieu_GhiChu.Text = "";
             // 
             // lblGhiChu
             // 
             this.lblGhiChu.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblGhiChu.Location = new System.Drawing.Point(29, 197);
+            this.lblGhiChu.Location = new System.Drawing.Point(29, 279);
             this.lblGhiChu.Name = "lblGhiChu";
             this.lblGhiChu.Size = new System.Drawing.Size(47, 16);
             this.lblGhiChu.TabIndex = 93;
@@ -142,10 +151,11 @@
             this.xtraTabControl1.Appearance.Options.UseBorderColor = true;
             this.xtraTabControl1.Appearance.Options.UseFont = true;
             this.xtraTabControl1.Appearance.Options.UseForeColor = true;
-            this.xtraTabControl1.Location = new System.Drawing.Point(3, 3);
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(708, 423);
+            this.xtraTabControl1.Size = new System.Drawing.Size(715, 419);
             this.xtraTabControl1.TabIndex = 95;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -165,6 +175,10 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.xtraTabPage2.Controls.Add(this.NguyenLieu_QuyCach);
+            this.xtraTabPage2.Controls.Add(this.lblQuyCach);
+            this.xtraTabPage2.Controls.Add(this.NguyenLieu_MauId);
+            this.xtraTabPage2.Controls.Add(this.lblMauId);
             this.xtraTabPage2.Controls.Add(this.NguyenLieu_GhiChu);
             this.xtraTabPage2.Controls.Add(this.lblLoaiNguyenLieuId);
             this.xtraTabPage2.Controls.Add(this.lblGhiChu);
@@ -173,10 +187,10 @@
             this.xtraTabPage2.Controls.Add(this.NguyenLieu_Ten);
             this.xtraTabPage2.Controls.Add(this.NguyenLieu_DonViTinh);
             this.xtraTabPage2.Controls.Add(this.lblMaNguyenLieu);
-            this.xtraTabPage2.Controls.Add(this.labelControl1);
+            this.xtraTabPage2.Controls.Add(this.lblDonViTinh);
             this.xtraTabPage2.Controls.Add(this.NguyenLieu_MaNguyenLieu);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(701, 387);
+            this.xtraTabPage2.Size = new System.Drawing.Size(708, 383);
             this.xtraTabPage2.Text = "Thông tin nguyên liệu";
             // 
             // xtraTabPage1
@@ -185,7 +199,7 @@
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.defaultInfo1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(701, 387);
+            this.xtraTabPage1.Size = new System.Drawing.Size(708, 383);
             this.xtraTabPage1.Text = "Thông tin người dùng";
             // 
             // defaultInfo1
@@ -193,7 +207,7 @@
             this.defaultInfo1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defaultInfo1.Location = new System.Drawing.Point(0, 0);
             this.defaultInfo1.Name = "defaultInfo1";
-            this.defaultInfo1.Size = new System.Drawing.Size(701, 387);
+            this.defaultInfo1.Size = new System.Drawing.Size(708, 383);
             this.defaultInfo1.TabIndex = 11;
             // 
             // btnCancel
@@ -205,10 +219,10 @@
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
             this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(5, 448);
+            this.btnCancel.Location = new System.Drawing.Point(15, 21);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 96;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Hủy";
             // 
             // btnSave
@@ -220,10 +234,10 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(445, 448);
+            this.btnSave.Location = new System.Drawing.Point(448, 21);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 97;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
             // 
             // btnSaveContinue
@@ -235,28 +249,82 @@
             this.btnSaveContinue.Appearance.Options.UseFont = true;
             this.btnSaveContinue.Appearance.Options.UseForeColor = true;
             this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(526, 448);
+            this.btnSaveContinue.Location = new System.Drawing.Point(529, 21);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 98;
+            this.btnSaveContinue.TabIndex = 1;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.xtraTabControl1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnCancel);
+            this.splitContainer1.Panel2.Controls.Add(this.btnSaveContinue);
+            this.splitContainer1.Panel2.Controls.Add(this.btnSave);
+            this.splitContainer1.Size = new System.Drawing.Size(715, 496);
+            this.splitContainer1.SplitterDistance = 419;
+            this.splitContainer1.TabIndex = 99;
+            // 
+            // NguyenLieu_MauId
+            // 
+            this.NguyenLieu_MauId.FormattingEnabled = true;
+            this.NguyenLieu_MauId.Location = new System.Drawing.Point(156, 186);
+            this.NguyenLieu_MauId.Name = "NguyenLieu_MauId";
+            this.NguyenLieu_MauId.Size = new System.Drawing.Size(529, 24);
+            this.NguyenLieu_MauId.TabIndex = 4;
+            // 
+            // lblMauId
+            // 
+            this.lblMauId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblMauId.Location = new System.Drawing.Point(26, 189);
+            this.lblMauId.Name = "lblMauId";
+            this.lblMauId.Size = new System.Drawing.Size(27, 16);
+            this.lblMauId.TabIndex = 95;
+            this.lblMauId.Text = "Màu";
+            // 
+            // lblQuyCach
+            // 
+            this.lblQuyCach.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblQuyCach.Location = new System.Drawing.Point(26, 235);
+            this.lblQuyCach.Name = "lblQuyCach";
+            this.lblQuyCach.Size = new System.Drawing.Size(60, 16);
+            this.lblQuyCach.TabIndex = 97;
+            this.lblQuyCach.Text = "Quy Cách";
+            // 
+            // NguyenLieu_QuyCach
+            // 
+            this.NguyenLieu_QuyCach.Location = new System.Drawing.Point(156, 230);
+            this.NguyenLieu_QuyCach.Name = "NguyenLieu_QuyCach";
+            this.NguyenLieu_QuyCach.Size = new System.Drawing.Size(529, 23);
+            this.NguyenLieu_QuyCach.TabIndex = 5;
             // 
             // ucNguyenLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.btnSaveContinue);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.xtraTabControl1);
+            this.Controls.Add(this.splitContainer1);
             this.Name = "ucNguyenLieu";
-            this.Size = new System.Drawing.Size(715, 498);
+            this.Size = new System.Drawing.Size(715, 496);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
             this.xtraTabPage1.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -270,7 +338,7 @@
         private System.Windows.Forms.TextBox NguyenLieu_MaNguyenLieu;
         private DevExpress.XtraEditors.LabelControl lblMaNguyenLieu;
         private System.Windows.Forms.ComboBox NguyenLieu_DonViTinh;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl lblDonViTinh;
         private System.Windows.Forms.RichTextBox NguyenLieu_GhiChu;
         private DevExpress.XtraEditors.LabelControl lblGhiChu;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
@@ -280,5 +348,10 @@
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private DevExpress.XtraEditors.LabelControl lblQuyCach;
+        private System.Windows.Forms.ComboBox NguyenLieu_MauId;
+        private DevExpress.XtraEditors.LabelControl lblMauId;
+        private System.Windows.Forms.TextBox NguyenLieu_QuyCach;
     }
 }

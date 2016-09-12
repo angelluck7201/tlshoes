@@ -87,7 +87,7 @@ namespace TLShoes.Common
         }
 
 
-        public static string ImageSave(Image image, object name)
+        public static string ImageSave(Image image, object name = null)
         {
             if (image == null) return string.Empty;
             var id = name;

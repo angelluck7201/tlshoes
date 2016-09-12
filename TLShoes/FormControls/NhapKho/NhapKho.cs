@@ -66,7 +66,15 @@ namespace TLShoes.FormControls.NhapKho
             var currentItem = new List<long>();
             foreach (var chitiet in ChiTietNhapKhoList)
             {
+                if (chitiet.IsUpdateKho == null || chitiet.IsUpdateKho == false)
+                {
+                    var nguyenLieu = chitiet.NguyenLieu;
+                    nguyenLieu.SoLuong += chitiet.SoLuong;
+                    SF.Get<NguyenLieuViewModel>().Save(nguyenLieu);
+                }
+
                 chitiet.PhieuNhapKhoId = saveData.Id;
+                chitiet.IsUpdateKho = true;
                 CRUD.DecorateSaveData(chitiet);
                 SF.Get<ChiTietNhapKhoViewModel>().Save(chitiet);
                 currentItem.Add(chitiet.Id);
@@ -109,7 +117,7 @@ namespace TLShoes.FormControls.NhapKho
         private void KhoChange()
         {
             var selectedValue = PhieuNhapKho_Kho.SelectedValue;
-            if (selectedValue != null)
+            if (selectedValue != null && string.IsNullOrEmpty(PhieuNhapKho_SoPhieu.Text))
             {
                 var soPhieu = "";
                 foreach (var item in selectedValue.ToString().Split('_'))
@@ -128,7 +136,7 @@ namespace TLShoes.FormControls.NhapKho
             if (selectedValue != null)
             {
                 var danhGiaInfo = SF.Get<DanhGiaViewModel>().GetDetail((long)selectedValue);
-                lblSoDonHang.Text = string.Format("Số đơn hàng: {0}",danhGiaInfo.DonDatHang.SoDH);
+                lblSoDonHang.Text = string.Format("Số đơn hàng: {0}", danhGiaInfo.DonDatHang.SoDH);
             }
             else
             {
@@ -136,7 +144,7 @@ namespace TLShoes.FormControls.NhapKho
             }
         }
 
-     
+
     }
 
 

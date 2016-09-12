@@ -113,6 +113,27 @@ namespace TLShoes
                 CRUD.DecorateSaveData(chitiet);
                 SF.Get<ChiTietDonHangViewModel>().Save(chitiet);
             }
+
+            // Update danh gia nha cung cap
+            // ToDo dua chay vao trong thread
+            if (DonHang_KhachHangId.SelectedValue != null)
+            {
+                var khachHang = SF.Get<KhachHangViewModel>().GetDetail((long)DonHang_KhachHangId.SelectedValue);
+                if (khachHang != null)
+                {
+                    var donHangKhachHang = khachHang.DonHangs;
+                    khachHang.Gia = (int)donHangKhachHang.Where(s => s.Gia > 0).Average(s => s.Gia);
+                    khachHang.DungThoiGian = (int)donHangKhachHang.Where(s => s.DungThoiGian > 0).Average(s => s.DungThoiGian);
+                    khachHang.DungYeuCauKyThuat = (int)donHangKhachHang.Where(s => s.DungYeuCauKyThuat > 0).Average(s => s.DungYeuCauKyThuat);
+                    khachHang.DungMau = (int)donHangKhachHang.Where(s => s.DungMau > 0).Average(s => s.DungMau);
+                    khachHang.Khac = (int)donHangKhachHang.Where(s => s.Khac > 0).Average(s => s.Khac);
+                    khachHang.DatTestLy = (int)donHangKhachHang.Where(s => s.DatTestLy > 0).Average(s => s.DatTestLy);
+                    khachHang.DatTestHoa = (int)donHangKhachHang.Where(s => s.DatTestHoa > 0).Average(s => s.DatTestHoa);
+                    khachHang.DichVuGiaoHang = (int)donHangKhachHang.Where(s => s.DichVuGiaoHang > 0).Average(s => s.DichVuGiaoHang);
+                    khachHang.DichVuHauMai = (int)donHangKhachHang.Where(s => s.DichVuHauMai > 0).Average(s => s.DichVuHauMai);
+                    SF.Get<KhachHangViewModel>().Save(khachHang);
+                }
+            }
             return true;
         }
 
@@ -209,5 +230,96 @@ namespace TLShoes
             gridGopY.DataSource = GopYDict;
             gridView1.FocusedRowHandle = selectedRow;
         }
+
+        #region Update total assessment
+
+        private void UpdateTotalAssessment()
+        {
+            var updateData = new List<decimal>();
+            if (DonHang_DungThoiGian.Rating > 0)
+            {
+                updateData.Add(DonHang_DungThoiGian.Rating);
+            }
+            if (DonHang_DatTestHoa.Rating > 0)
+            {
+                updateData.Add(DonHang_DatTestHoa.Rating);
+            }
+            if (DonHang_DatTestLy.Rating > 0)
+            {
+                updateData.Add(DonHang_DatTestLy.Rating);
+            }
+            if (DonHang_DichVuGiaoHang.Rating > 0)
+            {
+                updateData.Add(DonHang_DichVuGiaoHang.Rating);
+            }
+            if (DonHang_DichVuHauMai.Rating > 0)
+            {
+                updateData.Add(DonHang_DichVuHauMai.Rating);
+            }
+            if (DonHang_DungMau.Rating > 0)
+            {
+                updateData.Add(DonHang_DungMau.Rating);
+            }
+            if (DonHang_DungYeuCauKyThuat.Rating > 0)
+            {
+                updateData.Add(DonHang_DungYeuCauKyThuat.Rating);
+            }
+            if (DonHang_Gia.Rating > 0)
+            {
+                updateData.Add(DonHang_Gia.Rating);
+            }
+            if (DonHang_Khac.Rating > 0)
+            {
+                updateData.Add(DonHang_Khac.Rating);
+            }
+
+            DanhGiaTongThe.Rating = updateData.Average();
+        }
+
+        private void DonHang_DungThoiGian_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void DonHang_DungMau_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void DonHang_DatTestLy_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void DonHang_DatTestHoa_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void DonHang_DungYeuCauKyThuat_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void DonHang_Gia_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void DonHang_DichVuGiaoHang_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void DonHang_DichVuHauMai_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+
+        private void DonHang_Khac_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateTotalAssessment();
+        }
+        #endregion
     }
 }

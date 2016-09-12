@@ -106,7 +106,6 @@ namespace TLShoes
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Lưu";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // DanhMuc_Loai
             // 
@@ -140,7 +139,6 @@ namespace TLShoes
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Hủy";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSaveContinue
             // 
@@ -156,7 +154,6 @@ namespace TLShoes
             this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
             this.btnSaveContinue.TabIndex = 13;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
-            this.btnSaveContinue.Click += new System.EventHandler(this.btnSaveContinue_Click);
             // 
             // xtraTabControl1
             // 

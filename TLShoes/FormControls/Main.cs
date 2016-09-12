@@ -50,7 +50,7 @@ namespace TLShoes
 
         private void InitDefault<T, T1>(string formName = "", List<string> buttonList = null) where T : UserControl, new()
         {
-            var ucList = FormFactory<T>.Get();
+            var ucList = new T();
             currentControl = typeof(T1);
             currentForm = typeof(T).Name;
             currentFormName = formName;
@@ -61,7 +61,7 @@ namespace TLShoes
 
         private void InitDefault<T, T1, T2>(string formName = "", List<string> buttonList = null) where T : UserControl, new()
         {
-            var ucList = FormFactory<T>.Get();
+            var ucList = new T();
             currentControl = typeof(T1);
             currentModel = typeof(T2);
             currentForm = typeof(T).Name;

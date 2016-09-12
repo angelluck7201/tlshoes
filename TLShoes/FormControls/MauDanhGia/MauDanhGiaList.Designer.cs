@@ -67,6 +67,8 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "Mẫu Đánh Giá";
             this.gridColumn2.FieldName = "TenMau";
             this.gridColumn2.Name = "gridColumn2";

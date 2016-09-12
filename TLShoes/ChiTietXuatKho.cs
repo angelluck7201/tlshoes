@@ -22,6 +22,7 @@ namespace TLShoes
         public Nullable<long> PhieuXuatKhoId { get; set; }
         public Nullable<long> NguyenLieuId { get; set; }
         public Nullable<float> SoLuong { get; set; }
+        public Nullable<bool> IsUpdateKho { get; set; }
     
         public virtual UserAccount UserAccount { get; set; }
         public virtual NguyenLieu NguyenLieu { get; set; }

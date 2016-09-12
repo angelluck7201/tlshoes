@@ -138,7 +138,7 @@
             this.DanhGia_SoPhieu.Location = new System.Drawing.Point(157, 54);
             this.DanhGia_SoPhieu.Name = "DanhGia_SoPhieu";
             this.DanhGia_SoPhieu.Size = new System.Drawing.Size(529, 22);
-            this.DanhGia_SoPhieu.TabIndex = 80;
+            this.DanhGia_SoPhieu.TabIndex = 0;
             // 
             // labelControl3
             // 
@@ -155,7 +155,7 @@
             this.SoLuongDat.Location = new System.Drawing.Point(157, 181);
             this.SoLuongDat.Name = "SoLuongDat";
             this.SoLuongDat.Size = new System.Drawing.Size(529, 22);
-            this.SoLuongDat.TabIndex = 78;
+            this.SoLuongDat.TabIndex = 3;
             // 
             // labelControl2
             // 
@@ -180,14 +180,14 @@
             this.DanhGia_NgayKiem.Location = new System.Drawing.Point(157, 227);
             this.DanhGia_NgayKiem.Name = "DanhGia_NgayKiem";
             this.DanhGia_NgayKiem.Size = new System.Drawing.Size(529, 23);
-            this.DanhGia_NgayKiem.TabIndex = 75;
+            this.DanhGia_NgayKiem.TabIndex = 4;
             // 
             // DanhGia_SoLuongKiem
             // 
             this.DanhGia_SoLuongKiem.Location = new System.Drawing.Point(157, 138);
             this.DanhGia_SoLuongKiem.Name = "DanhGia_SoLuongKiem";
             this.DanhGia_SoLuongKiem.Size = new System.Drawing.Size(529, 22);
-            this.DanhGia_SoLuongKiem.TabIndex = 74;
+            this.DanhGia_SoLuongKiem.TabIndex = 2;
             // 
             // DanhGia_MauDanhGiaId
             // 
@@ -205,7 +205,7 @@
             this.DanhGia_BienPhapXuLy.Location = new System.Drawing.Point(157, 318);
             this.DanhGia_BienPhapXuLy.Name = "DanhGia_BienPhapXuLy";
             this.DanhGia_BienPhapXuLy.Size = new System.Drawing.Size(529, 148);
-            this.DanhGia_BienPhapXuLy.TabIndex = 3;
+            this.DanhGia_BienPhapXuLy.TabIndex = 6;
             this.DanhGia_BienPhapXuLy.Text = "";
             // 
             // lblMauDanhGiaId
@@ -382,7 +382,7 @@
             this.btnSaveContinue.Location = new System.Drawing.Point(526, 600);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 18;
+            this.btnSaveContinue.TabIndex = 1;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // btnCancel
@@ -397,7 +397,7 @@
             this.btnCancel.Location = new System.Drawing.Point(7, 600);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 17;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Hủy";
             // 
             // btnSave
@@ -412,7 +412,7 @@
             this.btnSave.Location = new System.Drawing.Point(445, 600);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 16;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
             // 
             // ucDanhGia

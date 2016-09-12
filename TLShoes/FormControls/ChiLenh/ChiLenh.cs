@@ -19,17 +19,17 @@ namespace TLShoes.FormControls.ChiLenh
         {
             InitializeComponent();
 
-            ChiLenh_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
             ChiLenh_DonHangId.DisplayMember = "MaHang";
             ChiLenh_DonHangId.ValueMember = "Id";
+            ChiLenh_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
 
-            NguyenLieuChiLenh_PhanXuongId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_XUONG), null);
             NguyenLieuChiLenh_PhanXuongId.DisplayMember = "Ten";
             NguyenLieuChiLenh_PhanXuongId.ValueMember = "Id";
+            NguyenLieuChiLenh_PhanXuongId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_XUONG), null);
 
-            NguyenLieuChiLenh_MauId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU), null);
             NguyenLieuChiLenh_MauId.DisplayMember = "Ten";
             NguyenLieuChiLenh_MauId.ValueMember = "Id";
+            NguyenLieuChiLenh_MauId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU), null);
 
             NguyenLieuChiLenh_ChiTietId.DisplayMember = "Ten";
             NguyenLieuChiLenh_ChiTietId.ValueMember = "Id";
@@ -47,13 +47,13 @@ namespace TLShoes.FormControls.ChiLenh
             gridNguyenLieu.DataSource = ChiTietNguyenLieuList;
 
             NguyenLieuLookUp.NullText = "";
-            NguyenLieuLookUp.Properties.DataSource = SF.Get<NguyenLieuViewModel>().GetList().Select(s => new { s.Ten, s.Id }).ToList();
+            NguyenLieuLookUp.DataSource = SF.Get<NguyenLieuViewModel>().GetList().Select(s => new { s.Ten, s.Id }).ToList();
             NguyenLieuLookUp.PopulateColumns();
             NguyenLieuLookUp.ShowHeader = false;
             NguyenLieuLookUp.Columns["Id"].Visible = false;
-            NguyenLieuLookUp.Properties.DisplayMember = "Ten";
-            NguyenLieuLookUp.Properties.ValueMember = "Id";
-            NguyenLieuLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            NguyenLieuLookUp.DisplayMember = "Ten";
+            NguyenLieuLookUp.ValueMember = "Id";
+            NguyenLieuLookUp.TextEditStyle = TextEditStyles.DisableTextEditor;
 
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
         }
@@ -189,18 +189,11 @@ namespace TLShoes.FormControls.ChiLenh
 
         private void ChiLenh_DonHangId_SelectedValueChanged(object sender, EventArgs e)
         {
-            try
+            if (ChiLenh_DonHangId.SelectedValue != null)
             {
-                if (ChiLenh_DonHangId.SelectedValue != null)
-                {
-                    TongDonHang = SF.Get<DonHangViewModel>().TongDonHang((long) ChiLenh_DonHangId.SelectedValue);
-                    lblDinhMucThuc.Text = string.Format("{0} {1}", "Định Mức", TongDonHang);
-                    gridView.Columns[7].Caption = lblDinhMucThuc.Text;
-                }
-            }
-            catch (Exception)
-            {
-                return;
+                TongDonHang = SF.Get<DonHangViewModel>().TongDonHang((long)ChiLenh_DonHangId.SelectedValue);
+                lblDinhMucThuc.Text = string.Format("{0} {1}", "Định Mức", TongDonHang);
+                gridView.Columns[7].Caption = lblDinhMucThuc.Text;
             }
         }
     }

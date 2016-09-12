@@ -8,11 +8,9 @@ namespace TLShoes.FormControls.CongNgheSanXuat
     {
         public ucCongNgheSanXuatList()
         {
-
             InitializeComponent();
 
-
-            SF.Get<CongNgheSanXuatViewModel>().GetDataSource(gridControl);
+            ReloadData();
 
             ObserverControl.Regist("ucCongNgheSanXuat", "ucCongNgheSanXuatList", ReloadData);
             ObserverControl.Regist("Refresh", "ucCongNgheSanXuatList", ReloadData);
@@ -22,6 +20,19 @@ namespace TLShoes.FormControls.CongNgheSanXuat
         public void ReloadData()
         {
             SF.Get<CongNgheSanXuatViewModel>().GetDataSource(gridControl);
+            if (gridView.RowCount > 0)
+            {
+                Main.FeaturesDict["btnExport"].Visible = true;
+            }
+            else
+            {
+                Main.FeaturesDict["btnExport"].Visible = false;
+            }
+        }
+
+        public void Export(object filePath)
+        {
+            gridView.ExportToXls(filePath.ToString());
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)

@@ -39,6 +39,8 @@ namespace TLShoes
         public string DacTinh { get; set; }
         public Nullable<float> SoLuong { get; set; }
         public string GhiChu { get; set; }
+        public Nullable<long> MauId { get; set; }
+        public string QuyCach { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietNguyenLieu> ChiTietNguyenLieux { get; set; }
@@ -59,5 +61,6 @@ namespace TLShoes
         public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHuongDanDongGoi> ChiTietHuongDanDongGois { get; set; }
+        public virtual DanhMuc DanhMuc2 { get; set; }
     }
 }

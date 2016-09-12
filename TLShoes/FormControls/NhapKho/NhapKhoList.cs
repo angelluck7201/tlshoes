@@ -16,19 +16,31 @@ namespace TLShoes.FormControls.NhapKho
         public ucNhapKhoList()
         {
             InitializeComponent();
-            SF.Get<PhieuNhapKhoViewModel>().GetDataSource(gridControl);
+            ReloadData();
 
             ObserverControl.Regist("ucNhapKho", "ucNhapKhoList", ReloadData);
             ObserverControl.Regist("Refresh", "ucNhapKhoList", ReloadData);
             ObserverControl.Regist("Close", "ucNhapKhoList", ReloadData);
-
+            ObserverControl.Regist("Export", "ucNhapKhoList", Export);
         }
 
         public void ReloadData()
         {
             SF.Get<PhieuNhapKhoViewModel>().GetDataSource(gridControl);
+            if (gridView.RowCount > 0)
+            {
+                Main.FeaturesDict["btnExport"].Visible = true;
+            }
+            else
+            {
+                Main.FeaturesDict["btnExport"].Visible = false;
+            }
         }
 
+        public void Export(object filePath)
+        {
+            gridView.ExportToXls(filePath.ToString());
+        }
         private void gridView_DoubleClick(object sender, EventArgs e)
         {
             dynamic data = gridView.GetRow(gridView.FocusedRowHandle);

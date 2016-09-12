@@ -9,16 +9,31 @@ namespace TLShoes.FormControls.MauSanXuat
         {
             InitializeComponent();
 
-            SF.Get<MauSanXuatViewModel>().GetDataSource(gridControl);
+            ReloadData();
 
             ObserverControl.Regist("ucMauSanXuat", "ucMauSanXuatList", ReloadData);
             ObserverControl.Regist("Refresh", "ucMauSanXuatList", ReloadData);
             ObserverControl.Regist("Close", "ucMauSanXuatList", ReloadData);
+            ObserverControl.Regist("Export", "ucMauSanXuatList", Export);
+
         }
 
         public void ReloadData()
         {
             SF.Get<MauSanXuatViewModel>().GetDataSource(gridControl);
+            if (gridView.RowCount > 0)
+            {
+                Main.FeaturesDict["btnExport"].Visible = true;
+            }
+            else
+            {
+                Main.FeaturesDict["btnExport"].Visible = false;
+            }
+        }
+
+        public void Export(object filePath)
+        {
+            gridView.ExportToXls(filePath.ToString());
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)

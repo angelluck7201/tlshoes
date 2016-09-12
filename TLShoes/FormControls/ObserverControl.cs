@@ -49,7 +49,7 @@ namespace TLShoes
                 item.Action();
             }
 
-            var listParamAction = RegisterParamList.Where(s => s.RegisterPublish == publish).ToList();
+            var listParamAction = RegisterParamList.Where(s => s.RegisterPublish == publish && s.RegisterSubcrise == Main.currentForm).ToList();
             foreach (var item in listParamAction)
             {
                 if (data != null)

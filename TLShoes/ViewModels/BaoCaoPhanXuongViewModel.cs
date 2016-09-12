@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using DevExpress.XtraGrid;
@@ -10,14 +11,14 @@ namespace TLShoes.ViewModels
     {
         public List<BaoCaoPhanXuong> GetList()
         {
-            return DbContext.BaoCaoPhanXuongs.ToList();
+            return DbContext.BaoCaoPhanXuongs.OrderByDescending(s => s.BaoCaoNgay).ToList();
         }
 
         /// <summary>
         /// Get list luy ke 
         /// </summary>
         /// <param name="phanXuongId"></param>
-        /// <param name="selfId"></param>
+        /// <param name="toDate"></param>
         /// <returns></returns>
         public List<BaoCaoPhanXuong> GetList(long phanXuongId, long toDate)
         {
@@ -43,7 +44,8 @@ namespace TLShoes.ViewModels
                     s.SanLuongKhoan,
                     LuyKe = GetList((long)s.PhanXuongId, (long)s.BaoCaoNgay).Sum(l => l.SanLuongThucHien),
                     SoLuongDonHang = s.DonHang.ChiTietDonHangs.Sum(a => a.SoLuong),
-                    BaoCaoNgayFormat = TimeHelper.TimestampToString(s.BaoCaoNgay, "d"),
+                    BaoCaoNgayFormat = TimeHelper.TimeStampToDateTime(s.BaoCaoNgay, "d"),
+                    s.GhiChu
                 }).ToList();
         }
 
@@ -53,6 +55,7 @@ namespace TLShoes.ViewModels
             var groupBaoCao = GetList().GroupBy(s => s.DonHang);
             foreach (var group in groupBaoCao)
             {
+                var groupSort = group.OrderBy(s => s.BaoCaoNgay);
                 var groupPhanXuong = group.GroupBy(s => s.DanhMuc);
                 foreach (var phanxuong in groupPhanXuong)
                 {
@@ -66,6 +69,8 @@ namespace TLShoes.ViewModels
                     item.Khoan = (int)phanxuong.Sum(s => s.SanLuongKhoan);
                     item.ThucHien = (int)phanxuong.Sum(s => s.SanLuongThucHien);
                     item.Ton = item.ThucHien - item.Khoan;
+                    item.BaoCaoTuNgay = TimeHelper.TimeStampToDateTime(groupSort.First().BaoCaoNgay);
+                    item.BaoCaoDenNgay = TimeHelper.TimeStampToDateTime(groupSort.Last().BaoCaoNgay);
                     listData.Add(item);
                 }
             }
@@ -99,6 +104,9 @@ namespace TLShoes.ViewModels
             public int ThucHien { get; set; }
             public int Ton { get; set; }
             public int Khoan { get; set; }
+            public DateTime BaoCaoTuNgay { get; set; }
+            public DateTime BaoCaoDenNgay { get; set; }
+
         }
     }
 }
