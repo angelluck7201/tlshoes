@@ -81,15 +81,7 @@ namespace TLShoes.ViewModels
 
         public void Save(object data)
         {
-            dynamic dynamicData = data;
-            if (dynamicData.Id == 0)
-            {
-                DbContext.BaoCaoPhanXuongs.Add((BaoCaoPhanXuong)data);
-            }
-            else
-            {
-                DbContext.BaoCaoPhanXuongs.AddOrUpdate((BaoCaoPhanXuong)data);
-            }
+            DbContext.BaoCaoPhanXuongs.AddOrUpdate((BaoCaoPhanXuong)data);
             DbContext.SaveChanges();
         }
 

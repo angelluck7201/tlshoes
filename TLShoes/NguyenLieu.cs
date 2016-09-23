@@ -61,6 +61,6 @@ namespace TLShoes
         public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHuongDanDongGoi> ChiTietHuongDanDongGois { get; set; }
-        public virtual DanhMuc DanhMuc2 { get; set; }
+        public virtual DanhMuc Mau { get; set; }
     }
 }

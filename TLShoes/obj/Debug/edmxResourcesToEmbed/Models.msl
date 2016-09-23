@@ -281,6 +281,7 @@
     <EntitySetMapping Name="ToTrinhs">
       <EntityTypeMapping TypeName="GiayTLModel.ToTrinh">
         <MappingFragment StoreEntitySet="ToTrinh">
+          <ScalarProperty Name="DonDatHangList" ColumnName="DonDatHangList" />
           <ScalarProperty Name="DuKien" ColumnName="DuKien" />
           <ScalarProperty Name="TonThucTe" ColumnName="TonThucTe" />
           <ScalarProperty Name="TonTheKho" ColumnName="TonTheKho" />
@@ -519,6 +520,7 @@
     <EntitySetMapping Name="ChiTietDonDatHangs">
       <EntityTypeMapping TypeName="GiayTLModel.ChiTietDonDatHang">
         <MappingFragment StoreEntitySet="ChiTietDonDatHang">
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="SoLuongThuc" ColumnName="SoLuongThuc" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
@@ -536,6 +538,7 @@
     <EntitySetMapping Name="DonDatHangs">
       <EntityTypeMapping TypeName="GiayTLModel.DonDatHang">
         <MappingFragment StoreEntitySet="DonDatHang">
+          <ScalarProperty Name="ToTrinhId" ColumnName="ToTrinhId" />
           <ScalarProperty Name="Khac" ColumnName="Khac" />
           <ScalarProperty Name="DichVuHauMai" ColumnName="DichVuHauMai" />
           <ScalarProperty Name="DichVuGiaoHang" ColumnName="DichVuGiaoHang" />

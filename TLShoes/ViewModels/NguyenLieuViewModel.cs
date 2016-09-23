@@ -11,7 +11,7 @@ namespace TLShoes.ViewModels
         {
             return DbContext.NguyenLieux.ToList();
         }
-        
+
         public NguyenLieu GetDetail(long id)
         {
             return DbContext.NguyenLieux.Find(id);
@@ -30,18 +30,13 @@ namespace TLShoes.ViewModels
                 }).ToList();
         }
 
-        public void Save(object data)
+        public void Save(object data, bool isCommit = true)
         {
-            dynamic dynamicData = data;
-            if (dynamicData.Id == 0)
+            DbContext.NguyenLieux.AddOrUpdate((NguyenLieu)data);
+            if (isCommit)
             {
-                DbContext.NguyenLieux.Add((NguyenLieu)data);
+                Commit();
             }
-            else
-            {
-                DbContext.NguyenLieux.AddOrUpdate((NguyenLieu)data);
-            }
-            DbContext.SaveChanges();
         }
     }
 }

@@ -36,11 +36,13 @@ namespace TLShoes.ViewModels
             }).ToList();
         }
 
-        public void Save(object data)
+        public void Save(object data, bool isCommit = true)
         {
-            // dynamic dynamicData = data;
             DbContext.HuongDanDongGois.AddOrUpdate((HuongDanDongGoi)data);
-            DbContext.SaveChanges();
+            if (isCommit)
+            {
+                Commit();
+            }
         }
     }
 }

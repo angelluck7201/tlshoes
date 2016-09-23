@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using TLShoes.Common;
 using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.MauTest
@@ -21,14 +22,18 @@ namespace TLShoes.FormControls.MauTest
 
         public void ReloadData()
         {
-            SF.Get<MauTestViewModel>().GetDataSource(gridControl); if (gridView.RowCount > 0)
+            ThreadHelper.LoadForm(() =>
             {
-                Main.FeaturesDict["btnExport"].Visible = true;
-            }
-            else
-            {
-                Main.FeaturesDict["btnExport"].Visible = false;
-            }
+                SF.Get<MauTestViewModel>().GetDataSource(gridControl);
+                if (gridView.RowCount > 0)
+                {
+                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
+                }
+                else
+                {
+                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
+                }
+            });
         }
 
         public void Export(object filePath)
@@ -38,9 +43,12 @@ namespace TLShoes.FormControls.MauTest
 
         private void gridView_DoubleClick(object sender, EventArgs e)
         {
-            dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
-            var info = SF.Get<MauTestViewModel>().GetDetail(data.Id);
-            FormFactory<Main>.Get().ShowPopupInfo(info);
+            ThreadHelper.LoadForm(() =>
+            {
+                dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
+                var info = SF.Get<MauTestViewModel>().GetDetail(data.Id);
+                FormFactory<Main>.Get().ShowPopupInfo(info);
+            });
         }
     }
 }

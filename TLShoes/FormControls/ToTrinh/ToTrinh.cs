@@ -18,9 +18,11 @@ namespace TLShoes.FormControls.ToTrinh
         public ucToTrinh(TLShoes.ToTrinh data = null)
         {
             InitializeComponent();
-            ToTrinh_NguyenLieuId.DataSource = new BindingSource(SF.Get<NguyenLieuViewModel>().GetList(), null);
+
             ToTrinh_NguyenLieuId.DisplayMember = "Ten";
             ToTrinh_NguyenLieuId.ValueMember = "Id";
+            ToTrinh_NguyenLieuId.DataSource = new BindingSource(SF.Get<NguyenLieuViewModel>().GetList(), null);
+
 
             Init(data);
             currentToTrinh = data;

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using TLShoes.Common;
@@ -33,16 +35,16 @@ namespace TLShoes
         public ucDonHang(DonHang data = null)
         {
             ChiTietDonhang.Clear();
-
             InitializeComponent();
 
-            DonHang_KhachHangId.DataSource = new BindingSource(SF.Get<KhachHangViewModel>().GetList(), null);
             DonHang_KhachHangId.DisplayMember = "TenCongTy";
             DonHang_KhachHangId.ValueMember = "Id";
+            DonHang_KhachHangId.DataSource = new BindingSource(SF.Get<KhachHangViewModel>().GetList(), null);
 
-            DonHang_MaPhomId.DataSource = new BindingSource(SF.Get<NguyenLieuViewModel>().GetList().Where(s => s.LoaiNguyenLieu.Ten == "PHOM").ToList(), null);
             DonHang_MaPhomId.DisplayMember = "MaNguyenLieu";
             DonHang_MaPhomId.ValueMember = "Id";
+            DonHang_MaPhomId.DataSource = new BindingSource(SF.Get<NguyenLieuViewModel>().GetList().Where(s => s.LoaiNguyenLieu.Ten == "PHOM").ToList(), null);
+
 
             HideAllGopY();
             Init(data);
@@ -103,7 +105,7 @@ namespace TLShoes
                 return false;
             }
             var saveData = CRUD.GetFormObject<DonHang>(FormControls);
-            SF.Get<DonHangViewModel>().Save(saveData);
+            SF.Get<DonHangViewModel>().Save(saveData, false);
             var id = saveData.Id;
 
             // Save Chi Tiet Don Hang
@@ -111,28 +113,36 @@ namespace TLShoes
             {
                 chitiet.DonHangId = id;
                 CRUD.DecorateSaveData(chitiet);
-                SF.Get<ChiTietDonHangViewModel>().Save(chitiet);
+                SF.Get<ChiTietDonHangViewModel>().Save(chitiet, false);
             }
+            BaseModel.Commit();
 
             // Update danh gia nha cung cap
-            // ToDo dua chay vao trong thread
             if (DonHang_KhachHangId.SelectedValue != null)
             {
-                var khachHang = SF.Get<KhachHangViewModel>().GetDetail((long)DonHang_KhachHangId.SelectedValue);
-                if (khachHang != null)
-                {
-                    var donHangKhachHang = khachHang.DonHangs;
-                    khachHang.Gia = (int)donHangKhachHang.Where(s => s.Gia > 0).Average(s => s.Gia);
-                    khachHang.DungThoiGian = (int)donHangKhachHang.Where(s => s.DungThoiGian > 0).Average(s => s.DungThoiGian);
-                    khachHang.DungYeuCauKyThuat = (int)donHangKhachHang.Where(s => s.DungYeuCauKyThuat > 0).Average(s => s.DungYeuCauKyThuat);
-                    khachHang.DungMau = (int)donHangKhachHang.Where(s => s.DungMau > 0).Average(s => s.DungMau);
-                    khachHang.Khac = (int)donHangKhachHang.Where(s => s.Khac > 0).Average(s => s.Khac);
-                    khachHang.DatTestLy = (int)donHangKhachHang.Where(s => s.DatTestLy > 0).Average(s => s.DatTestLy);
-                    khachHang.DatTestHoa = (int)donHangKhachHang.Where(s => s.DatTestHoa > 0).Average(s => s.DatTestHoa);
-                    khachHang.DichVuGiaoHang = (int)donHangKhachHang.Where(s => s.DichVuGiaoHang > 0).Average(s => s.DichVuGiaoHang);
-                    khachHang.DichVuHauMai = (int)donHangKhachHang.Where(s => s.DichVuHauMai > 0).Average(s => s.DichVuHauMai);
-                    SF.Get<KhachHangViewModel>().Save(khachHang);
-                }
+                var khachHangId = (long)DonHang_KhachHangId.SelectedValue;
+                ThreadHelper.RunBackground(() =>
+                   {
+                       using (var context = new GiayTLEntities())
+                       {
+                           var khachHang = context.KhachHangs.Find(khachHangId);
+                           if (khachHang != null)
+                           {
+                               var donHangKhachHang = khachHang.DonHangs;
+                               khachHang.Gia = (int)donHangKhachHang.Where(s => s.Gia > 0).Average(s => s.Gia);
+                               khachHang.DungThoiGian = (int)donHangKhachHang.Where(s => s.DungThoiGian > 0).Average(s => s.DungThoiGian);
+                               khachHang.DungYeuCauKyThuat = (int)donHangKhachHang.Where(s => s.DungYeuCauKyThuat > 0).Average(s => s.DungYeuCauKyThuat);
+                               khachHang.DungMau = (int)donHangKhachHang.Where(s => s.DungMau > 0).Average(s => s.DungMau);
+                               khachHang.Khac = (int)donHangKhachHang.Where(s => s.Khac > 0).Average(s => s.Khac);
+                               khachHang.DatTestLy = (int)donHangKhachHang.Where(s => s.DatTestLy > 0).Average(s => s.DatTestLy);
+                               khachHang.DatTestHoa = (int)donHangKhachHang.Where(s => s.DatTestHoa > 0).Average(s => s.DatTestHoa);
+                               khachHang.DichVuGiaoHang = (int)donHangKhachHang.Where(s => s.DichVuGiaoHang > 0).Average(s => s.DichVuGiaoHang);
+                               khachHang.DichVuHauMai = (int)donHangKhachHang.Where(s => s.DichVuHauMai > 0).Average(s => s.DichVuHauMai);
+                               context.KhachHangs.AddOrUpdate(khachHang);
+                               context.SaveChanges();
+                           }
+                       }
+                   });
             }
             return true;
         }

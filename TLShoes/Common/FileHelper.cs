@@ -16,7 +16,6 @@ namespace TLShoes.Common
         public static float LIMIT_SIZE = 800;
         public static string FLAG_ROTATE = "FLAG_ROTATE";
 
-
         private static string _directorPath = "";
         public static string DirectorPath
         {
@@ -30,9 +29,19 @@ namespace TLShoes.Common
             }
         }
 
+        public static string TemplatePath
+        {
+            get { return Path.Combine(ResourcePath, "ExportTemplate"); }
+        }
+
+        public static string ResourcePath
+        {
+            get { return Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, "Resources"); }
+        }
+
         public static string DefaultImagePath
         {
-            get { return Path.Combine(ImagePath, "default.png"); }
+            get { return Path.Combine(ResourcePath, "default.png"); }
         }
 
         public static string ImagePath

@@ -32,7 +32,6 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lblTongThe = new DevExpress.XtraEditors.LabelControl();
@@ -56,6 +55,7 @@
             this.lblDungThoiGian = new DevExpress.XtraEditors.LabelControl();
             this.DonDatHang_DungThoiGian = new DevExpress.XtraEditors.RatingControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.gridToTrinh = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -88,7 +88,8 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -125,7 +126,7 @@
             this.btnSaveContinue.Appearance.Options.UseFont = true;
             this.btnSaveContinue.Appearance.Options.UseForeColor = true;
             this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(1143, 665);
+            this.btnSaveContinue.Location = new System.Drawing.Point(1316, 665);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
             this.btnSaveContinue.TabIndex = 1;
@@ -140,26 +141,11 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(1057, 665);
+            this.btnSave.Location = new System.Drawing.Point(1230, 665);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(4, 665);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Hủy";
             // 
             // xtraTabPage3
             // 
@@ -187,7 +173,7 @@
             this.xtraTabPage3.Controls.Add(this.lblDungThoiGian);
             this.xtraTabPage3.Controls.Add(this.DonDatHang_DungThoiGian);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1318, 610);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1491, 610);
             this.xtraTabPage3.Text = "Đánh Giá";
             // 
             // panelControl1
@@ -471,8 +457,18 @@
             this.xtraTabPage2.Controls.Add(this.lblNgayDatHang);
             this.xtraTabPage2.Controls.Add(this.lblNgayGiaoHang);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1318, 610);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1491, 610);
             this.xtraTabPage2.Text = "Đơn Đặt Hàng";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.LimeGreen;
+            this.labelControl1.Location = new System.Drawing.Point(23, 108);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(275, 17);
+            this.labelControl1.TabIndex = 104;
+            this.labelControl1.Text = "*Nhấp đúp vào tên nguyên liệu để chọn";
             // 
             // gridToTrinh
             // 
@@ -493,6 +489,7 @@
             this.gridView2.GridControl = this.gridToTrinh;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsDetail.EnableMasterViewMode = false;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             this.gridView2.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView2_RowStyle);
             this.gridView2.DoubleClick += new System.EventHandler(this.gridView2_DoubleClick);
@@ -528,7 +525,7 @@
             this.btnNhaCungCap.Appearance.Options.UseFont = true;
             this.btnNhaCungCap.Appearance.Options.UseForeColor = true;
             this.btnNhaCungCap.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnNhaCungCap.Location = new System.Drawing.Point(857, 80);
+            this.btnNhaCungCap.Location = new System.Drawing.Point(884, 81);
             this.btnNhaCungCap.Name = "btnNhaCungCap";
             this.btnNhaCungCap.Size = new System.Drawing.Size(131, 30);
             this.btnNhaCungCap.TabIndex = 103;
@@ -573,7 +570,7 @@
             this.gridNguyenLieu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.NguyenLieuLookUp,
             this.btnDeleteNguyenLieu});
-            this.gridNguyenLieu.Size = new System.Drawing.Size(845, 457);
+            this.gridNguyenLieu.Size = new System.Drawing.Size(1015, 457);
             this.gridNguyenLieu.TabIndex = 5;
             this.gridNguyenLieu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewNguyenLieu,
@@ -616,7 +613,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 70;
+            this.gridColumn2.Width = 84;
             // 
             // gridColumn5
             // 
@@ -627,7 +624,7 @@
             this.gridColumn5.OptionsColumn.AllowFocus = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 1;
-            this.gridColumn5.Width = 58;
+            this.gridColumn5.Width = 69;
             // 
             // gridColumn4
             // 
@@ -636,7 +633,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 6;
-            this.gridColumn4.Width = 80;
+            this.gridColumn4.Width = 123;
             // 
             // gridColumn1
             // 
@@ -647,7 +644,7 @@
             this.gridColumn1.OptionsColumn.AllowFocus = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 3;
-            this.gridColumn1.Width = 80;
+            this.gridColumn1.Width = 96;
             // 
             // gridColumn6
             // 
@@ -657,7 +654,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 0;
-            this.gridColumn6.Width = 123;
+            this.gridColumn6.Width = 147;
             // 
             // NguyenLieuLookUp
             // 
@@ -674,7 +671,7 @@
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
-            this.gridColumn8.Width = 208;
+            this.gridColumn8.Width = 227;
             // 
             // gridColumn14
             // 
@@ -682,7 +679,7 @@
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 8;
-            this.gridColumn14.Width = 47;
+            this.gridColumn14.Width = 55;
             // 
             // btnDeleteNguyenLieu
             // 
@@ -710,7 +707,7 @@
             this.gridColumn7.OptionsColumn.AllowFocus = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 5;
-            this.gridColumn7.Width = 71;
+            this.gridColumn7.Width = 85;
             // 
             // gridColumn9
             // 
@@ -721,7 +718,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ThanhTien", "{0:0.##}")});
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 4;
-            this.gridColumn9.Width = 91;
+            this.gridColumn9.Width = 109;
             // 
             // gridView1
             // 
@@ -731,7 +728,7 @@
             // lblNhaCungCapId
             // 
             this.lblNhaCungCapId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNhaCungCapId.Location = new System.Drawing.Point(465, 83);
+            this.lblNhaCungCapId.Location = new System.Drawing.Point(462, 86);
             this.lblNhaCungCapId.Name = "lblNhaCungCapId";
             this.lblNhaCungCapId.Size = new System.Drawing.Size(100, 17);
             this.lblNhaCungCapId.TabIndex = 58;
@@ -740,7 +737,7 @@
             // DonDatHang_NhaCungCapId
             // 
             this.DonDatHang_NhaCungCapId.FormattingEnabled = true;
-            this.DonDatHang_NhaCungCapId.Location = new System.Drawing.Point(591, 82);
+            this.DonDatHang_NhaCungCapId.Location = new System.Drawing.Point(591, 86);
             this.DonDatHang_NhaCungCapId.Name = "DonDatHang_NhaCungCapId";
             this.DonDatHang_NhaCungCapId.Size = new System.Drawing.Size(240, 24);
             this.DonDatHang_NhaCungCapId.TabIndex = 3;
@@ -769,7 +766,7 @@
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.defaultInfo);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1318, 610);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1491, 610);
             this.xtraTabPage1.Text = "Thông tin người dùng";
             // 
             // defaultInfo
@@ -777,7 +774,7 @@
             this.defaultInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defaultInfo.Location = new System.Drawing.Point(0, 0);
             this.defaultInfo.Name = "defaultInfo";
-            this.defaultInfo.Size = new System.Drawing.Size(1318, 610);
+            this.defaultInfo.Size = new System.Drawing.Size(1491, 610);
             this.defaultInfo.TabIndex = 11;
             // 
             // xtraTabControl1
@@ -793,34 +790,57 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(3, 3);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1325, 646);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1498, 646);
             this.xtraTabControl1.TabIndex = 73;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3});
             // 
-            // labelControl1
+            // btnExport
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.LimeGreen;
-            this.labelControl1.Location = new System.Drawing.Point(23, 108);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(275, 17);
-            this.labelControl1.TabIndex = 104;
-            this.labelControl1.Text = "*Nhấp đúp vào tên nguyên liệu để chọn";
+            this.btnExport.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnExport.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnExport.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnExport.Appearance.Options.UseBackColor = true;
+            this.btnExport.Appearance.Options.UseFont = true;
+            this.btnExport.Appearance.Options.UseForeColor = true;
+            this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnExport.Location = new System.Drawing.Point(1137, 665);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 30);
+            this.btnExport.TabIndex = 74;
+            this.btnExport.Text = "Export";
+            this.btnExport.Visible = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCancel.Appearance.Options.UseBackColor = true;
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.Appearance.Options.UseForeColor = true;
+            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnCancel.Location = new System.Drawing.Point(4, 665);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 30);
+            this.btnCancel.TabIndex = 75;
+            this.btnCancel.Text = "Hủy";
             // 
             // ucDonDatHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnSaveContinue);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucDonDatHang";
-            this.Size = new System.Drawing.Size(1349, 714);
+            this.Size = new System.Drawing.Size(1504, 714);
             this.xtraTabPage3.ResumeLayout(false);
             this.xtraTabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -857,7 +877,6 @@
 
         private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraEditors.SimpleButton btnNhaCungCap;
@@ -914,5 +933,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.SimpleButton btnExport;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
     }
 }

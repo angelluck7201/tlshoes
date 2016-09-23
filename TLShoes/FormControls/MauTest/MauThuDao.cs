@@ -18,9 +18,10 @@ namespace TLShoes.FormControls.MauThuDao
         public ucMauThuDao(TLShoes.MauThuDao data)
         {
             InitializeComponent();
-            MauThuDao_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
+
             MauThuDao_DonHangId.DisplayMember = "MaHang";
             MauThuDao_DonHangId.ValueMember = "Id";
+            MauThuDao_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
 
             GopYBindingList.Clear();
             GopYBindingList.Add(new CommonClass.GopYItem("Bp Vật Tư", data != null ? data.GopYVatTu : ""));

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DevExpress.XtraNavBar;
+using DevExpress.XtraSplashScreen;
+using TLShoes.Common;
 using TLShoes.Form;
 using TLShoes.FormControls.BaoCaoPhanXuong;
 using TLShoes.FormControls.ChiLenh;
@@ -35,7 +37,7 @@ namespace TLShoes
         public static Type currentControl;
         public static string currentFormName = "";
 
-        public static Dictionary<string, Control> FeaturesDict = new Dictionary<string, Control>();
+        public Dictionary<string, Control> FeaturesDict = new Dictionary<string, Control>();
 
         public Main()
         {
@@ -44,7 +46,10 @@ namespace TLShoes
             FeaturesDict.Add(btnSave.Name, btnSave);
             FeaturesDict.Add(btnRefresh.Name, btnRefresh);
             FeaturesDict.Add(btnExport.Name, btnExport);
+        }
 
+        private void Main_Load(object sender, EventArgs e)
+        {
             InitDefault<ucDanhMucList, ucDanhMuc, DanhMuc>("Danh Mục");
         }
 
@@ -59,7 +64,7 @@ namespace TLShoes
             GenerateUltilsForm(ucList, buttonList);
         }
 
-        private void InitDefault<T, T1, T2>(string formName = "", List<string> buttonList = null) where T : UserControl, new()
+        public void InitDefault<T, T1, T2>(string formName = "", List<string> buttonList = null) where T : UserControl, new()
         {
             var ucList = new T();
             currentControl = typeof(T1);
@@ -267,6 +272,8 @@ namespace TLShoes
             groupBoxView.Text = "Thẻ kho";
             GenerateUltilsForm(ucList, new List<string>() { "btnSave" });
         }
+
+       
     }
 }
 

@@ -24,39 +24,44 @@ namespace TLShoes.FormControls.TheKho
 
         public void ReloadData()
         {
-            var lstData = new List<TheKho>();
-            var nhapKhoList = SF.Get<PhieuNhapKhoViewModel>().GetList();
-            foreach (var phieuNhapKho in nhapKhoList)
+            ThreadHelper.LoadForm(() =>
             {
-                var theKho = new TheKho();
-                theKho.Ngay = TimeHelper.TimeStampToDateTime(phieuNhapKho.NgayNhap);
-                theKho.ChungTu = string.Format("PNK_{0}", phieuNhapKho.SoPhieu);
-                theKho.DienGiai = phieuNhapKho.LyDo;
-                theKho.Nhap = (double)phieuNhapKho.ChiTietNhapKhoes.Sum(s => s.SoLuong);
-                lstData.Add(theKho);
-            }
+                var lstData = new List<TheKho>();
+                var nhapKhoList = SF.Get<PhieuNhapKhoViewModel>().GetList();
+                foreach (var phieuNhapKho in nhapKhoList)
+                {
+                    var theKho = new TheKho();
+                    theKho.Ngay = TimeHelper.TimeStampToDateTime(phieuNhapKho.NgayNhap);
+                    theKho.ChungTu = string.Format("PNK_{0}", phieuNhapKho.SoPhieu);
+                    theKho.DienGiai = phieuNhapKho.LyDo;
+                    theKho.Nhap = (double)phieuNhapKho.ChiTietNhapKhoes.Sum(s => s.SoLuong);
+                    lstData.Add(theKho);
+                }
 
-            var xuatKhoList = SF.Get<PhieuXuatKhoViewModel>().GetList();
-            foreach (var phieuXuatKho in xuatKhoList)
-            {
-                var theKho = new TheKho();
-                theKho.Ngay = TimeHelper.TimeStampToDateTime(phieuXuatKho.NgayXuat);
-                theKho.ChungTu = string.Format("{0}_{1}", phieuXuatKho.LoaiXuat, phieuXuatKho.DonHang.OrderNo);
-                theKho.DienGiai = phieuXuatKho.LyDo;
-                theKho.Xuat = (double)phieuXuatKho.ChiTietXuatKhoes.Sum(s => s.SoLuong);
-                lstData.Add(theKho);
-            }
+                var xuatKhoList = SF.Get<PhieuXuatKhoViewModel>().GetList();
+                foreach (var phieuXuatKho in xuatKhoList)
+                {
+                    var theKho = new TheKho();
+                    theKho.Ngay = TimeHelper.TimeStampToDateTime(phieuXuatKho.NgayXuat);
+                    theKho.ChungTu = string.Format("{0}_{1}", phieuXuatKho.LoaiXuat, phieuXuatKho.DonHang.OrderNo);
+                    theKho.DienGiai = phieuXuatKho.LyDo;
+                    theKho.Xuat = (double)phieuXuatKho.ChiTietXuatKhoes.Sum(s => s.SoLuong);
+                    lstData.Add(theKho);
+                }
 
-            gridControl.DataSource = lstData;
+                gridControl.DataSource = lstData;
 
-            if (gridView.RowCount > 0)
-            {
-                Main.FeaturesDict["btnExport"].Visible = true;
-            }
-            else
-            {
-                Main.FeaturesDict["btnExport"].Visible = false;
-            }
+                if (gridView.RowCount > 0)
+                {
+                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
+                }
+                else
+                {
+                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
+                }
+                
+            });
+            
         }
 
         public void Export(object filePath)

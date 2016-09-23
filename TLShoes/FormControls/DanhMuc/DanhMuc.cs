@@ -12,9 +12,9 @@ namespace TLShoes
         {
             InitializeComponent();
 
-            DanhMuc_Loai.DataSource = new BindingSource(Define.LoaiDanhMucDic, null);
             DanhMuc_Loai.DisplayMember = "Value";
             DanhMuc_Loai.ValueMember = "Key";
+            DanhMuc_Loai.DataSource = new BindingSource(Define.LoaiDanhMucDic, null);
 
             Init(danhMuc);
             if (danhMuc != null)

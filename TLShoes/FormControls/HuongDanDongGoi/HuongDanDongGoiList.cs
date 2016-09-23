@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid;
+using TLShoes.Common;
 using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.HuongDanDongGoi
@@ -17,7 +18,7 @@ namespace TLShoes.FormControls.HuongDanDongGoi
         public ucHuongDanDongGoiList()
         {
             InitializeComponent();
-            
+
             ReloadData();
 
             ObserverControl.Regist("ucHuongDanDongGoi", "ucHuongDanDongGoiList", ReloadData);
@@ -29,15 +30,18 @@ namespace TLShoes.FormControls.HuongDanDongGoi
 
         public void ReloadData()
         {
-            SF.Get<HuongDanDongGoiViewModel>().GetDataSource(gridControl);
-            if (gridView.RowCount > 0)
+            ThreadHelper.LoadForm(() =>
             {
-                Main.FeaturesDict["btnExport"].Visible = true;
-            }
-            else
-            {
-                Main.FeaturesDict["btnExport"].Visible = false;
-            }
+                SF.Get<HuongDanDongGoiViewModel>().GetDataSource(gridControl);
+                if (gridView.RowCount > 0)
+                {
+                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
+                }
+                else
+                {
+                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
+                }
+            });
         }
 
         public void Export(object filePath)
@@ -47,9 +51,12 @@ namespace TLShoes.FormControls.HuongDanDongGoi
 
         private void gridView_DoubleClick(object sender, EventArgs e)
         {
-            dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
-            var info = SF.Get<HuongDanDongGoiViewModel>().GetDetail(data.Id);
-            FormFactory<Main>.Get().ShowPopupInfo(info);
+            ThreadHelper.LoadForm(() =>
+            {
+                dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
+                var info = SF.Get<HuongDanDongGoiViewModel>().GetDetail(data.Id);
+                FormFactory<Main>.Get().ShowPopupInfo(info);
+            });
         }
 
         private void gridView_CellMerge(object sender, DevExpress.XtraGrid.Views.Grid.CellMergeEventArgs e)

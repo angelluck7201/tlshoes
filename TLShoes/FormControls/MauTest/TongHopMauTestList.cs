@@ -1,4 +1,5 @@
 ﻿using System;
+using TLShoes.Common;
 using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.TongHopMauTest
@@ -22,15 +23,18 @@ namespace TLShoes.FormControls.TongHopMauTest
 
         public void ReloadData()
         {
-            SF.Get<MauDoiViewModel>().GetDataSummarySource(gridControl);
-            if (bandedGridView1.RowCount > 0)
+            ThreadHelper.LoadForm(() =>
             {
-                Main.FeaturesDict["btnExport"].Visible = true;
-            }
-            else
-            {
-                Main.FeaturesDict["btnExport"].Visible = false;
-            }
+                SF.Get<MauDoiViewModel>().GetDataSummarySource(gridControl);
+                if (bandedGridView1.RowCount > 0)
+                {
+                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
+                }
+                else
+                {
+                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
+                }
+            });
         }
 
         public void Export(object filePath)
@@ -40,8 +44,11 @@ namespace TLShoes.FormControls.TongHopMauTest
 
         private void gridView_DoubleClick(object sender, EventArgs e)
         {
-            dynamic data = bandedGridView1.GetRow(bandedGridView1.FocusedRowHandle);
-            FormFactory<Main>.Get().ShowPopupInfo(data.Id);
+            ThreadHelper.LoadForm(() =>
+            {
+                dynamic data = bandedGridView1.GetRow(bandedGridView1.FocusedRowHandle);
+                FormFactory<Main>.Get().ShowPopupInfo(data.Id);
+            });
         }
     }
 }

@@ -17,12 +17,16 @@ namespace TLShoes.ViewModels
             return DbContext.ChiTietNguyenLieux.Find(id);
         }
 
-        public void Delete(long id)
+        public void Delete(long id, bool isCommit = true)
         {
             var removeItem = GetDetail(id);
             if (removeItem != null)
             {
-                DbContext.ChiTietNguyenLieux.Remove(removeItem);                
+                DbContext.ChiTietNguyenLieux.Remove(removeItem);
+                if (isCommit)
+                {
+                    DbContext.SaveChanges();
+                }
             }
         }
 
@@ -37,18 +41,13 @@ namespace TLShoes.ViewModels
                 }).ToList();
         }
 
-        public void Save(object data)
+        public void Save(object data, bool isCommit = true)
         {
-            dynamic dynamicData = data;
-            if (dynamicData.Id == 0)
+            DbContext.ChiTietNguyenLieux.AddOrUpdate((ChiTietNguyenLieu)data);
+            if (isCommit)
             {
-                DbContext.ChiTietNguyenLieux.Add((ChiTietNguyenLieu)data);
+                DbContext.SaveChanges();
             }
-            else
-            {
-                DbContext.ChiTietNguyenLieux.AddOrUpdate((ChiTietNguyenLieu)data);
-            }
-            DbContext.SaveChanges();
         }
     }
 }

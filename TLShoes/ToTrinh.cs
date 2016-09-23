@@ -18,6 +18,7 @@ namespace TLShoes
         public ToTrinh()
         {
             this.ChiTietToTrinhs = new HashSet<ChiTietToTrinh>();
+            this.DonDatHangs = new HashSet<DonDatHang>();
         }
     
         public long Id { get; set; }
@@ -34,10 +35,13 @@ namespace TLShoes
         public Nullable<float> TonTheKho { get; set; }
         public Nullable<float> TonThucTe { get; set; }
         public Nullable<float> DuKien { get; set; }
+        public string DonDatHangList { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
         public virtual NguyenLieu NguyenLieu { get; set; }
         public virtual UserAccount UserAccount { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonDatHang> DonDatHangs { get; set; }
     }
 }

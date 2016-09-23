@@ -27,10 +27,13 @@ namespace TLShoes.ViewModels
             //control.DataSource = GetList().Select(s => new { s.Id, s.MaHang, s.OrderNo, s.KhachHang.TenCongTy, NgayNhanFormat = TimeHelper.TimestampToString(s.NgayNhan), NgayXuatFormat = TimeHelper.TimestampToString(s.NgayXuat) }).ToList();
         }
 
-        public void Save(object data)
+        public void Save(object data, bool isCommit = true)
         {
             DbContext.ChiTietDonHangs.AddOrUpdate((ChiTietDonHang)data);
-            DbContext.SaveChanges();
+            if (isCommit)
+            {
+                Commit();
+            }
         }
     }
 }

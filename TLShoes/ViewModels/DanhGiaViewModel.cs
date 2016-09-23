@@ -39,63 +39,43 @@ namespace TLShoes.ViewModels
             }).ToList();
         }
 
-        public void Save(object data)
+        public void Save(object data, bool isCommit = true)
         {
-            dynamic dynamicData = data;
-            if (dynamicData.Id == 0)
+            DbContext.DanhGias.AddOrUpdate((DanhGia)data);
+            if (isCommit)
             {
-                DbContext.DanhGias.Add((DanhGia)data);
-            }
-            else
-            {
-                DbContext.DanhGias.AddOrUpdate((DanhGia)data);
-            }
-            DbContext.SaveChanges();
-        }
-
-        public void Save(ChiTietDanhGia data)
-        {
-
-            try
-            {
-                if (data.Id == 0)
-                {
-                    DbContext.ChiTietDanhGias.Add(data);
-                }
-                else
-                {
-                    DbContext.ChiTietDanhGias.AddOrUpdate(data);
-                }
                 DbContext.SaveChanges();
             }
-            catch (DbEntityValidationException e)
-            {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    ConsoleWriter.WriteLine(string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State));
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        ConsoleWriter.WriteLine(string.Format("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage));
-                    }
-                }
-                throw;
-            }
-
         }
 
-        public void Delete(ChiTietDanhGia data)
+        public void Save(ChiTietDanhGia data, bool isCommit = true)
+        {
+            DbContext.ChiTietDanhGias.AddOrUpdate(data);
+            if (isCommit)
+            {
+                DbContext.SaveChanges();
+            }
+        }
+
+        public void Delete(ChiTietDanhGia data, bool isCommit = true)
         {
             DbContext.ChiTietDanhGias.Remove(data);
+            if (isCommit)
+            {
+                DbContext.SaveChanges();
+            }
         }
 
-        public void Delete(long DanhGiaId)
+        public void Delete(long danhGiaId, bool isCommit = true)
         {
-            var DanhGia = GetDetail(DanhGiaId);
-            if (DanhGia != null)
+            var danhGia = GetDetail(danhGiaId);
+            if (danhGia != null)
             {
-                DbContext.DanhGias.Remove(DanhGia);
+                DbContext.DanhGias.Remove(danhGia);
+                if (isCommit)
+                {
+                    Commit();
+                }
             }
         }
     }

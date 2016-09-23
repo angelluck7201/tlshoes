@@ -20,13 +20,13 @@ namespace TLShoes.FormControls.DanhGia
         {
             InitializeComponent();
 
-            DanhGia_DonDatHangId.DataSource = new BindingSource(SF.Get<DonDatHangViewModel>().GetList(), null);
             DanhGia_DonDatHangId.DisplayMember = "SoDH";
             DanhGia_DonDatHangId.ValueMember = "Id";
+            DanhGia_DonDatHangId.DataSource = new BindingSource(SF.Get<DonDatHangViewModel>().GetList(), null);
 
-            DanhGia_MauDanhGiaId.DataSource = new BindingSource(SF.Get<MauDanhGiaViewModel>().GetList(), null);
             DanhGia_MauDanhGiaId.DisplayMember = "TenMau";
             DanhGia_MauDanhGiaId.ValueMember = "Id";
+            DanhGia_MauDanhGiaId.DataSource = new BindingSource(SF.Get<MauDanhGiaViewModel>().GetList(), null);
 
             Init(data);
             if (data != null)
@@ -62,13 +62,13 @@ namespace TLShoes.FormControls.DanhGia
 
             // Save Don hang
             var saveData = CRUD.GetFormObject<TLShoes.DanhGia>(FormControls);
-            SF.Get<DanhGiaViewModel>().Save(saveData);
+            SF.Get<DanhGiaViewModel>().Save(saveData, false);
 
             foreach (var chitiet in ChiTietDanhGia)
             {
                 chitiet.DanhGiaId = saveData.Id;
                 CRUD.DecorateSaveData(chitiet);
-                SF.Get<DanhGiaViewModel>().Save(chitiet);
+                SF.Get<DanhGiaViewModel>().Save(chitiet, false);
             }
 
             // Clear deleted data
@@ -77,9 +77,10 @@ namespace TLShoes.FormControls.DanhGia
             {
                 if (ChiTietDanhGia.All(s => s.Id != deleteItem.Id))
                 {
-                    SF.Get<DanhGiaViewModel>().Delete(deleteItem);
+                    SF.Get<DanhGiaViewModel>().Delete(deleteItem, false);
                 }
             }
+            BaseModel.Commit();
 
             return true;
         }

@@ -10,13 +10,13 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
         {
             InitializeComponent();
 
-            BaoCaoPhanXuong_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
             BaoCaoPhanXuong_DonHangId.DisplayMember = "MaHang";
             BaoCaoPhanXuong_DonHangId.ValueMember = "Id";
+            BaoCaoPhanXuong_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
 
-            BaoCaoPhanXuong_PhanXuongId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_XUONG), null);
             BaoCaoPhanXuong_PhanXuongId.DisplayMember = "Ten";
             BaoCaoPhanXuong_PhanXuongId.ValueMember = "Id";
+            BaoCaoPhanXuong_PhanXuongId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_XUONG), null);
 
             Init(data);
         }
@@ -35,7 +35,7 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
             return true;
         }
 
-     
+
         public string ValidateInput()
         {
             return string.Empty;

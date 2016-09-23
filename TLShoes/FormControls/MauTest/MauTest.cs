@@ -13,17 +13,17 @@ namespace TLShoes.FormControls.MauTest
         public ucMauTest(TLShoes.MauTest data)
         {
             InitializeComponent();
-            MauTest_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
             MauTest_DonHangId.DisplayMember = "MaHang";
             MauTest_DonHangId.ValueMember = "Id";
+            MauTest_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
 
-            MauTest_PhanLoaiTestHoaId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
             MauTest_PhanLoaiTestHoaId.DisplayMember = "Ten";
             MauTest_PhanLoaiTestHoaId.ValueMember = "Id";
+            MauTest_PhanLoaiTestHoaId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
 
-            MauTest_PhanLoaiTestLyId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
             MauTest_PhanLoaiTestLyId.DisplayMember = "Ten";
             MauTest_PhanLoaiTestLyId.ValueMember = "Id";
+            MauTest_PhanLoaiTestLyId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
 
             GopYBindingList.Clear();
             GopYBindingList.Add(new CommonClass.GopYItem("Bp Vật Tư", data != null ? data.GopYVatTu : ""));

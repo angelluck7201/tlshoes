@@ -58,6 +58,7 @@
     <Property Name="SoLuong" Type="float" />
     <Property Name="SoLuongThuc" Type="float" />
     <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DonGia" Type="float" />
   </EntityType>
   <EntityType Name="ChiTietDonHang">
     <Key>
@@ -231,6 +232,7 @@
     <Property Name="DichVuGiaoHang" Type="int" />
     <Property Name="DichVuHauMai" Type="int" />
     <Property Name="Khac" Type="int" />
+    <Property Name="ToTrinhId" Type="bigint" />
   </EntityType>
   <EntityType Name="DonHang">
     <Key>
@@ -636,6 +638,7 @@
     <Property Name="DuKien" Type="real" />
     <Property Name="HaoHut" Type="real" />
     <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DonDatHangList" Type="text" />
   </EntityType>
   <EntityType Name="UserAccount">
     <Key>
@@ -1220,6 +1223,18 @@
       </Principal>
       <Dependent Role="DonDatHang">
         <PropertyRef Name="NhaCungCapId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonDatHan__ToTri__0C1BC9F9">
+    <End Role="ToTrinh" Type="Self.ToTrinh" Multiplicity="0..1" />
+    <End Role="DonDatHang" Type="Self.DonDatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ToTrinh">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DonDatHang">
+        <PropertyRef Name="ToTrinhId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1991,6 +2006,10 @@
     </AssociationSet>
     <AssociationSet Name="FK__DonDatHan__NhaCu__44CA3770" Association="Self.FK__DonDatHan__NhaCu__44CA3770">
       <End Role="NhaCungCap" EntitySet="NhaCungCap" />
+      <End Role="DonDatHang" EntitySet="DonDatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonDatHan__ToTri__0C1BC9F9" Association="Self.FK__DonDatHan__ToTri__0C1BC9F9">
+      <End Role="ToTrinh" EntitySet="ToTrinh" />
       <End Role="DonDatHang" EntitySet="DonDatHang" />
     </AssociationSet>
     <AssociationSet Name="FK__DonHang__AuthorI__1CF15040" Association="Self.FK__DonHang__AuthorI__1CF15040">

@@ -135,6 +135,7 @@
         <AssociationConnector Association="GiayTLModel.FK__MauDoiHin__Autho__67DE6983" />
         <AssociationConnector Association="GiayTLModel.FK__PhieuNhap__DanhG__6ABAD62E" />
         <AssociationConnector Association="GiayTLModel.FK__NguyenLie__MauId__7908F585" />
+        <AssociationConnector Association="GiayTLModel.FK__DonDatHan__ToTri__0C1BC9F9" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

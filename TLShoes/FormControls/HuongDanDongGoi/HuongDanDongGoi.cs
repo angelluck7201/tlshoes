@@ -14,13 +14,13 @@ namespace TLShoes.FormControls.HuongDanDongGoi
         {
             InitializeComponent();
 
-            HuongDanDongGoi_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
             HuongDanDongGoi_DonHangId.DisplayMember = "MaHang";
             HuongDanDongGoi_DonHangId.ValueMember = "Id";
+            HuongDanDongGoi_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
 
-            HuongDanDongGoi_CachDong.DataSource = new BindingSource(Define.LoaiDongDic, null);
             HuongDanDongGoi_CachDong.DisplayMember = "Value";
             HuongDanDongGoi_CachDong.ValueMember = "Key";
+            HuongDanDongGoi_CachDong.DataSource = new BindingSource(Define.LoaiDongDic, null);
 
             Init(data);
 
@@ -50,14 +50,16 @@ namespace TLShoes.FormControls.HuongDanDongGoi
             {
                 saveData.DongAssorment = "";
             }
-            SF.Get<HuongDanDongGoiViewModel>().Save(saveData);
+            SF.Get<HuongDanDongGoiViewModel>().Save(saveData, false);
 
             var nhatKyThayDoi = new NhatKyThayDoi();
             nhatKyThayDoi.GhiChu = LyDoThayDoi.Text;
             nhatKyThayDoi.ModelName = Define.ModelType.HUONG_DAN_DONG_GOI.ToString();
             nhatKyThayDoi.ItemId = saveData.Id;
             CRUD.DecorateSaveData(nhatKyThayDoi);
-            SF.Get<NhatKyThayDoiViewModel>().Save(nhatKyThayDoi);
+            SF.Get<NhatKyThayDoiViewModel>().Save(nhatKyThayDoi, false);
+
+            BaseModel.Commit();
 
             return true;
         }

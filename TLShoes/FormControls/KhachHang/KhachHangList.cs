@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using TLShoes.Common;
 using TLShoes.ViewModels;
 
 namespace TLShoes
@@ -19,16 +20,19 @@ namespace TLShoes
 
         public void ReloadData()
         {
-            SF.Get<KhachHangViewModel>().GetDataSource(gridControl);
-            if (gridView.RowCount > 0)
+            ThreadHelper.LoadForm(() =>
             {
-                Main.FeaturesDict["btnExport"].Visible = true;
-            }
-            else
-            {
-                Main.FeaturesDict["btnExport"].Visible = false;
-            }
-        }
+                SF.Get<KhachHangViewModel>().GetDataSource(gridControl);
+                if (gridView.RowCount > 0)
+                {
+                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
+                }
+                else
+                {
+                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
+                }
+            });
+          }
 
         public void Export(object filePath)
         {
@@ -37,9 +41,12 @@ namespace TLShoes
 
         private void gridView_DoubleClick(object sender, EventArgs e)
         {
-            dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
-            var info = SF.Get<KhachHangViewModel>().GetDetail(data.Id);
-            FormFactory<Main>.Get().ShowPopupInfo(info);
+            ThreadHelper.LoadForm(() =>
+            {
+                dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
+                var info = SF.Get<KhachHangViewModel>().GetDetail(data.Id);
+                FormFactory<Main>.Get().ShowPopupInfo(info);
+            });
         }
     }
 }

@@ -56,13 +56,13 @@ namespace TLShoes.FormControls.NhaCungCap
             }
 
             var saveData = CRUD.GetFormObject<TLShoes.NhaCungCap>(FormControls);
-            _viewModel.Save(saveData);
+            _viewModel.Save(saveData, false);
 
             foreach (var nguyenlieu in ChiTietNguyenLieuList)
             {
                 nguyenlieu.NhaCungCapId = saveData.Id;
                 CRUD.DecorateSaveData(nguyenlieu);
-                _viewModel.Save(nguyenlieu);
+                _viewModel.Save(nguyenlieu, false);
             }
 
             // Delete not use data
@@ -71,9 +71,11 @@ namespace TLShoes.FormControls.NhaCungCap
             {
                 if (ChiTietNguyenLieuList.All(s => s.Id != vattu.Id))
                 {
-                    _viewModel.Delete(vattu);
+                    _viewModel.Delete(vattu, false);
                 }
             }
+
+            BaseModel.Commit();
 
             return true;
         }

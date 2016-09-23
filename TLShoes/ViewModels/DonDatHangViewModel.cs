@@ -72,21 +72,31 @@ namespace TLShoes.ViewModels
             }
         }
 
-        public void Save(object data)
+        public void Save(object data, bool isCommit = true)
         {
             DbContext.DonDatHangs.AddOrUpdate((DonDatHang)data);
-            DbContext.SaveChanges();
+            if (isCommit)
+            {
+                Commit();
+            }
         }
 
-        public void Save(ChiTietDonDatHang data)
+        public void Save(ChiTietDonDatHang data, bool isCommit = true)
         {
             DbContext.ChiTietDonDatHangs.AddOrUpdate(data);
-            DbContext.SaveChanges();
+            if (isCommit)
+            {
+                Commit();
+            }
         }
 
-        public void Delete(ChiTietDonDatHang data)
+        public void Delete(ChiTietDonDatHang data, bool isCommit = true)
         {
             DbContext.ChiTietDonDatHangs.Remove(data);
+            if (isCommit)
+            {
+                Commit();
+            }
         }
 
         public class VatTuDonGia : ChiTietDonDatHang
@@ -94,6 +104,7 @@ namespace TLShoes.ViewModels
             public float DonGia { get; set; }
             public string DonViTinh { get; set; }
             public string DonViTien { get; set; }
+            public long ToTrinhId { get; set; }
 
             public float ThanhTien
             {

@@ -37,23 +37,32 @@ namespace TLShoes.ViewModels
             }).ToList();
         }
 
-        public void Save(MauHuongDanDongGoi data)
+        public void Save(MauHuongDanDongGoi data, bool isCommit = true)
         {
             // dynamic dynamicData = data;
             DbContext.MauHuongDanDongGois.AddOrUpdate(data);
-            DbContext.SaveChanges();
+            if (isCommit)
+            {
+                Commit();
+            }
         }
 
-        public void Save(ChiTietHuongDanDongGoi data)
+        public void Save(ChiTietHuongDanDongGoi data, bool isCommit = true)
         {
-            // dynamic dynamicData = data;
             DbContext.ChiTietHuongDanDongGois.AddOrUpdate(data);
-            DbContext.SaveChanges();
+            if (isCommit)
+            {
+                Commit();
+            }
         }
 
-        public void Delete(ChiTietHuongDanDongGoi data)
+        public void Delete(ChiTietHuongDanDongGoi data, bool isCommit = true)
         {
             DbContext.ChiTietHuongDanDongGois.Remove(data);
+            if (isCommit)
+            {
+                Commit();
+            }
         }
     }
 }

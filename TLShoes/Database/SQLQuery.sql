@@ -418,15 +418,17 @@ SanLuongThucHien int,
 BaoCaoNgay bigint,
 GhiChu nvarchar(1000),
 )
-	
+
+alter table	ToTrinh add DonDatHangList text
 create table ToTrinh(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),	
 CreatedDate bigint,
-ModifiedDate bigint,
+ModifiedDate bigint, 
 IsActived bit,
 
 NguyenLieuId bigint foreign key references NguyenLieu(Id),
+DonDatHangList text,
 BoSung real,
 ThuHoi real,
 TonToTrinh real,
@@ -571,6 +573,7 @@ alter table DonDatHang add Gia int
 alter table DonDatHang add DichVuGiaoHang int
 alter table DonDatHang add DichVuHauMai int
 alter table DonDatHang add Khac int
+alter table DonDatHang drop ToTrinhId 
 create table DonDatHang(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -593,6 +596,7 @@ DichVuHauMai int,
 Khac int,
 )
 
+alter table ChiTietDonDatHang add DonGia float
 create table ChiTietDonDatHang(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -603,6 +607,7 @@ IsActived bit,
 DonDatHangId bigint foreign key references DonDatHang(Id),
 NhaCungCapId bigint foreign key references NhaCungCap(Id),
 NguyenLieuId bigint foreign key references NguyenLieu(Id),
+DonGia float,
 SoLuong float,
 SoLuongThuc float,
 GhiChu nvarchar(1000),

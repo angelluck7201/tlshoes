@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
+using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
 using TLShoes.ViewModels;
+using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace TLShoes.FormControls.DonDatHang
 {
@@ -19,23 +24,26 @@ namespace TLShoes.FormControls.DonDatHang
         BindingList<DonDatHangViewModel.VatTuDonGia> DatHangVatTuList = new BindingList<DonDatHangViewModel.VatTuDonGia>();
         List<TLShoes.ToTrinh> ToTrinhList = new List<TLShoes.ToTrinh>();
         List<long> SelectedList = new List<long>();
+        private TLShoes.DonDatHang _donDatHang = null;
 
         public ucDonDatHang(TLShoes.DonDatHang data = null)
         {
             InitializeComponent();
 
-            DonDatHang_NhaCungCapId.DataSource = new BindingSource(SF.Get<NhaCungCapViewModel>().GetList(), null);
             DonDatHang_NhaCungCapId.DisplayMember = "TenCongTy";
             DonDatHang_NhaCungCapId.ValueMember = "Id";
-            DatHangVatTuList.Clear();
+            DonDatHang_NhaCungCapId.DataSource = new BindingSource(SF.Get<NhaCungCapViewModel>().GetList(), null);
 
             Init(data);
+            ToTrinhList = SF.Get<ToTrinhViewModel>().GetList(data);
             if (data != null)
             {
                 SF.Get<DonDatHangViewModel>().GetChiTietDatHang(data, ref DatHangVatTuList);
+                btnExport.Visible = true;
+                SelectedList = ToTrinhList.Where(s => s.DonDatHangFormatList.Contains(data.Id)).Select(s => s.Id).ToList();
+                _donDatHang = data;
             }
-            ToTrinhList = SF.Get<ToTrinhViewModel>().GetList();
-            SF.Get<ToTrinhViewModel>().GetDataSource(gridToTrinh);
+            gridToTrinh.DataSource = ToTrinhList;
 
             gridNguyenLieu.DataSource = DatHangVatTuList;
 
@@ -49,6 +57,7 @@ namespace TLShoes.FormControls.DonDatHang
             NguyenLieuLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
 
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
+
         }
 
         public override bool SaveData()
@@ -56,13 +65,13 @@ namespace TLShoes.FormControls.DonDatHang
             var validateResult = ValidateInput();
             if (!string.IsNullOrEmpty(validateResult))
             {
-                MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
+                MessageBox.Show(validateResult);
                 return false;
             }
 
             // Save Don hang
             var saveData = CRUD.GetFormObject<TLShoes.DonDatHang>(FormControls);
-            SF.Get<DonDatHangViewModel>().Save(saveData);
+            SF.Get<DonDatHangViewModel>().Save(saveData, false);
 
             // Clear deleted data
             var listChiTietDelete = SF.Get<DonDatHangViewModel>().GetList(saveData.Id);
@@ -70,7 +79,31 @@ namespace TLShoes.FormControls.DonDatHang
             {
                 if (DatHangVatTuList.All(s => s.Id != deleteItem.Id))
                 {
-                    SF.Get<DonDatHangViewModel>().Delete(deleteItem);
+                    SF.Get<DonDatHangViewModel>().Delete(deleteItem, false);
+                }
+            }
+
+            // Update danh sach cac to trinh da duoc dat hang
+            foreach (var totrinh in ToTrinhList)
+            {
+                var isUpdateToTrinh = false;
+                if (SelectedList.Contains(totrinh.Id))
+                {
+                    if (!totrinh.DonDatHangFormatList.Contains(saveData.Id))
+                    {
+                        totrinh.DonDatHangList += saveData.Id + ",";
+                        isUpdateToTrinh = true;
+                    }
+                }
+                else if (!string.IsNullOrEmpty(totrinh.DonDatHangList))
+                {
+                    totrinh.DonDatHangList = "";
+                    isUpdateToTrinh = true;
+                }
+
+                if (isUpdateToTrinh)
+                {
+                    SF.Get<ToTrinhViewModel>().Save(totrinh, false);
                 }
             }
 
@@ -85,47 +118,67 @@ namespace TLShoes.FormControls.DonDatHang
                 chitietDonDatHang.DonDatHangId = saveData.Id;
                 chitietDonDatHang.NguyenLieuId = nguyenlieu.NguyenLieuId;
                 chitietDonDatHang.NhaCungCapId = nguyenlieu.NhaCungCapId;
+                chitietDonDatHang.DonGia = nguyenlieu.DonGia;
                 chitietDonDatHang.GhiChu = nguyenlieu.GhiChu;
                 chitietDonDatHang.SoLuong = nguyenlieu.SoLuong;
                 chitietDonDatHang.SoLuongThuc = nguyenlieu.SoLuongThuc;
 
                 CRUD.DecorateSaveData(chitietDonDatHang);
-                SF.Get<DonDatHangViewModel>().Save(chitietDonDatHang);
+                SF.Get<DonDatHangViewModel>().Save(chitietDonDatHang, false);
             }
+            BaseModel.Commit();
 
-      
             // Update danh gia nha cung cap
-            // ToDo dua chay vao trong thread
             if (DonDatHang_NhaCungCapId.SelectedValue != null)
             {
-                var nhaCungCap = SF.Get<NhaCungCapViewModel>().GetDetail((long)DonDatHang_NhaCungCapId.SelectedValue);
-                if (nhaCungCap != null)
+                var nhaCungCapId = (long)DonDatHang_NhaCungCapId.SelectedValue;
+                ThreadHelper.RunBackground(() =>
                 {
-                    var donHangNhaCungCap = SF.Get<DonDatHangViewModel>().GetListByNhaCungCap(nhaCungCap.Id);
-                    nhaCungCap.Gia = (int)donHangNhaCungCap.Where(s => s.Gia > 0).Average(s => s.Gia);
-                    nhaCungCap.DungThoiGian = (int)donHangNhaCungCap.Where(s => s.DungThoiGian > 0).Average(s => s.DungThoiGian);
-                    nhaCungCap.DungYeuCauKyThuat = (int)donHangNhaCungCap.Where(s => s.DungYeuCauKyThuat > 0).Average(s => s.DungYeuCauKyThuat);
-                    nhaCungCap.DungMau = (int)donHangNhaCungCap.Where(s => s.DungMau > 0).Average(s => s.DungMau);
-                    nhaCungCap.Khac = (int)donHangNhaCungCap.Where(s => s.Khac > 0).Average(s => s.Khac);
-                    nhaCungCap.DatTestLy = (int)donHangNhaCungCap.Where(s => s.DatTestLy > 0).Average(s => s.DatTestLy);
-                    nhaCungCap.DatTestHoa = (int)donHangNhaCungCap.Where(s => s.DatTestHoa > 0).Average(s => s.DatTestHoa);
-                    nhaCungCap.DichVuGiaoHang = (int)donHangNhaCungCap.Where(s => s.DichVuGiaoHang > 0).Average(s => s.DichVuGiaoHang);
-                    nhaCungCap.DichVuHauMai = (int)donHangNhaCungCap.Where(s => s.DichVuHauMai > 0).Average(s => s.DichVuHauMai);
-                    SF.Get<NhaCungCapViewModel>().Save(nhaCungCap);
-                }
+                    using (var context = new GiayTLEntities())
+                    {
+                        var nhaCungCap = context.NhaCungCaps.Find(nhaCungCapId);
+                        if (nhaCungCap != null)
+                        {
+                            var donHangNhaCungCap = context.DonDatHangs.Where(s => s.NhaCungCapId == nhaCungCapId).ToList();
+                            nhaCungCap.Gia = (int)donHangNhaCungCap.Where(s => s.Gia > 0).Average(s => s.Gia);
+                            nhaCungCap.DungThoiGian = (int)donHangNhaCungCap.Where(s => s.DungThoiGian > 0).Average(s => s.DungThoiGian);
+                            nhaCungCap.DungYeuCauKyThuat = (int)donHangNhaCungCap.Where(s => s.DungYeuCauKyThuat > 0).Average(s => s.DungYeuCauKyThuat);
+                            nhaCungCap.DungMau = (int)donHangNhaCungCap.Where(s => s.DungMau > 0).Average(s => s.DungMau);
+                            nhaCungCap.Khac = (int)donHangNhaCungCap.Where(s => s.Khac > 0).Average(s => s.Khac);
+                            nhaCungCap.DatTestLy = (int)donHangNhaCungCap.Where(s => s.DatTestLy > 0).Average(s => s.DatTestLy);
+                            nhaCungCap.DatTestHoa = (int)donHangNhaCungCap.Where(s => s.DatTestHoa > 0).Average(s => s.DatTestHoa);
+                            nhaCungCap.DichVuGiaoHang = (int)donHangNhaCungCap.Where(s => s.DichVuGiaoHang > 0).Average(s => s.DichVuGiaoHang);
+                            nhaCungCap.DichVuHauMai = (int)donHangNhaCungCap.Where(s => s.DichVuHauMai > 0).Average(s => s.DichVuHauMai);
+                            context.NhaCungCaps.AddOrUpdate(nhaCungCap);
+                            context.SaveChanges();
+                        }
+                    }
+                });
             }
+
             return true;
         }
 
         public string ValidateInput()
         {
+            if (DatHangVatTuList.Any(s => s.DonGia.Equals(0f)))
+            {
+                return "Chưa lấy giá vậy tư từ Nhà Cung Cấp!";
+            }
+
             return string.Empty;
         }
 
 
         private void btnDeleteNguyenLieu_Click(object sender, EventArgs e)
         {
-            gridViewNguyenLieu.DeleteRow(gridViewNguyenLieu.FocusedRowHandle);
+            int selectedRow = gridViewNguyenLieu.FocusedRowHandle;
+            gridViewNguyenLieu.DeleteRow(selectedRow);
+            dynamic data = gridViewNguyenLieu.GetRow(selectedRow);
+            if (data != null && SelectedList.Contains(data.ToTrinhId))
+            {
+                SelectedList.Remove(data.ToTrinhId);
+            }
         }
 
         private void btnNhaCungCap_Click(object sender, EventArgs e)
@@ -259,8 +312,10 @@ namespace TLShoes.FormControls.DonDatHang
                     nguyenLieu = new DonDatHangViewModel.VatTuDonGia();
                     nguyenLieu.SoLuong = 0;
                     nguyenLieu.NguyenLieuId = data.NguyenLieuId;
+                    nguyenLieu.ToTrinhId = data.Id;
                     DatHangVatTuList.Add(nguyenLieu);
                 }
+
                 if (SelectedList.Contains(data.Id))
                 {
                     nguyenLieu.SoLuong -= data.DuKien;
@@ -291,6 +346,54 @@ namespace TLShoes.FormControls.DonDatHang
             }
         }
 
-      
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            if (_donDatHang == null) return;
+            var saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Excel |*.xls";
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                ThreadHelper.LoadForm(() =>
+                {
+                    //Start Excel and get Application object.
+                    var excel = new Application();
+
+                    //Get a new workbook.
+                    var workBook = excel.Workbooks.Open(Path.Combine(FileHelper.TemplatePath, Define.TEMPLATE_DON_DAT_HANG));
+                    var workSheet = (_Worksheet)workBook.ActiveSheet;
+
+                    var donDatHang = _donDatHang;
+                    var chitietDatHang = donDatHang.ChiTietDonDatHangs.ToList();
+                    for (int i = 0; i < chitietDatHang.Count; i++)
+                    {
+                        workSheet.Cells[11 + i, 1] = i + 1;
+                        workSheet.Cells[11 + i, 2] = chitietDatHang[i].NguyenLieu.Ten;
+                        workSheet.Cells[11 + i, 6] = chitietDatHang[i].NguyenLieu.QuyCach;
+                        workSheet.Cells[11 + i, 7] = chitietDatHang[i].NguyenLieu.Mau != null
+                            ? chitietDatHang[i].NguyenLieu.Mau.Ten
+                            : "";
+                        workSheet.Cells[11 + i, 8] = chitietDatHang[i].NguyenLieu.DanhMuc != null
+                            ? chitietDatHang[i].NguyenLieu.DanhMuc.Ten
+                            : "";
+                        workSheet.Cells[11 + i, 9] = chitietDatHang[i].SoLuong;
+                        var giaVatTu =
+                            chitietDatHang[i].NhaCungCap.NhaCungCapVatTus.FirstOrDefault(
+                                s => s.NguyenLieuId == chitietDatHang[i].NguyenLieuId);
+                        workSheet.Cells[11 + i, 10] = giaVatTu.DonGia;
+                        workSheet.Cells[11 + i, 11] = chitietDatHang[i].NguyenLieu.GhiChu;
+
+                        if (11 + i > 20)
+                        {
+                            var row = (Range)workSheet.Rows[11 + i + 1];
+                            row.Insert(XlInsertShiftDirection.xlShiftDown);
+                        }
+                    }
+
+                    workBook.SaveAs(saveDialog.FileName);
+                    workBook.Close();
+                });
+            }
+
+        }
     }
 }

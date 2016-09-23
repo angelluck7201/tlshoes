@@ -63,6 +63,7 @@
           <Property Name="SoLuong" Type="float" />
           <Property Name="SoLuongThuc" Type="float" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DonGia" Type="float" />
         </EntityType>
         <EntityType Name="ChiTietDonHang">
           <Key>
@@ -236,6 +237,7 @@
           <Property Name="DichVuGiaoHang" Type="int" />
           <Property Name="DichVuHauMai" Type="int" />
           <Property Name="Khac" Type="int" />
+          <Property Name="ToTrinhId" Type="bigint" />
         </EntityType>
         <EntityType Name="DonHang">
           <Key>
@@ -641,6 +643,7 @@
           <Property Name="DuKien" Type="real" />
           <Property Name="HaoHut" Type="real" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DonDatHangList" Type="text" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -1225,6 +1228,18 @@
             </Principal>
             <Dependent Role="DonDatHang">
               <PropertyRef Name="NhaCungCapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonDatHan__ToTri__0C1BC9F9">
+          <End Role="ToTrinh" Type="Self.ToTrinh" Multiplicity="0..1" />
+          <End Role="DonDatHang" Type="Self.DonDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToTrinh">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DonDatHang">
+              <PropertyRef Name="ToTrinhId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1998,6 +2013,10 @@
             <End Role="NhaCungCap" EntitySet="NhaCungCap" />
             <End Role="DonDatHang" EntitySet="DonDatHang" />
           </AssociationSet>
+          <AssociationSet Name="FK__DonDatHan__ToTri__0C1BC9F9" Association="Self.FK__DonDatHan__ToTri__0C1BC9F9">
+            <End Role="ToTrinh" EntitySet="ToTrinh" />
+            <End Role="DonDatHang" EntitySet="DonDatHang" />
+          </AssociationSet>
           <AssociationSet Name="FK__DonHang__AuthorI__1CF15040" Association="Self.FK__DonHang__AuthorI__1CF15040">
             <End Role="UserAccount" EntitySet="UserAccount" />
             <End Role="DonHang" EntitySet="DonHang" />
@@ -2593,6 +2612,10 @@
             <End Role="DanhMuc" EntitySet="DanhMucs" />
             <End Role="NguyenLieu" EntitySet="NguyenLieux" />
           </AssociationSet>
+          <AssociationSet Name="FK__DonDatHan__ToTri__0C1BC9F9" Association="GiayTLModel.FK__DonDatHan__ToTri__0C1BC9F9">
+            <End Role="ToTrinh" EntitySet="ToTrinhs" />
+            <End Role="DonDatHang" EntitySet="DonDatHangs" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="BaoCaoPhanXuong">
           <Key>
@@ -2877,7 +2900,7 @@
           <NavigationProperty Name="ChiTietHuongDanDongGois" Relationship="GiayTLModel.FK__ChiTietHu__Nguye__373B3228" FromRole="NguyenLieu" ToRole="ChiTietHuongDanDongGoi" />
           <Property Name="MauId" Type="Int64" />
           <Property Name="QuyCach" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DanhMuc2" Relationship="GiayTLModel.FK__NguyenLie__MauId__7908F585" FromRole="NguyenLieu" ToRole="DanhMuc" />
+          <NavigationProperty Name="Mau" Relationship="GiayTLModel.FK__NguyenLie__MauId__7908F585" FromRole="NguyenLieu" ToRole="DanhMuc" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -3402,6 +3425,8 @@
           <Property Name="TonTheKho" Type="Single" />
           <Property Name="TonThucTe" Type="Single" />
           <Property Name="DuKien" Type="Single" />
+          <NavigationProperty Name="DonDatHangs" Relationship="GiayTLModel.FK__DonDatHan__ToTri__0C1BC9F9" FromRole="ToTrinh" ToRole="DonDatHang" />
+          <Property Name="DonDatHangList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__ChiTietTo__Autho__73BA3083">
           <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
@@ -4025,6 +4050,7 @@
           <NavigationProperty Name="NhaCungCap" Relationship="GiayTLModel.FK__ChiTietDo__NhaCu__7755B73D" FromRole="ChiTietDonDatHang" ToRole="NhaCungCap" />
           <NavigationProperty Name="DonDatHang" Relationship="GiayTLModel.FK__ChiTietDo__DonDa__76619304" FromRole="ChiTietDonDatHang" ToRole="DonDatHang" />
           <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DonGia" Type="Double" />
         </EntityType>
         <Association Name="FK__ChiTietDo__Autho__756D6ECB">
           <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
@@ -4088,6 +4114,8 @@
           <Property Name="DichVuGiaoHang" Type="Int32" />
           <Property Name="DichVuHauMai" Type="Int32" />
           <Property Name="Khac" Type="Int32" />
+          <Property Name="ToTrinhId" Type="Int64" />
+          <NavigationProperty Name="ToTrinh" Relationship="GiayTLModel.FK__DonDatHan__ToTri__0C1BC9F9" FromRole="DonDatHang" ToRole="ToTrinh" />
         </EntityType>
         <Association Name="FK__ChiTietDo__DonDa__76619304">
           <End Type="GiayTLModel.DonDatHang" Role="DonDatHang" Multiplicity="0..1" />
@@ -4543,6 +4571,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__DonDatHan__ToTri__0C1BC9F9">
+          <End Type="GiayTLModel.ToTrinh" Role="ToTrinh" Multiplicity="0..1" />
+          <End Type="GiayTLModel.DonDatHang" Role="DonDatHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToTrinh">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DonDatHang">
+              <PropertyRef Name="ToTrinhId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4829,6 +4869,7 @@
           <EntitySetMapping Name="ToTrinhs">
             <EntityTypeMapping TypeName="GiayTLModel.ToTrinh">
               <MappingFragment StoreEntitySet="ToTrinh">
+                <ScalarProperty Name="DonDatHangList" ColumnName="DonDatHangList" />
                 <ScalarProperty Name="DuKien" ColumnName="DuKien" />
                 <ScalarProperty Name="TonThucTe" ColumnName="TonThucTe" />
                 <ScalarProperty Name="TonTheKho" ColumnName="TonTheKho" />
@@ -5067,6 +5108,7 @@
           <EntitySetMapping Name="ChiTietDonDatHangs">
             <EntityTypeMapping TypeName="GiayTLModel.ChiTietDonDatHang">
               <MappingFragment StoreEntitySet="ChiTietDonDatHang">
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="SoLuongThuc" ColumnName="SoLuongThuc" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
@@ -5084,6 +5126,7 @@
           <EntitySetMapping Name="DonDatHangs">
             <EntityTypeMapping TypeName="GiayTLModel.DonDatHang">
               <MappingFragment StoreEntitySet="DonDatHang">
+                <ScalarProperty Name="ToTrinhId" ColumnName="ToTrinhId" />
                 <ScalarProperty Name="Khac" ColumnName="Khac" />
                 <ScalarProperty Name="DichVuHauMai" ColumnName="DichVuHauMai" />
                 <ScalarProperty Name="DichVuGiaoHang" ColumnName="DichVuGiaoHang" />

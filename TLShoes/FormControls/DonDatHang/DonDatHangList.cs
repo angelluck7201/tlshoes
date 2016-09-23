@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
+using TLShoes.Common;
 using TLShoes.ViewModels;
+using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace TLShoes.FormControls.DonDatHang
 {
@@ -15,7 +15,7 @@ namespace TLShoes.FormControls.DonDatHang
     {
         public ucDonDatHangList()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             ReloadData();
 
             ObserverControl.Regist("ucDonDatHang", "ucDonDatHangList", ReloadData);
@@ -26,27 +26,26 @@ namespace TLShoes.FormControls.DonDatHang
 
         public void ReloadData()
         {
-            SF.Get<DonDatHangViewModel>().GetDataSource(gridControl);
-            if (gridView.RowCount > 0)
+            ThreadHelper.LoadForm(() =>
             {
-                Main.FeaturesDict["btnExport"].Visible = true;
-            }
-            else
-            {
-                Main.FeaturesDict["btnExport"].Visible = false;
-            }
+                SF.Get<DonDatHangViewModel>().GetDataSource(gridControl);
+                FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
+            });
         }
 
         public void Export(object filePath)
         {
-            gridView.ExportToXls(filePath.ToString());
+            
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)
         {
-            dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
-            var info = SF.Get<DonDatHangViewModel>().GetDetail(data.Id);
-            FormFactory<Main>.Get().ShowPopupInfo(info);
+            ThreadHelper.LoadForm(() =>
+            {
+                dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
+                var info = SF.Get<DonDatHangViewModel>().GetDetail(data.Id);
+                FormFactory<Main>.Get().ShowPopupInfo(info);
+            });
         }
     }
 }

@@ -22,9 +22,10 @@ namespace TLShoes.FormControls.HuongDanDongGoi
         {
             InitializeComponent();
 
-            MauHuongDanDongGoi_KhachHangId.DataSource = new BindingSource(SF.Get<KhachHangViewModel>().GetList(), null);
             MauHuongDanDongGoi_KhachHangId.DisplayMember = "TenCongTy";
             MauHuongDanDongGoi_KhachHangId.ValueMember = "Id";
+            MauHuongDanDongGoi_KhachHangId.DataSource = new BindingSource(SF.Get<KhachHangViewModel>().GetList(), null);
+
 
             Init(data);
             if (data != null)
@@ -84,14 +85,14 @@ namespace TLShoes.FormControls.HuongDanDongGoi
             }
 
             var saveData = CRUD.GetFormObject<MauHuongDanDongGoi>(FormControls);
-            _viewModel.Save(saveData);
+            _viewModel.Save(saveData, false);
 
             foreach (var chitiet in ChiTietHuongDanList)
             {
                 chitiet.MauHuongDanDongGoiId = saveData.Id;
                 chitiet.HinhMauDinhKem = FileHelper.ImageSave(chitiet.HinhMauDinhKemFormat);
                 CRUD.DecorateSaveData(chitiet);
-                _viewModel.Save(chitiet);
+                _viewModel.Save(chitiet, false);
             }
 
             // Delete not use data
@@ -103,11 +104,13 @@ namespace TLShoes.FormControls.HuongDanDongGoi
                 {
                     if (ChiTietHuongDanList.All(s => s.Id != chitiet.Id))
                     {
-                        _viewModel.Delete(chitiet);
+                        _viewModel.Delete(chitiet, false);
                     }
                 }
             }
-         
+
+            BaseModel.Commit();
+
             return true;
         }
 

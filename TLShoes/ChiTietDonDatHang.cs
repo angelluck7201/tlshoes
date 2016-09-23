@@ -25,6 +25,7 @@ namespace TLShoes
         public Nullable<double> SoLuong { get; set; }
         public Nullable<double> SoLuongThuc { get; set; }
         public string GhiChu { get; set; }
+        public Nullable<double> DonGia { get; set; }
     
         public virtual UserAccount UserAccount { get; set; }
         public virtual NguyenLieu NguyenLieu { get; set; }

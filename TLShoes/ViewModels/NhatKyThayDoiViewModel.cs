@@ -45,18 +45,14 @@ namespace TLShoes.ViewModels
             }).ToList();
         }
 
-        public void Save(object data)
+        public void Save(object data, bool isCommit = true)
         {
-            dynamic dynamicData = data;
-            if (dynamicData.Id == 0)
+            DbContext.NhatKyThayDois.AddOrUpdate((NhatKyThayDoi)data);
+
+            if (isCommit)
             {
-                DbContext.NhatKyThayDois.Add((NhatKyThayDoi)data);
+                DbContext.SaveChanges();
             }
-            else
-            {
-                DbContext.NhatKyThayDois.AddOrUpdate((NhatKyThayDoi)data);
-            }
-            DbContext.SaveChanges();
         }
     }
 }

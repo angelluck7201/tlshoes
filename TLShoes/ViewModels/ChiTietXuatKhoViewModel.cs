@@ -39,26 +39,25 @@ namespace TLShoes.ViewModels
             bindingData = new BindingList<ChiTietXuatKho>(GetListByXuatKho(phieuXuatId));
         }
 
-        public void Save(object data)
+        public void Save(object data, bool isCommit = true)
         {
-            dynamic dynamicData = data;
-            if (dynamicData.Id == 0)
-            {
-                DbContext.ChiTietXuatKhoes.Add((ChiTietXuatKho)data);
-            }
-            else
-            {
                 DbContext.ChiTietXuatKhoes.AddOrUpdate((ChiTietXuatKho)data);
+            if (isCommit)
+            {
+                Commit();
             }
-            DbContext.SaveChanges();
         }
 
-        public void Delete(long id)
+        public void Delete(long id, bool isCommit = true)
         {
             var removeItem = GetDetail(id);
             if (removeItem != null)
             {
                 DbContext.ChiTietXuatKhoes.Remove(removeItem);
+                if (isCommit)
+                {
+                    Commit();
+                }
             }
         }
     }

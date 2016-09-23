@@ -14,9 +14,9 @@ namespace TLShoes.FormControls.DonHang
         {
             InitializeComponent();
 
-            MauDoi_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
             MauDoi_DonHangId.ValueMember = "Id";
             MauDoi_DonHangId.DisplayMember = "MaHang";
+            MauDoi_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
 
             Init(data);
             if (data != null)

@@ -2,6 +2,8 @@
 using System.Data.Entity.Migrations;
 using System.Linq;
 using DevExpress.XtraGrid;
+using DevExpress.XtraPrinting.Native;
+using TLShoes;
 using TLShoes.Common;
 
 namespace TLShoes.ViewModels
@@ -16,43 +18,61 @@ namespace TLShoes.ViewModels
         public List<ToTrinh> GetList(long totrinhid)
         {
             return DbContext.ToTrinhs.Where(s => s.Id < totrinhid).ToList();
-        } 
+        }
 
         public ToTrinh GetDetail(long id)
         {
             return DbContext.ToTrinhs.Find(id);
         }
 
-        public void GetDataSource(GridControl control)
+        public List<ToTrinh> GetList(DonDatHang donDatHang)
         {
-            control.DataSource = GetList().Select(s => new
-            {
-                s.Id,
-                s.NguyenLieuId,
-                s.NguyenLieu.Ten,
-                s.BoSung,
-                s.ThuHoi,
-                s.TonToTrinh,
-                s.TonTheKho,
-                s.TonThucTe,
-                s.DuKien,
-                s.HaoHut,
-                s.GhiChu
-            }).ToList();
+            return DbContext.ToTrinhs.ToList().Where(s =>
+                string.IsNullOrEmpty(s.DonDatHangList)
+                || (donDatHang != null && s.DonDatHangFormatList.Contains(donDatHang.Id))).ToList();
         }
 
-        public void Save(object data)
+        public void GetDataSource(GridControl control, DonDatHang donDatHang)
         {
-            dynamic dynamicData = data;
-            if (dynamicData.Id == 0)
+            control.DataSource = GetList(donDatHang);
+        }
+
+        public void GetDataSource(GridControl control)
+        {
+            control.DataSource = GetList();
+        }
+
+        public void Save(object data, bool isCommit = true)
+        {
+            DbContext.ToTrinhs.AddOrUpdate((ToTrinh)data);
+            if (isCommit)
             {
-                DbContext.ToTrinhs.Add((ToTrinh)data);
+                DbContext.SaveChanges();
             }
-            else
+        }
+    }
+}
+
+namespace TLShoes
+{
+    public partial class ToTrinh
+    {
+        public string Ten
+        {
+            get { return NguyenLieu != null ? NguyenLieu.Ten : ""; }
+        }
+
+        public List<long> DonDatHangFormatList
+        {
+            get
             {
-                DbContext.ToTrinhs.AddOrUpdate((ToTrinh)data);
+                var result = new List<long>();
+                if (DonDatHangList != null)
+                {
+                    result = DonDatHangList.Split(',').Select(s => PrimitiveConvert.StringToInt(s)).ToList();
+                }
+                return result;
             }
-            DbContext.SaveChanges();
         }
     }
 }

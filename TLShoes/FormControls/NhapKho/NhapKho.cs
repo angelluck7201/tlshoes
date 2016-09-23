@@ -19,13 +19,14 @@ namespace TLShoes.FormControls.NhapKho
             InitializeComponent();
             Init(data);
 
-            PhieuNhapKho_Kho.DataSource = new BindingSource(Define.KhoDic, null);
             PhieuNhapKho_Kho.DisplayMember = "Value";
             PhieuNhapKho_Kho.ValueMember = "Key";
+            PhieuNhapKho_Kho.DataSource = new BindingSource(Define.KhoDic, null);
 
-            PhieuNhapKho_DanhGiaId.DataSource = new BindingSource(SF.Get<DanhGiaViewModel>().GetList(), null);
             PhieuNhapKho_DanhGiaId.DisplayMember = "SoPhieu";
             PhieuNhapKho_DanhGiaId.ValueMember = "Id";
+            PhieuNhapKho_DanhGiaId.DataSource = new BindingSource(SF.Get<DanhGiaViewModel>().GetList(), null);
+     
 
             if (data != null)
             {
@@ -60,7 +61,7 @@ namespace TLShoes.FormControls.NhapKho
                 return false;
             }
             var saveData = CRUD.GetFormObject<PhieuNhapKho>(FormControls);
-            SF.Get<PhieuNhapKhoViewModel>().Save(saveData);
+            SF.Get<PhieuNhapKhoViewModel>().Save(saveData, false);
 
             // Save chi teit Nhap kho
             var currentItem = new List<long>();
@@ -70,13 +71,13 @@ namespace TLShoes.FormControls.NhapKho
                 {
                     var nguyenLieu = chitiet.NguyenLieu;
                     nguyenLieu.SoLuong += chitiet.SoLuong;
-                    SF.Get<NguyenLieuViewModel>().Save(nguyenLieu);
+                    SF.Get<NguyenLieuViewModel>().Save(nguyenLieu, false);
                 }
 
                 chitiet.PhieuNhapKhoId = saveData.Id;
                 chitiet.IsUpdateKho = true;
                 CRUD.DecorateSaveData(chitiet);
-                SF.Get<ChiTietNhapKhoViewModel>().Save(chitiet);
+                SF.Get<ChiTietNhapKhoViewModel>().Save(chitiet, false);
                 currentItem.Add(chitiet.Id);
             }
 
@@ -86,9 +87,10 @@ namespace TLShoes.FormControls.NhapKho
             {
                 if (!currentItem.Contains(deleteItem.Id))
                 {
-                    SF.Get<ChiTietNhapKhoViewModel>().Delete(deleteItem.Id);
+                    SF.Get<ChiTietNhapKhoViewModel>().Delete(deleteItem.Id, false);
                 }
             }
+            BaseModel.Commit();
 
             return true;
         }

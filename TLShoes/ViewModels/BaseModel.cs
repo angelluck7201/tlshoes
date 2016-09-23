@@ -28,7 +28,7 @@ namespace TLShoes.ViewModels
             }
         }
 
-        public void Commit()
+        public static void Commit()
         {
             DbContext.SaveChanges();
         }

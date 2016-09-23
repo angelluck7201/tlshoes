@@ -88,5 +88,8 @@ namespace TLShoes.Common
             {LoaiDong.ASSORTMENT, "ASSORTMENT"},
             {LoaiDong.SOLID, "SOLID"},
          };
+
+        public const string TEMPLATE_DON_DAT_HANG = "DonDatHang_template.xls";
+
     }
 }

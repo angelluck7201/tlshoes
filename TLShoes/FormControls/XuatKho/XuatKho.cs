@@ -18,17 +18,17 @@ namespace TLShoes.FormControls.XuatKho
         {
             InitializeComponent();
 
-            PhieuXuatKho_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
             PhieuXuatKho_DonHangId.DisplayMember = "MaHang";
             PhieuXuatKho_DonHangId.ValueMember = "Id";
+            PhieuXuatKho_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
 
-            PhieuXuatKho_Kho.DataSource = new BindingSource(Define.KhoDic, null);
             PhieuXuatKho_Kho.DisplayMember = "Value";
             PhieuXuatKho_Kho.ValueMember = "Key";
+            PhieuXuatKho_Kho.DataSource = new BindingSource(Define.KhoDic, null);
 
-            PhieuXuatKho_LoaiXuat.DataSource = new BindingSource(Define.LoaiXuatDic, null);
             PhieuXuatKho_LoaiXuat.DisplayMember = "Value";
             PhieuXuatKho_LoaiXuat.ValueMember = "Key";
+            PhieuXuatKho_LoaiXuat.DataSource = new BindingSource(Define.LoaiXuatDic, null);
 
             Init(data);
 
@@ -94,7 +94,7 @@ namespace TLShoes.FormControls.XuatKho
             }
 
             var saveData = CRUD.GetFormObject<PhieuXuatKho>(FormControls);
-            SF.Get<PhieuXuatKhoViewModel>().Save(saveData);
+            SF.Get<PhieuXuatKhoViewModel>().Save(saveData, false);
 
 
             // Save chi teit xuat kho
@@ -105,12 +105,12 @@ namespace TLShoes.FormControls.XuatKho
                 {
                     var nguyenLieu = chitiet.NguyenLieu;
                     nguyenLieu.SoLuong -= chitiet.SoLuong;
-                    SF.Get<NguyenLieuViewModel>().Save(nguyenLieu);
+                    SF.Get<NguyenLieuViewModel>().Save(nguyenLieu, false);
                 }
                 chitiet.PhieuXuatKhoId = saveData.Id;
                 chitiet.IsUpdateKho = true;
                 CRUD.DecorateSaveData(chitiet);
-                SF.Get<ChiTietXuatKhoViewModel>().Save(chitiet);
+                SF.Get<ChiTietXuatKhoViewModel>().Save(chitiet, false);
                 currentItem.Add(chitiet.Id);
             }
 
@@ -120,9 +120,10 @@ namespace TLShoes.FormControls.XuatKho
             {
                 if (!currentItem.Contains(deleteItem.Id))
                 {
-                    SF.Get<ChiTietXuatKhoViewModel>().Delete(deleteItem.Id);
+                    SF.Get<ChiTietXuatKhoViewModel>().Delete(deleteItem.Id, false);
                 }
             }
+            BaseModel.Commit();
 
             return true;
         }

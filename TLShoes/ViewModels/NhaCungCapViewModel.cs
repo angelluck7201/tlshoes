@@ -53,55 +53,31 @@ namespace TLShoes.ViewModels
           }).ToList();
         }
 
-        public void Save(object data)
+        public void Save(object data, bool isCommit = true)
         {
-            dynamic dynamicData = data;
-            if (dynamicData.Id == 0)
+            DbContext.NhaCungCaps.AddOrUpdate((NhaCungCap)data);
+            if (isCommit)
             {
-                DbContext.NhaCungCaps.Add((NhaCungCap)data);
+                Commit();
             }
-            else
-            {
-                DbContext.NhaCungCaps.AddOrUpdate((NhaCungCap)data);
-            }
-            DbContext.SaveChanges();
         }
 
-        public void Save(NhaCungCapVatTu data)
+        public void Save(NhaCungCapVatTu data, bool isCommit = true)
         {
-
-            try
+            DbContext.NhaCungCapVatTus.AddOrUpdate(data);
+            if (isCommit)
             {
-                if (data.Id == 0)
-                {
-                    DbContext.NhaCungCapVatTus.Add(data);
-                }
-                else
-                {
-                    DbContext.NhaCungCapVatTus.AddOrUpdate(data);
-                }
-                DbContext.SaveChanges();
+                Commit();
             }
-            catch (DbEntityValidationException e)
-            {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    ConsoleWriter.WriteLine(string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State));
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        ConsoleWriter.WriteLine(string.Format("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage));
-                    }
-                }
-                throw;
-            }
-
         }
 
-        public void Delete(NhaCungCapVatTu data)
+        public void Delete(NhaCungCapVatTu data, bool isCommit = true)
         {
             DbContext.NhaCungCapVatTus.Remove(data);
+            if (isCommit)
+            {
+                Commit();
+            }
         }
     }
 }

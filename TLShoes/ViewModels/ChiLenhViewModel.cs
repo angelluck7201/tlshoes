@@ -31,18 +31,13 @@ namespace TLShoes.ViewModels
                 }).ToList();
         }
 
-        public void Save(object data)
+        public void Save(object data, bool isCommit = true)
         {
-            dynamic dynamicData = data;
-            if (dynamicData.Id == 0)
+            DbContext.ChiLenhs.AddOrUpdate((ChiLenh)data);
+            if (isCommit)
             {
-                DbContext.ChiLenhs.Add((ChiLenh)data);
+                DbContext.SaveChanges();
             }
-            else
-            {
-                DbContext.ChiLenhs.AddOrUpdate((ChiLenh)data);
-            }
-            DbContext.SaveChanges();
         }
     }
 }

@@ -39,6 +39,7 @@ namespace TLShoes
         public Nullable<int> DichVuGiaoHang { get; set; }
         public Nullable<int> DichVuHauMai { get; set; }
         public Nullable<int> Khac { get; set; }
+        public Nullable<long> ToTrinhId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
@@ -46,5 +47,6 @@ namespace TLShoes
         public virtual ICollection<DanhGia> DanhGias { get; set; }
         public virtual UserAccount UserAccount { get; set; }
         public virtual NhaCungCap NhaCungCap { get; set; }
+        public virtual ToTrinh ToTrinh { get; set; }
     }
 }

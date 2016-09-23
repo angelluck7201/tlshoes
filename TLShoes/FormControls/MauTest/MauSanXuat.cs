@@ -13,13 +13,14 @@ namespace TLShoes.FormControls.MauSanXuat
         public ucMauSanXuat(TLShoes.MauSanXuat data)
         {
             InitializeComponent();
-            MauSanXuat_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
             MauSanXuat_DonHangId.DisplayMember = "MaHang";
             MauSanXuat_DonHangId.ValueMember = "Id";
+            MauSanXuat_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
 
-            MauSanXuat_PhanLoaiKetQua.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
             MauSanXuat_PhanLoaiKetQua.DisplayMember = "Ten";
             MauSanXuat_PhanLoaiKetQua.ValueMember = "Id";
+            MauSanXuat_PhanLoaiKetQua.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
+
 
             GopYBindingList.Clear();
             GopYBindingList.Add(new CommonClass.GopYItem("Bp Vật Tư", data != null ? data.GopYVatTu : ""));

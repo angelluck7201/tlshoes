@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.BandedGrid;
+using TLShoes.Common;
 using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.KeHoachSanXuat
@@ -25,15 +26,18 @@ namespace TLShoes.FormControls.KeHoachSanXuat
 
         public void ReloadData()
         {
-            SF.Get<BaoCaoPhanXuongViewModel>().GetDataSummarySource(gridControl);
-            if (bandedGridView1.RowCount > 0)
+            ThreadHelper.LoadForm(() =>
             {
-                Main.FeaturesDict["btnExport"].Visible = true;
-            }
-            else
-            {
-                Main.FeaturesDict["btnExport"].Visible = false;
-            }
+                SF.Get<BaoCaoPhanXuongViewModel>().GetDataSummarySource(gridControl);
+                if (bandedGridView1.RowCount > 0)
+                {
+                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
+                }
+                else
+                {
+                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
+                }
+            });
         }
 
         public void Export(object filePath)

@@ -69,7 +69,7 @@ namespace TLShoes.FormControls.ChiLenh
 
             // Save Don hang
             var saveData = CRUD.GetFormObject<TLShoes.ChiLenh>(FormControls);
-            SF.Get<ChiLenhViewModel>().Save(saveData);
+            SF.Get<ChiLenhViewModel>().Save(saveData, false);
 
             // Save nguyen lieu chi lenh
             foreach (var nguyenlieu in NguyenLieuChiLenhList)
@@ -85,7 +85,7 @@ namespace TLShoes.FormControls.ChiLenh
                 nguyenlieuChiLenh.DinhMucThuc = nguyenlieu.DinhMucThuc;
 
                 CRUD.DecorateSaveData(nguyenlieuChiLenh);
-                SF.Get<NguyenLieuChiLenhViewModel>().Save(nguyenlieuChiLenh);
+                SF.Get<NguyenLieuChiLenhViewModel>().Save(nguyenlieuChiLenh, false);
 
                 // Save chi tiet nguyen lieu
                 var currentItem = new List<long>();
@@ -97,7 +97,7 @@ namespace TLShoes.FormControls.ChiLenh
                     chitietNguyenLieu.NguyenLieuChiLenhId = nguyenlieuChiLenh.Id;
                     chitietNguyenLieu.GhiChu = chitiet.GhiChu;
                     CRUD.DecorateSaveData(chitietNguyenLieu);
-                    SF.Get<ChiTietNguyenLieuViewModel>().Save(chitietNguyenLieu);
+                    SF.Get<ChiTietNguyenLieuViewModel>().Save(chitietNguyenLieu, false);
                     currentItem.Add(chitietNguyenLieu.Id);
                 }
 
@@ -118,6 +118,8 @@ namespace TLShoes.FormControls.ChiLenh
             nhatKyThayDoi.ItemId = saveData.Id;
             CRUD.DecorateSaveData(nhatKyThayDoi);
             SF.Get<NhatKyThayDoiViewModel>().Save(nhatKyThayDoi);
+
+            BaseModel.Commit();
             return true;
         }
 

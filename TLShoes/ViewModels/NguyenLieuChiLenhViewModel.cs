@@ -98,16 +98,7 @@ namespace TLShoes.ViewModels
 
         public void Save(object data, bool isSubmit = true)
         {
-            dynamic dynamicData = data;
-            if (dynamicData.Id == 0)
-            {
-                DbContext.NguyenLieuChiLenhs.Add((NguyenLieuChiLenh)data);
-            }
-            else
-            {
-                DbContext.NguyenLieuChiLenhs.AddOrUpdate((NguyenLieuChiLenh)data);
-            }
-
+            DbContext.NguyenLieuChiLenhs.AddOrUpdate((NguyenLieuChiLenh)data);
             if (isSubmit)
             {
                 DbContext.SaveChanges();
