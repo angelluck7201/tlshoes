@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9c1308f2a46f464a85beea642fcd142e" Name="Diagram1" ZoomLevel="96">
+      <Diagram DiagramId="9c1308f2a46f464a85beea642fcd142e" Name="Diagram1" ZoomLevel="57">
         <EntityTypeShape EntityType="GiayTLModel.BaoCaoPhanXuong" Width="1.5" PointX="7.5" PointY="38" />
         <EntityTypeShape EntityType="GiayTLModel.ChiLenh" Width="1.5" PointX="7.5" PointY="30.25" />
         <EntityTypeShape EntityType="GiayTLModel.ChiTietDonHang" Width="1.5" PointX="13.5" PointY="37.25" />
         <EntityTypeShape EntityType="GiayTLModel.ChiTietNguyenLieu" Width="1.5" PointX="16.625" PointY="35.125" />
         <EntityTypeShape EntityType="GiayTLModel.CongNgheSanXuat" Width="1.5" PointX="7.5" PointY="42.625" />
         <EntityTypeShape EntityType="GiayTLModel.DanhMuc" Width="1.5" PointX="3" PointY="47.25" />
-        <EntityTypeShape EntityType="GiayTLModel.DonHang" Width="1.5" PointX="5.25" PointY="29" />
+        <EntityTypeShape EntityType="GiayTLModel.DonHang" Width="3.5" PointX="5.25" PointY="29" />
         <EntityTypeShape EntityType="GiayTLModel.KeHoachSanXuat" Width="1.5" PointX="7.5" PointY="23.375" />
         <EntityTypeShape EntityType="GiayTLModel.KhachHang" Width="1.5" PointX="3" PointY="32.375" />
         <EntityTypeShape EntityType="GiayTLModel.MauDoi" Width="1.5" PointX="10.5" PointY="30.25" />
-        <EntityTypeShape EntityType="GiayTLModel.NguyenLieu" Width="1.5" PointX="5.25" PointY="37.875" />
+        <EntityTypeShape EntityType="GiayTLModel.NguyenLieu" Width="1.5" PointX="2.75" PointY="37.875" />
         <EntityTypeShape EntityType="GiayTLModel.UserAccount" Width="1.5" PointX="0.75" PointY="27.5" />
         <AssociationConnector Association="GiayTLModel.FK__BaoCaoPha__Autho__52593CB8" />
         <AssociationConnector Association="GiayTLModel.FK__BaoCaoPha__DonHa__534D60F1" />
@@ -68,7 +68,7 @@
         <AssociationConnector Association="GiayTLModel.FK__ChiTietXu__Nguye__19DFD96B" />
         <EntityTypeShape EntityType="GiayTLModel.MauSanXuat" Width="1.5" PointX="10.5" PointY="41.125" />
         <EntityTypeShape EntityType="GiayTLModel.MauTest" Width="1.5" PointX="15.5" PointY="45.75" />
-        <EntityTypeShape EntityType="GiayTLModel.MauThuDao" Width="1.5" PointX="10.5" PointY="34.875" />
+        <EntityTypeShape EntityType="GiayTLModel.MauThuDao" Width="2.125" PointX="10.5" PointY="34.875" />
         <AssociationConnector Association="GiayTLModel.FK__MauSanXua__PhanL__30C33EC3" />
         <AssociationConnector Association="GiayTLModel.FK__MauTest__PhanLoa__2B0A656D" />
         <AssociationConnector Association="GiayTLModel.FK__MauTest__PhanLoa__2BFE89A6" />
@@ -136,6 +136,14 @@
         <AssociationConnector Association="GiayTLModel.FK__PhieuNhap__DanhG__6ABAD62E" />
         <AssociationConnector Association="GiayTLModel.FK__NguyenLie__MauId__7908F585" />
         <AssociationConnector Association="GiayTLModel.FK__DonDatHan__ToTri__0C1BC9F9" />
+        <AssociationConnector Association="GiayTLModel.FK__MauThuDao__KetQu__22FF2F51" />
+        <AssociationConnector Association="GiayTLModel.FK__MauThuDao__KetQu__23F3538A" />
+        <AssociationConnector Association="GiayTLModel.FK__MauThuDao__KetQu__24E777C3" />
+        <AssociationConnector Association="GiayTLModel.FK__MauThuDao__KetQu__25DB9BFC" />
+        <AssociationConnector Association="GiayTLModel.FK__DonHang__DaLotTa__2116E6DF" />
+        <AssociationConnector Association="GiayTLModel.FK__DonHang__DeId__220B0B18" />
+        <AssociationConnector Association="GiayTLModel.FK__DonHang__LotId__2022C2A6" />
+        <AssociationConnector Association="GiayTLModel.FK__DonHang__MuId__1F2E9E6D" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

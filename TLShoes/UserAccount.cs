@@ -55,10 +55,12 @@ namespace TLShoes
         }
     
         public long Id { get; set; }
-        public Nullable<long> CreatedDate { get; set; }
-        public Nullable<long> ModifiedDate { get; set; }
+        public long CreatedDate { get; set; }
+        public long ModifiedDate { get; set; }
         public Nullable<bool> IsActived { get; set; }
         public string TenNguoiDung { get; set; }
+        public string MatKhau { get; set; }
+        public string LoaiNguoiDung { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaoCaoPhanXuong> BaoCaoPhanXuongs { get; set; }

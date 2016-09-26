@@ -53,7 +53,7 @@ namespace TLShoes.FormControls.KeHoachSanXuat
                 if (donHang == null) return;
                 SoDH.Text = donHang.OrderNo;
                 DonHangImage.Image = FileHelper.ImageFromFile(donHang.HinhAnh);
-                gridControl.DataSource = donHang.ChiTietDonHangs.Select(s => new { s.SoLuong, MauId = s.DanhMuc.Ten, s.Size });
+                gridControl.DataSource = donHang.ChiTietDonHangs.Select(s => new { s.SoLuong, MauId = s.Mau.Ten, s.Size });
             }
         }
     }

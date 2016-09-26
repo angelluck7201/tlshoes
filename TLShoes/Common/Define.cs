@@ -130,9 +130,10 @@ namespace TLShoes.Common
 
         public const string TEMPLATE_DON_DAT_HANG = "DonDatHang_template.xls";
         public const string TEMPLATE_CHI_LENH = "ChiLenh_template.xls";
-        public const string TEMPLATE_TO_TRINH = "ToTrinh_template";
-        public const string TEMPLATE_XUAT_KHO = "XuatKho_template";
-        public const string TEMPLATE_NHAP_KHO = "NhapKho_template";
+        public const string TEMPLATE_TO_TRINH = "ToTrinh_template.xls";
+        public const string TEMPLATE_XUAT_KHO = "XuatKho_template.xls";
+        public const string TEMPLATE_NHAP_KHO = "NhapKho_template.xls";
+        public const string TEMPLATE_MAU_THU = "MauThu_Template.xls";
 
 
         public const string EXPORT_EXTENSION = "Excel |*.xls";

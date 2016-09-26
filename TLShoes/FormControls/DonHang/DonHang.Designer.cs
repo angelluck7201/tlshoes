@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lblHinh = new DevExpress.XtraEditors.LabelControl();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -97,6 +96,14 @@
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
+            this.DonHang_MuId = new System.Windows.Forms.ComboBox();
+            this.lblMuId = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_LotId = new System.Windows.Forms.ComboBox();
+            this.lblLotId = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_DatLotTayId = new System.Windows.Forms.ComboBox();
+            this.lblDaLotTayId = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_DeId = new System.Windows.Forms.ComboBox();
+            this.lblDeId = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -135,10 +142,6 @@
             this.lblHinh.Size = new System.Drawing.Size(64, 17);
             this.lblHinh.TabIndex = 35;
             this.lblHinh.Text = "Hình Ảnh";
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // gridControl
             // 
@@ -243,7 +246,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(3, 3);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(728, 591);
+            this.xtraTabControl1.Size = new System.Drawing.Size(728, 699);
             this.xtraTabControl1.TabIndex = 54;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -266,6 +269,14 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.xtraTabPage2.Controls.Add(this.DonHang_DeId);
+            this.xtraTabPage2.Controls.Add(this.lblDeId);
+            this.xtraTabPage2.Controls.Add(this.DonHang_DatLotTayId);
+            this.xtraTabPage2.Controls.Add(this.lblDaLotTayId);
+            this.xtraTabPage2.Controls.Add(this.DonHang_LotId);
+            this.xtraTabPage2.Controls.Add(this.lblLotId);
+            this.xtraTabPage2.Controls.Add(this.DonHang_MuId);
+            this.xtraTabPage2.Controls.Add(this.lblMuId);
             this.xtraTabPage2.Controls.Add(this.DonHang_MaPhomId);
             this.xtraTabPage2.Controls.Add(this.DonHang_KhachHangId);
             this.xtraTabPage2.Controls.Add(this.DonHang_NgayXuat);
@@ -280,7 +291,7 @@
             this.xtraTabPage2.Controls.Add(this.lblNgayXuat);
             this.xtraTabPage2.Controls.Add(this.lblMaHang);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(721, 556);
+            this.xtraTabPage2.Size = new System.Drawing.Size(721, 664);
             this.xtraTabPage2.Text = "Thông tin đơn hàng";
             // 
             // DonHang_MaPhomId
@@ -865,7 +876,7 @@
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
             this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(4, 611);
+            this.btnCancel.Location = new System.Drawing.Point(4, 724);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 55;
@@ -880,7 +891,7 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(465, 611);
+            this.btnSave.Location = new System.Drawing.Point(465, 724);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 56;
@@ -895,11 +906,79 @@
             this.btnSaveContinue.Appearance.Options.UseFont = true;
             this.btnSaveContinue.Appearance.Options.UseForeColor = true;
             this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(546, 611);
+            this.btnSaveContinue.Location = new System.Drawing.Point(546, 724);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
             this.btnSaveContinue.TabIndex = 57;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
+            // 
+            // DonHang_MuId
+            // 
+            this.DonHang_MuId.FormattingEnabled = true;
+            this.DonHang_MuId.Location = new System.Drawing.Point(159, 494);
+            this.DonHang_MuId.Name = "DonHang_MuId";
+            this.DonHang_MuId.Size = new System.Drawing.Size(529, 24);
+            this.DonHang_MuId.TabIndex = 61;
+            // 
+            // lblMuId
+            // 
+            this.lblMuId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblMuId.Location = new System.Drawing.Point(31, 498);
+            this.lblMuId.Name = "lblMuId";
+            this.lblMuId.Size = new System.Drawing.Size(72, 17);
+            this.lblMuId.TabIndex = 62;
+            this.lblMuId.Text = "Vật Tư Mũ";
+            // 
+            // DonHang_LotId
+            // 
+            this.DonHang_LotId.FormattingEnabled = true;
+            this.DonHang_LotId.Location = new System.Drawing.Point(159, 539);
+            this.DonHang_LotId.Name = "DonHang_LotId";
+            this.DonHang_LotId.Size = new System.Drawing.Size(529, 24);
+            this.DonHang_LotId.TabIndex = 63;
+            // 
+            // lblLotId
+            // 
+            this.lblLotId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblLotId.Location = new System.Drawing.Point(31, 543);
+            this.lblLotId.Name = "lblLotId";
+            this.lblLotId.Size = new System.Drawing.Size(74, 17);
+            this.lblLotId.TabIndex = 64;
+            this.lblLotId.Text = "Vật Tư Lót";
+            // 
+            // DonHang_DatLotTayId
+            // 
+            this.DonHang_DatLotTayId.FormattingEnabled = true;
+            this.DonHang_DatLotTayId.Location = new System.Drawing.Point(159, 579);
+            this.DonHang_DatLotTayId.Name = "DonHang_DatLotTayId";
+            this.DonHang_DatLotTayId.Size = new System.Drawing.Size(529, 24);
+            this.DonHang_DatLotTayId.TabIndex = 65;
+            // 
+            // lblDaLotTayId
+            // 
+            this.lblDaLotTayId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDaLotTayId.Location = new System.Drawing.Point(31, 583);
+            this.lblDaLotTayId.Name = "lblDaLotTayId";
+            this.lblDaLotTayId.Size = new System.Drawing.Size(74, 17);
+            this.lblDaLotTayId.TabIndex = 66;
+            this.lblDaLotTayId.Text = "Da Lót Tẩy";
+            // 
+            // DonHang_DeId
+            // 
+            this.DonHang_DeId.FormattingEnabled = true;
+            this.DonHang_DeId.Location = new System.Drawing.Point(159, 619);
+            this.DonHang_DeId.Name = "DonHang_DeId";
+            this.DonHang_DeId.Size = new System.Drawing.Size(529, 24);
+            this.DonHang_DeId.TabIndex = 67;
+            // 
+            // lblDeId
+            // 
+            this.lblDeId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDeId.Location = new System.Drawing.Point(31, 623);
+            this.lblDeId.Name = "lblDeId";
+            this.lblDeId.Size = new System.Drawing.Size(19, 17);
+            this.lblDeId.TabIndex = 68;
+            this.lblDeId.Text = "Đế";
             // 
             // ucDonHang
             // 
@@ -911,7 +990,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucDonHang";
-            this.Size = new System.Drawing.Size(737, 656);
+            this.Size = new System.Drawing.Size(737, 782);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
@@ -951,7 +1030,6 @@
         #endregion
 
         private DevExpress.XtraEditors.LabelControl lblHinh;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
         private DevExpress.XtraGrid.Columns.GridColumn Id;
@@ -1019,5 +1097,13 @@
         private DevExpress.XtraEditors.RatingControl DonHang_DatTestLy;
         private DevExpress.XtraEditors.LabelControl lblDungThoiGian;
         private DevExpress.XtraEditors.RatingControl DonHang_DungThoiGian;
+        private System.Windows.Forms.ComboBox DonHang_MuId;
+        private DevExpress.XtraEditors.LabelControl lblMuId;
+        private System.Windows.Forms.ComboBox DonHang_DeId;
+        private DevExpress.XtraEditors.LabelControl lblDeId;
+        private System.Windows.Forms.ComboBox DonHang_DatLotTayId;
+        private DevExpress.XtraEditors.LabelControl lblDaLotTayId;
+        private System.Windows.Forms.ComboBox DonHang_LotId;
+        private DevExpress.XtraEditors.LabelControl lblLotId;
     }
 }

@@ -290,7 +290,7 @@ namespace TLShoes.FormControls.ChiLenh
 
                         workSheet.Cells[5, "A"] = string.Format("ĐH: {0}", donHang.OrderNo);
                         workSheet.Cells[5, "D"] = string.Format("MH: {0}", donHang.MaHang);
-                        workSheet.Cells[5, "F"] = string.Format("PHOM: {0}", donHang.NguyenLieu.MaNguyenLieu);
+                        workSheet.Cells[5, "F"] = string.Format("PHOM: {0}", donHang.Phom.MaNguyenLieu);
                         workSheet.Cells[5, "K"] = string.Format("KH: {0}", donHang.KhachHang.TenCongTy);
                         workSheet.Cells[5, "M"] = string.Format("XH: {0}", TimeHelper.TimestampToString(donHang.NgayXuat, "d"));
                         workSheet.Cells[5, "P"] = string.Format("SP: {0}", TimeHelper.TimestampToString(_chiLenh.NgayDuyet, "d"));

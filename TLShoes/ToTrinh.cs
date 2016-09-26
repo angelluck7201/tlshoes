@@ -36,6 +36,8 @@ namespace TLShoes
         public Nullable<float> TonThucTe { get; set; }
         public Nullable<float> DuKien { get; set; }
         public string DonDatHangList { get; set; }
+        public string SoPhieu { get; set; }
+        public string TrangThai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }

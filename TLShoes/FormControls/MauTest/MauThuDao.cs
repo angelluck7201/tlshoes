@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.Mvvm.POCO;
+using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
 using TLShoes.ViewModels;
+using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace TLShoes.FormControls.MauThuDao
 {
@@ -13,15 +17,40 @@ namespace TLShoes.FormControls.MauThuDao
     {
         public static BindingList<CommonClass.GopYItem> GopYBindingList = new BindingList<CommonClass.GopYItem>();
 
-        public static List<string> DaoList = new List<string>();
+        public static List<TLShoes.MauThuDao> ListDaoDaThu = new List<TLShoes.MauThuDao>();
         public static long CurrentDonHang;
+        public TLShoes.MauThuDao CurrentMauThuDao;
         public ucMauThuDao(TLShoes.MauThuDao data)
         {
             InitializeComponent();
 
+            ListDaoDaThu = SF.Get<MauThuDaoViewModel>().GetList();
+
             MauThuDao_DonHangId.DisplayMember = "MaHang";
             MauThuDao_DonHangId.ValueMember = "Id";
             MauThuDao_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
+
+            var listPhanLoai = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST);
+            MauThuDao_KetQuaXuongChatId.DisplayMember = "Ten";
+            MauThuDao_KetQuaXuongChatId.ValueMember = "Id";
+            MauThuDao_KetQuaXuongChatId.DataSource = new BindingSource(listPhanLoai, null);
+            MauThuDao_KetQuaXuongChatId.Text = "CHƯA PHÂN LOẠI";
+
+            MauThuDao_KetQuaXuongMayId.Text = "CHƯA PHÂN LOẠI";
+            MauThuDao_KetQuaXuongMayId.DisplayMember = "Ten";
+            MauThuDao_KetQuaXuongMayId.ValueMember = "Id";
+            MauThuDao_KetQuaXuongMayId.DataSource = new BindingSource(listPhanLoai, null);
+
+            MauThuDao_KetQuaXuongDeId.Text = "CHƯA PHÂN LOẠI";
+            MauThuDao_KetQuaXuongDeId.DisplayMember = "Ten";
+            MauThuDao_KetQuaXuongDeId.ValueMember = "Id";
+            MauThuDao_KetQuaXuongDeId.DataSource = new BindingSource(listPhanLoai, null);
+
+            MauThuDao_KetQuaXuongGoId.Text = "CHƯA PHÂN LOẠI";
+            MauThuDao_KetQuaXuongGoId.DisplayMember = "Ten";
+            MauThuDao_KetQuaXuongGoId.ValueMember = "Id";
+            MauThuDao_KetQuaXuongGoId.DataSource = new BindingSource(listPhanLoai, null);
+
 
             GopYBindingList.Clear();
             GopYBindingList.Add(new CommonClass.GopYItem("Bp Vật Tư", data != null ? data.GopYVatTu : ""));
@@ -40,11 +69,11 @@ namespace TLShoes.FormControls.MauThuDao
 
             Init(data);
 
-            DaoList = SF.Get<MauThuDaoViewModel>().GetList().Select(s => s.DonHang.MaHang.Split('-')[1]).ToList();
-            lblThuDao.Visible = false;
             if (data != null)
             {
-                CurrentDonHang = (long) data.DonHangId;
+                CurrentDonHang = (long)data.DonHangId;
+                CurrentMauThuDao = data;
+                btnExport.Visible = true;
             }
             else
             {
@@ -76,8 +105,6 @@ namespace TLShoes.FormControls.MauThuDao
             return true;
         }
 
-
-
         public string ValidateInput()
         {
             return string.Empty;
@@ -102,27 +129,118 @@ namespace TLShoes.FormControls.MauThuDao
             }
         }
 
-
-
-        private void MauThuDao_DonHangId_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void MauThuDao_DonHangId_SelectedValueChanged(object sender, System.EventArgs e)
         {
             var donHangId = MauThuDao_DonHangId.SelectedValue;
-            if (donHangId != null){
+            if (donHangId != null)
+            {
                 if (CurrentDonHang == (long)donHangId) return;
                 var donHang = SF.Get<DonHangViewModel>().GetDetail((long)donHangId);
                 if (donHang == null) return;
-                if (DaoList.Contains(donHang.MaHang.Split('-')[1]))
+                var daoDaThu = ListDaoDaThu.FirstOrDefault(s => s.DonHang.MaPhomId == donHang.MaPhomId);
+
+                GopYBindingList.Clear();
+                GopYBindingList.Add(new CommonClass.GopYItem("Bp Vật Tư", daoDaThu != null ? daoDaThu.GopYVatTu : ""));
+                GopYBindingList.Add(new CommonClass.GopYItem("Px Chặt", daoDaThu != null ? daoDaThu.GopYXuongChat : ""));
+                GopYBindingList.Add(new CommonClass.GopYItem("Px Gò", daoDaThu != null ? daoDaThu.GopYXuongGo : ""));
+                GopYBindingList.Add(new CommonClass.GopYItem("Px Đe", daoDaThu != null ? daoDaThu.GopYXuongDe : ""));
+                GopYBindingList.Add(new CommonClass.GopYItem("QC", daoDaThu != null ? daoDaThu.GopYQc : ""));
+                GopYBindingList.Add(new CommonClass.GopYItem("Công Nghệ", daoDaThu != null ? daoDaThu.GopYCongNghe : ""));
+                GopYBindingList.Add(new CommonClass.GopYItem("Mẫu", daoDaThu != null ? daoDaThu.GopYMau : ""));
+                GopYBindingList.Add(new CommonClass.GopYItem("Kho Vật Tư", daoDaThu != null ? daoDaThu.GopYKhoVatTu : ""));
+                GopYBindingList.Add(new CommonClass.GopYItem("Tổ Phụ Trợ", daoDaThu != null ? daoDaThu.GopYPhuTro : ""));
+
+                if (daoDaThu != null)
                 {
                     MauThuDao_NgayBatDau.Enabled = false;
                     MauThuDao_NgayHoanThanh.Enabled = false;
+                    MauThuDao_KetQuaXuongChatId.Enabled = false;
+                    MauThuDao_KetQuaXuongMayId.Enabled = false;
+                    MauThuDao_KetQuaXuongDeId.Enabled = false;
+                    MauThuDao_KetQuaXuongGoId.Enabled = false;
+
+                    if (daoDaThu.KetQuaXuongChatId != null) MauThuDao_KetQuaXuongChatId.SelectedValue = daoDaThu.KetQuaXuongChatId;
+                    if (daoDaThu.KetQuaXuongMayId != null) MauThuDao_KetQuaXuongMayId.SelectedValue = daoDaThu.KetQuaXuongMayId;
+                    if (daoDaThu.KetQuaXuongDeId != null) MauThuDao_KetQuaXuongDeId.SelectedValue = daoDaThu.KetQuaXuongDeId;
+                    if (daoDaThu.KetQuaXuongGoId != null) MauThuDao_KetQuaXuongGoId.SelectedValue = daoDaThu.KetQuaXuongGoId;
+
+
                     lblThuDao.Visible = true;
                 }
                 else
                 {
                     MauThuDao_NgayBatDau.Enabled = true;
                     MauThuDao_NgayHoanThanh.Enabled = true;
+                    MauThuDao_KetQuaXuongChatId.Enabled = true;
+                    MauThuDao_KetQuaXuongMayId.Enabled = true;
+                    MauThuDao_KetQuaXuongDeId.Enabled = true;
+                    MauThuDao_KetQuaXuongGoId.Enabled = true;
                     lblThuDao.Visible = false;
                 }
+            }
+        }
+
+        private void btnExport_Click(object sender, System.EventArgs e)
+        {
+            if (CurrentMauThuDao == null) return;
+            var saveDialog = new SaveFileDialog();
+            saveDialog.Filter = Define.EXPORT_EXTENSION;
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                ThreadHelper.LoadForm(() =>
+                {
+                    //Start Excel and get Application object.
+                    var excel = new Application();
+
+                    //Get a new workbook.
+                    var workBook = excel.Workbooks.Open(Path.Combine(FileHelper.TemplatePath, Define.TEMPLATE_MAU_THU));
+                    var workSheet = (_Worksheet)workBook.ActiveSheet;
+
+                    try
+                    {
+                        var donHang = CurrentMauThuDao.DonHang;
+                        workSheet.Cells[3, "D"] = donHang.MaHang;
+                        workSheet.Cells[3, "G"] = donHang.KhachHang.TenCongTy;
+                        var chiTietDonHang = donHang.ChiTietDonHangs.ToList();
+                        workSheet.Cells[3, "J"] = chiTietDonHang.Sum(s => s.SoLuong);
+                        var startCol = 2;
+                        foreach (var chitiet in chiTietDonHang)
+                        {
+                            workSheet.Cells[5, startCol] = string.Format("#{0}", chitiet.Size);
+                            workSheet.Cells[6, startCol] = chitiet.SoLuong;
+                            if (chitiet.Mau != null) workSheet.Cells[3, "J"] = chitiet.Mau.Ten;
+                            startCol++;
+                        }
+
+                        if (CurrentMauThuDao.KetQuaXuongChat != null) workSheet.Cells[9, "B"] = CurrentMauThuDao.KetQuaXuongChat.Ten;
+                        workSheet.Cells[9, "I"] = CurrentMauThuDao.GopYXuongChat;
+
+                        if (CurrentMauThuDao.KetQuaXuongMay != null) workSheet.Cells[10, "B"] = CurrentMauThuDao.KetQuaXuongMay.Ten;
+                        workSheet.Cells[10, "I"] = CurrentMauThuDao.GopYXuongMay;
+
+                        if (CurrentMauThuDao.KetQuaXuongDe != null) workSheet.Cells[11, "B"] = CurrentMauThuDao.KetQuaXuongDe.Ten;
+                        workSheet.Cells[11, "I"] = CurrentMauThuDao.GopYXuongDe;
+
+                        if (CurrentMauThuDao.KetQuaXuongGo != null) workSheet.Cells[12, "B"] = CurrentMauThuDao.KetQuaXuongGo.Ten;
+                        workSheet.Cells[12, "I"] = CurrentMauThuDao.GopYXuongGo;
+
+                        var currentDate = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
+                        workSheet.Cells[19, "J"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
+
+                        workBook.SaveAs(saveDialog.FileName);
+                    }
+                    finally
+                    {
+                        workBook.Close();
+                    }
+                });
+
+                var confirmDialog = MessageBox.Show(Define.MESSAGE_EXPORT_SUCCESS_TEXT, Define.MESSAGE_EXPORT_SUCCESS_TITLE, MessageBoxButtons.YesNo);
+                if (confirmDialog == DialogResult.Yes)
+                {
+                    Process.Start(saveDialog.FileName);
+                }
+                this.ParentForm.Close();
             }
         }
 

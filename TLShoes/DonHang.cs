@@ -63,6 +63,10 @@ namespace TLShoes
         public Nullable<int> DichVuGiaoHang { get; set; }
         public Nullable<int> DichVuHauMai { get; set; }
         public Nullable<int> Khac { get; set; }
+        public Nullable<long> MuId { get; set; }
+        public Nullable<long> LotId { get; set; }
+        public Nullable<long> DaLotTayId { get; set; }
+        public Nullable<long> DeId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaoCaoPhanXuong> BaoCaoPhanXuongs { get; set; }
@@ -78,7 +82,7 @@ namespace TLShoes
         public virtual ICollection<KeHoachSanXuat> KeHoachSanXuats { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MauDoi> MauDois { get; set; }
-        public virtual NguyenLieu NguyenLieu { get; set; }
+        public virtual NguyenLieu Phom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -91,5 +95,9 @@ namespace TLShoes
         public virtual ICollection<HuongDanDongGoi> HuongDanDongGois { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuXuatKho> PhieuXuatKhoes { get; set; }
+        public virtual NguyenLieu DaLotTay { get; set; }
+        public virtual NguyenLieu De { get; set; }
+        public virtual NguyenLieu Lot { get; set; }
+        public virtual NguyenLieu Mu { get; set; }
     }
 }

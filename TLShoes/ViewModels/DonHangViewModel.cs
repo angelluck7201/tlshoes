@@ -15,7 +15,7 @@ namespace TLShoes.ViewModels
             {
                 if (!donhang.MaHang.Contains("-"))
                 {
-                    donhang.MaHang = string.Format("{0}-{1}", donhang.NguyenLieu.MaNguyenLieu, donhang.MaHang);
+                    donhang.MaHang = string.Format("{0}-{1}", donhang.Phom.MaNguyenLieu, donhang.MaHang);
                 }
             }
             return listDonHang;

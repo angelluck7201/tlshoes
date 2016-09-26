@@ -42,10 +42,27 @@ namespace TLShoes
             DonHang_KhachHangId.ValueMember = "Id";
             DonHang_KhachHangId.DataSource = new BindingSource(SF.Get<KhachHangViewModel>().GetList(), null);
 
+            var listNguyenLieu = SF.Get<NguyenLieuViewModel>().GetList();
+
             DonHang_MaPhomId.DisplayMember = "MaNguyenLieu";
             DonHang_MaPhomId.ValueMember = "Id";
-            DonHang_MaPhomId.DataSource = new BindingSource(SF.Get<NguyenLieuViewModel>().GetList().Where(s => s.LoaiNguyenLieu.Ten == "PHOM").ToList(), null);
+            DonHang_MaPhomId.DataSource = new BindingSource(listNguyenLieu.Where(s => s.LoaiNguyenLieu.Ten == "PHOM").ToList(), null);
 
+            DonHang_DatLotTayId.DisplayMember = "MaNguyenLieu";
+            DonHang_DatLotTayId.ValueMember = "Id";
+            DonHang_DatLotTayId.DataSource = new BindingSource(listNguyenLieu, null);
+
+            DonHang_DeId.DisplayMember = "MaNguyenLieu";
+            DonHang_DeId.ValueMember = "Id";
+            DonHang_DeId.DataSource = new BindingSource(listNguyenLieu, null);
+
+            DonHang_LotId.DisplayMember = "MaNguyenLieu";
+            DonHang_LotId.ValueMember = "Id";
+            DonHang_LotId.DataSource = new BindingSource(listNguyenLieu, null);
+
+            DonHang_MuId.DisplayMember = "MaNguyenLieu";
+            DonHang_MuId.ValueMember = "Id";
+            DonHang_MuId.DataSource = new BindingSource(listNguyenLieu, null);
 
             HideAllGopY();
             Init(data);

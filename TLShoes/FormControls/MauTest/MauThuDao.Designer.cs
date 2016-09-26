@@ -36,6 +36,15 @@
             this.lblNgayBatDau = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.MauThuDao_KetQuaXuongGoId = new System.Windows.Forms.ComboBox();
+            this.lblKetQuaXuongDeId = new DevExpress.XtraEditors.LabelControl();
+            this.MauThuDao_KetQuaXuongDeId = new System.Windows.Forms.ComboBox();
+            this.lblKetQuaXuongMayId = new DevExpress.XtraEditors.LabelControl();
+            this.MauThuDao_KetQuaXuongMayId = new System.Windows.Forms.ComboBox();
+            this.lblKetQuaXuongChatId = new DevExpress.XtraEditors.LabelControl();
+            this.MauThuDao_KetQuaXuongChatId = new System.Windows.Forms.ComboBox();
+            this.lblThuDao = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
@@ -48,7 +57,7 @@
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
-            this.lblThuDao = new DevExpress.XtraEditors.LabelControl();
+            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -61,11 +70,11 @@
             // MauThuDao_DonHangId
             // 
             this.MauThuDao_DonHangId.FormattingEnabled = true;
-            this.MauThuDao_DonHangId.Location = new System.Drawing.Point(165, 42);
+            this.MauThuDao_DonHangId.Location = new System.Drawing.Point(205, 42);
             this.MauThuDao_DonHangId.Name = "MauThuDao_DonHangId";
-            this.MauThuDao_DonHangId.Size = new System.Drawing.Size(529, 24);
+            this.MauThuDao_DonHangId.Size = new System.Drawing.Size(489, 24);
             this.MauThuDao_DonHangId.TabIndex = 0;
-            this.MauThuDao_DonHangId.SelectedIndexChanged += new System.EventHandler(this.MauThuDao_DonHangId_SelectedIndexChanged);
+            this.MauThuDao_DonHangId.SelectedValueChanged += new System.EventHandler(this.MauThuDao_DonHangId_SelectedValueChanged);
             // 
             // lblDonHangId
             // 
@@ -78,15 +87,15 @@
             // 
             // MauThuDao_NgayHoanThanh
             // 
-            this.MauThuDao_NgayHoanThanh.Location = new System.Drawing.Point(163, 132);
+            this.MauThuDao_NgayHoanThanh.Location = new System.Drawing.Point(203, 140);
             this.MauThuDao_NgayHoanThanh.Name = "MauThuDao_NgayHoanThanh";
-            this.MauThuDao_NgayHoanThanh.Size = new System.Drawing.Size(529, 23);
+            this.MauThuDao_NgayHoanThanh.Size = new System.Drawing.Size(489, 23);
             this.MauThuDao_NgayHoanThanh.TabIndex = 2;
             // 
             // lblNgayHoanThanh
             // 
             this.lblNgayHoanThanh.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNgayHoanThanh.Location = new System.Drawing.Point(33, 134);
+            this.lblNgayHoanThanh.Location = new System.Drawing.Point(33, 142);
             this.lblNgayHoanThanh.Name = "lblNgayHoanThanh";
             this.lblNgayHoanThanh.Size = new System.Drawing.Size(112, 16);
             this.lblNgayHoanThanh.TabIndex = 41;
@@ -94,15 +103,15 @@
             // 
             // MauThuDao_NgayBatDau
             // 
-            this.MauThuDao_NgayBatDau.Location = new System.Drawing.Point(165, 87);
+            this.MauThuDao_NgayBatDau.Location = new System.Drawing.Point(205, 95);
             this.MauThuDao_NgayBatDau.Name = "MauThuDao_NgayBatDau";
-            this.MauThuDao_NgayBatDau.Size = new System.Drawing.Size(529, 23);
+            this.MauThuDao_NgayBatDau.Size = new System.Drawing.Size(489, 23);
             this.MauThuDao_NgayBatDau.TabIndex = 1;
             // 
             // lblNgayBatDau
             // 
             this.lblNgayBatDau.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNgayBatDau.Location = new System.Drawing.Point(35, 89);
+            this.lblNgayBatDau.Location = new System.Drawing.Point(35, 97);
             this.lblNgayBatDau.Name = "lblNgayBatDau";
             this.lblNgayBatDau.Size = new System.Drawing.Size(96, 17);
             this.lblNgayBatDau.TabIndex = 68;
@@ -140,6 +149,14 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.xtraTabPage2.Controls.Add(this.labelControl3);
+            this.xtraTabPage2.Controls.Add(this.MauThuDao_KetQuaXuongGoId);
+            this.xtraTabPage2.Controls.Add(this.lblKetQuaXuongDeId);
+            this.xtraTabPage2.Controls.Add(this.MauThuDao_KetQuaXuongDeId);
+            this.xtraTabPage2.Controls.Add(this.lblKetQuaXuongMayId);
+            this.xtraTabPage2.Controls.Add(this.MauThuDao_KetQuaXuongMayId);
+            this.xtraTabPage2.Controls.Add(this.lblKetQuaXuongChatId);
+            this.xtraTabPage2.Controls.Add(this.MauThuDao_KetQuaXuongChatId);
             this.xtraTabPage2.Controls.Add(this.lblThuDao);
             this.xtraTabPage2.Controls.Add(this.lblDonHangId);
             this.xtraTabPage2.Controls.Add(this.MauThuDao_NgayBatDau);
@@ -150,6 +167,84 @@
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(701, 420);
             this.xtraTabPage2.Text = "Mẫu Thử Dao";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Location = new System.Drawing.Point(33, 314);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(130, 17);
+            this.labelControl3.TabIndex = 77;
+            this.labelControl3.Text = "Kết Quả Xưởng Gò";
+            // 
+            // MauThuDao_KetQuaXuongGoId
+            // 
+            this.MauThuDao_KetQuaXuongGoId.FormattingEnabled = true;
+            this.MauThuDao_KetQuaXuongGoId.Location = new System.Drawing.Point(205, 311);
+            this.MauThuDao_KetQuaXuongGoId.Name = "MauThuDao_KetQuaXuongGoId";
+            this.MauThuDao_KetQuaXuongGoId.Size = new System.Drawing.Size(487, 24);
+            this.MauThuDao_KetQuaXuongGoId.TabIndex = 76;
+            // 
+            // lblKetQuaXuongDeId
+            // 
+            this.lblKetQuaXuongDeId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblKetQuaXuongDeId.Location = new System.Drawing.Point(33, 271);
+            this.lblKetQuaXuongDeId.Name = "lblKetQuaXuongDeId";
+            this.lblKetQuaXuongDeId.Size = new System.Drawing.Size(130, 17);
+            this.lblKetQuaXuongDeId.TabIndex = 75;
+            this.lblKetQuaXuongDeId.Text = "Kết Quả Xưởng Đế";
+            // 
+            // MauThuDao_KetQuaXuongDeId
+            // 
+            this.MauThuDao_KetQuaXuongDeId.FormattingEnabled = true;
+            this.MauThuDao_KetQuaXuongDeId.Location = new System.Drawing.Point(205, 268);
+            this.MauThuDao_KetQuaXuongDeId.Name = "MauThuDao_KetQuaXuongDeId";
+            this.MauThuDao_KetQuaXuongDeId.Size = new System.Drawing.Size(487, 24);
+            this.MauThuDao_KetQuaXuongDeId.TabIndex = 74;
+            // 
+            // lblKetQuaXuongMayId
+            // 
+            this.lblKetQuaXuongMayId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblKetQuaXuongMayId.Location = new System.Drawing.Point(33, 228);
+            this.lblKetQuaXuongMayId.Name = "lblKetQuaXuongMayId";
+            this.lblKetQuaXuongMayId.Size = new System.Drawing.Size(139, 17);
+            this.lblKetQuaXuongMayId.TabIndex = 73;
+            this.lblKetQuaXuongMayId.Text = "Kết Quả Xưởng May";
+            // 
+            // MauThuDao_KetQuaXuongMayId
+            // 
+            this.MauThuDao_KetQuaXuongMayId.FormattingEnabled = true;
+            this.MauThuDao_KetQuaXuongMayId.Location = new System.Drawing.Point(205, 225);
+            this.MauThuDao_KetQuaXuongMayId.Name = "MauThuDao_KetQuaXuongMayId";
+            this.MauThuDao_KetQuaXuongMayId.Size = new System.Drawing.Size(487, 24);
+            this.MauThuDao_KetQuaXuongMayId.TabIndex = 72;
+            // 
+            // lblKetQuaXuongChatId
+            // 
+            this.lblKetQuaXuongChatId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblKetQuaXuongChatId.Location = new System.Drawing.Point(33, 184);
+            this.lblKetQuaXuongChatId.Name = "lblKetQuaXuongChatId";
+            this.lblKetQuaXuongChatId.Size = new System.Drawing.Size(144, 17);
+            this.lblKetQuaXuongChatId.TabIndex = 71;
+            this.lblKetQuaXuongChatId.Text = "Kết Quả Xưởng Chăt";
+            // 
+            // MauThuDao_KetQuaXuongChatId
+            // 
+            this.MauThuDao_KetQuaXuongChatId.FormattingEnabled = true;
+            this.MauThuDao_KetQuaXuongChatId.Location = new System.Drawing.Point(205, 181);
+            this.MauThuDao_KetQuaXuongChatId.Name = "MauThuDao_KetQuaXuongChatId";
+            this.MauThuDao_KetQuaXuongChatId.Size = new System.Drawing.Size(487, 24);
+            this.MauThuDao_KetQuaXuongChatId.TabIndex = 70;
+            // 
+            // lblThuDao
+            // 
+            this.lblThuDao.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblThuDao.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.lblThuDao.Location = new System.Drawing.Point(205, 72);
+            this.lblThuDao.Name = "lblThuDao";
+            this.lblThuDao.Size = new System.Drawing.Size(167, 17);
+            this.lblThuDao.TabIndex = 69;
+            this.lblThuDao.Text = "Dao này đã được thử rồi";
             // 
             // xtraTabPage1
             // 
@@ -290,21 +385,29 @@
             this.btnSaveContinue.TabIndex = 1;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
-            // lblThuDao
+            // btnExport
             // 
-            this.lblThuDao.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblThuDao.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.lblThuDao.Location = new System.Drawing.Point(247, 189);
-            this.lblThuDao.Name = "lblThuDao";
-            this.lblThuDao.Size = new System.Drawing.Size(167, 17);
-            this.lblThuDao.TabIndex = 69;
-            this.lblThuDao.Text = "Dao này đã được thử rồi";
+            this.btnExport.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnExport.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnExport.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnExport.Appearance.Options.UseBackColor = true;
+            this.btnExport.Appearance.Options.UseFont = true;
+            this.btnExport.Appearance.Options.UseForeColor = true;
+            this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnExport.Location = new System.Drawing.Point(370, 476);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 30);
+            this.btnExport.TabIndex = 75;
+            this.btnExport.Text = "Export";
+            this.btnExport.Visible = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // ucMauThuDao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnSaveContinue);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
@@ -347,5 +450,14 @@
         private System.Windows.Forms.RichTextBox txtGopY;
         private DevExpress.XtraEditors.LabelControl lblGopY;
         private DevExpress.XtraEditors.LabelControl lblThuDao;
+        private DevExpress.XtraEditors.LabelControl lblKetQuaXuongChatId;
+        private System.Windows.Forms.ComboBox MauThuDao_KetQuaXuongChatId;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private System.Windows.Forms.ComboBox MauThuDao_KetQuaXuongGoId;
+        private DevExpress.XtraEditors.LabelControl lblKetQuaXuongDeId;
+        private System.Windows.Forms.ComboBox MauThuDao_KetQuaXuongDeId;
+        private DevExpress.XtraEditors.LabelControl lblKetQuaXuongMayId;
+        private System.Windows.Forms.ComboBox MauThuDao_KetQuaXuongMayId;
+        private DevExpress.XtraEditors.SimpleButton btnExport;
     }
 }

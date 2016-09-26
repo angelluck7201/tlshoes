@@ -26,6 +26,6 @@ namespace TLShoes
     
         public virtual UserAccount UserAccount { get; set; }
         public virtual DonHang DonHang { get; set; }
-        public virtual DanhMuc DanhMuc { get; set; }
+        public virtual DanhMuc Mau { get; set; }
     }
 }

@@ -28,6 +28,8 @@ namespace TLShoes
         public Nullable<long> DonHangId { get; set; }
         public Nullable<long> NgayDuyet { get; set; }
         public Nullable<long> NguoiDuyet { get; set; }
+        public string SoPhieu { get; set; }
+        public string TrangThai { get; set; }
     
         public virtual UserAccount UserAccount { get; set; }
         public virtual DonHang DonHang { get; set; }

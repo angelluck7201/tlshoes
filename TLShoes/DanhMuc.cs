@@ -35,12 +35,16 @@ namespace TLShoes
             this.ChiTietHuongDanDongGois1 = new HashSet<ChiTietHuongDanDongGoi>();
             this.ChiTietHuongDanDongGois2 = new HashSet<ChiTietHuongDanDongGoi>();
             this.NguyenLieux2 = new HashSet<NguyenLieu>();
+            this.MauThuDaos = new HashSet<MauThuDao>();
+            this.MauThuDaos1 = new HashSet<MauThuDao>();
+            this.MauThuDaos2 = new HashSet<MauThuDao>();
+            this.MauThuDaos3 = new HashSet<MauThuDao>();
         }
     
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
-        public Nullable<long> CreatedDate { get; set; }
-        public Nullable<long> ModifiedDate { get; set; }
+        public long CreatedDate { get; set; }
+        public long ModifiedDate { get; set; }
         public Nullable<bool> IsActived { get; set; }
         public string Ten { get; set; }
         public string Loai { get; set; }
@@ -83,5 +87,13 @@ namespace TLShoes
         public virtual ICollection<ChiTietHuongDanDongGoi> ChiTietHuongDanDongGois2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NguyenLieu> NguyenLieux2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MauThuDao> MauThuDaos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MauThuDao> MauThuDaos1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MauThuDao> MauThuDaos2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MauThuDao> MauThuDaos3 { get; set; }
     }
 }

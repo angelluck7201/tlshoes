@@ -25,6 +25,10 @@ namespace TLShoes
             this.NhaCungCapVatTus = new HashSet<NhaCungCapVatTu>();
             this.ChiTietDonDatHangs = new HashSet<ChiTietDonDatHang>();
             this.ChiTietHuongDanDongGois = new HashSet<ChiTietHuongDanDongGoi>();
+            this.DonHangs1 = new HashSet<DonHang>();
+            this.DonHangs11 = new HashSet<DonHang>();
+            this.DonHangs2 = new HashSet<DonHang>();
+            this.DonHangs4 = new HashSet<DonHang>();
         }
     
         public long Id { get; set; }
@@ -62,5 +66,13 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHuongDanDongGoi> ChiTietHuongDanDongGois { get; set; }
         public virtual DanhMuc Mau { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonHang> DonHangs1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonHang> DonHangs11 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonHang> DonHangs2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonHang> DonHangs4 { get; set; }
     }
 }

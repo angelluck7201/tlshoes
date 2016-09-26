@@ -9,34 +9,31 @@ AppVersion nvarchar(20),
 Messagelog nvarchar(max),
 );
 
-
+alter table UserAccount add MatKhau text
+alter table UserAccount add LoaiNguoiDung text
+alter table UserAccount alter column CreatedDate bigint not null
+alter table UserAccount alter column ModifiedDate bigint not null
 create table UserAccount(
 Id bigint primary key identity(1,1),
-CreatedDate bigint,
-ModifiedDate bigint,
+CreatedDate bigint not null,
+ModifiedDate bigint not null,
 IsActived bit,
 
 TenNguoiDung nvarchar(50),
-
+MatKhau text,
+LoaiNguoiDung text,
 );
 
 insert UserAccount(CreatedDate,ModifiedDate,IsActived,TenNguoiDung) values (123,456,1, 'Long')
---drop table LoaiDanhMuc
---create table LoaiDanhMuc(
---Id bigint primary key identity(1,1),
---AuthorId bigint foreign key references UserAccount(Id),
---CreatedDate bigint,
---ModifiedDate bigint,
---IsActived bit,
 
---Ten nvarchar(100)
---);
-
+alter table DanhMuc alter column CreatedDate bigint not null
+alter table DanhMuc alter column ModifiedDate bigint not null
+alter table DanhMuc alter column AuthorId bigint
 create table DanhMuc(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate bigint,
-ModifiedDate bigint,
+CreatedDate bigint not null,
+ModifiedDate bigint not null,
 IsActived bit,
 
 Ten nvarchar(100),
@@ -44,12 +41,11 @@ Loai nvarchar(20),
 GhiChu nvarchar(1000),
 );
 
-
 create table NguyenLieu(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate bigint,
-ModifiedDate bigint,
+CreatedDate bigint not null,
+ModifiedDate bigint not null,
 IsActived bit,
 
 LoaiNguyenLieuId bigint foreign key references DanhMuc(Id),
@@ -101,6 +97,10 @@ alter table DonHang add Gia int
 alter table DonHang add DichVuGiaoHang int
 alter table DonHang add DichVuHauMai int
 alter table DonHang add Khac int
+alter table DonHang add MuId bigint foreign key references NguyenLieu(Id)
+alter table DonHang add LotId bigint foreign key references NguyenLieu(Id)
+alter table DonHang add DaLotTayId bigint foreign key references NguyenLieu(Id)
+alter table DonHang add DeId bigint foreign key references NguyenLieu(Id)
 create table DonHang(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -109,6 +109,10 @@ ModifiedDate bigint,
 IsActived bit,
 
 MaPhomId bigint foreign key references NguyenLieu(Id),
+MuId bigint foreign key references NguyenLieu(Id),
+LotId bigint foreign key references NguyenLieu(Id),
+DaLotTayId bigint foreign key references NguyenLieu(Id),
+DeId bigint foreign key references NguyenLieu(Id),
 MaHang varchar(50),
 KhachHangId bigint foreign key references KhachHang(id),
 OrderNo varchar(50),
@@ -153,22 +157,6 @@ Size int,
 SoLuong int,
 );
 
---create table GopYKhachHang(
---Id bigint primary key identity(1,1),
---AuthorId bigint foreign key references UserAccount(Id),
---CreatedDate bigint,
---ModifiedDate bigint,
---IsActived bit,
-
---DonHangId bigint foreign key references DonHang(Id),
---VatTu nvarchar(1000),
---XuongChat nvarchar(1000),
---XuongMay nvarchar(1000),
---XuongDe nvarchar(1000),
---XuongGo nvarchar(1000),
---Qc nvarchar(1000),
-
---);
 
 create table MauDoi(
 Id bigint primary key identity(1,1),
@@ -250,7 +238,10 @@ GopYXuongDe nvarchar(1000),
 GopYXuongGo nvarchar(1000),
 );
 
-drop table MauThuDao
+alter table MauThuDao add KetQuaXuongChatId bigint foreign key references DanhMuc(Id)
+alter table MauThuDao add KetQuaXuongMayId bigint foreign key references DanhMuc(Id)
+alter table MauThuDao add KetQuaXuongDeId bigint foreign key references DanhMuc(Id)
+alter table MauThuDao add KetQuaXuongGoId bigint foreign key references DanhMuc(Id)
 create table MauThuDao(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -271,34 +262,11 @@ GopYXuongChat nvarchar(1000),
 GopYXuongMay nvarchar(1000),
 GopYXuongDe nvarchar(1000),
 GopYXuongGo nvarchar(1000),
+KetQuaXuongChatId bigint foreign key references DanhMuc(Id),
+KetQuaXuongMayId bigint foreign key references DanhMuc(Id),
+KetQuaXuongDeId bigint foreign key references DanhMuc(Id),
+KetQuaXuongGoId bigint foreign key references DanhMuc(Id),
 );
-
---create table BangThongSo(
---Id bigint primary key identity(1,1),
---AuthorId bigint foreign key references UserAccount(Id),
---CreatedDate bigint,
---ModifiedDate bigint,
---IsActived bit,
-
---DonHangId bigint foreign key references DonHang(Id),
---MaPhomId bigint foreign key references NguyenLieu(Id),
---PhanXuongId bigint foreign key references DanhMuc(Id),
---NgayKy bigint,
---NgayXacNhan bigint
---);
-
---create table ChiTietThongSo(
---Id bigint primary key identity(1,1),
---AuthorId bigint foreign key references UserAccount(Id),
---CreatedDate bigint,
---ModifiedDate bigint,
---IsActived bit,
-
---BangThongSoId bigint foreign key references BangThongSo(Id),
---ChiTietId bigint foreign key references DanhMuc(Id),
---Size int,
---ThongSo float
---);
 
 create table CongNgheSanXuat(
 Id bigint primary key identity(1,1),
@@ -318,6 +286,8 @@ HinhCongNgheDuocDuyet text,
 NgayDuyet bigint,
 );
 
+alter table ChiLenh add SoPhieu nvarchar(50)
+alter table ChiLenh add TrangThai nvarchar(50)
 create table ChiLenh(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -326,6 +296,8 @@ ModifiedDate bigint,
 IsActived bit,
 
 DonHangId bigint foreign key references DonHang(Id),
+SoPhieu nvarchar(50),
+TrangThai nvarchar(50),
 NgayDuyet bigint,
 NguoiDuyet bigint foreign key references UserAccount(Id),
 );
@@ -348,10 +320,6 @@ DinhMucThuc real,
 
 alter table NguyenLieuChiLenh alter column DinhMucChuan real
 alter table NguyenLieuChiLenh alter column DinhMucThuc real
---alter table NguyenLieuChiLenh
---add DinhMucChuan int
---alter table NguyenLieuChiLenh
---add DinhMucThuc int
 
 create table ChiTietNguyenLieu(
 Id bigint primary key identity(1,1),
@@ -364,20 +332,6 @@ NguyenLieuChiLenhId bigint foreign key references NguyenLieuChiLenh(Id),
 ChiTietNguyenLieuId bigint foreign key references NguyenLieu(Id),
 GhiChu nvarchar(1000),
 );
-
---create table CongCuDungCu(
---Id bigint primary key identity(1,1),
---AuthorId bigint foreign key references UserAccount(Id),
---CreatedDate bigint,
---ModifiedDate bigint,
---IsActived bit,
-
---DonHangId bigint foreign key references DonHang(Id),
---BangThongSoId bigint foreign key references BangThongSo(Id),
---RapHoaNgay bigint,
-
---GhiChu nvarchar(1000),
---);
 
 
 create table KeHoachSanXuat(
@@ -420,6 +374,8 @@ GhiChu nvarchar(1000),
 )
 
 alter table	ToTrinh add DonDatHangList text
+alter table	ToTrinh add SoPhieu nvarchar(50)
+alter table	ToTrinh add TrangThai nvarchar(20)
 create table ToTrinh(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),	
@@ -427,6 +383,8 @@ CreatedDate bigint,
 ModifiedDate bigint, 
 IsActived bit,
 
+SoPhieu nvarchar(50),
+TrangThai nvarchar(20),
 NguyenLieuId bigint foreign key references NguyenLieu(Id),
 DonDatHangList text,
 BoSung real,
@@ -454,6 +412,7 @@ ThucTe real,
 
 alter table PhieuNhapKho add SoPhieu nvarchar(20)
 alter table PhieuNhapKho add DanhGiaId bigint foreign key references DanhGia(Id)
+alter table PhieuNhapKho add TrangThai nvarchar(20)
 create table PhieuNhapKho(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -467,6 +426,7 @@ LyDo nvarchar(100),
 Kho nvarchar(50),
 NgayNhap bigint,
 SoPhieu nvarchar(20),
+TrangThai nvarchar(20),
 DanhGiaId bigint foreign key references DanhGia(Id)
 )
 
@@ -488,6 +448,7 @@ alter table PhieuXuatKho drop constraint FK__PhieuXuat__ChiLe__3FD07829
 alter table PhieuXuatKho drop column ChiLenhId
 alter table PhieuXuatKho add  DonHangId bigint foreign key references DonHang(Id)
 alter table PhieuXuatKho add SoPhieu nvarchar(20)
+alter table PhieuXuatKho add TrangThai nvarchar(20),
 create table PhieuXuatKho(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),	
@@ -504,6 +465,7 @@ Kho nvarchar(50),
 LoaiXuat nvarchar(50),
 NgayXuat bigint,
 SoPhieu nvarchar(20),
+TrangThai nvarchar(20),
 )
 
 alter table ChiTietXuatKho add IsUpdateKho bit

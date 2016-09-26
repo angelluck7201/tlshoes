@@ -111,7 +111,7 @@
             // 
             this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn4.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn4.Caption = "Số Lượng";
+            this.gridColumn4.Caption = "Số Lượng Tồn";
             this.gridColumn4.FieldName = "SoLuong";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
