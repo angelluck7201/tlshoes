@@ -78,7 +78,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(867, 668);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1400, 737);
             this.xtraTabControl1.TabIndex = 71;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -90,7 +90,7 @@
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.gridMauTest);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(860, 633);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1393, 702);
             this.xtraTabPage1.Text = "Mẫu Test";
             // 
             // gridMauTest
@@ -102,7 +102,7 @@
             this.gridMauTest.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageEdit1,
             this.repositoryItemPictureEdit1});
-            this.gridMauTest.Size = new System.Drawing.Size(860, 633);
+            this.gridMauTest.Size = new System.Drawing.Size(1393, 702);
             this.gridMauTest.TabIndex = 5;
             this.gridMauTest.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -137,6 +137,7 @@
             this.colHinh.UnboundType = DevExpress.Data.UnboundColumnType.Object;
             this.colHinh.Visible = true;
             this.colHinh.VisibleIndex = 0;
+            this.colHinh.Width = 216;
             // 
             // repositoryItemPictureEdit1
             // 
@@ -158,6 +159,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
+            this.gridColumn1.Width = 191;
             // 
             // gridColumn2
             // 
@@ -168,6 +170,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.Width = 208;
             // 
             // gridColumn3
             // 
@@ -178,6 +181,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 6;
+            this.gridColumn3.Width = 199;
             // 
             // gridColumn4
             // 
@@ -188,6 +192,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 5;
+            this.gridColumn4.Width = 184;
             // 
             // gridColumn5
             // 
@@ -198,6 +203,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.Width = 218;
             // 
             // gridColumn12
             // 
@@ -208,6 +214,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 2;
+            this.gridColumn12.Width = 157;
             // 
             // repositoryItemImageEdit1
             // 
@@ -221,7 +228,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.gridMauSanXuat);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(860, 633);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1393, 702);
             this.xtraTabPage2.Text = "Mẫu Sản Xuất";
             // 
             // gridMauSanXuat
@@ -232,7 +239,7 @@
             this.gridMauSanXuat.Name = "gridMauSanXuat";
             this.gridMauSanXuat.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemPictureEdit2});
-            this.gridMauSanXuat.Size = new System.Drawing.Size(860, 633);
+            this.gridMauSanXuat.Size = new System.Drawing.Size(1393, 702);
             this.gridMauSanXuat.TabIndex = 5;
             this.gridMauSanXuat.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -335,7 +342,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucTongHopMauTest";
-            this.Size = new System.Drawing.Size(867, 668);
+            this.Size = new System.Drawing.Size(1400, 737);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);

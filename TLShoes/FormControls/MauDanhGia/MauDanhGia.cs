@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using TLShoes.Common;
@@ -51,24 +52,29 @@ namespace TLShoes.FormControls.MauDanhGia
             }
 
             var saveData = CRUD.GetFormObject<TLShoes.MauDanhGia>(FormControls);
-            _viewModel.Save(saveData);
-
-            foreach (var nguyenlieu in TieuChiList)
+            using (var transaction = new TransactionScope())
             {
-                nguyenlieu.MauDanhGiaId = saveData.Id;
-                CRUD.DecorateSaveData(nguyenlieu);
-                _viewModel.Save(nguyenlieu);
-            }
+                _viewModel.Save(saveData);
 
-            // Delete not use data
-            var listTieuChi = _viewModel.GetListTieuChi(saveData.Id);
-            foreach (var tieuchi in listTieuChi)
-            {
-                if (TieuChiList.All(s => s.Id != tieuchi.Id))
+                foreach (var nguyenlieu in TieuChiList)
                 {
-                    _viewModel.Delete(tieuchi);
+                    nguyenlieu.MauDanhGiaId = saveData.Id;
+                    CRUD.DecorateSaveData(nguyenlieu);
+                    _viewModel.Save(nguyenlieu);
                 }
+
+                // Delete not use data
+                var listTieuChi = _viewModel.GetListTieuChi(saveData.Id);
+                foreach (var tieuchi in listTieuChi)
+                {
+                    if (TieuChiList.All(s => s.Id != tieuchi.Id))
+                    {
+                        _viewModel.Delete(tieuchi);
+                    }
+                }
+                transaction.Complete();
             }
+
 
             return true;
         }

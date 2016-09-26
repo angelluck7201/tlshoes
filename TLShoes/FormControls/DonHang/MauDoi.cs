@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Linq;
+using System.Transactions;
 using System.Windows.Forms;
 using TLShoes.Common;
 using TLShoes.ViewModels;
@@ -37,9 +38,13 @@ namespace TLShoes.FormControls.DonHang
                 return false;
             }
             var saveData = CRUD.GetFormObject<MauDoi>(FormControls);
-            SF.Get<MauDoiViewModel>().Save(saveData);
+            using (var transaction = new TransactionScope())
+            {
+                SF.Get<MauDoiViewModel>().Save(saveData);
 
-            SF.Get<MauDoiViewModel>().SaveHinh(MauDoiHinh.ToList(), saveData.Id);
+                SF.Get<MauDoiViewModel>().SaveHinh(MauDoiHinh.ToList(), saveData.Id);
+                transaction.Complete();
+            }
 
             return true;
         }

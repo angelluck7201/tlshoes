@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using TLShoes.Common;
@@ -62,25 +58,29 @@ namespace TLShoes.FormControls.DanhGia
 
             // Save Don hang
             var saveData = CRUD.GetFormObject<TLShoes.DanhGia>(FormControls);
-            SF.Get<DanhGiaViewModel>().Save(saveData, false);
 
-            foreach (var chitiet in ChiTietDanhGia)
+            using (var transaction = new TransactionScope())
             {
-                chitiet.DanhGiaId = saveData.Id;
-                CRUD.DecorateSaveData(chitiet);
-                SF.Get<DanhGiaViewModel>().Save(chitiet, false);
-            }
+                SF.Get<DanhGiaViewModel>().Save(saveData);
 
-            // Clear deleted data
-            var listChiTietDelete = saveData.ChiTietDanhGias;
-            foreach (var deleteItem in listChiTietDelete)
-            {
-                if (ChiTietDanhGia.All(s => s.Id != deleteItem.Id))
+                foreach (var chitiet in ChiTietDanhGia)
                 {
-                    SF.Get<DanhGiaViewModel>().Delete(deleteItem, false);
+                    chitiet.DanhGiaId = saveData.Id;
+                    CRUD.DecorateSaveData(chitiet);
+                    SF.Get<DanhGiaViewModel>().Save(chitiet);
                 }
+
+                // Clear deleted data
+                var listChiTietDelete = saveData.ChiTietDanhGias;
+                foreach (var deleteItem in listChiTietDelete)
+                {
+                    if (ChiTietDanhGia.All(s => s.Id != deleteItem.Id))
+                    {
+                        SF.Get<DanhGiaViewModel>().Delete(deleteItem);
+                    }
+                }
+                transaction.Complete();
             }
-            BaseModel.Commit();
 
             return true;
         }
@@ -118,7 +118,7 @@ namespace TLShoes.FormControls.DanhGia
             var donHangId = DanhGia_DonDatHangId.SelectedValue;
             if (donHangId != null)
             {
-                var donHang = SF.Get<DonDatHangViewModel>().GetDetail((long) donHangId);
+                var donHang = SF.Get<DonDatHangViewModel>().GetDetail((long)donHangId);
                 if (donHang != null)
                 {
                     SoLuongDat.Text = donHang.ChiTietDonDatHangs.Sum(s => s.SoLuong).ToString();

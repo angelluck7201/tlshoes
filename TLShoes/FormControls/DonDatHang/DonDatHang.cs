@@ -5,10 +5,12 @@ using System.Drawing;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
@@ -71,62 +73,67 @@ namespace TLShoes.FormControls.DonDatHang
 
             // Save Don hang
             var saveData = CRUD.GetFormObject<TLShoes.DonDatHang>(FormControls);
-            SF.Get<DonDatHangViewModel>().Save(saveData, false);
-
-            // Clear deleted data
-            var listChiTietDelete = SF.Get<DonDatHangViewModel>().GetList(saveData.Id);
-            foreach (var deleteItem in listChiTietDelete)
+            using (var transaction = new TransactionScope())
             {
-                if (DatHangVatTuList.All(s => s.Id != deleteItem.Id))
-                {
-                    SF.Get<DonDatHangViewModel>().Delete(deleteItem, false);
-                }
-            }
+                SF.Get<DonDatHangViewModel>().Save(saveData);
 
-            // Update danh sach cac to trinh da duoc dat hang
-            foreach (var totrinh in ToTrinhList)
-            {
-                var isUpdateToTrinh = false;
-                if (SelectedList.Contains(totrinh.Id))
+                // Clear deleted data
+                var listChiTietDelete = SF.Get<DonDatHangViewModel>().GetList(saveData.Id);
+                foreach (var deleteItem in listChiTietDelete)
                 {
-                    if (!totrinh.DonDatHangFormatList.Contains(saveData.Id))
+                    if (DatHangVatTuList.All(s => s.Id != deleteItem.Id))
                     {
-                        totrinh.DonDatHangList += saveData.Id + ",";
-                        isUpdateToTrinh = true;
+                        SF.Get<DonDatHangViewModel>().Delete(deleteItem);
                     }
                 }
-                else if (!string.IsNullOrEmpty(totrinh.DonDatHangList))
+
+                // Update danh sach cac to trinh da duoc dat hang
+                foreach (var totrinh in ToTrinhList)
                 {
-                    totrinh.DonDatHangList = "";
-                    isUpdateToTrinh = true;
+                    var isUpdateToTrinh = false;
+                    if (SelectedList.Contains(totrinh.Id))
+                    {
+                        if (!totrinh.DonDatHangFormatList.Contains(saveData.Id))
+                        {
+                            totrinh.DonDatHangList += saveData.Id + ",";
+                            isUpdateToTrinh = true;
+                        }
+                    }
+                    else if (!string.IsNullOrEmpty(totrinh.DonDatHangList))
+                    {
+                        totrinh.DonDatHangList = "";
+                        isUpdateToTrinh = true;
+                    }
+
+                    if (isUpdateToTrinh)
+                    {
+                        SF.Get<ToTrinhViewModel>().Save(totrinh);
+                    }
                 }
 
-                if (isUpdateToTrinh)
+                // Save nguyen lieu chi lenh
+                foreach (var nguyenlieu in DatHangVatTuList)
                 {
-                    SF.Get<ToTrinhViewModel>().Save(totrinh, false);
+                    var chitietDonDatHang = new ChiTietDonDatHang();
+                    if (nguyenlieu.Id != 0)
+                    {
+                        chitietDonDatHang.Id = nguyenlieu.Id;
+                    }
+                    chitietDonDatHang.DonDatHangId = saveData.Id;
+                    chitietDonDatHang.NguyenLieuId = nguyenlieu.NguyenLieuId;
+                    chitietDonDatHang.NhaCungCapId = nguyenlieu.NhaCungCapId;
+                    chitietDonDatHang.DonGia = nguyenlieu.DonGia;
+                    chitietDonDatHang.GhiChu = nguyenlieu.GhiChu;
+                    chitietDonDatHang.SoLuong = nguyenlieu.SoLuong;
+                    chitietDonDatHang.SoLuongThuc = nguyenlieu.SoLuongThuc;
+
+                    CRUD.DecorateSaveData(chitietDonDatHang);
+                    SF.Get<DonDatHangViewModel>().Save(chitietDonDatHang);
                 }
+
+                transaction.Complete();
             }
 
-            // Save nguyen lieu chi lenh
-            foreach (var nguyenlieu in DatHangVatTuList)
-            {
-                var chitietDonDatHang = new ChiTietDonDatHang();
-                if (nguyenlieu.Id != 0)
-                {
-                    chitietDonDatHang.Id = nguyenlieu.Id;
-                }
-                chitietDonDatHang.DonDatHangId = saveData.Id;
-                chitietDonDatHang.NguyenLieuId = nguyenlieu.NguyenLieuId;
-                chitietDonDatHang.NhaCungCapId = nguyenlieu.NhaCungCapId;
-                chitietDonDatHang.DonGia = nguyenlieu.DonGia;
-                chitietDonDatHang.GhiChu = nguyenlieu.GhiChu;
-                chitietDonDatHang.SoLuong = nguyenlieu.SoLuong;
-                chitietDonDatHang.SoLuongThuc = nguyenlieu.SoLuongThuc;
-
-                CRUD.DecorateSaveData(chitietDonDatHang);
-                SF.Get<DonDatHangViewModel>().Save(chitietDonDatHang, false);
-            }
-            BaseModel.Commit();
 
             // Update danh gia nha cung cap
             if (DonDatHang_NhaCungCapId.SelectedValue != null)
@@ -350,7 +357,7 @@ namespace TLShoes.FormControls.DonDatHang
         {
             if (_donDatHang == null) return;
             var saveDialog = new SaveFileDialog();
-            saveDialog.Filter = "Excel |*.xls";
+            saveDialog.Filter = Define.EXPORT_EXTENSION;
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
                 ThreadHelper.LoadForm(() =>
@@ -362,36 +369,47 @@ namespace TLShoes.FormControls.DonDatHang
                     var workBook = excel.Workbooks.Open(Path.Combine(FileHelper.TemplatePath, Define.TEMPLATE_DON_DAT_HANG));
                     var workSheet = (_Worksheet)workBook.ActiveSheet;
 
-                    var donDatHang = _donDatHang;
-                    var chitietDatHang = donDatHang.ChiTietDonDatHangs.ToList();
-                    for (int i = 0; i < chitietDatHang.Count; i++)
+                    try
                     {
-                        workSheet.Cells[11 + i, 1] = i + 1;
-                        workSheet.Cells[11 + i, 2] = chitietDatHang[i].NguyenLieu.Ten;
-                        workSheet.Cells[11 + i, 6] = chitietDatHang[i].NguyenLieu.QuyCach;
-                        workSheet.Cells[11 + i, 7] = chitietDatHang[i].NguyenLieu.Mau != null
-                            ? chitietDatHang[i].NguyenLieu.Mau.Ten
-                            : "";
-                        workSheet.Cells[11 + i, 8] = chitietDatHang[i].NguyenLieu.DanhMuc != null
-                            ? chitietDatHang[i].NguyenLieu.DanhMuc.Ten
-                            : "";
-                        workSheet.Cells[11 + i, 9] = chitietDatHang[i].SoLuong;
-                        var giaVatTu =
-                            chitietDatHang[i].NhaCungCap.NhaCungCapVatTus.FirstOrDefault(
-                                s => s.NguyenLieuId == chitietDatHang[i].NguyenLieuId);
-                        workSheet.Cells[11 + i, 10] = giaVatTu.DonGia;
-                        workSheet.Cells[11 + i, 11] = chitietDatHang[i].NguyenLieu.GhiChu;
-
-                        if (11 + i > 20)
+                        var donDatHang = _donDatHang;
+                        var chitietDatHang = donDatHang.ChiTietDonDatHangs.ToList();
+                        for (int i = 0; i < chitietDatHang.Count; i++)
                         {
-                            var row = (Range)workSheet.Rows[11 + i + 1];
-                            row.Insert(XlInsertShiftDirection.xlShiftDown);
-                        }
-                    }
+                            workSheet.Cells[11 + i, 1] = i + 1;
+                            workSheet.Cells[11 + i, 2] = chitietDatHang[i].NguyenLieu.Ten;
+                            workSheet.Cells[11 + i, 6] = chitietDatHang[i].NguyenLieu.QuyCach;
+                            workSheet.Cells[11 + i, 7] = chitietDatHang[i].NguyenLieu.Mau != null
+                                ? chitietDatHang[i].NguyenLieu.Mau.Ten
+                                : "";
+                            workSheet.Cells[11 + i, 8] = chitietDatHang[i].NguyenLieu.DanhMuc != null
+                                ? chitietDatHang[i].NguyenLieu.DanhMuc.Ten
+                                : "";
+                            workSheet.Cells[11 + i, 9] = chitietDatHang[i].SoLuong;
+                            var giaVatTu = chitietDatHang[i].NhaCungCap.NhaCungCapVatTus.FirstOrDefault(s => s.NguyenLieuId == chitietDatHang[i].NguyenLieuId);
+                            if (giaVatTu != null) workSheet.Cells[11 + i, 10] = giaVatTu.DonGia;
+                            workSheet.Cells[11 + i, 11] = chitietDatHang[i].NguyenLieu.GhiChu;
 
-                    workBook.SaveAs(saveDialog.FileName);
-                    workBook.Close();
+                            if (11 + i > 20)
+                            {
+                                var row = (Range)workSheet.Rows[11 + i + 1];
+                                row.Insert(XlInsertShiftDirection.xlShiftDown);
+                            }
+                        }
+
+                        workBook.SaveAs(saveDialog.FileName);
+                    }
+                    finally
+                    {
+                        workBook.Close();
+                    }
                 });
+
+                var confirmDialog = MessageBox.Show(Define.MESSAGE_EXPORT_SUCCESS_TEXT, Define.MESSAGE_EXPORT_SUCCESS_TITLE, MessageBoxButtons.YesNo);
+                if (confirmDialog == DialogResult.Yes)
+                {
+                    Process.Start(saveDialog.FileName);
+                }
+                this.ParentForm.Close();
             }
 
         }

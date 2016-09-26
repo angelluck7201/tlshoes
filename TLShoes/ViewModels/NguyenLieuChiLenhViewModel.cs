@@ -50,20 +50,25 @@ namespace TLShoes.ViewModels
             var listShowData = new List<ShowData>();
             foreach (var item in listData)
             {
+                var chiTietNguyenLieu = new List<ChiTietNguyenLieu>();
+                if (item.ChiTietNguyenLieux != null)
+                {
+                    chiTietNguyenLieu = item.ChiTietNguyenLieux.ToList();
+                }
                 listShowData.Add(new ShowData()
                 {
                     Id = item.Id,
                     PhanXuongId = item.PhanXuongId,
                     PhanXuong = item.PhanXuong.Ten,
                     MauId = item.MauId,
-                    Mau = item.Mau.Ten,
+                    Mau = item.Mau != null ? item.Mau.Ten : "",
                     QuyCach = item.QuyCach,
                     ChiTietId = item.ChiTietId,
-                    ChiTiet = item.ChiTiet.Ten,
+                    ChiTiet = item.ChiTiet != null ? item.ChiTiet.Ten : "",
                     DinhMucChuan = (float)item.DinhMucChuan,
                     DinhMucThuc = (float)item.DinhMucThuc,
-                    NguyenLieu = NguyenLieuFormat(item.ChiTietNguyenLieux.ToList()),
-                    ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(item.ChiTietNguyenLieux.ToList()),
+                    NguyenLieu = NguyenLieuFormat(chiTietNguyenLieu),
+                    ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(chiTietNguyenLieu.ToList()),
                 });
             }
             data = new BindingList<ShowData>(listShowData);

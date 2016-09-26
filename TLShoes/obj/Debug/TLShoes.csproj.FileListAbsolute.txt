@@ -249,3 +249,4 @@ C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.HuongDanDo
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.NhaCungCap.ucTongHopNhaCungCap.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.Form.NhatKyThayDoi.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.TheKho.ucTheKhoList.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.csproj.ResolveComReference.cache

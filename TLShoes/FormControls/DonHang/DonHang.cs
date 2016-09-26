@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading;
+using System.Transactions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using TLShoes.Common;
@@ -105,17 +106,20 @@ namespace TLShoes
                 return false;
             }
             var saveData = CRUD.GetFormObject<DonHang>(FormControls);
-            SF.Get<DonHangViewModel>().Save(saveData, false);
-            var id = saveData.Id;
-
-            // Save Chi Tiet Don Hang
-            foreach (var chitiet in ChiTietDonhang)
+            using (var transaction = new TransactionScope())
             {
-                chitiet.DonHangId = id;
-                CRUD.DecorateSaveData(chitiet);
-                SF.Get<ChiTietDonHangViewModel>().Save(chitiet, false);
+                SF.Get<DonHangViewModel>().Save(saveData);
+                var id = saveData.Id;
+
+                // Save Chi Tiet Don Hang
+                foreach (var chitiet in ChiTietDonhang)
+                {
+                    chitiet.DonHangId = id;
+                    CRUD.DecorateSaveData(chitiet);
+                    SF.Get<ChiTietDonHangViewModel>().Save(chitiet);
+                }
+                transaction.Complete();
             }
-            BaseModel.Commit();
 
             // Update danh gia nha cung cap
             if (DonHang_KhachHangId.SelectedValue != null)

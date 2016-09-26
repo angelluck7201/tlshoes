@@ -118,8 +118,10 @@ namespace TLShoes
 
         public void ShowPopupInfo(object data = null)
         {
-            var addForm = (UserControl)Activator.CreateInstance(currentControl, data);
+            ObserverControl.Regist("Close", currentForm, () => { this.Enabled = true; });
+            this.Enabled = false;
 
+            var addForm = (UserControl)Activator.CreateInstance(currentControl, data);
             var defaultForm = new DefaultForm();
 
             defaultForm.Height = addForm.Height + 50;
@@ -129,9 +131,7 @@ namespace TLShoes
             defaultForm.Controls.Add(addForm);
             addForm.Dock = DockStyle.Fill;
             defaultForm.Show();
-
-            this.Enabled = false;
-            ObserverControl.Regist("Close", currentForm, () => { this.Enabled = true; });
+            defaultForm.Focus();
         }
 
         private void navDanhMuc_LinkClicked(object sender, NavBarLinkEventArgs e)
@@ -273,7 +273,7 @@ namespace TLShoes
             GenerateUltilsForm(ucList, new List<string>() { "btnSave" });
         }
 
-       
+
     }
 }
 

@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 using TLShoes.Common;
 using TLShoes.ViewModels;
@@ -15,6 +11,7 @@ namespace TLShoes.FormControls.ToTrinh
     public partial class ucToTrinh : BaseUserControl
     {
         private TLShoes.ToTrinh currentToTrinh = null;
+        private List<ChiTietToTrinh> _lstChiTietToTrinh = new List<ChiTietToTrinh>();
         public ucToTrinh(TLShoes.ToTrinh data = null)
         {
             InitializeComponent();
@@ -22,7 +19,6 @@ namespace TLShoes.FormControls.ToTrinh
             ToTrinh_NguyenLieuId.DisplayMember = "Ten";
             ToTrinh_NguyenLieuId.ValueMember = "Id";
             ToTrinh_NguyenLieuId.DataSource = new BindingSource(SF.Get<NguyenLieuViewModel>().GetList(), null);
-
 
             Init(data);
             currentToTrinh = data;
@@ -40,6 +36,26 @@ namespace TLShoes.FormControls.ToTrinh
             // Save Don hang
             var saveData = CRUD.GetFormObject<TLShoes.ToTrinh>(FormControls);
             SF.Get<ToTrinhViewModel>().Save(saveData);
+            // Todo lam tam, sau nay su dung cho tinh nang duyet
+            Accept();
+            return true;
+        }
+
+        public bool Accept()
+        {
+            if (currentToTrinh != null)
+            {
+                using (var transaction = new TransactionScope())
+                {
+                    foreach (var chiTietToTrinh in _lstChiTietToTrinh)
+                    {
+                        chiTietToTrinh.ToTrinhId = currentToTrinh.Id;
+                        SF.Get<ChiTietToTrinhViewModel>().Save(chiTietToTrinh);
+                    }
+                    transaction.Complete();
+                }
+            }
+
             return true;
         }
 
@@ -54,7 +70,7 @@ namespace TLShoes.FormControls.ToTrinh
             if (nguyenLieuObj != null)
             {
                 var nguyenLieuId = (long)nguyenLieuObj;
-                var listChiTietToTrinh = new List<ChiTietToTrinh>();
+                _lstChiTietToTrinh = new List<ChiTietToTrinh>();
                 var chiLenhList = SF.Get<ChiTietNguyenLieuViewModel>().GetList()
                     .Where(s => s.ChiTietNguyenLieuId == nguyenLieuId)
                     .GroupBy(s => s.NguyenLieuChiLenh.ChiLenh.DonHang);
@@ -104,10 +120,10 @@ namespace TLShoes.FormControls.ToTrinh
                         .Where(s => s.PhieuXuatKho.DonHang.Id == chitiet.DonHangId
                                  && s.PhieuXuatKho.LoaiXuat == Define.LoaiXuat.TRONG_CHI_LENH.ToString())
                         .Sum(s => s.SoLuong);
-                    listChiTietToTrinh.Add(chitiet);
+                    _lstChiTietToTrinh.Add(chitiet);
                 }
 
-                gridChiTietToTrinh.DataSource = listChiTietToTrinh.Select(s => new { s.DonHang.MaHang, s.NhuCau, s.ThucTe });
+                gridChiTietToTrinh.DataSource = _lstChiTietToTrinh.Select(s => new { s.DonHang.MaHang, s.NhuCau, s.ThucTe });
 
             }
         }

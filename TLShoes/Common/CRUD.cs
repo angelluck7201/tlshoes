@@ -189,7 +189,7 @@ namespace TLShoes.Common
             switch (controlType.Name)
             {
                 case "ComboBox":
-                    (control as ComboBox).SelectedIndex = 0;
+//                    (control as ComboBox).SelectedIndex = 0;
                     break;
                 case "RatingControl":
                     (control as RatingControl).Rating = 0;

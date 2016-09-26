@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using TLShoes.Common;
@@ -85,32 +81,34 @@ namespace TLShoes.FormControls.HuongDanDongGoi
             }
 
             var saveData = CRUD.GetFormObject<MauHuongDanDongGoi>(FormControls);
-            _viewModel.Save(saveData, false);
-
-            foreach (var chitiet in ChiTietHuongDanList)
+            using (var transaction = new TransactionScope())
             {
-                chitiet.MauHuongDanDongGoiId = saveData.Id;
-                chitiet.HinhMauDinhKem = FileHelper.ImageSave(chitiet.HinhMauDinhKemFormat);
-                CRUD.DecorateSaveData(chitiet);
-                _viewModel.Save(chitiet, false);
-            }
+                _viewModel.Save(saveData);
 
-            // Delete not use data
-            var mauHuongDan = _viewModel.GetDetail(saveData.Id);
-            if (mauHuongDan != null)
-            {
-                var chitietHuongDanDongGoi = mauHuongDan.ChiTietHuongDanDongGois.ToList();
-                foreach (var chitiet in chitietHuongDanDongGoi)
+                foreach (var chitiet in ChiTietHuongDanList)
                 {
-                    if (ChiTietHuongDanList.All(s => s.Id != chitiet.Id))
+                    chitiet.MauHuongDanDongGoiId = saveData.Id;
+                    chitiet.HinhMauDinhKem = FileHelper.ImageSave(chitiet.HinhMauDinhKemFormat);
+                    CRUD.DecorateSaveData(chitiet);
+                    _viewModel.Save(chitiet);
+                }
+
+                // Delete not use data
+                var mauHuongDan = _viewModel.GetDetail(saveData.Id);
+                if (mauHuongDan != null)
+                {
+                    var chitietHuongDanDongGoi = mauHuongDan.ChiTietHuongDanDongGois.ToList();
+                    foreach (var chitiet in chitietHuongDanDongGoi)
                     {
-                        _viewModel.Delete(chitiet, false);
+                        if (ChiTietHuongDanList.All(s => s.Id != chitiet.Id))
+                        {
+                            _viewModel.Delete(chitiet);
+                        }
                     }
                 }
+
+                transaction.Complete();
             }
-
-            BaseModel.Commit();
-
             return true;
         }
 

@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using TLShoes.Common;
@@ -56,26 +57,28 @@ namespace TLShoes.FormControls.NhaCungCap
             }
 
             var saveData = CRUD.GetFormObject<TLShoes.NhaCungCap>(FormControls);
-            _viewModel.Save(saveData, false);
-
-            foreach (var nguyenlieu in ChiTietNguyenLieuList)
+            using (var transaction = new TransactionScope())
             {
-                nguyenlieu.NhaCungCapId = saveData.Id;
-                CRUD.DecorateSaveData(nguyenlieu);
-                _viewModel.Save(nguyenlieu, false);
-            }
+                _viewModel.Save(saveData);
 
-            // Delete not use data
-            var listVatTu = _viewModel.GetListVatTu(saveData.Id);
-            foreach (var vattu in listVatTu)
-            {
-                if (ChiTietNguyenLieuList.All(s => s.Id != vattu.Id))
+                foreach (var nguyenlieu in ChiTietNguyenLieuList)
                 {
-                    _viewModel.Delete(vattu, false);
+                    nguyenlieu.NhaCungCapId = saveData.Id;
+                    CRUD.DecorateSaveData(nguyenlieu);
+                    _viewModel.Save(nguyenlieu);
                 }
-            }
 
-            BaseModel.Commit();
+                // Delete not use data
+                var listVatTu = _viewModel.GetListVatTu(saveData.Id);
+                foreach (var vattu in listVatTu)
+                {
+                    if (ChiTietNguyenLieuList.All(s => s.Id != vattu.Id))
+                    {
+                        _viewModel.Delete(vattu);
+                    }
+                }
+                transaction.Complete();
+            }
 
             return true;
         }

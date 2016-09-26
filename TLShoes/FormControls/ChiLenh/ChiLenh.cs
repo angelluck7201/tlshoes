@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Transactions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
+using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
 using TLShoes.ViewModels;
+using Application = Microsoft.Office.Interop.Excel.Application;
+using Microsoft.Office.Core;
+
 
 namespace TLShoes.FormControls.ChiLenh
 {
@@ -13,7 +20,8 @@ namespace TLShoes.FormControls.ChiLenh
     {
         private BindingList<NguyenLieuChiLenhViewModel.ShowData> NguyenLieuChiLenhList = new BindingList<NguyenLieuChiLenhViewModel.ShowData>();
         private BindingList<ChiTietNguyenLieu> ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>();
-        private static int TongDonHang = 0;
+        private int TongDonHang = 0;
+        private TLShoes.ChiLenh _chiLenh;
 
         public ucChiLenh(TLShoes.ChiLenh data = null)
         {
@@ -41,6 +49,12 @@ namespace TLShoes.FormControls.ChiLenh
             {
                 SF.Get<NguyenLieuChiLenhViewModel>().GetDataSource(data.Id, ref NguyenLieuChiLenhList);
                 SF.Get<NhatKyThayDoiViewModel>().GetDataSource(gridNhatKy, Define.ModelType.CHILENH, data.Id);
+                _chiLenh = data;
+                btnExport.Visible = true;
+            }
+            else
+            {
+                InitNguyenLieuChiLenh();
             }
 
             gridControl.DataSource = NguyenLieuChiLenhList;
@@ -58,6 +72,58 @@ namespace TLShoes.FormControls.ChiLenh
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
         }
 
+        private void InitNguyenLieuChiLenh()
+        {
+            var phanXuongChat = SF.Get<DanhMucViewModel>().GetDetail(Define.PhanXuongDict["CHẶT"]);
+            if (phanXuongChat != null)
+            {
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["MŨ GIÀY"], ChiTiet = "MŨ GIÀY" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["LÓT MŨ"], ChiTiet = "LÓT MŨ" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["LÓT HẬU"], ChiTiet = "LÓT HẬU" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["DA LÓT TẨY"], ChiTiet = "DA LÓT TẨY" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["ĐỆM TẨY TRÊN"], ChiTiet = "ĐỆM TẨY TRÊN" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["ĐỆM TẨY DƯỚI"], ChiTiet = "ĐỆM TẨY DƯỚI" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["PHO HẬU"], ChiTiet = "PHO HẬU" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["PHO MŨI"], ChiTiet = "PHO MŨI" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["BẠT EO"], ChiTiet = "BẠT EO" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["BẠT MÓNG NGỰA"], ChiTiet = "BẠT MÓNG NGỰA" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["TẨY GIÀY"], ChiTiet = "TẨY GIÀY" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["RẬP NÂNG"], ChiTiet = "RẬP NÂNG" });
+            }
+
+            var phanXuongMay = SF.Get<DanhMucViewModel>().GetDetail(Define.PhanXuongDict["MAY"]);
+            if (phanXuongMay != null)
+            {
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["CHỈ MAY MŨ"], ChiTiet = "CHỈ MAY MŨ" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["CHỈ MAY LÓT"], ChiTiet = "CHỈ MAY LÓT" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["DÂY T/C NYLON"], ChiTiet = "DÂT T/C NYLON" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["NƠ"], ChiTiet = "NƠ" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["DÂY VIỀN"], ChiTiet = "DÂY VIỀN" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["BẠT CÀ RẼ"], ChiTiet = "BẠT CÀ RẼ" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["BẠT TC HẬU"], ChiTiet = "BẠT TC HẬU" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["KEO"], ChiTiet = "KEO" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["KEO"], ChiTiet = "KEO" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["KEO"], ChiTiet = "KEO" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["XĂNG CN"], ChiTiet = "XĂNG CN" });
+            }
+
+            var phanXuongGo = SF.Get<DanhMucViewModel>().GetDetail(Define.PhanXuongDict["GÒ"]);
+            if (phanXuongGo != null)
+            {
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["TẨY GIÀY"], ChiTiet = "TẨY GIÀY" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["DA LÓT TẨY"], ChiTiet = "DA LÓT TẨY" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["ĐẾ"], ChiTiet = "ĐẾ" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["KEO"], ChiTiet = "KEO" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["NƯỚC CỨNG"], ChiTiet = "NƯỚC CỨNG" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["NƯỚC XỬ LÝ TPR"], ChiTiet = "NƯỚC XỬ LÝ TPR" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["NƯỚC XỬ LÝ MŨ"], ChiTiet = "NƯỚC XỬ LÝ MŨ" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["KEO"], ChiTiet = "KEO" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["XĂNG CN"], ChiTiet = "XĂNG CN" });
+                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["TOLUEN"], ChiTiet = "TOLUEN" });
+
+            }
+        }
+
         public override bool SaveData()
         {
             var validateResult = ValidateInput();
@@ -68,58 +134,65 @@ namespace TLShoes.FormControls.ChiLenh
             }
 
             // Save Don hang
-            var saveData = CRUD.GetFormObject<TLShoes.ChiLenh>(FormControls);
-            SF.Get<ChiLenhViewModel>().Save(saveData, false);
-
-            // Save nguyen lieu chi lenh
-            foreach (var nguyenlieu in NguyenLieuChiLenhList)
+            using (var transaction = new TransactionScope())
             {
-                var nguyenlieuChiLenh = new NguyenLieuChiLenh();
-                nguyenlieuChiLenh.Id = nguyenlieu.Id;
-                nguyenlieuChiLenh.PhanXuongId = nguyenlieu.PhanXuongId;
-                nguyenlieuChiLenh.ChiLenhId = saveData.Id;
-                nguyenlieuChiLenh.ChiTietId = nguyenlieu.ChiTietId;
-                nguyenlieuChiLenh.QuyCach = nguyenlieu.QuyCach;
-                nguyenlieuChiLenh.MauId = nguyenlieu.MauId;
-                nguyenlieuChiLenh.DinhMucChuan = nguyenlieu.DinhMucChuan;
-                nguyenlieuChiLenh.DinhMucThuc = nguyenlieu.DinhMucThuc;
+                var saveData = CRUD.GetFormObject<TLShoes.ChiLenh>(FormControls);
+                SF.Get<ChiLenhViewModel>().Save(saveData);
 
-                CRUD.DecorateSaveData(nguyenlieuChiLenh);
-                SF.Get<NguyenLieuChiLenhViewModel>().Save(nguyenlieuChiLenh, false);
-
-                // Save chi tiet nguyen lieu
-                var currentItem = new List<long>();
-                foreach (var chitiet in nguyenlieu.ChiTietNguyenLieuList)
+                // Save nguyen lieu chi lenh
+                foreach (var nguyenlieu in NguyenLieuChiLenhList)
                 {
-                    var chitietNguyenLieu = new ChiTietNguyenLieu();
-                    chitietNguyenLieu.Id = chitiet.Id;
-                    chitietNguyenLieu.ChiTietNguyenLieuId = chitiet.ChiTietNguyenLieuId;
-                    chitietNguyenLieu.NguyenLieuChiLenhId = nguyenlieuChiLenh.Id;
-                    chitietNguyenLieu.GhiChu = chitiet.GhiChu;
-                    CRUD.DecorateSaveData(chitietNguyenLieu);
-                    SF.Get<ChiTietNguyenLieuViewModel>().Save(chitietNguyenLieu, false);
-                    currentItem.Add(chitietNguyenLieu.Id);
-                }
+                    var nguyenlieuChiLenh = new NguyenLieuChiLenh();
+                    nguyenlieuChiLenh.Id = nguyenlieu.Id;
+                    nguyenlieuChiLenh.PhanXuongId = nguyenlieu.PhanXuongId;
+                    nguyenlieuChiLenh.ChiLenhId = saveData.Id;
+                    nguyenlieuChiLenh.ChiTietId = nguyenlieu.ChiTietId;
+                    nguyenlieuChiLenh.QuyCach = nguyenlieu.QuyCach;
+                    nguyenlieuChiLenh.MauId = nguyenlieu.MauId;
+                    nguyenlieuChiLenh.DinhMucChuan = nguyenlieu.DinhMucChuan;
+                    nguyenlieuChiLenh.DinhMucThuc = nguyenlieu.DinhMucThuc;
 
-                // Clear deleted data
-                var listChiTietDelete = SF.Get<ChiTietNguyenLieuViewModel>().GetList().Where(s => s.NguyenLieuChiLenhId == nguyenlieuChiLenh.Id);
-                foreach (var deleteItem in listChiTietDelete)
-                {
-                    if (!currentItem.Contains(deleteItem.Id))
+                    CRUD.DecorateSaveData(nguyenlieuChiLenh);
+                    SF.Get<NguyenLieuChiLenhViewModel>().Save(nguyenlieuChiLenh);
+
+                    // Save chi tiet nguyen lieu
+                    if (nguyenlieu.ChiTietNguyenLieuList == null) continue;
+                    var currentItem = new List<long>();
+                    foreach (var chitiet in nguyenlieu.ChiTietNguyenLieuList)
                     {
-                        SF.Get<ChiTietNguyenLieuViewModel>().Delete(deleteItem.Id);
+                        var chitietNguyenLieu = new ChiTietNguyenLieu();
+                        chitietNguyenLieu.Id = chitiet.Id;
+                        chitietNguyenLieu.ChiTietNguyenLieuId = chitiet.ChiTietNguyenLieuId;
+                        chitietNguyenLieu.NguyenLieuChiLenhId = nguyenlieuChiLenh.Id;
+                        chitietNguyenLieu.GhiChu = chitiet.GhiChu;
+                        CRUD.DecorateSaveData(chitietNguyenLieu);
+                        SF.Get<ChiTietNguyenLieuViewModel>().Save(chitietNguyenLieu);
+                        currentItem.Add(chitietNguyenLieu.Id);
+                    }
+
+                    // Clear deleted data
+                    var listChiTietDelete = SF.Get<ChiTietNguyenLieuViewModel>().GetList().Where(s => s.NguyenLieuChiLenhId == nguyenlieuChiLenh.Id);
+                    foreach (var deleteItem in listChiTietDelete)
+                    {
+                        if (!currentItem.Contains(deleteItem.Id))
+                        {
+                            SF.Get<ChiTietNguyenLieuViewModel>().Delete(deleteItem.Id);
+                        }
                     }
                 }
+
+                var nhatKyThayDoi = new NhatKyThayDoi();
+                nhatKyThayDoi.GhiChu = LyDoThayDoi.Text;
+                nhatKyThayDoi.ModelName = Define.ModelType.CHILENH.ToString();
+                nhatKyThayDoi.ItemId = saveData.Id;
+                CRUD.DecorateSaveData(nhatKyThayDoi);
+                SF.Get<NhatKyThayDoiViewModel>().Save(nhatKyThayDoi);
+                BaseModel.Commit();
+
+                transaction.Complete();
             }
 
-            var nhatKyThayDoi = new NhatKyThayDoi();
-            nhatKyThayDoi.GhiChu = LyDoThayDoi.Text;
-            nhatKyThayDoi.ModelName = Define.ModelType.CHILENH.ToString();
-            nhatKyThayDoi.ItemId = saveData.Id;
-            CRUD.DecorateSaveData(nhatKyThayDoi);
-            SF.Get<NhatKyThayDoiViewModel>().Save(nhatKyThayDoi);
 
-            BaseModel.Commit();
             return true;
         }
 
@@ -138,13 +211,13 @@ namespace TLShoes.FormControls.ChiLenh
         private void gridView_Click(object sender, EventArgs e)
         {
             var data = gridView.GetRow(gridView.FocusedRowHandle) as NguyenLieuChiLenhViewModel.ShowData;
-            NguyenLieuChiLenh_ChiTietId.SelectedValue = data.ChiTietId;
+            if (data.ChiTietId != null) NguyenLieuChiLenh_ChiTietId.SelectedValue = data.ChiTietId;
             NguyenLieuChiLenh_DinhMucChuan.Text = data.DinhMucChuan.ToString();
             NguyenLieuChiLenh_DinhMucThuc.Text = data.DinhMucThuc.ToString();
-            NguyenLieuChiLenh_MauId.SelectedValue = data.MauId;
+            if (data.MauId != null) NguyenLieuChiLenh_MauId.SelectedValue = data.MauId;
             NguyenLieuChiLenh_QuyCach.Text = data.QuyCach;
             NguyenLieuChiLenh_PhanXuongId.SelectedValue = data.PhanXuongId;
-            ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(data.ChiTietNguyenLieuList.ToList());
+            if (data.ChiTietNguyenLieuList != null) ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(data.ChiTietNguyenLieuList.ToList());
 
             gridNguyenLieu.DataSource = ChiTietNguyenLieuList;
         }
@@ -155,11 +228,8 @@ namespace TLShoes.FormControls.ChiLenh
             var tenNguyenLieu = SF.Get<NguyenLieuChiLenhViewModel>().NguyenLieuFormat(ChiTietNguyenLieuList.ToList());
 
             var chitiet = NguyenLieuChiLenhList.FirstOrDefault(s => s.ChiTietId == saveData.ChiTietId);
-            if (chitiet == null)
-            {
-                chitiet = new NguyenLieuChiLenhViewModel.ShowData();
-                NguyenLieuChiLenhList.Add(chitiet);
-            }
+            if (chitiet == null) return;
+
             chitiet.ChiTiet = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.ChiTietId).Ten;
             chitiet.PhanXuong = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.PhanXuongId).Ten;
             chitiet.Mau = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.MauId).Ten;
@@ -198,6 +268,87 @@ namespace TLShoes.FormControls.ChiLenh
                 gridView.Columns[7].Caption = lblDinhMucThuc.Text;
             }
         }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            var saveDialog = new SaveFileDialog();
+            saveDialog.Filter = Define.EXPORT_EXTENSION;
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                ThreadHelper.LoadForm(() =>
+                {
+                    //Start Excel and get Application object.
+                    var excel = new Application();
+
+                    //Get a new workbook.
+                    var workBook = excel.Workbooks.Open(Path.Combine(FileHelper.TemplatePath, Define.TEMPLATE_CHI_LENH));
+                    var workSheet = (_Worksheet)workBook.ActiveSheet;
+
+                    try
+                    {
+                        var donHang = _chiLenh.DonHang;
+
+                        workSheet.Cells[5, "A"] = string.Format("ĐH: {0}", donHang.OrderNo);
+                        workSheet.Cells[5, "D"] = string.Format("MH: {0}", donHang.MaHang);
+                        workSheet.Cells[5, "F"] = string.Format("PHOM: {0}", donHang.NguyenLieu.MaNguyenLieu);
+                        workSheet.Cells[5, "K"] = string.Format("KH: {0}", donHang.KhachHang.TenCongTy);
+                        workSheet.Cells[5, "M"] = string.Format("XH: {0}", TimeHelper.TimestampToString(donHang.NgayXuat, "d"));
+                        workSheet.Cells[5, "P"] = string.Format("SP: {0}", TimeHelper.TimestampToString(_chiLenh.NgayDuyet, "d"));
+
+                        workSheet.Shapes.AddPicture(donHang.HinhAnh, MsoTriState.msoFalse, MsoTriState.msoCTrue, 447, 0, 150, 67);
+
+
+                        var chiTietDonhang = donHang.ChiTietDonHangs.OrderBy(s => s.Size).ToList();
+                        var firstColSize = 4;
+                        foreach (var chitiet in chiTietDonhang)
+                        {
+                            workSheet.Cells[6, firstColSize] = string.Format("{0}#", chitiet.Size);
+                            workSheet.Cells[7, firstColSize] = chitiet.SoLuong;
+                            firstColSize++;
+                        }
+
+                        var nguyenLieuChiLenh = _chiLenh.NguyenLieuChiLenhs;
+                        var firstRowNguyenLieu = 11;
+                        foreach (var lieuChiLenh in nguyenLieuChiLenh)
+                        {
+                            var chitTietNguyenLieu = lieuChiLenh.ChiTietNguyenLieux.ToList();
+                            workSheet.Cells[firstRowNguyenLieu, "D"] = SF.Get<NguyenLieuChiLenhViewModel>().NguyenLieuFormat(chitTietNguyenLieu);
+                            workSheet.Cells[firstRowNguyenLieu, "J"] = lieuChiLenh.QuyCach;
+                            if (lieuChiLenh.Mau != null) workSheet.Cells[firstRowNguyenLieu, "K"] = lieuChiLenh.Mau.Ten;
+
+                            var nguyenLieuDaiDien = chitTietNguyenLieu.FirstOrDefault(s => s.NguyenLieu != null && s.NguyenLieu.DanhMuc != null);
+                            if (nguyenLieuDaiDien != null)
+                            {
+                                workSheet.Cells[firstRowNguyenLieu, "L"] = nguyenLieuDaiDien.NguyenLieu.DanhMuc.Ten;
+                            }
+                            workSheet.Cells[firstRowNguyenLieu, "M"] = lieuChiLenh.DinhMucChuan;
+                            workSheet.Cells[firstRowNguyenLieu, "P"] = lieuChiLenh.DinhMucThuc;
+                            firstRowNguyenLieu++;
+                        }
+
+                        var currentDate = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
+                        workSheet.Cells[44, "K"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
+                        workSheet.Cells[48, "K"] = Authorization.LoginUser.TenNguoiDung;
+
+                        workBook.SaveAs(saveDialog.FileName);
+                    }
+                    finally
+                    {
+                        workBook.Close();
+                    }
+                    
+                });
+
+
+                var confirmDialog = MessageBox.Show(Define.MESSAGE_EXPORT_SUCCESS_TEXT, Define.MESSAGE_EXPORT_SUCCESS_TITLE, MessageBoxButtons.YesNo);
+                if (confirmDialog == DialogResult.Yes)
+                {
+                    Process.Start(saveDialog.FileName);
+                }
+                this.ParentForm.Close();
+            }
+        }
+
     }
 }
 

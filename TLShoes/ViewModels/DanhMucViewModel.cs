@@ -36,9 +36,9 @@ namespace TLShoes.ViewModels
 
         #region Validate
 
-        public bool CheckDuplicate(long id, string data)
+        public bool CheckDuplicate(long id, string loai, string data)
         {
-            return DbContext.DanhMucs.Any(s => s.Id != id && s.Ten == data);
+            return DbContext.DanhMucs.Where(s => s.Loai == loai).Any(s => s.Id != id && s.Ten == data);
         }
         #endregion
     }

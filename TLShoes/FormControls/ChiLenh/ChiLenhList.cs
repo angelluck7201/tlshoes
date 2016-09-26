@@ -25,14 +25,7 @@ namespace TLShoes.FormControls.ChiLenh
             ThreadHelper.LoadForm(() =>
             {
                 SF.Get<ChiLenhViewModel>().GetDataSource(gridControl);
-                if (gridView.RowCount > 0)
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
-                }
-                else
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
-                }
+                FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
             });
         }
 

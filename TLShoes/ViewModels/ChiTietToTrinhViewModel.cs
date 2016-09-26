@@ -37,15 +37,7 @@ namespace TLShoes.ViewModels
 
         public void Save(object data)
         {
-            dynamic dynamicData = data;
-            if (dynamicData.Id == 0)
-            {
-                DbContext.ChiTietToTrinhs.Add((ChiTietToTrinh)data);
-            }
-            else
-            {
-                DbContext.ChiTietToTrinhs.AddOrUpdate((ChiTietToTrinh)data);
-            }
+            DbContext.ChiTietToTrinhs.AddOrUpdate((ChiTietToTrinh)data);
             DbContext.SaveChanges();
         }
     }

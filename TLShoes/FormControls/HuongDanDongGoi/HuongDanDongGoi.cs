@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Transactions;
 using System.Windows.Forms;
 using TLShoes.Common;
 using TLShoes.ViewModels;
@@ -50,16 +51,19 @@ namespace TLShoes.FormControls.HuongDanDongGoi
             {
                 saveData.DongAssorment = "";
             }
-            SF.Get<HuongDanDongGoiViewModel>().Save(saveData, false);
 
-            var nhatKyThayDoi = new NhatKyThayDoi();
-            nhatKyThayDoi.GhiChu = LyDoThayDoi.Text;
-            nhatKyThayDoi.ModelName = Define.ModelType.HUONG_DAN_DONG_GOI.ToString();
-            nhatKyThayDoi.ItemId = saveData.Id;
-            CRUD.DecorateSaveData(nhatKyThayDoi);
-            SF.Get<NhatKyThayDoiViewModel>().Save(nhatKyThayDoi, false);
+            using (var transaction = new TransactionScope())
+            {
+                SF.Get<HuongDanDongGoiViewModel>().Save(saveData);
 
-            BaseModel.Commit();
+                var nhatKyThayDoi = new NhatKyThayDoi();
+                nhatKyThayDoi.GhiChu = LyDoThayDoi.Text;
+                nhatKyThayDoi.ModelName = Define.ModelType.HUONG_DAN_DONG_GOI.ToString();
+                nhatKyThayDoi.ItemId = saveData.Id;
+                CRUD.DecorateSaveData(nhatKyThayDoi);
+                SF.Get<NhatKyThayDoiViewModel>().Save(nhatKyThayDoi);
+                transaction.Complete();
+            }
 
             return true;
         }

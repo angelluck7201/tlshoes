@@ -2,17 +2,24 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Transactions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
+using Microsoft.Office.Core;
+using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
 using TLShoes.ViewModels;
+using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace TLShoes.FormControls.XuatKho
 {
     public partial class ucXuatKho : BaseUserControl
     {
         private BindingList<ChiTietXuatKho> ChiTietXuatKhoList = new BindingList<ChiTietXuatKho>();
+        private PhieuXuatKho _currentData;
 
         public ucXuatKho(PhieuXuatKho data = null)
         {
@@ -38,6 +45,8 @@ namespace TLShoes.FormControls.XuatKho
                 PhieuXuatKho_Kho.SelectedValue = PrimitiveConvert.StringToEnum<Define.Kho>(data.Kho);
                 PhieuXuatKho_LoaiXuat.SelectedValue = PrimitiveConvert.StringToEnum<Define.LoaiXuat>(data.LoaiXuat);
                 DonHangChange((long)data.DonHangId);
+                _currentData = data;
+                btnExport.Visible = true;
             }
 
             gridNguyenLieu.DataSource = ChiTietXuatKhoList;
@@ -94,36 +103,41 @@ namespace TLShoes.FormControls.XuatKho
             }
 
             var saveData = CRUD.GetFormObject<PhieuXuatKho>(FormControls);
-            SF.Get<PhieuXuatKhoViewModel>().Save(saveData, false);
 
-
-            // Save chi teit xuat kho
-            var currentItem = new List<long>();
-            foreach (var chitiet in ChiTietXuatKhoList)
+            using (var transaction = new TransactionScope())
             {
-                if (chitiet.IsUpdateKho == null || chitiet.IsUpdateKho == false)
-                {
-                    var nguyenLieu = chitiet.NguyenLieu;
-                    nguyenLieu.SoLuong -= chitiet.SoLuong;
-                    SF.Get<NguyenLieuViewModel>().Save(nguyenLieu, false);
-                }
-                chitiet.PhieuXuatKhoId = saveData.Id;
-                chitiet.IsUpdateKho = true;
-                CRUD.DecorateSaveData(chitiet);
-                SF.Get<ChiTietXuatKhoViewModel>().Save(chitiet, false);
-                currentItem.Add(chitiet.Id);
-            }
+                SF.Get<PhieuXuatKhoViewModel>().Save(saveData);
 
-            // Clear data
-            var listChiTietDelete = SF.Get<ChiTietXuatKhoViewModel>().GetList().Where(s => s.PhieuXuatKhoId == saveData.Id);
-            foreach (var deleteItem in listChiTietDelete)
-            {
-                if (!currentItem.Contains(deleteItem.Id))
+                // Save chi teit xuat kho
+                var currentItem = new List<long>();
+                foreach (var chitiet in ChiTietXuatKhoList)
                 {
-                    SF.Get<ChiTietXuatKhoViewModel>().Delete(deleteItem.Id, false);
+                    if (chitiet.IsUpdateKho == null || chitiet.IsUpdateKho == false)
+                    {
+                        var nguyenLieu = chitiet.NguyenLieu;
+                        nguyenLieu.SoLuong -= chitiet.SoLuong;
+                        SF.Get<NguyenLieuViewModel>().Save(nguyenLieu);
+                    }
+                    chitiet.PhieuXuatKhoId = saveData.Id;
+                    chitiet.IsUpdateKho = true;
+                    CRUD.DecorateSaveData(chitiet);
+                    SF.Get<ChiTietXuatKhoViewModel>().Save(chitiet);
+                    currentItem.Add(chitiet.Id);
                 }
+
+                // Clear data
+                var listChiTietDelete = SF.Get<ChiTietXuatKhoViewModel>().GetList().Where(s => s.PhieuXuatKhoId == saveData.Id);
+                foreach (var deleteItem in listChiTietDelete)
+                {
+                    if (!currentItem.Contains(deleteItem.Id))
+                    {
+                        SF.Get<ChiTietXuatKhoViewModel>().Delete(deleteItem.Id);
+                    }
+                }
+
+                transaction.Complete();
             }
-            BaseModel.Commit();
+    
 
             return true;
         }
@@ -152,6 +166,72 @@ namespace TLShoes.FormControls.XuatKho
         {
             var donHangInfo = SF.Get<DonHangViewModel>().GetDetail(donHangId);
             SoDH.Text = donHangInfo.OrderNo;
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            var saveDialog = new SaveFileDialog();
+            saveDialog.Filter = Define.EXPORT_EXTENSION;
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                ThreadHelper.LoadForm(() =>
+                {
+                    //Start Excel and get Application object.
+                    var excel = new Application();
+
+                    //Get a new workbook.
+                    var workBook = excel.Workbooks.Open(Path.Combine(FileHelper.TemplatePath, Define.TEMPLATE_XUAT_KHO));
+                    var workSheet = (_Worksheet)workBook.ActiveSheet;
+
+                    try
+                    {
+                        workSheet.Cells[3, "B"] = _currentData.BoPhan;
+                        workSheet.Cells[3, "F"] = _currentData.LoaiXuat;
+                        var currentDate = TimeHelper.TimeStampToDateTime(_currentData.NgayXuat);
+                        workSheet.Cells[3, "H"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
+                        var startRow = 6;
+                        foreach (var chiTietXuatKhoe in _currentData.ChiTietXuatKhoes)
+                        {
+                            if (startRow > 15)
+                            {
+                                var range = workSheet.Range["A" + (startRow - 1), "B" + (startRow - 1)];
+                                range.EntireRow.Copy();
+                                var row = (Range)workSheet.Rows[startRow];
+                                row.EntireRow.Insert(XlInsertShiftDirection.xlShiftDown, range);
+                            }
+
+                            workSheet.Cells[startRow, "A"] = _currentData.DonHang.OrderNo;
+                            var nguyenLieu = chiTietXuatKhoe.NguyenLieu;
+                            if (nguyenLieu != null)
+                            {
+                                workSheet.Cells[startRow, "B"] = nguyenLieu.MaNguyenLieu;
+                                workSheet.Cells[startRow, "C"] = nguyenLieu.Ten;
+                                if (nguyenLieu.Mau != null) workSheet.Cells[startRow, "E"] = nguyenLieu.Mau.Ten;
+                                workSheet.Cells[startRow, "F"] = nguyenLieu.QuyCach;
+                                workSheet.Cells[startRow, "G"] = chiTietXuatKhoe.SoLuong;
+                                if (nguyenLieu.DanhMuc != null) workSheet.Cells[startRow, "H"] = nguyenLieu.DanhMuc.Ten;
+                                workSheet.Cells[startRow, "I"] = nguyenLieu.GhiChu;
+                            }
+                            startRow++;
+                        }
+
+                        workBook.SaveAs(saveDialog.FileName);
+                    }
+                    finally
+                    {
+                        workBook.Close();
+                    }
+
+                });
+
+
+                var confirmDialog = MessageBox.Show(Define.MESSAGE_EXPORT_SUCCESS_TEXT, Define.MESSAGE_EXPORT_SUCCESS_TITLE, MessageBoxButtons.YesNo);
+                if (confirmDialog == DialogResult.Yes)
+                {
+                    Process.Start(saveDialog.FileName);
+                }
+                this.ParentForm.Close();
+            }
         }
     }
 

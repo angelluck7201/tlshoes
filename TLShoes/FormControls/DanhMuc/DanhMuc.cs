@@ -56,7 +56,7 @@ namespace TLShoes
                 return string.Format("{0} {1}!", "Không được phép để trống", lblTen.Text);
             }
             var id = PrimitiveConvert.StringToInt(defaultInfo.Controls["Id"].Text);
-            if (SF.Get<DanhMucViewModel>().CheckDuplicate(id, DanhMuc_Ten.Text))
+            if (SF.Get<DanhMucViewModel>().CheckDuplicate(id, DanhMuc_Loai.Text, DanhMuc_Ten.Text))
             {
                 return string.Format("{0} {1}!", DanhMuc_Ten.Text, "đã tồn tại trong hệ thống");
             }

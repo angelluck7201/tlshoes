@@ -31,9 +31,9 @@ namespace TLShoes.ViewModels
                 }).ToList();
         }
 
-        public void Save(object data, bool isCommit = true)
+        public void Save(ChiLenh data, bool isCommit = true)
         {
-            DbContext.ChiLenhs.AddOrUpdate((ChiLenh)data);
+            DbContext.ChiLenhs.AddOrUpdate(data);
             if (isCommit)
             {
                 DbContext.SaveChanges();
