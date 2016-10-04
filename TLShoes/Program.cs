@@ -24,9 +24,6 @@ namespace TLShoes
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 #endif
 
-            // Init user account
-            Authorization.LoginUser = new UserAccount(){Id = 1, TenNguoiDung = "Long Nguyen"};
-
             Application.Run(FormFactory<Main>.Get());
         }
     }

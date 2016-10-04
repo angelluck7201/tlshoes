@@ -40,6 +40,12 @@ namespace TLShoes.ViewModels
             DbContext.ChiTietToTrinhs.AddOrUpdate((ChiTietToTrinh)data);
             DbContext.SaveChanges();
         }
+
+        public void Delete(ChiTietToTrinh chiTietToTrinh)
+        {
+            DbContext.ChiTietToTrinhs.Remove(chiTietToTrinh);
+            DbContext.SaveChanges();
+        }
     }
 
 }

@@ -535,7 +535,7 @@ alter table DonDatHang add Gia int
 alter table DonDatHang add DichVuGiaoHang int
 alter table DonDatHang add DichVuHauMai int
 alter table DonDatHang add Khac int
-alter table DonDatHang drop ToTrinhId 
+alter table DonDatHang add ToTrinhId bigint foreign key references NhaCungCap(Id)
 create table DonDatHang(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -543,6 +543,7 @@ CreatedDate bigint,
 ModifiedDate bigint,
 IsActived bit,
 
+ToTrinhId bigint foreign key references NhaCungCap(Id),
 SoDH varchar(20),
 NhaCungCapId bigint foreign key references NhaCungCap(Id),
 NgayDatHang bigint,

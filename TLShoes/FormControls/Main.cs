@@ -31,7 +31,6 @@ namespace TLShoes
     {
         public const string CURRENT_VERSION = "1.0";
 
-        private static GiayTLEntities dbContext;
         public static Type currentModel;
         public static string currentForm;
         public static Type currentControl;
@@ -50,8 +49,21 @@ namespace TLShoes
 
         private void Main_Load(object sender, EventArgs e)
         {
+            // Disable main form
+            this.Enabled = false;
+
+            // Check login
+            var loginForm = new LoginForm();
+            loginForm.Show();
+        }
+
+        public void InitLogin()
+        {
+            this.Enabled = true;
+            this.Text = string.Format("{0} - {1}", "TL Shoes", Authorization.LoginUser.TenNguoiDung);
             InitDefault<ucDanhMucList, ucDanhMuc, DanhMuc>("Danh Mục");
         }
+
 
         private void InitDefault<T, T1>(string formName = "", List<string> buttonList = null) where T : UserControl, new()
         {

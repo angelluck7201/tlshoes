@@ -250,3 +250,4 @@ C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.NhaCungCap
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.Form.NhatKyThayDoi.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.TheKho.ucTheKhoList.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.csproj.ResolveComReference.cache
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.LoginForm.resources

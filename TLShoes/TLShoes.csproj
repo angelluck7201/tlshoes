@@ -296,6 +296,12 @@
     <Compile Include="FormControls\BaoCaoPhanXuong\BaoCaoTongHop.Designer.cs">
       <DependentUpon>BaoCaoTongHop.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormControls\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormControls\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormControls\NhatKyThayDoi.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -729,6 +735,9 @@
     <EmbeddedResource Include="FormControls\BaoCaoPhanXuong\BaoCaoTongHop.resx">
       <DependentUpon>BaoCaoTongHop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormControls\NhatKyThayDoi.resx">
       <DependentUpon>NhatKyThayDoi.cs</DependentUpon>
     </EmbeddedResource>
@@ -909,7 +918,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\ExportTemplate\ChiLenh_template.xls" />
     <None Include="Resources\ExportTemplate\DonDatHang_template.xls" />
+    <None Include="Resources\ExportTemplate\MauThu_Template.xls" />
+    <None Include="Resources\ExportTemplate\NhapKho_template.xls" />
+    <None Include="Resources\ExportTemplate\ToTrinh_template.xls" />
+    <None Include="Resources\ExportTemplate\XuatKho_template.xls" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -941,6 +955,7 @@
     <Content Include="app_icon.ico" />
     <Content Include="Resources\Image\app_icon.png" />
     <Content Include="Resources\Image\default.png" />
+    <Content Include="Resources\Image\login_window.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

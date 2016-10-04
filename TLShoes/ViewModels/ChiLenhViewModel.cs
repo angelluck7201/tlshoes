@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Windows.Forms.VisualStyles;
 using DevExpress.XtraGrid;
 using TLShoes.Common;
 
@@ -29,6 +30,13 @@ namespace TLShoes.ViewModels
                     NguoiDuyet = s.UserAccount.TenNguoiDung,
                     NgayDuyetFormat = TimeHelper.TimestampToString(s.NgayDuyet),
                 }).ToList();
+        }
+
+        public string GenerateSoPhieu()
+        {
+            var currentItemNum = DbContext.ChiLenhs.Count(s => !string.IsNullOrEmpty(s.SoPhieu));
+            var currentTime = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
+            return string.Format(Define.SO_PHIEU_CHI_LENH, currentItemNum + 1, currentTime.Month.ToString("00"), currentTime.Year);
         }
 
         public void Save(ChiLenh data, bool isCommit = true)

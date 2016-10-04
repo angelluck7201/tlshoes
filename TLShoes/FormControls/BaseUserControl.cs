@@ -126,7 +126,8 @@ namespace TLShoes.FormControls
         {
             if (SaveData())
             {
-                this.ParentForm.Close();
+                var parentForm = this.ParentForm;
+                if (parentForm != null) parentForm.Close();
             }
         }
 
@@ -140,7 +141,8 @@ namespace TLShoes.FormControls
 
         public virtual void btnCancel_Click(object sender, EventArgs e)
         {
-            this.ParentForm.Close();
+            var parentForm = this.ParentForm;
+            if (parentForm != null) parentForm.Close();
         }
     }
 }

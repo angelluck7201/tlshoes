@@ -36,6 +36,7 @@ namespace TLShoes.FormControls.DonDatHang
             DonDatHang_NhaCungCapId.ValueMember = "Id";
             DonDatHang_NhaCungCapId.DataSource = new BindingSource(SF.Get<NhaCungCapViewModel>().GetList(), null);
 
+
             Init(data);
             ToTrinhList = SF.Get<ToTrinhViewModel>().GetList(data);
             if (data != null)

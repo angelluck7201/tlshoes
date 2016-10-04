@@ -50,11 +50,11 @@ namespace TLShoes.FormControls.ChiLenh
                 SF.Get<NguyenLieuChiLenhViewModel>().GetDataSource(data.Id, ref NguyenLieuChiLenhList);
                 SF.Get<NhatKyThayDoiViewModel>().GetDataSource(gridNhatKy, Define.ModelType.CHILENH, data.Id);
                 _chiLenh = data;
+
+                lblSoPhieu.Text = lblSoPhieu.Text = lblSoPhieu.Text + ": " + _chiLenh.SoPhieu;
+                // Todo chi hien thi voi nhung nguoi co quyen duyet
+                btnDuyet.Visible = true;
                 btnExport.Visible = true;
-            }
-            else
-            {
-                InitNguyenLieuChiLenh();
             }
 
             gridControl.DataSource = NguyenLieuChiLenhList;
@@ -72,64 +72,13 @@ namespace TLShoes.FormControls.ChiLenh
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
         }
 
-        private void InitNguyenLieuChiLenh()
-        {
-            var phanXuongChat = SF.Get<DanhMucViewModel>().GetDetail(Define.PhanXuongDict["CHẶT"]);
-            if (phanXuongChat != null)
-            {
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["MŨ GIÀY"], ChiTiet = "MŨ GIÀY" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["LÓT MŨ"], ChiTiet = "LÓT MŨ" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["LÓT HẬU"], ChiTiet = "LÓT HẬU" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["DA LÓT TẨY"], ChiTiet = "DA LÓT TẨY" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["ĐỆM TẨY TRÊN"], ChiTiet = "ĐỆM TẨY TRÊN" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["ĐỆM TẨY DƯỚI"], ChiTiet = "ĐỆM TẨY DƯỚI" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["PHO HẬU"], ChiTiet = "PHO HẬU" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["PHO MŨI"], ChiTiet = "PHO MŨI" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["BẠT EO"], ChiTiet = "BẠT EO" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["BẠT MÓNG NGỰA"], ChiTiet = "BẠT MÓNG NGỰA" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["TẨY GIÀY"], ChiTiet = "TẨY GIÀY" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["CHẶT"], PhanXuong = phanXuongChat.Ten, ChiTietId = Define.ChiTietDict["RẬP NÂNG"], ChiTiet = "RẬP NÂNG" });
-            }
-
-            var phanXuongMay = SF.Get<DanhMucViewModel>().GetDetail(Define.PhanXuongDict["MAY"]);
-            if (phanXuongMay != null)
-            {
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["CHỈ MAY MŨ"], ChiTiet = "CHỈ MAY MŨ" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["CHỈ MAY LÓT"], ChiTiet = "CHỈ MAY LÓT" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["DÂY T/C NYLON"], ChiTiet = "DÂT T/C NYLON" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["NƠ"], ChiTiet = "NƠ" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["DÂY VIỀN"], ChiTiet = "DÂY VIỀN" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["BẠT CÀ RẼ"], ChiTiet = "BẠT CÀ RẼ" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["BẠT TC HẬU"], ChiTiet = "BẠT TC HẬU" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["KEO"], ChiTiet = "KEO" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["KEO"], ChiTiet = "KEO" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["KEO"], ChiTiet = "KEO" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["MAY"], PhanXuong = phanXuongMay.Ten, ChiTietId = Define.ChiTietDict["XĂNG CN"], ChiTiet = "XĂNG CN" });
-            }
-
-            var phanXuongGo = SF.Get<DanhMucViewModel>().GetDetail(Define.PhanXuongDict["GÒ"]);
-            if (phanXuongGo != null)
-            {
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["TẨY GIÀY"], ChiTiet = "TẨY GIÀY" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["DA LÓT TẨY"], ChiTiet = "DA LÓT TẨY" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["ĐẾ"], ChiTiet = "ĐẾ" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["KEO"], ChiTiet = "KEO" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["NƯỚC CỨNG"], ChiTiet = "NƯỚC CỨNG" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["NƯỚC XỬ LÝ TPR"], ChiTiet = "NƯỚC XỬ LÝ TPR" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["NƯỚC XỬ LÝ MŨ"], ChiTiet = "NƯỚC XỬ LÝ MŨ" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["KEO"], ChiTiet = "KEO" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["XĂNG CN"], ChiTiet = "XĂNG CN" });
-                NguyenLieuChiLenhList.Add(new NguyenLieuChiLenhViewModel.ShowData() { PhanXuongId = Define.PhanXuongDict["GÒ"], PhanXuong = phanXuongGo.Ten, ChiTietId = Define.ChiTietDict["TOLUEN"], ChiTiet = "TOLUEN" });
-
-            }
-        }
 
         public override bool SaveData()
         {
             var validateResult = ValidateInput();
             if (!string.IsNullOrEmpty(validateResult))
             {
-                MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
+                MessageBox.Show(validateResult);
                 return false;
             }
 
@@ -198,11 +147,15 @@ namespace TLShoes.FormControls.ChiLenh
 
         public string ValidateInput()
         {
-            if (!string.IsNullOrEmpty(defaultInfo.Controls["Id"].Text))
+            if (_chiLenh != null)
             {
+                if (_chiLenh.TrangThai == Define.TrangThai.DA_DUYET.ToString())
+                {
+                    return "Chỉ lệnh đã được duyệt nên không thể thay đổi!";
+                }
                 if (string.IsNullOrEmpty(LyDoThayDoi.Text))
                 {
-                    return "lý do thay đổi";
+                    return "Không được phép để trống lý do thay đổi!";
                 }
             }
             return string.Empty;
@@ -228,7 +181,11 @@ namespace TLShoes.FormControls.ChiLenh
             var tenNguyenLieu = SF.Get<NguyenLieuChiLenhViewModel>().NguyenLieuFormat(ChiTietNguyenLieuList.ToList());
 
             var chitiet = NguyenLieuChiLenhList.FirstOrDefault(s => s.ChiTietId == saveData.ChiTietId);
-            if (chitiet == null) return;
+            if (chitiet == null)
+            {
+                chitiet = new NguyenLieuChiLenhViewModel.ShowData();
+                NguyenLieuChiLenhList.Add(chitiet);
+            }
 
             chitiet.ChiTiet = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.ChiTietId).Ten;
             chitiet.PhanXuong = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.PhanXuongId).Ten;
@@ -336,7 +293,7 @@ namespace TLShoes.FormControls.ChiLenh
                     {
                         workBook.Close();
                     }
-                    
+
                 });
 
 
@@ -347,6 +304,14 @@ namespace TLShoes.FormControls.ChiLenh
                 }
                 this.ParentForm.Close();
             }
+        }
+
+        private void btnDuyet_Click(object sender, EventArgs e)
+        {
+            _chiLenh.SoPhieu = SF.Get<ChiLenhViewModel>().GenerateSoPhieu();
+            _chiLenh.TrangThai = Define.TrangThai.DA_DUYET.ToString();
+            lblSoPhieu.Text = lblSoPhieu.Text + ": " + _chiLenh.SoPhieu;
+            SF.Get<ChiLenhViewModel>().Save(_chiLenh);
         }
 
     }

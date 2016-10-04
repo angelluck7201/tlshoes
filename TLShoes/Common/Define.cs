@@ -51,6 +51,12 @@ namespace TLShoes.Common
             USD,
         }
 
+        public enum TrangThai
+        {
+            MOI,
+            DA_DUYET,
+        }
+
         public enum Kho
         {
             KHO_VAT_TU,
@@ -89,13 +95,30 @@ namespace TLShoes.Common
             {LoaiDong.SOLID, "SOLID"},
          };
 
-        public static Dictionary<string, long> PhanXuongDict = new Dictionary<string, long>()
+        public enum PhanXuong
         {
-            {"CHẶT", 50},
-            {"ĐE", 51},
-            {"MAY", 8},
-            {"GÒ", 7},
-        };
+            CHAT,
+            DE,
+            MAY,
+            GO
+
+        }
+
+        public static Dictionary<PhanXuong, string> PhanXuongDict = new Dictionary<PhanXuong, string>()
+        {
+            {PhanXuong.CHAT, "CHẶT"},
+            {PhanXuong.MAY, "MAY"},
+            {PhanXuong.DE, "ĐẾ"},
+            {PhanXuong.GO, "GÒ"},
+        }; 
+
+//        public static Dictionary<string, long> PhanXuongDict = new Dictionary<string, long>()
+//        {
+//            {"CHẶT", 50},
+//            {"ĐE", 51},
+//            {"MAY", 8},
+//            {"GÒ", 7},
+//        };
 
         public static Dictionary<string, long> ChiTietDict = new Dictionary<string, long>()
         {
@@ -134,6 +157,13 @@ namespace TLShoes.Common
         public const string TEMPLATE_XUAT_KHO = "XuatKho_template.xls";
         public const string TEMPLATE_NHAP_KHO = "NhapKho_template.xls";
         public const string TEMPLATE_MAU_THU = "MauThu_Template.xls";
+
+        // 0 so chi lenh da duoc duyet trong thang
+        // 1 thang
+        // 2 nam
+        public const string SO_PHIEU_CHI_LENH = "CL_{0}/{1}/{2}";
+
+        public const string SO_PHIEU_TO_TRINH = "TT_{0}/{1}/{2}";
 
 
         public const string EXPORT_EXTENSION = "Excel |*.xls";

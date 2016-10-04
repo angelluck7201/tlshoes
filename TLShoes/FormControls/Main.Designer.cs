@@ -80,6 +80,10 @@
             this.navBarControlMenu.Appearance.GroupHeaderActive.Options.UseFont = true;
             this.navBarControlMenu.Appearance.Item.Font = new System.Drawing.Font("Tahoma", 9F);
             this.navBarControlMenu.Appearance.Item.Options.UseFont = true;
+            this.navBarControlMenu.Appearance.ItemActive.BackColor = System.Drawing.Color.SkyBlue;
+            this.navBarControlMenu.Appearance.ItemActive.Options.UseBackColor = true;
+            this.navBarControlMenu.Appearance.ItemHotTracked.BackColor = System.Drawing.Color.SkyBlue;
+            this.navBarControlMenu.Appearance.ItemHotTracked.Options.UseBackColor = true;
             this.navBarControlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControlMenu.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.navDanhMucGroup,
@@ -114,6 +118,7 @@
             this.navHuongDanDongGoi,
             this.navTongHopNguyenLieu,
             this.navTheKho});
+            this.navBarControlMenu.LinkSelectionMode = DevExpress.XtraNavBar.LinkSelectionModeType.OneInControl;
             this.navBarControlMenu.Location = new System.Drawing.Point(0, 0);
             this.navBarControlMenu.Name = "navBarControlMenu";
             this.navBarControlMenu.OptionsNavPane.ExpandedWidth = 333;
@@ -125,7 +130,7 @@
             // 
             // navBarQuanLyKho
             // 
-            this.navBarQuanLyKho.Caption = "Quản Lý Kho";
+            this.navBarQuanLyKho.Caption = "Quản Lý Vật Tư";
             this.navBarQuanLyKho.Expanded = true;
             this.navBarQuanLyKho.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navToTrinh),
@@ -374,7 +379,7 @@
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnExport.Location = new System.Drawing.Point(1121, 12);
+            this.btnExport.Location = new System.Drawing.Point(1115, 23);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(107, 31);
             this.btnExport.TabIndex = 9;
@@ -391,7 +396,7 @@
             this.btnRefresh.Appearance.Options.UseFont = true;
             this.btnRefresh.Appearance.Options.UseForeColor = true;
             this.btnRefresh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnRefresh.Location = new System.Drawing.Point(18, 12);
+            this.btnRefresh.Location = new System.Drawing.Point(18, 23);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(117, 31);
             this.btnRefresh.TabIndex = 8;
@@ -407,7 +412,7 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(151, 12);
+            this.btnSave.Location = new System.Drawing.Point(151, 23);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(107, 31);
             this.btnSave.TabIndex = 7;

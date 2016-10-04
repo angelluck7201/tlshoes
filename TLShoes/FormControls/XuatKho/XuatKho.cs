@@ -37,6 +37,10 @@ namespace TLShoes.FormControls.XuatKho
             PhieuXuatKho_LoaiXuat.ValueMember = "Key";
             PhieuXuatKho_LoaiXuat.DataSource = new BindingSource(Define.LoaiXuatDic, null);
 
+            PhieuXuatKho_BoPhan.DisplayMember = "Value";
+            PhieuXuatKho_BoPhan.ValueMember = "Key";
+            PhieuXuatKho_BoPhan.DataSource = new BindingSource(Define.PhanXuongDict, null);
+
             Init(data);
 
             if (data != null)
@@ -44,6 +48,7 @@ namespace TLShoes.FormControls.XuatKho
                 SF.Get<ChiTietXuatKhoViewModel>().GetDataSource(data.Id, ref ChiTietXuatKhoList);
                 PhieuXuatKho_Kho.SelectedValue = PrimitiveConvert.StringToEnum<Define.Kho>(data.Kho);
                 PhieuXuatKho_LoaiXuat.SelectedValue = PrimitiveConvert.StringToEnum<Define.LoaiXuat>(data.LoaiXuat);
+                PhieuXuatKho_BoPhan.SelectedValue = PrimitiveConvert.StringToEnum<Define.PhanXuong>(data.BoPhan);
                 DonHangChange((long)data.DonHangId);
                 _currentData = data;
                 btnExport.Visible = true;
@@ -137,7 +142,7 @@ namespace TLShoes.FormControls.XuatKho
 
                 transaction.Complete();
             }
-    
+
 
             return true;
         }
@@ -186,7 +191,11 @@ namespace TLShoes.FormControls.XuatKho
                     try
                     {
                         workSheet.Cells[3, "B"] = _currentData.BoPhan;
-                        workSheet.Cells[3, "F"] = _currentData.LoaiXuat;
+                        var chiLenhInfo = SF.Get<DonHangViewModel>().GetDetail((long)_currentData.DonHangId).ChiLenhs.FirstOrDefault();
+                        if (chiLenhInfo != null)
+                        {
+                            workSheet.Cells[3, "F"] = chiLenhInfo.SoPhieu;
+                        }
                         var currentDate = TimeHelper.TimeStampToDateTime(_currentData.NgayXuat);
                         workSheet.Cells[3, "H"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
                         var startRow = 6;
@@ -201,10 +210,11 @@ namespace TLShoes.FormControls.XuatKho
                             }
 
                             workSheet.Cells[startRow, "A"] = _currentData.DonHang.OrderNo;
+                            workSheet.Cells[startRow, "B"] = _currentData.DonHang.MaHang;
+
                             var nguyenLieu = chiTietXuatKhoe.NguyenLieu;
                             if (nguyenLieu != null)
                             {
-                                workSheet.Cells[startRow, "B"] = nguyenLieu.MaNguyenLieu;
                                 workSheet.Cells[startRow, "C"] = nguyenLieu.Ten;
                                 if (nguyenLieu.Mau != null) workSheet.Cells[startRow, "E"] = nguyenLieu.Mau.Ten;
                                 workSheet.Cells[startRow, "F"] = nguyenLieu.QuyCach;
