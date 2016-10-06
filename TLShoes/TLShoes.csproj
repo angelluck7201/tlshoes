@@ -635,6 +635,9 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="TongHopToTrinh.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="ToTrinh.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>

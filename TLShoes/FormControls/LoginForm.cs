@@ -24,7 +24,7 @@ namespace TLShoes
         {
             var userName = txtUserName.Text;
             var pass = txtPass.Text;
-            var isLoginOk = SF.Get<Authorization>().CheckLogin(userName, pass);
+            var isLoginOk = Authorization.CheckLogin(userName, pass);
             if (isLoginOk)
             {
                 ShowMainForm();

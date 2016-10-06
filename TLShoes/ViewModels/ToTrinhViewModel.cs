@@ -15,16 +15,6 @@ namespace TLShoes.ViewModels
             return DbContext.ToTrinhs.ToList();
         }
 
-        public List<ToTrinh> GetList(long totrinhid)
-        {
-            return DbContext.ToTrinhs.Where(s => s.Id < totrinhid).ToList();
-        }
-
-        public List<ToTrinh> GetList(string soPhieu)
-        {
-            return DbContext.ToTrinhs.Where(s => soPhieu.Equals(s.SoPhieu)).ToList();
-        }
-
         public ToTrinh GetDetail(long id)
         {
             return DbContext.ToTrinhs.Find(id);
@@ -47,9 +37,18 @@ namespace TLShoes.ViewModels
             control.DataSource = GetList();
         }
 
-        public void Save(object data, bool isCommit = true)
+        public void Save(ToTrinh data, bool isCommit = true)
         {
-            DbContext.ToTrinhs.AddOrUpdate((ToTrinh)data);
+            DbContext.ToTrinhs.AddOrUpdate(data);
+            if (isCommit)
+            {
+                DbContext.SaveChanges();
+            }
+        }
+
+        public void Save(TongHopToTrinh data, bool isCommit = true)
+        {
+            DbContext.TongHopToTrinhs.AddOrUpdate(data);
             if (isCommit)
             {
                 DbContext.SaveChanges();
@@ -58,7 +57,7 @@ namespace TLShoes.ViewModels
 
         public string GenerateSoPhieu()
         {
-            var currentItemNum = DbContext.ToTrinhs.Select(s => s.SoPhieu).Distinct().Count();
+            var currentItemNum = DbContext.TongHopToTrinhs.Count();
             var currentTime = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
             return string.Format(Define.SO_PHIEU_TO_TRINH, currentItemNum + 1, currentTime.Month.ToString("00"), currentTime.Year);
         }
@@ -69,6 +68,18 @@ namespace TLShoes
 {
     public partial class ToTrinh
     {
+        public string SoPhieu
+        {
+            get
+            {
+                if (TongHopToTrinh != null)
+                {
+                    return TongHopToTrinh.SoPhieu;
+                }
+                return "";
+            }
+        }
+
         public string Ten
         {
             get { return NguyenLieu != null ? NguyenLieu.Ten : ""; }

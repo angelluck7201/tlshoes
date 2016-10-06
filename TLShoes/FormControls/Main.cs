@@ -85,6 +85,14 @@ namespace TLShoes
             currentFormName = formName;
 
             groupBoxView.Text = string.Format("{0} {1}", "Danh sách", formName);
+            if (!Authorization.CheckAuthorization<T2>(Define.Authorization.WRITE))
+            {
+                if (buttonList == null)
+                {
+                    buttonList = new List<string>();
+                }
+                buttonList.Add("btnSave");
+            }
             GenerateUltilsForm(ucList, buttonList);
         }
 
@@ -142,8 +150,8 @@ namespace TLShoes
 
             defaultForm.Controls.Add(addForm);
             addForm.Dock = DockStyle.Fill;
-            defaultForm.Show();
             defaultForm.Focus();
+            defaultForm.Show();
         }
 
         private void navDanhMuc_LinkClicked(object sender, NavBarLinkEventArgs e)
@@ -189,11 +197,6 @@ namespace TLShoes
         private void navNguyenLieu_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
             InitDefault<ucNguyenLieuList, ucNguyenLieu, NguyenLieu>("Nguyên Liệu");
-        }
-
-        private void navBangThongSo_LinkClicked(object sender, NavBarLinkEventArgs e)
-        {
-            // InitDefault<ucBangThongSoList, ucBangThongSo, BangThongSo>();
         }
 
         private void navChiLenh_LinkClicked(object sender, NavBarLinkEventArgs e)
@@ -284,8 +287,6 @@ namespace TLShoes
             groupBoxView.Text = "Thẻ kho";
             GenerateUltilsForm(ucList, new List<string>() { "btnSave" });
         }
-
-
     }
 }
 

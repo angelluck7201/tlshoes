@@ -23,9 +23,17 @@ namespace TLShoes
         public Nullable<long> DonHangId { get; set; }
         public Nullable<float> NhuCau { get; set; }
         public Nullable<float> ThucTe { get; set; }
+        public Nullable<long> NguyenLieuId { get; set; }
+        public Nullable<float> BoSung { get; set; }
+        public Nullable<float> ThuHoi { get; set; }
+        public Nullable<float> TonToTrinh { get; set; }
+        public Nullable<float> TonTheKho { get; set; }
+        public Nullable<float> DuKien { get; set; }
+        public Nullable<float> HaoHut { get; set; }
     
         public virtual UserAccount UserAccount { get; set; }
         public virtual DonHang DonHang { get; set; }
+        public virtual NguyenLieu NguyenLieu { get; set; }
         public virtual ToTrinh ToTrinh { get; set; }
     }
 }

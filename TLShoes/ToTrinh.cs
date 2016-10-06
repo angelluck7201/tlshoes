@@ -27,23 +27,23 @@ namespace TLShoes
         public Nullable<long> ModifiedDate { get; set; }
         public Nullable<bool> IsActived { get; set; }
         public Nullable<long> NguyenLieuId { get; set; }
-        public Nullable<float> HaoHut { get; set; }
-        public string GhiChu { get; set; }
         public Nullable<float> BoSung { get; set; }
         public Nullable<float> ThuHoi { get; set; }
         public Nullable<float> TonToTrinh { get; set; }
         public Nullable<float> TonTheKho { get; set; }
         public Nullable<float> TonThucTe { get; set; }
         public Nullable<float> DuKien { get; set; }
+        public Nullable<float> HaoHut { get; set; }
+        public string GhiChu { get; set; }
         public string DonDatHangList { get; set; }
-        public string SoPhieu { get; set; }
-        public string TrangThai { get; set; }
+        public Nullable<long> TongHopToTrinhId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
-        public virtual NguyenLieu NguyenLieu { get; set; }
-        public virtual UserAccount UserAccount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonDatHang> DonDatHangs { get; set; }
+        public virtual NguyenLieu NguyenLieu { get; set; }
+        public virtual TongHopToTrinh TongHopToTrinh { get; set; }
+        public virtual UserAccount UserAccount { get; set; }
     }
 }

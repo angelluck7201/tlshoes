@@ -33,12 +33,12 @@ namespace TLShoes
         public Nullable<float> DinhMucChuan { get; set; }
         public Nullable<float> DinhMucThuc { get; set; }
     
-        public virtual ChiLenh ChiLenh { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietNguyenLieu> ChiTietNguyenLieux { get; set; }
         public virtual DanhMuc ChiTiet { get; set; }
         public virtual DanhMuc Mau { get; set; }
         public virtual DanhMuc PhanXuong { get; set; }
         public virtual UserAccount UserAccount { get; set; }
+        public virtual ChiLenh ChiLenh { get; set; }
     }
 }

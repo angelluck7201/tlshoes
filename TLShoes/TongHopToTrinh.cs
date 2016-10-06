@@ -12,12 +12,12 @@ namespace TLShoes
     using System;
     using System.Collections.Generic;
     
-    public partial class PhieuXuatKho
+    public partial class TongHopToTrinh
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PhieuXuatKho()
+        public TongHopToTrinh()
         {
-            this.ChiTietXuatKhoes = new HashSet<ChiTietXuatKho>();
+            this.ToTrinhs = new HashSet<ToTrinh>();
         }
     
         public long Id { get; set; }
@@ -25,25 +25,17 @@ namespace TLShoes
         public Nullable<long> CreatedDate { get; set; }
         public Nullable<long> ModifiedDate { get; set; }
         public Nullable<bool> IsActived { get; set; }
-        public string NguoiNhan { get; set; }
-        public string DiaChi { get; set; }
-        public string BoPhan { get; set; }
-        public string LyDo { get; set; }
-        public string Kho { get; set; }
-        public Nullable<long> NgayXuat { get; set; }
-        public string LoaiXuat { get; set; }
-        public Nullable<long> DonHangId { get; set; }
         public string SoPhieu { get; set; }
+        public string TrangThai { get; set; }
+        public Nullable<long> NguoiLapId { get; set; }
+        public Nullable<long> NgayLap { get; set; }
         public Nullable<long> NgayDuyet { get; set; }
         public Nullable<long> NguoiDuyetId { get; set; }
-        public Nullable<long> NgayLap { get; set; }
-        public Nullable<long> NguoiLapId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietXuatKho> ChiTietXuatKhoes { get; set; }
-        public virtual DonHang DonHang { get; set; }
         public virtual UserAccount UserAccount { get; set; }
-        public virtual UserAccount NguoiDuyet { get; set; }
         public virtual UserAccount NguoiLap { get; set; }
+        public virtual UserAccount NguoiDuyet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ToTrinh> ToTrinhs { get; set; }
     }
 }

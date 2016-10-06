@@ -54,7 +54,28 @@ namespace TLShoes.Common
         public enum TrangThai
         {
             MOI,
-            DA_DUYET,
+            DUYET,
+            DUYET_PKT,
+            DUYET_PVT,
+            DUYET_NKP,
+            DONE,
+        }
+
+        public enum LoaiNguoiDung
+        {
+            PVT,
+            PKT,
+            THU_KHO,
+            TRUONG_PKT,
+            TRUONG_PVT,
+            ADMIN,
+        }
+
+        public enum Authorization
+        {
+            VIEW,
+            WRITE,
+            VERIFY,
         }
 
         public enum Kho
@@ -110,15 +131,15 @@ namespace TLShoes.Common
             {PhanXuong.MAY, "MAY"},
             {PhanXuong.DE, "ĐẾ"},
             {PhanXuong.GO, "GÒ"},
-        }; 
+        };
 
-//        public static Dictionary<string, long> PhanXuongDict = new Dictionary<string, long>()
-//        {
-//            {"CHẶT", 50},
-//            {"ĐE", 51},
-//            {"MAY", 8},
-//            {"GÒ", 7},
-//        };
+        //        public static Dictionary<string, long> PhanXuongDict = new Dictionary<string, long>()
+        //        {
+        //            {"CHẶT", 50},
+        //            {"ĐE", 51},
+        //            {"MAY", 8},
+        //            {"GÒ", 7},
+        //        };
 
         public static Dictionary<string, long> ChiTietDict = new Dictionary<string, long>()
         {

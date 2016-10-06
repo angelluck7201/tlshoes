@@ -18,8 +18,6 @@ namespace TLShoes
         public UserAccount()
         {
             this.BaoCaoPhanXuongs = new HashSet<BaoCaoPhanXuong>();
-            this.ChiLenhs = new HashSet<ChiLenh>();
-            this.ChiLenhs1 = new HashSet<ChiLenh>();
             this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
             this.ChiTietNguyenLieux = new HashSet<ChiTietNguyenLieu>();
             this.CongNgheSanXuats = new HashSet<CongNgheSanXuat>();
@@ -31,7 +29,6 @@ namespace TLShoes
             this.NguyenLieux = new HashSet<NguyenLieu>();
             this.NguyenLieuChiLenhs = new HashSet<NguyenLieuChiLenh>();
             this.ChiTietToTrinhs = new HashSet<ChiTietToTrinh>();
-            this.ToTrinhs = new HashSet<ToTrinh>();
             this.ChiTietNhapKhoes = new HashSet<ChiTietNhapKho>();
             this.ChiTietXuatKhoes = new HashSet<ChiTietXuatKho>();
             this.MauSanXuats = new HashSet<MauSanXuat>();
@@ -52,6 +49,19 @@ namespace TLShoes
             this.PhieuXuatKhoes = new HashSet<PhieuXuatKho>();
             this.NhatKyThayDois = new HashSet<NhatKyThayDoi>();
             this.MauDoiHinhs = new HashSet<MauDoiHinh>();
+            this.DonDatHangs1 = new HashSet<DonDatHang>();
+            this.DonDatHangs2 = new HashSet<DonDatHang>();
+            this.PhieuNhapKhoes1 = new HashSet<PhieuNhapKho>();
+            this.PhieuNhapKhoes2 = new HashSet<PhieuNhapKho>();
+            this.PhieuXuatKhoes1 = new HashSet<PhieuXuatKho>();
+            this.PhieuXuatKhoes2 = new HashSet<PhieuXuatKho>();
+            this.ChiLenhs = new HashSet<ChiLenh>();
+            this.ChiLenhs1 = new HashSet<ChiLenh>();
+            this.ChiLenhs2 = new HashSet<ChiLenh>();
+            this.TongHopToTrinhs = new HashSet<TongHopToTrinh>();
+            this.TongHopToTrinhs1 = new HashSet<TongHopToTrinh>();
+            this.TongHopToTrinhs2 = new HashSet<TongHopToTrinh>();
+            this.ToTrinhs = new HashSet<ToTrinh>();
         }
     
         public long Id { get; set; }
@@ -64,10 +74,6 @@ namespace TLShoes
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaoCaoPhanXuong> BaoCaoPhanXuongs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiLenh> ChiLenhs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiLenh> ChiLenhs1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -90,8 +96,6 @@ namespace TLShoes
         public virtual ICollection<NguyenLieuChiLenh> NguyenLieuChiLenhs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ToTrinh> ToTrinhs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietNhapKho> ChiTietNhapKhoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -132,5 +136,31 @@ namespace TLShoes
         public virtual ICollection<NhatKyThayDoi> NhatKyThayDois { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MauDoiHinh> MauDoiHinhs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonDatHang> DonDatHangs1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonDatHang> DonDatHangs2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuNhapKho> PhieuNhapKhoes1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuNhapKho> PhieuNhapKhoes2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuXuatKho> PhieuXuatKhoes1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuXuatKho> PhieuXuatKhoes2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiLenh> ChiLenhs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiLenh> ChiLenhs1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiLenh> ChiLenhs2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TongHopToTrinh> TongHopToTrinhs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TongHopToTrinh> TongHopToTrinhs1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TongHopToTrinh> TongHopToTrinhs2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ToTrinh> ToTrinhs { get; set; }
     }
 }

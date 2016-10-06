@@ -33,10 +33,16 @@ namespace TLShoes
         public string SoPhieu { get; set; }
         public Nullable<long> DanhGiaId { get; set; }
         public string TrangThai { get; set; }
+        public Nullable<long> NgayDuyet { get; set; }
+        public Nullable<long> NguoiDuyetId { get; set; }
+        public Nullable<long> NgayLap { get; set; }
+        public Nullable<long> NguoiLapId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietNhapKho> ChiTietNhapKhoes { get; set; }
         public virtual UserAccount UserAccount { get; set; }
         public virtual DanhGia DanhGia { get; set; }
+        public virtual UserAccount NguoiDuyet { get; set; }
+        public virtual UserAccount NguoiLap { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Data.Entity.Migrations;
 using System.Linq;
 using DevExpress.XtraGrid;
+using TLShoes;
 using TLShoes.Common;
 
 namespace TLShoes.ViewModels
@@ -47,5 +48,22 @@ namespace TLShoes.ViewModels
             DbContext.SaveChanges();
         }
     }
+}
 
+namespace TLShoes
+{
+    public partial class ChiTietToTrinh
+    {
+        public string MaHang
+        {
+            get
+            {
+                if (DonHang != null)
+                {
+                    return DonHang.MaHang;
+                }
+                return string.Empty;
+            }
+        }
+    }
 }

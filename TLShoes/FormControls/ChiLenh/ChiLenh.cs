@@ -149,7 +149,8 @@ namespace TLShoes.FormControls.ChiLenh
         {
             if (_chiLenh != null)
             {
-                if (_chiLenh.TrangThai == Define.TrangThai.DA_DUYET.ToString())
+                var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_chiLenh.TrangThai);
+                if (trangThai > Define.TrangThai.MOI)
                 {
                     return "Chỉ lệnh đã được duyệt nên không thể thay đổi!";
                 }
@@ -309,7 +310,7 @@ namespace TLShoes.FormControls.ChiLenh
         private void btnDuyet_Click(object sender, EventArgs e)
         {
             _chiLenh.SoPhieu = SF.Get<ChiLenhViewModel>().GenerateSoPhieu();
-            _chiLenh.TrangThai = Define.TrangThai.DA_DUYET.ToString();
+            _chiLenh.TrangThai = Define.TrangThai.DUYET.ToString();
             lblSoPhieu.Text = lblSoPhieu.Text + ": " + _chiLenh.SoPhieu;
             SF.Get<ChiLenhViewModel>().Save(_chiLenh);
         }
