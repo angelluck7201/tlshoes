@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DevExpress.Mvvm.Native;
+using DevExpress.Utils.Drawing;
 using DevExpress.XtraNavBar;
 using DevExpress.XtraSplashScreen;
 using TLShoes.Common;
@@ -59,16 +61,49 @@ namespace TLShoes
 
         public void InitLogin()
         {
+            var loginUser = Authorization.LoginUser;
+            this.Text = string.Format("{0} - {1} - {2}", "TL Shoes", loginUser.TenNguoiDung, loginUser.LoaiNguoiDung);
+
+            // Validate view authorization
+            var isInitClickItem = false;
+            foreach (NavBarGroup group in navBarControlMenu.Groups)
+            {
+                var countVisible = 0;
+                foreach (NavBarItemLink itemLink in group.ItemLinks)
+                {
+                    var modelName = itemLink.ItemName.Replace("nav", "");
+                    var viewAuthorization = Authorization.CheckAuthorization(modelName, Define.Authorization.VIEW);
+                    itemLink.Visible = viewAuthorization;
+                    if (viewAuthorization)
+                    {
+                        if (!isInitClickItem)
+                        {
+                            group.Expanded = true;
+                            group.SelectedLink = itemLink;
+                            itemLink.PerformClick();
+                            isInitClickItem = true;
+                        }
+                        countVisible++;
+                    }
+                }
+                if (countVisible == 0)
+                {
+                    group.Visible = false;
+                }
+            }
+
             this.Enabled = true;
-            this.Text = string.Format("{0} - {1}", "TL Shoes", Authorization.LoginUser.TenNguoiDung);
-            InitDefault<ucDanhMucList, ucDanhMuc, DanhMuc>("Danh Mục");
         }
 
 
         private void InitDefault<T, T1>(string formName = "", List<string> buttonList = null) where T : UserControl, new()
         {
+            // Stop timer off old user controls
+            TimerControl.StopTimer();
+
             var ucList = new T();
             currentControl = typeof(T1);
+            // Su dung de pushlish cac action
             currentForm = typeof(T).Name;
             currentFormName = formName;
 
@@ -78,14 +113,19 @@ namespace TLShoes
 
         public void InitDefault<T, T1, T2>(string formName = "", List<string> buttonList = null) where T : UserControl, new()
         {
+            // Stop timer off old user controls
+            TimerControl.StopTimer();
+
             var ucList = new T();
             currentControl = typeof(T1);
             currentModel = typeof(T2);
+            // Su dung de pushlish cac action
             currentForm = typeof(T).Name;
+
             currentFormName = formName;
 
             groupBoxView.Text = string.Format("{0} {1}", "Danh sách", formName);
-            if (!Authorization.CheckAuthorization<T2>(Define.Authorization.WRITE))
+            if (!Authorization.CheckAuthorization(currentModel.Name, Define.Authorization.WRITE))
             {
                 if (buttonList == null)
                 {
@@ -151,7 +191,7 @@ namespace TLShoes
             defaultForm.Controls.Add(addForm);
             addForm.Dock = DockStyle.Fill;
             defaultForm.Focus();
-            defaultForm.Show();
+            defaultForm.CustomShow(this);
         }
 
         private void navDanhMuc_LinkClicked(object sender, NavBarLinkEventArgs e)
@@ -214,7 +254,7 @@ namespace TLShoes
             InitDefault<ucMauThuDaoList, ucMauThuDao, MauThuDao>("Mẫu Thử Dao");
         }
 
-        private void navTongHop_LinkClicked(object sender, NavBarLinkEventArgs e)
+        private void navTongHopMauTest_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
             InitDefault<ucTongHopMauTestList, ucTongHopMauTest>("Tổng Hợp Mẫu Test", new List<string>() { "btnSave" });
         }

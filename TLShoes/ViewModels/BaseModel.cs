@@ -16,6 +16,15 @@ namespace TLShoes.ViewModels
             }
         }
 
+        public static void DisposeDb()
+        {
+            if (_dbContext != null)
+            {
+                _dbContext.Dispose();
+                _dbContext = null;
+            }
+        }
+
         public void FieldMapper(GridView view, Dictionary<string, string> fieldMapper)
         {
             for (int i = 0; i < view.Columns.Count; i++)

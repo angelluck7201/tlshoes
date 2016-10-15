@@ -144,5 +144,18 @@ namespace TLShoes.FormControls
             var parentForm = this.ParentForm;
             if (parentForm != null) parentForm.Close();
         }
+
+        public virtual void ShowCustomForm(UserControl customControl, string formTitle)
+        {
+            var defaultForm = new DefaultForm();
+
+            defaultForm.Height = customControl.Height + 50;
+            defaultForm.Width = customControl.Width + 15;
+            defaultForm.Text = formTitle;
+            defaultForm.Controls.Add(customControl);
+            customControl.Dock = DockStyle.Fill;
+
+            defaultForm.CustomShow(ParentForm);
+        }
     }
 }

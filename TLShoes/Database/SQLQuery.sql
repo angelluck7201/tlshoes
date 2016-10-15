@@ -27,9 +27,10 @@ LoaiNguoiDung text,
 
 insert UserAccount(CreatedDate,ModifiedDate,IsActived,TenNguoiDung, MatKhau, LoaiNguoiDung) values (123,456,1, 'admin', '123456', 'ADMIN')
 insert UserAccount(CreatedDate,ModifiedDate,IsActived,TenNguoiDung, MatKhau, LoaiNguoiDung) values (123,456,1, 'phongvattu', '123456', 'PVT')
+insert UserAccount(CreatedDate,ModifiedDate,IsActived,TenNguoiDung, MatKhau, LoaiNguoiDung) values (123,456,1, 'phongvattu', '123456', 'PKT')
 insert UserAccount(CreatedDate,ModifiedDate,IsActived,TenNguoiDung, MatKhau, LoaiNguoiDung) values (123,456,1, 'truongphongvattu', '123456', 'TRUONG_PVT')
 insert UserAccount(CreatedDate,ModifiedDate,IsActived,TenNguoiDung, MatKhau, LoaiNguoiDung) values (123,456,1, 'phongkythuat', '123456', 'TRUONG_PKT')
-insert UserAccount(CreatedDate,ModifiedDate,IsActived,TenNguoiDung, MatKhau, LoaiNguoiDung) values (123,456,1, 'thukho', '123456', 'thukho')
+insert UserAccount(CreatedDate,ModifiedDate,IsActived,TenNguoiDung, MatKhau, LoaiNguoiDung) values (123,456,1, 'thukho', '123456', 'THU_KHO')
 
 alter table DanhMuc alter column CreatedDate bigint not null
 alter table DanhMuc alter column ModifiedDate bigint not null

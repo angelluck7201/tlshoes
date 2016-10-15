@@ -31,7 +31,8 @@ namespace TLShoes.Common
         public enum ModelType
         {
             CHILENH,
-            HUONG_DAN_DONG_GOI
+            HUONG_DAN_DONG_GOI,
+            TO_TRINH,
         }
 
         public static Dictionary<LoaiDanhMuc, string> LoaiDanhMucDic = new Dictionary<LoaiDanhMuc, string>()
@@ -53,6 +54,7 @@ namespace TLShoes.Common
 
         public enum TrangThai
         {
+            HUY,
             MOI,
             DUYET,
             DUYET_PKT,

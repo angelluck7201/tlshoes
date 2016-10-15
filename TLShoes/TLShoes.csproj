@@ -197,9 +197,11 @@
     <Compile Include="Common\Define.cs" />
     <Compile Include="Common\ErrorControl.cs" />
     <Compile Include="Common\FileHelper.cs" />
+    <Compile Include="Common\FormBehavior.cs" />
     <Compile Include="Common\PrimitiveConvert.cs" />
     <Compile Include="Common\ThreadHelper.cs" />
     <Compile Include="Common\TimeHelper.cs" />
+    <Compile Include="Common\TimerControl.cs" />
     <Compile Include="CongNgheSanXuat.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -482,8 +484,8 @@
     <Compile Include="FormControls\DonHang\MauDoiList.Designer.cs">
       <DependentUpon>MauDoiList.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormControls\FormFactory.cs" />
-    <Compile Include="FormControls\FormValidate.cs" />
+    <Compile Include="Common\FormFactory.cs" />
+    <Compile Include="Common\FormValidate.cs" />
     <Compile Include="FormControls\KeHoachSanXuat\KeHoachSanXuat.cs">
       <SubType>UserControl</SubType>
     </Compile>

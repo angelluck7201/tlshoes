@@ -32,7 +32,6 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
             this.lblSoPhieu = new DevExpress.XtraEditors.LabelControl();
             this.gridToTrinh = new DevExpress.XtraGrid.GridControl();
             this.gridViewToTrinh = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -74,9 +73,25 @@
             this.ToTrinh_HaoHut = new System.Windows.Forms.TextBox();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo1 = new TLShoes.Form.DefaultInfo();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.lblNgayDuyet = new DevExpress.XtraEditors.LabelControl();
+            this.ToTrinh_NgayDuyet = new System.Windows.Forms.TextBox();
+            this.lblNguoiDuyetId = new DevExpress.XtraEditors.LabelControl();
+            this.ToTrinh_NguoiDuyet = new System.Windows.Forms.TextBox();
+            this.lblNgayLap = new DevExpress.XtraEditors.LabelControl();
+            this.ToTrinh_NgayLap = new System.Windows.Forms.TextBox();
+            this.lblNguoiLapId = new DevExpress.XtraEditors.LabelControl();
+            this.ToTrinh_NguoiLap = new System.Windows.Forms.TextBox();
+            this.gridNhatKy = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -88,6 +103,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewNguyenLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DonHangLookUp)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridNhatKy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -105,7 +123,8 @@
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPage2
             // 
@@ -121,7 +140,6 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
-            this.xtraTabPage2.Controls.Add(this.btnDuyet);
             this.xtraTabPage2.Controls.Add(this.lblSoPhieu);
             this.xtraTabPage2.Controls.Add(this.gridToTrinh);
             this.xtraTabPage2.Controls.Add(this.btnSelect);
@@ -144,25 +162,6 @@
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1570, 742);
             this.xtraTabPage2.Text = "Tờ Trình";
-            // 
-            // btnDuyet
-            // 
-            this.btnDuyet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDuyet.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnDuyet.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDuyet.Appearance.Options.UseBackColor = true;
-            this.btnDuyet.Appearance.Options.UseFont = true;
-            this.btnDuyet.Appearance.Options.UseForeColor = true;
-            this.btnDuyet.Location = new System.Drawing.Point(414, 24);
-            this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
-            this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.btnDuyet.Name = "btnDuyet";
-            this.btnDuyet.Size = new System.Drawing.Size(107, 30);
-            this.btnDuyet.TabIndex = 114;
-            this.btnDuyet.Text = "Duyệt";
-            this.btnDuyet.Visible = false;
-            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
             // 
             // lblSoPhieu
             // 
@@ -601,6 +600,150 @@
             this.defaultInfo1.Size = new System.Drawing.Size(1570, 742);
             this.defaultInfo1.TabIndex = 11;
             // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Appearance.Header.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage3.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage3.Appearance.Header.Options.UseBackColor = true;
+            this.xtraTabPage3.Appearance.Header.Options.UseFont = true;
+            this.xtraTabPage3.Appearance.HeaderActive.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage3.Appearance.HeaderActive.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage3.Appearance.HeaderActive.Options.UseBackColor = true;
+            this.xtraTabPage3.Appearance.HeaderActive.Options.UseFont = true;
+            this.xtraTabPage3.Controls.Add(this.lblNgayDuyet);
+            this.xtraTabPage3.Controls.Add(this.ToTrinh_NgayDuyet);
+            this.xtraTabPage3.Controls.Add(this.lblNguoiDuyetId);
+            this.xtraTabPage3.Controls.Add(this.ToTrinh_NguoiDuyet);
+            this.xtraTabPage3.Controls.Add(this.lblNgayLap);
+            this.xtraTabPage3.Controls.Add(this.ToTrinh_NgayLap);
+            this.xtraTabPage3.Controls.Add(this.lblNguoiLapId);
+            this.xtraTabPage3.Controls.Add(this.ToTrinh_NguoiLap);
+            this.xtraTabPage3.Controls.Add(this.gridNhatKy);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(1570, 742);
+            this.xtraTabPage3.Text = "Nhật Ký Thay Đổi";
+            // 
+            // lblNgayDuyet
+            // 
+            this.lblNgayDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblNgayDuyet.Location = new System.Drawing.Point(648, 111);
+            this.lblNgayDuyet.Name = "lblNgayDuyet";
+            this.lblNgayDuyet.Size = new System.Drawing.Size(81, 17);
+            this.lblNgayDuyet.TabIndex = 107;
+            this.lblNgayDuyet.Text = "Ngày Duyệt";
+            // 
+            // ToTrinh_NgayDuyet
+            // 
+            this.ToTrinh_NgayDuyet.Enabled = false;
+            this.ToTrinh_NgayDuyet.Location = new System.Drawing.Point(753, 108);
+            this.ToTrinh_NgayDuyet.Name = "ToTrinh_NgayDuyet";
+            this.ToTrinh_NgayDuyet.Size = new System.Drawing.Size(385, 23);
+            this.ToTrinh_NgayDuyet.TabIndex = 106;
+            // 
+            // lblNguoiDuyetId
+            // 
+            this.lblNguoiDuyetId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblNguoiDuyetId.Location = new System.Drawing.Point(64, 111);
+            this.lblNguoiDuyetId.Name = "lblNguoiDuyetId";
+            this.lblNguoiDuyetId.Size = new System.Drawing.Size(87, 17);
+            this.lblNguoiDuyetId.TabIndex = 105;
+            this.lblNguoiDuyetId.Text = "Người Duyệt";
+            // 
+            // ToTrinh_NguoiDuyet
+            // 
+            this.ToTrinh_NguoiDuyet.Enabled = false;
+            this.ToTrinh_NguoiDuyet.Location = new System.Drawing.Point(169, 108);
+            this.ToTrinh_NguoiDuyet.Name = "ToTrinh_NguoiDuyet";
+            this.ToTrinh_NguoiDuyet.Size = new System.Drawing.Size(385, 23);
+            this.ToTrinh_NguoiDuyet.TabIndex = 104;
+            // 
+            // lblNgayLap
+            // 
+            this.lblNgayLap.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblNgayLap.Location = new System.Drawing.Point(648, 49);
+            this.lblNgayLap.Name = "lblNgayLap";
+            this.lblNgayLap.Size = new System.Drawing.Size(65, 17);
+            this.lblNgayLap.TabIndex = 103;
+            this.lblNgayLap.Text = "Ngày Lập";
+            // 
+            // ToTrinh_NgayLap
+            // 
+            this.ToTrinh_NgayLap.Enabled = false;
+            this.ToTrinh_NgayLap.Location = new System.Drawing.Point(753, 46);
+            this.ToTrinh_NgayLap.Name = "ToTrinh_NgayLap";
+            this.ToTrinh_NgayLap.Size = new System.Drawing.Size(385, 23);
+            this.ToTrinh_NgayLap.TabIndex = 102;
+            // 
+            // lblNguoiLapId
+            // 
+            this.lblNguoiLapId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblNguoiLapId.Location = new System.Drawing.Point(64, 49);
+            this.lblNguoiLapId.Name = "lblNguoiLapId";
+            this.lblNguoiLapId.Size = new System.Drawing.Size(71, 17);
+            this.lblNguoiLapId.TabIndex = 101;
+            this.lblNguoiLapId.Text = "Người Lập";
+            // 
+            // ToTrinh_NguoiLap
+            // 
+            this.ToTrinh_NguoiLap.Enabled = false;
+            this.ToTrinh_NguoiLap.Location = new System.Drawing.Point(169, 46);
+            this.ToTrinh_NguoiLap.Name = "ToTrinh_NguoiLap";
+            this.ToTrinh_NguoiLap.Size = new System.Drawing.Size(385, 23);
+            this.ToTrinh_NguoiLap.TabIndex = 100;
+            // 
+            // gridNhatKy
+            // 
+            this.gridNhatKy.Location = new System.Drawing.Point(0, 187);
+            this.gridNhatKy.MainView = this.gridView1;
+            this.gridNhatKy.Name = "gridNhatKy";
+            this.gridNhatKy.Size = new System.Drawing.Size(1570, 555);
+            this.gridNhatKy.TabIndex = 95;
+            this.gridNhatKy.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn13,
+            this.gridColumn15,
+            this.gridColumn16,
+            this.gridColumn17});
+            this.gridView1.GridControl = this.gridNhatKy;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsCustomization.AllowGroup = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn13.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn13.Caption = "Ngày Thay Đổi";
+            this.gridColumn13.FieldName = "CreatedDate";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 0;
+            this.gridColumn13.Width = 297;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn15.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn15.Caption = "Lý Do";
+            this.gridColumn15.FieldName = "GhiChu";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 2;
+            this.gridColumn15.Width = 955;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn16.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn16.Caption = "Id";
+            this.gridColumn16.FieldName = "Id";
+            this.gridColumn16.Name = "gridColumn16";
+            // 
             // btnCancel
             // 
             this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
@@ -625,7 +768,7 @@
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnExport.Location = new System.Drawing.Point(1422, 801);
+            this.btnExport.Location = new System.Drawing.Point(197, 801);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);
             this.btnExport.TabIndex = 84;
@@ -635,7 +778,6 @@
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
             this.btnSave.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -643,21 +785,51 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(1505, 801);
-            this.btnSave.MaximumSize = new System.Drawing.Size(75, 30);
+            this.btnSave.Location = new System.Drawing.Point(1503, 801);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 82;
+            this.btnSave.TabIndex = 85;
             this.btnSave.Text = "Lưu";
+            // 
+            // btnDuyet
+            // 
+            this.btnDuyet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDuyet.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnDuyet.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDuyet.Appearance.Options.UseBackColor = true;
+            this.btnDuyet.Appearance.Options.UseFont = true;
+            this.btnDuyet.Appearance.Options.UseForeColor = true;
+            this.btnDuyet.Location = new System.Drawing.Point(84, 801);
+            this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.btnDuyet.Name = "btnDuyet";
+            this.btnDuyet.Size = new System.Drawing.Size(107, 30);
+            this.btnDuyet.TabIndex = 115;
+            this.btnDuyet.Text = "Duyệt";
+            this.btnDuyet.Visible = false;
+            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn17.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn17.Caption = "Người Chỉnh Sửa";
+            this.gridColumn17.FieldName = "TacGia";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 1;
+            this.gridColumn17.Width = 298;
             // 
             // ucToTrinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.btnDuyet);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucToTrinh";
             this.Size = new System.Drawing.Size(1587, 861);
@@ -673,6 +845,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewNguyenLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DonHangLookUp)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
+            this.xtraTabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridNhatKy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -722,9 +898,24 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraEditors.LabelControl lblSoPhieu;
-        private DevExpress.XtraEditors.SimpleButton btnDuyet;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnExport;
         private DevExpress.XtraEditors.SimpleButton btnSave;
+        private DevExpress.XtraEditors.SimpleButton btnDuyet;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private DevExpress.XtraGrid.GridControl gridNhatKy;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraEditors.LabelControl lblNguoiLapId;
+        private System.Windows.Forms.TextBox ToTrinh_NguoiLap;
+        private DevExpress.XtraEditors.LabelControl lblNgayLap;
+        private System.Windows.Forms.TextBox ToTrinh_NgayLap;
+        private DevExpress.XtraEditors.LabelControl lblNgayDuyet;
+        private System.Windows.Forms.TextBox ToTrinh_NgayDuyet;
+        private DevExpress.XtraEditors.LabelControl lblNguoiDuyetId;
+        private System.Windows.Forms.TextBox ToTrinh_NguoiDuyet;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
     }
 }

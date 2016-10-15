@@ -5,24 +5,20 @@ using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.NguyenLieu
 {
-    public partial class ucNguyenLieuList : UserControl
+    public partial class ucNguyenLieuList : BaseForm
     {
         public ucNguyenLieuList()
         {
             InitializeComponent();
-
-            ReloadData();
-
-            ObserverControl.Regist("ucNguyenLieu", "ucNguyenLieuList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucNguyenLieuList", ReloadData);
-            ObserverControl.Regist("Close", "ucNguyenLieuList", ReloadData);
-            ObserverControl.Regist("Export", "ucNguyenLieuList", Export);
+            Init();
         }
 
-        public void ReloadData()
+        protected override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+
                 SF.Get<NguyenLieuViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -33,10 +29,10 @@ namespace TLShoes.FormControls.NguyenLieu
                     FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
                 }
             });
-           
+
         }
 
-        public void Export(object filePath)
+        protected override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

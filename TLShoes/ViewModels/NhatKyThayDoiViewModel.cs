@@ -42,6 +42,7 @@ namespace TLShoes.ViewModels
                 s.Id,
                 s.GhiChu,
                 CreatedDate = TimeHelper.TimestampToString(s.CreatedDate, "d"),
+                TacGia = s.UserAccount.TenNguoiDung
             }).ToList();
         }
 

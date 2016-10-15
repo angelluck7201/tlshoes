@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
-using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
 using TLShoes.ViewModels;
-using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace TLShoes.FormControls.ToTrinh
 {
@@ -18,15 +11,26 @@ namespace TLShoes.FormControls.ToTrinh
         {
             InitializeComponent();
             ReloadData();
-            ObserverControl.Regist("ucToTrinh", "ucToTrinhList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucToTrinhList", ReloadData);
-            ObserverControl.Regist("Close", "ucToTrinhList", ReloadData);
+            AutoRefresh();
+            ObserverControl.Regist("Refresh", this.Name, ReloadData);
+            ObserverControl.Regist("Close", this.Name, ReloadData);
+        }
+
+        private void AutoRefresh()
+        {
+            ThreadHelper.RunBackground(() =>
+            {
+                var timer = new Timer();
+                timer.Interval = 10 * 1000;
+                timer.Tick += new EventHandler((a, b) => { ReloadData(); });
+            });
         }
 
         public void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
                 SF.Get<ToTrinhViewModel>().GetDataSource(gridControl);
                 FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
             });
@@ -43,7 +47,7 @@ namespace TLShoes.FormControls.ToTrinh
                     FormFactory<Main>.Get().ShowPopupInfo(info.TongHopToTrinh);
                 });
             }
-          
+
         }
     }
 }

@@ -5,23 +5,20 @@ using TLShoes.ViewModels;
 
 namespace TLShoes
 {
-    public partial class ucDanhMucList : UserControl
+    public partial class ucDanhMucList : BaseForm
     {
         public ucDanhMucList()
         {
             InitializeComponent();
-            ReloadData();
-            ObserverControl.Clear();
-            ObserverControl.Regist("ucDanhMuc", "ucDanhMucList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucDanhMucList", ReloadData);
-            ObserverControl.Regist("Close", "ucDanhMucList", ReloadData);
-            ObserverControl.Regist("Export", "ucDanhMucList", Export);
+            Init();
         }
 
-        public void ReloadData()
+
+        protected override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
                 SF.Get<DanhMucViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -34,7 +31,7 @@ namespace TLShoes
             });
         }
 
-        public void Export(object filePath)
+        protected override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }
@@ -44,8 +41,11 @@ namespace TLShoes
             ThreadHelper.LoadForm(() =>
             {
                 dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
-                var info = SF.Get<DanhMucViewModel>().GetDetail(data.Id);
-                FormFactory<Main>.Get().ShowPopupInfo(info);
+                if (data != null)
+                {
+                    var info = SF.Get<DanhMucViewModel>().GetDetail(data.Id);
+                    FormFactory<Main>.Get().ShowPopupInfo(info);
+                }
             });
         }
     }

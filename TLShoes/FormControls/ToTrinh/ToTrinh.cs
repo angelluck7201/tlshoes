@@ -15,9 +15,10 @@ namespace TLShoes.FormControls.ToTrinh
 {
     public partial class ucToTrinh : BaseUserControl
     {
-        private TongHopToTrinh currentToTrinh = null;
-        private Dictionary<long, List<ChiTietToTrinh>> DictChiTietToTrinh = new Dictionary<long, List<ChiTietToTrinh>>();
-        private BindingList<TLShoes.ToTrinh> ToTrinhList = new BindingList<TLShoes.ToTrinh>();
+        private TongHopToTrinh _currentToTrinh;
+        private readonly Dictionary<long, List<ChiTietToTrinh>> _dictChiTietToTrinh = new Dictionary<long, List<ChiTietToTrinh>>();
+        private readonly BindingList<TLShoes.ToTrinh> _toTrinhList = new BindingList<TLShoes.ToTrinh>();
+
         public ucToTrinh(TongHopToTrinh data = null)
         {
             InitializeComponent();
@@ -30,44 +31,70 @@ namespace TLShoes.FormControls.ToTrinh
 
             if (data != null)
             {
-                ToTrinhList = new BindingList<TLShoes.ToTrinh>(data.ToTrinhs.ToList());
-                currentToTrinh = data;
+                _currentToTrinh = data;
+                ToTrinh_NgayLap.Text = TimeHelper.TimestampToString(data.NgayLap);
+                ToTrinh_NgayDuyet.Text = TimeHelper.TimestampToString(data.NgayDuyet);
+                if (data.NguoiLap != null)
+                {
+                    ToTrinh_NguoiLap.Text = data.NguoiLap.TenNguoiDung;
+                }
+                if (data.NguoiDuyet != null)
+                {
+                    ToTrinh_NguoiDuyet.Text = data.NguoiDuyet.TenNguoiDung;
+                }
+
+                _toTrinhList = new BindingList<TLShoes.ToTrinh>(data.ToTrinhs.ToList());
+                SF.Get<NhatKyThayDoiViewModel>().GetDataSource(gridNhatKy, Define.ModelType.TO_TRINH, data.Id);
             }
             InitAuthorize();
 
-            gridToTrinh.DataSource = ToTrinhList;
+            gridToTrinh.DataSource = _toTrinhList;
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
         }
 
-        public void InitAuthorize()
+        private void InitAuthorize()
         {
+            btnCancel.Enabled = false;
+            btnDuyet.Enabled = true;
             btnDuyet.Visible = false;
             btnExport.Visible = false;
             btnSave.Enabled = true;
 
-            if (currentToTrinh != null)
+            if (_currentToTrinh != null)
             {
-                lblSoPhieu.Text = string.Format("Số Tờ Trình: {0}", currentToTrinh.SoPhieu);
+                lblSoPhieu.Text = string.Format("Số Tờ Trình: {0}", _currentToTrinh.SoPhieu);
+                var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentToTrinh.TrangThai);
 
-                var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(currentToTrinh.TrangThai);
-
-                if (trangThai <= Define.TrangThai.DUYET)
+                if (trangThai <= Define.TrangThai.MOI)
                 {
                     btnDuyet.Visible = true;
                 }
 
+                // Check verify authorize
+                if (trangThai == Define.TrangThai.DUYET)
+                {
+                    var verifyAuthorize = Authorization.CheckAuthorization("ToTrinh", Define.Authorization.VERIFY);
+                    if (verifyAuthorize)
+                    {
+                        btnDuyet.Visible = true;
+                        btnCancel.Enabled = true;
+                    }
+                }
+
+                // Can't save if verified
                 if (trangThai > Define.TrangThai.MOI)
                 {
                     btnSave.Enabled = false;
                 }
 
+                // Allow export after final verify
                 if (trangThai == Define.TrangThai.DUYET_PVT)
                 {
                     btnExport.Visible = true;
+                    btnDuyet.Visible = true;
+                    btnDuyet.Enabled = false;
                 }
-
             }
-
         }
 
         public override bool SaveData()
@@ -81,16 +108,15 @@ namespace TLShoes.FormControls.ToTrinh
 
             using (var transaction = new TransactionScope())
             {
-                if (currentToTrinh == null)
+                if (_currentToTrinh == null)
                 {
-                    currentToTrinh = new TongHopToTrinh();
-                    currentToTrinh.TrangThai = Define.TrangThai.MOI.ToString();
-                    SF.Get<ToTrinhViewModel>().Save(currentToTrinh);
+                    _currentToTrinh = new TongHopToTrinh { TrangThai = Define.TrangThai.MOI.ToString() };
+                    SF.Get<ToTrinhViewModel>().Save(_currentToTrinh);
                 }
 
-                foreach (var toTrinh in ToTrinhList)
+                foreach (var toTrinh in _toTrinhList)
                 {
-                    toTrinh.TongHopToTrinhId = currentToTrinh.Id;
+                    toTrinh.TongHopToTrinhId = _currentToTrinh.Id;
                     SF.Get<ToTrinhViewModel>().Save(toTrinh);
 
                     // Clear old data
@@ -103,13 +129,16 @@ namespace TLShoes.FormControls.ToTrinh
                     }
 
                     // Save chi tiet to trinh
-                    var nguyenLieuId = (long)toTrinh.NguyenLieuId;
-                    if (DictChiTietToTrinh.ContainsKey(nguyenLieuId))
+                    if (toTrinh.NguyenLieuId != null)
                     {
-                        foreach (var chiTietToTrinh in DictChiTietToTrinh[nguyenLieuId])
+                        var nguyenLieuId = (long)toTrinh.NguyenLieuId;
+                        if (_dictChiTietToTrinh.ContainsKey(nguyenLieuId))
                         {
-                            chiTietToTrinh.ToTrinhId = toTrinh.Id;
-                            SF.Get<ChiTietToTrinhViewModel>().Save(chiTietToTrinh);
+                            foreach (var chiTietToTrinh in _dictChiTietToTrinh[nguyenLieuId])
+                            {
+                                chiTietToTrinh.ToTrinhId = toTrinh.Id;
+                                SF.Get<ChiTietToTrinhViewModel>().Save(chiTietToTrinh);
+                            }
                         }
                     }
                 }
@@ -118,14 +147,14 @@ namespace TLShoes.FormControls.ToTrinh
             return true;
         }
 
-        public string ValidateInput()
+        private string ValidateInput()
         {
-            if (currentToTrinh != null)
+            if (_currentToTrinh != null)
             {
-                var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(currentToTrinh.TrangThai);
+                var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentToTrinh.TrangThai);
                 if (trangThai > Define.TrangThai.MOI)
                 {
-                    return "Chỉ lệnh đã được duyệt nên không thể thay đổi!";
+                    return "Tờ trình đã được duyệt nên không thể thay đổi!";
                 }
             }
             return string.Empty;
@@ -171,9 +200,9 @@ namespace TLShoes.FormControls.ToTrinh
                         lstChiTietToTrinh.Add(chitiet);
                     }
 
-                    if (!DictChiTietToTrinh.ContainsKey(nguyenLieuId))
+                    if (!_dictChiTietToTrinh.ContainsKey(nguyenLieuId))
                     {
-                        DictChiTietToTrinh.Add(nguyenLieuId, lstChiTietToTrinh);
+                        _dictChiTietToTrinh.Add(nguyenLieuId, lstChiTietToTrinh);
                     }
                     gridChiTietToTrinh.DataSource = lstChiTietToTrinh.Select(s => new { s.DonHang.MaHang, s.NhuCau, s.ThucTe });
                 }
@@ -183,8 +212,8 @@ namespace TLShoes.FormControls.ToTrinh
         private void btnUpdateToTrinh_Click(object sender, EventArgs e)
         {
             var toTrinh = CRUD.GetFormObject<TLShoes.ToTrinh>(FormControls);
-            toTrinh.NguyenLieu = SF.Get<NguyenLieuViewModel>().GetDetail((long)toTrinh.NguyenLieuId);
-            ToTrinhList.Add(toTrinh);
+            if (toTrinh.NguyenLieuId != null) toTrinh.NguyenLieu = SF.Get<NguyenLieuViewModel>().GetDetail((long)toTrinh.NguyenLieuId);
+            _toTrinhList.Add(toTrinh);
         }
         private void btnDeleteNguyenLieu_Click(object sender, EventArgs e)
         {
@@ -197,21 +226,21 @@ namespace TLShoes.FormControls.ToTrinh
             if (data != null)
             {
                 Init(data);
-                var nguyenLieuId = (long)data.NguyenLieuId;
-                gridChiTietToTrinh.DataSource = DictChiTietToTrinh.ContainsKey(nguyenLieuId) ? DictChiTietToTrinh[nguyenLieuId] : data.ChiTietToTrinhs.ToList();
+                if (data.NguyenLieuId != null)
+                {
+                    var nguyenLieuId = (long)data.NguyenLieuId;
+                    gridChiTietToTrinh.DataSource = _dictChiTietToTrinh.ContainsKey(nguyenLieuId) ? _dictChiTietToTrinh[nguyenLieuId] : data.ChiTietToTrinhs.ToList();
+                }
             }
         }
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            var saveDialog = new SaveFileDialog();
-            saveDialog.Filter = "Excel |*.xls";
+            var saveDialog = new SaveFileDialog { Filter = Define.EXPORT_EXTENSION };
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
                 ThreadHelper.LoadForm(() =>
                 {
-
-
                     //Start Excel and get Application object.
                     var excel = new Application();
                     //Get a new workbook.
@@ -221,9 +250,9 @@ namespace TLShoes.FormControls.ToTrinh
                     try
                     {
                         // Get loai to trinh
-                        if (currentToTrinh != null)
+                        if (_currentToTrinh != null)
                         {
-                            var groupByNguyenLieu = ToTrinhList.GroupBy(s => s.NguyenLieu.LoaiNguyenLieu).ToList();
+                            var groupByNguyenLieu = _toTrinhList.GroupBy(s => s.NguyenLieu.LoaiNguyenLieu).ToList();
                             var loaiToTrinh = "TỔNG HỢP";
                             if (groupByNguyenLieu.Count == 1)
                             {
@@ -233,69 +262,73 @@ namespace TLShoes.FormControls.ToTrinh
                         }
 
                         // Group by don hang 
-                        var groupedToTrinh = ToTrinhList.SelectMany(s => s.ChiTietToTrinhs).GroupBy(s => s.DonHangId).ToList();
+                        var groupedToTrinh = _toTrinhList.SelectMany(s => s.ChiTietToTrinhs).GroupBy(s => s.DonHangId).ToList();
                         var startColumn = 4;
                         var startRow = 7;
                         var dictNguyenLieu = new Dictionary<long, int>();
                         foreach (var group in groupedToTrinh)
                         {
-                            var donhang = SF.Get<DonHangViewModel>().GetDetail((long)group.Key);
-                            if (donhang == null) continue;
-
-                            if (startColumn > 4)
+                            if (group.Key != null)
                             {
-                                var col = workSheet.Columns[startColumn];
-                                col.EntireColumn.Insert(XlInsertShiftDirection.xlShiftToRight);
-                            }
+                                var donhang = SF.Get<DonHangViewModel>().GetDetail((long)group.Key);
+                                if (donhang == null) continue;
 
-                            // Thong tin don hang 
-                            workSheet.Cells[4, startColumn] = donhang.MaHang;
-                            workSheet.Cells[5, startColumn] = donhang.ChiTietDonHangs.Sum(s => s.SoLuong);
-                            workSheet.Cells[6, startColumn] = startColumn;
-
-                            foreach (var chiTietToTrinh in group)
-                            {
-                                var toTrinh = chiTietToTrinh.ToTrinh;
-                                if (toTrinh == null) continue;
-
-                                var currentRow = 0;
-                                if (!dictNguyenLieu.ContainsKey((long)toTrinh.NguyenLieuId))
+                                if (startColumn > 4)
                                 {
-                                    dictNguyenLieu.Add((long)toTrinh.NguyenLieuId, startRow);
-                                    if (startRow > 7)
-                                    {
-                                        var range = workSheet.Range["A" + (startRow - 2), "A" + (startRow - 1)];
-                                        range.EntireRow.Copy();
-                                        var row = (Range)workSheet.Rows[startRow];
-                                        row.EntireRow.Insert(XlInsertShiftDirection.xlShiftDown, range);
-                                    }
-                                    currentRow = startRow;
-                                    workSheet.Cells[currentRow, 1] = dictNguyenLieu.Count;
-                                    var nguyenLieu = toTrinh.NguyenLieu;
-                                    if (nguyenLieu != null)
-                                    {
-                                        workSheet.Cells[currentRow, 2] = nguyenLieu.Ten;
-                                    }
-
-                                    startRow += 2;
-                                }
-                                else
-                                {
-                                    currentRow = dictNguyenLieu[(long)toTrinh.NguyenLieuId];
+                                    var col = workSheet.Columns[startColumn];
+                                    col.EntireColumn.Insert(XlInsertShiftDirection.xlShiftToRight);
                                 }
 
-                                workSheet.Cells[currentRow, startColumn] = chiTietToTrinh.NhuCau;
-                                workSheet.Cells[currentRow + 1, startColumn] = chiTietToTrinh.ThucTe;
+                                // Thong tin don hang 
+                                workSheet.Cells[4, startColumn] = donhang.MaHang;
+                                workSheet.Cells[5, startColumn] = donhang.ChiTietDonHangs.Sum(s => s.SoLuong);
+                                workSheet.Cells[6, startColumn] = startColumn;
 
-                                workSheet.Cells[currentRow, startColumn + 1] = toTrinh.BoSung;
-                                workSheet.Cells[currentRow, startColumn + 3] = toTrinh.ThuHoi;
-                                workSheet.Cells[currentRow, startColumn + 4] = toTrinh.TonToTrinh;
-                                workSheet.Cells[currentRow, startColumn + 5] = toTrinh.TonTheKho;
-                                workSheet.Cells[currentRow, startColumn + 6] = toTrinh.TonThucTe;
-                                workSheet.Cells[currentRow, startColumn + 8] = toTrinh.DuKien;
+                                foreach (var chiTietToTrinh in group)
+                                {
+                                    var toTrinh = chiTietToTrinh.ToTrinh;
+                                    if (toTrinh == null) continue;
+
+                                    var currentRow = 0;
+                                    if (toTrinh.NguyenLieuId != null && !dictNguyenLieu.ContainsKey((long)toTrinh.NguyenLieuId))
+                                    {
+                                        dictNguyenLieu.Add((long)toTrinh.NguyenLieuId, startRow);
+                                        if (startRow > 7)
+                                        {
+                                            var range = workSheet.Range["A" + (startRow - 2), "A" + (startRow - 1)];
+                                            range.EntireRow.Copy();
+                                            var row = (Range)workSheet.Rows[startRow];
+                                            row.EntireRow.Insert(XlInsertShiftDirection.xlShiftDown, range);
+                                        }
+                                        currentRow = startRow;
+                                        workSheet.Cells[currentRow, 1] = dictNguyenLieu.Count;
+                                        var nguyenLieu = toTrinh.NguyenLieu;
+                                        if (nguyenLieu != null)
+                                        {
+                                            workSheet.Cells[currentRow, 2] = nguyenLieu.Ten;
+                                        }
+
+                                        startRow += 2;
+                                    }
+                                    else
+                                    {
+                                        if (toTrinh.NguyenLieuId != null) currentRow = dictNguyenLieu[(long)toTrinh.NguyenLieuId];
+                                    }
+
+                                    workSheet.Cells[currentRow, startColumn] = chiTietToTrinh.NhuCau;
+                                    workSheet.Cells[currentRow + 1, startColumn] = chiTietToTrinh.ThucTe;
+
+                                    workSheet.Cells[currentRow, startColumn + 1] = toTrinh.BoSung;
+                                    workSheet.Cells[currentRow, startColumn + 3] = toTrinh.ThuHoi;
+                                    workSheet.Cells[currentRow, startColumn + 4] = toTrinh.TonToTrinh;
+                                    workSheet.Cells[currentRow, startColumn + 5] = toTrinh.TonTheKho;
+                                    workSheet.Cells[currentRow, startColumn + 6] = toTrinh.TonThucTe;
+                                    workSheet.Cells[currentRow, startColumn + 8] = toTrinh.DuKien;
+                                }
+
+                                startColumn++;
                             }
 
-                            startColumn++;
                         }
 
                         var currentDate = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
@@ -322,30 +355,48 @@ namespace TLShoes.FormControls.ToTrinh
 
         private void btnDuyet_Click(object sender, EventArgs e)
         {
-            if (currentToTrinh != null)
+            if (_currentToTrinh != null)
             {
                 using (var transaction = new TransactionScope())
                 {
-                    var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(currentToTrinh.TrangThai);
+                    var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentToTrinh.TrangThai);
                     var ngayDuyet = TimeHelper.CurrentTimeStamp();
+                    // Lock item
                     if (trangThai == Define.TrangThai.MOI)
                     {
-                        currentToTrinh.SoPhieu = SF.Get<ToTrinhViewModel>().GenerateSoPhieu();
-                        currentToTrinh.NgayLap = ngayDuyet;
-                        currentToTrinh.NguoiLapId = Authorization.LoginUser.Id;
-                        currentToTrinh.TrangThai = Define.TrangThai.DUYET.ToString();
-                    }
-                    if (trangThai == Define.TrangThai.DUYET)
-                    {
-                        currentToTrinh.TrangThai = Define.TrangThai.DUYET_PVT.ToString();
-                        currentToTrinh.NgayDuyet = ngayDuyet;
-                        currentToTrinh.NguoiDuyetId = Authorization.LoginUser.Id;
+                        _currentToTrinh.SoPhieu = SF.Get<ToTrinhViewModel>().GenerateSoPhieu();
+                        _currentToTrinh.NgayLap = ngayDuyet;
+                        _currentToTrinh.NguoiLapId = Authorization.LoginUser.Id;
+                        _currentToTrinh.TrangThai = Define.TrangThai.DUYET.ToString();
                     }
 
-                    SF.Get<ToTrinhViewModel>().Save(currentToTrinh);
+                    // Verify
+                    if (trangThai == Define.TrangThai.DUYET)
+                    {
+                        _currentToTrinh.TrangThai = Define.TrangThai.DUYET_PVT.ToString();
+                        _currentToTrinh.NgayDuyet = ngayDuyet;
+                        _currentToTrinh.NguoiDuyetId = Authorization.LoginUser.Id;
+                    }
+
+                    SF.Get<ToTrinhViewModel>().Save(_currentToTrinh);
                     transaction.Complete();
                 }
                 InitAuthorize();
+            }
+        }
+
+        public override void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (_currentToTrinh != null)
+            {
+                ShowCustomForm(new Form.NhatKyThayDoi(Define.ModelType.TO_TRINH.ToString(), _currentToTrinh.Id, () =>
+                {
+                    SF.Get<NhatKyThayDoiViewModel>().GetDataSource(gridNhatKy, Define.ModelType.TO_TRINH, _currentToTrinh.Id);
+                    _currentToTrinh.TrangThai = Define.TrangThai.HUY.ToString();
+                    _currentToTrinh.NgayDuyet = TimeHelper.CurrentTimeStamp();
+                    _currentToTrinh.NguoiDuyetId = Authorization.LoginUser.Id;
+                    InitAuthorize();
+                }), "Nhật ký thay đổi");
             }
         }
     }
