@@ -65,11 +65,18 @@ namespace TLShoes.Common
 
         public enum LoaiNguoiDung
         {
+            NV,
+            CBDH,
             PVT,
             PKT,
+            QC,
+            PKH,
             THU_KHO,
             TRUONG_PKT,
             TRUONG_PVT,
+            PX,
+            GDKT,
+            GDSX,
             ADMIN,
         }
 

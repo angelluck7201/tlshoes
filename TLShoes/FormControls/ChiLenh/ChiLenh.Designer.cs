@@ -57,6 +57,8 @@ namespace TLShoes.FormControls.ChiLenh
             this.NguyenLieuChiLenh_ChiTietId = new System.Windows.Forms.ComboBox();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
+            this.lblSoPhieu = new DevExpress.XtraEditors.LabelControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -83,10 +85,8 @@ namespace TLShoes.FormControls.ChiLenh
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDuplicate = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
-            this.lblSoPhieu = new DevExpress.XtraEditors.LabelControl();
-            this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuLookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuChiLenh_QuyCach.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewNguyenLieu)).BeginInit();
@@ -395,6 +395,33 @@ namespace TLShoes.FormControls.ChiLenh
             this.xtraTabPage2.Size = new System.Drawing.Size(1682, 871);
             this.xtraTabPage2.Text = "Chỉ lệnh";
             // 
+            // btnDuyet
+            // 
+            this.btnDuyet.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnDuyet.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDuyet.Appearance.Options.UseBackColor = true;
+            this.btnDuyet.Appearance.Options.UseFont = true;
+            this.btnDuyet.Appearance.Options.UseForeColor = true;
+            this.btnDuyet.Location = new System.Drawing.Point(518, 36);
+            this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.btnDuyet.Name = "btnDuyet";
+            this.btnDuyet.Size = new System.Drawing.Size(109, 30);
+            this.btnDuyet.TabIndex = 74;
+            this.btnDuyet.Text = "Duyệt";
+            this.btnDuyet.Visible = false;
+            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
+            // 
+            // lblSoPhieu
+            // 
+            this.lblSoPhieu.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.lblSoPhieu.Location = new System.Drawing.Point(53, 36);
+            this.lblSoPhieu.Name = "lblSoPhieu";
+            this.lblSoPhieu.Size = new System.Drawing.Size(118, 24);
+            this.lblSoPhieu.TabIndex = 73;
+            this.lblSoPhieu.Text = "Số Chỉ Lệnh";
+            // 
             // gridControl
             // 
             this.gridControl.Location = new System.Drawing.Point(711, 26);
@@ -681,20 +708,21 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnSave.TabIndex = 74;
             this.btnSave.Text = "Lưu";
             // 
-            // simpleButton1
+            // btnDuplicate
             // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.ForestGreen;
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.simpleButton1.Location = new System.Drawing.Point(1513, 927);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(179, 30);
-            this.simpleButton1.TabIndex = 15;
-            this.simpleButton1.Text = "Lưu Và Tiếp Tục";
+            this.btnDuplicate.Appearance.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnDuplicate.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnDuplicate.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDuplicate.Appearance.Options.UseBackColor = true;
+            this.btnDuplicate.Appearance.Options.UseFont = true;
+            this.btnDuplicate.Appearance.Options.UseForeColor = true;
+            this.btnDuplicate.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnDuplicate.Location = new System.Drawing.Point(1513, 927);
+            this.btnDuplicate.Name = "btnDuplicate";
+            this.btnDuplicate.Size = new System.Drawing.Size(179, 30);
+            this.btnDuplicate.TabIndex = 15;
+            this.btnDuplicate.Text = "Tạo Tương Tự";
+            this.btnDuplicate.Click += new System.EventHandler(this.btnDuplicate_Click);
             // 
             // btnExport
             // 
@@ -713,33 +741,6 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // lblSoPhieu
-            // 
-            this.lblSoPhieu.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.lblSoPhieu.Location = new System.Drawing.Point(53, 36);
-            this.lblSoPhieu.Name = "lblSoPhieu";
-            this.lblSoPhieu.Size = new System.Drawing.Size(118, 24);
-            this.lblSoPhieu.TabIndex = 73;
-            this.lblSoPhieu.Text = "Số Chỉ Lệnh";
-            // 
-            // btnDuyet
-            // 
-            this.btnDuyet.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnDuyet.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDuyet.Appearance.Options.UseBackColor = true;
-            this.btnDuyet.Appearance.Options.UseFont = true;
-            this.btnDuyet.Appearance.Options.UseForeColor = true;
-            this.btnDuyet.Location = new System.Drawing.Point(518, 36);
-            this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
-            this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.btnDuyet.Name = "btnDuyet";
-            this.btnDuyet.Size = new System.Drawing.Size(109, 30);
-            this.btnDuyet.TabIndex = 74;
-            this.btnDuyet.Text = "Duyệt";
-            this.btnDuyet.Visible = false;
-            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
-            // 
             // ucChiLenh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -747,7 +748,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.btnDuplicate);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
@@ -806,7 +807,7 @@ namespace TLShoes.FormControls.ChiLenh
         private Form.DefaultInfo defaultInfo;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnDuplicate;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraEditors.LabelControl lblLyDo;
         private System.Windows.Forms.RichTextBox LyDoThayDoi;

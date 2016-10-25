@@ -41,7 +41,7 @@ namespace TLShoes.ViewModels
 
         public void Save(object data, bool isCommit = true)
         {
-                DbContext.ChiTietXuatKhoes.AddOrUpdate((ChiTietXuatKho)data);
+            DbContext.ChiTietXuatKhoes.AddOrUpdate((ChiTietXuatKho)data);
             if (isCommit)
             {
                 Commit();
@@ -61,4 +61,24 @@ namespace TLShoes.ViewModels
             }
         }
     }
+}
+
+
+namespace TLShoes
+{
+    public partial class ChiTietXuatKho
+    {
+        public string TenNguyenLieu
+        {
+            get
+            {
+                if (NguyenLieu != null)
+                {
+                    return NguyenLieu.Ten;
+                }
+                return "";
+            }
+        }
+    }
+
 }

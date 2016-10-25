@@ -62,6 +62,7 @@ namespace TLShoes
             this.TongHopToTrinhs1 = new HashSet<TongHopToTrinh>();
             this.TongHopToTrinhs2 = new HashSet<TongHopToTrinh>();
             this.ToTrinhs = new HashSet<ToTrinh>();
+            this.NhatKyXuatKhoes = new HashSet<NhatKyXuatKho>();
         }
     
         public long Id { get; set; }
@@ -162,5 +163,7 @@ namespace TLShoes
         public virtual ICollection<TongHopToTrinh> TongHopToTrinhs2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ToTrinh> ToTrinhs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NhatKyXuatKho> NhatKyXuatKhoes { get; set; }
     }
 }

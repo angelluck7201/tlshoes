@@ -75,7 +75,7 @@
             // 
             // navBarControlMenu
             // 
-            this.navBarControlMenu.ActiveGroup = this.navBarMauDoi;
+            this.navBarControlMenu.ActiveGroup = this.navBarQuanLyKho;
             this.navBarControlMenu.Appearance.GroupHeaderActive.Font = new System.Drawing.Font("Tahoma", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
             this.navBarControlMenu.Appearance.GroupHeaderActive.Options.UseFont = true;
             this.navBarControlMenu.Appearance.Item.Font = new System.Drawing.Font("Tahoma", 9F);
@@ -132,7 +132,6 @@
             // navBarMauDoi
             // 
             this.navBarMauDoi.Caption = "Mẫu";
-            this.navBarMauDoi.Expanded = true;
             this.navBarMauDoi.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navMauDoi),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navMauTest),
@@ -281,6 +280,7 @@
             // navBarQuanLyKho
             // 
             this.navBarQuanLyKho.Caption = "Quản Lý Vật Tư";
+            this.navBarQuanLyKho.Expanded = true;
             this.navBarQuanLyKho.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navToTrinh),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navNhaCungCap),

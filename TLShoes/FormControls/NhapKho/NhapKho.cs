@@ -37,7 +37,7 @@ namespace TLShoes.FormControls.NhapKho
             if (data != null)
             {
                 SF.Get<ChiTietNhapKhoViewModel>().GetDataSource(data.Id, ref ChiTietNhapKhoList);
-                Define.Kho selectedKho = Define.Kho.KHO_BAN_THANH_PHAM;
+                Define.Kho selectedKho;
                 Enum.TryParse<Define.Kho>(data.Kho, out selectedKho);
                 PhieuNhapKho_Kho.SelectedValue = selectedKho;
                 _currentData = data;

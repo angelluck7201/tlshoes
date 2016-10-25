@@ -12,28 +12,19 @@ namespace TLShoes
     using System;
     using System.Collections.Generic;
     
-    public partial class ChiTietXuatKho
+    public partial class NhatKyXuatKho
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ChiTietXuatKho()
-        {
-            this.NhatKyXuatKhoes = new HashSet<NhatKyXuatKho>();
-        }
-    
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
         public Nullable<long> CreatedDate { get; set; }
         public Nullable<long> ModifiedDate { get; set; }
         public Nullable<bool> IsActived { get; set; }
-        public Nullable<long> PhieuXuatKhoId { get; set; }
-        public Nullable<long> NguyenLieuId { get; set; }
+        public Nullable<long> ChiTietXuatKhoId { get; set; }
         public Nullable<float> SoLuong { get; set; }
-        public Nullable<bool> IsUpdateKho { get; set; }
+        public string NguoiNhan { get; set; }
+        public string GhiChu { get; set; }
     
+        public virtual ChiTietXuatKho ChiTietXuatKho { get; set; }
         public virtual UserAccount UserAccount { get; set; }
-        public virtual NguyenLieu NguyenLieu { get; set; }
-        public virtual PhieuXuatKho PhieuXuatKho { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NhatKyXuatKho> NhatKyXuatKhoes { get; set; }
     }
 }

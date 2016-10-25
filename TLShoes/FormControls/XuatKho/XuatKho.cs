@@ -8,7 +8,6 @@ using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
-using Microsoft.Office.Core;
 using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
 using TLShoes.ViewModels;
@@ -52,8 +51,9 @@ namespace TLShoes.FormControls.XuatKho
                 DonHangChange((long)data.DonHangId);
                 _currentData = data;
                 btnExport.Visible = true;
-            }
+                gridNhatKy.DataSource =data.ChiTietXuatKhoes.SelectMany(s => s.NhatKyXuatKhoes).ToList();
 
+            }
             gridNguyenLieu.DataSource = ChiTietXuatKhoList;
 
             NguyenLieuLookUp.NullText = "";
@@ -241,6 +241,14 @@ namespace TLShoes.FormControls.XuatKho
                     Process.Start(saveDialog.FileName);
                 }
                 this.ParentForm.Close();
+            }
+        }
+
+        private void btnXuatLe_Click(object sender, EventArgs e)
+        {
+            if (_currentData != null)
+            {
+                ShowCustomForm(new ucNhatKyXuatKho(_currentData, () => gridNhatKy.RefreshDataSource()), "Xuất Kho.");
             }
         }
     }

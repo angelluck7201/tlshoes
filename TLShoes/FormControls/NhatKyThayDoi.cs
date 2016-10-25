@@ -14,13 +14,13 @@ namespace TLShoes.Form
         public NhatKyThayDoi()
         {
             InitializeComponent();
-            InitAction();
+            Init();
         }
 
         public NhatKyThayDoi(string modelName, long modelId, Action callback)
         {
             InitializeComponent();
-            InitAction();
+            Init();
 
             _modelName = modelName;
             _modelId = modelId;

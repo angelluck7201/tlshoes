@@ -521,6 +521,19 @@ SoLuong real,
 IsUpdateKho bit
 )
 
+create table NhatKyXuatKho(
+Id bigint primary key identity(1,1),
+AuthorId bigint foreign key references UserAccount(Id),	
+CreatedDate bigint,
+ModifiedDate bigint,
+IsActived bit,
+
+ChiTietXuatKhoId bigint foreign key references ChiTietXuatKho(Id),
+SoLuong real,
+NguoiNhan nvarchar(100),
+GhiChu nvarchar(100),
+)
+
 
 create table NhaCungCap(
 Id bigint primary key identity(1,1),

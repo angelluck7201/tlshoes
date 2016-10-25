@@ -42,5 +42,11 @@ namespace TLShoes.ViewModels
                 Commit();
             }
         }
+
+        public void Save(NhatKyXuatKho data)
+        {
+            DbContext.NhatKyXuatKhoes.AddOrUpdate(data);
+            Commit();
+        }
     }
 }

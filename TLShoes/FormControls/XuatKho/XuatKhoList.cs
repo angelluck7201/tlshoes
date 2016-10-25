@@ -45,6 +45,7 @@ namespace TLShoes.FormControls.XuatKho
         {
             gridView.ExportToXls(filePath.ToString());
         }
+
         private void gridView_DoubleClick(object sender, EventArgs e)
         {
             ThreadHelper.LoadForm(() =>

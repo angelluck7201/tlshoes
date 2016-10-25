@@ -157,6 +157,9 @@
         <AssociationConnector Association="GiayTLModel.FK__TongHopTo__Nguoi__53A266AC" />
         <AssociationConnector Association="GiayTLModel.FK__ToTrinh__TongHop__4B0D20AB" />
         <AssociationConnector Association="GiayTLModel.FK__ToTrinh__AuthorI__03F0984C" />
+        <EntityTypeShape EntityType="GiayTLModel.NhatKyXuatKho" Width="1.5" PointX="22" PointY="31.75" />
+        <AssociationConnector Association="GiayTLModel.FK__NhatKyXua__ChiTi__5B438874" />
+        <AssociationConnector Association="GiayTLModel.FK__NhatKyXua__Autho__5A4F643B" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

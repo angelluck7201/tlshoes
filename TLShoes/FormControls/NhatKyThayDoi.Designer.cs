@@ -74,7 +74,7 @@
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 75;
             this.btnSave.Text = "Lưu";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+//            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -90,7 +90,7 @@
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 76;
             this.btnCancel.Text = "Hủy";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+//            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // NhatKyThayDoi
             // 

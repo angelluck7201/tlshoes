@@ -602,6 +602,20 @@
           <Property Name="ItemId" Type="bigint" />
           <Property Name="GhiChu" Type="text" />
         </EntityType>
+        <EntityType Name="NhatKyXuatKho">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthorId" Type="bigint" />
+          <Property Name="CreatedDate" Type="bigint" />
+          <Property Name="ModifiedDate" Type="bigint" />
+          <Property Name="IsActived" Type="bit" />
+          <Property Name="ChiTietXuatKhoId" Type="bigint" />
+          <Property Name="SoLuong" Type="real" />
+          <Property Name="NguoiNhan" Type="nvarchar" MaxLength="100" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="PhieuNhapKho">
           <Key>
             <PropertyRef Name="Id" />
@@ -1906,6 +1920,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__NhatKyXua__Autho__5A4F643B">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="NhatKyXuatKho" Type="Self.NhatKyXuatKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NhatKyXuatKho">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhatKyXua__ChiTi__5B438874">
+          <End Role="ChiTietXuatKho" Type="Self.ChiTietXuatKho" Multiplicity="0..1" />
+          <End Role="NhatKyXuatKho" Type="Self.NhatKyXuatKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChiTietXuatKho">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NhatKyXuatKho">
+              <PropertyRef Name="ChiTietXuatKhoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PhieuNhap__Autho__0C85DE4D">
           <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
           <End Role="PhieuNhapKho" Type="Self.PhieuNhapKho" Multiplicity="*" />
@@ -2107,6 +2145,7 @@
           <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhaCungCapVatTu" EntityType="Self.NhaCungCapVatTu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhatKyThayDoi" EntityType="Self.NhatKyThayDoi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhatKyXuatKho" EntityType="Self.NhatKyXuatKho" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuNhapKho" EntityType="Self.PhieuNhapKho" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuXuatKho" EntityType="Self.PhieuXuatKho" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -2512,6 +2551,14 @@
           <AssociationSet Name="FK__NhatKyTha__Autho__54CB950F" Association="Self.FK__NhatKyTha__Autho__54CB950F">
             <End Role="UserAccount" EntitySet="UserAccount" />
             <End Role="NhatKyThayDoi" EntitySet="NhatKyThayDoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhatKyXua__Autho__5A4F643B" Association="Self.FK__NhatKyXua__Autho__5A4F643B">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="NhatKyXuatKho" EntitySet="NhatKyXuatKho" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhatKyXua__ChiTi__5B438874" Association="Self.FK__NhatKyXua__ChiTi__5B438874">
+            <End Role="ChiTietXuatKho" EntitySet="ChiTietXuatKho" />
+            <End Role="NhatKyXuatKho" EntitySet="NhatKyXuatKho" />
           </AssociationSet>
           <AssociationSet Name="FK__PhieuNhap__Autho__0C85DE4D" Association="Self.FK__PhieuNhap__Autho__0C85DE4D">
             <End Role="UserAccount" EntitySet="UserAccount" />
@@ -3069,6 +3116,15 @@
             <End Role="UserAccount" EntitySet="UserAccounts" />
             <End Role="ToTrinh" EntitySet="ToTrinhs" />
           </AssociationSet>
+          <EntitySet Name="NhatKyXuatKhoes" EntityType="GiayTLModel.NhatKyXuatKho" />
+          <AssociationSet Name="FK__NhatKyXua__ChiTi__5B438874" Association="GiayTLModel.FK__NhatKyXua__ChiTi__5B438874">
+            <End Role="ChiTietXuatKho" EntitySet="ChiTietXuatKhoes" />
+            <End Role="NhatKyXuatKho" EntitySet="NhatKyXuatKhoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhatKyXua__Autho__5A4F643B" Association="GiayTLModel.FK__NhatKyXua__Autho__5A4F643B">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="NhatKyXuatKho" EntitySet="NhatKyXuatKhoes" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="BaoCaoPhanXuong">
           <Key>
@@ -3411,6 +3467,7 @@
           <NavigationProperty Name="TongHopToTrinhs1" Relationship="GiayTLModel.FK__TongHopTo__Nguoi__4924D839" FromRole="UserAccount" ToRole="TongHopToTrinh" />
           <NavigationProperty Name="TongHopToTrinhs2" Relationship="GiayTLModel.FK__TongHopTo__Nguoi__53A266AC" FromRole="UserAccount" ToRole="TongHopToTrinh" />
           <NavigationProperty Name="ToTrinhs" Relationship="GiayTLModel.FK__ToTrinh__AuthorI__03F0984C" FromRole="UserAccount" ToRole="ToTrinh" />
+          <NavigationProperty Name="NhatKyXuatKhoes" Relationship="GiayTLModel.FK__NhatKyXua__Autho__5A4F643B" FromRole="UserAccount" ToRole="NhatKyXuatKho" />
           </EntityType>
         <Association Name="FK__BaoCaoPha__Autho__52593CB8">
           <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
@@ -3886,6 +3943,7 @@
           <NavigationProperty Name="NguyenLieu" Relationship="GiayTLModel.FK__ChiTietXu__Nguye__19DFD96B" FromRole="ChiTietXuatKho" ToRole="NguyenLieu" />
           <NavigationProperty Name="PhieuXuatKho" Relationship="GiayTLModel.FK__ChiTietXu__Phieu__18EBB532" FromRole="ChiTietXuatKho" ToRole="PhieuXuatKho" />
           <Property Name="IsUpdateKho" Type="Boolean" />
+          <NavigationProperty Name="NhatKyXuatKhoes" Relationship="GiayTLModel.FK__NhatKyXua__ChiTi__5B438874" FromRole="ChiTietXuatKho" ToRole="NhatKyXuatKho" />
         </EntityType>
         <Association Name="FK__ChiTietNh__Autho__0F624AF8">
           <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
@@ -5367,6 +5425,46 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="NhatKyXuatKho">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorId" Type="Int64" />
+          <Property Name="CreatedDate" Type="Int64" />
+          <Property Name="ModifiedDate" Type="Int64" />
+          <Property Name="IsActived" Type="Boolean" />
+          <Property Name="ChiTietXuatKhoId" Type="Int64" />
+          <Property Name="SoLuong" Type="Single" />
+          <Property Name="NguoiNhan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChiTietXuatKho" Relationship="GiayTLModel.FK__NhatKyXua__ChiTi__5B438874" FromRole="NhatKyXuatKho" ToRole="ChiTietXuatKho" />
+          <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__NhatKyXua__Autho__5A4F643B" FromRole="NhatKyXuatKho" ToRole="UserAccount" />
+        </EntityType>
+        <Association Name="FK__NhatKyXua__ChiTi__5B438874">
+          <End Type="GiayTLModel.ChiTietXuatKho" Role="ChiTietXuatKho" Multiplicity="0..1" />
+          <End Type="GiayTLModel.NhatKyXuatKho" Role="NhatKyXuatKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChiTietXuatKho">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NhatKyXuatKho">
+              <PropertyRef Name="ChiTietXuatKhoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhatKyXua__Autho__5A4F643B">
+          <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+          <End Type="GiayTLModel.NhatKyXuatKho" Role="NhatKyXuatKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NhatKyXuatKho">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6104,6 +6202,21 @@
                 <ScalarProperty Name="ThuHoi" ColumnName="ThuHoi" />
                 <ScalarProperty Name="BoSung" ColumnName="BoSung" />
                 <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
+                <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhatKyXuatKhoes">
+            <EntityTypeMapping TypeName="GiayTLModel.NhatKyXuatKho">
+              <MappingFragment StoreEntitySet="NhatKyXuatKho">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="NguoiNhan" ColumnName="NguoiNhan" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="ChiTietXuatKhoId" ColumnName="ChiTietXuatKhoId" />
                 <ScalarProperty Name="IsActived" ColumnName="IsActived" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />

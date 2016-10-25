@@ -394,6 +394,12 @@
     <Compile Include="FormControls\NhaCungCap\TongHopNhaCungCap.Designer.cs">
       <DependentUpon>TongHopNhaCungCap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormControls\NhatKyXuatKho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\NhatKyXuatKho.Designer.cs">
+      <DependentUpon>NhatKyXuatKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormControls\TheKho\TheKhoList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -628,6 +634,9 @@
     <Compile Include="NhatKyThayDoi.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="NhatKyXuatKho.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="PhieuNhapKho.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -787,6 +796,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\NhaCungCap\TongHopNhaCungCap.resx">
       <DependentUpon>TongHopNhaCungCap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\NhatKyXuatKho.resx">
+      <DependentUpon>NhatKyXuatKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\TheKho\TheKhoList.resx">
       <DependentUpon>TheKhoList.cs</DependentUpon>

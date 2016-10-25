@@ -12,6 +12,7 @@ using TLShoes.Common;
 using TLShoes.ViewModels;
 using Application = Microsoft.Office.Interop.Excel.Application;
 using Microsoft.Office.Core;
+using TLShoes.Form;
 
 
 namespace TLShoes.FormControls.ChiLenh
@@ -87,6 +88,8 @@ namespace TLShoes.FormControls.ChiLenh
             {
                 var saveData = CRUD.GetFormObject<TLShoes.ChiLenh>(FormControls);
                 SF.Get<ChiLenhViewModel>().Save(saveData);
+
+                _chiLenh = saveData;
 
                 // Save nguyen lieu chi lenh
                 foreach (var nguyenlieu in NguyenLieuChiLenhList)
@@ -313,6 +316,29 @@ namespace TLShoes.FormControls.ChiLenh
             _chiLenh.TrangThai = Define.TrangThai.DUYET.ToString();
             lblSoPhieu.Text = lblSoPhieu.Text + ": " + _chiLenh.SoPhieu;
             SF.Get<ChiLenhViewModel>().Save(_chiLenh);
+        }
+
+        private void btnDuplicate_Click(object sender, EventArgs e)
+        {
+            // Clear old info
+            xtraTabPage1.Controls.Clear();
+
+            // Init new default info
+            defaultInfo = new DefaultInfo();
+            defaultInfo.Dock = DockStyle.Fill;
+            xtraTabPage1.Controls.Add(defaultInfo);
+
+            // Clear nhat ky
+            gridNhatKy.DataSource = null;
+
+            _chiLenh = null;
+
+            var confirmDialog = MessageBox.Show("Đã tạo thành công chỉ lệnh tương tự, bạn có muốn lưu lại!", "Copy chỉ lệnh", MessageBoxButtons.YesNo);
+            if (confirmDialog == DialogResult.Yes)
+            {
+                btnSave.PerformClick();
+            }
+
         }
 
     }
