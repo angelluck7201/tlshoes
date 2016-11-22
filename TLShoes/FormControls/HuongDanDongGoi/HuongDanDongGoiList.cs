@@ -13,25 +13,21 @@ using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.HuongDanDongGoi
 {
-    public partial class ucHuongDanDongGoiList : UserControl
+    public partial class ucHuongDanDongGoiList : BaseForm
     {
         public ucHuongDanDongGoiList()
         {
             InitializeComponent();
-
-            ReloadData();
-
-            ObserverControl.Regist("ucHuongDanDongGoi", "ucHuongDanDongGoiList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucHuongDanDongGoiList", ReloadData);
-            ObserverControl.Regist("Close", "ucHuongDanDongGoiList", ReloadData);
-            ObserverControl.Regist("Export", "ucHuongDanDongGoiList", Export);
-
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+
                 SF.Get<HuongDanDongGoiViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -44,7 +40,7 @@ namespace TLShoes.FormControls.HuongDanDongGoi
             });
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

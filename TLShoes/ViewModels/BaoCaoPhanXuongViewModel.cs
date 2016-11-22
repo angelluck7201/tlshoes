@@ -4,6 +4,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using DevExpress.XtraGrid;
 using TLShoes.Common;
+using TLShoes.ViewModels;
 
 namespace TLShoes.ViewModels
 {
@@ -45,7 +46,8 @@ namespace TLShoes.ViewModels
                     LuyKe = GetList((long)s.PhanXuongId, (long)s.BaoCaoNgay).Sum(l => l.SanLuongThucHien),
                     SoLuongDonHang = s.DonHang.ChiTietDonHangs.Sum(a => a.SoLuong),
                     BaoCaoNgayFormat = TimeHelper.TimeStampToDateTime(s.BaoCaoNgay, "d"),
-                    s.GhiChu
+                    s.GhiChu,
+                    s.UserAccount.LoaiNguoiDung
                 }).ToList();
         }
 
@@ -102,3 +104,4 @@ namespace TLShoes.ViewModels
         }
     }
 }
+

@@ -42,6 +42,7 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLoaiNguoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -73,7 +74,8 @@
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn3,
-            this.gridColumn11});
+            this.gridColumn11,
+            this.colLoaiNguoiDung});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
@@ -196,6 +198,12 @@
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 6;
             // 
+            // colLoaiNguoiDung
+            // 
+            this.colLoaiNguoiDung.Caption = "gridColumn12";
+            this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
+            this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
+            // 
             // ucHuongDanDongGoiList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -226,5 +234,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn colLoaiNguoiDung;
     }
 }

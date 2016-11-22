@@ -26,7 +26,7 @@ namespace TLShoes.ViewModels
 
         public void GetDataSource(GridControl control)
         {
-            control.DataSource = GetList().Select(s => new { s.Id, s.Loai, s.Ten, s.GhiChu }).ToList();
+            control.DataSource = GetList().Select(s => new { s.Id, s.Loai, s.Ten, s.GhiChu, s.UserAccount.LoaiNguoiDung }).ToList();
         }
 
         public void Save(object data)

@@ -1,35 +1,32 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using TLShoes.Common;
 using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.ChiLenh
 {
-    public partial class ucChiLenhList : UserControl
+    public partial class ucChiLenhList : BaseForm
     {
         public ucChiLenhList()
         {
             InitializeComponent();
-
-            ReloadData();
-
-            ObserverControl.Regist("ucChiLenh", "ucChiLenhList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucChiLenhList", ReloadData);
-            ObserverControl.Regist("Close", "ucChiLenhList", ReloadData);
-            ObserverControl.Regist("Export", "ucChiLenhList", Export);
-
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDKT.ToString(), Color.Wheat, Color.Red);
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+
                 SF.Get<ChiLenhViewModel>().GetDataSource(gridControl);
                 FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
             });
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

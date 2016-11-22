@@ -160,6 +160,7 @@
         <EntityTypeShape EntityType="GiayTLModel.NhatKyXuatKho" Width="1.5" PointX="22" PointY="31.75" />
         <AssociationConnector Association="GiayTLModel.FK__NhatKyXua__ChiTi__5B438874" />
         <AssociationConnector Association="GiayTLModel.FK__NhatKyXua__Autho__5A4F643B" />
+        <EntityTypeShape EntityType="GiayTLModel.PhanQuyenNguoiDung" Width="1.5" PointX="0.75" PointY="3.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,23 +12,20 @@ using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.XuatKho
 {
-    public partial class ucXuatKhoList : UserControl
+    public partial class ucXuatKhoList : BaseForm
     {
         public ucXuatKhoList()
         {
             InitializeComponent();
-            ReloadData();
-
-            ObserverControl.Regist("ucXuatKho", "ucXuatKhoList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucXuatKhoList", ReloadData);
-            ObserverControl.Regist("Close", "ucXuatKhoList", ReloadData);
-            ObserverControl.Regist("Export", "ucXuatKhoList", Export);
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
                 SF.Get<PhieuXuatKhoViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -41,7 +38,7 @@ namespace TLShoes.FormControls.XuatKho
             });
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

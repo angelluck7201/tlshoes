@@ -31,6 +31,7 @@ namespace TLShoes.ViewModels
                 Kho = Define.KhoDic[PrimitiveConvert.StringToEnum<Define.Kho>(s.Kho)],
                 LoaiXuat = Define.LoaiXuatDic[PrimitiveConvert.StringToEnum<Define.LoaiXuat>(s.LoaiXuat)],
                 NgayXuatFormat = TimeHelper.TimeStampToDateTime(s.NgayXuat, "d"),
+                s.UserAccount.LoaiNguoiDung
             }).ToList();
         }
 

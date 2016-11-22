@@ -1,28 +1,24 @@
 ﻿using System;
+using System.Drawing;
 using TLShoes.Common;
 using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.MauSanXuat
 {
-    public partial class ucMauSanXuatList : BaseUserControl
+    public partial class ucMauSanXuatList : BaseForm
     {
         public ucMauSanXuatList()
         {
             InitializeComponent();
-
-            ReloadData();
-
-            ObserverControl.Regist("ucMauSanXuat", "ucMauSanXuatList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucMauSanXuatList", ReloadData);
-            ObserverControl.Regist("Close", "ucMauSanXuatList", ReloadData);
-            ObserverControl.Regist("Export", "ucMauSanXuatList", Export);
-
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDKT.ToString(), Color.Wheat, Color.Red);
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
                 SF.Get<MauSanXuatViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -35,7 +31,7 @@ namespace TLShoes.FormControls.MauSanXuat
             });
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

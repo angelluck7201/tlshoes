@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.Data;
 using TLShoes.Common;
@@ -6,24 +7,22 @@ using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.BaoCaoPhanXuong
 {
-    public partial class ucBaoCaoPhanXuongList : UserControl
+    public partial class ucBaoCaoPhanXuongList : BaseForm
     {
         public ucBaoCaoPhanXuongList()
         {
             InitializeComponent();
-
-            ReloadData();
-
-            ObserverControl.Regist("ucBaoCaoPhanXuong", "ucBaoCaoPhanXuongList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucBaoCaoPhanXuongList", ReloadData);
-            ObserverControl.Regist("Close", "ucBaoCaoPhanXuongList", ReloadData);
-            ObserverControl.Regist("Export", "ucBaoCaoPhanXuongList", Export);
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.PKH.ToString(), Color.Honeydew, Color.Green);
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+
                 SF.Get<BaoCaoPhanXuongViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -50,24 +49,5 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
                 FormFactory<Main>.Get().ShowPopupInfo(info);
             });
         }
-
-        private void gridView_CustomColumnSort(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
-        {
-            try
-            {
-                if (e.Column.FieldName == "BaoCaoNgayFormat")
-                {
-                    object val1 = gridView.GetListSourceRowCellValue(e.ListSourceRowIndex1, "IsEmptyRow");
-                    object val2 = gridView.GetListSourceRowCellValue(e.ListSourceRowIndex2, "IsEmptyRow");
-                    e.Handled = true;
-                    e.Result = System.Collections.Comparer.Default.Compare(TimeHelper.StringToTimeStamp(val1.ToString()), TimeHelper.StringToTimeStamp(val2.ToString()));
-                }
-            }
-            catch (Exception ee)
-            {
-                //...
-            }
-        }
-
     }
 }

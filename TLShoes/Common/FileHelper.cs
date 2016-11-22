@@ -41,7 +41,7 @@ namespace TLShoes.Common
 
         public static string DefaultImagePath
         {
-            get { return Path.Combine(ResourcePath, "default.png"); }
+            get { return Path.Combine(ImagePath, "default.png"); }
         }
 
         public static string ImagePath
@@ -94,7 +94,6 @@ namespace TLShoes.Common
             }
             return new KeyValuePair<int, int>(width, height);
         }
-
 
         public static string ImageSave(Image image, object name = null)
         {
@@ -161,20 +160,32 @@ namespace TLShoes.Common
             Image image = null;
             try
             {
-                using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                if (File.Exists(filePath))
                 {
-                    image = Image.FromStream(stream);
+                    using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                    {
+                        image = Image.FromStream(stream);
+                    }
+                }
+                else
+                {
+                    image = GetDefaultImage();
                 }
             }
             catch (Exception e)
             {
-                using (var stream = new FileStream(DefaultImagePath, FileMode.Open, FileAccess.Read))
-                {
-                    image = Image.FromStream(stream);
-                }
+                image = GetDefaultImage();
             }
             return image;
+        }
 
+        public static Image GetDefaultImage()
+        {
+            using (var stream = new FileStream(DefaultImagePath, FileMode.Open, FileAccess.Read))
+            {
+                var image = Image.FromStream(stream);
+                return image;
+            }
         }
     }
 }

@@ -97,5 +97,10 @@ namespace TLShoes
                 return result;
             }
         }
+
+        public string LoaiNguoiDung
+        {
+            get { return UserAccount.LoaiNguoiDung; }
+        }
     }
 }

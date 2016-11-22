@@ -29,6 +29,7 @@ namespace TLShoes.ViewModels
                     SoDH = s.DonHang.OrderNo,
                     NguoiDuyet = s.UserAccount.TenNguoiDung,
                     NgayDuyetFormat = TimeHelper.TimestampToString(s.NgayDuyet),
+                    s.UserAccount.LoaiNguoiDung
                 }).ToList();
         }
 

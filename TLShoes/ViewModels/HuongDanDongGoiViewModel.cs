@@ -33,6 +33,7 @@ namespace TLShoes.ViewModels
                 SoThung = s.DonHang.ChiTietDonHangs.Sum(d => d.SoLuong) / s.SoDoi,
                 Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh),
                 DoiThung = s.SoDoi,
+                s.UserAccount.LoaiNguoiDung
             }).ToList();
         }
 

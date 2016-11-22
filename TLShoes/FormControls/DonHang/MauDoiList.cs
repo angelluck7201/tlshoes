@@ -1,29 +1,26 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using TLShoes.Common;
 using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.DonHang
 {
-    public partial class ucMauDoiList : UserControl
+    public partial class ucMauDoiList : BaseForm
     {
         public ucMauDoiList()
         {
             InitializeComponent();
-
-            ReloadData();
-
-            ObserverControl.Regist("ucMauDoi", "ucMauDoiList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucMauDoiList", ReloadData);
-            ObserverControl.Regist("Close", "ucMauDoiList", ReloadData);
-            ObserverControl.Regist("Export", "ucMauDoiList", Export);
-
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDKT.ToString(), Color.Wheat, Color.Red);
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+
                 SF.Get<MauDoiViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -36,7 +33,7 @@ namespace TLShoes.FormControls.DonHang
             });
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

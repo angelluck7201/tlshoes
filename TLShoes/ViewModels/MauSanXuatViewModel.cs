@@ -34,7 +34,8 @@ namespace TLShoes.ViewModels
                     NgayGuiMauFormat = TimeHelper.TimestampToString(s.NgayGuiMau, "d"),
                     NgayKetQuaFormat = TimeHelper.TimestampToString(s.NgayKetqua, "d"),
                     PhanLoaiKetQua = s.DanhMuc.Ten,
-                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh)
+                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh),
+                    s.UserAccount.LoaiNguoiDung
                 }).ToList();
         }
 

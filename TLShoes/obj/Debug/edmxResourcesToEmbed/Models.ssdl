@@ -611,6 +611,18 @@
     <Property Name="NguoiNhan" Type="nvarchar" MaxLength="100" />
     <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="PhanQuyenNguoiDung">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedDate" Type="bigint" />
+    <Property Name="ModifiedDate" Type="bigint" />
+    <Property Name="IsActived" Type="bit" />
+    <Property Name="LoaiNguoiDung" Type="text" />
+    <Property Name="Feature" Type="nvarchar" MaxLength="50" />
+    <Property Name="Permission" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="PhieuNhapKho">
     <Key>
       <PropertyRef Name="Id" />
@@ -714,6 +726,11 @@
     <Property Name="TenNguoiDung" Type="nvarchar" MaxLength="50" />
     <Property Name="MatKhau" Type="text" />
     <Property Name="LoaiNguoiDung" Type="text" />
+    <Property Name="TenNhanVien" Type="nvarchar" MaxLength="100" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="CMND" Type="varchar" MaxLength="20" />
+    <Property Name="Dienthoai" Type="varchar" MaxLength="20" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
   </EntityType>
   <Association Name="FK__BaoCaoPha__Autho__534D60F1">
     <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
@@ -2141,6 +2158,7 @@
     <EntitySet Name="NhaCungCapVatTu" EntityType="Self.NhaCungCapVatTu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NhatKyThayDoi" EntityType="Self.NhatKyThayDoi" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NhatKyXuatKho" EntityType="Self.NhatKyXuatKho" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhanQuyenNguoiDung" EntityType="Self.PhanQuyenNguoiDung" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PhieuNhapKho" EntityType="Self.PhieuNhapKho" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PhieuXuatKho" EntityType="Self.PhieuXuatKho" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />

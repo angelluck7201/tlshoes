@@ -187,14 +187,11 @@ C:\Users\nguye\Desktop\tlshoes\TLShoes\bin\Debug\es\DevExpress.XtraPrinting.v15.
 C:\Users\nguye\Desktop\tlshoes\TLShoes\bin\Debug\ja\DevExpress.XtraPrinting.v15.1.resources.dll
 C:\Users\nguye\Desktop\tlshoes\TLShoes\bin\Debug\ru\DevExpress.XtraPrinting.v15.1.resources.dll
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.csprojResolveAssemblyReference.cache
-C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.BangThongSo.ucBangThongSo.resources
-C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.BangThongSo.ucBangThongSoList.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.BaoCaoPhanXuong.ucBaoCaoPhanXuong.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.BaoCaoPhanXuong.ucBaoCaoPhanXuongList.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.ChiLenh.ucChiLenh.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.ChiLenh.ucChiLenhList.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.ChiLenh.ucChiTietNguyenLieu.resources
-C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.ChiLenh.ChiTietNguyenLieuForm.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.CongNgheSanXuat.ucCongNgheSanXuat.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.CongNgheSanXuat.ucCongNgheSanXuatList.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.ucDanhMuc.resources
@@ -225,7 +222,6 @@ C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.MauThuDao.
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.MauSanXuat.ucMauSanXuatList.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.MauSanXuat.ucMauSanXuat.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.TongHopMauTest.ucTongHopMauTestList.resources
-C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.ChiLenh.ucNguyenLieuChiLenh.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.XuatKho.ucXuatKho.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.XuatKho.ucXuatKhoList.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.NhapKho.ucNhapKho.resources
@@ -252,3 +248,7 @@ C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.csproj.ResolveComRefere
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.LoginForm.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.Form.NhatKyThayDoi.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.ucNhatKyXuatKho.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.QuanLyNguoiDung.ucPhanQuyen.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.QuanLyNguoiDung.ucPhanQuyenList.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.QuanLyNguoiDung.ucUserAccount.resources
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.QuanLyNguoiDung.ucUserAccountList.resources

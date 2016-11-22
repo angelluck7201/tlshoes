@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid;
 using TLShoes.Common;
 using TLShoes.ViewModels;
 
@@ -11,10 +14,12 @@ namespace TLShoes
         {
             InitializeComponent();
             Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
         }
 
 
-        protected override void ReloadData()
+
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
@@ -31,7 +36,7 @@ namespace TLShoes
             });
         }
 
-        protected override void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

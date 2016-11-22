@@ -33,7 +33,8 @@ namespace TLShoes.ViewModels
                 KhachHang = s.KhachHang.TenCongTy,
                 ApDungTuNgay = TimeHelper.TimestampToString(s.ApDungTuNgay, "d"),
                 ApDungDenNgay = TimeHelper.TimestampToString(s.ApDungDenNgay, "d"),
-                s.GhiChu
+                s.GhiChu,
+                s.UserAccount.LoaiNguoiDung
             }).ToList();
         }
 

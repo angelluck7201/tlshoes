@@ -52,7 +52,6 @@
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CongNgheSanXuat_HinhBangThongSo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -183,7 +182,7 @@
             // lblCongNgheDuocDuyet
             // 
             this.lblCongNgheDuocDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblCongNgheDuocDuyet.Location = new System.Drawing.Point(133, 644);
+            this.lblCongNgheDuocDuyet.Location = new System.Drawing.Point(896, 256);
             this.lblCongNgheDuocDuyet.Name = "lblCongNgheDuocDuyet";
             this.lblCongNgheDuocDuyet.Size = new System.Drawing.Size(164, 17);
             this.lblCongNgheDuocDuyet.TabIndex = 79;
@@ -192,7 +191,7 @@
             // lblBangThongSo
             // 
             this.lblBangThongSo.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblBangThongSo.Location = new System.Drawing.Point(477, 644);
+            this.lblBangThongSo.Location = new System.Drawing.Point(924, 563);
             this.lblBangThongSo.Name = "lblBangThongSo";
             this.lblBangThongSo.Size = new System.Drawing.Size(107, 17);
             this.lblBangThongSo.TabIndex = 80;
@@ -200,20 +199,20 @@
             // 
             // CongNgheSanXuat_HinhCongNgheDuocDuyet
             // 
-            this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Location = new System.Drawing.Point(76, 445);
+            this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Location = new System.Drawing.Point(744, 23);
             this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Name = "CongNgheSanXuat_HinhCongNgheDuocDuyet";
             this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Size = new System.Drawing.Size(253, 180);
+            this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Size = new System.Drawing.Size(496, 216);
             this.CongNgheSanXuat_HinhCongNgheDuocDuyet.TabIndex = 7;
             // 
             // CongNgheSanXuat_HinhBangThongSo
             // 
-            this.CongNgheSanXuat_HinhBangThongSo.Location = new System.Drawing.Point(405, 445);
+            this.CongNgheSanXuat_HinhBangThongSo.Location = new System.Drawing.Point(744, 307);
             this.CongNgheSanXuat_HinhBangThongSo.Name = "CongNgheSanXuat_HinhBangThongSo";
             this.CongNgheSanXuat_HinhBangThongSo.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.CongNgheSanXuat_HinhBangThongSo.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.CongNgheSanXuat_HinhBangThongSo.Size = new System.Drawing.Size(253, 180);
+            this.CongNgheSanXuat_HinhBangThongSo.Size = new System.Drawing.Size(496, 233);
             this.CongNgheSanXuat_HinhBangThongSo.TabIndex = 8;
             // 
             // xtraTabControl1
@@ -227,7 +226,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(3, 3);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(708, 770);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1281, 641);
             this.xtraTabControl1.TabIndex = 83;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -266,7 +265,7 @@
             this.xtraTabPage2.Controls.Add(this.CongNgheSanXuat_YKienThuDao);
             this.xtraTabPage2.Controls.Add(this.lblYKienThuDao);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(701, 734);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1274, 605);
             this.xtraTabPage2.Text = "Công nghệ sản xuất";
             // 
             // xtraTabPage1
@@ -294,8 +293,8 @@
             this.btnSave.Appearance.Options.UseBackColor = true;
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
-            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(445, 798);
+            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnSave.Location = new System.Drawing.Point(1185, 671);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 15;
@@ -309,39 +308,23 @@
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(7, 798);
+            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnCancel.Location = new System.Drawing.Point(12, 671);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Hủy";
-            // 
-            // btnSaveContinue
-            // 
-            this.btnSaveContinue.Appearance.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnSaveContinue.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnSaveContinue.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSaveContinue.Appearance.Options.UseBackColor = true;
-            this.btnSaveContinue.Appearance.Options.UseFont = true;
-            this.btnSaveContinue.Appearance.Options.UseForeColor = true;
-            this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(526, 798);
-            this.btnSaveContinue.Name = "btnSaveContinue";
-            this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 17;
-            this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // ucCongNgheSanXuat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.btnSaveContinue);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Name = "ucCongNgheSanXuat";
-            this.Size = new System.Drawing.Size(712, 838);
+            this.Size = new System.Drawing.Size(1284, 722);
             ((System.ComponentModel.ISupportInitialize)(this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CongNgheSanXuat_HinhBangThongSo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
@@ -379,6 +362,5 @@
         private Form.DefaultInfo defaultInfo;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
-        private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
     }
 }

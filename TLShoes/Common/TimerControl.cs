@@ -5,7 +5,7 @@ namespace TLShoes.Common
 {
     public class TimerControl
     {
-        const int INTERVAL_RELOAD = 10 * 1000; // 10 seconds
+        public const int INTERVAL_RELOAD = 60 * 1000; // 15 seconds
 
 
         private static Timer _timer;

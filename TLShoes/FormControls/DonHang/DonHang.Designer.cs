@@ -40,6 +40,14 @@
             this.DonHang_HinhAnh = new DevExpress.XtraEditors.PictureEdit();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.DonHang_DeId = new System.Windows.Forms.ComboBox();
+            this.lblDeId = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_DatLotTayId = new System.Windows.Forms.ComboBox();
+            this.lblDaLotTayId = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_LotId = new System.Windows.Forms.ComboBox();
+            this.lblLotId = new DevExpress.XtraEditors.LabelControl();
+            this.DonHang_MuId = new System.Windows.Forms.ComboBox();
+            this.lblMuId = new DevExpress.XtraEditors.LabelControl();
             this.DonHang_MaPhomId = new System.Windows.Forms.ComboBox();
             this.DonHang_KhachHangId = new System.Windows.Forms.ComboBox();
             this.DonHang_NgayXuat = new System.Windows.Forms.DateTimePicker();
@@ -96,14 +104,6 @@
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
-            this.DonHang_MuId = new System.Windows.Forms.ComboBox();
-            this.lblMuId = new DevExpress.XtraEditors.LabelControl();
-            this.DonHang_LotId = new System.Windows.Forms.ComboBox();
-            this.lblLotId = new DevExpress.XtraEditors.LabelControl();
-            this.DonHang_DatLotTayId = new System.Windows.Forms.ComboBox();
-            this.lblDaLotTayId = new DevExpress.XtraEditors.LabelControl();
-            this.DonHang_DeId = new System.Windows.Forms.ComboBox();
-            this.lblDeId = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -294,6 +294,74 @@
             this.xtraTabPage2.Size = new System.Drawing.Size(721, 664);
             this.xtraTabPage2.Text = "Thông tin đơn hàng";
             // 
+            // DonHang_DeId
+            // 
+            this.DonHang_DeId.FormattingEnabled = true;
+            this.DonHang_DeId.Location = new System.Drawing.Point(159, 619);
+            this.DonHang_DeId.Name = "DonHang_DeId";
+            this.DonHang_DeId.Size = new System.Drawing.Size(529, 24);
+            this.DonHang_DeId.TabIndex = 67;
+            // 
+            // lblDeId
+            // 
+            this.lblDeId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDeId.Location = new System.Drawing.Point(31, 623);
+            this.lblDeId.Name = "lblDeId";
+            this.lblDeId.Size = new System.Drawing.Size(19, 17);
+            this.lblDeId.TabIndex = 68;
+            this.lblDeId.Text = "Đế";
+            // 
+            // DonHang_DatLotTayId
+            // 
+            this.DonHang_DatLotTayId.FormattingEnabled = true;
+            this.DonHang_DatLotTayId.Location = new System.Drawing.Point(159, 579);
+            this.DonHang_DatLotTayId.Name = "DonHang_DatLotTayId";
+            this.DonHang_DatLotTayId.Size = new System.Drawing.Size(529, 24);
+            this.DonHang_DatLotTayId.TabIndex = 65;
+            // 
+            // lblDaLotTayId
+            // 
+            this.lblDaLotTayId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDaLotTayId.Location = new System.Drawing.Point(31, 583);
+            this.lblDaLotTayId.Name = "lblDaLotTayId";
+            this.lblDaLotTayId.Size = new System.Drawing.Size(74, 17);
+            this.lblDaLotTayId.TabIndex = 66;
+            this.lblDaLotTayId.Text = "Da Lót Tẩy";
+            // 
+            // DonHang_LotId
+            // 
+            this.DonHang_LotId.FormattingEnabled = true;
+            this.DonHang_LotId.Location = new System.Drawing.Point(159, 539);
+            this.DonHang_LotId.Name = "DonHang_LotId";
+            this.DonHang_LotId.Size = new System.Drawing.Size(529, 24);
+            this.DonHang_LotId.TabIndex = 63;
+            // 
+            // lblLotId
+            // 
+            this.lblLotId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblLotId.Location = new System.Drawing.Point(31, 543);
+            this.lblLotId.Name = "lblLotId";
+            this.lblLotId.Size = new System.Drawing.Size(74, 17);
+            this.lblLotId.TabIndex = 64;
+            this.lblLotId.Text = "Vật Tư Lót";
+            // 
+            // DonHang_MuId
+            // 
+            this.DonHang_MuId.FormattingEnabled = true;
+            this.DonHang_MuId.Location = new System.Drawing.Point(159, 494);
+            this.DonHang_MuId.Name = "DonHang_MuId";
+            this.DonHang_MuId.Size = new System.Drawing.Size(529, 24);
+            this.DonHang_MuId.TabIndex = 61;
+            // 
+            // lblMuId
+            // 
+            this.lblMuId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblMuId.Location = new System.Drawing.Point(31, 498);
+            this.lblMuId.Name = "lblMuId";
+            this.lblMuId.Size = new System.Drawing.Size(72, 17);
+            this.lblMuId.TabIndex = 62;
+            this.lblMuId.Text = "Vật Tư Mũ";
+            // 
             // DonHang_MaPhomId
             // 
             this.DonHang_MaPhomId.FormattingEnabled = true;
@@ -389,7 +457,7 @@
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.defaultInfo);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(721, 556);
+            this.xtraTabPage1.Size = new System.Drawing.Size(721, 664);
             this.xtraTabPage1.Text = "Thông tin người dùng";
             // 
             // defaultInfo
@@ -397,7 +465,7 @@
             this.defaultInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defaultInfo.Location = new System.Drawing.Point(0, 0);
             this.defaultInfo.Name = "defaultInfo";
-            this.defaultInfo.Size = new System.Drawing.Size(721, 556);
+            this.defaultInfo.Size = new System.Drawing.Size(721, 664);
             this.defaultInfo.TabIndex = 11;
             // 
             // xtraTabPage3
@@ -424,7 +492,7 @@
             this.xtraTabPage3.Controls.Add(this.DonHang_GopYXuongMay);
             this.xtraTabPage3.Controls.Add(this.DonHang_GopYXuongDe);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(721, 556);
+            this.xtraTabPage3.Size = new System.Drawing.Size(721, 664);
             this.xtraTabPage3.Text = "Góp ý";
             // 
             // gridGopY
@@ -577,7 +645,7 @@
             this.xtraTabPage4.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage4.Controls.Add(this.gridControl);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(721, 556);
+            this.xtraTabPage4.Size = new System.Drawing.Size(721, 664);
             this.xtraTabPage4.Text = "Đơn hàng";
             // 
             // xtraTabPage5
@@ -610,7 +678,7 @@
             this.xtraTabPage5.Controls.Add(this.lblDungThoiGian);
             this.xtraTabPage5.Controls.Add(this.DonHang_DungThoiGian);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(721, 556);
+            this.xtraTabPage5.Size = new System.Drawing.Size(721, 664);
             this.xtraTabPage5.Text = "Đánh Giá";
             // 
             // panelControl1
@@ -875,7 +943,7 @@
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnCancel.Location = new System.Drawing.Point(4, 724);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
@@ -890,7 +958,7 @@
             this.btnSave.Appearance.Options.UseBackColor = true;
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
-            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnSave.Location = new System.Drawing.Point(465, 724);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
@@ -905,80 +973,12 @@
             this.btnSaveContinue.Appearance.Options.UseBackColor = true;
             this.btnSaveContinue.Appearance.Options.UseFont = true;
             this.btnSaveContinue.Appearance.Options.UseForeColor = true;
-            this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnSaveContinue.Location = new System.Drawing.Point(546, 724);
             this.btnSaveContinue.Name = "btnSaveContinue";
             this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
             this.btnSaveContinue.TabIndex = 57;
             this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
-            // 
-            // DonHang_MuId
-            // 
-            this.DonHang_MuId.FormattingEnabled = true;
-            this.DonHang_MuId.Location = new System.Drawing.Point(159, 494);
-            this.DonHang_MuId.Name = "DonHang_MuId";
-            this.DonHang_MuId.Size = new System.Drawing.Size(529, 24);
-            this.DonHang_MuId.TabIndex = 61;
-            // 
-            // lblMuId
-            // 
-            this.lblMuId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblMuId.Location = new System.Drawing.Point(31, 498);
-            this.lblMuId.Name = "lblMuId";
-            this.lblMuId.Size = new System.Drawing.Size(72, 17);
-            this.lblMuId.TabIndex = 62;
-            this.lblMuId.Text = "Vật Tư Mũ";
-            // 
-            // DonHang_LotId
-            // 
-            this.DonHang_LotId.FormattingEnabled = true;
-            this.DonHang_LotId.Location = new System.Drawing.Point(159, 539);
-            this.DonHang_LotId.Name = "DonHang_LotId";
-            this.DonHang_LotId.Size = new System.Drawing.Size(529, 24);
-            this.DonHang_LotId.TabIndex = 63;
-            // 
-            // lblLotId
-            // 
-            this.lblLotId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblLotId.Location = new System.Drawing.Point(31, 543);
-            this.lblLotId.Name = "lblLotId";
-            this.lblLotId.Size = new System.Drawing.Size(74, 17);
-            this.lblLotId.TabIndex = 64;
-            this.lblLotId.Text = "Vật Tư Lót";
-            // 
-            // DonHang_DatLotTayId
-            // 
-            this.DonHang_DatLotTayId.FormattingEnabled = true;
-            this.DonHang_DatLotTayId.Location = new System.Drawing.Point(159, 579);
-            this.DonHang_DatLotTayId.Name = "DonHang_DatLotTayId";
-            this.DonHang_DatLotTayId.Size = new System.Drawing.Size(529, 24);
-            this.DonHang_DatLotTayId.TabIndex = 65;
-            // 
-            // lblDaLotTayId
-            // 
-            this.lblDaLotTayId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDaLotTayId.Location = new System.Drawing.Point(31, 583);
-            this.lblDaLotTayId.Name = "lblDaLotTayId";
-            this.lblDaLotTayId.Size = new System.Drawing.Size(74, 17);
-            this.lblDaLotTayId.TabIndex = 66;
-            this.lblDaLotTayId.Text = "Da Lót Tẩy";
-            // 
-            // DonHang_DeId
-            // 
-            this.DonHang_DeId.FormattingEnabled = true;
-            this.DonHang_DeId.Location = new System.Drawing.Point(159, 619);
-            this.DonHang_DeId.Name = "DonHang_DeId";
-            this.DonHang_DeId.Size = new System.Drawing.Size(529, 24);
-            this.DonHang_DeId.TabIndex = 67;
-            // 
-            // lblDeId
-            // 
-            this.lblDeId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDeId.Location = new System.Drawing.Point(31, 623);
-            this.lblDeId.Name = "lblDeId";
-            this.lblDeId.Size = new System.Drawing.Size(19, 17);
-            this.lblDeId.TabIndex = 68;
-            this.lblDeId.Text = "Đế";
             // 
             // ucDonHang
             // 

@@ -13,6 +13,13 @@ alter table UserAccount add MatKhau text
 alter table UserAccount add LoaiNguoiDung text
 alter table UserAccount alter column CreatedDate bigint not null
 alter table UserAccount alter column ModifiedDate bigint not null
+
+alter table UserAccount add TenNhanVien nvarchar(100) default ''
+alter table UserAccount add DiaChi nvarchar(100) default ''
+alter table UserAccount add CMND varchar(20) default ''
+alter table UserAccount add Dienthoai varchar(20) default ''
+alter table UserAccount add GhiChu nvarchar(1000) default ''
+
 create table UserAccount(
 Id bigint primary key identity(1,1),
 CreatedDate bigint not null,
@@ -22,7 +29,36 @@ IsActived bit,
 TenNguoiDung nvarchar(50),
 MatKhau text,
 LoaiNguoiDung text,
+TenNhanVien nvarchar(100) default '',
+DiaChi nvarchar(100) default '',
+CMND varchar(20) default '',
+Dienthoai varchar(20) default '',
+GhiChu nvarchar(1000) default '',
 );
+
+create table PhanQuyenNguoiDung(
+Id bigint primary key identity(1,1),
+CreatedDate bigint default 0,
+ModifiedDate bigint default 0,
+IsActived bit default 1,
+
+LoaiNguoiDung text,
+Feature nvarchar(50) default '',
+Permission nvarchar (50) default 'VIEW',
+)
+
+insert PhanQuyenNguoiDung(CreatedDate,ModifiedDate,IsActived,LoaiNguoiDung, Feature, Permission) values (123,456,1, 'NV', 'DanhMuc', 'VIEW')
+insert PhanQuyenNguoiDung(CreatedDate,ModifiedDate,IsActived,LoaiNguoiDung, Feature, Permission) values (123,456,1, 'CBDH', 'DanhMuc', 'VIEW')
+insert PhanQuyenNguoiDung(CreatedDate,ModifiedDate,IsActived,LoaiNguoiDung, Feature, Permission) values (123,456,1, 'PVT', 'DanhMuc', 'VIEW')
+insert PhanQuyenNguoiDung(CreatedDate,ModifiedDate,IsActived,LoaiNguoiDung, Feature, Permission) values (123,456,1, 'PKT', 'DanhMuc', 'VIEW')
+insert PhanQuyenNguoiDung(CreatedDate,ModifiedDate,IsActived,LoaiNguoiDung, Feature, Permission) values (123,456,1, 'QC', 'DanhMuc', 'VIEW')
+insert PhanQuyenNguoiDung(CreatedDate,ModifiedDate,IsActived,LoaiNguoiDung, Feature, Permission) values (123,456,1, 'PKH', 'DanhMuc', 'VIEW')
+insert PhanQuyenNguoiDung(CreatedDate,ModifiedDate,IsActived,LoaiNguoiDung, Feature, Permission) values (123,456,1, 'THU_KHO', 'DanhMuc', 'VIEW')
+insert PhanQuyenNguoiDung(CreatedDate,ModifiedDate,IsActived,LoaiNguoiDung, Feature, Permission) values (123,456,1, 'TRUONG_PKT', 'DanhMuc', 'VIEW')
+insert PhanQuyenNguoiDung(CreatedDate,ModifiedDate,IsActived,LoaiNguoiDung, Feature, Permission) values (123,456,1, 'TRUONG_PVT', 'DanhMuc', 'VIEW')
+insert PhanQuyenNguoiDung(CreatedDate,ModifiedDate,IsActived,LoaiNguoiDung, Feature, Permission) values (123,456,1, 'PX', 'DanhMuc', 'VIEW')
+insert PhanQuyenNguoiDung(CreatedDate,ModifiedDate,IsActived,LoaiNguoiDung, Feature, Permission) values (123,456,1, 'GDKT', 'DanhMuc', 'VIEW')
+insert PhanQuyenNguoiDung(CreatedDate,ModifiedDate,IsActived,LoaiNguoiDung, Feature, Permission) values (123,456,1, 'GDSX', 'DanhMuc', 'VIEW')
 
 
 insert UserAccount(CreatedDate,ModifiedDate,IsActived,TenNguoiDung, MatKhau, LoaiNguoiDung) values (123,456,1, 'admin', '123456', 'ADMIN')

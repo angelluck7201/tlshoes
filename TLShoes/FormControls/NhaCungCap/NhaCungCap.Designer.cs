@@ -92,7 +92,6 @@
             this.NhaCungCap_GhiChuNoiBo = new System.Windows.Forms.RichTextBox();
             this.NhaCungCap_GhiChu = new System.Windows.Forms.RichTextBox();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -212,21 +211,21 @@
             // 
             this.NhaCungCap_Email.Location = new System.Drawing.Point(191, 220);
             this.NhaCungCap_Email.Name = "NhaCungCap_Email";
-            this.NhaCungCap_Email.Size = new System.Drawing.Size(577, 22);
+            this.NhaCungCap_Email.Size = new System.Drawing.Size(588, 22);
             this.NhaCungCap_Email.TabIndex = 5;
             // 
             // NhaCungCap_MatHang
             // 
             this.NhaCungCap_MatHang.Location = new System.Drawing.Point(191, 142);
             this.NhaCungCap_MatHang.Name = "NhaCungCap_MatHang";
-            this.NhaCungCap_MatHang.Size = new System.Drawing.Size(577, 22);
+            this.NhaCungCap_MatHang.Size = new System.Drawing.Size(588, 22);
             this.NhaCungCap_MatHang.TabIndex = 3;
             // 
             // NhaCungCap_TenNguoiDaiDien
             // 
             this.NhaCungCap_TenNguoiDaiDien.Location = new System.Drawing.Point(191, 181);
             this.NhaCungCap_TenNguoiDaiDien.Name = "NhaCungCap_TenNguoiDaiDien";
-            this.NhaCungCap_TenNguoiDaiDien.Size = new System.Drawing.Size(577, 22);
+            this.NhaCungCap_TenNguoiDaiDien.Size = new System.Drawing.Size(588, 22);
             this.NhaCungCap_TenNguoiDaiDien.TabIndex = 4;
             // 
             // lblTenNguoiDaiDien
@@ -242,7 +241,7 @@
             // 
             this.NhaCungCap_Dienthoai.Location = new System.Drawing.Point(191, 64);
             this.NhaCungCap_Dienthoai.Name = "NhaCungCap_Dienthoai";
-            this.NhaCungCap_Dienthoai.Size = new System.Drawing.Size(577, 22);
+            this.NhaCungCap_Dienthoai.Size = new System.Drawing.Size(588, 22);
             this.NhaCungCap_Dienthoai.TabIndex = 1;
             // 
             // lblDiaChi
@@ -258,14 +257,14 @@
             // 
             this.NhaCungCap_TenCongTy.Location = new System.Drawing.Point(191, 25);
             this.NhaCungCap_TenCongTy.Name = "NhaCungCap_TenCongTy";
-            this.NhaCungCap_TenCongTy.Size = new System.Drawing.Size(577, 22);
+            this.NhaCungCap_TenCongTy.Size = new System.Drawing.Size(588, 22);
             this.NhaCungCap_TenCongTy.TabIndex = 0;
             // 
             // NhaCungCap_DiaChi
             // 
             this.NhaCungCap_DiaChi.Location = new System.Drawing.Point(191, 259);
             this.NhaCungCap_DiaChi.Name = "NhaCungCap_DiaChi";
-            this.NhaCungCap_DiaChi.Size = new System.Drawing.Size(577, 122);
+            this.NhaCungCap_DiaChi.Size = new System.Drawing.Size(588, 122);
             this.NhaCungCap_DiaChi.TabIndex = 6;
             this.NhaCungCap_DiaChi.Text = "";
             // 
@@ -273,7 +272,7 @@
             // 
             this.NhaCungCap_Fax.Location = new System.Drawing.Point(191, 103);
             this.NhaCungCap_Fax.Name = "NhaCungCap_Fax";
-            this.NhaCungCap_Fax.Size = new System.Drawing.Size(577, 22);
+            this.NhaCungCap_Fax.Size = new System.Drawing.Size(588, 22);
             this.NhaCungCap_Fax.TabIndex = 2;
             // 
             // lblFax
@@ -344,6 +343,10 @@
             // 
             // gridViewNguyenLieu
             // 
+            this.gridViewNguyenLieu.Appearance.BandPanel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridViewNguyenLieu.Appearance.BandPanel.Options.UseFont = true;
+            this.gridViewNguyenLieu.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridViewNguyenLieu.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridViewNguyenLieu.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBand1,
             this.gridBand2});
@@ -362,6 +365,7 @@
             this.gridViewNguyenLieu.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Inplace;
             this.gridViewNguyenLieu.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
             this.gridViewNguyenLieu.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+            this.gridViewNguyenLieu.OptionsView.ShowGroupPanel = false;
             this.gridViewNguyenLieu.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn3, DevExpress.Data.ColumnSortOrder.Descending)});
             // 
@@ -850,26 +854,11 @@
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
             this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(4, 504);
+            this.btnCancel.Location = new System.Drawing.Point(14, 504);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Hủy";
-            // 
-            // btnSaveContinue
-            // 
-            this.btnSaveContinue.Appearance.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnSaveContinue.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnSaveContinue.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSaveContinue.Appearance.Options.UseBackColor = true;
-            this.btnSaveContinue.Appearance.Options.UseFont = true;
-            this.btnSaveContinue.Appearance.Options.UseForeColor = true;
-            this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(623, 504);
-            this.btnSaveContinue.Name = "btnSaveContinue";
-            this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 1;
-            this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // btnSave
             // 
@@ -880,7 +869,7 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(542, 504);
+            this.btnSave.Location = new System.Drawing.Point(708, 504);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 0;
@@ -891,7 +880,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.btnSaveContinue);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
@@ -985,7 +973,6 @@
         private System.Windows.Forms.RichTextBox NhaCungCap_GhiChuNoiBo;
         private System.Windows.Forms.RichTextBox NhaCungCap_GhiChu;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
-        private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
         private DevExpress.XtraGrid.GridControl gridNguyenLieu;

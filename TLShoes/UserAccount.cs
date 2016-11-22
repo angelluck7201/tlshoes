@@ -72,6 +72,11 @@ namespace TLShoes
         public string TenNguoiDung { get; set; }
         public string MatKhau { get; set; }
         public string LoaiNguoiDung { get; set; }
+        public string TenNhanVien { get; set; }
+        public string DiaChi { get; set; }
+        public string CMND { get; set; }
+        public string Dienthoai { get; set; }
+        public string GhiChu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaoCaoPhanXuong> BaoCaoPhanXuongs { get; set; }

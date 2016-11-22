@@ -29,10 +29,5 @@ namespace TLShoes.FormControls.ChiLenh
             NguyenLieuLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
           
         }
-
-        public void SetData(ucNguyenLieuChiLenh data)
-        {
-            //gridControl.DataSource = data.ChiTietNguyenLieux;
-        }
     }
 }

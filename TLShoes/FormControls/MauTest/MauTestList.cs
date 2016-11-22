@@ -1,29 +1,26 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using TLShoes.Common;
 using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.MauTest
 {
-    public partial class ucMauTestList : UserControl
+    public partial class ucMauTestList : BaseForm
     {
         public ucMauTestList()
         {
             InitializeComponent();
-
-            ReloadData();
-
-            ObserverControl.Regist("ucMauTest", "ucMauTestList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucMauTestList", ReloadData);
-            ObserverControl.Regist("Close", "ucMauTestList", ReloadData);
-            ObserverControl.Regist("Export", "ucMauTestList", Export);
-
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDKT.ToString(), Color.Wheat, Color.Red);
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+
                 SF.Get<MauTestViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -36,7 +33,7 @@ namespace TLShoes.FormControls.MauTest
             });
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

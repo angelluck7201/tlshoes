@@ -40,7 +40,8 @@ namespace TLShoes.ViewModels
                     NgayHoanThanhPxDeFormat = TimeHelper.TimeStampToDateTime(s.NgayHoanThanhPxDe, "d"),
                     NgayBatDauBpVatTuFormat = TimeHelper.TimeStampToDateTime(s.NgayBatDauBpVatTu, "d"),
                     NgayHoanThanhBpVatTuFormat = TimeHelper.TimeStampToDateTime(s.NgayHoanThanhBpVatTu, "d"),
-                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh)
+                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh),
+                    s.UserAccount.LoaiNguoiDung,
                 }).ToList();
         }
 

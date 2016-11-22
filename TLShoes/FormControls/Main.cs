@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.Mvvm.Native;
 using DevExpress.Utils.Drawing;
@@ -22,6 +23,7 @@ using TLShoes.FormControls.MauThuDao;
 using TLShoes.FormControls.NguyenLieu;
 using TLShoes.FormControls.NhaCungCap;
 using TLShoes.FormControls.NhapKho;
+using TLShoes.FormControls.QuanLyNguoiDung;
 using TLShoes.FormControls.TheKho;
 using TLShoes.FormControls.TongHopMauTest;
 using TLShoes.FormControls.ToTrinh;
@@ -43,6 +45,7 @@ namespace TLShoes
         public Main()
         {
             InitializeComponent();
+            this.AutoScaleDimensions = new SizeF(6f, 13f);
 
             FeaturesDict.Add(btnSave.Name, btnSave);
             FeaturesDict.Add(btnRefresh.Name, btnRefresh);
@@ -151,6 +154,8 @@ namespace TLShoes
                     control.Visible = true;
                 }
             }
+
+            groupBoxView.Controls.Clear();
             groupBoxView.Controls.Add(controlList);
             controlList.Dock = DockStyle.Fill;
             controlList.BringToFront();
@@ -326,6 +331,17 @@ namespace TLShoes
             currentControl = typeof(ucTheKhoList);
             groupBoxView.Text = "Thẻ kho";
             GenerateUltilsForm(ucList, new List<string>() { "btnSave" });
+        }
+
+        private void navNguoiDung_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucUserAccountList, ucUserAccount, UserAccount>("Người Dùng");
+
+        }
+
+        private void navPhanQuyen_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            InitDefault<ucPhanQuyenList, ucPhanQuyen, PhanQuyenNguoiDung>("Phân Quyền");
         }
     }
 }

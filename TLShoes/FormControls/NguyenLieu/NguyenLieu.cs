@@ -6,9 +6,11 @@ namespace TLShoes.FormControls.NguyenLieu
 {
     public partial class ucNguyenLieu : BaseUserControl
     {
+        private TLShoes.NguyenLieu _domainData;
         public ucNguyenLieu(TLShoes.NguyenLieu data = null)
         {
             InitializeComponent();
+            _domainData = data;
 
             NguyenLieu_LoaiNguyenLieuId.DisplayMember = "Ten";
             NguyenLieu_LoaiNguyenLieuId.ValueMember = "Id";
@@ -35,6 +37,7 @@ namespace TLShoes.FormControls.NguyenLieu
             }
 
             var saveData = CRUD.GetFormObject<TLShoes.NguyenLieu>(FormControls);
+            CRUD.DecorateSaveData(saveData, _domainData == null);
             SF.Get<NguyenLieuViewModel>().Save(saveData);
             return true;
         }
@@ -42,11 +45,6 @@ namespace TLShoes.FormControls.NguyenLieu
         public string ValidateInput()
         {
             return string.Empty;
-        }
-
-        private void NguyenLieu_SoLuong_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            FormValidate.ValidateInputNumber(sender, e);
         }
     }
 }

@@ -1,27 +1,26 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using TLShoes.Common;
 using TLShoes.ViewModels;
 
 namespace TLShoes
 {
-    public partial class ucKhachHangList : UserControl
+    public partial class ucKhachHangList : BaseForm
     {
         public ucKhachHangList()
         {
             InitializeComponent();
-            ReloadData();
-            ObserverControl.Regist("ucKhachHang", "ucKhachHangList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucKhachHangList", ReloadData);
-            ObserverControl.Regist("Close", "ucKhachHangList", ReloadData);
-            ObserverControl.Regist("Export", "ucKhachHangList", Export);
-
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+                
                 SF.Get<KhachHangViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -32,9 +31,9 @@ namespace TLShoes
                     FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
                 }
             });
-          }
+        }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

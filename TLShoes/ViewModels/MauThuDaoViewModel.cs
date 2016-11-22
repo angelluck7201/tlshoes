@@ -35,7 +35,8 @@ namespace TLShoes.ViewModels
                     SoDH = s.DonHang.OrderNo,
                     NgayBatDauFormat = TimeHelper.TimestampToString(s.NgayBatDau, "d"),
                     NgayHoanThanhFormat = TimeHelper.TimestampToString(s.NgayHoanThanh, "d"),
-                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh)
+                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh),
+                    s.UserAccount.LoaiNguoiDung
                 }).ToList();
         }
 

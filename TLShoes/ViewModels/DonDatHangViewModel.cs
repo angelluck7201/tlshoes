@@ -40,7 +40,8 @@ namespace TLShoes.ViewModels
                 NgayGiaoHang = TimeHelper.TimestampToString(s.NgayGiaoHang, "d"),
                 SoLuong = s.ChiTietDonDatHangs.Sum(a => a.SoLuong),
                 SoLuongThuc = s.ChiTietDonDatHangs.Sum(a => a.SoLuongThuc),
-                DanhGia = (new List<int?>() { s.Gia, s.DichVuGiaoHang, s.DatTestHoa, s.DatTestLy, s.DichVuHauMai, s.DungThoiGian, s.DichVuHauMai, s.DungYeuCauKyThuat, s.Khac }.Where(a => a > 0).Average())
+                DanhGia = (new List<int?>() { s.Gia, s.DichVuGiaoHang, s.DatTestHoa, s.DatTestLy, s.DichVuHauMai, s.DungThoiGian, s.DichVuHauMai, s.DungYeuCauKyThuat, s.Khac }.Where(a => a > 0).Average()),
+                s.UserAccount.LoaiNguoiDung
 
             }).ToList();
         }

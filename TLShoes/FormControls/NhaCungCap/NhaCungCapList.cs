@@ -12,23 +12,21 @@ using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.NhaCungCap
 {
-    public partial class ucNhaCungCapList : UserControl
+    public partial class ucNhaCungCapList : BaseForm
     {
         public ucNhaCungCapList()
         {
             InitializeComponent();
-
-            ReloadData();
-            ObserverControl.Regist("ucNhaCungCap", "ucNhaCungCapList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucNhaCungCapList", ReloadData);
-            ObserverControl.Regist("Close", "ucNhaCungCapList", ReloadData);
-            ObserverControl.Regist("Export", "ucNhaCungCapList", Export);
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+
                 SF.Get<NhaCungCapViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -41,7 +39,7 @@ namespace TLShoes.FormControls.NhaCungCap
             });
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

@@ -151,9 +151,9 @@ namespace TLShoes.Common
                     }
                     else
                     {
-                        result = (long) comboboxData;
+                        result = (long)comboboxData;
                     }
-                    
+
                     break;
                 case "DateTimePicker":
                     result = TimeHelper.DateTimeToTimeStamp((control as DateTimePicker).Value);
@@ -172,7 +172,7 @@ namespace TLShoes.Common
                     var pictureEdit = control as PictureEdit;
                     if (pictureEdit != null && pictureEdit.Image != null)
                     {
-                        result = FileHelper.ImageSave(pictureEdit.Image, pictureEdit.Tag);                        
+                        result = FileHelper.ImageSave(pictureEdit.Image, pictureEdit.Tag);
                     }
                     break;
                 default:
@@ -189,7 +189,7 @@ namespace TLShoes.Common
             switch (controlType.Name)
             {
                 case "ComboBox":
-//                    (control as ComboBox).SelectedIndex = 0;
+                    //                    (control as ComboBox).SelectedIndex = 0;
                     break;
                 case "RatingControl":
                     (control as RatingControl).Rating = 0;
@@ -248,7 +248,7 @@ namespace TLShoes.Common
         public static void DecorateSaveData(object data, bool isNew = true)
         {
             var currentTime = TimeHelper.CurrentTimeStamp();
-            ReflectionSet(data, "AuthorId", 1L);
+            ReflectionSet(data, "AuthorId", Authorization.LoginUser.Id);
             if (isNew)
             {
                 ReflectionSet(data, "CreatedDate", currentTime);

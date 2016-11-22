@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using DevExpress.XtraGrid.Views.Grid;
+using TLShoes.Common;
 
 namespace TLShoes.ViewModels
 {
     public class BaseModel
     {
+        private static long _lastDisposeTime = 0;
+        private static long DISPOSE_INTERVAL = 15000;
         private static GiayTLEntities _dbContext;
         public static GiayTLEntities DbContext
         {
@@ -18,10 +21,15 @@ namespace TLShoes.ViewModels
 
         public static void DisposeDb()
         {
-            if (_dbContext != null)
+            var current = TimeHelper.CurrentTimeStamp();
+            if (current - _lastDisposeTime > DISPOSE_INTERVAL)
             {
-                _dbContext.Dispose();
-                _dbContext = null;
+                if (_dbContext != null)
+                {
+                    _dbContext.Dispose();
+                    _dbContext = null;
+                    _lastDisposeTime = current;
+                }
             }
         }
 

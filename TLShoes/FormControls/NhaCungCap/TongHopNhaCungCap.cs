@@ -12,20 +12,20 @@ using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.NhaCungCap
 {
-    public partial class ucTongHopNhaCungCap : UserControl
+    public partial class ucTongHopNhaCungCap : BaseForm
     {
         public ucTongHopNhaCungCap()
         {
             InitializeComponent();
-            ReloadData();
-            ObserverControl.Regist("Export", "ucTongHopNhaCungCap", Export);
-
+            Init();
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+                
                 SF.Get<NhaCungCapViewModel>().GetSummary(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -38,7 +38,7 @@ namespace TLShoes.FormControls.NhaCungCap
             });
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

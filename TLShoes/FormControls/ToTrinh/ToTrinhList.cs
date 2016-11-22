@@ -1,32 +1,21 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using TLShoes.Common;
 using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.ToTrinh
 {
-    public partial class ucToTrinhList : UserControl
+    public partial class ucToTrinhList : BaseForm
     {
         public ucToTrinhList()
         {
             InitializeComponent();
-            ReloadData();
-            AutoRefresh();
-            ObserverControl.Regist("Refresh", this.Name, ReloadData);
-            ObserverControl.Regist("Close", this.Name, ReloadData);
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
         }
 
-        private void AutoRefresh()
-        {
-            ThreadHelper.RunBackground(() =>
-            {
-                var timer = new Timer();
-                timer.Interval = 10 * 1000;
-                timer.Tick += new EventHandler((a, b) => { ReloadData(); });
-            });
-        }
-
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDanhGia));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -57,7 +57,6 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnDeleteTieuChi = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -137,7 +136,7 @@
             // 
             this.DanhGia_SoPhieu.Location = new System.Drawing.Point(179, 52);
             this.DanhGia_SoPhieu.Name = "DanhGia_SoPhieu";
-            this.DanhGia_SoPhieu.Size = new System.Drawing.Size(857, 22);
+            this.DanhGia_SoPhieu.Size = new System.Drawing.Size(898, 22);
             this.DanhGia_SoPhieu.TabIndex = 0;
             // 
             // labelControl3
@@ -154,7 +153,7 @@
             this.SoLuongDat.Enabled = false;
             this.SoLuongDat.Location = new System.Drawing.Point(179, 179);
             this.SoLuongDat.Name = "SoLuongDat";
-            this.SoLuongDat.Size = new System.Drawing.Size(857, 22);
+            this.SoLuongDat.Size = new System.Drawing.Size(898, 22);
             this.SoLuongDat.TabIndex = 3;
             // 
             // labelControl2
@@ -179,14 +178,14 @@
             // 
             this.DanhGia_NgayKiem.Location = new System.Drawing.Point(179, 225);
             this.DanhGia_NgayKiem.Name = "DanhGia_NgayKiem";
-            this.DanhGia_NgayKiem.Size = new System.Drawing.Size(857, 23);
+            this.DanhGia_NgayKiem.Size = new System.Drawing.Size(898, 23);
             this.DanhGia_NgayKiem.TabIndex = 4;
             // 
             // DanhGia_SoLuongKiem
             // 
             this.DanhGia_SoLuongKiem.Location = new System.Drawing.Point(179, 136);
             this.DanhGia_SoLuongKiem.Name = "DanhGia_SoLuongKiem";
-            this.DanhGia_SoLuongKiem.Size = new System.Drawing.Size(857, 22);
+            this.DanhGia_SoLuongKiem.Size = new System.Drawing.Size(898, 22);
             this.DanhGia_SoLuongKiem.TabIndex = 2;
             // 
             // DanhGia_MauDanhGiaId
@@ -196,7 +195,7 @@
             this.DanhGia_MauDanhGiaId.FormattingEnabled = true;
             this.DanhGia_MauDanhGiaId.Location = new System.Drawing.Point(179, 268);
             this.DanhGia_MauDanhGiaId.Name = "DanhGia_MauDanhGiaId";
-            this.DanhGia_MauDanhGiaId.Size = new System.Drawing.Size(857, 24);
+            this.DanhGia_MauDanhGiaId.Size = new System.Drawing.Size(898, 24);
             this.DanhGia_MauDanhGiaId.TabIndex = 5;
             this.DanhGia_MauDanhGiaId.SelectedIndexChanged += new System.EventHandler(this.DanhGia_MauDanhGiaId_SelectedIndexChanged);
             // 
@@ -204,7 +203,7 @@
             // 
             this.DanhGia_BienPhapXuLy.Location = new System.Drawing.Point(179, 316);
             this.DanhGia_BienPhapXuLy.Name = "DanhGia_BienPhapXuLy";
-            this.DanhGia_BienPhapXuLy.Size = new System.Drawing.Size(857, 148);
+            this.DanhGia_BienPhapXuLy.Size = new System.Drawing.Size(898, 148);
             this.DanhGia_BienPhapXuLy.TabIndex = 6;
             this.DanhGia_BienPhapXuLy.Text = "";
             // 
@@ -233,7 +232,7 @@
             this.DanhGia_DonDatHangId.FormattingEnabled = true;
             this.DanhGia_DonDatHangId.Location = new System.Drawing.Point(179, 96);
             this.DanhGia_DonDatHangId.Name = "DanhGia_DonDatHangId";
-            this.DanhGia_DonDatHangId.Size = new System.Drawing.Size(857, 24);
+            this.DanhGia_DonDatHangId.Size = new System.Drawing.Size(898, 24);
             this.DanhGia_DonDatHangId.TabIndex = 1;
             this.DanhGia_DonDatHangId.SelectedIndexChanged += new System.EventHandler(this.DanhGia_DonDatHangId_SelectedIndexChanged);
             // 
@@ -368,33 +367,18 @@
             this.btnDeleteTieuChi.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteTieuChi.Appearance.Image")));
             this.btnDeleteTieuChi.Appearance.Options.UseImage = true;
             this.btnDeleteTieuChi.AutoHeight = false;
-            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
-            serializableAppearanceObject1.Options.UseBackColor = true;
-            serializableAppearanceObject1.Options.UseBorderColor = true;
-            serializableAppearanceObject1.Options.UseImage = true;
+            serializableAppearanceObject3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject3.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject3.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject3.Image")));
+            serializableAppearanceObject3.Options.UseBackColor = true;
+            serializableAppearanceObject3.Options.UseBorderColor = true;
+            serializableAppearanceObject3.Options.UseImage = true;
             this.btnDeleteTieuChi.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteTieuChi.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteTieuChi.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteTieuChi.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteTieuChi.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDeleteTieuChi.Name = "btnDeleteTieuChi";
             this.btnDeleteTieuChi.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            // 
-            // btnSaveContinue
-            // 
-            this.btnSaveContinue.Appearance.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnSaveContinue.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnSaveContinue.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSaveContinue.Appearance.Options.UseBackColor = true;
-            this.btnSaveContinue.Appearance.Options.UseFont = true;
-            this.btnSaveContinue.Appearance.Options.UseForeColor = true;
-            this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(937, 754);
-            this.btnSaveContinue.Name = "btnSaveContinue";
-            this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 1;
-            this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // btnCancel
             // 
@@ -404,7 +388,7 @@
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnCancel.Location = new System.Drawing.Point(4, 754);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
@@ -419,8 +403,8 @@
             this.btnSave.Appearance.Options.UseBackColor = true;
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
-            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(856, 754);
+            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnSave.Location = new System.Drawing.Point(1031, 754);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 0;
@@ -431,7 +415,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.btnSaveContinue);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.xtraTabControl1);
@@ -472,7 +455,6 @@
         private DevExpress.XtraEditors.TextEdit DanhGia_SoLuongKiem;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit SoLuongDat;
-        private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;

@@ -504,6 +504,7 @@
       <End Role="UserAccount" EntitySet="UserAccounts" />
       <End Role="NhatKyXuatKho" EntitySet="NhatKyXuatKhoes" />
     </AssociationSet>
+    <EntitySet Name="PhanQuyenNguoiDungs" EntityType="GiayTLModel.PhanQuyenNguoiDung" />
   </EntityContainer>
   <EntityType Name="BaoCaoPhanXuong">
     <Key>
@@ -847,6 +848,11 @@
     <NavigationProperty Name="TongHopToTrinhs2" Relationship="GiayTLModel.FK__TongHopTo__Nguoi__53A266AC" FromRole="UserAccount" ToRole="TongHopToTrinh" />
     <NavigationProperty Name="ToTrinhs" Relationship="GiayTLModel.FK__ToTrinh__AuthorI__03F0984C" FromRole="UserAccount" ToRole="ToTrinh" />
     <NavigationProperty Name="NhatKyXuatKhoes" Relationship="GiayTLModel.FK__NhatKyXua__Autho__5A4F643B" FromRole="UserAccount" ToRole="NhatKyXuatKho" />
+    <Property Name="TenNhanVien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CMND" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Dienthoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK__BaoCaoPha__Autho__52593CB8">
     <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
@@ -2844,4 +2850,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="PhanQuyenNguoiDung">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedDate" Type="Int64" />
+    <Property Name="ModifiedDate" Type="Int64" />
+    <Property Name="IsActived" Type="Boolean" />
+    <Property Name="LoaiNguoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Feature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Permission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

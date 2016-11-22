@@ -29,6 +29,7 @@ namespace TLShoes.ViewModels
                 s.LyDo,
                 Kho = Define.KhoDic[PrimitiveConvert.StringToEnum<Define.Kho>(s.Kho)],
                 NgayNhapFormat = TimeHelper.TimestampToString(s.NgayNhap, "d"),
+                s.UserAccount.LoaiNguoiDung
             }).ToList();
         }
 

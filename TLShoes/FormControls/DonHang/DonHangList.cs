@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using TLShoes.Common;
@@ -6,23 +7,21 @@ using TLShoes.ViewModels;
 
 namespace TLShoes.Form
 {
-    public partial class ucDonHangList : UserControl
+    public partial class ucDonHangList : BaseForm
     {
         public ucDonHangList()
         {
             InitializeComponent();
-            ReloadData();
-
-            ObserverControl.Regist("ucDonHang", "ucDonHangList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucDonHangList", ReloadData);
-            ObserverControl.Regist("Close", "ucDonHangList", ReloadData);
-            ObserverControl.Regist("Export", "ucDonHangList", Export);
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+
                 SF.Get<DonHangViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -35,7 +34,7 @@ namespace TLShoes.Form
             });
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

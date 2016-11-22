@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using TLShoes.Common;
 using TLShoes.ViewModels;
@@ -10,6 +11,8 @@ namespace TLShoes
         public LoginForm()
         {
             InitializeComponent();
+            this.AutoScaleDimensions = new SizeF(6f, 13f);
+
             txtUserName.Focus();
             txtPass.Properties.PasswordChar = '*';
         }

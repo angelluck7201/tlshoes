@@ -20,13 +20,18 @@ namespace TLShoes.ViewModels
 
         public void GetDataSource(GridControl control)
         {
-            //control.DataSource = GetList().Select(s => new { s.Id, s.Loai, s.Ten, s.GhiChu }).ToList();
+            control.DataSource = GetList();
         }
 
         public void Save(object data)
         {
             DbContext.UserAccounts.AddOrUpdate((UserAccount)data);
             DbContext.SaveChanges();
+        }
+
+        public bool CheckDuplicate(string tenNguoiDung, long id)
+        {
+            return DbContext.UserAccounts.Any(s => s.Id != id && s.TenNguoiDung == tenNguoiDung);
         }
     }
 }

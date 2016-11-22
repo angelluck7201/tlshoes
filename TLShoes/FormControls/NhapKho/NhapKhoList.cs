@@ -12,23 +12,21 @@ using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.NhapKho
 {
-    public partial class ucNhapKhoList : UserControl
+    public partial class ucNhapKhoList : BaseForm
     {
         public ucNhapKhoList()
         {
             InitializeComponent();
-            ReloadData();
-
-            ObserverControl.Regist("ucNhapKho", "ucNhapKhoList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucNhapKhoList", ReloadData);
-            ObserverControl.Regist("Close", "ucNhapKhoList", ReloadData);
-            ObserverControl.Regist("Export", "ucNhapKhoList", Export);
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+
                 SF.Get<PhieuNhapKhoViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -42,7 +40,7 @@ namespace TLShoes.FormControls.NhapKho
            
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }
@@ -53,7 +51,6 @@ namespace TLShoes.FormControls.NhapKho
                 dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
                 var info = SF.Get<PhieuNhapKhoViewModel>().GetDetail(data.Id);
                 FormFactory<Main>.Get().ShowPopupInfo(info);
-
             });
         }
     }

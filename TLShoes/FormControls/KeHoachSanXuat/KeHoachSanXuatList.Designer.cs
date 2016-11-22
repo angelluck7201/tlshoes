@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.colLoaiNguoiDung = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -60,6 +61,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // colLoaiNguoiDung
+            // 
+            this.colLoaiNguoiDung.Caption = "bandedGridColumn6";
+            this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
+            this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
             // 
             // gridControl
             // 
@@ -102,7 +109,8 @@
             this.bandedGridColumn2,
             this.bandedGridColumn3,
             this.bandedGridColumn4,
-            this.bandedGridColumn5});
+            this.bandedGridColumn5,
+            this.colLoaiNguoiDung});
             this.bandedGridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.bandedGridView1.GridControl = this.gridControl;
             this.bandedGridView1.GroupCount = 1;
@@ -128,7 +136,7 @@
             this.gridBand1.Columns.Add(this.gridColumn2);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 375;
+            this.gridBand1.Width = 232;
             // 
             // Id
             // 
@@ -145,6 +153,7 @@
             this.bandedGridColumn1.FieldName = "Hinh";
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.Visible = true;
+            this.bandedGridColumn1.Width = 57;
             // 
             // repositoryItemPictureEdit1
             // 
@@ -158,7 +167,7 @@
             this.gridColumn1.Caption = "Mã Hàng";
             this.gridColumn1.FieldName = "MaHang";
             this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
+            this.gridColumn1.Width = 57;
             // 
             // bandedGridColumn2
             // 
@@ -168,6 +177,7 @@
             this.bandedGridColumn2.FieldName = "OrderNo";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.Visible = true;
+            this.bandedGridColumn2.Width = 57;
             // 
             // bandedGridColumn5
             // 
@@ -177,6 +187,7 @@
             this.bandedGridColumn5.FieldName = "SoLuong";
             this.bandedGridColumn5.Name = "bandedGridColumn5";
             this.bandedGridColumn5.Visible = true;
+            this.bandedGridColumn5.Width = 57;
             // 
             // gridColumn2
             // 
@@ -186,6 +197,7 @@
             this.gridColumn2.FieldName = "NgayKiemHangFormat";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
+            this.gridColumn2.Width = 61;
             // 
             // gridBand2
             // 
@@ -196,7 +208,7 @@
             this.gridBand2.Columns.Add(this.gridColumn12);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 150;
+            this.gridBand2.Width = 115;
             // 
             // gridColumn9
             // 
@@ -208,6 +220,7 @@
             this.gridColumn9.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn9.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn9.Visible = true;
+            this.gridColumn9.Width = 57;
             // 
             // gridColumn12
             // 
@@ -219,6 +232,7 @@
             this.gridColumn12.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn12.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn12.Visible = true;
+            this.gridColumn12.Width = 58;
             // 
             // gridBand3
             // 
@@ -229,7 +243,7 @@
             this.gridBand3.Columns.Add(this.gridColumn4);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 150;
+            this.gridBand3.Width = 115;
             // 
             // gridColumn3
             // 
@@ -241,6 +255,7 @@
             this.gridColumn3.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn3.Visible = true;
+            this.gridColumn3.Width = 57;
             // 
             // gridColumn4
             // 
@@ -252,6 +267,7 @@
             this.gridColumn4.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn4.Visible = true;
+            this.gridColumn4.Width = 58;
             // 
             // gridBand6
             // 
@@ -262,7 +278,7 @@
             this.gridBand6.Columns.Add(this.gridColumn8);
             this.gridBand6.Name = "gridBand6";
             this.gridBand6.VisibleIndex = 3;
-            this.gridBand6.Width = 150;
+            this.gridBand6.Width = 115;
             // 
             // gridColumn7
             // 
@@ -274,6 +290,7 @@
             this.gridColumn7.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn7.Visible = true;
+            this.gridColumn7.Width = 57;
             // 
             // gridColumn8
             // 
@@ -285,6 +302,7 @@
             this.gridColumn8.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn8.Visible = true;
+            this.gridColumn8.Width = 58;
             // 
             // gridBand4
             // 
@@ -295,7 +313,7 @@
             this.gridBand4.Columns.Add(this.gridColumn6);
             this.gridBand4.Name = "gridBand4";
             this.gridBand4.VisibleIndex = 4;
-            this.gridBand4.Width = 150;
+            this.gridBand4.Width = 115;
             // 
             // gridColumn5
             // 
@@ -307,6 +325,7 @@
             this.gridColumn5.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn5.Visible = true;
+            this.gridColumn5.Width = 57;
             // 
             // gridColumn6
             // 
@@ -318,6 +337,7 @@
             this.gridColumn6.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn6.Visible = true;
+            this.gridColumn6.Width = 58;
             // 
             // gridBand5
             // 
@@ -328,7 +348,7 @@
             this.gridBand5.Columns.Add(this.gridColumn11);
             this.gridBand5.Name = "gridBand5";
             this.gridBand5.VisibleIndex = 5;
-            this.gridBand5.Width = 150;
+            this.gridBand5.Width = 115;
             // 
             // gridColumn10
             // 
@@ -340,6 +360,7 @@
             this.gridColumn10.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn10.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn10.Visible = true;
+            this.gridColumn10.Width = 57;
             // 
             // gridColumn11
             // 
@@ -351,6 +372,7 @@
             this.gridColumn11.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn11.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn11.Visible = true;
+            this.gridColumn11.Width = 58;
             // 
             // gridBand7
             // 
@@ -361,7 +383,7 @@
             this.gridBand7.Columns.Add(this.bandedGridColumn4);
             this.gridBand7.Name = "gridBand7";
             this.gridBand7.VisibleIndex = 6;
-            this.gridBand7.Width = 150;
+            this.gridBand7.Width = 161;
             // 
             // bandedGridColumn3
             // 
@@ -371,6 +393,7 @@
             this.bandedGridColumn3.FieldName = "NgayBatDauPxGoFormat";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
             this.bandedGridColumn3.Visible = true;
+            this.bandedGridColumn3.Width = 74;
             // 
             // bandedGridColumn4
             // 
@@ -380,6 +403,7 @@
             this.bandedGridColumn4.FieldName = "NgayHoanThanhPxGoFormat";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
+            this.bandedGridColumn4.Width = 87;
             // 
             // ucKeHoachSanXuatList
             // 
@@ -425,5 +449,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand7;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colLoaiNguoiDung;
     }
 }

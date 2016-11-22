@@ -1,28 +1,25 @@
 ﻿using System;
+using System.Drawing;
 using TLShoes.Common;
 using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.MauThuDao
 {
-    public partial class ucMauThuDaoList : BaseUserControl
+    public partial class ucMauThuDaoList : BaseForm
     {
         public ucMauThuDaoList()
         {
             InitializeComponent();
-
-            ReloadData();
-
-            ObserverControl.Regist("ucMauThuDao", "ucMauThuDaoList", ReloadData);
-            ObserverControl.Regist("Refresh", "ucMauThuDaoList", ReloadData);
-            ObserverControl.Regist("Close", "ucMauThuDaoList", ReloadData);
-            ObserverControl.Regist("Export", "ucMauThuDaoList", Export);
-
+            Init();
+            GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDKT.ToString(), Color.Wheat, Color.Red);
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+                   
                 SF.Get<MauThuDaoViewModel>().GetDataSource(gridControl);
                 if (gridView.RowCount > 0)
                 {
@@ -35,7 +32,7 @@ namespace TLShoes.FormControls.MauThuDao
             });
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

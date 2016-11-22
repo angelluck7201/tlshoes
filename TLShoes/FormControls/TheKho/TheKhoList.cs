@@ -12,20 +12,20 @@ using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.TheKho
 {
-    public partial class ucTheKhoList : UserControl
+    public partial class ucTheKhoList : BaseForm
     {
         public ucTheKhoList()
         {
             InitializeComponent();
-            ReloadData();
-            ObserverControl.Regist("Export", "ucTheKhoList", Export);
-
+            Init();
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
+
                 var lstData = new List<TheKho>();
                 var nhapKhoList = SF.Get<PhieuNhapKhoViewModel>().GetList();
                 foreach (var phieuNhapKho in nhapKhoList)
@@ -59,12 +59,12 @@ namespace TLShoes.FormControls.TheKho
                 {
                     FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
                 }
-                
+
             });
-            
+
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }

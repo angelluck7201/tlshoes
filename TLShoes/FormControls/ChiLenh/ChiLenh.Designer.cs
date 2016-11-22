@@ -131,6 +131,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnSaveNguyenLieu.Appearance.Options.UseBackColor = true;
             this.btnSaveNguyenLieu.Appearance.Options.UseFont = true;
             this.btnSaveNguyenLieu.Appearance.Options.UseForeColor = true;
+            this.btnSaveNguyenLieu.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnSaveNguyenLieu.Location = new System.Drawing.Point(518, 785);
             this.btnSaveNguyenLieu.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.btnSaveNguyenLieu.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -403,6 +404,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnDuyet.Appearance.Options.UseBackColor = true;
             this.btnDuyet.Appearance.Options.UseFont = true;
             this.btnDuyet.Appearance.Options.UseForeColor = true;
+            this.btnDuyet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnDuyet.Location = new System.Drawing.Point(518, 36);
             this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -686,7 +688,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnCancel.Location = new System.Drawing.Point(4, 927);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
@@ -701,7 +703,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnSave.Appearance.Options.UseBackColor = true;
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
-            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnSave.Location = new System.Drawing.Point(1427, 927);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
@@ -732,7 +734,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnExport.Appearance.Options.UseBackColor = true;
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
-            this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnExport.Location = new System.Drawing.Point(1337, 927);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);

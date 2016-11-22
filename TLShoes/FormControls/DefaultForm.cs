@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 using TLShoes.Common;
 
 namespace TLShoes
@@ -14,7 +15,8 @@ namespace TLShoes
             // Set the MinimizeBox to false to remove the minimize box.
             this.MinimizeBox = false;
             // Set the start position of the form to the center of the screen.
-            this.StartPosition = FormStartPosition.CenterScreen; 
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.AutoScaleDimensions = new SizeF(6f, 13f);
         }
 
         private void DefaultForm_FormClosing(object sender, FormClosingEventArgs e)

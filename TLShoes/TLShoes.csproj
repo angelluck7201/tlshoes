@@ -220,18 +220,6 @@
     <Compile Include="ErrorLog.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
-    <Compile Include="FormControls\BangThongSo\BangThongSo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FormControls\BangThongSo\BangThongSo.Designer.cs">
-      <DependentUpon>BangThongSo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormControls\BangThongSo\BangThongSoList.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FormControls\BangThongSo\BangThongSoList.Designer.cs">
-      <DependentUpon>BangThongSoList.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormControls\BaoCaoPhanXuong\BaoCaoPhanXuong.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -267,18 +255,6 @@
     </Compile>
     <Compile Include="FormControls\ChiLenh\ChiTietNguyenLieu.Designer.cs">
       <DependentUpon>ChiTietNguyenLieu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormControls\ChiLenh\ChiTietNguyenLieuForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormControls\ChiLenh\ChiTietNguyenLieuForm.Designer.cs">
-      <DependentUpon>ChiTietNguyenLieuForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormControls\ChiLenh\NguyenLieuChiLenh.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FormControls\ChiLenh\NguyenLieuChiLenh.Designer.cs">
-      <DependentUpon>NguyenLieuChiLenh.cs</DependentUpon>
     </Compile>
     <Compile Include="FormControls\CongNgheSanXuat\CongNgheSanXuat.cs">
       <SubType>UserControl</SubType>
@@ -399,6 +375,30 @@
     </Compile>
     <Compile Include="FormControls\NhatKyXuatKho.Designer.cs">
       <DependentUpon>NhatKyXuatKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\QuanLyNguoiDung\ucUserAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\QuanLyNguoiDung\ucUserAccount.Designer.cs">
+      <DependentUpon>ucUserAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\QuanLyNguoiDung\ucUserAccountList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\QuanLyNguoiDung\ucUserAccountList.Designer.cs">
+      <DependentUpon>ucUserAccountList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\QuanLyNguoiDung\ucPhanQuyen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\QuanLyNguoiDung\ucPhanQuyen.Designer.cs">
+      <DependentUpon>ucPhanQuyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormControls\QuanLyNguoiDung\ucPhanQuyenList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormControls\QuanLyNguoiDung\ucPhanQuyenList.Designer.cs">
+      <DependentUpon>ucPhanQuyenList.cs</DependentUpon>
     </Compile>
     <Compile Include="FormControls\TheKho\TheKhoList.cs">
       <SubType>UserControl</SubType>
@@ -637,6 +637,9 @@
     <Compile Include="NhatKyXuatKho.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="PhanQuyenNguoiDung.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="PhieuNhapKho.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -672,6 +675,7 @@
     <Compile Include="ViewModels\MauDanhGiaViewModel.cs" />
     <Compile Include="ViewModels\DonDatHangViewModel.cs" />
     <Compile Include="ViewModels\NhaCungCapViewModel.cs" />
+    <Compile Include="ViewModels\PhanQuyenNguoiDungViewModel.cs" />
     <Compile Include="ViewModels\ToTrinhViewModel.cs" />
     <Compile Include="ViewModels\PhieuXuatKhoViewModel.cs" />
     <Compile Include="ViewModels\PhieuNhapKhoViewModel.cs" />
@@ -713,12 +717,6 @@
     <Compile Include="ViewModels\BaseModel.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\SF.cs" />
-    <EmbeddedResource Include="FormControls\BangThongSo\BangThongSo.resx">
-      <DependentUpon>BangThongSo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormControls\BangThongSo\BangThongSoList.resx">
-      <DependentUpon>BangThongSoList.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormControls\BaoCaoPhanXuong\BaoCaoPhanXuong.resx">
       <DependentUpon>BaoCaoPhanXuong.cs</DependentUpon>
     </EmbeddedResource>
@@ -733,12 +731,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\ChiLenh\ChiTietNguyenLieu.resx">
       <DependentUpon>ChiTietNguyenLieu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormControls\ChiLenh\ChiTietNguyenLieuForm.resx">
-      <DependentUpon>ChiTietNguyenLieuForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormControls\ChiLenh\NguyenLieuChiLenh.resx">
-      <DependentUpon>NguyenLieuChiLenh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\CongNgheSanXuat\CongNgheSanXuat.resx">
       <DependentUpon>CongNgheSanXuat.cs</DependentUpon>
@@ -799,6 +791,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\NhatKyXuatKho.resx">
       <DependentUpon>NhatKyXuatKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\QuanLyNguoiDung\ucUserAccount.resx">
+      <DependentUpon>ucUserAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\QuanLyNguoiDung\ucUserAccountList.resx">
+      <DependentUpon>ucUserAccountList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\QuanLyNguoiDung\ucPhanQuyen.resx">
+      <DependentUpon>ucPhanQuyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\QuanLyNguoiDung\ucPhanQuyenList.resx">
+      <DependentUpon>ucPhanQuyenList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\TheKho\TheKhoList.resx">
       <DependentUpon>TheKhoList.cs</DependentUpon>

@@ -90,3 +90,15 @@ namespace TLShoes.ViewModels
         }
     }
 }
+
+namespace TLShoes
+{
+    public partial class MauDanhGia
+    {
+        public string LoaiNguoiDung
+        {
+            get { return UserAccount.LoaiNguoiDung; }
+        }
+    }
+
+}

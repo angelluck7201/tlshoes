@@ -34,7 +34,8 @@ namespace TLShoes.ViewModels
                     PhanLoaiTestLy = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiTestLyId).Ten,
                     NgayKetQuaTestHoaFormat = TimeHelper.TimestampToString(s.NgayKetquaTestHoa, "d"),
                     PhanLoaiTestHoa = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiTestHoaId).Ten,
-                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh)
+                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh),
+                    s.UserAccount.LoaiNguoiDung
                 }).ToList();
         }
 

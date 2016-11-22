@@ -13,7 +13,7 @@ namespace TLShoes.FormControls.NguyenLieu
             Init();
         }
 
-        protected override void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
@@ -32,7 +32,7 @@ namespace TLShoes.FormControls.NguyenLieu
 
         }
 
-        protected override void Export(object filePath)
+        public override void Export(object filePath)
         {
             gridView.ExportToXls(filePath.ToString());
         }
@@ -44,7 +44,6 @@ namespace TLShoes.FormControls.NguyenLieu
                 dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
                 var info = SF.Get<NguyenLieuViewModel>().GetDetail(data.Id);
                 FormFactory<Main>.Get().ShowPopupInfo(info);
-
             });
         }
 

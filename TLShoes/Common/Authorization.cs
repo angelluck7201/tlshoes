@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TLShoes.FormControls.TheKho;
 using TLShoes.ViewModels;
 
 namespace TLShoes.Common
@@ -11,6 +7,7 @@ namespace TLShoes.Common
     public class Authorization
     {
         public static UserAccount LoginUser;
+        public static List<PhanQuyenNguoiDung> PhanQuyenNguoiDungs; 
 
         public static Dictionary<string, Dictionary<Define.Authorization, List<Define.LoaiNguoiDung>>> AuthentDict = new Dictionary<string, Dictionary<Define.Authorization, List<Define.LoaiNguoiDung>>>()
         {
@@ -194,6 +191,11 @@ namespace TLShoes.Common
         public static bool CheckLogin(string userName, string passWord)
         {
             LoginUser = BaseModel.DbContext.UserAccounts.ToList().FirstOrDefault(s => s.TenNguoiDung.ToUpper().Equals(userName.ToUpper()) && s.MatKhau.Equals(passWord));
+            if (LoginUser != null)
+            {
+                var loaiNguoiDungEnum = PrimitiveConvert.StringToEnum<Define.LoaiNguoiDung>(LoginUser.LoaiNguoiDung);
+                PhanQuyenNguoiDungs = SF.Get<PhanQuyenNguoiDungViewModel>().GetList(loaiNguoiDungEnum);
+            }
             return LoginUser != null;
         }
 
@@ -208,11 +210,7 @@ namespace TLShoes.Common
             var loaiNguoiDung = PrimitiveConvert.StringToEnum<Define.LoaiNguoiDung>(LoginUser.LoaiNguoiDung);
             if (loaiNguoiDung != Define.LoaiNguoiDung.ADMIN)
             {
-                if (AuthentDict.ContainsKey(modelName))
-                {
-                    return AuthentDict[modelName][auth].Contains(loaiNguoiDung);
-                }
-                return false;
+                return PhanQuyenNguoiDungs.Any(s => s.Feature == modelName && s.Permission==auth.ToString());
             }
             return true;
         }

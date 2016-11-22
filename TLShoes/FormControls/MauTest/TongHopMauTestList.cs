@@ -4,27 +4,20 @@ using TLShoes.ViewModels;
 
 namespace TLShoes.FormControls.TongHopMauTest
 {
-    public partial class ucTongHopMauTestList : BaseUserControl
+    public partial class ucTongHopMauTestList : BaseForm
     {
         public ucTongHopMauTestList()
         {
             InitializeComponent();
 
-            ReloadData();
-
-            ObserverControl.Regist("ucMauTest", "ucTongHopMauTestList", ReloadData);
-            ObserverControl.Regist("ucMauThuDao", "ucTongHopMauTestList", ReloadData);
-            ObserverControl.Regist("ucMauSanXuat", "ucTongHopMauTestList", ReloadData);
-
-            ObserverControl.Regist("Refresh", "ucTongHopMauTestList", ReloadData);
-            ObserverControl.Regist("Close", "ucTongHopMauTestList", ReloadData);
-            ObserverControl.Regist("Export", "ucTongHopMauTestList", Export);
+            Init();
         }
 
-        public void ReloadData()
+        public override void ReloadData()
         {
             ThreadHelper.LoadForm(() =>
             {
+                BaseModel.DisposeDb();
                 SF.Get<MauDoiViewModel>().GetDataSummarySource(gridControl);
                 if (bandedGridView1.RowCount > 0)
                 {
@@ -37,7 +30,7 @@ namespace TLShoes.FormControls.TongHopMauTest
             });
         }
 
-        public void Export(object filePath)
+        public override void Export(object filePath)
         {
             bandedGridView1.ExportToXls(filePath.ToString());
         }

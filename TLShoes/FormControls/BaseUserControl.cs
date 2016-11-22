@@ -34,11 +34,27 @@ namespace TLShoes.FormControls
             {
                 if (control.Name == "btnSave")
                 {
-                    control.Click += new EventHandler(btnSave_Click);
+                    if (Authorization.CheckAuthorization(Main.currentModel.Name, Define.Authorization.WRITE))
+                    {
+                        control.Click += new EventHandler(btnSave_Click);
+                        control.Visible = true;
+                    }
+                    else
+                    {
+                        control.Visible = false;
+                    }
                 }
                 else if (control.Name == "btnSaveContinue")
                 {
-                    control.Click += new EventHandler(btnSaveContinue_Click);
+                    if (Authorization.CheckAuthorization(Main.currentModel.Name, Define.Authorization.WRITE))
+                    {
+                        control.Click += new EventHandler(btnSaveContinue_Click);
+                        control.Visible = true;
+                    }
+                    else
+                    {
+                        control.Visible = false;
+                    }
                 }
                 else if (control.Name == "btnCancel")
                 {

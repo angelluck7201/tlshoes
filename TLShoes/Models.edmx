@@ -616,6 +616,18 @@
           <Property Name="NguoiNhan" Type="nvarchar" MaxLength="100" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="PhanQuyenNguoiDung">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedDate" Type="bigint" />
+          <Property Name="ModifiedDate" Type="bigint" />
+          <Property Name="IsActived" Type="bit" />
+          <Property Name="LoaiNguoiDung" Type="text" />
+          <Property Name="Feature" Type="nvarchar" MaxLength="50" />
+          <Property Name="Permission" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="PhieuNhapKho">
           <Key>
             <PropertyRef Name="Id" />
@@ -719,6 +731,11 @@
           <Property Name="TenNguoiDung" Type="nvarchar" MaxLength="50" />
           <Property Name="MatKhau" Type="text" />
           <Property Name="LoaiNguoiDung" Type="text" />
+          <Property Name="TenNhanVien" Type="nvarchar" MaxLength="100" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+          <Property Name="CMND" Type="varchar" MaxLength="20" />
+          <Property Name="Dienthoai" Type="varchar" MaxLength="20" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <Association Name="FK__BaoCaoPha__Autho__534D60F1">
           <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
@@ -2146,6 +2163,7 @@
           <EntitySet Name="NhaCungCapVatTu" EntityType="Self.NhaCungCapVatTu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhatKyThayDoi" EntityType="Self.NhatKyThayDoi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhatKyXuatKho" EntityType="Self.NhatKyXuatKho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhanQuyenNguoiDung" EntityType="Self.PhanQuyenNguoiDung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuNhapKho" EntityType="Self.PhieuNhapKho" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuXuatKho" EntityType="Self.PhieuXuatKho" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -3125,6 +3143,7 @@
             <End Role="UserAccount" EntitySet="UserAccounts" />
             <End Role="NhatKyXuatKho" EntitySet="NhatKyXuatKhoes" />
           </AssociationSet>
+          <EntitySet Name="PhanQuyenNguoiDungs" EntityType="GiayTLModel.PhanQuyenNguoiDung" />
           </EntityContainer>
         <EntityType Name="BaoCaoPhanXuong">
           <Key>
@@ -3468,6 +3487,11 @@
           <NavigationProperty Name="TongHopToTrinhs2" Relationship="GiayTLModel.FK__TongHopTo__Nguoi__53A266AC" FromRole="UserAccount" ToRole="TongHopToTrinh" />
           <NavigationProperty Name="ToTrinhs" Relationship="GiayTLModel.FK__ToTrinh__AuthorI__03F0984C" FromRole="UserAccount" ToRole="ToTrinh" />
           <NavigationProperty Name="NhatKyXuatKhoes" Relationship="GiayTLModel.FK__NhatKyXua__Autho__5A4F643B" FromRole="UserAccount" ToRole="NhatKyXuatKho" />
+          <Property Name="TenNhanVien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CMND" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Dienthoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           </EntityType>
         <Association Name="FK__BaoCaoPha__Autho__52593CB8">
           <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
@@ -5465,6 +5489,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PhanQuyenNguoiDung">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="Int64" />
+          <Property Name="ModifiedDate" Type="Int64" />
+          <Property Name="IsActived" Type="Boolean" />
+          <Property Name="LoaiNguoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Feature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Permission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5687,6 +5723,11 @@
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="GiayTLModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="Dienthoai" ColumnName="Dienthoai" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
                 <ScalarProperty Name="LoaiNguoiDung" ColumnName="LoaiNguoiDung" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
                 <ScalarProperty Name="TenNguoiDung" ColumnName="TenNguoiDung" />
@@ -6221,6 +6262,19 @@
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhanQuyenNguoiDungs">
+            <EntityTypeMapping TypeName="GiayTLModel.PhanQuyenNguoiDung">
+              <MappingFragment StoreEntitySet="PhanQuyenNguoiDung">
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="Feature" ColumnName="Feature" />
+                <ScalarProperty Name="LoaiNguoiDung" ColumnName="LoaiNguoiDung" />
+                <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

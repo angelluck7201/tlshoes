@@ -40,16 +40,15 @@
             this.lblGhiChu = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.NguyenLieu_QuyCach = new System.Windows.Forms.TextBox();
+            this.lblQuyCach = new DevExpress.XtraEditors.LabelControl();
+            this.NguyenLieu_MauId = new System.Windows.Forms.ComboBox();
+            this.lblMauId = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo1 = new TLShoes.Form.DefaultInfo();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.NguyenLieu_MauId = new System.Windows.Forms.ComboBox();
-            this.lblMauId = new DevExpress.XtraEditors.LabelControl();
-            this.lblQuyCach = new DevExpress.XtraEditors.LabelControl();
-            this.NguyenLieu_QuyCach = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -193,6 +192,39 @@
             this.xtraTabPage2.Size = new System.Drawing.Size(708, 383);
             this.xtraTabPage2.Text = "Thông tin nguyên liệu";
             // 
+            // NguyenLieu_QuyCach
+            // 
+            this.NguyenLieu_QuyCach.Location = new System.Drawing.Point(156, 230);
+            this.NguyenLieu_QuyCach.Name = "NguyenLieu_QuyCach";
+            this.NguyenLieu_QuyCach.Size = new System.Drawing.Size(529, 23);
+            this.NguyenLieu_QuyCach.TabIndex = 5;
+            // 
+            // lblQuyCach
+            // 
+            this.lblQuyCach.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblQuyCach.Location = new System.Drawing.Point(26, 235);
+            this.lblQuyCach.Name = "lblQuyCach";
+            this.lblQuyCach.Size = new System.Drawing.Size(60, 16);
+            this.lblQuyCach.TabIndex = 97;
+            this.lblQuyCach.Text = "Quy Cách";
+            // 
+            // NguyenLieu_MauId
+            // 
+            this.NguyenLieu_MauId.FormattingEnabled = true;
+            this.NguyenLieu_MauId.Location = new System.Drawing.Point(156, 186);
+            this.NguyenLieu_MauId.Name = "NguyenLieu_MauId";
+            this.NguyenLieu_MauId.Size = new System.Drawing.Size(529, 24);
+            this.NguyenLieu_MauId.TabIndex = 4;
+            // 
+            // lblMauId
+            // 
+            this.lblMauId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblMauId.Location = new System.Drawing.Point(26, 189);
+            this.lblMauId.Name = "lblMauId";
+            this.lblMauId.Size = new System.Drawing.Size(27, 16);
+            this.lblMauId.TabIndex = 95;
+            this.lblMauId.Text = "Màu";
+            // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Appearance.Header.BackColor = System.Drawing.Color.Silver;
@@ -218,7 +250,7 @@
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnCancel.Location = new System.Drawing.Point(15, 21);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
@@ -233,27 +265,12 @@
             this.btnSave.Appearance.Options.UseBackColor = true;
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
-            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(448, 21);
+            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnSave.Location = new System.Drawing.Point(612, 21);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
-            // 
-            // btnSaveContinue
-            // 
-            this.btnSaveContinue.Appearance.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnSaveContinue.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnSaveContinue.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSaveContinue.Appearance.Options.UseBackColor = true;
-            this.btnSaveContinue.Appearance.Options.UseFont = true;
-            this.btnSaveContinue.Appearance.Options.UseForeColor = true;
-            this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(529, 21);
-            this.btnSaveContinue.Name = "btnSaveContinue";
-            this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 1;
-            this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // splitContainer1
             // 
@@ -269,44 +286,10 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnCancel);
-            this.splitContainer1.Panel2.Controls.Add(this.btnSaveContinue);
             this.splitContainer1.Panel2.Controls.Add(this.btnSave);
             this.splitContainer1.Size = new System.Drawing.Size(715, 496);
             this.splitContainer1.SplitterDistance = 419;
             this.splitContainer1.TabIndex = 99;
-            // 
-            // NguyenLieu_MauId
-            // 
-            this.NguyenLieu_MauId.FormattingEnabled = true;
-            this.NguyenLieu_MauId.Location = new System.Drawing.Point(156, 186);
-            this.NguyenLieu_MauId.Name = "NguyenLieu_MauId";
-            this.NguyenLieu_MauId.Size = new System.Drawing.Size(529, 24);
-            this.NguyenLieu_MauId.TabIndex = 4;
-            // 
-            // lblMauId
-            // 
-            this.lblMauId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblMauId.Location = new System.Drawing.Point(26, 189);
-            this.lblMauId.Name = "lblMauId";
-            this.lblMauId.Size = new System.Drawing.Size(27, 16);
-            this.lblMauId.TabIndex = 95;
-            this.lblMauId.Text = "Màu";
-            // 
-            // lblQuyCach
-            // 
-            this.lblQuyCach.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblQuyCach.Location = new System.Drawing.Point(26, 235);
-            this.lblQuyCach.Name = "lblQuyCach";
-            this.lblQuyCach.Size = new System.Drawing.Size(60, 16);
-            this.lblQuyCach.TabIndex = 97;
-            this.lblQuyCach.Text = "Quy Cách";
-            // 
-            // NguyenLieu_QuyCach
-            // 
-            this.NguyenLieu_QuyCach.Location = new System.Drawing.Point(156, 230);
-            this.NguyenLieu_QuyCach.Name = "NguyenLieu_QuyCach";
-            this.NguyenLieu_QuyCach.Size = new System.Drawing.Size(529, 23);
-            this.NguyenLieu_QuyCach.TabIndex = 5;
             // 
             // ucNguyenLieu
             // 
@@ -347,7 +330,6 @@
         private Form.DefaultInfo defaultInfo1;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private DevExpress.XtraEditors.LabelControl lblQuyCach;
         private System.Windows.Forms.ComboBox NguyenLieu_MauId;

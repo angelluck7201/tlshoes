@@ -87,11 +87,11 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
-            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -359,7 +359,7 @@
             this.btnSelect.Appearance.Options.UseBackColor = true;
             this.btnSelect.Appearance.Options.UseFont = true;
             this.btnSelect.Appearance.Options.UseForeColor = true;
-            this.btnSelect.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnSelect.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnSelect.Location = new System.Drawing.Point(414, 71);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(107, 30);
@@ -376,7 +376,7 @@
             this.btnUpdateToTrinh.Appearance.Options.UseBackColor = true;
             this.btnUpdateToTrinh.Appearance.Options.UseFont = true;
             this.btnUpdateToTrinh.Appearance.Options.UseForeColor = true;
-            this.btnUpdateToTrinh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnUpdateToTrinh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnUpdateToTrinh.Location = new System.Drawing.Point(326, 355);
             this.btnUpdateToTrinh.Name = "btnUpdateToTrinh";
             this.btnUpdateToTrinh.Size = new System.Drawing.Size(195, 30);
@@ -744,6 +744,17 @@
             this.gridColumn16.FieldName = "Id";
             this.gridColumn16.Name = "gridColumn16";
             // 
+            // gridColumn17
+            // 
+            this.gridColumn17.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn17.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn17.Caption = "Người Chỉnh Sửa";
+            this.gridColumn17.FieldName = "TacGia";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 1;
+            this.gridColumn17.Width = 298;
+            // 
             // btnCancel
             // 
             this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
@@ -752,7 +763,7 @@
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnCancel.Location = new System.Drawing.Point(3, 801);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
@@ -767,7 +778,7 @@
             this.btnExport.Appearance.Options.UseBackColor = true;
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
-            this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnExport.Location = new System.Drawing.Point(197, 801);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);
@@ -784,7 +795,7 @@
             this.btnSave.Appearance.Options.UseBackColor = true;
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
-            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnSave.Location = new System.Drawing.Point(1503, 801);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
@@ -800,6 +811,7 @@
             this.btnDuyet.Appearance.Options.UseBackColor = true;
             this.btnDuyet.Appearance.Options.UseFont = true;
             this.btnDuyet.Appearance.Options.UseForeColor = true;
+            this.btnDuyet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnDuyet.Location = new System.Drawing.Point(84, 801);
             this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -809,17 +821,6 @@
             this.btnDuyet.Text = "Duyệt";
             this.btnDuyet.Visible = false;
             this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
-            // 
-            // gridColumn17
-            // 
-            this.gridColumn17.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.gridColumn17.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn17.Caption = "Người Chỉnh Sửa";
-            this.gridColumn17.FieldName = "TacGia";
-            this.gridColumn17.Name = "gridColumn17";
-            this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 1;
-            this.gridColumn17.Width = 298;
             // 
             // ucToTrinh
             // 

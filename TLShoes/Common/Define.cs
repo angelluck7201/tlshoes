@@ -80,6 +80,23 @@ namespace TLShoes.Common
             ADMIN,
         }
 
+        public static Dictionary<LoaiNguoiDung, string> LoaiNguoiDungDict = new Dictionary<LoaiNguoiDung, string>()
+        {
+            {LoaiNguoiDung.NV, "NHÂN VIÊN"},
+            {LoaiNguoiDung.CBDH, "CÁN BỘ ĐƠN HÀNG"},
+            {LoaiNguoiDung.PVT, "PHÒNG VẬT TỰ"},
+            {LoaiNguoiDung.PKT, "PHÒNG KỸ THUẬT"},
+            {LoaiNguoiDung.QC, "QC"},
+            {LoaiNguoiDung.PKH, "PHÒNG KHOA HỌC"},
+            {LoaiNguoiDung.THU_KHO, "THỦ KHO"},
+            {LoaiNguoiDung.TRUONG_PKT, "TRƯỞNG PHÒNG KỸ THUẬT"},
+            {LoaiNguoiDung.TRUONG_PVT, "TRƯỞNG PHÒNG VẬT TƯ"},
+            {LoaiNguoiDung.PX, "PHÂN XƯỞNG"},
+            {LoaiNguoiDung.GDKT, "GIÁM ĐỐC KỸ THUẬT"},
+            {LoaiNguoiDung.GDSX, "GIÁM ĐỐC SẢN XUẤT"},
+            {LoaiNguoiDung.ADMIN, "ADMIN"},
+        };
+
         public enum Authorization
         {
             VIEW,
@@ -99,7 +116,7 @@ namespace TLShoes.Common
             {Kho.KHO_VAT_TU, "KHO VẬT TƯ"},
             {Kho.KHO_THANH_PHAM, "KHO THÀNH PHẨM"},
             {Kho.KHO_BAN_THANH_PHAM, "KHO BÁN THÀNH PHẨM"},
-           };
+        };
 
         public enum LoaiXuat
         {
