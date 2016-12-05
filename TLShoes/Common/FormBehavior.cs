@@ -9,6 +9,7 @@ namespace TLShoes.Common
 {
     public static class FormBehavior
     {
+
         private static Dictionary<System.Windows.Forms.Form, System.Windows.Forms.Form> ShowingForms = new Dictionary<System.Windows.Forms.Form, System.Windows.Forms.Form>();
 
         public static void CustomShow(this System.Windows.Forms.Form formControl, System.Windows.Forms.Form parenForm)
@@ -35,10 +36,12 @@ namespace TLShoes.Common
                 keyValuePair.Key.Enabled = true;
                 ShowingForms.Remove(keyValuePair.Key);
             }
-
-            BaseModel.DisposeDb();
         }
 
+        public static bool IsMainFormEnable()
+        {
+            return FormFactory<Main>.Get().Enabled;
+        }
     }
 
 

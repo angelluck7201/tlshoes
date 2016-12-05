@@ -31,7 +31,7 @@ namespace TLShoes.FormControls.ChiLenh
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucChiLenh));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ChiLenh_DonHangId = new System.Windows.Forms.ComboBox();
             this.lblDonHangId = new DevExpress.XtraEditors.LabelControl();
             this.btnSaveNguyenLieu = new DevExpress.XtraEditors.SimpleButton();
@@ -57,7 +57,6 @@ namespace TLShoes.FormControls.ChiLenh
             this.NguyenLieuChiLenh_ChiTietId = new System.Windows.Forms.ComboBox();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
             this.lblSoPhieu = new DevExpress.XtraEditors.LabelControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -86,6 +85,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnDuplicate = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuLookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuChiLenh_QuyCach.Properties)).BeginInit();
@@ -220,14 +220,14 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnDeleteNguyenLieu.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Appearance.Image")));
             this.btnDeleteNguyenLieu.Appearance.Options.UseImage = true;
             this.btnDeleteNguyenLieu.AutoHeight = false;
-            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
-            serializableAppearanceObject1.Options.UseBackColor = true;
-            serializableAppearanceObject1.Options.UseBorderColor = true;
-            serializableAppearanceObject1.Options.UseImage = true;
+            serializableAppearanceObject3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject3.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject3.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject3.Image")));
+            serializableAppearanceObject3.Options.UseBackColor = true;
+            serializableAppearanceObject3.Options.UseBorderColor = true;
+            serializableAppearanceObject3.Options.UseImage = true;
             this.btnDeleteNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteNguyenLieu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteNguyenLieu.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDeleteNguyenLieu.Name = "btnDeleteNguyenLieu";
@@ -373,7 +373,6 @@ namespace TLShoes.FormControls.ChiLenh
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
-            this.xtraTabPage2.Controls.Add(this.btnDuyet);
             this.xtraTabPage2.Controls.Add(this.lblSoPhieu);
             this.xtraTabPage2.Controls.Add(this.gridControl);
             this.xtraTabPage2.Controls.Add(this.lblDonHangId);
@@ -395,25 +394,6 @@ namespace TLShoes.FormControls.ChiLenh
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1682, 871);
             this.xtraTabPage2.Text = "Chỉ lệnh";
-            // 
-            // btnDuyet
-            // 
-            this.btnDuyet.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnDuyet.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDuyet.Appearance.Options.UseBackColor = true;
-            this.btnDuyet.Appearance.Options.UseFont = true;
-            this.btnDuyet.Appearance.Options.UseForeColor = true;
-            this.btnDuyet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnDuyet.Location = new System.Drawing.Point(518, 36);
-            this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
-            this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.btnDuyet.Name = "btnDuyet";
-            this.btnDuyet.Size = new System.Drawing.Size(109, 30);
-            this.btnDuyet.TabIndex = 74;
-            this.btnDuyet.Text = "Duyệt";
-            this.btnDuyet.Visible = false;
-            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
             // 
             // lblSoPhieu
             // 
@@ -726,19 +706,39 @@ namespace TLShoes.FormControls.ChiLenh
             this.btnDuplicate.Text = "Tạo Tương Tự";
             this.btnDuplicate.Click += new System.EventHandler(this.btnDuplicate_Click);
             // 
+            // btnDuyet
+            // 
+            this.btnDuyet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDuyet.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnDuyet.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDuyet.Appearance.Options.UseBackColor = true;
+            this.btnDuyet.Appearance.Options.UseFont = true;
+            this.btnDuyet.Appearance.Options.UseForeColor = true;
+            this.btnDuyet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnDuyet.Location = new System.Drawing.Point(85, 927);
+            this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.btnDuyet.Name = "btnDuyet";
+            this.btnDuyet.Size = new System.Drawing.Size(107, 30);
+            this.btnDuyet.TabIndex = 116;
+            this.btnDuyet.Text = "Duyệt";
+            this.btnDuyet.Visible = false;
+            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
+            // 
             // btnExport
             // 
-            this.btnExport.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnExport.Appearance.BackColor = System.Drawing.Color.ForestGreen;
             this.btnExport.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
             this.btnExport.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExport.Appearance.Options.UseBackColor = true;
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnExport.Location = new System.Drawing.Point(1337, 927);
+            this.btnExport.Location = new System.Drawing.Point(198, 927);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);
-            this.btnExport.TabIndex = 75;
+            this.btnExport.TabIndex = 117;
             this.btnExport.Text = "Export";
             this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -750,6 +750,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.btnDuyet);
             this.Controls.Add(this.btnDuplicate);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
@@ -818,7 +819,6 @@ namespace TLShoes.FormControls.ChiLenh
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
-        private DevExpress.XtraEditors.SimpleButton btnExport;
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
         private DevExpress.XtraGrid.Columns.GridColumn Id;
@@ -835,5 +835,6 @@ namespace TLShoes.FormControls.ChiLenh
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraEditors.LabelControl lblSoPhieu;
         private DevExpress.XtraEditors.SimpleButton btnDuyet;
+        private DevExpress.XtraEditors.SimpleButton btnExport;
     }
 }

@@ -66,6 +66,60 @@ namespace TLShoes.FormControls.XuatKho
             NguyenLieuLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
 
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
+
+            InitAuthorize();
+        }
+
+        private void InitAuthorize()
+        {
+            btnCancel.Enabled = false;
+            btnDuyet.Enabled = true;
+            btnDuyet.Visible = false;
+            btnExport.Visible = false;
+            btnSave.Enabled = true;
+            btnXuatLe.Visible = false;
+
+            if (_currentData != null)
+            {
+                lblSoPhieu.Text = string.Format("Số Phiếu: {0}", _currentData.SoPhieu);
+                var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentData.TrangThai);
+
+                if (trangThai <= Define.TrangThai.HUY)
+                {
+                    if (Authorization.LoginUser.LoaiNguoiDung == Define.LoaiNguoiDung.TRUONG_PVT.ToString())
+                    {
+                        btnDuyet.Visible = true;
+                    }
+                }
+
+                // Check verify authorize
+                if (trangThai == Define.TrangThai.DUYET)
+                {
+                    if (Authorization.LoginUser.LoaiNguoiDung == Define.LoaiNguoiDung.GDSX.ToString())
+                    {
+                        btnDuyet.Visible = true;
+                        btnCancel.Enabled = true;
+                    }
+                }
+
+                // Can't save if verified
+                if (trangThai > Define.TrangThai.HUY)
+                {
+                    btnSave.Enabled = false;
+                }
+
+                // Allow export after final verify
+                if (trangThai == Define.TrangThai.DUYET_PVT)
+                {
+                    btnExport.Visible = true;
+                    btnXuatLe.Visible = true;
+                    btnDuyet.Visible = true;
+                    btnDuyet.Enabled = false;
+                }
+
+                var verifyAuthorize = Authorization.CheckAuthorization("PhieuXuatKho", Define.Authorization.VERIFY);
+                btnDuyet.Visible &= verifyAuthorize;
+            }
         }
 
         public override bool SaveData()
@@ -249,6 +303,53 @@ namespace TLShoes.FormControls.XuatKho
             if (_currentData != null)
             {
                 ShowCustomForm(new ucNhatKyXuatKho(_currentData, () => gridNhatKy.RefreshDataSource()), "Xuất Kho.");
+            }
+        }
+
+        private void btnDuyet_Click(object sender, EventArgs e)
+        {
+            if (_currentData != null)
+            {
+                using (var transaction = new TransactionScope())
+                {
+                    var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentData.TrangThai);
+                    var ngayDuyet = TimeHelper.CurrentTimeStamp();
+                    // Lock item
+                    if (trangThai == Define.TrangThai.MOI)
+                    {
+                        _currentData.SoPhieu = SF.Get<PhieuXuatKhoViewModel>().GenerateSoPhieu();
+                    }
+
+                    if (trangThai <= Define.TrangThai.HUY)
+                    {
+                        _currentData.NgayLap = ngayDuyet;
+                        _currentData.NguoiLapId = Authorization.LoginUser.Id;
+                        _currentData.TrangThai = Define.TrangThai.DUYET.ToString();
+                    }
+
+                    // Verify
+                    if (trangThai == Define.TrangThai.DUYET)
+                    {
+                        _currentData.TrangThai = Define.TrangThai.DUYET_PVT.ToString();
+                        _currentData.NgayDuyet = ngayDuyet;
+                        _currentData.NguoiDuyetId = Authorization.LoginUser.Id;
+                    }
+
+                    SF.Get<PhieuXuatKhoViewModel>().Save(_currentData);
+                    transaction.Complete();
+                }
+                InitAuthorize();
+            }
+        }
+
+        public override void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (_currentData != null)
+            {
+                _currentData.TrangThai = Define.TrangThai.HUY.ToString();
+                _currentData.NgayDuyet = TimeHelper.CurrentTimeStamp();
+                _currentData.NguoiDuyetId = Authorization.LoginUser.Id;
+                InitAuthorize();
             }
         }
     }

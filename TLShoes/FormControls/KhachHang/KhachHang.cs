@@ -87,7 +87,10 @@ namespace TLShoes.Form
                 updateData.Add(KhachHang_Khac.Rating);
             }
 
-            DanhGiaTongThe.Rating = updateData.Average();
+            if (updateData.Count > 0)
+            {
+                DanhGiaTongThe.Rating = updateData.Average();
+            }
         }
 
         private void KhachHang_DungThoiGian_EditValueChanged(object sender, EventArgs e)

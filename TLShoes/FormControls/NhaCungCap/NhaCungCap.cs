@@ -119,8 +119,7 @@ namespace TLShoes.FormControls.NhaCungCap
                 updateData.Add(NhaCungCap_DungMau.Rating);
             }
             if (NhaCungCap_DungYeuCauKyThuat.Rating > 0)
-            {
-                updateData.Add(NhaCungCap_DungYeuCauKyThuat.Rating);
+            {updateData.Add(NhaCungCap_DungYeuCauKyThuat.Rating);
             }
             if (NhaCungCap_Gia.Rating > 0)
             {
@@ -131,7 +130,10 @@ namespace TLShoes.FormControls.NhaCungCap
                 updateData.Add(NhaCungCap_Khac.Rating);
             }
 
-            DanhGiaTongThe.Rating = updateData.Average();
+            if (updateData.Count > 0)
+            {
+                DanhGiaTongThe.Rating = updateData.Average();
+            }
         }
 
         private void NhaCungCap_DungThoiGian_EditValueChanged(object sender, EventArgs e)

@@ -1945,6 +1945,7 @@
     <NavigationProperty Name="NguoiDuyet" Relationship="GiayTLModel.FK__DonDatHan__Nguoi__4DE98D56" FromRole="DonDatHang" ToRole="UserAccount" />
     <NavigationProperty Name="NguoiLap" Relationship="GiayTLModel.FK__DonDatHan__Nguoi__4EDDB18F" FromRole="DonDatHang" ToRole="UserAccount" />
     <NavigationProperty Name="ToTrinh" Relationship="GiayTLModel.FK__DonDatHan__ToTri__0C1BC9F9" FromRole="DonDatHang" ToRole="ToTrinh" />
+    <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK__ChiTietDo__DonDa__76619304">
     <End Type="GiayTLModel.DonDatHang" Role="DonDatHang" Multiplicity="0..1" />
@@ -2280,6 +2281,7 @@
     <Property Name="NguoiLapId" Type="Int64" />
     <NavigationProperty Name="NguoiDuyet" Relationship="GiayTLModel.FK__PhieuXuat__Nguoi__4FD1D5C8" FromRole="PhieuXuatKho" ToRole="UserAccount" />
     <NavigationProperty Name="NguoiLap" Relationship="GiayTLModel.FK__PhieuXuat__Nguoi__50C5FA01" FromRole="PhieuXuatKho" ToRole="UserAccount" />
+    <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK__ChiTietXu__Phieu__18EBB532">
     <End Type="GiayTLModel.PhieuXuatKho" Role="PhieuXuatKho" Multiplicity="0..1" />

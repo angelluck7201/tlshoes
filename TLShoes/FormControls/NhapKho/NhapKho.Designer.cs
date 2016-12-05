@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucNhapKho));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.PhieuNhapKho_SoPhieu = new System.Windows.Forms.TextBox();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lblSoDonHang = new DevExpress.XtraEditors.LabelControl();
             this.lblDanhGiaId = new DevExpress.XtraEditors.LabelControl();
             this.PhieuNhapKho_DanhGiaId = new System.Windows.Forms.ComboBox();
@@ -59,8 +57,10 @@
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnDeleteNguyenLieu = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
+            this.lblSoPhieu = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -104,8 +104,7 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
-            this.xtraTabPage2.Controls.Add(this.PhieuNhapKho_SoPhieu);
-            this.xtraTabPage2.Controls.Add(this.labelControl1);
+            this.xtraTabPage2.Controls.Add(this.lblSoPhieu);
             this.xtraTabPage2.Controls.Add(this.lblSoDonHang);
             this.xtraTabPage2.Controls.Add(this.lblDanhGiaId);
             this.xtraTabPage2.Controls.Add(this.PhieuNhapKho_DanhGiaId);
@@ -123,26 +122,10 @@
             this.xtraTabPage2.Size = new System.Drawing.Size(701, 560);
             this.xtraTabPage2.Text = "Phiếu Nhập Kho";
             // 
-            // PhieuNhapKho_SoPhieu
-            // 
-            this.PhieuNhapKho_SoPhieu.Location = new System.Drawing.Point(178, 500);
-            this.PhieuNhapKho_SoPhieu.Name = "PhieuNhapKho_SoPhieu";
-            this.PhieuNhapKho_SoPhieu.Size = new System.Drawing.Size(179, 23);
-            this.PhieuNhapKho_SoPhieu.TabIndex = 6;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Location = new System.Drawing.Point(30, 506);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(60, 17);
-            this.labelControl1.TabIndex = 120;
-            this.labelControl1.Text = "Số Phiếu";
-            // 
             // lblSoDonHang
             // 
             this.lblSoDonHang.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblSoDonHang.Location = new System.Drawing.Point(419, 446);
+            this.lblSoDonHang.Location = new System.Drawing.Point(420, 490);
             this.lblSoDonHang.Name = "lblSoDonHang";
             this.lblSoDonHang.Size = new System.Drawing.Size(24, 16);
             this.lblSoDonHang.TabIndex = 118;
@@ -151,7 +134,7 @@
             // lblDanhGiaId
             // 
             this.lblDanhGiaId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDanhGiaId.Location = new System.Drawing.Point(29, 444);
+            this.lblDanhGiaId.Location = new System.Drawing.Point(30, 488);
             this.lblDanhGiaId.Name = "lblDanhGiaId";
             this.lblDanhGiaId.Size = new System.Drawing.Size(113, 17);
             this.lblDanhGiaId.TabIndex = 117;
@@ -162,7 +145,7 @@
             this.PhieuNhapKho_DanhGiaId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.PhieuNhapKho_DanhGiaId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.PhieuNhapKho_DanhGiaId.FormattingEnabled = true;
-            this.PhieuNhapKho_DanhGiaId.Location = new System.Drawing.Point(178, 444);
+            this.PhieuNhapKho_DanhGiaId.Location = new System.Drawing.Point(179, 488);
             this.PhieuNhapKho_DanhGiaId.Name = "PhieuNhapKho_DanhGiaId";
             this.PhieuNhapKho_DanhGiaId.Size = new System.Drawing.Size(180, 24);
             this.PhieuNhapKho_DanhGiaId.TabIndex = 5;
@@ -173,15 +156,14 @@
             this.PhieuNhapKho_Kho.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.PhieuNhapKho_Kho.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.PhieuNhapKho_Kho.FormattingEnabled = true;
-            this.PhieuNhapKho_Kho.Location = new System.Drawing.Point(179, 212);
+            this.PhieuNhapKho_Kho.Location = new System.Drawing.Point(180, 256);
             this.PhieuNhapKho_Kho.Name = "PhieuNhapKho_Kho";
             this.PhieuNhapKho_Kho.Size = new System.Drawing.Size(508, 24);
             this.PhieuNhapKho_Kho.TabIndex = 2;
-            this.PhieuNhapKho_Kho.SelectedIndexChanged += new System.EventHandler(this.PhieuNhapKho_Kho_SelectedIndexChanged);
             // 
             // PhieuNhapKho_DiaChi
             // 
-            this.PhieuNhapKho_DiaChi.Location = new System.Drawing.Point(178, 91);
+            this.PhieuNhapKho_DiaChi.Location = new System.Drawing.Point(179, 135);
             this.PhieuNhapKho_DiaChi.Name = "PhieuNhapKho_DiaChi";
             this.PhieuNhapKho_DiaChi.Size = new System.Drawing.Size(509, 96);
             this.PhieuNhapKho_DiaChi.TabIndex = 1;
@@ -189,14 +171,14 @@
             // 
             // PhieuNhapKho_NgayNhap
             // 
-            this.PhieuNhapKho_NgayNhap.Location = new System.Drawing.Point(178, 261);
+            this.PhieuNhapKho_NgayNhap.Location = new System.Drawing.Point(179, 305);
             this.PhieuNhapKho_NgayNhap.Name = "PhieuNhapKho_NgayNhap";
             this.PhieuNhapKho_NgayNhap.Size = new System.Drawing.Size(509, 23);
             this.PhieuNhapKho_NgayNhap.TabIndex = 3;
             // 
             // PhieuNhapKho_NguoiGiao
             // 
-            this.PhieuNhapKho_NguoiGiao.Location = new System.Drawing.Point(178, 41);
+            this.PhieuNhapKho_NguoiGiao.Location = new System.Drawing.Point(179, 85);
             this.PhieuNhapKho_NguoiGiao.Name = "PhieuNhapKho_NguoiGiao";
             this.PhieuNhapKho_NguoiGiao.Size = new System.Drawing.Size(509, 23);
             this.PhieuNhapKho_NguoiGiao.TabIndex = 0;
@@ -204,7 +186,7 @@
             // lblNguoiGiao
             // 
             this.lblNguoiGiao.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNguoiGiao.Location = new System.Drawing.Point(27, 41);
+            this.lblNguoiGiao.Location = new System.Drawing.Point(28, 85);
             this.lblNguoiGiao.Name = "lblNguoiGiao";
             this.lblNguoiGiao.Size = new System.Drawing.Size(76, 17);
             this.lblNguoiGiao.TabIndex = 80;
@@ -213,7 +195,7 @@
             // lblDiaChi
             // 
             this.lblDiaChi.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDiaChi.Location = new System.Drawing.Point(29, 94);
+            this.lblDiaChi.Location = new System.Drawing.Point(30, 138);
             this.lblDiaChi.Name = "lblDiaChi";
             this.lblDiaChi.Size = new System.Drawing.Size(48, 17);
             this.lblDiaChi.TabIndex = 88;
@@ -221,7 +203,7 @@
             // 
             // PhieuNhapKho_LyDo
             // 
-            this.PhieuNhapKho_LyDo.Location = new System.Drawing.Point(178, 317);
+            this.PhieuNhapKho_LyDo.Location = new System.Drawing.Point(179, 361);
             this.PhieuNhapKho_LyDo.Name = "PhieuNhapKho_LyDo";
             this.PhieuNhapKho_LyDo.Size = new System.Drawing.Size(509, 96);
             this.PhieuNhapKho_LyDo.TabIndex = 4;
@@ -230,7 +212,7 @@
             // lblLyDo
             // 
             this.lblLyDo.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblLyDo.Location = new System.Drawing.Point(27, 320);
+            this.lblLyDo.Location = new System.Drawing.Point(28, 364);
             this.lblLyDo.Name = "lblLyDo";
             this.lblLyDo.Size = new System.Drawing.Size(36, 16);
             this.lblLyDo.TabIndex = 99;
@@ -239,7 +221,7 @@
             // lblNgayNhap
             // 
             this.lblNgayNhap.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNgayNhap.Location = new System.Drawing.Point(29, 267);
+            this.lblNgayNhap.Location = new System.Drawing.Point(30, 311);
             this.lblNgayNhap.Name = "lblNgayNhap";
             this.lblNgayNhap.Size = new System.Drawing.Size(77, 17);
             this.lblNgayNhap.TabIndex = 105;
@@ -248,7 +230,7 @@
             // lblKho
             // 
             this.lblKho.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblKho.Location = new System.Drawing.Point(29, 215);
+            this.lblKho.Location = new System.Drawing.Point(30, 259);
             this.lblKho.Name = "lblKho";
             this.lblKho.Size = new System.Drawing.Size(24, 16);
             this.lblKho.TabIndex = 102;
@@ -371,14 +353,14 @@
             this.btnDeleteNguyenLieu.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Appearance.Image")));
             this.btnDeleteNguyenLieu.Appearance.Options.UseImage = true;
             this.btnDeleteNguyenLieu.AutoHeight = false;
-            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
-            serializableAppearanceObject1.Options.UseBackColor = true;
-            serializableAppearanceObject1.Options.UseBorderColor = true;
-            serializableAppearanceObject1.Options.UseImage = true;
+            serializableAppearanceObject3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject3.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject3.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject3.Image")));
+            serializableAppearanceObject3.Options.UseBackColor = true;
+            serializableAppearanceObject3.Options.UseBorderColor = true;
+            serializableAppearanceObject3.Options.UseImage = true;
             this.btnDeleteNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteNguyenLieu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteNguyenLieu.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDeleteNguyenLieu.Name = "btnDeleteNguyenLieu";
@@ -399,6 +381,26 @@
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             // 
+            // btnDuyet
+            // 
+            this.btnDuyet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDuyet.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnDuyet.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDuyet.Appearance.Options.UseBackColor = true;
+            this.btnDuyet.Appearance.Options.UseFont = true;
+            this.btnDuyet.Appearance.Options.UseForeColor = true;
+            this.btnDuyet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnDuyet.Location = new System.Drawing.Point(96, 626);
+            this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.btnDuyet.Name = "btnDuyet";
+            this.btnDuyet.Size = new System.Drawing.Size(107, 30);
+            this.btnDuyet.TabIndex = 124;
+            this.btnDuyet.Text = "Duyệt";
+            this.btnDuyet.Visible = false;
+            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
+            // 
             // btnCancel
             // 
             this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
@@ -407,37 +409,47 @@
             this.btnCancel.Appearance.Options.UseBackColor = true;
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(6, 626);
+            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnCancel.Location = new System.Drawing.Point(15, 626);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 123;
             this.btnCancel.Text = "Hủy";
             // 
             // btnExport
             // 
-            this.btnExport.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnExport.Appearance.BackColor = System.Drawing.Color.ForestGreen;
             this.btnExport.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
             this.btnExport.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExport.Appearance.Options.UseBackColor = true;
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
-            this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnExport.Location = new System.Drawing.Point(549, 626);
+            this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnExport.Location = new System.Drawing.Point(214, 626);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);
-            this.btnExport.TabIndex = 77;
+            this.btnExport.TabIndex = 122;
             this.btnExport.Text = "Export";
             this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // lblSoPhieu
+            // 
+            this.lblSoPhieu.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.lblSoPhieu.Location = new System.Drawing.Point(28, 32);
+            this.lblSoPhieu.Name = "lblSoPhieu";
+            this.lblSoPhieu.Size = new System.Drawing.Size(88, 24);
+            this.lblSoPhieu.TabIndex = 125;
+            this.lblSoPhieu.Text = "Số Phiếu";
             // 
             // ucNhapKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.btnDuyet);
             this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucNhapKho";
@@ -472,7 +484,6 @@
         private System.Windows.Forms.DateTimePicker PhieuNhapKho_NgayNhap;
         private System.Windows.Forms.RichTextBox PhieuNhapKho_DiaChi;
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraGrid.GridControl gridNguyenLieu;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewNguyenLieu;
@@ -486,8 +497,9 @@
         private System.Windows.Forms.ComboBox PhieuNhapKho_DanhGiaId;
         private DevExpress.XtraEditors.LabelControl lblDanhGiaId;
         private DevExpress.XtraEditors.LabelControl lblSoDonHang;
-        private System.Windows.Forms.TextBox PhieuNhapKho_SoPhieu;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.SimpleButton btnDuyet;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnExport;
+        private DevExpress.XtraEditors.LabelControl lblSoPhieu;
     }
 }

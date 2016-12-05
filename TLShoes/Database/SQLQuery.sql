@@ -629,6 +629,7 @@ alter table DonDatHang add NgayDuyet bigint
 alter table DonDatHang add NguoiDuyetId bigint foreign key references UserAccount(Id)
 alter table DonDatHang add NgayLap bigint
 alter table DonDatHang add NguoiLapId bigint foreign key references UserAccount(Id)
+alter table DonDatHang add TrangThai nvarchar(20),
 create table DonDatHang(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -654,6 +655,7 @@ NgayDuyet bigint,
 NguoiDuyetId bigint foreign key references UserAccount(Id),
 NgayLap bigint,
 NguoiLapId bigint foreign key references UserAccount(Id),
+TrangThai nvarchar(20),
 )
 
 alter table ChiTietDonDatHang add DonGia float

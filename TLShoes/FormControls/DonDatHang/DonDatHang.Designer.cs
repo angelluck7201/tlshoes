@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDonDatHang));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -88,6 +88,7 @@
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -128,7 +129,7 @@
             this.btnSave.Location = new System.Drawing.Point(1401, 665);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             // 
             // xtraTabPage3
@@ -466,6 +467,8 @@
             // 
             // gridView2
             // 
+            this.gridView2.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridView2.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn10,
             this.gridColumn11,
@@ -480,6 +483,8 @@
             // 
             // gridColumn10
             // 
+            this.gridColumn10.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn10.AppearanceHeader.Options.UseFont = true;
             this.gridColumn10.Caption = "Id";
             this.gridColumn10.FieldName = "Id";
             this.gridColumn10.Name = "gridColumn10";
@@ -512,7 +517,7 @@
             this.btnNhaCungCap.Location = new System.Drawing.Point(884, 81);
             this.btnNhaCungCap.Name = "btnNhaCungCap";
             this.btnNhaCungCap.Size = new System.Drawing.Size(131, 30);
-            this.btnNhaCungCap.TabIndex = 103;
+            this.btnNhaCungCap.TabIndex = 3;
             this.btnNhaCungCap.Text = "Lấy Giá Vật Tư";
             this.btnNhaCungCap.Click += new System.EventHandler(this.btnNhaCungCap_Click);
             // 
@@ -532,7 +537,8 @@
             // 
             // DonDatHang_SoDH
             // 
-            this.DonDatHang_SoDH.Location = new System.Drawing.Point(1020, 25);
+            this.DonDatHang_SoDH.Enabled = false;
+            this.DonDatHang_SoDH.Location = new System.Drawing.Point(1047, 23);
             this.DonDatHang_SoDH.Name = "DonDatHang_SoDH";
             this.DonDatHang_SoDH.Size = new System.Drawing.Size(240, 22);
             this.DonDatHang_SoDH.TabIndex = 2;
@@ -562,6 +568,8 @@
             // 
             // gridViewNguyenLieu
             // 
+            this.gridViewNguyenLieu.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridViewNguyenLieu.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridViewNguyenLieu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn3,
             this.gridColumn2,
@@ -670,13 +678,13 @@
             this.btnDeleteNguyenLieu.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Appearance.Image")));
             this.btnDeleteNguyenLieu.Appearance.Options.UseImage = true;
             this.btnDeleteNguyenLieu.AutoHeight = false;
-            serializableAppearanceObject2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject2.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject2.Options.UseBackColor = true;
-            serializableAppearanceObject2.Options.UseBorderColor = true;
-            serializableAppearanceObject2.Options.UseImage = true;
+            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject1.Options.UseBackColor = true;
+            serializableAppearanceObject1.Options.UseBorderColor = true;
+            serializableAppearanceObject1.Options.UseImage = true;
             this.btnDeleteNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteNguyenLieu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteNguyenLieu.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDeleteNguyenLieu.Name = "btnDeleteNguyenLieu";
@@ -724,7 +732,7 @@
             this.DonDatHang_NhaCungCapId.Location = new System.Drawing.Point(591, 86);
             this.DonDatHang_NhaCungCapId.Name = "DonDatHang_NhaCungCapId";
             this.DonDatHang_NhaCungCapId.Size = new System.Drawing.Size(240, 24);
-            this.DonDatHang_NhaCungCapId.TabIndex = 3;
+            this.DonDatHang_NhaCungCapId.TabIndex = 2;
             // 
             // lblNgayDatHang
             // 
@@ -775,7 +783,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
             this.xtraTabControl1.Size = new System.Drawing.Size(1498, 646);
-            this.xtraTabControl1.TabIndex = 73;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
@@ -783,20 +791,40 @@
             // 
             // btnExport
             // 
-            this.btnExport.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnExport.Appearance.BackColor = System.Drawing.Color.ForestGreen;
             this.btnExport.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
             this.btnExport.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExport.Appearance.Options.UseBackColor = true;
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnExport.Location = new System.Drawing.Point(1308, 665);
+            this.btnExport.Location = new System.Drawing.Point(227, 665);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);
-            this.btnExport.TabIndex = 74;
+            this.btnExport.TabIndex = 119;
             this.btnExport.Text = "Export";
             this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnDuyet
+            // 
+            this.btnDuyet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDuyet.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnDuyet.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDuyet.Appearance.Options.UseBackColor = true;
+            this.btnDuyet.Appearance.Options.UseFont = true;
+            this.btnDuyet.Appearance.Options.UseForeColor = true;
+            this.btnDuyet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnDuyet.Location = new System.Drawing.Point(109, 665);
+            this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.btnDuyet.Name = "btnDuyet";
+            this.btnDuyet.Size = new System.Drawing.Size(107, 30);
+            this.btnDuyet.TabIndex = 121;
+            this.btnDuyet.Text = "Duyệt";
+            this.btnDuyet.Visible = false;
+            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
             // 
             // btnCancel
             // 
@@ -807,10 +835,10 @@
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
             this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(4, 665);
+            this.btnCancel.Location = new System.Drawing.Point(28, 665);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 75;
+            this.btnCancel.TabIndex = 120;
             this.btnCancel.Text = "Hủy";
             // 
             // ucDonDatHang
@@ -818,6 +846,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.btnDuyet);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnSave);
@@ -916,6 +945,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton btnExport;
+        private DevExpress.XtraEditors.SimpleButton btnDuyet;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
     }
 }

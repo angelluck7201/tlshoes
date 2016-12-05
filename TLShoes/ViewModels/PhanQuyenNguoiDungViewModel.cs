@@ -28,7 +28,7 @@ namespace TLShoes.ViewModels
 
         public void GetDataSource(GridControl control)
         {
-            control.DataSource = GetList();
+            control.DataSource = GetList().GroupBy(s => s.LoaiNguoiDung).Select(s => s.First()).ToList();
         }
 
         public void Save(object data)

@@ -32,6 +32,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.lblSoPhieu = new DevExpress.XtraEditors.LabelControl();
             this.PhieuXuatKho_BoPhan = new System.Windows.Forms.ComboBox();
             this.SoDH = new System.Windows.Forms.TextBox();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -72,6 +73,7 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnXuatLe = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -121,6 +123,7 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.xtraTabPage2.Controls.Add(this.lblSoPhieu);
             this.xtraTabPage2.Controls.Add(this.PhieuXuatKho_BoPhan);
             this.xtraTabPage2.Controls.Add(this.SoDH);
             this.xtraTabPage2.Controls.Add(this.labelControl1);
@@ -143,12 +146,21 @@
             this.xtraTabPage2.Size = new System.Drawing.Size(701, 661);
             this.xtraTabPage2.Text = "Phiếu Xuất Kho";
             // 
+            // lblSoPhieu
+            // 
+            this.lblSoPhieu.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.lblSoPhieu.Location = new System.Drawing.Point(25, 26);
+            this.lblSoPhieu.Name = "lblSoPhieu";
+            this.lblSoPhieu.Size = new System.Drawing.Size(88, 24);
+            this.lblSoPhieu.TabIndex = 124;
+            this.lblSoPhieu.Text = "Số Phiếu";
+            // 
             // PhieuXuatKho_BoPhan
             // 
             this.PhieuXuatKho_BoPhan.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.PhieuXuatKho_BoPhan.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.PhieuXuatKho_BoPhan.FormattingEnabled = true;
-            this.PhieuXuatKho_BoPhan.Location = new System.Drawing.Point(178, 290);
+            this.PhieuXuatKho_BoPhan.Location = new System.Drawing.Point(176, 337);
             this.PhieuXuatKho_BoPhan.Name = "PhieuXuatKho_BoPhan";
             this.PhieuXuatKho_BoPhan.Size = new System.Drawing.Size(508, 24);
             this.PhieuXuatKho_BoPhan.TabIndex = 123;
@@ -156,7 +168,7 @@
             // SoDH
             // 
             this.SoDH.Enabled = false;
-            this.SoDH.Location = new System.Drawing.Point(178, 80);
+            this.SoDH.Location = new System.Drawing.Point(176, 127);
             this.SoDH.Name = "SoDH";
             this.SoDH.Size = new System.Drawing.Size(509, 23);
             this.SoDH.TabIndex = 1;
@@ -164,7 +176,7 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Location = new System.Drawing.Point(24, 82);
+            this.labelControl1.Location = new System.Drawing.Point(22, 129);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(44, 17);
             this.labelControl1.TabIndex = 122;
@@ -175,7 +187,7 @@
             this.PhieuXuatKho_LoaiXuat.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.PhieuXuatKho_LoaiXuat.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.PhieuXuatKho_LoaiXuat.FormattingEnabled = true;
-            this.PhieuXuatKho_LoaiXuat.Location = new System.Drawing.Point(179, 442);
+            this.PhieuXuatKho_LoaiXuat.Location = new System.Drawing.Point(177, 489);
             this.PhieuXuatKho_LoaiXuat.Name = "PhieuXuatKho_LoaiXuat";
             this.PhieuXuatKho_LoaiXuat.Size = new System.Drawing.Size(508, 24);
             this.PhieuXuatKho_LoaiXuat.TabIndex = 7;
@@ -183,7 +195,7 @@
             // lblLoaiXuat
             // 
             this.lblLoaiXuat.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblLoaiXuat.Location = new System.Drawing.Point(30, 448);
+            this.lblLoaiXuat.Location = new System.Drawing.Point(28, 495);
             this.lblLoaiXuat.Name = "lblLoaiXuat";
             this.lblLoaiXuat.Size = new System.Drawing.Size(65, 17);
             this.lblLoaiXuat.TabIndex = 120;
@@ -194,7 +206,7 @@
             this.PhieuXuatKho_Kho.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.PhieuXuatKho_Kho.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.PhieuXuatKho_Kho.FormattingEnabled = true;
-            this.PhieuXuatKho_Kho.Location = new System.Drawing.Point(179, 342);
+            this.PhieuXuatKho_Kho.Location = new System.Drawing.Point(177, 389);
             this.PhieuXuatKho_Kho.Name = "PhieuXuatKho_Kho";
             this.PhieuXuatKho_Kho.Size = new System.Drawing.Size(508, 24);
             this.PhieuXuatKho_Kho.TabIndex = 5;
@@ -202,7 +214,7 @@
             // lblDonHangId
             // 
             this.lblDonHangId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDonHangId.Location = new System.Drawing.Point(24, 39);
+            this.lblDonHangId.Location = new System.Drawing.Point(22, 86);
             this.lblDonHangId.Name = "lblDonHangId";
             this.lblDonHangId.Size = new System.Drawing.Size(56, 16);
             this.lblDonHangId.TabIndex = 117;
@@ -211,7 +223,7 @@
             // PhieuXuatKho_DonHangId
             // 
             this.PhieuXuatKho_DonHangId.FormattingEnabled = true;
-            this.PhieuXuatKho_DonHangId.Location = new System.Drawing.Point(178, 36);
+            this.PhieuXuatKho_DonHangId.Location = new System.Drawing.Point(176, 83);
             this.PhieuXuatKho_DonHangId.Name = "PhieuXuatKho_DonHangId";
             this.PhieuXuatKho_DonHangId.Size = new System.Drawing.Size(509, 24);
             this.PhieuXuatKho_DonHangId.TabIndex = 0;
@@ -219,7 +231,7 @@
             // 
             // PhieuXuatKho_DiaChi
             // 
-            this.PhieuXuatKho_DiaChi.Location = new System.Drawing.Point(178, 173);
+            this.PhieuXuatKho_DiaChi.Location = new System.Drawing.Point(176, 220);
             this.PhieuXuatKho_DiaChi.Name = "PhieuXuatKho_DiaChi";
             this.PhieuXuatKho_DiaChi.Size = new System.Drawing.Size(509, 96);
             this.PhieuXuatKho_DiaChi.TabIndex = 3;
@@ -227,14 +239,14 @@
             // 
             // PhieuXuatKho_NgayXuat
             // 
-            this.PhieuXuatKho_NgayXuat.Location = new System.Drawing.Point(178, 392);
+            this.PhieuXuatKho_NgayXuat.Location = new System.Drawing.Point(176, 439);
             this.PhieuXuatKho_NgayXuat.Name = "PhieuXuatKho_NgayXuat";
             this.PhieuXuatKho_NgayXuat.Size = new System.Drawing.Size(509, 23);
             this.PhieuXuatKho_NgayXuat.TabIndex = 6;
             // 
             // PhieuXuatKho_NguoiNhan
             // 
-            this.PhieuXuatKho_NguoiNhan.Location = new System.Drawing.Point(178, 123);
+            this.PhieuXuatKho_NguoiNhan.Location = new System.Drawing.Point(176, 170);
             this.PhieuXuatKho_NguoiNhan.Name = "PhieuXuatKho_NguoiNhan";
             this.PhieuXuatKho_NguoiNhan.Size = new System.Drawing.Size(509, 23);
             this.PhieuXuatKho_NguoiNhan.TabIndex = 2;
@@ -242,7 +254,7 @@
             // lblNguoiNhan
             // 
             this.lblNguoiNhan.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNguoiNhan.Location = new System.Drawing.Point(27, 123);
+            this.lblNguoiNhan.Location = new System.Drawing.Point(25, 170);
             this.lblNguoiNhan.Name = "lblNguoiNhan";
             this.lblNguoiNhan.Size = new System.Drawing.Size(83, 17);
             this.lblNguoiNhan.TabIndex = 80;
@@ -251,7 +263,7 @@
             // lblDiaChi
             // 
             this.lblDiaChi.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDiaChi.Location = new System.Drawing.Point(29, 176);
+            this.lblDiaChi.Location = new System.Drawing.Point(27, 223);
             this.lblDiaChi.Name = "lblDiaChi";
             this.lblDiaChi.Size = new System.Drawing.Size(48, 17);
             this.lblDiaChi.TabIndex = 88;
@@ -259,7 +271,7 @@
             // 
             // PhieuXuatKho_LyDo
             // 
-            this.PhieuXuatKho_LyDo.Location = new System.Drawing.Point(178, 488);
+            this.PhieuXuatKho_LyDo.Location = new System.Drawing.Point(176, 535);
             this.PhieuXuatKho_LyDo.Name = "PhieuXuatKho_LyDo";
             this.PhieuXuatKho_LyDo.Size = new System.Drawing.Size(509, 96);
             this.PhieuXuatKho_LyDo.TabIndex = 8;
@@ -268,7 +280,7 @@
             // lblBoPhan
             // 
             this.lblBoPhan.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblBoPhan.Location = new System.Drawing.Point(29, 293);
+            this.lblBoPhan.Location = new System.Drawing.Point(27, 340);
             this.lblBoPhan.Name = "lblBoPhan";
             this.lblBoPhan.Size = new System.Drawing.Size(58, 17);
             this.lblBoPhan.TabIndex = 96;
@@ -277,7 +289,7 @@
             // lblLyDo
             // 
             this.lblLyDo.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblLyDo.Location = new System.Drawing.Point(30, 491);
+            this.lblLyDo.Location = new System.Drawing.Point(28, 538);
             this.lblLyDo.Name = "lblLyDo";
             this.lblLyDo.Size = new System.Drawing.Size(36, 16);
             this.lblLyDo.TabIndex = 99;
@@ -286,7 +298,7 @@
             // lblNgayXuat
             // 
             this.lblNgayXuat.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNgayXuat.Location = new System.Drawing.Point(29, 398);
+            this.lblNgayXuat.Location = new System.Drawing.Point(27, 445);
             this.lblNgayXuat.Name = "lblNgayXuat";
             this.lblNgayXuat.Size = new System.Drawing.Size(73, 17);
             this.lblNgayXuat.TabIndex = 105;
@@ -295,7 +307,7 @@
             // lblKho
             // 
             this.lblKho.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblKho.Location = new System.Drawing.Point(29, 346);
+            this.lblKho.Location = new System.Drawing.Point(27, 393);
             this.lblKho.Name = "lblKho";
             this.lblKho.Size = new System.Drawing.Size(24, 16);
             this.lblKho.TabIndex = 102;
@@ -544,7 +556,7 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSave.Location = new System.Drawing.Point(445, 719);
+            this.btnSave.Location = new System.Drawing.Point(619, 719);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 1;
@@ -559,12 +571,32 @@
             this.btnXuatLe.Appearance.Options.UseFont = true;
             this.btnXuatLe.Appearance.Options.UseForeColor = true;
             this.btnXuatLe.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnXuatLe.Location = new System.Drawing.Point(526, 719);
+            this.btnXuatLe.Location = new System.Drawing.Point(434, 719);
             this.btnXuatLe.Name = "btnXuatLe";
             this.btnXuatLe.Size = new System.Drawing.Size(179, 30);
             this.btnXuatLe.TabIndex = 2;
             this.btnXuatLe.Text = "Xuất Kho";
             this.btnXuatLe.Click += new System.EventHandler(this.btnXuatLe_Click);
+            // 
+            // btnDuyet
+            // 
+            this.btnDuyet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDuyet.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnDuyet.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDuyet.Appearance.Options.UseBackColor = true;
+            this.btnDuyet.Appearance.Options.UseFont = true;
+            this.btnDuyet.Appearance.Options.UseForeColor = true;
+            this.btnDuyet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnDuyet.Location = new System.Drawing.Point(106, 719);
+            this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.btnDuyet.Name = "btnDuyet";
+            this.btnDuyet.Size = new System.Drawing.Size(107, 30);
+            this.btnDuyet.TabIndex = 127;
+            this.btnDuyet.Text = "Duyệt";
+            this.btnDuyet.Visible = false;
+            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
             // 
             // btnCancel
             // 
@@ -575,25 +607,25 @@
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
             this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(6, 719);
+            this.btnCancel.Location = new System.Drawing.Point(25, 719);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 126;
             this.btnCancel.Text = "Hủy";
             // 
             // btnExport
             // 
-            this.btnExport.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnExport.Appearance.BackColor = System.Drawing.Color.ForestGreen;
             this.btnExport.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
             this.btnExport.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExport.Appearance.Options.UseBackColor = true;
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnExport.Location = new System.Drawing.Point(364, 719);
+            this.btnExport.Location = new System.Drawing.Point(224, 719);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);
-            this.btnExport.TabIndex = 76;
+            this.btnExport.TabIndex = 125;
             this.btnExport.Text = "Export";
             this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -603,9 +635,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.btnDuyet);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnXuatLe);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucXuatKho";
@@ -645,7 +678,6 @@
         private System.Windows.Forms.RichTextBox PhieuXuatKho_DiaChi;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.SimpleButton btnXuatLe;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.LabelControl lblDonHangId;
         private System.Windows.Forms.ComboBox PhieuXuatKho_DonHangId;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
@@ -662,7 +694,6 @@
         private DevExpress.XtraEditors.LabelControl lblLoaiXuat;
         private System.Windows.Forms.TextBox SoDH;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.SimpleButton btnExport;
         private System.Windows.Forms.ComboBox PhieuXuatKho_BoPhan;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         private DevExpress.XtraGrid.GridControl gridNhatKy;
@@ -673,5 +704,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraEditors.SimpleButton btnDuyet;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
+        private DevExpress.XtraEditors.SimpleButton btnExport;
+        private DevExpress.XtraEditors.LabelControl lblSoPhieu;
     }
 }

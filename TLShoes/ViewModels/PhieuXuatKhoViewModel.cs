@@ -49,5 +49,12 @@ namespace TLShoes.ViewModels
             DbContext.NhatKyXuatKhoes.AddOrUpdate(data);
             Commit();
         }
+
+        public string GenerateSoPhieu()
+        {
+            var currentItemNum = DbContext.PhieuXuatKhoes.Count();
+            var currentTime = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
+            return string.Format(Define.SO_PHIEU_XUAT_KHO, currentItemNum + 1, currentTime.Month.ToString("00"), currentTime.Year);
+        }
     }
 }

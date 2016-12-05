@@ -248,6 +248,7 @@
     <Property Name="NguoiDuyetId" Type="bigint" />
     <Property Name="NgayLap" Type="bigint" />
     <Property Name="NguoiLapId" Type="bigint" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="DonHang">
     <Key>
@@ -667,6 +668,7 @@
     <Property Name="NguoiDuyetId" Type="bigint" />
     <Property Name="NgayLap" Type="bigint" />
     <Property Name="NguoiLapId" Type="bigint" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

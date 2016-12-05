@@ -38,8 +38,8 @@ namespace TLShoes.ViewModels
                 NhaCungCap = s.NhaCungCap.TenCongTy,
                 NgayDatHang = TimeHelper.TimestampToString(s.NgayDatHang, "d"),
                 NgayGiaoHang = TimeHelper.TimestampToString(s.NgayGiaoHang, "d"),
-                SoLuong = s.ChiTietDonDatHangs.Sum(a => a.SoLuong),
-                SoLuongThuc = s.ChiTietDonDatHangs.Sum(a => a.SoLuongThuc),
+                SoLuong = s.ChiTietDonDatHangs.Where(a => a.SoLuong != null).Sum(a => a.SoLuong),
+                SoLuongThuc = s.ChiTietDonDatHangs.Where(a => a.SoLuong != null).Sum(a => a.SoLuongThuc),
                 DanhGia = (new List<int?>() { s.Gia, s.DichVuGiaoHang, s.DatTestHoa, s.DatTestLy, s.DichVuHauMai, s.DungThoiGian, s.DichVuHauMai, s.DungYeuCauKyThuat, s.Khac }.Where(a => a > 0).Average()),
                 s.UserAccount.LoaiNguoiDung
 
@@ -98,6 +98,13 @@ namespace TLShoes.ViewModels
             {
                 Commit();
             }
+        }
+
+        public string GenerateSoPhieu()
+        {
+            var currentItemNum = DbContext.DonDatHangs.Count();
+            var currentTime = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
+            return string.Format(Define.SO_PHIEU_DON_DAT_HANG, currentItemNum + 1, currentTime.Month.ToString("00"), currentTime.Year);
         }
 
         public class VatTuDonGia : ChiTietDonDatHang

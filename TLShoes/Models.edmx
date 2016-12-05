@@ -253,6 +253,7 @@
           <Property Name="NguoiDuyetId" Type="bigint" />
           <Property Name="NgayLap" Type="bigint" />
           <Property Name="NguoiLapId" Type="bigint" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="DonHang">
           <Key>
@@ -672,6 +673,7 @@
           <Property Name="NguoiDuyetId" Type="bigint" />
           <Property Name="NgayLap" Type="bigint" />
           <Property Name="NguoiLapId" Type="bigint" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -4584,6 +4586,7 @@
           <NavigationProperty Name="NguoiDuyet" Relationship="GiayTLModel.FK__DonDatHan__Nguoi__4DE98D56" FromRole="DonDatHang" ToRole="UserAccount" />
           <NavigationProperty Name="NguoiLap" Relationship="GiayTLModel.FK__DonDatHan__Nguoi__4EDDB18F" FromRole="DonDatHang" ToRole="UserAccount" />
           <NavigationProperty Name="ToTrinh" Relationship="GiayTLModel.FK__DonDatHan__ToTri__0C1BC9F9" FromRole="DonDatHang" ToRole="ToTrinh" />
+          <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__ChiTietDo__DonDa__76619304">
           <End Type="GiayTLModel.DonDatHang" Role="DonDatHang" Multiplicity="0..1" />
@@ -4919,6 +4922,7 @@
           <Property Name="NguoiLapId" Type="Int64" />
           <NavigationProperty Name="NguoiDuyet" Relationship="GiayTLModel.FK__PhieuXuat__Nguoi__4FD1D5C8" FromRole="PhieuXuatKho" ToRole="UserAccount" />
           <NavigationProperty Name="NguoiLap" Relationship="GiayTLModel.FK__PhieuXuat__Nguoi__50C5FA01" FromRole="PhieuXuatKho" ToRole="UserAccount" />
+          <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__ChiTietXu__Phieu__18EBB532">
           <End Type="GiayTLModel.PhieuXuatKho" Role="PhieuXuatKho" Multiplicity="0..1" />
@@ -6036,6 +6040,7 @@
           <EntitySetMapping Name="DonDatHangs">
             <EntityTypeMapping TypeName="GiayTLModel.DonDatHang">
               <MappingFragment StoreEntitySet="DonDatHang">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
                 <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
                 <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
@@ -6145,6 +6150,7 @@
           <EntitySetMapping Name="PhieuXuatKhoes">
             <EntityTypeMapping TypeName="GiayTLModel.PhieuXuatKho">
               <MappingFragment StoreEntitySet="PhieuXuatKho">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
                 <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
                 <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />

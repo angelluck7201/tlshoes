@@ -36,7 +36,6 @@ namespace TLShoes.FormControls.DonDatHang
             DonDatHang_NhaCungCapId.ValueMember = "Id";
             DonDatHang_NhaCungCapId.DataSource = new BindingSource(SF.Get<NhaCungCapViewModel>().GetList(), null);
 
-
             Init(data);
             ToTrinhList = SF.Get<ToTrinhViewModel>().GetList(data);
             if (data != null)
@@ -61,7 +60,60 @@ namespace TLShoes.FormControls.DonDatHang
 
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
 
+            InitAuthorize();
         }
+
+        private void InitAuthorize()
+        {
+            btnCancel.Enabled = false;
+            btnDuyet.Enabled = true;
+            btnDuyet.Visible = false;
+            btnExport.Visible = false;
+            btnSave.Enabled = true;
+
+            if (_donDatHang != null)
+            {
+                DonDatHang_SoDH.Text = _donDatHang.SoDH;
+                var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_donDatHang.TrangThai);
+
+                if (trangThai <= Define.TrangThai.HUY)
+                {
+                    if (Authorization.LoginUser.LoaiNguoiDung == Define.LoaiNguoiDung.TRUONG_PVT.ToString())
+                    {
+                        btnDuyet.Visible = true;
+                    }
+                }
+
+                // Check verify authorize
+                if (trangThai == Define.TrangThai.DUYET)
+                {
+                    if (Authorization.LoginUser.LoaiNguoiDung == Define.LoaiNguoiDung.GDSX.ToString())
+                    {
+                        btnDuyet.Visible = true;
+                        btnCancel.Enabled = true;
+                    }
+                }
+
+                // Can't save if verified
+                if (trangThai > Define.TrangThai.HUY)
+                {
+                    btnSave.Enabled = false;
+                }
+
+                // Allow export after final verify
+                if (trangThai == Define.TrangThai.DUYET_PVT)
+                {
+                    btnExport.Visible = true;
+                    btnDuyet.Visible = true;
+                    btnDuyet.Enabled = false;
+                }
+
+                var verifyAuthorize = Authorization.CheckAuthorization("DonDatHang", Define.Authorization.VERIFY);
+                btnDuyet.Visible &= verifyAuthorize;
+            }
+        }
+
+
 
         public override bool SaveData()
         {
@@ -73,9 +125,10 @@ namespace TLShoes.FormControls.DonDatHang
             }
 
             // Save Don hang
-            var saveData = CRUD.GetFormObject<TLShoes.DonDatHang>(FormControls);
             using (var transaction = new TransactionScope())
             {
+                var saveData = CRUD.GetFormObject(FormControls, _donDatHang);
+                CRUD.DecorateSaveData(saveData, _donDatHang == null);
                 SF.Get<DonDatHangViewModel>().Save(saveData);
 
                 // Clear deleted data
@@ -259,7 +312,10 @@ namespace TLShoes.FormControls.DonDatHang
                 updateData.Add(DonDatHang_Khac.Rating);
             }
 
-            DanhGiaTongThe.Rating = updateData.Average();
+            if (updateData.Count > 0)
+            {
+                DanhGiaTongThe.Rating = updateData.Average();
+            }
         }
 
         private void DonDatHang_DungThoiGian_EditValueChanged(object sender, EventArgs e)
@@ -412,7 +468,53 @@ namespace TLShoes.FormControls.DonDatHang
                 }
                 this.ParentForm.Close();
             }
+        }
 
+        public override void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (_donDatHang != null)
+            {
+                _donDatHang.TrangThai = Define.TrangThai.HUY.ToString();
+                _donDatHang.NgayDuyet = TimeHelper.CurrentTimeStamp();
+                _donDatHang.NguoiDuyetId = Authorization.LoginUser.Id;
+                InitAuthorize();
+            }
+        }
+
+        private void btnDuyet_Click(object sender, EventArgs e)
+        {
+            if (_donDatHang != null)
+            {
+                using (var transaction = new TransactionScope())
+                {
+                    var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_donDatHang.TrangThai);
+                    var ngayDuyet = TimeHelper.CurrentTimeStamp();
+                    // Lock item
+                    if (trangThai == Define.TrangThai.MOI)
+                    {
+                        _donDatHang.SoDH = SF.Get<DonDatHangViewModel>().GenerateSoPhieu();
+                    }
+
+                    if (trangThai <= Define.TrangThai.HUY)
+                    {
+                        _donDatHang.NgayLap = ngayDuyet;
+                        _donDatHang.NguoiLapId = Authorization.LoginUser.Id;
+                        _donDatHang.TrangThai = Define.TrangThai.DUYET.ToString();
+                    }
+
+                    // Verify
+                    if (trangThai == Define.TrangThai.DUYET)
+                    {
+                        _donDatHang.TrangThai = Define.TrangThai.DUYET_PVT.ToString();
+                        _donDatHang.NgayDuyet = ngayDuyet;
+                        _donDatHang.NguoiDuyetId = Authorization.LoginUser.Id;
+                    }
+
+                    SF.Get<DonDatHangViewModel>().Save(_donDatHang);
+                    transaction.Complete();
+                }
+                InitAuthorize();
+            }
         }
     }
 }

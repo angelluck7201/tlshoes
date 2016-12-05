@@ -21,8 +21,8 @@ namespace TLShoes
 
         private void DefaultForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ObserverControl.PulishAction("Close");
             FormBehavior.Close(this);
+            ObserverControl.PulishAction("Close");
         }
     }
 }

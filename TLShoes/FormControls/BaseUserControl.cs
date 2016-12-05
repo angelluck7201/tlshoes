@@ -172,6 +172,6 @@ namespace TLShoes.FormControls
             customControl.Dock = DockStyle.Fill;
 
             defaultForm.CustomShow(ParentForm);
-        }
+        }        
     }
 }

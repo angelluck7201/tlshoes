@@ -58,6 +58,57 @@ namespace TLShoes.FormControls.NhapKho
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
 
             DanhGiaChange();
+            InitAuthorize();
+        }
+
+        private void InitAuthorize()
+        {
+            btnCancel.Enabled = false;
+            btnDuyet.Enabled = true;
+            btnDuyet.Visible = false;
+            btnExport.Visible = false;
+            btnSave.Enabled = true;
+
+            if (_currentData != null)
+            {
+                lblSoPhieu.Text = string.Format("Số Phiếu: {0}", _currentData.SoPhieu);
+                var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentData.TrangThai);
+
+                if (trangThai <= Define.TrangThai.HUY)
+                {
+                    if (Authorization.LoginUser.LoaiNguoiDung == Define.LoaiNguoiDung.TRUONG_PVT.ToString())
+                    {
+                        btnDuyet.Visible = true;
+                    }
+                }
+
+                // Check verify authorize
+                if (trangThai == Define.TrangThai.DUYET)
+                {
+                    if (Authorization.LoginUser.LoaiNguoiDung == Define.LoaiNguoiDung.GDSX.ToString())
+                    {
+                        btnDuyet.Visible = true;
+                        btnCancel.Enabled = true;
+                    }
+                }
+
+                // Can't save if verified
+                if (trangThai > Define.TrangThai.HUY)
+                {
+                    btnSave.Enabled = false;
+                }
+
+                // Allow export after final verify
+                if (trangThai == Define.TrangThai.DUYET_PVT)
+                {
+                    btnExport.Visible = true;
+                    btnDuyet.Visible = true;
+                    btnDuyet.Enabled = false;
+                }
+
+                var verifyAuthorize = Authorization.CheckAuthorization("PhieuNhapKho", Define.Authorization.VERIFY);
+                btnDuyet.Visible &= verifyAuthorize;
+            }
         }
 
         public override bool SaveData()
@@ -68,9 +119,13 @@ namespace TLShoes.FormControls.NhapKho
                 MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
                 return false;
             }
-            var saveData = CRUD.GetFormObject<PhieuNhapKho>(FormControls);
+            var saveData = CRUD.GetFormObject<PhieuNhapKho>(FormControls, _currentData);
             using (var transaction = new TransactionScope())
             {
+                if (!string.IsNullOrEmpty(saveData.SoPhieu))
+                {
+                    saveData.SoPhieu = SF.Get<PhieuNhapKhoViewModel>().GenerateSoPhieuDoiKho(saveData.SoPhieu, PrimitiveConvert.StringToEnum<Define.Kho>(saveData.Kho));
+                }
                 SF.Get<PhieuNhapKhoViewModel>().Save(saveData);
 
                 // Save chi teit Nhap kho
@@ -120,27 +175,6 @@ namespace TLShoes.FormControls.NhapKho
         private void NhapKho_DanhGiaId_SelectedIndexChanged(object sender, EventArgs e)
         {
             DanhGiaChange();
-        }
-
-        private void PhieuNhapKho_Kho_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            KhoChange();
-        }
-
-        private void KhoChange()
-        {
-            var selectedValue = PhieuNhapKho_Kho.SelectedValue;
-            if (selectedValue != null && string.IsNullOrEmpty(PhieuNhapKho_SoPhieu.Text))
-            {
-                var soPhieu = "";
-                foreach (var item in selectedValue.ToString().Split('_'))
-                {
-                    soPhieu += item[0];
-                }
-                var currentDate = DateTime.UtcNow;
-                soPhieu = string.Format("{0}_{1}_{2}", soPhieu, currentDate.Month, currentDate.Day);
-                PhieuNhapKho_SoPhieu.Text = soPhieu;
-            }
         }
 
         private void DanhGiaChange()
@@ -224,7 +258,54 @@ namespace TLShoes.FormControls.NhapKho
             }
         }
 
+        private void btnDuyet_Click(object sender, EventArgs e)
+        {
+            if (_currentData != null)
+            {
+                using (var transaction = new TransactionScope())
+                {
+                    var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentData.TrangThai);
+                    var ngayDuyet = TimeHelper.CurrentTimeStamp();
+                                            var kho = PrimitiveConvert.StringToEnum<Define.Kho>(_currentData.Kho);
 
+                    // Lock item
+                    if (trangThai == Define.TrangThai.MOI)
+                    {
+                        _currentData.SoPhieu = SF.Get<PhieuNhapKhoViewModel>().GenerateSoPhieu(kho);
+                    }
+
+                    if (trangThai <= Define.TrangThai.HUY)
+                    {
+                        _currentData.NgayLap = ngayDuyet;
+                        _currentData.NguoiLapId = Authorization.LoginUser.Id;
+                        _currentData.TrangThai = Define.TrangThai.DUYET.ToString();
+                    }
+
+                    // Verify
+                    if (trangThai == Define.TrangThai.DUYET)
+                    {
+                        _currentData.TrangThai = Define.TrangThai.DUYET_PVT.ToString();
+                        _currentData.NgayDuyet = ngayDuyet;
+                        _currentData.NguoiDuyetId = Authorization.LoginUser.Id;
+                    }
+
+                    SF.Get<PhieuNhapKhoViewModel>().Save(_currentData);
+                    transaction.Complete();
+                }
+                InitAuthorize();
+            }
+        }
+
+        public override void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (_currentData != null)
+            {
+                _currentData.TrangThai = Define.TrangThai.HUY.ToString();
+                _currentData.NgayDuyet = TimeHelper.CurrentTimeStamp();
+                _currentData.NguoiDuyetId = Authorization.LoginUser.Id;
+                InitAuthorize();
+            }
+        }
     }
 
 

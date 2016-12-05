@@ -183,7 +183,6 @@ namespace TLShoes
 
         public void ShowPopupInfo(object data = null)
         {
-            ObserverControl.Regist("Close", currentForm, () => { this.Enabled = true; });
             this.Enabled = false;
 
             var addForm = (UserControl)Activator.CreateInstance(currentControl, data);

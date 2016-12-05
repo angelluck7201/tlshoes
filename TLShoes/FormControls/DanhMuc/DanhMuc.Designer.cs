@@ -38,7 +38,6 @@ namespace TLShoes
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.DanhMuc_Loai = new System.Windows.Forms.ComboBox();
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
@@ -72,14 +71,14 @@ namespace TLShoes
             this.DanhMuc_Ten.Location = new System.Drawing.Point(157, 77);
             this.DanhMuc_Ten.Name = "DanhMuc_Ten";
             this.DanhMuc_Ten.Size = new System.Drawing.Size(529, 22);
-            this.DanhMuc_Ten.TabIndex = 2;
+            this.DanhMuc_Ten.TabIndex = 1;
             // 
             // DanhMuc_GhiChu
             // 
             this.DanhMuc_GhiChu.Location = new System.Drawing.Point(157, 117);
             this.DanhMuc_GhiChu.Name = "DanhMuc_GhiChu";
             this.DanhMuc_GhiChu.Size = new System.Drawing.Size(529, 148);
-            this.DanhMuc_GhiChu.TabIndex = 3;
+            this.DanhMuc_GhiChu.TabIndex = 2;
             this.DanhMuc_GhiChu.Text = "";
             // 
             // lblLoaiDanhMuc
@@ -103,7 +102,7 @@ namespace TLShoes
             this.btnSave.Location = new System.Drawing.Point(615, 502);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 4;
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             // 
             // DanhMuc_Loai
@@ -114,7 +113,7 @@ namespace TLShoes
             this.DanhMuc_Loai.Location = new System.Drawing.Point(157, 30);
             this.DanhMuc_Loai.Name = "DanhMuc_Loai";
             this.DanhMuc_Loai.Size = new System.Drawing.Size(529, 24);
-            this.DanhMuc_Loai.TabIndex = 1;
+            this.DanhMuc_Loai.TabIndex = 0;
             // 
             // defaultInfo
             // 
@@ -123,21 +122,6 @@ namespace TLShoes
             this.defaultInfo.Name = "defaultInfo";
             this.defaultInfo.Size = new System.Drawing.Size(701, 443);
             this.defaultInfo.TabIndex = 11;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(4, 502);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 12;
-            this.btnCancel.Text = "Hủy";
             // 
             // xtraTabControl1
             // 
@@ -151,7 +135,7 @@ namespace TLShoes
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
             this.xtraTabControl1.Size = new System.Drawing.Size(708, 479);
-            this.xtraTabControl1.TabIndex = 14;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2});
@@ -195,7 +179,6 @@ namespace TLShoes
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.xtraTabControl1);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Name = "ucDanhMuc";
             this.Size = new System.Drawing.Size(709, 547);
@@ -217,7 +200,6 @@ namespace TLShoes
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private System.Windows.Forms.ComboBox DanhMuc_Loai;
         private DefaultInfo defaultInfo;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;

@@ -65,7 +65,7 @@ namespace TLShoes.FormControls.ToTrinh
                 lblSoPhieu.Text = string.Format("Số Tờ Trình: {0}", _currentToTrinh.SoPhieu);
                 var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentToTrinh.TrangThai);
 
-                if (trangThai <= Define.TrangThai.MOI)
+                if (trangThai <= Define.TrangThai.HUY)
                 {
                     btnDuyet.Visible = true;
                 }
@@ -73,8 +73,7 @@ namespace TLShoes.FormControls.ToTrinh
                 // Check verify authorize
                 if (trangThai == Define.TrangThai.DUYET)
                 {
-                    var verifyAuthorize = Authorization.CheckAuthorization("ToTrinh", Define.Authorization.VERIFY);
-                    if (verifyAuthorize)
+                    if (Authorization.LoginUser.LoaiNguoiDung == Define.LoaiNguoiDung.GDSX.ToString())
                     {
                         btnDuyet.Visible = true;
                         btnCancel.Enabled = true;
@@ -82,7 +81,7 @@ namespace TLShoes.FormControls.ToTrinh
                 }
 
                 // Can't save if verified
-                if (trangThai > Define.TrangThai.MOI)
+                if (trangThai > Define.TrangThai.HUY)
                 {
                     btnSave.Enabled = false;
                 }
@@ -94,6 +93,9 @@ namespace TLShoes.FormControls.ToTrinh
                     btnDuyet.Visible = true;
                     btnDuyet.Enabled = false;
                 }
+
+                var verifyAuthorize = Authorization.CheckAuthorization("ToTrinh", Define.Authorization.VERIFY);
+                btnDuyet.Visible &= verifyAuthorize;
             }
         }
 

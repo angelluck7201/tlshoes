@@ -304,7 +304,10 @@ namespace TLShoes
                 updateData.Add(DonHang_Khac.Rating);
             }
 
-            DanhGiaTongThe.Rating = updateData.Average();
+            if (updateData.Count > 0)
+            {
+                DanhGiaTongThe.Rating = updateData.Average();
+            }
         }
 
         private void DonHang_DungThoiGian_EditValueChanged(object sender, EventArgs e)

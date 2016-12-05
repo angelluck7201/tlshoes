@@ -54,8 +54,8 @@ namespace TLShoes.Common
 
         public enum TrangThai
         {
-            HUY,
             MOI,
+            HUY,
             DUYET,
             DUYET_PKT,
             DUYET_PVT,
@@ -211,6 +211,22 @@ namespace TLShoes.Common
         public const string SO_PHIEU_CHI_LENH = "CL_{0}/{1}/{2}";
 
         public const string SO_PHIEU_TO_TRINH = "TT_{0}/{1}/{2}";
+
+        public const string SO_PHIEU_DON_DAT_HANG = "DDH_{0}/{1}/{2}";
+
+        public const string SO_PHIEU_NHAP_KHO_VT = "KVT_{0}/{1}/{2}";
+        public const string SO_PHIEU_NHAP_KHO_TP = "KTP_{0}/{1}/{2}";
+        public const string SO_PHIEU_NHAP_KHO_BTP = "KBTP_{0}/{1}/{2}";
+
+        public const string SO_PHIEU_NHAP_KHO_VT_UPDATE = "KVT_{0}";
+        public const string SO_PHIEU_NHAP_KHO_TP_UPDATE = "KTP_{0}";
+        public const string SO_PHIEU_NHAP_KHO_BTP_UPDATE = "KBTP_{0}";
+
+
+        public const string SO_PHIEU_XUAT_KHO = "PXK_{0}/{1}/{2}";
+
+
+
 
 
         public const string EXPORT_EXTENSION = "Excel |*.xls";

@@ -38,6 +38,7 @@ namespace TLShoes
         public Nullable<long> NguoiDuyetId { get; set; }
         public Nullable<long> NgayLap { get; set; }
         public Nullable<long> NguoiLapId { get; set; }
+        public string TrangThai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietXuatKho> ChiTietXuatKhoes { get; set; }

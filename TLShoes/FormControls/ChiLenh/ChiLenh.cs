@@ -51,11 +51,6 @@ namespace TLShoes.FormControls.ChiLenh
                 SF.Get<NguyenLieuChiLenhViewModel>().GetDataSource(data.Id, ref NguyenLieuChiLenhList);
                 SF.Get<NhatKyThayDoiViewModel>().GetDataSource(gridNhatKy, Define.ModelType.CHILENH, data.Id);
                 _chiLenh = data;
-
-                lblSoPhieu.Text = lblSoPhieu.Text = lblSoPhieu.Text + ": " + _chiLenh.SoPhieu;
-                // Todo chi hien thi voi nhung nguoi co quyen duyet
-                btnDuyet.Visible = true;
-                btnExport.Visible = true;
             }
 
             gridControl.DataSource = NguyenLieuChiLenhList;
@@ -71,6 +66,55 @@ namespace TLShoes.FormControls.ChiLenh
             NguyenLieuLookUp.TextEditStyle = TextEditStyles.DisableTextEditor;
 
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
+
+            InitAuthorize();
+        }
+
+        private void InitAuthorize()
+        {
+            btnCancel.Enabled = false;
+            btnDuyet.Enabled = true;
+            btnDuyet.Visible = false;
+            btnExport.Visible = false;
+            btnSave.Enabled = true;
+
+            if (_chiLenh != null)
+            {
+                lblSoPhieu.Text = string.Format("Số Chỉ Lệnh: {0}", _chiLenh.SoPhieu);
+                var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_chiLenh.TrangThai);
+
+                if (trangThai <= Define.TrangThai.HUY)
+                {
+                    btnDuyet.Visible = true;
+                }
+
+                // Check verify authorize
+                if (trangThai == Define.TrangThai.DUYET)
+                {
+                    if (Authorization.LoginUser.LoaiNguoiDung == Define.LoaiNguoiDung.GDKT.ToString())
+                    {
+                        btnDuyet.Visible = true;
+                        btnCancel.Enabled = true;
+                    }
+                }
+
+                // Can't save if verified
+                if (trangThai > Define.TrangThai.HUY)
+                {
+                    btnSave.Enabled = false;
+                }
+
+                // Allow export after final verify
+                if (trangThai == Define.TrangThai.DUYET_PKT)
+                {
+                    btnExport.Visible = true;
+                    btnDuyet.Visible = true;
+                    btnDuyet.Enabled = false;
+                }
+
+                var verifyAuthorize = Authorization.CheckAuthorization("ChiLenh", Define.Authorization.VERIFY);
+                btnDuyet.Visible &= verifyAuthorize;
+            }
         }
 
 
@@ -312,10 +356,51 @@ namespace TLShoes.FormControls.ChiLenh
 
         private void btnDuyet_Click(object sender, EventArgs e)
         {
-            _chiLenh.SoPhieu = SF.Get<ChiLenhViewModel>().GenerateSoPhieu();
-            _chiLenh.TrangThai = Define.TrangThai.DUYET.ToString();
-            lblSoPhieu.Text = lblSoPhieu.Text + ": " + _chiLenh.SoPhieu;
-            SF.Get<ChiLenhViewModel>().Save(_chiLenh);
+            if (_chiLenh != null)
+            {
+                using (var transaction = new TransactionScope())
+                {
+                    var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_chiLenh.TrangThai);
+                    var ngayDuyet = TimeHelper.CurrentTimeStamp();
+                    // Lock item
+                    if (trangThai == Define.TrangThai.MOI)
+                    {
+                        _chiLenh.NgayLap = ngayDuyet;
+                        _chiLenh.NguoiLapId = Authorization.LoginUser.Id;
+
+                        _chiLenh.TrangThai = Define.TrangThai.DUYET.ToString();
+                    }
+
+                    // Verify
+                    if (trangThai == Define.TrangThai.DUYET)
+                    {
+                        _chiLenh.NgayDuyet = ngayDuyet;
+                        _chiLenh.NguoiDuyetId = Authorization.LoginUser.Id;
+
+                        _chiLenh.SoPhieu = SF.Get<ChiLenhViewModel>().GenerateSoPhieu();
+                        _chiLenh.TrangThai = Define.TrangThai.DUYET_PVT.ToString();
+                    }
+
+                    SF.Get<ChiLenhViewModel>().Save(_chiLenh);
+                    transaction.Complete();
+                }
+                InitAuthorize();
+            }
+        }
+
+        public override void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (_chiLenh != null)
+            {
+                ShowCustomForm(new Form.NhatKyThayDoi(Define.ModelType.CHILENH.ToString(), _chiLenh.Id, () =>
+                {
+                    SF.Get<NhatKyThayDoiViewModel>().GetDataSource(gridNhatKy, Define.ModelType.CHILENH, _chiLenh.Id);
+                    _chiLenh.TrangThai = Define.TrangThai.HUY.ToString();
+                    _chiLenh.NgayDuyet = TimeHelper.CurrentTimeStamp();
+                    _chiLenh.NguoiDuyetId = Authorization.LoginUser.Id;
+                    InitAuthorize();
+                }), "Nhật ký thay đổi");
+            }
         }
 
         private void btnDuplicate_Click(object sender, EventArgs e)

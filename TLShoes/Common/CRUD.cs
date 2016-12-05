@@ -108,9 +108,10 @@ namespace TLShoes.Common
             return result;
         }
 
-        public static T GetFormObject<T>(List<Control> controls) where T : new()
+        public static T GetFormObject<T>(List<Control> controls, T currentData = null) where T : class, new()
         {
-            var data = new T();
+            var data = currentData ?? new T();
+
             var modelName = typeof(T);
             foreach (Control control in controls)
             {
