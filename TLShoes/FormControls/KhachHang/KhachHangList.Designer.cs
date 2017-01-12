@@ -53,7 +53,7 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemRatingControl1});
-            this.gridControl.Size = new System.Drawing.Size(656, 480);
+            this.gridControl.Size = new System.Drawing.Size(1136, 694);
             this.gridControl.TabIndex = 1;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -74,6 +74,7 @@
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
+            this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.Id, DevExpress.Data.ColumnSortOrder.Descending)});
@@ -175,7 +176,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gridControl);
             this.Name = "ucKhachHangList";
-            this.Size = new System.Drawing.Size(656, 480);
+            this.Size = new System.Drawing.Size(1136, 694);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRatingControl1)).EndInit();

@@ -117,6 +117,7 @@
             this.bandedGridView1.Name = "bandedGridView1";
             this.bandedGridView1.OptionsBehavior.AutoExpandAllGroups = true;
             this.bandedGridView1.OptionsBehavior.Editable = false;
+            this.bandedGridView1.OptionsView.ShowAutoFilterRow = true;
             this.bandedGridView1.RowHeight = 80;
             this.bandedGridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending),

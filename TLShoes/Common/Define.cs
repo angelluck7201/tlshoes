@@ -87,7 +87,7 @@ namespace TLShoes.Common
             {LoaiNguoiDung.PVT, "PHÒNG VẬT TỰ"},
             {LoaiNguoiDung.PKT, "PHÒNG KỸ THUẬT"},
             {LoaiNguoiDung.QC, "QC"},
-            {LoaiNguoiDung.PKH, "PHÒNG KHOA HỌC"},
+            {LoaiNguoiDung.PKH, "PHÒNG KẾ HOẠCH"},
             {LoaiNguoiDung.THU_KHO, "THỦ KHO"},
             {LoaiNguoiDung.TRUONG_PKT, "TRƯỞNG PHÒNG KỸ THUẬT"},
             {LoaiNguoiDung.TRUONG_PVT, "TRƯỞNG PHÒNG VẬT TƯ"},
@@ -148,7 +148,13 @@ namespace TLShoes.Common
             DE,
             MAY,
             GO
+        }
 
+        public enum ConfigType
+        {
+            FILE_PATH,
+            LASTEST_VERSION,
+            UPDATE_PATH,
         }
 
         public static Dictionary<PhanXuong, string> PhanXuongDict = new Dictionary<PhanXuong, string>()
@@ -157,45 +163,6 @@ namespace TLShoes.Common
             {PhanXuong.MAY, "MAY"},
             {PhanXuong.DE, "ĐẾ"},
             {PhanXuong.GO, "GÒ"},
-        };
-
-        //        public static Dictionary<string, long> PhanXuongDict = new Dictionary<string, long>()
-        //        {
-        //            {"CHẶT", 50},
-        //            {"ĐE", 51},
-        //            {"MAY", 8},
-        //            {"GÒ", 7},
-        //        };
-
-        public static Dictionary<string, long> ChiTietDict = new Dictionary<string, long>()
-        {
-            {"MŨ GIÀY", 11},
-            {"QUAI CÀI", 12},
-            {"LÓT MŨ", 13},
-            {"LÓT HẬU", 26},
-            {"DA LÓT TẨY", 27},
-            {"ĐỆM TẨY TRÊN", 28},
-            {"ĐỆM TẨY DƯỚI", 29},
-            {"PHO HẬU", 30},
-            {"PHO MŨI", 31},
-            {"BẠT EO", 32},
-            {"BẠT MÓNG NGỰA", 33},
-            {"RẬP NÂNG", 35},
-            {"CHỈ MAY MŨ", 36},
-            {"CHỈ MAY LÓT", 37},
-            {"DÂY T/C NYLON", 38},
-            {"NƠ", 39},
-            {"DÂY VIỀN", 40},
-            {"BẠT CÀ RẼ", 41},
-            {"BẠT TC HẬU", 42},
-            {"XĂNG CN", 43},
-            {"TẨY GIÀY", 44},
-            {"ĐẾ", 45},
-            {"NƯỚC CỨNG", 46},
-            {"NƯỚC XỬ LÝ TPR", 47},
-            {"NƯỚC XỬ LÝ MŨ", 48},
-            {"TOLUEN", 49},
-            {"KEO", 52},
         };
 
         public const string TEMPLATE_DON_DAT_HANG = "DonDatHang_template.xls";
@@ -224,11 +191,6 @@ namespace TLShoes.Common
 
 
         public const string SO_PHIEU_XUAT_KHO = "PXK_{0}/{1}/{2}";
-
-
-
-
-
         public const string EXPORT_EXTENSION = "Excel |*.xls";
 
 

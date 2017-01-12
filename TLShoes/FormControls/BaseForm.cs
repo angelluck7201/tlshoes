@@ -18,7 +18,6 @@ namespace TLShoes
             ReloadData();
             ObserverControl.Regist("Refresh", this.Name, ReloadData);
             ObserverControl.Regist("Close", this.Name, ReloadData);
-            ObserverControl.Regist("Export", this.Name, Export);
         }
 
         public void GenerateFormatRuleByValue(GridView gridView, GridColumn column, object value, Color backColor, Color fontColor)
@@ -38,14 +37,16 @@ namespace TLShoes
             gridView.FormatRules.Add(gridFormatRule);
         }
 
-        public virtual void Export(object filePath) { }
         public virtual void ReloadData() { }
         public virtual void AutoRefresh()
         {
             var timer = TimerControl.Timer;
             timer.Tick += (a, b) =>
             {
-                ReloadData();
+                if (FormBehavior.IsMainFormEnable())
+                {
+                    ReloadData();
+                }
             };
         }
     }

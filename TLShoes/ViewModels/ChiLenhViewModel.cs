@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Windows.Forms.VisualStyles;
 using DevExpress.XtraGrid;
 using TLShoes.Common;
 

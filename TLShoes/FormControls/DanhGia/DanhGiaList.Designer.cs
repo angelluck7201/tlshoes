@@ -40,9 +40,9 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLoaiNguoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TieuChiLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.btnDeleteTieuChi = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.colLoaiNguoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TieuChiLookUp)).BeginInit();
@@ -85,6 +85,7 @@
             this.gridView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Inplace;
             this.gridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
             this.gridView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.Button;
+            this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowFooter = true;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn4, DevExpress.Data.ColumnSortOrder.Ascending),
@@ -169,6 +170,12 @@
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 3;
             // 
+            // colLoaiNguoiDung
+            // 
+            this.colLoaiNguoiDung.Caption = "gridColumn9";
+            this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
+            this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
+            // 
             // TieuChiLookUp
             // 
             this.TieuChiLookUp.AutoHeight = false;
@@ -193,12 +200,6 @@
             this.btnDeleteTieuChi.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDeleteTieuChi.Name = "btnDeleteTieuChi";
             this.btnDeleteTieuChi.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            // 
-            // colLoaiNguoiDung
-            // 
-            this.colLoaiNguoiDung.Caption = "gridColumn9";
-            this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
-            this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
             // 
             // ucDanhGiaList
             // 

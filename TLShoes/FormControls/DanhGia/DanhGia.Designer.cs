@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDanhGia));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -57,7 +57,6 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnDeleteTieuChi = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -85,7 +84,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
             this.xtraTabControl1.Size = new System.Drawing.Size(1119, 724);
-            this.xtraTabControl1.TabIndex = 15;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
@@ -367,33 +366,18 @@
             this.btnDeleteTieuChi.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteTieuChi.Appearance.Image")));
             this.btnDeleteTieuChi.Appearance.Options.UseImage = true;
             this.btnDeleteTieuChi.AutoHeight = false;
-            serializableAppearanceObject3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject3.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject3.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject3.Image")));
-            serializableAppearanceObject3.Options.UseBackColor = true;
-            serializableAppearanceObject3.Options.UseBorderColor = true;
-            serializableAppearanceObject3.Options.UseImage = true;
+            serializableAppearanceObject2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject2.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
+            serializableAppearanceObject2.Options.UseBackColor = true;
+            serializableAppearanceObject2.Options.UseBorderColor = true;
+            serializableAppearanceObject2.Options.UseImage = true;
             this.btnDeleteTieuChi.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteTieuChi.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteTieuChi.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteTieuChi.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteTieuChi.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDeleteTieuChi.Name = "btnDeleteTieuChi";
             this.btnDeleteTieuChi.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(4, 754);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Hủy";
             // 
             // btnSave
             // 
@@ -407,7 +391,7 @@
             this.btnSave.Location = new System.Drawing.Point(1031, 754);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             // 
             // ucDanhGia
@@ -415,7 +399,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucDanhGia";
@@ -455,7 +438,6 @@
         private DevExpress.XtraEditors.TextEdit DanhGia_SoLuongKiem;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit SoLuongDat;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraGrid.GridControl gridTieuChi;

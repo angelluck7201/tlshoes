@@ -9,7 +9,7 @@ namespace TLShoes.FormControls.DonHang
 {
     public partial class ucMauDoi : BaseUserControl
     {
-        public static BindingList<MauDoiHinh> MauDoiHinh = new BindingList<MauDoiHinh>();
+        public BindingList<MauDoiHinh> MauDoiHinh = new BindingList<MauDoiHinh>();
 
         public ucMauDoi(MauDoi data = null)
         {
@@ -26,6 +26,7 @@ namespace TLShoes.FormControls.DonHang
             }
 
             gridHinhAnh.DataSource = MauDoiHinh;
+            gridView1.NewItemRowText = "Click vào đây để thêm hình mới";
             CheckButtonLuuHinh();
         }
 
@@ -74,6 +75,10 @@ namespace TLShoes.FormControls.DonHang
                 GhiChuHinh.Text = data.GhiChu;
                 HinhId.Text = data.Id.ToString();
             }
+            else
+            {
+                ClearHinh();
+            }
             CheckButtonLuuHinh();
         }
 
@@ -90,7 +95,6 @@ namespace TLShoes.FormControls.DonHang
             newData.HinhAnh = CRUD.GetControlValue(HinhHinh).ToString();
             newData.GhiChu = GhiChuHinh.Text;
             gridHinhAnh.Refresh();
-            ClearHinh();
             CheckButtonLuuHinh();
         }
 

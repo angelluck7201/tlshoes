@@ -39,8 +39,8 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.colLoaiNguoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -77,6 +77,7 @@
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
+            this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.RowHeight = 100;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
@@ -166,6 +167,12 @@
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 2;
             // 
+            // colLoaiNguoiDung
+            // 
+            this.colLoaiNguoiDung.Caption = "gridColumn7";
+            this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
+            this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
+            // 
             // repositoryItemImageEdit1
             // 
             this.repositoryItemImageEdit1.AutoHeight = false;
@@ -173,12 +180,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageEdit1.Name = "repositoryItemImageEdit1";
             this.repositoryItemImageEdit1.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            // 
-            // colLoaiNguoiDung
-            // 
-            this.colLoaiNguoiDung.Caption = "gridColumn7";
-            this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
-            this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
             // 
             // ucMauTestList
             // 

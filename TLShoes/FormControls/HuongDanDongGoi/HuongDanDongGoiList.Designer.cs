@@ -81,6 +81,7 @@
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsCustomization.AllowGroup = false;
             this.gridView.OptionsView.AllowCellMerge = true;
+            this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.RowHeight = 80;
             this.gridView.CellMerge += new DevExpress.XtraGrid.Views.Grid.CellMergeEventHandler(this.gridView_CellMerge);

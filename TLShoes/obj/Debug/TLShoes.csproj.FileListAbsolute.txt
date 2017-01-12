@@ -200,7 +200,6 @@ C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.Form.DefaultButton.reso
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.DefaultForm.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.Form.DefaultInfo.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.DonHang.ucChiTietDonHang.resources
-C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.DonHang.ucChiTietDonHangList.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.ucDonHang.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.Form.ucDonHangList.resources
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.DonHang.ucMauDoi.resources

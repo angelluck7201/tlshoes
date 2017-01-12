@@ -16,6 +16,7 @@ namespace TLShoes
 {
     public partial class ucDonHang : BaseUserControl
     {
+        public DonHang _domainData;
         public static BindingList<ChiTietDonHang> ChiTietDonhang = new BindingList<ChiTietDonHang>();
 
         public static Dictionary<string, string> GopYDict = new Dictionary<string, string>()
@@ -65,6 +66,7 @@ namespace TLShoes
             DonHang_MuId.DataSource = new BindingSource(listNguyenLieu, null);
 
             HideAllGopY();
+            _domainData = data;
             Init(data);
             if (data != null)
             {
@@ -122,9 +124,10 @@ namespace TLShoes
                 MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
                 return false;
             }
-            var saveData = CRUD.GetFormObject<DonHang>(FormControls);
+            var saveData = CRUD.GetFormObject<DonHang>(FormControls, _domainData);
             using (var transaction = new TransactionScope())
             {
+                CRUD.DecorateSaveData(saveData, _domainData == null);
                 SF.Get<DonHangViewModel>().Save(saveData);
                 var id = saveData.Id;
 

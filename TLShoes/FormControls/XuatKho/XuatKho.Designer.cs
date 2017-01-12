@@ -479,18 +479,27 @@
             this.gridColumn1,
             this.gridColumn2});
             this.gridView1.GridControl = this.gridNhatKy;
+            this.gridView1.GroupCount = 1;
+            this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", null, "{0}")});
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsCustomization.AllowGroup = false;
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.NgayXuat, DevExpress.Data.ColumnSortOrder.Descending)});
             // 
             // NgayXuat
             // 
             this.NgayXuat.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.NgayXuat.AppearanceHeader.Options.UseFont = true;
             this.NgayXuat.Caption = "Ngày Xuất";
-            this.NgayXuat.FieldName = "CreatedDate";
+            this.NgayXuat.FieldName = "NgayXuat";
             this.NgayXuat.Name = "NgayXuat";
+            this.NgayXuat.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.NgayXuat.Visible = true;
             this.NgayXuat.VisibleIndex = 0;
             this.NgayXuat.Width = 118;
@@ -503,7 +512,7 @@
             this.gridColumn15.FieldName = "GhiChu";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 4;
+            this.gridColumn15.VisibleIndex = 3;
             this.gridColumn15.Width = 173;
             // 
             // gridColumn16
@@ -522,7 +531,7 @@
             this.gridColumn17.FieldName = "ThuKho";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 3;
+            this.gridColumn17.VisibleIndex = 2;
             this.gridColumn17.Width = 149;
             // 
             // gridColumn1
@@ -544,7 +553,7 @@
             this.gridColumn2.FieldName = "SoLuong";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 78;
             // 
             // btnSave

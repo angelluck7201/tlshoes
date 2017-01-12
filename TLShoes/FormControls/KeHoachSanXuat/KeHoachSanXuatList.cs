@@ -27,22 +27,8 @@ namespace TLShoes.FormControls.KeHoachSanXuat
             ThreadHelper.LoadForm(() =>
             {
                 BaseModel.DisposeDb();
-
                 SF.Get<KeHoachSanXuatViewModel>().GetDataSource(gridControl);
-                if (bandedGridView1.RowCount > 0)
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
-                }
-                else
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
-                }
             });
-        }
-
-        public override void Export(object filePath)
-        {
-            bandedGridView1.ExportToXls(filePath.ToString());
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)
@@ -50,8 +36,14 @@ namespace TLShoes.FormControls.KeHoachSanXuat
             ThreadHelper.LoadForm(() =>
             {
                 dynamic data = bandedGridView1.GetRow(bandedGridView1.FocusedRowHandle);
-                var info = SF.Get<KeHoachSanXuatViewModel>().GetDetail(data.Id);
-                FormFactory<Main>.Get().ShowPopupInfo(info);
+                if (data != null)
+                {
+                    var info = SF.Get<KeHoachSanXuatViewModel>().GetDetail(data.Id);
+                    if (info != null)
+                    {
+                        FormFactory<Main>.Get().ShowPopupInfo(info);                            
+                    }
+                }
             });
         }
     }

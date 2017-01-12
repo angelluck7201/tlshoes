@@ -18,9 +18,11 @@ namespace TLShoes.FormControls.NhaCungCap
     {
         private BindingList<NhaCungCapVatTu> ChiTietNguyenLieuList = new BindingList<NhaCungCapVatTu>();
         private static NhaCungCapViewModel _viewModel = SF.Get<NhaCungCapViewModel>();
+        private TLShoes.NhaCungCap _domainData;
         public ucNhaCungCap(TLShoes.NhaCungCap data = null)
         {
             InitializeComponent();
+            _domainData = data;
             Init(data);
             if (data != null)
             {
@@ -56,9 +58,10 @@ namespace TLShoes.FormControls.NhaCungCap
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject<TLShoes.NhaCungCap>(FormControls);
+            var saveData = CRUD.GetFormObject<TLShoes.NhaCungCap>(FormControls, _domainData);
             using (var transaction = new TransactionScope())
             {
+                CRUD.DecorateSaveData(saveData, _domainData == null);
                 _viewModel.Save(saveData);
 
                 foreach (var nguyenlieu in ChiTietNguyenLieuList)
@@ -119,7 +122,8 @@ namespace TLShoes.FormControls.NhaCungCap
                 updateData.Add(NhaCungCap_DungMau.Rating);
             }
             if (NhaCungCap_DungYeuCauKyThuat.Rating > 0)
-            {updateData.Add(NhaCungCap_DungYeuCauKyThuat.Rating);
+            {
+                updateData.Add(NhaCungCap_DungYeuCauKyThuat.Rating);
             }
             if (NhaCungCap_Gia.Rating > 0)
             {

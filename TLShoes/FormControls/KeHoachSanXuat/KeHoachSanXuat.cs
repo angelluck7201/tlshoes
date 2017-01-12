@@ -7,6 +7,7 @@ namespace TLShoes.FormControls.KeHoachSanXuat
 {
     public partial class ucKeHoachSanXuat : BaseUserControl
     {
+        private TLShoes.KeHoachSanXuat _domainData;
         public ucKeHoachSanXuat(TLShoes.KeHoachSanXuat data = null)
         {
             InitializeComponent();
@@ -14,7 +15,7 @@ namespace TLShoes.FormControls.KeHoachSanXuat
             KeHoachSanXuat_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
             KeHoachSanXuat_DonHangId.DisplayMember = "MaHang";
             KeHoachSanXuat_DonHangId.ValueMember = "Id";
-            
+            _domainData = data;
             Init(data);
             LoadDonhang();
         }
@@ -27,11 +28,11 @@ namespace TLShoes.FormControls.KeHoachSanXuat
                 MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
                 return false;
             }
-            var saveData = CRUD.GetFormObject<TLShoes.KeHoachSanXuat>(FormControls);
+            var saveData = CRUD.GetFormObject(FormControls, _domainData);
+            CRUD.DecorateSaveData(saveData, _domainData == null);
             SF.Get<KeHoachSanXuatViewModel>().Save(saveData);
             return true;
         }
-
 
 
         public string ValidateInput()
@@ -41,7 +42,7 @@ namespace TLShoes.FormControls.KeHoachSanXuat
 
         private void KeHoachSanXuat_DonHangId_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-           LoadDonhang();
+            LoadDonhang();
         }
 
         private void LoadDonhang()

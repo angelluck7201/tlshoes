@@ -26,9 +26,7 @@ namespace TLShoes.FormControls.DonDatHang
             ThreadHelper.LoadForm(() =>
             {
                 BaseModel.DisposeDb();
-
                 SF.Get<DonDatHangViewModel>().GetDataSource(gridControl);
-                FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
             });
         }
 
@@ -37,8 +35,14 @@ namespace TLShoes.FormControls.DonDatHang
             ThreadHelper.LoadForm(() =>
             {
                 dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
-                var info = SF.Get<DonDatHangViewModel>().GetDetail(data.Id);
-                FormFactory<Main>.Get().ShowPopupInfo(info);
+                if (data != null)
+                {
+                    var info = SF.Get<DonDatHangViewModel>().GetDetail(data.Id);
+                    if (info != null)
+                    {
+                        FormFactory<Main>.Get().ShowPopupInfo(info);                       
+                    }
+                }
             });
         }
     }

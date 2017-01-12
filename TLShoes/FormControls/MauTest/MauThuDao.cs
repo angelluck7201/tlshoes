@@ -90,7 +90,7 @@ namespace TLShoes.FormControls.MauThuDao
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject<TLShoes.MauThuDao>(FormControls);
+            var saveData = CRUD.GetFormObject(FormControls, CurrentMauThuDao);
 
             saveData.GopYVatTu = GopYBindingList[0].GopY;
             saveData.GopYXuongChat = GopYBindingList[1].GopY;
@@ -101,6 +101,7 @@ namespace TLShoes.FormControls.MauThuDao
             saveData.GopYMau = GopYBindingList[6].GopY;
             saveData.GopYKhoVatTu = GopYBindingList[7].GopY;
             saveData.GopYPhuTro = GopYBindingList[8].GopY;
+            CRUD.DecorateSaveData(saveData, CurrentMauThuDao == null);
             SF.Get<MauThuDaoViewModel>().Save(saveData);
             return true;
         }

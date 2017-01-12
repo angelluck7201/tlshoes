@@ -156,6 +156,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfig.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="BaoCaoPhanXuong.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -192,6 +195,7 @@
     <Compile Include="Common\Authorization.cs" />
     <Compile Include="Common\CommonClass.cs" />
     <Compile Include="Common\CommonHelper.cs" />
+    <Compile Include="Common\ConfigHelper.cs" />
     <Compile Include="Common\ConsoleWriter.cs" />
     <Compile Include="Common\CRUD.cs" />
     <Compile Include="Common\Define.cs" />
@@ -202,6 +206,8 @@
     <Compile Include="Common\ThreadHelper.cs" />
     <Compile Include="Common\TimeHelper.cs" />
     <Compile Include="Common\TimerControl.cs" />
+    <Compile Include="Common\ToolTipHelper.cs" />
+    <Compile Include="Common\VersionControl.cs" />
     <Compile Include="CongNgheSanXuat.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -459,12 +465,6 @@
     </Compile>
     <Compile Include="FormControls\DonHang\ChiTietDonHang.Designer.cs">
       <DependentUpon>ChiTietDonHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormControls\DonHang\ChiTietDonHangList.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FormControls\DonHang\ChiTietDonHangList.Designer.cs">
-      <DependentUpon>ChiTietDonHangList.cs</DependentUpon>
     </Compile>
     <Compile Include="FormControls\DonHang\DonHang.cs">
       <SubType>UserControl</SubType>
@@ -833,9 +833,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\DonHang\ChiTietDonHang.resx">
       <DependentUpon>ChiTietDonHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormControls\DonHang\ChiTietDonHangList.resx">
-      <DependentUpon>ChiTietDonHangList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\DonHang\DonHang.resx">
       <DependentUpon>DonHang.cs</DependentUpon>

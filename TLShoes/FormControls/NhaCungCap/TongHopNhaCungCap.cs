@@ -25,30 +25,23 @@ namespace TLShoes.FormControls.NhaCungCap
             ThreadHelper.LoadForm(() =>
             {
                 BaseModel.DisposeDb();
-                
                 SF.Get<NhaCungCapViewModel>().GetSummary(gridControl);
-                if (gridView.RowCount > 0)
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
-                }
-                else
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
-                }
             });
         }
 
-        public override void Export(object filePath)
-        {
-            gridView.ExportToXls(filePath.ToString());
-        }
         private void gridView_DoubleClick(object sender, EventArgs e)
         {
             ThreadHelper.LoadForm(() =>
             {
                 dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
-                var info = SF.Get<NhaCungCapViewModel>().GetDetail(data.Id);
-                FormFactory<Main>.Get().ShowPopupInfo(info);
+                if (data != null)
+                {
+                    var info = SF.Get<NhaCungCapViewModel>().GetDetail(data.Id);
+                    if (info != null)
+                    {
+                        FormFactory<Main>.Get().ShowPopupInfo(info);                        
+                    }
+                }
             });
         }
     }

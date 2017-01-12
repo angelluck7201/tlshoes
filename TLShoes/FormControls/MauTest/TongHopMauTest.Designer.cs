@@ -122,6 +122,7 @@
             this.gridView.GridControl = this.gridMauTest;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
+            this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.RowHeight = 100;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.Id, DevExpress.Data.ColumnSortOrder.Descending)});
@@ -258,6 +259,7 @@
             this.gridView1.GridControl = this.gridMauSanXuat;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.RowHeight = 100;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn7, DevExpress.Data.ColumnSortOrder.Descending)});

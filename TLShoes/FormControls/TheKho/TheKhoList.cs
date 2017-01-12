@@ -50,23 +50,8 @@ namespace TLShoes.FormControls.TheKho
                 }
 
                 gridControl.DataSource = lstData;
-
-                if (gridView.RowCount > 0)
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
-                }
-                else
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
-                }
-
             });
 
-        }
-
-        public override void Export(object filePath)
-        {
-            gridView.ExportToXls(filePath.ToString());
         }
 
         public class TheKho

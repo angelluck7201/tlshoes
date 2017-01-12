@@ -233,12 +233,8 @@ namespace TLShoes.Common
                 //    }
                 //    break;
                 case "PictureEdit":
-                    var picturePath = value.ToString();
-                    if (File.Exists(picturePath))
-                    {
-                        var imageContainer = (control as PictureEdit);
-                        FileHelper.SetImage(imageContainer, picturePath);
-                    }
+                    var imageContainer = (control as PictureEdit);
+                    FileHelper.SetImage(imageContainer, value.ToString());
                     break;
                 default:
                     control.Text = value.ToString();

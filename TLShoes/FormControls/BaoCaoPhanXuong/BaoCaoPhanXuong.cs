@@ -6,6 +6,7 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
 {
     public partial class ucBaoCaoPhanXuong : BaseUserControl
     {
+        private TLShoes.BaoCaoPhanXuong _domainData;
         public ucBaoCaoPhanXuong(TLShoes.BaoCaoPhanXuong data)
         {
             InitializeComponent();
@@ -18,6 +19,7 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
             BaoCaoPhanXuong_PhanXuongId.ValueMember = "Id";
             BaoCaoPhanXuong_PhanXuongId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_XUONG), null);
 
+            _domainData = data;
             Init(data);
         }
 
@@ -30,7 +32,8 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject<TLShoes.BaoCaoPhanXuong>(FormControls);
+            var saveData = CRUD.GetFormObject(FormControls, _domainData);
+            CRUD.DecorateSaveData(saveData, _domainData == null);
             SF.Get<BaoCaoPhanXuongViewModel>().Save(saveData);
             return true;
         }

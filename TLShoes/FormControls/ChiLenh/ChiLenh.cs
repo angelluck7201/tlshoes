@@ -85,7 +85,10 @@ namespace TLShoes.FormControls.ChiLenh
 
                 if (trangThai <= Define.TrangThai.HUY)
                 {
-                    btnDuyet.Visible = true;
+                    if (Authorization.LoginUser.LoaiNguoiDung == Define.LoaiNguoiDung.TRUONG_PKT.ToString())
+                    {
+                        btnDuyet.Visible = true;
+                    }
                 }
 
                 // Check verify authorize
@@ -130,10 +133,9 @@ namespace TLShoes.FormControls.ChiLenh
             // Save Don hang
             using (var transaction = new TransactionScope())
             {
-                var saveData = CRUD.GetFormObject<TLShoes.ChiLenh>(FormControls);
+                var saveData = CRUD.GetFormObject(FormControls, _chiLenh);
+                CRUD.DecorateSaveData(saveData, _chiLenh == null);
                 SF.Get<ChiLenhViewModel>().Save(saveData);
-
-                _chiLenh = saveData;
 
                 // Save nguyen lieu chi lenh
                 foreach (var nguyenlieu in NguyenLieuChiLenhList)
@@ -363,11 +365,10 @@ namespace TLShoes.FormControls.ChiLenh
                     var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_chiLenh.TrangThai);
                     var ngayDuyet = TimeHelper.CurrentTimeStamp();
                     // Lock item
-                    if (trangThai == Define.TrangThai.MOI)
+                    if (trangThai <= Define.TrangThai.HUY)
                     {
                         _chiLenh.NgayLap = ngayDuyet;
                         _chiLenh.NguoiLapId = Authorization.LoginUser.Id;
-
                         _chiLenh.TrangThai = Define.TrangThai.DUYET.ToString();
                     }
 
@@ -376,9 +377,8 @@ namespace TLShoes.FormControls.ChiLenh
                     {
                         _chiLenh.NgayDuyet = ngayDuyet;
                         _chiLenh.NguoiDuyetId = Authorization.LoginUser.Id;
-
                         _chiLenh.SoPhieu = SF.Get<ChiLenhViewModel>().GenerateSoPhieu();
-                        _chiLenh.TrangThai = Define.TrangThai.DUYET_PVT.ToString();
+                        _chiLenh.TrangThai = Define.TrangThai.DUYET_PKT.ToString();
                     }
 
                     SF.Get<ChiLenhViewModel>().Save(_chiLenh);

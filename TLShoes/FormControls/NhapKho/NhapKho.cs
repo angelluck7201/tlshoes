@@ -266,14 +266,9 @@ namespace TLShoes.FormControls.NhapKho
                 {
                     var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentData.TrangThai);
                     var ngayDuyet = TimeHelper.CurrentTimeStamp();
-                                            var kho = PrimitiveConvert.StringToEnum<Define.Kho>(_currentData.Kho);
+                    var kho = PrimitiveConvert.StringToEnum<Define.Kho>(_currentData.Kho);
 
                     // Lock item
-                    if (trangThai == Define.TrangThai.MOI)
-                    {
-                        _currentData.SoPhieu = SF.Get<PhieuNhapKhoViewModel>().GenerateSoPhieu(kho);
-                    }
-
                     if (trangThai <= Define.TrangThai.HUY)
                     {
                         _currentData.NgayLap = ngayDuyet;
@@ -284,6 +279,7 @@ namespace TLShoes.FormControls.NhapKho
                     // Verify
                     if (trangThai == Define.TrangThai.DUYET)
                     {
+                        _currentData.SoPhieu = SF.Get<PhieuNhapKhoViewModel>().GenerateSoPhieu(kho);
                         _currentData.TrangThai = Define.TrangThai.DUYET_PVT.ToString();
                         _currentData.NgayDuyet = ngayDuyet;
                         _currentData.NguoiDuyetId = Authorization.LoginUser.Id;

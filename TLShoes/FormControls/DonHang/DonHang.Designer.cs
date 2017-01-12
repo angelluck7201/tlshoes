@@ -101,9 +101,7 @@
             this.DonHang_DatTestLy = new DevExpress.XtraEditors.RatingControl();
             this.lblDungThoiGian = new DevExpress.XtraEditors.LabelControl();
             this.DonHang_DungThoiGian = new DevExpress.XtraEditors.RatingControl();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -158,6 +156,8 @@
             // 
             // gridView
             // 
+            this.gridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridView.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Id,
             this.colSize,
@@ -247,7 +247,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
             this.xtraTabControl1.Size = new System.Drawing.Size(728, 699);
-            this.xtraTabControl1.TabIndex = 54;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
@@ -395,7 +395,7 @@
             // lblNgayNhan
             // 
             this.lblNgayNhan.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNgayNhan.Location = new System.Drawing.Point(31, 412);
+            this.lblNgayNhan.Location = new System.Drawing.Point(31, 417);
             this.lblNgayNhan.Name = "lblNgayNhan";
             this.lblNgayNhan.Size = new System.Drawing.Size(103, 17);
             this.lblNgayNhan.TabIndex = 60;
@@ -436,7 +436,7 @@
             // lblNgayXuat
             // 
             this.lblNgayXuat.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNgayXuat.Location = new System.Drawing.Point(31, 454);
+            this.lblNgayXuat.Location = new System.Drawing.Point(31, 459);
             this.lblNgayXuat.Name = "lblNgayXuat";
             this.lblNgayXuat.Size = new System.Drawing.Size(99, 17);
             this.lblNgayXuat.TabIndex = 55;
@@ -507,6 +507,8 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridView1.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn4,
             this.gridColumn5});
@@ -935,21 +937,6 @@
             this.DonHang_DungThoiGian.Text = "ratingControl1";
             this.DonHang_DungThoiGian.EditValueChanged += new System.EventHandler(this.DonHang_DungThoiGian_EditValueChanged);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(4, 724);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 55;
-            this.btnCancel.Text = "Hủy";
-            // 
             // btnSave
             // 
             this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
@@ -959,35 +946,18 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSave.Location = new System.Drawing.Point(465, 724);
+            this.btnSave.Location = new System.Drawing.Point(617, 726);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 56;
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
-            // 
-            // btnSaveContinue
-            // 
-            this.btnSaveContinue.Appearance.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnSaveContinue.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnSaveContinue.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSaveContinue.Appearance.Options.UseBackColor = true;
-            this.btnSaveContinue.Appearance.Options.UseFont = true;
-            this.btnSaveContinue.Appearance.Options.UseForeColor = true;
-            this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(546, 724);
-            this.btnSaveContinue.Name = "btnSaveContinue";
-            this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 57;
-            this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // ucDonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.btnSaveContinue);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucDonHang";
             this.Size = new System.Drawing.Size(737, 782);
@@ -1072,9 +1042,7 @@
         private System.Windows.Forms.RichTextBox DonHang_GopYXuongGo;
         private System.Windows.Forms.RichTextBox DonHang_GopYXuongMay;
         private System.Windows.Forms.RichTextBox DonHang_GopYXuongDe;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.LabelControl lblTongThe;

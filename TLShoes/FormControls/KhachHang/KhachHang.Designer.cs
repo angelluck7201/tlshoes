@@ -73,7 +73,6 @@
             this.lblGhiChu = new DevExpress.XtraEditors.LabelControl();
             this.KhachHang_GhiChuNoiBo = new System.Windows.Forms.RichTextBox();
             this.KhachHang_GhiChu = new System.Windows.Forms.RichTextBox();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -114,7 +113,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
             this.xtraTabControl1.Size = new System.Drawing.Size(708, 479);
-            this.xtraTabControl1.TabIndex = 31;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
@@ -635,21 +634,6 @@
             this.KhachHang_GhiChu.TabIndex = 22;
             this.KhachHang_GhiChu.Text = "";
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(5, 501);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Hủy";
-            // 
             // btnSave
             // 
             this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
@@ -659,10 +643,10 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSave.Location = new System.Drawing.Point(631, 501);
+            this.btnSave.Location = new System.Drawing.Point(607, 501);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             // 
             // ucKhachHang
@@ -671,7 +655,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucKhachHang";
             this.Size = new System.Drawing.Size(714, 549);
@@ -753,7 +736,6 @@
         private System.Windows.Forms.RichTextBox KhachHang_GhiChuNoiBo;
         private System.Windows.Forms.RichTextBox KhachHang_GhiChu;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
     }
 }

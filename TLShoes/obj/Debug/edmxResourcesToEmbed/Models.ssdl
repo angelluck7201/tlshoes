@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="GiayTLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AppConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ConfigName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ConfigParam" Type="text" />
+  </EntityType>
   <EntityType Name="BaoCaoPhanXuong">
     <Key>
       <PropertyRef Name="Id" />
@@ -2127,6 +2135,7 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="GiayTLModelStoreContainer">
+    <EntitySet Name="AppConfig" EntityType="Self.AppConfig" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BaoCaoPhanXuong" EntityType="Self.BaoCaoPhanXuong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiLenh" EntityType="Self.ChiLenh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietDanhGia" EntityType="Self.ChiTietDanhGia" Schema="dbo" store:Type="Tables" />

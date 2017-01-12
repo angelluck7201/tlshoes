@@ -55,9 +55,7 @@ namespace TLShoes.FormControls.DonHang
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HinhHinh = new DevExpress.XtraEditors.PictureEdit();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.MauDoi_HinhAnh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -166,7 +164,7 @@ namespace TLShoes.FormControls.DonHang
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
             this.xtraTabControl1.Size = new System.Drawing.Size(708, 594);
-            this.xtraTabControl1.TabIndex = 66;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
@@ -255,7 +253,7 @@ namespace TLShoes.FormControls.DonHang
             this.btnSaveHinh.Appearance.Options.UseBackColor = true;
             this.btnSaveHinh.Appearance.Options.UseFont = true;
             this.btnSaveHinh.Appearance.Options.UseForeColor = true;
-            this.btnSaveHinh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnSaveHinh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnSaveHinh.Location = new System.Drawing.Point(587, 478);
             this.btnSaveHinh.Name = "btnSaveHinh";
             this.btnSaveHinh.Size = new System.Drawing.Size(99, 30);
@@ -292,6 +290,8 @@ namespace TLShoes.FormControls.DonHang
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridView1.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
@@ -299,11 +299,13 @@ namespace TLShoes.FormControls.DonHang
             this.gridView1.GridControl = this.gridHinhAnh;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.Click += new System.EventHandler(this.gridView1_Click);
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "Ghi Chú";
+            this.gridColumn1.Caption = "Hình Mẫu Đối";
             this.gridColumn1.FieldName = "GhiChu";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
@@ -331,21 +333,6 @@ namespace TLShoes.FormControls.DonHang
             this.HinhHinh.TabIndex = 6;
             this.HinhHinh.TabStop = true;
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(2, 625);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Hủy";
-            // 
             // btnSave
             // 
             this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
@@ -355,35 +342,18 @@ namespace TLShoes.FormControls.DonHang
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSave.Location = new System.Drawing.Point(451, 625);
+            this.btnSave.Location = new System.Drawing.Point(594, 626);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Lưu";
-            // 
-            // btnSaveContinue
-            // 
-            this.btnSaveContinue.Appearance.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnSaveContinue.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnSaveContinue.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSaveContinue.Appearance.Options.UseBackColor = true;
-            this.btnSaveContinue.Appearance.Options.UseFont = true;
-            this.btnSaveContinue.Appearance.Options.UseForeColor = true;
-            this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(532, 625);
-            this.btnSaveContinue.Name = "btnSaveContinue";
-            this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 0;
-            this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // ucMauDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.btnSaveContinue);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucMauDoi";
             this.Size = new System.Drawing.Size(716, 682);
@@ -418,9 +388,7 @@ namespace TLShoes.FormControls.DonHang
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private Form.DefaultInfo defaultInfo;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private System.Windows.Forms.RichTextBox GhiChuHinh;
         private DevExpress.XtraEditors.LabelControl labelControl1;

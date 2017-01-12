@@ -26,7 +26,6 @@ namespace TLShoes.FormControls.QuanLyNguoiDung
             {
                 BaseModel.DisposeDb();
                 SF.Get<UserAccountViewModel>().GetDataSource(gridControl);
-                FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
             });
         }
 

@@ -17,15 +17,12 @@ namespace TLShoes.FormControls.ToTrinh
 
         public override void ReloadData()
         {
-            if (FormBehavior.IsMainFormEnable())
-            {
+          
                 ThreadHelper.LoadForm(() =>
                 {
                     BaseModel.DisposeDb();
                     SF.Get<ToTrinhViewModel>().GetDataSource(gridControl);
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
                 });
-            }
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)
@@ -36,7 +33,10 @@ namespace TLShoes.FormControls.ToTrinh
                 ThreadHelper.LoadForm(() =>
                 {
                     var info = SF.Get<ToTrinhViewModel>().GetDetail(data.Id);
-                    FormFactory<Main>.Get().ShowPopupInfo(info.TongHopToTrinh);
+                    if (info != null)
+                    {
+                        FormFactory<Main>.Get().ShowPopupInfo(info.TongHopToTrinh);                        
+                    }
                 });
             }
 

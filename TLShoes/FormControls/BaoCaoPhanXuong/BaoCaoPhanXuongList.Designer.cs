@@ -56,7 +56,7 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemPictureEdit1});
-            this.gridControl.Size = new System.Drawing.Size(760, 606);
+            this.gridControl.Size = new System.Drawing.Size(1271, 736);
             this.gridControl.TabIndex = 6;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -83,6 +83,7 @@
             this.gridView.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.Button;
+            this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways;
             this.gridView.RowHeight = 80;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
@@ -177,6 +178,10 @@
             this.gridColumn8.ColumnEdit = this.repositoryItemPictureEdit1;
             this.gridColumn8.FieldName = "Hinh";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.OptionsColumn.AllowFocus = false;
+            this.gridColumn8.OptionsFilter.AllowAutoFilter = false;
+            this.gridColumn8.OptionsFilter.AllowFilter = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 0;
             // 
@@ -217,7 +222,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gridControl);
             this.Name = "ucBaoCaoPhanXuongList";
-            this.Size = new System.Drawing.Size(760, 606);
+            this.Size = new System.Drawing.Size(1271, 736);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();

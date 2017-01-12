@@ -63,6 +63,7 @@
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.Button;
             this.gridView.OptionsView.ShowAutoFilterRow = true;
+            this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.Id, DevExpress.Data.ColumnSortOrder.Descending)});
             this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);

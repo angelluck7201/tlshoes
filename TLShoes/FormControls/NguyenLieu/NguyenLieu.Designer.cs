@@ -46,7 +46,6 @@
             this.lblMauId = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo1 = new TLShoes.Form.DefaultInfo();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -155,7 +154,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
             this.xtraTabControl1.Size = new System.Drawing.Size(715, 419);
-            this.xtraTabControl1.TabIndex = 95;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2});
@@ -242,21 +241,6 @@
             this.defaultInfo1.Size = new System.Drawing.Size(708, 383);
             this.defaultInfo1.TabIndex = 11;
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(15, 21);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Hủy";
-            // 
             // btnSave
             // 
             this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
@@ -285,7 +269,6 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.btnCancel);
             this.splitContainer1.Panel2.Controls.Add(this.btnSave);
             this.splitContainer1.Size = new System.Drawing.Size(715, 496);
             this.splitContainer1.SplitterDistance = 419;
@@ -328,7 +311,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private Form.DefaultInfo defaultInfo1;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private DevExpress.XtraEditors.LabelControl lblQuyCach;

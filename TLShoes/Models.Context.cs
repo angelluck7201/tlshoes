@@ -65,5 +65,6 @@ namespace TLShoes
         public virtual DbSet<ToTrinh> ToTrinhs { get; set; }
         public virtual DbSet<NhatKyXuatKho> NhatKyXuatKhoes { get; set; }
         public virtual DbSet<PhanQuyenNguoiDung> PhanQuyenNguoiDungs { get; set; }
+        public virtual DbSet<AppConfig> AppConfigs { get; set; }
     }
 }

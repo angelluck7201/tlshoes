@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using DevExpress.XtraGrid;
@@ -55,6 +56,17 @@ namespace TLShoes.ViewModels
             var currentItemNum = DbContext.PhieuXuatKhoes.Count();
             var currentTime = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
             return string.Format(Define.SO_PHIEU_XUAT_KHO, currentItemNum + 1, currentTime.Month.ToString("00"), currentTime.Year);
+        }
+    }
+}
+
+namespace TLShoes
+{
+    public partial class NhatKyXuatKho
+    {
+        public DateTime NgayXuat
+        {
+            get { return TimeHelper.TimeStampToDateTime(CreatedDate, "d"); }
         }
     }
 }

@@ -68,7 +68,6 @@
             this.SoDH = new System.Windows.Forms.TextBox();
             this.lblDonHangId = new DevExpress.XtraEditors.LabelControl();
             this.KeHoachSanXuat_DonHangId = new System.Windows.Forms.ComboBox();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -94,7 +93,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
             this.xtraTabControl1.Size = new System.Drawing.Size(854, 740);
-            this.xtraTabControl1.TabIndex = 114;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage3,
@@ -145,42 +144,42 @@
             this.KeHoachSanXuat_NgayKiemHang.Location = new System.Drawing.Point(174, 39);
             this.KeHoachSanXuat_NgayKiemHang.Name = "KeHoachSanXuat_NgayKiemHang";
             this.KeHoachSanXuat_NgayKiemHang.Size = new System.Drawing.Size(608, 23);
-            this.KeHoachSanXuat_NgayKiemHang.TabIndex = 89;
+            this.KeHoachSanXuat_NgayKiemHang.TabIndex = 0;
             // 
             // KeHoachSanXuat_NgayHoanThanhBpVatTu
             // 
             this.KeHoachSanXuat_NgayHoanThanhBpVatTu.Location = new System.Drawing.Point(496, 80);
             this.KeHoachSanXuat_NgayHoanThanhBpVatTu.Name = "KeHoachSanXuat_NgayHoanThanhBpVatTu";
             this.KeHoachSanXuat_NgayHoanThanhBpVatTu.Size = new System.Drawing.Size(286, 23);
-            this.KeHoachSanXuat_NgayHoanThanhBpVatTu.TabIndex = 113;
+            this.KeHoachSanXuat_NgayHoanThanhBpVatTu.TabIndex = 2;
             // 
             // KeHoachSanXuat_NgayHoanThanhPxDe
             // 
             this.KeHoachSanXuat_NgayHoanThanhPxDe.Location = new System.Drawing.Point(496, 196);
             this.KeHoachSanXuat_NgayHoanThanhPxDe.Name = "KeHoachSanXuat_NgayHoanThanhPxDe";
             this.KeHoachSanXuat_NgayHoanThanhPxDe.Size = new System.Drawing.Size(286, 23);
-            this.KeHoachSanXuat_NgayHoanThanhPxDe.TabIndex = 110;
+            this.KeHoachSanXuat_NgayHoanThanhPxDe.TabIndex = 8;
             // 
             // KeHoachSanXuat_NgayBatDauBpVatTu
             // 
             this.KeHoachSanXuat_NgayBatDauBpVatTu.Location = new System.Drawing.Point(174, 80);
             this.KeHoachSanXuat_NgayBatDauBpVatTu.Name = "KeHoachSanXuat_NgayBatDauBpVatTu";
             this.KeHoachSanXuat_NgayBatDauBpVatTu.Size = new System.Drawing.Size(286, 23);
-            this.KeHoachSanXuat_NgayBatDauBpVatTu.TabIndex = 112;
+            this.KeHoachSanXuat_NgayBatDauBpVatTu.TabIndex = 1;
             // 
             // KeHoachSanXuat_NgayHoanThanhToPhuTro
             // 
             this.KeHoachSanXuat_NgayHoanThanhToPhuTro.Location = new System.Drawing.Point(496, 158);
             this.KeHoachSanXuat_NgayHoanThanhToPhuTro.Name = "KeHoachSanXuat_NgayHoanThanhToPhuTro";
             this.KeHoachSanXuat_NgayHoanThanhToPhuTro.Size = new System.Drawing.Size(286, 23);
-            this.KeHoachSanXuat_NgayHoanThanhToPhuTro.TabIndex = 107;
+            this.KeHoachSanXuat_NgayHoanThanhToPhuTro.TabIndex = 6;
             // 
             // KeHoachSanXuat_NgayHoanThanhPxGo
             // 
             this.KeHoachSanXuat_NgayHoanThanhPxGo.Location = new System.Drawing.Point(496, 274);
             this.KeHoachSanXuat_NgayHoanThanhPxGo.Name = "KeHoachSanXuat_NgayHoanThanhPxGo";
             this.KeHoachSanXuat_NgayHoanThanhPxGo.Size = new System.Drawing.Size(286, 23);
-            this.KeHoachSanXuat_NgayHoanThanhPxGo.TabIndex = 104;
+            this.KeHoachSanXuat_NgayHoanThanhPxGo.TabIndex = 12;
             // 
             // lblBoPhanVatTu
             // 
@@ -196,7 +195,7 @@
             this.KeHoachSanXuat_NgayHoanThanhPxMay.Location = new System.Drawing.Point(496, 237);
             this.KeHoachSanXuat_NgayHoanThanhPxMay.Name = "KeHoachSanXuat_NgayHoanThanhPxMay";
             this.KeHoachSanXuat_NgayHoanThanhPxMay.Size = new System.Drawing.Size(286, 23);
-            this.KeHoachSanXuat_NgayHoanThanhPxMay.TabIndex = 101;
+            this.KeHoachSanXuat_NgayHoanThanhPxMay.TabIndex = 10;
             // 
             // lblNgayKiemHang
             // 
@@ -212,7 +211,7 @@
             this.KeHoachSanXuat_NgayHoanThanhPxChat.Location = new System.Drawing.Point(497, 120);
             this.KeHoachSanXuat_NgayHoanThanhPxChat.Name = "KeHoachSanXuat_NgayHoanThanhPxChat";
             this.KeHoachSanXuat_NgayHoanThanhPxChat.Size = new System.Drawing.Size(286, 23);
-            this.KeHoachSanXuat_NgayHoanThanhPxChat.TabIndex = 98;
+            this.KeHoachSanXuat_NgayHoanThanhPxChat.TabIndex = 4;
             // 
             // lblGhiChu
             // 
@@ -228,14 +227,14 @@
             this.KeHoachSanXuat_NgayBatDauPxDe.Location = new System.Drawing.Point(174, 196);
             this.KeHoachSanXuat_NgayBatDauPxDe.Name = "KeHoachSanXuat_NgayBatDauPxDe";
             this.KeHoachSanXuat_NgayBatDauPxDe.Size = new System.Drawing.Size(286, 23);
-            this.KeHoachSanXuat_NgayBatDauPxDe.TabIndex = 109;
+            this.KeHoachSanXuat_NgayBatDauPxDe.TabIndex = 7;
             // 
             // KeHoachSanXuat_GhiChu
             // 
             this.KeHoachSanXuat_GhiChu.Location = new System.Drawing.Point(174, 316);
             this.KeHoachSanXuat_GhiChu.Name = "KeHoachSanXuat_GhiChu";
             this.KeHoachSanXuat_GhiChu.Size = new System.Drawing.Size(608, 139);
-            this.KeHoachSanXuat_GhiChu.TabIndex = 91;
+            this.KeHoachSanXuat_GhiChu.TabIndex = 13;
             this.KeHoachSanXuat_GhiChu.Text = "";
             // 
             // lblPhanXuongDe
@@ -261,14 +260,14 @@
             this.KeHoachSanXuat_NgayBatDauPxChat.Location = new System.Drawing.Point(175, 120);
             this.KeHoachSanXuat_NgayBatDauPxChat.Name = "KeHoachSanXuat_NgayBatDauPxChat";
             this.KeHoachSanXuat_NgayBatDauPxChat.Size = new System.Drawing.Size(286, 23);
-            this.KeHoachSanXuat_NgayBatDauPxChat.TabIndex = 97;
+            this.KeHoachSanXuat_NgayBatDauPxChat.TabIndex = 3;
             // 
             // KeHoachSanXuat_NgayBatDauToPhuTro
             // 
             this.KeHoachSanXuat_NgayBatDauToPhuTro.Location = new System.Drawing.Point(174, 158);
             this.KeHoachSanXuat_NgayBatDauToPhuTro.Name = "KeHoachSanXuat_NgayBatDauToPhuTro";
             this.KeHoachSanXuat_NgayBatDauToPhuTro.Size = new System.Drawing.Size(286, 23);
-            this.KeHoachSanXuat_NgayBatDauToPhuTro.TabIndex = 106;
+            this.KeHoachSanXuat_NgayBatDauToPhuTro.TabIndex = 5;
             // 
             // labelControl2
             // 
@@ -293,7 +292,7 @@
             this.KeHoachSanXuat_NgayBatDauPxMay.Location = new System.Drawing.Point(174, 237);
             this.KeHoachSanXuat_NgayBatDauPxMay.Name = "KeHoachSanXuat_NgayBatDauPxMay";
             this.KeHoachSanXuat_NgayBatDauPxMay.Size = new System.Drawing.Size(286, 23);
-            this.KeHoachSanXuat_NgayBatDauPxMay.TabIndex = 100;
+            this.KeHoachSanXuat_NgayBatDauPxMay.TabIndex = 9;
             // 
             // labelControl3
             // 
@@ -309,7 +308,7 @@
             this.KeHoachSanXuat_NgayBatDauPxGo.Location = new System.Drawing.Point(174, 274);
             this.KeHoachSanXuat_NgayBatDauPxGo.Name = "KeHoachSanXuat_NgayBatDauPxGo";
             this.KeHoachSanXuat_NgayBatDauPxGo.Size = new System.Drawing.Size(286, 23);
-            this.KeHoachSanXuat_NgayBatDauPxGo.TabIndex = 103;
+            this.KeHoachSanXuat_NgayBatDauPxGo.TabIndex = 11;
             // 
             // xtraTabPage1
             // 
@@ -474,21 +473,6 @@
             this.KeHoachSanXuat_DonHangId.TabIndex = 83;
             this.KeHoachSanXuat_DonHangId.SelectedIndexChanged += new System.EventHandler(this.KeHoachSanXuat_DonHangId_SelectedIndexChanged);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(1, 749);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 115;
-            this.btnCancel.Text = "Hủy";
-            // 
             // btnSave
             // 
             this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
@@ -498,10 +482,10 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSave.Location = new System.Drawing.Point(776, 749);
+            this.btnSave.Location = new System.Drawing.Point(757, 751);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 116;
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             // 
             // ucKeHoachSanXuat
@@ -510,10 +494,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucKeHoachSanXuat";
-            this.Size = new System.Drawing.Size(874, 800);
+            this.Size = new System.Drawing.Size(857, 800);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
@@ -535,7 +518,6 @@
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private Form.DefaultInfo defaultInfo;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;

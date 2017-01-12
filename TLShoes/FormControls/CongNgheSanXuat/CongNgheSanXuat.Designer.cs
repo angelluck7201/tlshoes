@@ -51,7 +51,6 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CongNgheSanXuat_HinhBangThongSo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -227,7 +226,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
             this.xtraTabControl1.Size = new System.Drawing.Size(1281, 641);
-            this.xtraTabControl1.TabIndex = 83;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2});
@@ -274,7 +273,7 @@
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.defaultInfo);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(701, 734);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1274, 605);
             this.xtraTabPage1.Text = "Thông tin người dùng";
             // 
             // defaultInfo
@@ -282,7 +281,7 @@
             this.defaultInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defaultInfo.Location = new System.Drawing.Point(0, 0);
             this.defaultInfo.Name = "defaultInfo";
-            this.defaultInfo.Size = new System.Drawing.Size(701, 734);
+            this.defaultInfo.Size = new System.Drawing.Size(1274, 605);
             this.defaultInfo.TabIndex = 11;
             // 
             // btnSave
@@ -297,23 +296,8 @@
             this.btnSave.Location = new System.Drawing.Point(1185, 671);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 15;
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(12, 671);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 16;
-            this.btnCancel.Text = "Hủy";
             // 
             // ucCongNgheSanXuat
             // 
@@ -321,7 +305,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.xtraTabControl1);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Name = "ucCongNgheSanXuat";
             this.Size = new System.Drawing.Size(1284, 722);
@@ -361,6 +344,5 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private Form.DefaultInfo defaultInfo;
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
     }
 }

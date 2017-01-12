@@ -21,7 +21,7 @@ namespace TLShoes.ViewModels
 
         public void GetDataSource(GridControl control)
         {
-            control.DataSource = GetList().Select(s => new
+            var data = GetList().Select(s => new
             {
                 s.Id,
                 s.NguoiGiao,
@@ -31,6 +31,7 @@ namespace TLShoes.ViewModels
                 NgayNhapFormat = TimeHelper.TimestampToString(s.NgayNhap, "d"),
                 s.UserAccount.LoaiNguoiDung
             }).ToList();
+            control.DataSource = data;
         }
 
         public void Save(object data, bool isCommit = true)

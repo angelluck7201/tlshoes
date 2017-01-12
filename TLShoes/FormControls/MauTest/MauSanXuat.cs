@@ -9,6 +9,7 @@ namespace TLShoes.FormControls.MauSanXuat
     public partial class ucMauSanXuat : BaseUserControl
     {
         public static BindingList<CommonClass.GopYItem> GopYBindingList = new BindingList<CommonClass.GopYItem>();
+        private TLShoes.MauSanXuat _domainData;
 
         public ucMauSanXuat(TLShoes.MauSanXuat data)
         {
@@ -37,6 +38,7 @@ namespace TLShoes.FormControls.MauSanXuat
             lblGopY.Text = GopYBindingList[0].BoPhan;
             txtGopY.Text = GopYBindingList[0].GopY;
 
+            _domainData = data;
             Init(data);
         }
 
@@ -49,7 +51,7 @@ namespace TLShoes.FormControls.MauSanXuat
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject<TLShoes.MauSanXuat>(FormControls);
+            var saveData = CRUD.GetFormObject(FormControls, _domainData);
             saveData.GopYVatTu = GopYBindingList[0].GopY;
             saveData.GopYXuongChat = GopYBindingList[1].GopY;
             saveData.GopYXuongDe = GopYBindingList[2].GopY;
@@ -59,11 +61,12 @@ namespace TLShoes.FormControls.MauSanXuat
             saveData.GopYMau = GopYBindingList[6].GopY;
             saveData.GopYKhoVatTu = GopYBindingList[7].GopY;
             saveData.GopYPhuTro = GopYBindingList[8].GopY;
+            CRUD.DecorateSaveData(saveData, _domainData == null);
             SF.Get<MauSanXuatViewModel>().Save(saveData);
             return true;
         }
 
-       
+
 
         public string ValidateInput()
         {

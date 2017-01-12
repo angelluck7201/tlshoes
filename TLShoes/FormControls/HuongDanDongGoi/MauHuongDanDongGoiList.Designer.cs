@@ -66,6 +66,7 @@
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsCustomization.AllowGroup = false;
+            this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
             // 

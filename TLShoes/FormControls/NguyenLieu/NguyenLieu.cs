@@ -36,7 +36,7 @@ namespace TLShoes.FormControls.NguyenLieu
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject<TLShoes.NguyenLieu>(FormControls);
+            var saveData = CRUD.GetFormObject<TLShoes.NguyenLieu>(FormControls, _domainData);
             CRUD.DecorateSaveData(saveData, _domainData == null);
             SF.Get<NguyenLieuViewModel>().Save(saveData);
             return true;

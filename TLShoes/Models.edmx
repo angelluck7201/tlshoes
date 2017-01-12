@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="GiayTLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConfigName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ConfigParam" Type="text" />
+        </EntityType>
         <EntityType Name="BaoCaoPhanXuong">
           <Key>
             <PropertyRef Name="Id" />
@@ -2132,6 +2140,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="GiayTLModelStoreContainer">
+          <EntitySet Name="AppConfig" EntityType="Self.AppConfig" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaoCaoPhanXuong" EntityType="Self.BaoCaoPhanXuong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiLenh" EntityType="Self.ChiLenh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietDanhGia" EntityType="Self.ChiTietDanhGia" Schema="dbo" store:Type="Tables" />
@@ -3146,6 +3155,7 @@
             <End Role="NhatKyXuatKho" EntitySet="NhatKyXuatKhoes" />
           </AssociationSet>
           <EntitySet Name="PhanQuyenNguoiDungs" EntityType="GiayTLModel.PhanQuyenNguoiDung" />
+          <EntitySet Name="AppConfigs" EntityType="GiayTLModel.AppConfig" />
           </EntityContainer>
         <EntityType Name="BaoCaoPhanXuong">
           <Key>
@@ -5505,6 +5515,14 @@
           <Property Name="Feature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Permission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="AppConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfigName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ConfigParam" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6281,6 +6299,15 @@
                 <ScalarProperty Name="IsActived" ColumnName="IsActived" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppConfigs">
+            <EntityTypeMapping TypeName="GiayTLModel.AppConfig">
+              <MappingFragment StoreEntitySet="AppConfig">
+                <ScalarProperty Name="ConfigParam" ColumnName="ConfigParam" />
+                <ScalarProperty Name="ConfigName" ColumnName="ConfigName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

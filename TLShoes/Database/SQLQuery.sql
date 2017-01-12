@@ -2,23 +2,22 @@
 Create database GiayTL;
 use GiayTL;
 
+insert AppConfig(ConfigName, ConfigParam) values('FILE_PATH','\\LONGNGUYEN\Users\nguye\Desktop\Share Folder\image\'); 
+insert AppConfig(ConfigName, ConfigParam) values('LASTEST_VERSION','2'); 
+insert AppConfig(ConfigName, ConfigParam) values('UPDATE_PATH','\\LONGNGUYEN\Users\nguye\Desktop\Share Folder\update\'); 
+
+create table AppConfig(
+Id bigint primary key identity(1,1),
+ConfigName nvarchar(100),
+ConfigParam text,
+);
+
 create table ErrorLog(
 Id bigint primary key identity(1,1),
 CreatedDate nvarchar(50),
 AppVersion nvarchar(20),
 Messagelog nvarchar(max),
 );
-
-alter table UserAccount add MatKhau text
-alter table UserAccount add LoaiNguoiDung text
-alter table UserAccount alter column CreatedDate bigint not null
-alter table UserAccount alter column ModifiedDate bigint not null
-
-alter table UserAccount add TenNhanVien nvarchar(100) default ''
-alter table UserAccount add DiaChi nvarchar(100) default ''
-alter table UserAccount add CMND varchar(20) default ''
-alter table UserAccount add Dienthoai varchar(20) default ''
-alter table UserAccount add GhiChu nvarchar(1000) default ''
 
 create table UserAccount(
 Id bigint primary key identity(1,1),

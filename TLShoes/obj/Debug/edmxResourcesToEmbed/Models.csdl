@@ -505,6 +505,7 @@
       <End Role="NhatKyXuatKho" EntitySet="NhatKyXuatKhoes" />
     </AssociationSet>
     <EntitySet Name="PhanQuyenNguoiDungs" EntityType="GiayTLModel.PhanQuyenNguoiDung" />
+    <EntitySet Name="AppConfigs" EntityType="GiayTLModel.AppConfig" />
   </EntityContainer>
   <EntityType Name="BaoCaoPhanXuong">
     <Key>
@@ -2863,5 +2864,13 @@
     <Property Name="LoaiNguoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Feature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Permission" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AppConfig">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ConfigName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ConfigParam" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

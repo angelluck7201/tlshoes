@@ -46,9 +46,7 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -168,7 +166,7 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
             this.xtraTabControl1.Size = new System.Drawing.Size(708, 479);
-            this.xtraTabControl1.TabIndex = 90;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2});
@@ -220,21 +218,6 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
             this.defaultInfo.Size = new System.Drawing.Size(701, 443);
             this.defaultInfo.TabIndex = 11;
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(4, 503);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Hủy";
-            // 
             // btnSave
             // 
             this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
@@ -244,35 +227,18 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSave.Location = new System.Drawing.Point(445, 503);
+            this.btnSave.Location = new System.Drawing.Point(606, 503);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
-            // 
-            // btnSaveContinue
-            // 
-            this.btnSaveContinue.Appearance.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnSaveContinue.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnSaveContinue.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSaveContinue.Appearance.Options.UseBackColor = true;
-            this.btnSaveContinue.Appearance.Options.UseFont = true;
-            this.btnSaveContinue.Appearance.Options.UseForeColor = true;
-            this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(526, 503);
-            this.btnSaveContinue.Name = "btnSaveContinue";
-            this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 1;
-            this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
             // 
             // ucBaoCaoPhanXuong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.btnSaveContinue);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucBaoCaoPhanXuong";
             this.Size = new System.Drawing.Size(718, 548);
@@ -303,8 +269,6 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private Form.DefaultInfo defaultInfo;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
     }
 }

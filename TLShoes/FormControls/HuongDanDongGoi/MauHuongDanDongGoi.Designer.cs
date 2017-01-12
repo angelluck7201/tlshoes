@@ -29,33 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMauHuongDanDongGoi));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.MauHuongDanDongGoi_TenMau = new System.Windows.Forms.TextBox();
             this.lblTenMau = new DevExpress.XtraEditors.LabelControl();
-            this.gridHuongDan = new DevExpress.XtraGrid.GridControl();
-            this.gridViewHuongDan = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.DonViTinhIdLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.DanhMucIdLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnDeleteHuongDan = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.MauIdLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NguyenLieuIdLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
-            this.repositoryItemSearchLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
-            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.HinhMauDinhKemImageEdit = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.MauHuongDanDongGoi_KhachHangId = new System.Windows.Forms.ComboBox();
@@ -67,24 +45,75 @@
             this.MauHuongDanDongGoi_GhiChu = new System.Windows.Forms.RichTextBox();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.btnUpdateHinh = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.KichThuoc = new DevExpress.XtraEditors.TextEdit();
+            this.SoLuong = new DevExpress.XtraEditors.TextEdit();
+            this.btnThemHinh = new DevExpress.XtraEditors.SimpleButton();
+            this.HinhAnh = new DevExpress.XtraEditors.PictureEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.ViTriSuDung = new System.Windows.Forms.RichTextBox();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.CachSuDung = new System.Windows.Forms.RichTextBox();
+            this.NguyenLieuId = new System.Windows.Forms.ComboBox();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.MauId = new System.Windows.Forms.ComboBox();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.DonViTinhId = new System.Windows.Forms.ComboBox();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.DanhMucId = new System.Windows.Forms.ComboBox();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.gridHuongDan = new DevExpress.XtraGrid.GridControl();
+            this.cardView1 = new DevExpress.XtraGrid.Views.Card.CardView();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MauIdLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.btnDeleteHuongDan = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.repositoryItemSearchLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.NguyenLieuIdLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.DanhMucIdLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.DonViTinhIdLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.HinhMauDinhKemImageEdit = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSaveContinue = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridHuongDan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewHuongDan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DonViTinhIdLookUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DanhMucIdLookUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteHuongDan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MauIdLookUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuIdLookUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HinhMauDinhKemImageEdit)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.KichThuoc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SoLuong.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HinhAnh.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridHuongDan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MauIdLookUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteHuongDan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuIdLookUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DanhMucIdLookUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonViTinhIdLookUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HinhMauDinhKemImageEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
+            this.splitContainerControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -95,14 +124,16 @@
             this.xtraTabControl1.Appearance.Options.UseBorderColor = true;
             this.xtraTabControl1.Appearance.Options.UseFont = true;
             this.xtraTabControl1.Appearance.Options.UseForeColor = true;
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1256, 750);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1261, 772);
             this.xtraTabControl1.TabIndex = 115;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPage2
             // 
@@ -120,7 +151,6 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
             this.xtraTabPage2.Controls.Add(this.MauHuongDanDongGoi_TenMau);
             this.xtraTabPage2.Controls.Add(this.lblTenMau);
-            this.xtraTabPage2.Controls.Add(this.gridHuongDan);
             this.xtraTabPage2.Controls.Add(this.labelControl2);
             this.xtraTabPage2.Controls.Add(this.labelControl1);
             this.xtraTabPage2.Controls.Add(this.MauHuongDanDongGoi_KhachHangId);
@@ -131,7 +161,7 @@
             this.xtraTabPage2.Controls.Add(this.lblGhiChu);
             this.xtraTabPage2.Controls.Add(this.MauHuongDanDongGoi_GhiChu);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1249, 714);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1254, 733);
             this.xtraTabPage2.Text = "Mẫu Hướng Dẫn";
             // 
             // MauHuongDanDongGoi_TenMau
@@ -149,229 +179,6 @@
             this.lblTenMau.Size = new System.Drawing.Size(59, 17);
             this.lblTenMau.TabIndex = 118;
             this.lblTenMau.Text = "Tên Mẫu";
-            // 
-            // gridHuongDan
-            // 
-            this.gridHuongDan.Location = new System.Drawing.Point(25, 148);
-            this.gridHuongDan.MainView = this.gridViewHuongDan;
-            this.gridHuongDan.Name = "gridHuongDan";
-            this.gridHuongDan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.MauIdLookUp,
-            this.btnDeleteHuongDan,
-            this.repositoryItemSearchLookUpEdit1,
-            this.NguyenLieuIdLookUp,
-            this.DanhMucIdLookUp,
-            this.DonViTinhIdLookUp,
-            this.HinhMauDinhKemImageEdit,
-            this.repositoryItemPictureEdit1});
-            this.gridHuongDan.Size = new System.Drawing.Size(1195, 543);
-            this.gridHuongDan.TabIndex = 5;
-            this.gridHuongDan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewHuongDan});
-            // 
-            // gridViewHuongDan
-            // 
-            this.gridViewHuongDan.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.gridViewHuongDan.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridViewHuongDan.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn3,
-            this.gridColumn1,
-            this.gridColumn6,
-            this.gridColumn14,
-            this.gridColumn2,
-            this.gridColumn4,
-            this.gridColumn5,
-            this.gridColumn7,
-            this.gridColumn8,
-            this.gridColumn9,
-            this.gridColumn10});
-            this.gridViewHuongDan.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
-            this.gridViewHuongDan.GridControl = this.gridHuongDan;
-            this.gridViewHuongDan.Name = "gridViewHuongDan";
-            this.gridViewHuongDan.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
-            this.gridViewHuongDan.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Inplace;
-            this.gridViewHuongDan.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
-            this.gridViewHuongDan.OptionsCustomization.AllowGroup = false;
-            this.gridViewHuongDan.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
-            this.gridViewHuongDan.OptionsView.ShowGroupPanel = false;
-            this.gridViewHuongDan.RowHeight = 160;
-            this.gridViewHuongDan.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn3, DevExpress.Data.ColumnSortOrder.Descending)});
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "Id";
-            this.gridColumn3.FieldName = "Id";
-            this.gridColumn3.Name = "gridColumn3";
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "ĐVT";
-            this.gridColumn1.ColumnEdit = this.DonViTinhIdLookUp;
-            this.gridColumn1.FieldName = "DonViTinhId";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 93;
-            // 
-            // DonViTinhIdLookUp
-            // 
-            this.DonViTinhIdLookUp.AutoHeight = false;
-            this.DonViTinhIdLookUp.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DonViTinhIdLookUp.Name = "DonViTinhIdLookUp";
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "Danh Mục";
-            this.gridColumn6.ColumnEdit = this.DanhMucIdLookUp;
-            this.gridColumn6.FieldName = "DanhMucId";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 0;
-            this.gridColumn6.Width = 254;
-            // 
-            // DanhMucIdLookUp
-            // 
-            this.DanhMucIdLookUp.AutoHeight = false;
-            this.DanhMucIdLookUp.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DanhMucIdLookUp.Name = "DanhMucIdLookUp";
-            // 
-            // gridColumn14
-            // 
-            this.gridColumn14.ColumnEdit = this.btnDeleteHuongDan;
-            this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 9;
-            this.gridColumn14.Width = 43;
-            // 
-            // btnDeleteHuongDan
-            // 
-            this.btnDeleteHuongDan.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteHuongDan.Appearance.Image")));
-            this.btnDeleteHuongDan.Appearance.Options.UseImage = true;
-            this.btnDeleteHuongDan.AutoHeight = false;
-            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
-            serializableAppearanceObject1.Options.UseBackColor = true;
-            serializableAppearanceObject1.Options.UseBorderColor = true;
-            serializableAppearanceObject1.Options.UseImage = true;
-            this.btnDeleteHuongDan.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteHuongDan.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
-            this.btnDeleteHuongDan.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.btnDeleteHuongDan.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.btnDeleteHuongDan.Name = "btnDeleteHuongDan";
-            this.btnDeleteHuongDan.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Kích Thước";
-            this.gridColumn2.FieldName = "KichThuoc";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 85;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Màu";
-            this.gridColumn4.ColumnEdit = this.MauIdLookUp;
-            this.gridColumn4.FieldName = "MauId";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 78;
-            // 
-            // MauIdLookUp
-            // 
-            this.MauIdLookUp.AutoHeight = false;
-            this.MauIdLookUp.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.MauIdLookUp.Name = "MauIdLookUp";
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "Nguyên Liệu";
-            this.gridColumn5.ColumnEdit = this.NguyenLieuIdLookUp;
-            this.gridColumn5.FieldName = "NguyenLieuId";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 159;
-            // 
-            // NguyenLieuIdLookUp
-            // 
-            this.NguyenLieuIdLookUp.AutoHeight = false;
-            this.NguyenLieuIdLookUp.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.NguyenLieuIdLookUp.Name = "NguyenLieuIdLookUp";
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.Caption = "Cách Sử Dụng";
-            this.gridColumn7.FieldName = "CachSuDung";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 5;
-            this.gridColumn7.Width = 197;
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.Caption = "Vị Trí Sử Dụng";
-            this.gridColumn8.FieldName = "ViTriSuDung";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 6;
-            this.gridColumn8.Width = 104;
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.Caption = "Số Lượng";
-            this.gridColumn9.FieldName = "SoLuong";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 7;
-            this.gridColumn9.Width = 74;
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.Caption = "Hình";
-            this.gridColumn10.ColumnEdit = this.repositoryItemPictureEdit1;
-            this.gridColumn10.FieldName = "HinhMauDinhKemFormat";
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.UnboundType = DevExpress.Data.UnboundColumnType.Object;
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 8;
-            this.gridColumn10.Width = 88;
-            // 
-            // repositoryItemPictureEdit1
-            // 
-            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
-            this.repositoryItemPictureEdit1.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            // 
-            // repositoryItemSearchLookUpEdit1
-            // 
-            this.repositoryItemSearchLookUpEdit1.AutoHeight = false;
-            this.repositoryItemSearchLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSearchLookUpEdit1.Name = "repositoryItemSearchLookUpEdit1";
-            this.repositoryItemSearchLookUpEdit1.View = this.repositoryItemSearchLookUpEdit1View;
-            // 
-            // repositoryItemSearchLookUpEdit1View
-            // 
-            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
-            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // HinhMauDinhKemImageEdit
-            // 
-            this.HinhMauDinhKemImageEdit.AutoHeight = false;
-            this.HinhMauDinhKemImageEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.HinhMauDinhKemImageEdit.Name = "HinhMauDinhKemImageEdit";
-            this.HinhMauDinhKemImageEdit.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             // 
             // labelControl2
             // 
@@ -454,7 +261,7 @@
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.defaultInfo);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1249, 714);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1254, 733);
             this.xtraTabPage1.Text = "Thông tin người dùng";
             // 
             // defaultInfo
@@ -462,11 +269,486 @@
             this.defaultInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defaultInfo.Location = new System.Drawing.Point(0, 0);
             this.defaultInfo.Name = "defaultInfo";
-            this.defaultInfo.Size = new System.Drawing.Size(1249, 714);
+            this.defaultInfo.Size = new System.Drawing.Size(1254, 733);
             this.defaultInfo.TabIndex = 11;
+            // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Appearance.Header.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage3.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage3.Appearance.Header.Options.UseBackColor = true;
+            this.xtraTabPage3.Appearance.Header.Options.UseFont = true;
+            this.xtraTabPage3.Appearance.HeaderActive.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage3.Appearance.HeaderActive.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage3.Appearance.HeaderActive.Options.UseBackColor = true;
+            this.xtraTabPage3.Appearance.HeaderActive.Options.UseFont = true;
+            this.xtraTabPage3.Controls.Add(this.splitContainerControl1);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(1254, 736);
+            this.xtraTabPage3.Text = "Chi Tiết";
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.btnUpdateHinh);
+            this.splitContainerControl1.Panel1.Controls.Add(this.btnDelete);
+            this.splitContainerControl1.Panel1.Controls.Add(this.KichThuoc);
+            this.splitContainerControl1.Panel1.Controls.Add(this.SoLuong);
+            this.splitContainerControl1.Panel1.Controls.Add(this.btnThemHinh);
+            this.splitContainerControl1.Panel1.Controls.Add(this.HinhAnh);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl10);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl9);
+            this.splitContainerControl1.Panel1.Controls.Add(this.ViTriSuDung);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl8);
+            this.splitContainerControl1.Panel1.Controls.Add(this.CachSuDung);
+            this.splitContainerControl1.Panel1.Controls.Add(this.NguyenLieuId);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl7);
+            this.splitContainerControl1.Panel1.Controls.Add(this.MauId);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl6);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl5);
+            this.splitContainerControl1.Panel1.Controls.Add(this.DonViTinhId);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl4);
+            this.splitContainerControl1.Panel1.Controls.Add(this.DanhMucId);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl3);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.gridHuongDan);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(1254, 736);
+            this.splitContainerControl1.SplitterPosition = 458;
+            this.splitContainerControl1.TabIndex = 120;
+            this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // btnUpdateHinh
+            // 
+            this.btnUpdateHinh.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnUpdateHinh.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnUpdateHinh.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnUpdateHinh.Appearance.Options.UseBackColor = true;
+            this.btnUpdateHinh.Appearance.Options.UseFont = true;
+            this.btnUpdateHinh.Appearance.Options.UseForeColor = true;
+            this.btnUpdateHinh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnUpdateHinh.Location = new System.Drawing.Point(264, 682);
+            this.btnUpdateHinh.Name = "btnUpdateHinh";
+            this.btnUpdateHinh.Size = new System.Drawing.Size(75, 30);
+            this.btnUpdateHinh.TabIndex = 126;
+            this.btnUpdateHinh.Text = "Update";
+            this.btnUpdateHinh.Click += new System.EventHandler(this.btnUpdateHinh_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnDelete.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.Appearance.Options.UseBackColor = true;
+            this.btnDelete.Appearance.Options.UseFont = true;
+            this.btnDelete.Appearance.Options.UseForeColor = true;
+            this.btnDelete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnDelete.Location = new System.Drawing.Point(181, 682);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 30);
+            this.btnDelete.TabIndex = 125;
+            this.btnDelete.Text = "Xóa";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // KichThuoc
+            // 
+            this.KichThuoc.Location = new System.Drawing.Point(140, 118);
+            this.KichThuoc.Name = "KichThuoc";
+            this.KichThuoc.Size = new System.Drawing.Size(302, 22);
+            this.KichThuoc.TabIndex = 124;
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.Location = new System.Drawing.Point(140, 417);
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.Properties.Mask.EditMask = "n0";
+            this.SoLuong.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.SoLuong.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.SoLuong.Size = new System.Drawing.Size(302, 22);
+            this.SoLuong.TabIndex = 123;
+            // 
+            // btnThemHinh
+            // 
+            this.btnThemHinh.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnThemHinh.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnThemHinh.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnThemHinh.Appearance.Options.UseBackColor = true;
+            this.btnThemHinh.Appearance.Options.UseFont = true;
+            this.btnThemHinh.Appearance.Options.UseForeColor = true;
+            this.btnThemHinh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnThemHinh.Location = new System.Drawing.Point(345, 682);
+            this.btnThemHinh.Name = "btnThemHinh";
+            this.btnThemHinh.Size = new System.Drawing.Size(75, 30);
+            this.btnThemHinh.TabIndex = 122;
+            this.btnThemHinh.Text = "Thêm";
+            this.btnThemHinh.Click += new System.EventHandler(this.btnThemHinh_Click);
+            // 
+            // HinhAnh
+            // 
+            this.HinhAnh.Location = new System.Drawing.Point(65, 474);
+            this.HinhAnh.Name = "HinhAnh";
+            this.HinhAnh.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.HinhAnh.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.HinhAnh.Size = new System.Drawing.Size(355, 188);
+            this.HinhAnh.TabIndex = 121;
+            this.HinhAnh.TabStop = true;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl10.Location = new System.Drawing.Point(29, 420);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(67, 17);
+            this.labelControl10.TabIndex = 120;
+            this.labelControl10.Text = "Số Lượng";
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl9.Location = new System.Drawing.Point(29, 339);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(99, 17);
+            this.labelControl9.TabIndex = 102;
+            this.labelControl9.Text = "Vị Trí Sử Dụng";
+            // 
+            // ViTriSuDung
+            // 
+            this.ViTriSuDung.Location = new System.Drawing.Point(140, 336);
+            this.ViTriSuDung.Name = "ViTriSuDung";
+            this.ViTriSuDung.Size = new System.Drawing.Size(302, 63);
+            this.ViTriSuDung.TabIndex = 101;
+            this.ViTriSuDung.Text = "";
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl8.Location = new System.Drawing.Point(29, 257);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(98, 17);
+            this.labelControl8.TabIndex = 100;
+            this.labelControl8.Text = "Cách Sử Dụng";
+            // 
+            // CachSuDung
+            // 
+            this.CachSuDung.Location = new System.Drawing.Point(140, 254);
+            this.CachSuDung.Name = "CachSuDung";
+            this.CachSuDung.Size = new System.Drawing.Size(302, 63);
+            this.CachSuDung.TabIndex = 99;
+            this.CachSuDung.Text = "";
+            // 
+            // NguyenLieuId
+            // 
+            this.NguyenLieuId.FormattingEnabled = true;
+            this.NguyenLieuId.Location = new System.Drawing.Point(140, 209);
+            this.NguyenLieuId.Name = "NguyenLieuId";
+            this.NguyenLieuId.Size = new System.Drawing.Size(302, 24);
+            this.NguyenLieuId.TabIndex = 97;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl7.Location = new System.Drawing.Point(29, 212);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(86, 17);
+            this.labelControl7.TabIndex = 98;
+            this.labelControl7.Text = "Nguyên Liệu";
+            // 
+            // MauId
+            // 
+            this.MauId.FormattingEnabled = true;
+            this.MauId.Location = new System.Drawing.Point(140, 163);
+            this.MauId.Name = "MauId";
+            this.MauId.Size = new System.Drawing.Size(302, 24);
+            this.MauId.TabIndex = 95;
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl6.Location = new System.Drawing.Point(29, 166);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(27, 16);
+            this.labelControl6.TabIndex = 96;
+            this.labelControl6.Text = "Màu";
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl5.Location = new System.Drawing.Point(29, 120);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(77, 17);
+            this.labelControl5.TabIndex = 94;
+            this.labelControl5.Text = "Kích Thước";
+            // 
+            // DonViTinhId
+            // 
+            this.DonViTinhId.FormattingEnabled = true;
+            this.DonViTinhId.Location = new System.Drawing.Point(140, 75);
+            this.DonViTinhId.Name = "DonViTinhId";
+            this.DonViTinhId.Size = new System.Drawing.Size(302, 24);
+            this.DonViTinhId.TabIndex = 91;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl4.Location = new System.Drawing.Point(29, 78);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(27, 16);
+            this.labelControl4.TabIndex = 92;
+            this.labelControl4.Text = "ĐVT";
+            // 
+            // DanhMucId
+            // 
+            this.DanhMucId.FormattingEnabled = true;
+            this.DanhMucId.Location = new System.Drawing.Point(140, 26);
+            this.DanhMucId.Name = "DanhMucId";
+            this.DanhMucId.Size = new System.Drawing.Size(302, 24);
+            this.DanhMucId.TabIndex = 89;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Location = new System.Drawing.Point(29, 29);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(68, 17);
+            this.labelControl3.TabIndex = 90;
+            this.labelControl3.Text = "Danh Mục";
+            // 
+            // gridHuongDan
+            // 
+            this.gridHuongDan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridHuongDan.Location = new System.Drawing.Point(0, 0);
+            this.gridHuongDan.MainView = this.cardView1;
+            this.gridHuongDan.Name = "gridHuongDan";
+            this.gridHuongDan.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.MauIdLookUp,
+            this.btnDeleteHuongDan,
+            this.repositoryItemSearchLookUpEdit1,
+            this.NguyenLieuIdLookUp,
+            this.DanhMucIdLookUp,
+            this.DonViTinhIdLookUp,
+            this.HinhMauDinhKemImageEdit,
+            this.repositoryItemPictureEdit1});
+            this.gridHuongDan.Size = new System.Drawing.Size(790, 736);
+            this.gridHuongDan.TabIndex = 7;
+            this.gridHuongDan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.cardView1});
+            // 
+            // cardView1
+            // 
+            this.cardView1.CardWidth = 400;
+            this.cardView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn10,
+            this.gridColumn3,
+            this.gridColumn1,
+            this.gridColumn6,
+            this.gridColumn2,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9});
+            this.cardView1.FocusedCardTopFieldIndex = 0;
+            this.cardView1.GridControl = this.gridHuongDan;
+            this.cardView1.Name = "cardView1";
+            this.cardView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
+            this.cardView1.OptionsBehavior.Editable = false;
+            this.cardView1.OptionsBehavior.FieldAutoHeight = true;
+            this.cardView1.OptionsBehavior.Sizeable = false;
+            this.cardView1.OptionsView.ShowCardExpandButton = false;
+            this.cardView1.OptionsView.ShowQuickCustomizeButton = false;
+            this.cardView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn3, DevExpress.Data.ColumnSortOrder.Descending)});
+            this.cardView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Auto;
+            this.cardView1.Click += new System.EventHandler(this.cardView1_Click);
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn10.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn10.Caption = "Hình";
+            this.gridColumn10.ColumnEdit = this.repositoryItemPictureEdit1;
+            this.gridColumn10.FieldName = "HinhMauDinhKemFormat";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.UnboundType = DevExpress.Data.UnboundColumnType.Object;
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 0;
+            this.gridColumn10.Width = 400;
+            // 
+            // repositoryItemPictureEdit1
+            // 
+            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
+            this.repositoryItemPictureEdit1.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn3.Caption = "Id";
+            this.gridColumn3.FieldName = "Id";
+            this.gridColumn3.Name = "gridColumn3";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn1.Caption = "ĐVT";
+            this.gridColumn1.FieldName = "DonViTinh.Ten";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 2;
+            this.gridColumn1.Width = 105;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn6.Caption = "Danh Mục";
+            this.gridColumn6.FieldName = "DanhMuc.Ten";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 1;
+            this.gridColumn6.Width = 179;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn2.Caption = "Kích Thước";
+            this.gridColumn2.FieldName = "KichThuoc";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.Width = 85;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn4.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn4.Caption = "Màu";
+            this.gridColumn4.FieldName = "Mau.Ten";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 4;
+            this.gridColumn4.Width = 88;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn5.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn5.Caption = "Nguyên Liệu";
+            this.gridColumn5.FieldName = "NguyenLieu.Ten";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 5;
+            this.gridColumn5.Width = 102;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn7.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn7.Caption = "Cách Sử Dụng";
+            this.gridColumn7.FieldName = "CachSuDung";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.Width = 197;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn8.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn8.Caption = "Vị Trí Sử Dụng";
+            this.gridColumn8.FieldName = "ViTriSuDung";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.Width = 104;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn9.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn9.Caption = "Số Lượng";
+            this.gridColumn9.FieldName = "SoLuong";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.Width = 74;
+            // 
+            // MauIdLookUp
+            // 
+            this.MauIdLookUp.AutoHeight = false;
+            this.MauIdLookUp.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.MauIdLookUp.Name = "MauIdLookUp";
+            // 
+            // btnDeleteHuongDan
+            // 
+            this.btnDeleteHuongDan.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteHuongDan.Appearance.Image")));
+            this.btnDeleteHuongDan.Appearance.Options.UseImage = true;
+            this.btnDeleteHuongDan.AutoHeight = false;
+            serializableAppearanceObject2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject2.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
+            serializableAppearanceObject2.Options.UseBackColor = true;
+            serializableAppearanceObject2.Options.UseBorderColor = true;
+            serializableAppearanceObject2.Options.UseImage = true;
+            this.btnDeleteHuongDan.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteHuongDan.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Nhấp đúp để xóa", null, null, true)});
+            this.btnDeleteHuongDan.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.btnDeleteHuongDan.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.btnDeleteHuongDan.Name = "btnDeleteHuongDan";
+            this.btnDeleteHuongDan.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            // 
+            // repositoryItemSearchLookUpEdit1
+            // 
+            this.repositoryItemSearchLookUpEdit1.AutoHeight = false;
+            this.repositoryItemSearchLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSearchLookUpEdit1.Name = "repositoryItemSearchLookUpEdit1";
+            this.repositoryItemSearchLookUpEdit1.View = this.gridView1;
+            // 
+            // gridView1
+            // 
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // NguyenLieuIdLookUp
+            // 
+            this.NguyenLieuIdLookUp.AutoHeight = false;
+            this.NguyenLieuIdLookUp.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.NguyenLieuIdLookUp.Name = "NguyenLieuIdLookUp";
+            // 
+            // DanhMucIdLookUp
+            // 
+            this.DanhMucIdLookUp.AutoHeight = false;
+            this.DanhMucIdLookUp.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DanhMucIdLookUp.Name = "DanhMucIdLookUp";
+            // 
+            // DonViTinhIdLookUp
+            // 
+            this.DonViTinhIdLookUp.AutoHeight = false;
+            this.DonViTinhIdLookUp.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DonViTinhIdLookUp.Name = "DonViTinhIdLookUp";
+            // 
+            // HinhMauDinhKemImageEdit
+            // 
+            this.HinhMauDinhKemImageEdit.AutoHeight = false;
+            this.HinhMauDinhKemImageEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.HinhMauDinhKemImageEdit.Name = "HinhMauDinhKemImageEdit";
+            this.HinhMauDinhKemImageEdit.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
             this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
             this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -474,29 +756,15 @@
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
             this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(3, 756);
+            this.btnCancel.Location = new System.Drawing.Point(22, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Hủy";
             // 
-            // btnSaveContinue
-            // 
-            this.btnSaveContinue.Appearance.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnSaveContinue.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnSaveContinue.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSaveContinue.Appearance.Options.UseBackColor = true;
-            this.btnSaveContinue.Appearance.Options.UseFont = true;
-            this.btnSaveContinue.Appearance.Options.UseForeColor = true;
-            this.btnSaveContinue.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSaveContinue.Location = new System.Drawing.Point(1071, 756);
-            this.btnSaveContinue.Name = "btnSaveContinue";
-            this.btnSaveContinue.Size = new System.Drawing.Size(179, 30);
-            this.btnSaveContinue.TabIndex = 1;
-            this.btnSaveContinue.Text = "Lưu Và Tiếp Tục";
-            // 
             // btnSave
             // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
             this.btnSave.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -504,39 +772,60 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSave.Location = new System.Drawing.Point(990, 756);
+            this.btnSave.Location = new System.Drawing.Point(1167, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
+            // 
+            // splitContainerControl2
+            // 
+            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl2.Horizontal = false;
+            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl2.Name = "splitContainerControl2";
+            this.splitContainerControl2.Panel1.Controls.Add(this.xtraTabControl1);
+            this.splitContainerControl2.Panel1.Text = "Panel1";
+            this.splitContainerControl2.Panel2.Controls.Add(this.btnCancel);
+            this.splitContainerControl2.Panel2.Controls.Add(this.btnSave);
+            this.splitContainerControl2.Panel2.Text = "Panel2";
+            this.splitContainerControl2.Size = new System.Drawing.Size(1261, 822);
+            this.splitContainerControl2.SplitterPosition = 772;
+            this.splitContainerControl2.TabIndex = 116;
+            this.splitContainerControl2.Text = "splitContainerControl2";
             // 
             // ucMauHuongDanDongGoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.btnSaveContinue);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.xtraTabControl1);
+            this.Controls.Add(this.splitContainerControl2);
             this.Name = "ucMauHuongDanDongGoi";
-            this.Size = new System.Drawing.Size(1275, 801);
+            this.Size = new System.Drawing.Size(1261, 822);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridHuongDan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewHuongDan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DonViTinhIdLookUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DanhMucIdLookUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteHuongDan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MauIdLookUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuIdLookUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HinhMauDinhKemImageEdit)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.KichThuoc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SoLuong.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HinhAnh.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridHuongDan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MauIdLookUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteHuongDan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuIdLookUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DanhMucIdLookUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DonViTinhIdLookUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HinhMauDinhKemImageEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
+            this.splitContainerControl2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -556,32 +845,53 @@
         private System.Windows.Forms.ComboBox MauHuongDanDongGoi_KhachHangId;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraGrid.GridControl gridHuongDan;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewHuongDan;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit MauIdLookUp;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnDeleteHuongDan;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit DonViTinhIdLookUp;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit DanhMucIdLookUp;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit NguyenLieuIdLookUp;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit HinhMauDinhKemImageEdit;
-        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit1;
-        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
-        private DevExpress.XtraEditors.SimpleButton btnSaveContinue;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.LabelControl lblTenMau;
         private System.Windows.Forms.TextBox MauHuongDanDongGoi_TenMau;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraGrid.GridControl gridHuongDan;
+        private DevExpress.XtraGrid.Views.Card.CardView cardView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnDeleteHuongDan;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit MauIdLookUp;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit NguyenLieuIdLookUp;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit DanhMucIdLookUp;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit DonViTinhIdLookUp;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit HinhMauDinhKemImageEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private System.Windows.Forms.RichTextBox CachSuDung;
+        private System.Windows.Forms.ComboBox NguyenLieuId;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private System.Windows.Forms.ComboBox MauId;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private System.Windows.Forms.ComboBox DonViTinhId;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private System.Windows.Forms.ComboBox DanhMucId;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private System.Windows.Forms.RichTextBox ViTriSuDung;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.PictureEdit HinhAnh;
+        private DevExpress.XtraEditors.SimpleButton btnThemHinh;
+        private DevExpress.XtraEditors.TextEdit SoLuong;
+        private DevExpress.XtraEditors.TextEdit KichThuoc;
+        private DevExpress.XtraEditors.SimpleButton btnDelete;
+        private DevExpress.XtraEditors.SimpleButton btnUpdateHinh;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
     }
 }

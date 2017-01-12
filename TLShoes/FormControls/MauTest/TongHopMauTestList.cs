@@ -19,20 +19,7 @@ namespace TLShoes.FormControls.TongHopMauTest
             {
                 BaseModel.DisposeDb();
                 SF.Get<MauDoiViewModel>().GetDataSummarySource(gridControl);
-                if (bandedGridView1.RowCount > 0)
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
-                }
-                else
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
-                }
             });
-        }
-
-        public override void Export(object filePath)
-        {
-            bandedGridView1.ExportToXls(filePath.ToString());
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)
@@ -40,7 +27,10 @@ namespace TLShoes.FormControls.TongHopMauTest
             ThreadHelper.LoadForm(() =>
             {
                 dynamic data = bandedGridView1.GetRow(bandedGridView1.FocusedRowHandle);
-                FormFactory<Main>.Get().ShowPopupInfo(data.Id);
+                if (data != null)
+                {
+                    FormFactory<Main>.Get().ShowPopupInfo(data.Id);                    
+                }
             });
         }
     }

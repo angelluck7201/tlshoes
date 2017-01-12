@@ -12,6 +12,7 @@ namespace TLShoes.FormControls.HuongDanDongGoi
     public partial class ucMauHuongDanDongGoi : BaseUserControl
     {
         BindingList<ChiTietHuongDanDongGoi> ChiTietHuongDanList = new BindingList<ChiTietHuongDanDongGoi>();
+        private ChiTietHuongDanDongGoi _curSelectedCard;
         private static MauHuongDanDongGoiViewModel _viewModel = SF.Get<MauHuongDanDongGoiViewModel>();
 
         public ucMauHuongDanDongGoi(MauHuongDanDongGoi data = null)
@@ -31,41 +32,21 @@ namespace TLShoes.FormControls.HuongDanDongGoi
 
             gridHuongDan.DataSource = ChiTietHuongDanList;
 
-            DanhMucIdLookUp.NullText = "";
-            DanhMucIdLookUp.Properties.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.CHI_TIET).Select(s => new { s.Ten, s.Id }).ToList();
-            DanhMucIdLookUp.PopulateColumns();
-            DanhMucIdLookUp.ShowHeader = false;
-            DanhMucIdLookUp.Columns["Id"].Visible = false;
-            DanhMucIdLookUp.Properties.DisplayMember = "Ten";
-            DanhMucIdLookUp.Properties.ValueMember = "Id";
-            DanhMucIdLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            DanhMucId.DisplayMember = "Ten";
+            DanhMucId.ValueMember = "Id";
+            DanhMucId.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.CHI_TIET).Select(s => new { s.Ten, s.Id }).ToList();
 
-            DonViTinhIdLookUp.NullText = "";
-            DonViTinhIdLookUp.Properties.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.DON_VI_TINH).Select(s => new { s.Ten, s.Id }).ToList();
-            DonViTinhIdLookUp.PopulateColumns();
-            DonViTinhIdLookUp.ShowHeader = false;
-            DonViTinhIdLookUp.Columns["Id"].Visible = false;
-            DonViTinhIdLookUp.Properties.DisplayMember = "Ten";
-            DonViTinhIdLookUp.Properties.ValueMember = "Id";
-            DonViTinhIdLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            DonViTinhId.DisplayMember = "Ten";
+            DonViTinhId.ValueMember = "Id";
+            DonViTinhId.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.DON_VI_TINH).Select(s => new { s.Ten, s.Id }).ToList();
 
-            MauIdLookUp.NullText = "";
-            MauIdLookUp.Properties.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU).Select(s => new { s.Ten, s.Id }).ToList();
-            MauIdLookUp.PopulateColumns();
-            MauIdLookUp.ShowHeader = false;
-            MauIdLookUp.Columns["Id"].Visible = false;
-            MauIdLookUp.Properties.DisplayMember = "Ten";
-            MauIdLookUp.Properties.ValueMember = "Id";
-            MauIdLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            MauId.DisplayMember = "Ten";
+            MauId.ValueMember = "Id";
+            MauId.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU).Select(s => new { s.Ten, s.Id }).ToList();
 
-            NguyenLieuIdLookUp.NullText = "";
-            NguyenLieuIdLookUp.Properties.DataSource = SF.Get<NguyenLieuViewModel>().GetList().Select(s => new { s.Ten, s.Id }).ToList();
-            NguyenLieuIdLookUp.PopulateColumns();
-            NguyenLieuIdLookUp.ShowHeader = false;
-            NguyenLieuIdLookUp.Columns["Id"].Visible = false;
-            NguyenLieuIdLookUp.Properties.DisplayMember = "Ten";
-            NguyenLieuIdLookUp.Properties.ValueMember = "Id";
-            NguyenLieuIdLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            NguyenLieuId.DisplayMember = "Ten";
+            NguyenLieuId.ValueMember = "Id";
+            NguyenLieuId.DataSource = SF.Get<NguyenLieuViewModel>().GetList().Select(s => new { s.Ten, s.Id }).ToList();
 
             btnDeleteHuongDan.Click += btnDeleteHuongDan_Click;
 
@@ -120,7 +101,67 @@ namespace TLShoes.FormControls.HuongDanDongGoi
 
         private void btnDeleteHuongDan_Click(object sender, EventArgs e)
         {
-            gridViewHuongDan.DeleteRow(gridViewHuongDan.FocusedRowHandle);
+            //            gridViewHuongDan.DeleteRow(gridViewHuongDan.FocusedRowHandle);
+        }
+
+        private void cardView1_Click(object sender, EventArgs e)
+        {
+            var selectedRow = cardView1.GetRow(cardView1.FocusedRowHandle) as ChiTietHuongDanDongGoi;
+            if (selectedRow != null)
+            {
+                _curSelectedCard = selectedRow;
+                DanhMucId.SelectedValue = selectedRow.DanhMucId;
+                DonViTinhId.SelectedValue = selectedRow.DonViTinhId;
+                KichThuoc.Text = selectedRow.KichThuoc;
+                MauId.SelectedValue = selectedRow.MauId;
+                NguyenLieuId.SelectedValue = selectedRow.NguyenLieuId;
+                CachSuDung.Text = selectedRow.CachSuDung;
+                ViTriSuDung.Text = selectedRow.ViTriSuDung;
+                SoLuong.Text = selectedRow.SoLuong.ToString();
+                FileHelper.SetImage(HinhAnh, selectedRow.HinhMauDinhKem);
+                btnDelete.Visible = true;
+            }
+            else
+            {
+                btnDelete.Visible = false;
+            }
+        }
+
+        private void btnThemHinh_Click(object sender, EventArgs e)
+        {
+            MapChiTietHuongDanDongGoi(true);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (_curSelectedCard != null)
+            {
+                ChiTietHuongDanList.Remove(_curSelectedCard);
+                _curSelectedCard = null;
+            }
+        }
+
+        private void btnUpdateHinh_Click(object sender, EventArgs e)
+        {
+            MapChiTietHuongDanDongGoi(false);
+        }
+
+        private void MapChiTietHuongDanDongGoi(bool isNew = false)
+        {
+            if (_curSelectedCard == null || isNew)
+            {
+                _curSelectedCard = new ChiTietHuongDanDongGoi();
+                ChiTietHuongDanList.Add(_curSelectedCard);
+            }
+            _curSelectedCard.DanhMucId = (long)DanhMucId.SelectedValue;
+            _curSelectedCard.DonViTinhId = (long)DonViTinhId.SelectedValue;
+            _curSelectedCard.KichThuoc = KichThuoc.Text;
+            _curSelectedCard.MauId = (long)MauId.SelectedValue;
+            _curSelectedCard.NguyenLieuId = (long)NguyenLieuId.SelectedValue;
+            _curSelectedCard.CachSuDung = CachSuDung.Text;
+            _curSelectedCard.ViTriSuDung = ViTriSuDung.Text;
+            _curSelectedCard.SoLuong = (int)PrimitiveConvert.StringToInt(SoLuong.Text);
+            _curSelectedCard.HinhMauDinhKemFormat = HinhAnh.Image;
         }
     }
 }

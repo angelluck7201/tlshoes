@@ -73,6 +73,7 @@
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView.OptionsBehavior.Editable = false;
+            this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn7, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.Id, DevExpress.Data.ColumnSortOrder.Descending)});

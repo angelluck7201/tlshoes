@@ -70,6 +70,7 @@
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
+            this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.RowHeight = 100;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
@@ -155,7 +156,6 @@
             this.Controls.Add(this.gridControl);
             this.Name = "ucMauDoiList";
             this.Size = new System.Drawing.Size(994, 629);
-            this.Load += new System.EventHandler(this.ucMauDoiList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();

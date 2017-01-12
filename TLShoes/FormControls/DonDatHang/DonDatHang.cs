@@ -73,7 +73,7 @@ namespace TLShoes.FormControls.DonDatHang
 
             if (_donDatHang != null)
             {
-                DonDatHang_SoDH.Text = _donDatHang.SoDH;
+                lblSoPhieu.Text = string.Format("Số Đơn Hàng: {0}", _donDatHang.SoDH);
                 var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_donDatHang.TrangThai);
 
                 if (trangThai <= Define.TrangThai.HUY)
@@ -490,10 +490,6 @@ namespace TLShoes.FormControls.DonDatHang
                     var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_donDatHang.TrangThai);
                     var ngayDuyet = TimeHelper.CurrentTimeStamp();
                     // Lock item
-                    if (trangThai == Define.TrangThai.MOI)
-                    {
-                        _donDatHang.SoDH = SF.Get<DonDatHangViewModel>().GenerateSoPhieu();
-                    }
 
                     if (trangThai <= Define.TrangThai.HUY)
                     {
@@ -505,6 +501,7 @@ namespace TLShoes.FormControls.DonDatHang
                     // Verify
                     if (trangThai == Define.TrangThai.DUYET)
                     {
+                        _donDatHang.SoDH = SF.Get<DonDatHangViewModel>().GenerateSoPhieu();
                         _donDatHang.TrangThai = Define.TrangThai.DUYET_PVT.ToString();
                         _donDatHang.NgayDuyet = ngayDuyet;
                         _donDatHang.NguoiDuyetId = Authorization.LoginUser.Id;

@@ -51,7 +51,7 @@ namespace TLShoes.Common
             var errorLog = new ErrorLog();
             errorLog.CreatedDate = TimeHelper.TimestampToString(TimeHelper.CurrentTimeStamp());
             errorLog.Messagelog = e.Message + "\n\nStack Trace:\n" + e.StackTrace;
-            errorLog.AppVersion = Main.CURRENT_VERSION;
+            errorLog.AppVersion = VersionControl.CURRENT_VERSION.ToString();
             BaseModel.DbContext.ErrorLogs.Add(errorLog);
             BaseModel.DbContext.SaveChanges();
         }

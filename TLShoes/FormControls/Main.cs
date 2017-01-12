@@ -33,8 +33,6 @@ namespace TLShoes
 {
     public partial class Main : System.Windows.Forms.Form
     {
-        public const string CURRENT_VERSION = "1.0";
-
         public static Type currentModel;
         public static string currentForm;
         public static Type currentControl;
@@ -46,20 +44,28 @@ namespace TLShoes
         {
             InitializeComponent();
             this.AutoScaleDimensions = new SizeF(6f, 13f);
+            ThreadHelper.MainThreadCheck();
 
             FeaturesDict.Add(btnSave.Name, btnSave);
             FeaturesDict.Add(btnRefresh.Name, btnRefresh);
-            FeaturesDict.Add(btnExport.Name, btnExport);
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
-            // Disable main form
-            this.Enabled = false;
+            // Check update
+            if (VersionControl.IsNeedUpdate())
+            {
+                VersionControl.CheckAndUpdateApp();
+            }
+            else
+            {
+                // Disable main form
+                this.Enabled = false;
 
-            // Check login
-            var loginForm = new LoginForm();
-            loginForm.Show();
+                // Check login
+                var loginForm = new LoginForm();
+                loginForm.Show();
+            }
         }
 
         public void InitLogin()

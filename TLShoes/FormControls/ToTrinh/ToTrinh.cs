@@ -364,9 +364,8 @@ namespace TLShoes.FormControls.ToTrinh
                     var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentToTrinh.TrangThai);
                     var ngayDuyet = TimeHelper.CurrentTimeStamp();
                     // Lock item
-                    if (trangThai == Define.TrangThai.MOI)
+                    if (trangThai <= Define.TrangThai.MOI)
                     {
-                        _currentToTrinh.SoPhieu = SF.Get<ToTrinhViewModel>().GenerateSoPhieu();
                         _currentToTrinh.NgayLap = ngayDuyet;
                         _currentToTrinh.NguoiLapId = Authorization.LoginUser.Id;
                         _currentToTrinh.TrangThai = Define.TrangThai.DUYET.ToString();
@@ -375,6 +374,7 @@ namespace TLShoes.FormControls.ToTrinh
                     // Verify
                     if (trangThai == Define.TrangThai.DUYET)
                     {
+                        _currentToTrinh.SoPhieu = SF.Get<ToTrinhViewModel>().GenerateSoPhieu();
                         _currentToTrinh.TrangThai = Define.TrangThai.DUYET_PVT.ToString();
                         _currentToTrinh.NgayDuyet = ngayDuyet;
                         _currentToTrinh.NguoiDuyetId = Authorization.LoginUser.Id;

@@ -18,11 +18,13 @@ namespace TLShoes.FormControls.MauDanhGia
     {
         BindingList<ChiTietMauDanhGia> TieuChiList = new BindingList<ChiTietMauDanhGia>();
         private static MauDanhGiaViewModel _viewModel = SF.Get<MauDanhGiaViewModel>();
+        private TLShoes.MauDanhGia _domainData;
         public ucMauDanhGia(TLShoes.MauDanhGia data = null)
         {
             InitializeComponent();
 
             Init(data);
+            _domainData = data;
             if (data != null)
             {
                 TieuChiList = new BindingList<ChiTietMauDanhGia>(data.ChiTietMauDanhGias.ToList());
@@ -51,9 +53,10 @@ namespace TLShoes.FormControls.MauDanhGia
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject<TLShoes.MauDanhGia>(FormControls);
+            var saveData = CRUD.GetFormObject(FormControls, _domainData);
             using (var transaction = new TransactionScope())
             {
+                CRUD.DecorateSaveData(saveData, _domainData == null);
                 _viewModel.Save(saveData);
 
                 foreach (var nguyenlieu in TieuChiList)

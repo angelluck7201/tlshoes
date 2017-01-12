@@ -19,22 +19,8 @@ namespace TLShoes.FormControls.MauThuDao
             ThreadHelper.LoadForm(() =>
             {
                 BaseModel.DisposeDb();
-                   
                 SF.Get<MauThuDaoViewModel>().GetDataSource(gridControl);
-                if (gridView.RowCount > 0)
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
-                }
-                else
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
-                }
             });
-        }
-
-        public override void Export(object filePath)
-        {
-            gridView.ExportToXls(filePath.ToString());
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)
@@ -42,8 +28,14 @@ namespace TLShoes.FormControls.MauThuDao
             ThreadHelper.LoadForm(() =>
             {
                 dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
-                var info = SF.Get<MauThuDaoViewModel>().GetDetail(data.Id);
-                FormFactory<Main>.Get().ShowPopupInfo(info);
+                if (data != null)
+                {
+                    var info = SF.Get<MauThuDaoViewModel>().GetDetail(data.Id);
+                    if (info != null)
+                    {
+                        FormFactory<Main>.Get().ShowPopupInfo(info);   
+                    }
+                }
             });
         }
     }

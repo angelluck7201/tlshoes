@@ -21,22 +21,8 @@ namespace TLShoes.Form
             ThreadHelper.LoadForm(() =>
             {
                 BaseModel.DisposeDb();
-
                 SF.Get<DonHangViewModel>().GetDataSource(gridControl);
-                if (gridView.RowCount > 0)
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
-                }
-                else
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
-                }
             });
-        }
-
-        public override void Export(object filePath)
-        {
-            gridView.ExportToXls(filePath.ToString());
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)

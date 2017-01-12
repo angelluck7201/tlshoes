@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDonDatHang));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -63,8 +63,6 @@
             this.btnNhaCungCap = new DevExpress.XtraEditors.SimpleButton();
             this.DonDatHang_NgayGiaoHang = new System.Windows.Forms.DateTimePicker();
             this.DonDatHang_NgayDatHang = new System.Windows.Forms.DateTimePicker();
-            this.DonDatHang_SoDH = new DevExpress.XtraEditors.TextEdit();
-            this.lblSoDH = new DevExpress.XtraEditors.LabelControl();
             this.gridNguyenLieu = new DevExpress.XtraGrid.GridControl();
             this.gridViewNguyenLieu = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -90,6 +88,7 @@
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.lblSoPhieu = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -106,7 +105,6 @@
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridToTrinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DonDatHang_SoDH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridNguyenLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewNguyenLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuLookUp)).BeginInit();
@@ -429,13 +427,12 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.xtraTabPage2.Controls.Add(this.lblSoPhieu);
             this.xtraTabPage2.Controls.Add(this.labelControl1);
             this.xtraTabPage2.Controls.Add(this.gridToTrinh);
             this.xtraTabPage2.Controls.Add(this.btnNhaCungCap);
             this.xtraTabPage2.Controls.Add(this.DonDatHang_NgayGiaoHang);
             this.xtraTabPage2.Controls.Add(this.DonDatHang_NgayDatHang);
-            this.xtraTabPage2.Controls.Add(this.DonDatHang_SoDH);
-            this.xtraTabPage2.Controls.Add(this.lblSoDH);
             this.xtraTabPage2.Controls.Add(this.gridNguyenLieu);
             this.xtraTabPage2.Controls.Add(this.lblNhaCungCapId);
             this.xtraTabPage2.Controls.Add(this.DonDatHang_NhaCungCapId);
@@ -514,7 +511,7 @@
             this.btnNhaCungCap.Appearance.Options.UseFont = true;
             this.btnNhaCungCap.Appearance.Options.UseForeColor = true;
             this.btnNhaCungCap.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnNhaCungCap.Location = new System.Drawing.Point(884, 81);
+            this.btnNhaCungCap.Location = new System.Drawing.Point(879, 65);
             this.btnNhaCungCap.Name = "btnNhaCungCap";
             this.btnNhaCungCap.Size = new System.Drawing.Size(131, 30);
             this.btnNhaCungCap.TabIndex = 3;
@@ -523,34 +520,17 @@
             // 
             // DonDatHang_NgayGiaoHang
             // 
-            this.DonDatHang_NgayGiaoHang.Location = new System.Drawing.Point(591, 26);
+            this.DonDatHang_NgayGiaoHang.Location = new System.Drawing.Point(1010, 22);
             this.DonDatHang_NgayGiaoHang.Name = "DonDatHang_NgayGiaoHang";
             this.DonDatHang_NgayGiaoHang.Size = new System.Drawing.Size(240, 23);
             this.DonDatHang_NgayGiaoHang.TabIndex = 1;
             // 
             // DonDatHang_NgayDatHang
             // 
-            this.DonDatHang_NgayDatHang.Location = new System.Drawing.Point(167, 28);
+            this.DonDatHang_NgayDatHang.Location = new System.Drawing.Point(584, 22);
             this.DonDatHang_NgayDatHang.Name = "DonDatHang_NgayDatHang";
             this.DonDatHang_NgayDatHang.Size = new System.Drawing.Size(240, 23);
             this.DonDatHang_NgayDatHang.TabIndex = 0;
-            // 
-            // DonDatHang_SoDH
-            // 
-            this.DonDatHang_SoDH.Enabled = false;
-            this.DonDatHang_SoDH.Location = new System.Drawing.Point(1047, 23);
-            this.DonDatHang_SoDH.Name = "DonDatHang_SoDH";
-            this.DonDatHang_SoDH.Size = new System.Drawing.Size(240, 22);
-            this.DonDatHang_SoDH.TabIndex = 2;
-            // 
-            // lblSoDH
-            // 
-            this.lblSoDH.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblSoDH.Location = new System.Drawing.Point(894, 28);
-            this.lblSoDH.Name = "lblSoDH";
-            this.lblSoDH.Size = new System.Drawing.Size(121, 17);
-            this.lblSoDH.TabIndex = 39;
-            this.lblSoDH.Text = "Số Đơn Đặt Hàng";
             // 
             // gridNguyenLieu
             // 
@@ -678,13 +658,13 @@
             this.btnDeleteNguyenLieu.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Appearance.Image")));
             this.btnDeleteNguyenLieu.Appearance.Options.UseImage = true;
             this.btnDeleteNguyenLieu.AutoHeight = false;
-            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject1.Options.UseBackColor = true;
-            serializableAppearanceObject1.Options.UseBorderColor = true;
-            serializableAppearanceObject1.Options.UseImage = true;
+            serializableAppearanceObject3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject3.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject3.Options.UseBackColor = true;
+            serializableAppearanceObject3.Options.UseBorderColor = true;
+            serializableAppearanceObject3.Options.UseImage = true;
             this.btnDeleteNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteNguyenLieu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteNguyenLieu.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDeleteNguyenLieu.Name = "btnDeleteNguyenLieu";
@@ -720,7 +700,7 @@
             // lblNhaCungCapId
             // 
             this.lblNhaCungCapId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNhaCungCapId.Location = new System.Drawing.Point(462, 86);
+            this.lblNhaCungCapId.Location = new System.Drawing.Point(457, 70);
             this.lblNhaCungCapId.Name = "lblNhaCungCapId";
             this.lblNhaCungCapId.Size = new System.Drawing.Size(100, 17);
             this.lblNhaCungCapId.TabIndex = 58;
@@ -729,7 +709,7 @@
             // DonDatHang_NhaCungCapId
             // 
             this.DonDatHang_NhaCungCapId.FormattingEnabled = true;
-            this.DonDatHang_NhaCungCapId.Location = new System.Drawing.Point(591, 86);
+            this.DonDatHang_NhaCungCapId.Location = new System.Drawing.Point(584, 67);
             this.DonDatHang_NhaCungCapId.Name = "DonDatHang_NhaCungCapId";
             this.DonDatHang_NhaCungCapId.Size = new System.Drawing.Size(240, 24);
             this.DonDatHang_NhaCungCapId.TabIndex = 2;
@@ -737,7 +717,7 @@
             // lblNgayDatHang
             // 
             this.lblNgayDatHang.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNgayDatHang.Location = new System.Drawing.Point(41, 31);
+            this.lblNgayDatHang.Location = new System.Drawing.Point(458, 25);
             this.lblNgayDatHang.Name = "lblNgayDatHang";
             this.lblNgayDatHang.Size = new System.Drawing.Size(106, 17);
             this.lblNgayDatHang.TabIndex = 60;
@@ -746,7 +726,7 @@
             // lblNgayGiaoHang
             // 
             this.lblNgayGiaoHang.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNgayGiaoHang.Location = new System.Drawing.Point(460, 30);
+            this.lblNgayGiaoHang.Location = new System.Drawing.Point(879, 26);
             this.lblNgayGiaoHang.Name = "lblNgayGiaoHang";
             this.lblNgayGiaoHang.Size = new System.Drawing.Size(100, 16);
             this.lblNgayGiaoHang.TabIndex = 62;
@@ -841,6 +821,15 @@
             this.btnCancel.TabIndex = 120;
             this.btnCancel.Text = "Hủy";
             // 
+            // lblSoPhieu
+            // 
+            this.lblSoPhieu.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.lblSoPhieu.Location = new System.Drawing.Point(27, 20);
+            this.lblSoPhieu.Name = "lblSoPhieu";
+            this.lblSoPhieu.Size = new System.Drawing.Size(88, 24);
+            this.lblSoPhieu.TabIndex = 126;
+            this.lblSoPhieu.Text = "Số Phiếu";
+            // 
             // ucDonDatHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -872,7 +861,6 @@
             this.xtraTabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridToTrinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DonDatHang_SoDH.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridNguyenLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewNguyenLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuLookUp)).EndInit();
@@ -893,8 +881,6 @@
         private DevExpress.XtraEditors.SimpleButton btnNhaCungCap;
         private System.Windows.Forms.DateTimePicker DonDatHang_NgayGiaoHang;
         private System.Windows.Forms.DateTimePicker DonDatHang_NgayDatHang;
-        private DevExpress.XtraEditors.TextEdit DonDatHang_SoDH;
-        private DevExpress.XtraEditors.LabelControl lblSoDH;
         private DevExpress.XtraGrid.GridControl gridNguyenLieu;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewNguyenLieu;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
@@ -947,5 +933,6 @@
         private DevExpress.XtraEditors.SimpleButton btnExport;
         private DevExpress.XtraEditors.SimpleButton btnDuyet;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
+        private DevExpress.XtraEditors.LabelControl lblSoPhieu;
     }
 }

@@ -54,7 +54,6 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -128,7 +127,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
             this.xtraTabControl1.Size = new System.Drawing.Size(708, 456);
-            this.xtraTabControl1.TabIndex = 70;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
@@ -182,7 +181,7 @@
             this.MauThuDao_KetQuaXuongGoId.Location = new System.Drawing.Point(205, 311);
             this.MauThuDao_KetQuaXuongGoId.Name = "MauThuDao_KetQuaXuongGoId";
             this.MauThuDao_KetQuaXuongGoId.Size = new System.Drawing.Size(487, 24);
-            this.MauThuDao_KetQuaXuongGoId.TabIndex = 76;
+            this.MauThuDao_KetQuaXuongGoId.TabIndex = 6;
             // 
             // lblKetQuaXuongDeId
             // 
@@ -199,7 +198,7 @@
             this.MauThuDao_KetQuaXuongDeId.Location = new System.Drawing.Point(205, 268);
             this.MauThuDao_KetQuaXuongDeId.Name = "MauThuDao_KetQuaXuongDeId";
             this.MauThuDao_KetQuaXuongDeId.Size = new System.Drawing.Size(487, 24);
-            this.MauThuDao_KetQuaXuongDeId.TabIndex = 74;
+            this.MauThuDao_KetQuaXuongDeId.TabIndex = 5;
             // 
             // lblKetQuaXuongMayId
             // 
@@ -216,7 +215,7 @@
             this.MauThuDao_KetQuaXuongMayId.Location = new System.Drawing.Point(205, 225);
             this.MauThuDao_KetQuaXuongMayId.Name = "MauThuDao_KetQuaXuongMayId";
             this.MauThuDao_KetQuaXuongMayId.Size = new System.Drawing.Size(487, 24);
-            this.MauThuDao_KetQuaXuongMayId.TabIndex = 72;
+            this.MauThuDao_KetQuaXuongMayId.TabIndex = 4;
             // 
             // lblKetQuaXuongChatId
             // 
@@ -233,7 +232,7 @@
             this.MauThuDao_KetQuaXuongChatId.Location = new System.Drawing.Point(205, 181);
             this.MauThuDao_KetQuaXuongChatId.Name = "MauThuDao_KetQuaXuongChatId";
             this.MauThuDao_KetQuaXuongChatId.Size = new System.Drawing.Size(487, 24);
-            this.MauThuDao_KetQuaXuongChatId.TabIndex = 70;
+            this.MauThuDao_KetQuaXuongChatId.TabIndex = 3;
             // 
             // lblThuDao
             // 
@@ -309,6 +308,8 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridView1.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn4,
             this.gridColumn5});
@@ -339,21 +340,6 @@
             this.gridColumn5.VisibleIndex = 1;
             this.gridColumn5.Width = 482;
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(4, 476);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Hủy";
-            // 
             // btnSave
             // 
             this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
@@ -366,7 +352,7 @@
             this.btnSave.Location = new System.Drawing.Point(621, 476);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             // 
             // btnExport
@@ -378,10 +364,10 @@
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnExport.Location = new System.Drawing.Point(540, 476);
+            this.btnExport.Location = new System.Drawing.Point(39, 476);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);
-            this.btnExport.TabIndex = 75;
+            this.btnExport.TabIndex = 2;
             this.btnExport.Text = "Export";
             this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -393,7 +379,6 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucMauThuDao";
             this.Size = new System.Drawing.Size(718, 542);
@@ -422,7 +407,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private Form.DefaultInfo defaultInfo;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraGrid.GridControl gridGopY;

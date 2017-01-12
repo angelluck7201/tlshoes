@@ -8,6 +8,7 @@ namespace TLShoes.FormControls.CongNgheSanXuat
 {
     public partial class ucCongNgheSanXuat : BaseUserControl
     {
+        private TLShoes.CongNgheSanXuat _domainData;
         public ucCongNgheSanXuat(TLShoes.CongNgheSanXuat data)
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace TLShoes.FormControls.CongNgheSanXuat
             CongNgheSanXuat_PhanLoaiThuDao.ValueMember = "Id";
             CongNgheSanXuat_PhanLoaiThuDao.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
 
+            _domainData = data;
             Init(data);
         }
 
@@ -39,7 +41,8 @@ namespace TLShoes.FormControls.CongNgheSanXuat
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject<TLShoes.CongNgheSanXuat>(FormControls);
+            var saveData = CRUD.GetFormObject(FormControls, _domainData);
+            CRUD.DecorateSaveData(saveData, _domainData == null);
             SF.Get<CongNgheSanXuatViewModel>().Save(saveData);
             return true;
         }
@@ -58,6 +61,6 @@ namespace TLShoes.FormControls.CongNgheSanXuat
                 CongNgheSanXuat_MauDoiId.DataSource = new BindingSource(SF.Get<MauDoiViewModel>().GetList((long)donhang.SelectedValue)
                     .Select(s => new { s.Id, MauDoiNgayFormat = TimeHelper.TimestampToString(s.MauNgay) }).ToList(), null);
             }
-        }       
+        }
     }
 }

@@ -25,9 +25,7 @@ namespace TLShoes.FormControls.QuanLyNguoiDung
             ThreadHelper.LoadForm(() =>
             {
                 BaseModel.DisposeDb();
-
                 SF.Get<PhanQuyenNguoiDungViewModel>().GetDataSource(gridControl);
-                FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
             });
         }
 

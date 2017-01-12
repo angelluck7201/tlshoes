@@ -10,10 +10,11 @@ namespace TLShoes.Form
 {
     public partial class ucKhachHang : BaseUserControl
     {
-
+        private KhachHang _domainData;
         public ucKhachHang(KhachHang data = null)
         {
             InitializeComponent();
+            _domainData = data;
             Init(data);
         }
 
@@ -26,8 +27,8 @@ namespace TLShoes.Form
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject<KhachHang>(FormControls);
-
+            var saveData = CRUD.GetFormObject<KhachHang>(FormControls, _domainData);
+            CRUD.DecorateSaveData(saveData, _domainData == null);
             SF.Get<KhachHangViewModel>().Save(saveData);
             return true;
         }

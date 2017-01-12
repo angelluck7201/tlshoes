@@ -30,6 +30,7 @@ namespace TLShoes
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTen = new DevExpress.XtraEditors.LabelControl();
             this.lblGhiChu = new DevExpress.XtraEditors.LabelControl();
             this.DanhMuc_Ten = new DevExpress.XtraEditors.TextEdit();
@@ -41,6 +42,7 @@ namespace TLShoes
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DanhMuc_Ten.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -72,6 +74,7 @@ namespace TLShoes
             this.DanhMuc_Ten.Name = "DanhMuc_Ten";
             this.DanhMuc_Ten.Size = new System.Drawing.Size(529, 22);
             this.DanhMuc_Ten.TabIndex = 1;
+            this.DanhMuc_Ten.ToolTip = "Tên danh mục";
             // 
             // DanhMuc_GhiChu
             // 
@@ -203,5 +206,6 @@ namespace TLShoes
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

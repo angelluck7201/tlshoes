@@ -12,6 +12,8 @@ namespace TLShoes.FormControls.DanhGia
     public partial class ucDanhGia : BaseUserControl
     {
         BindingList<ChiTietDanhGia> ChiTietDanhGia = new BindingList<ChiTietDanhGia>();
+        private TLShoes.DanhGia _domainData;
+
         public ucDanhGia(TLShoes.DanhGia data = null)
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace TLShoes.FormControls.DanhGia
             DanhGia_MauDanhGiaId.ValueMember = "Id";
             DanhGia_MauDanhGiaId.DataSource = new BindingSource(SF.Get<MauDanhGiaViewModel>().GetList(), null);
 
+            _domainData = data;
             Init(data);
             if (data != null)
             {
@@ -57,10 +60,11 @@ namespace TLShoes.FormControls.DanhGia
             }
 
             // Save Don hang
-            var saveData = CRUD.GetFormObject<TLShoes.DanhGia>(FormControls);
+            var saveData = CRUD.GetFormObject(FormControls, _domainData);
 
             using (var transaction = new TransactionScope())
             {
+                CRUD.DecorateSaveData(saveData, _domainData == null);
                 SF.Get<DanhGiaViewModel>().Save(saveData);
 
                 foreach (var chitiet in ChiTietDanhGia)

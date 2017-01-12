@@ -11,6 +11,7 @@ namespace TLShoes
         public ucDanhMuc(DanhMuc danhMuc = null)
         {
             InitializeComponent();
+            SetToolTip();
 
             DanhMuc_Loai.DisplayMember = "Value";
             DanhMuc_Loai.ValueMember = "Key";
@@ -25,6 +26,14 @@ namespace TLShoes
             }
         }
 
+        private void SetToolTip()
+        {
+//            var toolTip = ToolTipHelper.GetToolTip();
+//
+//            toolTip.SetToolTip(lblTen, "Ten danh muc");
+//            toolTip.SetToolTip(lblGhiChu, "ghi chu ne");
+        }
+
         public override bool SaveData()
         {
             var validateResult = ValidateInput();
@@ -36,15 +45,17 @@ namespace TLShoes
             var id = PrimitiveConvert.StringToInt(defaultInfo.Controls["Id"].Text);
 
             var saveData = SF.Get<DanhMucViewModel>().GetDetail(id);
+            var isNew = false;
             if (saveData == null)
             {
                 saveData = new DanhMuc();
+                isNew = true;
             }
 
             saveData.Ten = DanhMuc_Ten.Text;
             saveData.Loai = DanhMuc_Loai.SelectedValue.ToString();
             saveData.GhiChu = DanhMuc_GhiChu.Text;
-            CRUD.DecorateSaveData(saveData);
+            CRUD.DecorateSaveData(saveData, isNew);
             SF.Get<DanhMucViewModel>().Save(saveData);
             return true;
         }

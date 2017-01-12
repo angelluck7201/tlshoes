@@ -39,8 +39,8 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.colLoaiNguoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -56,7 +56,7 @@
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageEdit1,
             this.repositoryItemPictureEdit1});
-            this.gridControl.Size = new System.Drawing.Size(708, 554);
+            this.gridControl.Size = new System.Drawing.Size(1226, 744);
             this.gridControl.TabIndex = 4;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -78,6 +78,7 @@
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.Button;
+            this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.RowHeight = 100;
@@ -172,6 +173,12 @@
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 6;
             // 
+            // colLoaiNguoiDung
+            // 
+            this.colLoaiNguoiDung.Caption = "gridColumn2";
+            this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
+            this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
+            // 
             // repositoryItemImageEdit1
             // 
             this.repositoryItemImageEdit1.AutoHeight = false;
@@ -179,19 +186,13 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageEdit1.Name = "repositoryItemImageEdit1";
             // 
-            // colLoaiNguoiDung
-            // 
-            this.colLoaiNguoiDung.Caption = "gridColumn2";
-            this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
-            this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
-            // 
             // ucDonHangList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gridControl);
             this.Name = "ucDonHangList";
-            this.Size = new System.Drawing.Size(708, 554);
+            this.Size = new System.Drawing.Size(1226, 744);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();

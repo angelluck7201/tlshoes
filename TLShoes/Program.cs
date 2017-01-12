@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using TLShoes.Common;
@@ -7,14 +9,21 @@ namespace TLShoes
 {
     static class Program
     {
+        static Mutex mutex = new Mutex(true, "{8F6F0AC4-B9A1-45fd-A8CF-72F04E6BDE8F}");
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            bool createdNew = true;
+            using (Mutex mutex = new Mutex(true, "TlShoes", out createdNew))
+            {
+                if (createdNew)
+                {
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
 #if !DEBUG
             // Add the event handler for handling UI thread exceptions to the event.
             Application.ThreadException += new ThreadExceptionEventHandler(ErrorControl.UIThreadException);
@@ -24,7 +33,25 @@ namespace TLShoes
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 #endif
 
-            Application.Run(FormFactory<Main>.Get());
+                    Application.Run(FormFactory<Main>.Get());
+                }
+                else
+                {
+                    Process current = Process.GetCurrentProcess();
+                    foreach (Process process in Process.GetProcessesByName(current.ProcessName))
+                    {
+                        if (process.Id != current.Id)
+                        {
+                            SetForegroundWindow(process.MainWindowHandle);
+                            break;
+                        }
+                    }
+                }
+            }
         }
+
+        [DllImport("user32.dll")]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
     }
 }
+

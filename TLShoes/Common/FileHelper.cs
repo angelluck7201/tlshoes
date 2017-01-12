@@ -16,16 +16,16 @@ namespace TLShoes.Common
         public static float LIMIT_SIZE = 800;
         public static string FLAG_ROTATE = "FLAG_ROTATE";
 
-        private static string _directorPath = "";
-        public static string DirectorPath
+        private static string _sourcePath = "";
+        public static string SourcePath
         {
             get
             {
-                if (string.IsNullOrEmpty(_directorPath))
+                if (String.IsNullOrEmpty(_sourcePath))
                 {
-                    _directorPath = @ConfigurationManager.AppSettings["FilePath"];
+                    _sourcePath = Directory.GetCurrentDirectory();
                 }
-                return _directorPath;
+                return _sourcePath;
             }
         }
 
@@ -36,7 +36,7 @@ namespace TLShoes.Common
 
         public static string ResourcePath
         {
-            get { return Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, "Resources"); }
+            get { return Path.Combine(Directory.GetParent(SourcePath).Parent.FullName, "Resources"); }
         }
 
         public static string DefaultImagePath
@@ -48,7 +48,7 @@ namespace TLShoes.Common
         {
             get
             {
-                return Path.Combine(DirectorPath, "image");
+                return ConfigHelper.FileConfigPath;
             }
         }
 
@@ -97,7 +97,7 @@ namespace TLShoes.Common
 
         public static string ImageSave(Image image, object name = null)
         {
-            if (image == null) return string.Empty;
+            if (image == null) return String.Empty;
             var id = name;
             if (id == null)
             {
@@ -117,7 +117,7 @@ namespace TLShoes.Common
             var saveImage = new Bitmap(image);
             saveImage.Save(path);
             //            }
-            return path;
+            return id.ToString();
         }
 
         public static void DeleteFile(string filePath)
@@ -129,7 +129,7 @@ namespace TLShoes.Common
         }
         public static bool IsFileInUse(string path)
         {
-            if (string.IsNullOrEmpty(path))
+            if (String.IsNullOrEmpty(path))
                 throw new ArgumentException("'path' cannot be null or empty.", "path");
 
             try
@@ -144,22 +144,24 @@ namespace TLShoes.Common
             return false;
         }
 
-        public static void SetImage(PictureEdit imageContainer, string imagePath)
+        public static void SetImage(PictureEdit imageContainer, string imageName)
         {
-            //using (new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+            //using (new FileStream(imageName, FileMode.Open, FileAccess.Read))
             //{
-            var image = ImageFromFile(imagePath);
+            var filePath = Path.Combine(ImagePath, imageName);
+            var image = ImageFromFile(filePath);
             imageContainer.Image = image;
-            imageContainer.Tag = imagePath.Split('\\').Last();
+            imageContainer.Tag = imageName.Split('\\').Last();
             imageContainer.ToolTipTitle = FLAG_ROTATE;
             //}
         }
 
-        public static Image ImageFromFile(string filePath)
+        public static Image ImageFromFile(string fileName)
         {
             Image image = null;
             try
             {
+                var filePath = Path.Combine(ImagePath, fileName);
                 if (File.Exists(filePath))
                 {
                     using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
@@ -187,5 +189,54 @@ namespace TLShoes.Common
                 return image;
             }
         }
+
+        public static void CopyFolder(string sourcePath, string desPath)
+        {
+            // To copy a folder's contents to a new location:
+            // Create a new target folder, if necessary.
+            if (!Directory.Exists(desPath))
+            {
+                Directory.CreateDirectory(desPath);
+            }
+
+            // To copy all the files in one directory to another directory.
+            // Get the files in the source folder. (To recursively iterate through
+            // all subfolders under the current directory, see
+            // "How to: Iterate Through a Directory Tree.")
+            // Note: Check for target path was performed previously
+            //       in this code example.
+            if (Directory.Exists(sourcePath))
+            {
+                string[] files = Directory.GetFiles(sourcePath);
+
+                // Copy the files and overwrite destination files if they already exist.
+                foreach (string s in files)
+                {
+                    // Use static Path methods to extract only the file name from the path.
+                    var fileName = Path.GetFileName(s);
+                    var destFile = Path.Combine(desPath, fileName);
+                    File.Copy(s, destFile, true);
+                }
+            }
+        }
+
+        public static void UpdateAppConfig(string key, string value)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            AppSettingsSection app = config.AppSettings;
+            if (app.Settings[key] != null)
+            {
+                app.Settings[key].Value = value;
+            }
+            else
+            {
+                app.Settings.Add(key, value);
+            }
+            config.Save(ConfigurationSaveMode.Modified);
+
+            // Force a reload of a changed section.
+            ConfigurationManager.RefreshSection("appSettings");
+        }
+
     }
 }

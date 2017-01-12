@@ -32,7 +32,7 @@
             this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
             this.txtUserName = new DevExpress.XtraEditors.TextEdit();
             this.txtPass = new DevExpress.XtraEditors.TextEdit();
-            this.lblErrorMessage = new System.Windows.Forms.Label();
+            this.lblErrorMessage = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).BeginInit();
             this.SuspendLayout();
@@ -77,14 +77,14 @@
             // 
             // lblErrorMessage
             // 
-            this.lblErrorMessage.AutoSize = true;
+            this.lblErrorMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorMessage.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorMessage.Location = new System.Drawing.Point(185, 278);
+            this.lblErrorMessage.Location = new System.Drawing.Point(180, 278);
             this.lblErrorMessage.Name = "lblErrorMessage";
-            this.lblErrorMessage.Size = new System.Drawing.Size(340, 18);
+            this.lblErrorMessage.Size = new System.Drawing.Size(333, 75);
             this.lblErrorMessage.TabIndex = 4;
-            this.lblErrorMessage.Text = "Tên đăng nhập hoặc mật khẩu không hợp lệ!";
+            this.lblErrorMessage.Text = "Tên đăng nhập hoặc mật khẩu không hợp lệ";
             this.lblErrorMessage.Visible = false;
             // 
             // LoginForm
@@ -109,7 +109,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -118,7 +117,7 @@
         private DevExpress.XtraEditors.SimpleButton btnLogin;
         private DevExpress.XtraEditors.TextEdit txtUserName;
         private DevExpress.XtraEditors.TextEdit txtPass;
-        private System.Windows.Forms.Label lblErrorMessage;
+        private System.Windows.Forms.RichTextBox lblErrorMessage;
 
     }
 }

@@ -9,6 +9,7 @@ namespace TLShoes.FormControls.MauTest
     public partial class ucMauTest : BaseUserControl
     {
         public static BindingList<CommonClass.GopYItem> GopYBindingList = new BindingList<CommonClass.GopYItem>();
+        private TLShoes.MauTest _domainData;
 
         public ucMauTest(TLShoes.MauTest data)
         {
@@ -39,7 +40,7 @@ namespace TLShoes.FormControls.MauTest
 
             lblGopY.Text = GopYBindingList[0].BoPhan;
             txtGopY.Text = GopYBindingList[0].GopY;
-
+            _domainData = data;
             Init(data);
         }
 
@@ -52,7 +53,7 @@ namespace TLShoes.FormControls.MauTest
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject<TLShoes.MauTest>(FormControls);
+            var saveData = CRUD.GetFormObject<TLShoes.MauTest>(FormControls, _domainData);
 
             saveData.GopYVatTu = GopYBindingList[0].GopY;
             saveData.GopYXuongChat = GopYBindingList[1].GopY;
@@ -63,11 +64,12 @@ namespace TLShoes.FormControls.MauTest
             saveData.GopYMau = GopYBindingList[6].GopY;
             saveData.GopYKhoVatTu = GopYBindingList[7].GopY;
             saveData.GopYPhuTro = GopYBindingList[8].GopY;
+            CRUD.DecorateSaveData(saveData, _domainData == null);
             SF.Get<MauTestViewModel>().Save(saveData);
             return true;
         }
 
-       
+
 
         public string ValidateInput()
         {

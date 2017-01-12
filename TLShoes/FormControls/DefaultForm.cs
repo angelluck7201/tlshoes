@@ -11,7 +11,7 @@ namespace TLShoes
             InitializeComponent();
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+//            this.MaximizeBox = false;
             // Set the MinimizeBox to false to remove the minimize box.
             this.MinimizeBox = false;
             // Set the start position of the form to the center of the screen.
@@ -22,7 +22,10 @@ namespace TLShoes
         private void DefaultForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             FormBehavior.Close(this);
-            ObserverControl.PulishAction("Close");
+            if (FormBehavior.IsMainFormEnable())
+            {
+                ObserverControl.PulishAction("Close");
+            }
         }
     }
 }

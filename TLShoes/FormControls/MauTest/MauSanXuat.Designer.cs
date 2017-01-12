@@ -47,7 +47,6 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -64,7 +63,7 @@
             this.MauSanXuat_DonHangId.Location = new System.Drawing.Point(171, 31);
             this.MauSanXuat_DonHangId.Name = "MauSanXuat_DonHangId";
             this.MauSanXuat_DonHangId.Size = new System.Drawing.Size(514, 24);
-            this.MauSanXuat_DonHangId.TabIndex = 40;
+            this.MauSanXuat_DonHangId.TabIndex = 0;
             // 
             // lblDonHangId
             // 
@@ -80,7 +79,7 @@
             this.MauSanXuat_NgayKetqua.Location = new System.Drawing.Point(169, 121);
             this.MauSanXuat_NgayKetqua.Name = "MauSanXuat_NgayKetqua";
             this.MauSanXuat_NgayKetqua.Size = new System.Drawing.Size(514, 23);
-            this.MauSanXuat_NgayKetqua.TabIndex = 42;
+            this.MauSanXuat_NgayKetqua.TabIndex = 2;
             // 
             // lblNgayKetQuaTestLy
             // 
@@ -106,14 +105,14 @@
             this.MauSanXuat_PhanLoaiKetQua.Location = new System.Drawing.Point(171, 165);
             this.MauSanXuat_PhanLoaiKetQua.Name = "MauSanXuat_PhanLoaiKetQua";
             this.MauSanXuat_PhanLoaiKetQua.Size = new System.Drawing.Size(514, 24);
-            this.MauSanXuat_PhanLoaiKetQua.TabIndex = 46;
+            this.MauSanXuat_PhanLoaiKetQua.TabIndex = 3;
             // 
             // MauSanXuat_NgayGuiMau
             // 
             this.MauSanXuat_NgayGuiMau.Location = new System.Drawing.Point(171, 76);
             this.MauSanXuat_NgayGuiMau.Name = "MauSanXuat_NgayGuiMau";
             this.MauSanXuat_NgayGuiMau.Size = new System.Drawing.Size(514, 23);
-            this.MauSanXuat_NgayGuiMau.TabIndex = 69;
+            this.MauSanXuat_NgayGuiMau.TabIndex = 1;
             // 
             // labelControl3
             // 
@@ -136,7 +135,7 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
             this.xtraTabControl1.Size = new System.Drawing.Size(708, 479);
-            this.xtraTabControl1.TabIndex = 72;
+            this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
@@ -232,6 +231,8 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridView1.Appearance.HeaderPanel.Options.UseFont = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn4,
             this.gridColumn5});
@@ -262,21 +263,6 @@
             this.gridColumn5.VisibleIndex = 1;
             this.gridColumn5.Width = 482;
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(4, 507);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 73;
-            this.btnCancel.Text = "Hủy";
-            // 
             // btnSave
             // 
             this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
@@ -289,7 +275,7 @@
             this.btnSave.Location = new System.Drawing.Point(614, 507);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 74;
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             // 
             // ucMauSanXuat
@@ -298,7 +284,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucMauSanXuat";
             this.Size = new System.Drawing.Size(718, 557);
@@ -329,7 +314,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private Form.DefaultInfo defaultInfo;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private System.Windows.Forms.RichTextBox txtGopY;

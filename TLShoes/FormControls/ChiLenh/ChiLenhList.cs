@@ -22,13 +22,7 @@ namespace TLShoes.FormControls.ChiLenh
                 BaseModel.DisposeDb();
 
                 SF.Get<ChiLenhViewModel>().GetDataSource(gridControl);
-                FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
             });
-        }
-
-        public override void Export(object filePath)
-        {
-            gridView.ExportToXls(filePath.ToString());
         }
 
         private void gridView_DoubleClick(object sender, EventArgs e)
@@ -36,8 +30,14 @@ namespace TLShoes.FormControls.ChiLenh
             ThreadHelper.LoadForm(() =>
             {
                 dynamic data = gridView.GetRow(gridView.FocusedRowHandle);
-                var info = SF.Get<ChiLenhViewModel>().GetDetail(data.Id);
-                FormFactory<Main>.Get().ShowPopupInfo(info);
+                if (data != null)
+                {
+                    var info = SF.Get<ChiLenhViewModel>().GetDetail(data.Id);
+                    if (info != null)
+                    {
+                        FormFactory<Main>.Get().ShowPopupInfo(info);                        
+                    }
+                }
             });
         }
     }

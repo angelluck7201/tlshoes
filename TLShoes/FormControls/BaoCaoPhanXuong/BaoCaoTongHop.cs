@@ -29,14 +29,6 @@ namespace TLShoes.FormControls.KeHoachSanXuat
             ThreadHelper.LoadForm(() =>
             {
                 SF.Get<BaoCaoPhanXuongViewModel>().GetDataSummarySource(gridControl);
-                if (bandedGridView1.RowCount > 0)
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = true;
-                }
-                else
-                {
-                    FormFactory<Main>.Get().FeaturesDict["btnExport"].Visible = false;
-                }
             });
         }
 
