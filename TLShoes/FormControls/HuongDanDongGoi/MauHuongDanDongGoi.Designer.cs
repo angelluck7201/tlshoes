@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMauHuongDanDongGoi));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.MauHuongDanDongGoi_TenMau = new System.Windows.Forms.TextBox();
@@ -88,9 +88,7 @@
             this.DanhMucIdLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.DonViTinhIdLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.HinhMauDinhKemImageEdit = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -112,8 +110,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DanhMucIdLookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DonViTinhIdLookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HinhMauDinhKemImageEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
-            this.splitContainerControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -124,12 +120,11 @@
             this.xtraTabControl1.Appearance.Options.UseBorderColor = true;
             this.xtraTabControl1.Appearance.Options.UseFont = true;
             this.xtraTabControl1.Appearance.Options.UseForeColor = true;
-            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1261, 772);
-            this.xtraTabControl1.TabIndex = 115;
+            this.xtraTabControl1.Size = new System.Drawing.Size(1261, 822);
+            this.xtraTabControl1.TabIndex = 117;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
@@ -161,7 +156,7 @@
             this.xtraTabPage2.Controls.Add(this.lblGhiChu);
             this.xtraTabPage2.Controls.Add(this.MauHuongDanDongGoi_GhiChu);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1254, 733);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1254, 786);
             this.xtraTabPage2.Text = "Mẫu Hướng Dẫn";
             // 
             // MauHuongDanDongGoi_TenMau
@@ -261,7 +256,7 @@
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.defaultInfo);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1254, 733);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1254, 786);
             this.xtraTabPage1.Text = "Thông tin người dùng";
             // 
             // defaultInfo
@@ -269,7 +264,7 @@
             this.defaultInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defaultInfo.Location = new System.Drawing.Point(0, 0);
             this.defaultInfo.Name = "defaultInfo";
-            this.defaultInfo.Size = new System.Drawing.Size(1254, 733);
+            this.defaultInfo.Size = new System.Drawing.Size(1254, 786);
             this.defaultInfo.TabIndex = 11;
             // 
             // xtraTabPage3
@@ -284,7 +279,7 @@
             this.xtraTabPage3.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage3.Controls.Add(this.splitContainerControl1);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1254, 736);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1254, 786);
             this.xtraTabPage3.Text = "Chi Tiết";
             // 
             // splitContainerControl1
@@ -315,7 +310,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.gridHuongDan);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1254, 736);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1254, 786);
             this.splitContainerControl1.SplitterPosition = 458;
             this.splitContainerControl1.TabIndex = 120;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -329,7 +324,7 @@
             this.btnUpdateHinh.Appearance.Options.UseFont = true;
             this.btnUpdateHinh.Appearance.Options.UseForeColor = true;
             this.btnUpdateHinh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnUpdateHinh.Location = new System.Drawing.Point(264, 682);
+            this.btnUpdateHinh.Location = new System.Drawing.Point(265, 740);
             this.btnUpdateHinh.Name = "btnUpdateHinh";
             this.btnUpdateHinh.Size = new System.Drawing.Size(75, 30);
             this.btnUpdateHinh.TabIndex = 126;
@@ -345,7 +340,7 @@
             this.btnDelete.Appearance.Options.UseFont = true;
             this.btnDelete.Appearance.Options.UseForeColor = true;
             this.btnDelete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnDelete.Location = new System.Drawing.Point(181, 682);
+            this.btnDelete.Location = new System.Drawing.Point(182, 740);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 30);
             this.btnDelete.TabIndex = 125;
@@ -378,7 +373,7 @@
             this.btnThemHinh.Appearance.Options.UseFont = true;
             this.btnThemHinh.Appearance.Options.UseForeColor = true;
             this.btnThemHinh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnThemHinh.Location = new System.Drawing.Point(345, 682);
+            this.btnThemHinh.Location = new System.Drawing.Point(346, 740);
             this.btnThemHinh.Name = "btnThemHinh";
             this.btnThemHinh.Size = new System.Drawing.Size(75, 30);
             this.btnThemHinh.TabIndex = 122;
@@ -391,7 +386,7 @@
             this.HinhAnh.Name = "HinhAnh";
             this.HinhAnh.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.HinhAnh.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.HinhAnh.Size = new System.Drawing.Size(355, 188);
+            this.HinhAnh.Size = new System.Drawing.Size(355, 230);
             this.HinhAnh.TabIndex = 121;
             this.HinhAnh.TabStop = true;
             // 
@@ -530,10 +525,11 @@
             this.DonViTinhIdLookUp,
             this.HinhMauDinhKemImageEdit,
             this.repositoryItemPictureEdit1});
-            this.gridHuongDan.Size = new System.Drawing.Size(790, 736);
+            this.gridHuongDan.Size = new System.Drawing.Size(790, 786);
             this.gridHuongDan.TabIndex = 7;
             this.gridHuongDan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.cardView1});
+            this.gridHuongDan.Click += new System.EventHandler(this.cardView1_Click);
             // 
             // cardView1
             // 
@@ -551,6 +547,7 @@
             this.gridColumn9});
             this.cardView1.FocusedCardTopFieldIndex = 0;
             this.cardView1.GridControl = this.gridHuongDan;
+            this.cardView1.MaximumCardColumns = 2;
             this.cardView1.Name = "cardView1";
             this.cardView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
             this.cardView1.OptionsBehavior.Editable = false;
@@ -561,7 +558,6 @@
             this.cardView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn3, DevExpress.Data.ColumnSortOrder.Descending)});
             this.cardView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Auto;
-            this.cardView1.Click += new System.EventHandler(this.cardView1_Click);
             // 
             // gridColumn10
             // 
@@ -689,14 +685,14 @@
             this.btnDeleteHuongDan.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteHuongDan.Appearance.Image")));
             this.btnDeleteHuongDan.Appearance.Options.UseImage = true;
             this.btnDeleteHuongDan.AutoHeight = false;
-            serializableAppearanceObject2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject2.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
-            serializableAppearanceObject2.Options.UseBackColor = true;
-            serializableAppearanceObject2.Options.UseBorderColor = true;
-            serializableAppearanceObject2.Options.UseImage = true;
+            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
+            serializableAppearanceObject1.Options.UseBackColor = true;
+            serializableAppearanceObject1.Options.UseBorderColor = true;
+            serializableAppearanceObject1.Options.UseImage = true;
             this.btnDeleteHuongDan.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteHuongDan.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteHuongDan.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteHuongDan.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteHuongDan.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDeleteHuongDan.Name = "btnDeleteHuongDan";
@@ -746,22 +742,6 @@
             this.HinhMauDinhKemImageEdit.Name = "HinhMauDinhKemImageEdit";
             this.HinhMauDinhKemImageEdit.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(22, 4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Hủy";
-            // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -772,36 +752,21 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSave.Location = new System.Drawing.Point(1167, 2);
+            this.btnSave.Location = new System.Drawing.Point(1177, 838);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 0;
+            this.btnSave.TabIndex = 118;
             this.btnSave.Text = "Lưu";
-            // 
-            // splitContainerControl2
-            // 
-            this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl2.Horizontal = false;
-            this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl2.Name = "splitContainerControl2";
-            this.splitContainerControl2.Panel1.Controls.Add(this.xtraTabControl1);
-            this.splitContainerControl2.Panel1.Text = "Panel1";
-            this.splitContainerControl2.Panel2.Controls.Add(this.btnCancel);
-            this.splitContainerControl2.Panel2.Controls.Add(this.btnSave);
-            this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1261, 822);
-            this.splitContainerControl2.SplitterPosition = 772;
-            this.splitContainerControl2.TabIndex = 116;
-            this.splitContainerControl2.Text = "splitContainerControl2";
             // 
             // ucMauHuongDanDongGoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.splitContainerControl2);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucMauHuongDanDongGoi";
-            this.Size = new System.Drawing.Size(1261, 822);
+            this.Size = new System.Drawing.Size(1261, 875);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
@@ -824,8 +789,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DanhMucIdLookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DonViTinhIdLookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HinhMauDinhKemImageEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
-            this.splitContainerControl2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -834,6 +797,11 @@
 
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private System.Windows.Forms.TextBox MauHuongDanDongGoi_TenMau;
+        private DevExpress.XtraEditors.LabelControl lblTenMau;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private System.Windows.Forms.ComboBox MauHuongDanDongGoi_KhachHangId;
         private System.Windows.Forms.DateTimePicker MauHuongDanDongGoi_ApDungDenNgay;
         private System.Windows.Forms.DateTimePicker MauHuongDanDongGoi_ApDungTuNgay;
         private DevExpress.XtraEditors.LabelControl lblApDung;
@@ -842,15 +810,28 @@
         private System.Windows.Forms.RichTextBox MauHuongDanDongGoi_GhiChu;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private Form.DefaultInfo defaultInfo;
-        private System.Windows.Forms.ComboBox MauHuongDanDongGoi_KhachHangId;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
-        private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.LabelControl lblTenMau;
-        private System.Windows.Forms.TextBox MauHuongDanDongGoi_TenMau;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraEditors.SimpleButton btnUpdateHinh;
+        private DevExpress.XtraEditors.SimpleButton btnDelete;
+        private DevExpress.XtraEditors.TextEdit KichThuoc;
+        private DevExpress.XtraEditors.TextEdit SoLuong;
+        private DevExpress.XtraEditors.SimpleButton btnThemHinh;
+        private DevExpress.XtraEditors.PictureEdit HinhAnh;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private System.Windows.Forms.RichTextBox ViTriSuDung;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private System.Windows.Forms.RichTextBox CachSuDung;
+        private System.Windows.Forms.ComboBox NguyenLieuId;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private System.Windows.Forms.ComboBox MauId;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private System.Windows.Forms.ComboBox DonViTinhId;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private System.Windows.Forms.ComboBox DanhMucId;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraGrid.GridControl gridHuongDan;
         private DevExpress.XtraGrid.Views.Card.CardView cardView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
@@ -864,34 +845,15 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnDeleteHuongDan;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit MauIdLookUp;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnDeleteHuongDan;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit NguyenLieuIdLookUp;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit DanhMucIdLookUp;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit DonViTinhIdLookUp;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit HinhMauDinhKemImageEdit;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
-        private System.Windows.Forms.RichTextBox CachSuDung;
-        private System.Windows.Forms.ComboBox NguyenLieuId;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
-        private System.Windows.Forms.ComboBox MauId;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private System.Windows.Forms.ComboBox DonViTinhId;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private System.Windows.Forms.ComboBox DanhMucId;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
-        private System.Windows.Forms.RichTextBox ViTriSuDung;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.PictureEdit HinhAnh;
-        private DevExpress.XtraEditors.SimpleButton btnThemHinh;
-        private DevExpress.XtraEditors.TextEdit SoLuong;
-        private DevExpress.XtraEditors.TextEdit KichThuoc;
-        private DevExpress.XtraEditors.SimpleButton btnDelete;
-        private DevExpress.XtraEditors.SimpleButton btnUpdateHinh;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
+        private DevExpress.XtraEditors.SimpleButton btnSave;
+
     }
 }
