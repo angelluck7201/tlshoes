@@ -30,10 +30,10 @@ namespace TLShoes.ViewModels
                     s.Id,
                     s.DonHang.MaHang,
                     SoDH = s.DonHang.OrderNo,
-                    NgayKetQuaTestLyFormat = TimeHelper.TimestampToString(s.NgayKetquaTestLy, "d"),
-                    PhanLoaiTestLy = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiTestLyId).Ten,
-                    NgayKetQuaTestHoaFormat = TimeHelper.TimestampToString(s.NgayKetquaTestHoa, "d"),
-                    PhanLoaiTestHoa = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiTestHoaId).Ten,
+//                    NgayKetQuaTestLyFormat = TimeHelper.TimestampToString(s.NgayKetquaTestLy, "d"),
+//                    PhanLoaiTestLy = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiTestLyId).Ten,
+//                    NgayKetQuaTestHoaFormat = TimeHelper.TimestampToString(s.NgayKetquaTestHoa, "d"),
+//                    PhanLoaiTestHoa = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiTestHoaId).Ten,
                     Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh),
                     s.UserAccount.LoaiNguoiDung
                 }).ToList();
@@ -47,10 +47,10 @@ namespace TLShoes.ViewModels
                    s.Id,
                    s.DonHang.MaHang,
                    SoDH = s.DonHang.OrderNo,
-                   NgayKetQuaTestLyFormat = TimeHelper.TimestampToString(s.NgayKetquaTestLy, "d"),
-                   PhanLoaiTestLy = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiTestLyId).Ten,
-                   NgayKetQuaTestHoaFormat = TimeHelper.TimestampToString(s.NgayKetquaTestHoa, "d"),
-                   PhanLoaiTestHoa = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiTestHoaId).Ten,
+//                   NgayKetQuaTestLyFormat = TimeHelper.TimestampToString(s.NgayKetquaTestLy, "d"),
+//                   PhanLoaiTestLy = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiTestLyId).Ten,
+//                   NgayKetQuaTestHoaFormat = TimeHelper.TimestampToString(s.NgayKetquaTestHoa, "d"),
+//                   PhanLoaiTestHoa = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiTestHoaId).Ten,
                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh)
                }).ToList();
         }

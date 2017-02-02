@@ -1,11 +1,11 @@
---Drop database GiayTL;
---Create database GiayTL;
---use GiayTL;
+Drop database GiayTL;
+Create database GiayTL;
+use GiayTL;
 
 create table AppConfig(
 Id bigint primary key identity(1,1),
-ConfigName nvarchar(100) default '' not null,
-ConfigParam text default '' not null, 
+ConfigName nvarchar(100) default '',
+ConfigParam text default '', 
 );
 
 insert AppConfig(ConfigName, ConfigParam) values('FILE_PATH','\\LONGNGUYEN\Users\nguye\Desktop\Share Folder\image\'); 
@@ -27,8 +27,8 @@ ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
 TenNguoiDung nvarchar(50) default '',
-MatKhau text default '' not null,
-LoaiNguoiDung text default '' not null,
+MatKhau text default '',
+LoaiNguoiDung text default '',
 TenNhanVien nvarchar(100) default '',
 DiaChi nvarchar(100) default '',
 CMND varchar(20) default '',
@@ -42,8 +42,8 @@ CreatedDate datetime2 default getdate() not null,
 ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
-LoaiNguoiDung text default '' not null,
-Feature nvarchar(50) default '' not null,
+LoaiNguoiDung text default '',
+Feature nvarchar(50) default '',
 Permission nvarchar (50) default 'VIEW' not null,
 )
 
@@ -75,10 +75,11 @@ CreatedDate datetime2 default getdate() not null,
 ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
-Ten nvarchar(100) default '' not null,
+Ten nvarchar(100) default '',
 Loai nvarchar(20) default '' not null,
-GhiChu nvarchar(1000) default '' not null,
+GhiChu nvarchar(1000) default '',
 );
+
 
 create table NguyenLieu(
 Id bigint primary key identity(1,1),
@@ -88,14 +89,13 @@ ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
 LoaiNguyenLieuId bigint foreign key references DanhMuc(Id),
-Ten nvarchar(100) default '' not null,
-MaNguyenLieu nvarchar(50) default '' not null,
+Ten nvarchar(100) default '',
+MaNguyenLieu nvarchar(50) default '',
 DonViTinh bigint foreign key references DanhMuc(Id),
 MauId bigint foreign key references DanhMuc(Id),
-QuyCach nvarchar(100) default '' not null,
-DacTinh nvarchar(50) default '' not null,
+QuyCach nvarchar(100) default '',
 SoLuong real default 0 not null,
-GhiChu nvarchar(1000) default '' not null,
+GhiChu nvarchar(1000) default '',
 );
 
 create table KhachHang(
@@ -105,13 +105,13 @@ CreatedDate datetime2 default getdate() not null,
 ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
-TenCongTy nvarchar(100) default '' not null,
-TenNguoiDaiDien nvarchar(100) default '' not null,
-DiaChi nvarchar(100) default '' not null,
+TenCongTy nvarchar(100) default '',
+TenNguoiDaiDien nvarchar(100) default '',
+DiaChi nvarchar(100) default '',
 Dienthoai varchar(20),
-Fax nvarchar(100) default '' not null,
-Email nvarchar(100) default '' not null,
-MatHang nvarchar(100) default '' not null,
+Fax nvarchar(100) default '',
+Email nvarchar(100) default '',
+MatHang nvarchar(100) default '',
 DungYeuCauKyThuat int default 0 not null,
 DungThoiGian int default 0 not null,
 DungMau int default 0 not null,
@@ -121,8 +121,8 @@ Gia int default 0 not null,
 DichVuGiaoHang int default 0 not null,
 DichVuHauMai int default 0 not null,
 Khac int default 0 not null,
-GhiChuNoiBo nvarchar(1000) default '' not null,
-GhiChu nvarchar(1000) default '' not null,
+GhiChuNoiBo nvarchar(1000) default '',
+GhiChu nvarchar(1000) default '',
 );
 
 create table DonHang(
@@ -137,24 +137,26 @@ MuId bigint foreign key references NguyenLieu(Id),
 LotId bigint foreign key references NguyenLieu(Id),
 DaLotTayId bigint foreign key references NguyenLieu(Id),
 DeId bigint foreign key references NguyenLieu(Id),
-MaHang varchar(50) default '' not null,
+MaHang varchar(50) default '',
+MaGiay varchar(50) default '',
 KhachHangId bigint foreign key references KhachHang(id),
-OrderNo varchar(50) default '' not null,
-NgayNhan bigint default 0 not null,
-NgayXuat bigint default 0 not null,
-HinhAnh text default '' not null,
+OrderNo varchar(50) default '',
+NgayNhan datetime2 default getdate() not null,
+NgayXuat datetime2 default getdate() not null,
+HinhAnh text default '',
+SoLuong int default 0 not null,
 
-GopYVatTu nvarchar(1000) default '' not null,
-GopYXuongChat nvarchar(1000) default '' not null,
-GopYXuongMay nvarchar(1000) default '' not null,
-GopYXuongDe nvarchar(1000) default '' not null,
-GopYXuongGo nvarchar(1000) default '' not null,
-GopYQc nvarchar(1000) default '' not null,
-GopYCongNghe nvarchar(1000) default '' not null,
-GopYMau nvarchar(1000) default '' not null,
-GopYKhoVatTu nvarchar(1000) default '' not null,
-GopYPhuTro nvarchar(1000) default '' not null,
-GopYKhoThanhPham nvarchar(1000) default '' not null,
+GopYVatTu nvarchar(1000) default '',
+GopYXuongChat nvarchar(1000) default '',
+GopYXuongMay nvarchar(1000) default '',
+GopYXuongDe nvarchar(1000) default '',
+GopYXuongGo nvarchar(1000) default '',
+GopYQc nvarchar(1000) default '',
+GopYCongNghe nvarchar(1000) default '',
+GopYMau nvarchar(1000) default '',
+GopYKhoVatTu nvarchar(1000) default '',
+GopYPhuTro nvarchar(1000) default '',
+GopYKhoThanhPham nvarchar(1000) default '',
 
 DungYeuCauKyThuat int default 0 not null,
 DungThoiGian int default 0 not null,
@@ -189,10 +191,10 @@ ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
 DonHangId bigint foreign key references DonHang(Id),
-HinhAnh text default '' not null,
-NgayNhan bigint default 0 not null,
-MauNgay bigint default 0 not null,
-GhiChu nvarchar(1000) default '' not null,
+HinhAnh text default '',
+NgayNhan datetime2 default getdate() not null,
+MauNgay datetime2 default getdate() not null,
+GhiChu nvarchar(1000) default '',
 );
 
 create table MauDoiHinh(
@@ -203,8 +205,8 @@ ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
 MauDoiId bigint foreign key references MauDoi(Id),
-HinhAnh text default '' not null,
-GhiChu nvarchar(1000) default '' not null,
+HinhAnh text default '',
+GhiChu nvarchar(1000) default '',
 );
 
 create table MauTest(
@@ -215,24 +217,24 @@ ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
 DonHangId bigint foreign key references DonHang(Id),
-NgayGuiMau bigint default 0 not null,
-NgayKetquaTestLy bigint default 0 not null,
-KetQuaTestLy nvarchar(1000) default '' not null,
+NgayGuiMau datetime2 default getdate() not null,
+NgayKetquaTestLy datetime2 default getdate() not null,
+KetQuaTestLy nvarchar(1000) default '',
 PhanLoaiTestLyId bigint foreign key references DanhMuc(Id),
-NgayKetquaTestHoa bigint default 0 not null,
-KetQuaTestHoa nvarchar(1000) default '' not null,
+NgayKetquaTestHoa datetime2 default getdate() not null,
+KetQuaTestHoa nvarchar(1000) default '',
 PhanLoaiTestHoaId bigint foreign key references DanhMuc(Id),
 
-GopYCongNghe nvarchar(1000) default '' not null,
-GopYMau nvarchar(1000) default '' not null,
-GopYQc nvarchar(1000) default '' not null,
-GopYKhoVatTu nvarchar(1000) default '' not null,
-GopYVatTu nvarchar(1000) default '' not null,
-GopYPhuTro nvarchar(1000) default '' not null,
-GopYXuongChat nvarchar(1000) default '' not null,
-GopYXuongMay nvarchar(1000) default '' not null,
-GopYXuongDe nvarchar(1000) default '' not null,
-GopYXuongGo nvarchar(1000) default '' not null,
+GopYCongNghe nvarchar(1000) default '',
+GopYMau nvarchar(1000) default '',
+GopYQc nvarchar(1000) default '',
+GopYKhoVatTu nvarchar(1000) default '',
+GopYVatTu nvarchar(1000) default '',
+GopYPhuTro nvarchar(1000) default '',
+GopYXuongChat nvarchar(1000) default '',
+GopYXuongMay nvarchar(1000) default '',
+GopYXuongDe nvarchar(1000) default '',
+GopYXuongGo nvarchar(1000) default '',
 );
 
 create table MauSanXuat(
@@ -243,20 +245,20 @@ ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
 DonHangId bigint foreign key references DonHang(Id),
-NgayGuiMau bigint default 0 not null,
-NgayKetqua bigint default 0 not null,
-KetQua nvarchar(1000) default '' not null,
+NgayGuiMau datetime2 default getdate() not null,
+NgayKetqua datetime2 default getdate() not null,
+KetQua nvarchar(1000) default '',
 PhanLoaiKetQua bigint foreign key references DanhMuc(Id),
-GopYCongNghe nvarchar(1000) default '' not null,
-GopYMau nvarchar(1000) default '' not null,
-GopYQc nvarchar(1000) default '' not null,
-GopYKhoVatTu nvarchar(1000) default '' not null,
-GopYVatTu nvarchar(1000) default '' not null,
-GopYPhuTro nvarchar(1000) default '' not null,
-GopYXuongChat nvarchar(1000) default '' not null,
-GopYXuongMay nvarchar(1000) default '' not null,
-GopYXuongDe nvarchar(1000) default '' not null,
-GopYXuongGo nvarchar(1000) default '' not null,
+GopYCongNghe nvarchar(1000) default '',
+GopYMau nvarchar(1000) default '',
+GopYQc nvarchar(1000) default '',
+GopYKhoVatTu nvarchar(1000) default '',
+GopYVatTu nvarchar(1000) default '',
+GopYPhuTro nvarchar(1000) default '',
+GopYXuongChat nvarchar(1000) default '',
+GopYXuongMay nvarchar(1000) default '',
+GopYXuongDe nvarchar(1000) default '',
+GopYXuongGo nvarchar(1000) default '',
 );
 
 
@@ -270,16 +272,16 @@ IsActived bit default 1 not null,
 DonHangId bigint foreign key references DonHang(Id),
 NgayBatDau datetime2 default getdate() not null,
 NgayHoanThanh datetime2 default getdate() not null,
-GopYCongNghe nvarchar(1000) default '' not null,
-GopYMau nvarchar(1000) default '' not null,
-GopYQc nvarchar(1000) default '' not null,
-GopYKhoVatTu nvarchar(1000) default '' not null,
-GopYVatTu nvarchar(1000) default '' not null,
-GopYPhuTro nvarchar(1000) default '' not null,
-GopYXuongChat nvarchar(1000) default '' not null,
-GopYXuongMay nvarchar(1000) default '' not null,
-GopYXuongDe nvarchar(1000) default '' not null,
-GopYXuongGo nvarchar(1000) default '' not null,
+GopYCongNghe nvarchar(1000) default '',
+GopYMau nvarchar(1000) default '',
+GopYQc nvarchar(1000) default '',
+GopYKhoVatTu nvarchar(1000) default '',
+GopYVatTu nvarchar(1000) default '',
+GopYPhuTro nvarchar(1000) default '',
+GopYXuongChat nvarchar(1000) default '',
+GopYXuongMay nvarchar(1000) default '',
+GopYXuongDe nvarchar(1000) default '',
+GopYXuongGo nvarchar(1000) default '',
 KetQuaXuongChat nvarchar(20) default '' not null,
 KetQuaXuongMay nvarchar(20) default '' not null,
 KetQuaXuongDe nvarchar(20) default '' not null,
@@ -296,11 +298,11 @@ IsActived bit default 1 not null,
 DonHangId bigint foreign key references DonHang(Id),
 MauDoiId bigint foreign key references MauDoi(Id),
 PhanLoaiThuRap nvarchar(20) default '' not null,
-YKienThuRap nvarchar(1000) default '' not null,
+YKienThuRap nvarchar(1000) default '',
 PhanLoaiThuDao nvarchar(20) default '' not null,
-YKienThuDao nvarchar(1000) default '' not null,
-HinhBangThongSo text default '' not null,
-HinhCongNgheDuocDuyet text default '' not null,
+YKienThuDao nvarchar(1000) default '',
+HinhBangThongSo text default '',
+HinhCongNgheDuocDuyet text default '',
 NgayDuyet datetime2 default getdate() not null,
 );
 
@@ -312,8 +314,8 @@ ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
 DonHangId bigint foreign key references DonHang(Id),
-SoPhieu nvarchar(50) default '' not null,
-TrangThai nvarchar(50) default '' not null,
+SoPhieu nvarchar(50) default '',
+TrangThai nvarchar(50) default '',
 NgayLap datetime2 default getdate() not null,
 NguoiLapId bigint foreign key references UserAccount(Id),
 NgayDuyet datetime2 default getdate() not null,
@@ -327,7 +329,7 @@ CreatedDate datetime2 default getdate() not null,
 ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
-PhanXuongId bigint foreign key references DanhMuc(Id),
+PhanXuong nvarchar(50) default '',
 ChiLenhId bigint foreign key references ChiLenh(Id),
 ChiTietId bigint foreign key references DanhMuc(Id),
 QuyCach nvarchar(10) default '' not null,
@@ -345,7 +347,7 @@ IsActived bit default 1 not null,
 
 NguyenLieuChiLenhId bigint foreign key references NguyenLieuChiLenh(Id),
 ChiTietNguyenLieuId bigint foreign key references NguyenLieu(Id),
-GhiChu nvarchar(1000) default '' not null,
+GhiChu nvarchar(1000) default '',
 );
 
 create table KeHoachSanXuat(
@@ -369,7 +371,7 @@ NgayBatDauPxDe datetime2 default getdate() not null,
 NgayHoanThanhPxDe datetime2 default getdate() not null,
 NgayBatDauBpVatTu datetime2 default getdate() not null,
 NgayHoanThanhBpVatTu datetime2 default getdate() not null,
-GhiChu nvarchar(1000) default '' not null,
+GhiChu nvarchar(1000) default '',
 );
 
 create table BaoCaoPhanXuong(
@@ -380,11 +382,11 @@ ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
 DonHangId bigint foreign key references DonHang(Id),
-PhanXuong nvarchar(50) default '' not null,
+PhanXuong nvarchar(50) default '',
 SanLuongKhoan int default 0 not null,
 SanLuongThucHien int default 0 not null,
 BaoCaoNgay datetime2 default getdate() not null,
-GhiChu nvarchar(1000) default '' not null,
+GhiChu nvarchar(1000) default '',
 );
 
 create table TongHopToTrinh(
@@ -394,8 +396,8 @@ CreatedDate datetime2 default getdate() not null,
 ModifiedDate datetime2 default getdate() not null, 
 IsActived bit default 1 not null,
 
-SoPhieu nvarchar(50) default '' not null,
-TrangThai nvarchar(100) default '' not null,
+SoPhieu nvarchar(50) default '',
+TrangThai nvarchar(100) default '',
 NguoiLapId bigint foreign key references UserAccount(Id),	
 NgayLap datetime2 default getdate() not null,
 NguoiDuyetId bigint foreign key references UserAccount(Id),
@@ -411,7 +413,7 @@ IsActived bit default 1 not null,
 
 TongHopToTrinhId bigint foreign key references TongHopToTrinh(Id),
 NguyenLieuId bigint foreign key references NguyenLieu(Id),
-DonDatHangList text default '' not null,
+DonDatHangList text default '',
 BoSung real default 0 not null,
 ThuHoi real default 0 not null,
 TonToTrinh real default 0 not null,
@@ -419,7 +421,7 @@ TonTheKho real default 0 not null,
 TonThucTe real default 0 not null,
 DuKien real default 0 not null,
 HaoHut real default 0 not null,
-GhiChu nvarchar(1000) default '' not null,
+GhiChu nvarchar(1000) default '',
 );
 
 create table ChiTietToTrinh(
@@ -435,88 +437,6 @@ NhuCau real default 0 not null,
 ThucTe real default 0 not null,
 );
 
-create table PhieuNhapKho(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-NguoiGiao nvarchar(50) default '' not null,
-DiaChi nvarchar(100) default '' not null,
-LyDo nvarchar(100) default '' not null,
-Kho nvarchar(50) default '' not null,
-NgayNhap datetime2 default getdate() not null,
-SoPhieu nvarchar(100) default '' not null,
-TrangThai nvarchar(100) default '' not null,
-DanhGiaId bigint foreign key references DanhGia(Id),
-NgayDuyet datetime2 default getdate() not null,
-NguoiDuyetId bigint foreign key references UserAccount(Id),
-NgayLap datetime2 default getdate() not null,
-NguoiLapId bigint foreign key references UserAccount(Id),
-);
-
-create table ChiTietNhapKho(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),	
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-PhieuNhapKhoId bigint foreign key references PhieuNhapKho(Id),
-NguyenLieuId bigint foreign key references NguyenLieu(Id),
-SoLuong real default 0 not null,
-);
-
-create table PhieuXuatKho(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),	
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonHangId bigint foreign key references DonHang(Id),
-NguoiNhan nvarchar(50) default '' not null,
-DiaChi nvarchar(100) default '' not null,
-BoPhan nvarchar(50) default '' not null,
-LyDo nvarchar(100) default '' not null,
-Kho nvarchar(50) default '' not null,
-LoaiXuat nvarchar(50) default '' not null,
-NgayXuat bigint default 0 not null,
-SoPhieu nvarchar(100) default '' not null,
-TrangThai nvarchar(100) default '' not null,
-NgayDuyet datetime2 default getdate() not null,
-NguoiDuyetId bigint foreign key references UserAccount(Id),
-NgayLap datetime2 default getdate() not null,
-NguoiLapId bigint foreign key references UserAccount(Id),
-);
-
-create table ChiTietXuatKho(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),	
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-PhieuXuatKhoId bigint foreign key references PhieuXuatKho(Id),
-NguyenLieuId bigint foreign key references NguyenLieu(Id),
-SoLuong real default 0 not null,
-);
-
-create table NhatKyXuatKho(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),	
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-ChiTietXuatKhoId bigint foreign key references ChiTietXuatKho(Id),
-SoLuong real default 0 not null,
-NguoiNhan nvarchar(100) default '' not null,
-GhiChu nvarchar(100) default '' not null,
-);
-
-
 create table NhaCungCap(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -524,13 +444,13 @@ CreatedDate datetime2 default getdate() not null,
 ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
-TenCongTy nvarchar(100) default '' not null,
-TenNguoiDaiDien nvarchar(100) default '' not null,
-DiaChi nvarchar(100) default '' not null,
+TenCongTy nvarchar(100) default '',
+TenNguoiDaiDien nvarchar(100) default '',
+DiaChi nvarchar(100) default '',
 Dienthoai varchar(20),
-Fax nvarchar(100) default '' not null,
-Email nvarchar(100) default '' not null,
-MatHang nvarchar(100) default '' not null,
+Fax nvarchar(100) default '',
+Email nvarchar(100) default '',
+MatHang nvarchar(100) default '',
 DungYeuCauKyThuat int default 0 not null,
 DungThoiGian int default 0 not null,
 DungMau int default 0 not null,
@@ -540,8 +460,8 @@ Gia int default 0 not null,
 DichVuGiaoHang int default 0 not null,
 DichVuHauMai int default 0 not null,
 Khac int default 0 not null,
-GhiChuNoiBo nvarchar(1000) default '' not null,
-GhiChu nvarchar(1000) default '' not null,
+GhiChuNoiBo nvarchar(1000) default '',
+GhiChu nvarchar(1000) default '',
 );
 
 create table NhaCungCapVatTu(
@@ -584,7 +504,7 @@ NgayDuyet datetime2 default getdate() not null,
 NguoiDuyetId bigint foreign key references UserAccount(Id),
 NgayLap datetime2 default getdate() not null,
 NguoiLapId bigint foreign key references UserAccount(Id),
-TrangThai nvarchar(100) default '' not null,
+TrangThai nvarchar(100) default '',
 );
 
 create table ChiTietDonDatHang(
@@ -600,7 +520,7 @@ NguyenLieuId bigint foreign key references NguyenLieu(Id),
 DonGia float default 0 not null,
 SoLuong float default 0 not null,
 SoLuongThuc float default 0 not null,
-GhiChu nvarchar(1000) default '' not null,
+GhiChu nvarchar(1000) default '',
 )
 
 create table MauDanhGia(
@@ -610,8 +530,8 @@ CreatedDate datetime2 default getdate() not null,
 ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
-MauDanhGia nvarchar(100) default '' not null,
-GhiChu nvarchar(1000) default '' not null,
+TenMau nvarchar(100) default '',
+GhiChu nvarchar(1000) default '',
 );
 
 create table ChiTietMauDanhGia(
@@ -634,9 +554,9 @@ IsActived bit default 1 not null,
 
 DonDatHangId bigint foreign key references DonDatHang(Id),
 MauDanhGiaId bigint foreign key references MauDanhGia(Id),
-SoPhieu nvarchar(100) default '' not null,
+SoPhieu nvarchar(100) default '',
 SoLuongKiem float default 0 not null,
-BienPhapXuLy nvarchar(1000) default '' not null,
+BienPhapXuLy nvarchar(1000) default '',
 NgayKiem datetime2 default getdate() not null,
 );
 
@@ -651,8 +571,91 @@ IsActived bit default 1 not null,
 DanhGiaId bigint foreign key references DanhGia(Id),
 TieuChiId bigint foreign key references DanhMuc(Id),
 SoLuongKem float default 0 not null,
-GhiChu nvarchar(1000) default '' not null,
+GhiChu nvarchar(1000) default '',
 );
+
+create table PhieuNhapKho(
+Id bigint primary key identity(1,1),
+AuthorId bigint foreign key references UserAccount(Id),
+CreatedDate datetime2 default getdate() not null,
+ModifiedDate datetime2 default getdate() not null,
+IsActived bit default 1 not null,
+
+NguoiGiao nvarchar(50) default '',
+DiaChi nvarchar(100) default '',
+LyDo nvarchar(100) default '',
+Kho nvarchar(50) default '',
+NgayNhap datetime2 default getdate() not null,
+SoPhieu nvarchar(100) default '',
+TrangThai nvarchar(100) default '',
+DanhGiaId bigint foreign key references DanhGia(Id),
+NgayDuyet datetime2 default getdate() not null,
+NguoiDuyetId bigint foreign key references UserAccount(Id),
+NgayLap datetime2 default getdate() not null,
+NguoiLapId bigint foreign key references UserAccount(Id),
+);
+
+create table ChiTietNhapKho(
+Id bigint primary key identity(1,1),
+AuthorId bigint foreign key references UserAccount(Id),	
+CreatedDate datetime2 default getdate() not null,
+ModifiedDate datetime2 default getdate() not null,
+IsActived bit default 1 not null,
+
+PhieuNhapKhoId bigint foreign key references PhieuNhapKho(Id),
+NguyenLieuId bigint foreign key references NguyenLieu(Id),
+SoLuong real default 0 not null,
+);
+
+create table PhieuXuatKho(
+Id bigint primary key identity(1,1),
+AuthorId bigint foreign key references UserAccount(Id),	
+CreatedDate datetime2 default getdate() not null,
+ModifiedDate datetime2 default getdate() not null,
+IsActived bit default 1 not null,
+
+DonHangId bigint foreign key references DonHang(Id),
+NguoiNhan nvarchar(50) default '',
+DiaChi nvarchar(100) default '',
+BoPhan nvarchar(50) default '',
+LyDo nvarchar(100) default '',
+Kho nvarchar(50) default '',
+LoaiXuat nvarchar(50) default '',
+NgayXuat datetime2 default getdate() not null,
+SoPhieu nvarchar(100) default '',
+TrangThai nvarchar(100) default '',
+NgayDuyet datetime2 default getdate() not null,
+NguoiDuyetId bigint foreign key references UserAccount(Id),
+NgayLap datetime2 default getdate() not null,
+NguoiLapId bigint foreign key references UserAccount(Id),
+);
+
+create table ChiTietXuatKho(
+Id bigint primary key identity(1,1),
+AuthorId bigint foreign key references UserAccount(Id),	
+CreatedDate datetime2 default getdate() not null,
+ModifiedDate datetime2 default getdate() not null,
+IsActived bit default 1 not null,
+
+PhieuXuatKhoId bigint foreign key references PhieuXuatKho(Id),
+NguyenLieuId bigint foreign key references NguyenLieu(Id),
+SoLuong real default 0 not null,
+);
+
+create table NhatKyXuatKho(
+Id bigint primary key identity(1,1),
+AuthorId bigint foreign key references UserAccount(Id),	
+CreatedDate datetime2 default getdate() not null,
+ModifiedDate datetime2 default getdate() not null,
+IsActived bit default 1 not null,
+
+ChiTietXuatKhoId bigint foreign key references ChiTietXuatKho(Id),
+SoLuong real default 0 not null,
+NguoiNhan nvarchar(100) default '',
+GhiChu nvarchar(100) default '',
+);
+
+
 
 create table MauHuongDanDongGoi(
 Id bigint primary key identity(1,1),
@@ -662,10 +665,10 @@ ModifiedDate datetime2 default getdate() not null,
 IsActived bit default 1 not null,
 
 KhachHangId bigint foreign key references KhachHang(Id),
-TenMau nvarchar(50) default '' not null,
+TenMau nvarchar(50) default '',
 ApDungTuNgay datetime2 default getdate() not null,
 ApDungDenNgay datetime2 default getdate() not null,
-GhiChu nvarchar(1000) default '' not null,
+GhiChu nvarchar(1000) default '',
 )
 
 create table ChiTietHuongDanDongGoi(
@@ -678,14 +681,14 @@ IsActived bit default 1 not null,
 MauHuongDanDongGoiId bigint foreign key references MauHuongDanDongGoi(Id),
 DanhMucId bigint foreign key references DanhMuc(Id),
 DonViTinhId bigint foreign key references DanhMuc(Id),
-KichThuoc nvarchar(50) default '' not null,
+KichThuoc nvarchar(50) default '',
 MauId bigint foreign key references DanhMuc(Id),
 NguyenLieuId bigint foreign key references NguyenLieu(Id),
-CachSuDung text default '' not null,
-ViTriSuDung nvarchar(100) default '' not null,
+CachSuDung text default '',
+ViTriSuDung nvarchar(100) default '',
 SoLuong int default 0 not null,
-HinhMauDinhKem text default '' not null,
-GhiChu nvarchar(1000) default '' not null,
+HinhMauDinhKem text default '',
+GhiChu nvarchar(1000) default '',
 );
 
 create table HuongDanDongGoi(
@@ -697,11 +700,23 @@ IsActived bit default 1 not null,
 
 DonHangId bigint foreign key references DonHang(Id),
 MauDongGoiId bigint foreign key references MauHuongDanDongGoi(Id),
-CachDong nvarchar(50) default '' not null,
-DongAssorment text default '' not null,
+CachDong nvarchar(50) default '',
+DongAssorment text default '',
 SoLuong int default 0 not null,
 SoDoi int default 0 not null,
-GhiChu nvarchar(1000) default '' not null,
+GhiChu nvarchar(1000) default '',
+);
+
+create table NhatKyThayDoi(
+Id bigint primary key identity(1,1),
+AuthorId bigint foreign key references UserAccount(Id),
+CreatedDate datetime2 default getdate() not null,
+ModifiedDate datetime2 default getdate() not null,
+IsActived bit default 1 not null,
+
+ModelName nvarchar(50) default '',
+ItemId bigint default 0 not null,
+GhiChu nvarchar(1000) default '',
 );
 
 

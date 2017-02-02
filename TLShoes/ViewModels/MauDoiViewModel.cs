@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Drawing;
 using System.Linq;
 using DevExpress.XtraGrid;
 using TLShoes.Common;
@@ -22,11 +23,18 @@ namespace TLShoes.ViewModels
         public List<MauDoiHinh> GetHinhMauDoi(long mauDoiId)
         {
             return DbContext.MauDoiHinhs.Where(s => s.MauDoiId == mauDoiId).ToList();
-        } 
+        }
 
         public MauDoi GetDetail(long id)
         {
             return DbContext.MauDois.Find(id);
+        }
+
+        public void Delete(MauDoiHinh mauDoiHinh)
+        {
+            FileHelper.DeleteImage(mauDoiHinh.HinhAnh);
+            DbContext.MauDoiHinhs.Remove(mauDoiHinh);
+            DbContext.SaveChanges();
         }
 
         public void GetDataSource(GridControl control)
@@ -36,8 +44,8 @@ namespace TLShoes.ViewModels
                 s.Id,
                 s.DonHang.MaHang,
                 SoDH = s.DonHang.OrderNo,
-                NgayNhanFormat = TimeHelper.TimeStampToDateTime(s.NgayNhan, "d"),
-                MauNgayFormat = TimeHelper.TimeStampToDateTime(s.MauNgay, "d"),
+                //                NgayNhanFormat = TimeHelper.TimeStampToDateTime(s.NgayNhan, "d"),
+                //                MauNgayFormat = TimeHelper.TimeStampToDateTime(s.MauNgay, "d"),
                 Hinh = FileHelper.ImageFromFile(s.HinhAnh),
                 s.UserAccount.LoaiNguoiDung
             }).ToList();
@@ -53,8 +61,8 @@ namespace TLShoes.ViewModels
                 item.MaHang = maudoi.DonHang.MaHang;
                 item.SoDonHang = maudoi.DonHang.OrderNo;
                 item.SoLuong = maudoi.DonHang.ChiTietDonHangs.Sum(s => (int)s.SoLuong);
-                item.MauDoiNgayGui = TimeHelper.TimeStampToDateTime(maudoi.NgayNhan, "d");
-                item.MauDoiNgayXacNhan = TimeHelper.TimeStampToDateTime(maudoi.MauNgay, "d");
+                //                item.MauDoiNgayGui = TimeHelper.TimeStampToDateTime(maudoi.NgayNhan, "d");
+                //                item.MauDoiNgayXacNhan = TimeHelper.TimeStampToDateTime(maudoi.MauNgay, "d");
                 item.Hinh = FileHelper.ImageFromFile(maudoi.DonHang.HinhAnh);
 
                 var mauTestList = SF.Get<MauTestViewModel>().GetList((long)maudoi.DonHangId).Take(3);
@@ -98,8 +106,8 @@ namespace TLShoes.ViewModels
                 var mauThuDao = SF.Get<MauThuDaoViewModel>().GetList((long)maudoi.DonHangId);
                 if (mauThuDao.Any())
                 {
-                    item.MauThuDaoBatDau = TimeHelper.TimeStampToDateTime(mauThuDao.OrderBy(s => s.NgayBatDau).First().NgayBatDau, "d");
-                    item.MauThuDaoHoanThanh = TimeHelper.TimeStampToDateTime(mauThuDao.OrderByDescending(s => s.NgayHoanThanh).First().NgayHoanThanh, "d");
+                    item.MauThuDaoBatDau = mauThuDao.OrderBy(s => s.NgayBatDau).First().NgayBatDau;
+                    item.MauThuDaoHoanThanh = mauThuDao.OrderByDescending(s => s.NgayHoanThanh).First().NgayHoanThanh;
                 }
 
                 listResult.Add(item);
@@ -121,11 +129,27 @@ namespace TLShoes.ViewModels
             DbContext.SaveChanges();
         }
 
-        public void SaveHinh(List<MauDoiHinh> listHinh, long mauDoiId)
+        public void SaveHinh(MauDoi mauDoi, List<MauDoiHinh> listHinh, long mauDoiId)
         {
+            // Clear hình cũ 
+            if (mauDoi.MauDoiHinhs != null)
+            {
+                foreach (var source in mauDoi.MauDoiHinhs.ToList())
+                {
+                    if (listHinh.All(s => s.Id != source.Id))
+                    {
+                        Delete(source);
+                    }
+                }
+            }
+
             foreach (var hinh in listHinh)
             {
                 hinh.MauDoiId = mauDoiId;
+                if (hinh.Hinh != null)
+                {
+                    hinh.HinhAnh = FileHelper.ImageSave(hinh.Hinh as Image, hinh.HinhAnh);
+                }
                 DbContext.MauDoiHinhs.AddOrUpdate(hinh);
             }
             DbContext.SaveChanges();
@@ -147,4 +171,25 @@ namespace TLShoes.ViewModels
             public DateTime MauThuDaoHoanThanh { get; set; }
         }
     }
+}
+
+namespace TLShoes
+{
+    public partial class MauDoiHinh
+    {
+        private object _hinh;
+        public object Hinh
+        {
+            get
+            {
+                if (_hinh == null)
+                {
+                    _hinh = FileHelper.ImageFromFile(HinhAnh);
+                }
+                return _hinh;
+            }
+            set { _hinh = value; }
+        }
+    }
+
 }

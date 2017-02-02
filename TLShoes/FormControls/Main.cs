@@ -169,7 +169,7 @@ namespace TLShoes
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            ObserverControl.PulishAction("Refresh");
+            ObserverControl.PulishAction(Define.ActionType.REFRESH);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -183,7 +183,7 @@ namespace TLShoes
             saveDialog.Filter = "Excel |*.xls";
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                ObserverControl.PulishAction("Export", saveDialog.FileName);
+                ObserverControl.PulishAction(Define.ActionType.EXPORT, saveDialog.FileName);
             }
         }
 

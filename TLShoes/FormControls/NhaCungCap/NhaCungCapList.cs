@@ -17,7 +17,6 @@ namespace TLShoes.FormControls.NhaCungCap
         public ucNhaCungCapList()
         {
             InitializeComponent();
-            Init();
             GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
         }
 

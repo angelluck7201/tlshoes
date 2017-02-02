@@ -280,6 +280,12 @@
     <Compile Include="FormControls\BaoCaoPhanXuong\BaoCaoTongHop.Designer.cs">
       <DependentUpon>BaoCaoTongHop.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormControls\ImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormControls\ImageForm.Designer.cs">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormControls\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -459,12 +465,6 @@
     </Compile>
     <Compile Include="FormControls\DefaultInfo.Designer.cs">
       <DependentUpon>DefaultInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormControls\DonHang\ChiTietDonHang.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FormControls\DonHang\ChiTietDonHang.Designer.cs">
-      <DependentUpon>ChiTietDonHang.cs</DependentUpon>
     </Compile>
     <Compile Include="FormControls\DonHang\DonHang.cs">
       <SubType>UserControl</SubType>
@@ -646,9 +646,6 @@
     <Compile Include="PhieuXuatKho.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
     <Compile Include="TongHopToTrinh.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -741,6 +738,9 @@
     <EmbeddedResource Include="FormControls\BaoCaoPhanXuong\BaoCaoTongHop.resx">
       <DependentUpon>BaoCaoTongHop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\ImageForm.resx">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormControls\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -830,9 +830,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\DefaultInfo.resx">
       <DependentUpon>DefaultInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormControls\DonHang\ChiTietDonHang.resx">
-      <DependentUpon>ChiTietDonHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\DonHang\DonHang.resx">
       <DependentUpon>DonHang.cs</DependentUpon>
@@ -971,6 +968,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_icon.ico" />
+    <None Include="Resources\close_32x32.png" />
+    <None Include="Resources\close_32x321.png" />
     <Content Include="Resources\Image\app_icon.png" />
     <Content Include="Resources\Image\default.png" />
     <Content Include="Resources\Image\login_window.png" />

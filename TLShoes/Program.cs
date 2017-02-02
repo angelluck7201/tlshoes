@@ -31,6 +31,8 @@ namespace TLShoes
             // Set the unhandled exception mode to force all Windows Forms errors to go through
             // our handler.
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+#else
+                    Application.ThreadException += new ThreadExceptionEventHandler(ErrorControl.DEVException);
 #endif
 
                     Application.Run(FormFactory<Main>.Get());

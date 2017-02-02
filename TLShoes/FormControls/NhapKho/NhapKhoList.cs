@@ -17,7 +17,6 @@ namespace TLShoes.FormControls.NhapKho
         public ucNhapKhoList()
         {
             InitializeComponent();
-            Init();
             GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
         }
 

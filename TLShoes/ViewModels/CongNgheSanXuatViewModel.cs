@@ -25,10 +25,10 @@ namespace TLShoes.ViewModels
                     s.Id,
                     s.DonHang.MaHang,
                     SoDH = s.DonHang.OrderNo,
-                    MauDoiNgayFormat = TimeHelper.TimestampToString(s.MauDoi.MauNgay, "d"),
-                    PhanLoaiThuRap = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiThuRapId).Ten,
-                    PhanLoaiThuDao = SF.Get<DanhMucViewModel>().GetDetail((long)s.PhanLoaiThuDao).Ten,
-                    NgayDuyetFormat = TimeHelper.TimeStampToDateTime(s.NgayDuyet),
+                    MauDoiNgayFormat = s.MauDoi.MauNgay,
+                    s.PhanLoaiThuRap,
+                    s.PhanLoaiThuDao,
+                    NgayDuyetFormat = s.NgayDuyet,
                 }).ToList();
         }
 

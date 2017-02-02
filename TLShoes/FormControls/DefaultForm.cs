@@ -24,7 +24,7 @@ namespace TLShoes
             FormBehavior.Close(this);
             if (FormBehavior.IsMainFormEnable())
             {
-                ObserverControl.PulishAction("Close");
+                ObserverControl.PulishAction(Define.ActionType.CLOSE);
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using DevExpress.XtraGrid;
 using TLShoes.Common;
+using TLShoes.Form;
 
 namespace TLShoes.ViewModels
 {
@@ -27,23 +28,12 @@ namespace TLShoes.ViewModels
 
         public void GetDataSource(GridControl control)
         {
-            control.DataSource = GetList().Select(s => new
-            {
-                s.Id,
-                s.GhiChu,
-                ModifiedDate = TimeHelper.TimestampToString(s.ModifiedDate, "d"),
-            }).ToList();
+            control.DataSource = GetList();
         }
 
         public void GetDataSource(GridControl control, Define.ModelType model, long itemId)
         {
-            control.DataSource = GetList(model, itemId).Select(s => new
-            {
-                s.Id,
-                s.GhiChu,
-                CreatedDate = TimeHelper.TimestampToString(s.CreatedDate, "d"),
-                TacGia = s.UserAccount.TenNguoiDung
-            }).ToList();
+            control.DataSource = GetList(model, itemId);
         }
 
         public void Save(object data, bool isCommit = true)

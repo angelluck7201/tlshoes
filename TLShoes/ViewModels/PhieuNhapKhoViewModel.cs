@@ -21,16 +21,7 @@ namespace TLShoes.ViewModels
 
         public void GetDataSource(GridControl control)
         {
-            var data = GetList().Select(s => new
-            {
-                s.Id,
-                s.NguoiGiao,
-                s.DiaChi,
-                s.LyDo,
-                Kho = Define.KhoDic[PrimitiveConvert.StringToEnum<Define.Kho>(s.Kho)],
-                NgayNhapFormat = TimeHelper.TimestampToString(s.NgayNhap, "d"),
-                s.UserAccount.LoaiNguoiDung
-            }).ToList();
+            var data = GetList();
             control.DataSource = data;
         }
 

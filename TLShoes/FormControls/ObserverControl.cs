@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TLShoes.Common;
 
 namespace TLShoes
 {
@@ -9,7 +10,7 @@ namespace TLShoes
         private static List<EventObserver> RegisterList = new List<EventObserver>();
         private static List<EventObserverParam> RegisterParamList = new List<EventObserverParam>();
 
-        public static void Regist(string registerPublish, string registerSubscrire, Action action)
+        public static void Regist(Define.ActionType registerPublish, string registerSubscrire, Action action)
         {
             var register = RegisterList.FirstOrDefault(s => s.RegisterPublish == registerPublish && s.RegisterSubcrise == registerSubscrire && s.Action == action);
             if (register == null)
@@ -19,7 +20,7 @@ namespace TLShoes
             }
         }
 
-        public static void Regist(string registerPublish, string registerSubscrire, Action<object> action)
+        public static void Regist(Define.ActionType registerPublish, string registerSubscrire, Action<object> action)
         {
             var register = RegisterParamList.FirstOrDefault(s => s.RegisterPublish == registerPublish && s.RegisterSubcrise == registerSubscrire);
             if (register == null)
@@ -41,7 +42,7 @@ namespace TLShoes
             RegisterList.RemoveAll(s => s.RegisterSubcrise == registerName);
         }
 
-        public static void PulishAction(string publish, object data = null)
+        public static void PulishAction(Define.ActionType publish, object data = null)
         {
             var listAction = RegisterList.Where(s => s.RegisterPublish == publish && s.RegisterSubcrise == Main.currentForm).ToList();
             foreach (var item in listAction)
@@ -62,11 +63,11 @@ namespace TLShoes
 
         private class EventObserver
         {
-            public string RegisterPublish;
+            public Define.ActionType RegisterPublish;
             public string RegisterSubcrise;
             public Action Action;
 
-            public EventObserver(string registerPublish, string registerSubcrise, Action action)
+            public EventObserver(Define.ActionType registerPublish, string registerSubcrise, Action action)
             {
                 RegisterPublish = registerPublish;
                 RegisterSubcrise = registerSubcrise;
@@ -76,11 +77,11 @@ namespace TLShoes
 
         private class EventObserverParam
         {
-            public string RegisterPublish;
+            public Define.ActionType RegisterPublish;
             public string RegisterSubcrise;
             public Action<object> Action;
 
-            public EventObserverParam(string registerPublish, string registerSubcrise, Action<object> action)
+            public EventObserverParam(Define.ActionType registerPublish, string registerSubcrise, Action<object> action)
             {
                 RegisterPublish = registerPublish;
                 RegisterSubcrise = registerSubcrise;

@@ -36,10 +36,10 @@ namespace TLShoes.ViewModels
                 s.Id,
                 SoDonDH = s.SoDH,
                 NhaCungCap = s.NhaCungCap.TenCongTy,
-                NgayDatHang = TimeHelper.TimestampToString(s.NgayDatHang, "d"),
-                NgayGiaoHang = TimeHelper.TimestampToString(s.NgayGiaoHang, "d"),
-                SoLuong = s.ChiTietDonDatHangs.Where(a => a.SoLuong != null).Sum(a => a.SoLuong),
-                SoLuongThuc = s.ChiTietDonDatHangs.Where(a => a.SoLuong != null).Sum(a => a.SoLuongThuc),
+                s.NgayDatHang,
+                s.NgayGiaoHang,
+                SoLuong = s.ChiTietDonDatHangs.Sum(a => a.SoLuong),
+                SoLuongThuc = s.ChiTietDonDatHangs.Sum(a => a.SoLuongThuc),
                 DanhGia = (new List<int?>() { s.Gia, s.DichVuGiaoHang, s.DatTestHoa, s.DatTestLy, s.DichVuHauMai, s.DungThoiGian, s.DichVuHauMai, s.DungYeuCauKyThuat, s.Khac }.Where(a => a > 0).Average()),
                 s.UserAccount.LoaiNguoiDung
 
@@ -59,7 +59,7 @@ namespace TLShoes.ViewModels
                 if (donGiaNhaCungCap != null)
                 {
                     vattu.DonGia = (float)donGiaNhaCungCap.DonGia;
-                    vattu.DonViTinh = donGiaNhaCungCap.NguyenLieu.DanhMuc.Ten;
+                    vattu.DonViTinh = donGiaNhaCungCap.NguyenLieu.DVT.Ten;
                     vattu.DonViTien = donGiaNhaCungCap.DonVi;
                 }
                 vattu.Id = dongia.Id;

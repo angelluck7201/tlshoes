@@ -255,7 +255,7 @@ namespace TLShoes.FormControls.DonDatHang
                     {
                         vatTu.NhaCungCapId = (long)nhaCungCapId;
                         vatTu.DonViTien = nhaCungCapVatTu.DonVi;
-                        vatTu.DonViTinh = nhaCungCapVatTu.NguyenLieu.DanhMuc.Ten;
+                        vatTu.DonViTinh = nhaCungCapVatTu.NguyenLieu.DVT.Ten;
                         vatTu.DonGia = (float)nhaCungCapVatTu.DonGia;
                         vatTu.GhiChu = nhaCungCapVatTu.NguyenLieu.GhiChu;
                     }
@@ -438,8 +438,8 @@ namespace TLShoes.FormControls.DonDatHang
                             workSheet.Cells[11 + i, 7] = chitietDatHang[i].NguyenLieu.Mau != null
                                 ? chitietDatHang[i].NguyenLieu.Mau.Ten
                                 : "";
-                            workSheet.Cells[11 + i, 8] = chitietDatHang[i].NguyenLieu.DanhMuc != null
-                                ? chitietDatHang[i].NguyenLieu.DanhMuc.Ten
+                            workSheet.Cells[11 + i, 8] = chitietDatHang[i].NguyenLieu.DVT != null
+                                ? chitietDatHang[i].NguyenLieu.DVT.Ten
                                 : "";
                             workSheet.Cells[11 + i, 9] = chitietDatHang[i].SoLuong;
                             var giaVatTu = chitietDatHang[i].NhaCungCap.NhaCungCapVatTus.FirstOrDefault(s => s.NguyenLieuId == chitietDatHang[i].NguyenLieuId);
@@ -475,7 +475,7 @@ namespace TLShoes.FormControls.DonDatHang
             if (_donDatHang != null)
             {
                 _donDatHang.TrangThai = Define.TrangThai.HUY.ToString();
-                _donDatHang.NgayDuyet = TimeHelper.CurrentTimeStamp();
+                _donDatHang.NgayDuyet = TimeHelper.Current();
                 _donDatHang.NguoiDuyetId = Authorization.LoginUser.Id;
                 InitAuthorize();
             }
@@ -488,7 +488,7 @@ namespace TLShoes.FormControls.DonDatHang
                 using (var transaction = new TransactionScope())
                 {
                     var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_donDatHang.TrangThai);
-                    var ngayDuyet = TimeHelper.CurrentTimeStamp();
+                    var ngayDuyet = TimeHelper.Current();
                     // Lock item
 
                     if (trangThai <= Define.TrangThai.HUY)

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.nguyenLieuInstantFeedbackSource = new DevExpress.Data.Linq.EntityInstantFeedbackSource();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -41,6 +42,7 @@
             // 
             // gridControl
             // 
+            this.gridControl.DataSource = this.nguyenLieuInstantFeedbackSource;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
@@ -49,6 +51,12 @@
             this.gridControl.TabIndex = 7;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
+            // 
+            // nguyenLieuInstantFeedbackSource
+            // 
+            this.nguyenLieuInstantFeedbackSource.DefaultSorting = null;
+            this.nguyenLieuInstantFeedbackSource.DesignTimeElementType = typeof(TLShoes.NguyenLieu);
+            this.nguyenLieuInstantFeedbackSource.KeyExpression = "Id";
             // 
             // gridView
             // 
@@ -82,7 +90,7 @@
             this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn1.AppearanceHeader.Options.UseFont = true;
             this.gridColumn1.Caption = "Loại Nguyên Liệu";
-            this.gridColumn1.FieldName = "LoaiNguyenLieu";
+            this.gridColumn1.FieldName = "LoaiNguyenLieu.Ten";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
@@ -139,5 +147,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.Data.Linq.EntityInstantFeedbackSource nguyenLieuInstantFeedbackSource;
     }
 }

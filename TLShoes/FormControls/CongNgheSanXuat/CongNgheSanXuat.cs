@@ -59,7 +59,7 @@ namespace TLShoes.FormControls.CongNgheSanXuat
             if (donhang.SelectedValue != null)
             {
                 CongNgheSanXuat_MauDoiId.DataSource = new BindingSource(SF.Get<MauDoiViewModel>().GetList((long)donhang.SelectedValue)
-                    .Select(s => new { s.Id, MauDoiNgayFormat = TimeHelper.TimestampToString(s.MauNgay) }).ToList(), null);
+                    .Select(s => new { s.Id, MauDoiNgayFormat = s.MauNgay }).ToList(), null);
             }
         }
     }

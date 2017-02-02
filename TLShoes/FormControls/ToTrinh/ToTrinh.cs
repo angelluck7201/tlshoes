@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Transactions;
@@ -32,8 +33,8 @@ namespace TLShoes.FormControls.ToTrinh
             if (data != null)
             {
                 _currentToTrinh = data;
-                ToTrinh_NgayLap.Text = TimeHelper.TimestampToString(data.NgayLap);
-                ToTrinh_NgayDuyet.Text = TimeHelper.TimestampToString(data.NgayDuyet);
+                ToTrinh_NgayLap.Text = data.NgayLap.ToString(CultureInfo.InvariantCulture);
+                ToTrinh_NgayDuyet.Text = data.NgayDuyet.ToString(CultureInfo.InvariantCulture);
                 if (data.NguoiLap != null)
                 {
                     ToTrinh_NguoiLap.Text = data.NguoiLap.TenNguoiDung;
@@ -362,7 +363,7 @@ namespace TLShoes.FormControls.ToTrinh
                 using (var transaction = new TransactionScope())
                 {
                     var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentToTrinh.TrangThai);
-                    var ngayDuyet = TimeHelper.CurrentTimeStamp();
+                    var ngayDuyet = TimeHelper.Current();
                     // Lock item
                     if (trangThai <= Define.TrangThai.MOI)
                     {
@@ -395,7 +396,7 @@ namespace TLShoes.FormControls.ToTrinh
                 {
                     SF.Get<NhatKyThayDoiViewModel>().GetDataSource(gridNhatKy, Define.ModelType.TO_TRINH, _currentToTrinh.Id);
                     _currentToTrinh.TrangThai = Define.TrangThai.HUY.ToString();
-                    _currentToTrinh.NgayDuyet = TimeHelper.CurrentTimeStamp();
+                    _currentToTrinh.NgayDuyet = TimeHelper.Current();
                     _currentToTrinh.NguoiDuyetId = Authorization.LoginUser.Id;
                     InitAuthorize();
                 }), "Nhật ký thay đổi");

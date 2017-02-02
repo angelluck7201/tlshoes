@@ -18,12 +18,12 @@ namespace TLShoes.ViewModels
         /// <summary>
         /// Get list luy ke 
         /// </summary>
-        /// <param name="phanXuongId"></param>
+        /// <param name="phanXuong"></param>
         /// <param name="toDate"></param>
         /// <returns></returns>
-        public List<BaoCaoPhanXuong> GetList(long phanXuongId, long toDate)
+        public List<BaoCaoPhanXuong> GetList(string phanXuong, DateTime toDate)
         {
-            return DbContext.BaoCaoPhanXuongs.Where(s => s.BaoCaoNgay < toDate && s.PhanXuongId == phanXuongId).ToList();
+            return DbContext.BaoCaoPhanXuongs.Where(s => s.BaoCaoNgay < toDate && s.PhanXuong == phanXuong).ToList();
         }
 
         public BaoCaoPhanXuong GetDetail(long id)
@@ -40,12 +40,12 @@ namespace TLShoes.ViewModels
                     s.DonHang.MaHang,
                     s.DonHang.OrderNo,
                     Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh),
-                    s.DanhMuc.Ten,
+                    s.PhanXuong,
                     s.SanLuongThucHien,
                     s.SanLuongKhoan,
-                    LuyKe = GetList((long)s.PhanXuongId, (long)s.BaoCaoNgay).Sum(l => l.SanLuongThucHien),
+                    LuyKe = GetList(s.PhanXuong, s.BaoCaoNgay).Sum(l => l.SanLuongThucHien),
                     SoLuongDonHang = s.DonHang.ChiTietDonHangs.Sum(a => a.SoLuong),
-                    BaoCaoNgayFormat = TimeHelper.TimeStampToDateTime(s.BaoCaoNgay, "d"),
+                    BaoCaoNgayFormat = s.BaoCaoNgay,
                     s.GhiChu,
                     s.UserAccount.LoaiNguoiDung
                 }).ToList();
@@ -58,7 +58,7 @@ namespace TLShoes.ViewModels
             foreach (var group in groupBaoCao)
             {
                 var groupSort = group.OrderBy(s => s.BaoCaoNgay);
-                var groupPhanXuong = group.GroupBy(s => s.DanhMuc);
+                var groupPhanXuong = group.GroupBy(s => s.PhanXuong);
                 foreach (var phanxuong in groupPhanXuong)
                 {
                     var item = new SummaryBaoCao();
@@ -67,12 +67,12 @@ namespace TLShoes.ViewModels
                     item.MaHang = group.Key.MaHang;
                     item.SoDH = group.Key.OrderNo;
                     item.SoLuong = (int)group.Key.ChiTietDonHangs.Sum(s => s.SoLuong);
-                    item.BoPhan = phanxuong.Key.Ten;
+                    item.BoPhan = phanxuong.Key;
                     item.Khoan = (int)phanxuong.Sum(s => s.SanLuongKhoan);
                     item.ThucHien = (int)phanxuong.Sum(s => s.SanLuongThucHien);
                     item.Ton = item.ThucHien - item.Khoan;
-                    item.BaoCaoTuNgay = TimeHelper.TimeStampToDateTime(groupSort.First().BaoCaoNgay);
-                    item.BaoCaoDenNgay = TimeHelper.TimeStampToDateTime(groupSort.Last().BaoCaoNgay);
+                    item.BaoCaoTuNgay = groupSort.First().BaoCaoNgay;
+                    item.BaoCaoDenNgay = groupSort.Last().BaoCaoNgay;
                     listData.Add(item);
                 }
             }

@@ -30,8 +30,8 @@ namespace TLShoes.ViewModels
                 .Select(s => new
                 {
                     s.Id,
-                    s.PhanXuongId,
-                    PhanXuong = s.PhanXuong.Ten,
+//                    s.PhanXuongId,
+//                    PhanXuong = s.PhanXuong.Ten,
                     s.MauId,
                     Mau = s.Mau.Ten,
                     s.QuyCach,
@@ -58,8 +58,8 @@ namespace TLShoes.ViewModels
                 listShowData.Add(new ShowData()
                 {
                     Id = item.Id,
-                    PhanXuongId = item.PhanXuongId,
-                    PhanXuong = item.PhanXuong.Ten,
+//                    PhanXuongId = item.PhanXuongId,
+//                    PhanXuong = item.PhanXuong.Ten,
                     MauId = item.MauId,
                     Mau = item.Mau != null ? item.Mau.Ten : "",
                     QuyCach = item.QuyCach,

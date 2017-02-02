@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="GiayTLModelStoreContainer" CdmEntityContainer="GiayTLEntities">
+    <EntitySetMapping Name="AppConfigs">
+      <EntityTypeMapping TypeName="GiayTLModel.AppConfig">
+        <MappingFragment StoreEntitySet="AppConfig">
+          <ScalarProperty Name="ConfigParam" ColumnName="ConfigParam" />
+          <ScalarProperty Name="ConfigName" ColumnName="ConfigName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="BaoCaoPhanXuongs">
       <EntityTypeMapping TypeName="GiayTLModel.BaoCaoPhanXuong">
         <MappingFragment StoreEntitySet="BaoCaoPhanXuong">
@@ -8,8 +17,59 @@
           <ScalarProperty Name="BaoCaoNgay" ColumnName="BaoCaoNgay" />
           <ScalarProperty Name="SanLuongThucHien" ColumnName="SanLuongThucHien" />
           <ScalarProperty Name="SanLuongKhoan" ColumnName="SanLuongKhoan" />
-          <ScalarProperty Name="PhanXuongId" ColumnName="PhanXuongId" />
+          <ScalarProperty Name="PhanXuong" ColumnName="PhanXuong" />
           <ScalarProperty Name="DonHangId" ColumnName="DonHangId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiLenhs">
+      <EntityTypeMapping TypeName="GiayTLModel.ChiLenh">
+        <MappingFragment StoreEntitySet="ChiLenh">
+          <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
+          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
+          <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
+          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
+          <ScalarProperty Name="DonHangId" ColumnName="DonHangId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietDanhGias">
+      <EntityTypeMapping TypeName="GiayTLModel.ChiTietDanhGia">
+        <MappingFragment StoreEntitySet="ChiTietDanhGia">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="SoLuongKem" ColumnName="SoLuongKem" />
+          <ScalarProperty Name="TieuChiId" ColumnName="TieuChiId" />
+          <ScalarProperty Name="DanhGiaId" ColumnName="DanhGiaId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietDonDatHangs">
+      <EntityTypeMapping TypeName="GiayTLModel.ChiTietDonDatHang">
+        <MappingFragment StoreEntitySet="ChiTietDonDatHang">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="SoLuongThuc" ColumnName="SoLuongThuc" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
+          <ScalarProperty Name="NhaCungCapId" ColumnName="NhaCungCapId" />
+          <ScalarProperty Name="DonDatHangId" ColumnName="DonDatHangId" />
           <ScalarProperty Name="IsActived" ColumnName="IsActived" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -33,6 +93,41 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietHuongDanDongGois">
+      <EntityTypeMapping TypeName="GiayTLModel.ChiTietHuongDanDongGoi">
+        <MappingFragment StoreEntitySet="ChiTietHuongDanDongGoi">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="HinhMauDinhKem" ColumnName="HinhMauDinhKem" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="ViTriSuDung" ColumnName="ViTriSuDung" />
+          <ScalarProperty Name="CachSuDung" ColumnName="CachSuDung" />
+          <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
+          <ScalarProperty Name="MauId" ColumnName="MauId" />
+          <ScalarProperty Name="KichThuoc" ColumnName="KichThuoc" />
+          <ScalarProperty Name="DonViTinhId" ColumnName="DonViTinhId" />
+          <ScalarProperty Name="DanhMucId" ColumnName="DanhMucId" />
+          <ScalarProperty Name="MauHuongDanDongGoiId" ColumnName="MauHuongDanDongGoiId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietMauDanhGias">
+      <EntityTypeMapping TypeName="GiayTLModel.ChiTietMauDanhGia">
+        <MappingFragment StoreEntitySet="ChiTietMauDanhGia">
+          <ScalarProperty Name="TieuChiId" ColumnName="TieuChiId" />
+          <ScalarProperty Name="MauDanhGiaId" ColumnName="MauDanhGiaId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ChiTietNguyenLieux">
       <EntityTypeMapping TypeName="GiayTLModel.ChiTietNguyenLieu">
         <MappingFragment StoreEntitySet="ChiTietNguyenLieu">
@@ -47,18 +142,78 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietNhapKhoes">
+      <EntityTypeMapping TypeName="GiayTLModel.ChiTietNhapKho">
+        <MappingFragment StoreEntitySet="ChiTietNhapKho">
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
+          <ScalarProperty Name="PhieuNhapKhoId" ColumnName="PhieuNhapKhoId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietToTrinhs">
+      <EntityTypeMapping TypeName="GiayTLModel.ChiTietToTrinh">
+        <MappingFragment StoreEntitySet="ChiTietToTrinh">
+          <ScalarProperty Name="ThucTe" ColumnName="ThucTe" />
+          <ScalarProperty Name="NhuCau" ColumnName="NhuCau" />
+          <ScalarProperty Name="DonHangId" ColumnName="DonHangId" />
+          <ScalarProperty Name="ToTrinhId" ColumnName="ToTrinhId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietXuatKhoes">
+      <EntityTypeMapping TypeName="GiayTLModel.ChiTietXuatKho">
+        <MappingFragment StoreEntitySet="ChiTietXuatKho">
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
+          <ScalarProperty Name="PhieuXuatKhoId" ColumnName="PhieuXuatKhoId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="CongNgheSanXuats">
       <EntityTypeMapping TypeName="GiayTLModel.CongNgheSanXuat">
         <MappingFragment StoreEntitySet="CongNgheSanXuat">
-          <ScalarProperty Name="HinhCongNgheDuocDuyet" ColumnName="HinhCongNgheDuocDuyet" />
           <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
+          <ScalarProperty Name="HinhCongNgheDuocDuyet" ColumnName="HinhCongNgheDuocDuyet" />
           <ScalarProperty Name="HinhBangThongSo" ColumnName="HinhBangThongSo" />
           <ScalarProperty Name="YKienThuDao" ColumnName="YKienThuDao" />
           <ScalarProperty Name="PhanLoaiThuDao" ColumnName="PhanLoaiThuDao" />
           <ScalarProperty Name="YKienThuRap" ColumnName="YKienThuRap" />
-          <ScalarProperty Name="PhanLoaiThuRapId" ColumnName="PhanLoaiThuRapId" />
+          <ScalarProperty Name="PhanLoaiThuRap" ColumnName="PhanLoaiThuRap" />
           <ScalarProperty Name="MauDoiId" ColumnName="MauDoiId" />
           <ScalarProperty Name="DonHangId" ColumnName="DonHangId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DanhGias">
+      <EntityTypeMapping TypeName="GiayTLModel.DanhGia">
+        <MappingFragment StoreEntitySet="DanhGia">
+          <ScalarProperty Name="NgayKiem" ColumnName="NgayKiem" />
+          <ScalarProperty Name="BienPhapXuLy" ColumnName="BienPhapXuLy" />
+          <ScalarProperty Name="SoLuongKiem" ColumnName="SoLuongKiem" />
+          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
+          <ScalarProperty Name="MauDanhGiaId" ColumnName="MauDanhGiaId" />
+          <ScalarProperty Name="DonDatHangId" ColumnName="DonDatHangId" />
           <ScalarProperty Name="IsActived" ColumnName="IsActived" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -81,13 +236,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DonHangs">
-      <EntityTypeMapping TypeName="GiayTLModel.DonHang">
-        <MappingFragment StoreEntitySet="DonHang">
-          <ScalarProperty Name="DeId" ColumnName="DeId" />
-          <ScalarProperty Name="DaLotTayId" ColumnName="DaLotTayId" />
-          <ScalarProperty Name="LotId" ColumnName="LotId" />
-          <ScalarProperty Name="MuId" ColumnName="MuId" />
+    <EntitySetMapping Name="DonDatHangs">
+      <EntityTypeMapping TypeName="GiayTLModel.DonDatHang">
+        <MappingFragment StoreEntitySet="DonDatHang">
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
+          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+          <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
+          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
           <ScalarProperty Name="Khac" ColumnName="Khac" />
           <ScalarProperty Name="DichVuHauMai" ColumnName="DichVuHauMai" />
           <ScalarProperty Name="DichVuGiaoHang" ColumnName="DichVuGiaoHang" />
@@ -97,7 +253,33 @@
           <ScalarProperty Name="DungMau" ColumnName="DungMau" />
           <ScalarProperty Name="DungThoiGian" ColumnName="DungThoiGian" />
           <ScalarProperty Name="DungYeuCauKyThuat" ColumnName="DungYeuCauKyThuat" />
-          <ScalarProperty Name="MaPhomId" ColumnName="MaPhomId" />
+          <ScalarProperty Name="NgayGiaoHang" ColumnName="NgayGiaoHang" />
+          <ScalarProperty Name="NgayDatHang" ColumnName="NgayDatHang" />
+          <ScalarProperty Name="NhaCungCapId" ColumnName="NhaCungCapId" />
+          <ScalarProperty Name="SoDH" ColumnName="SoDH" />
+          <ScalarProperty Name="ToTrinhId" ColumnName="ToTrinhId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonHangs">
+      <EntityTypeMapping TypeName="GiayTLModel.DonHang">
+        <MappingFragment StoreEntitySet="DonHang">
+          <ScalarProperty Name="MaGiay" ColumnName="MaGiay" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="Khac" ColumnName="Khac" />
+          <ScalarProperty Name="DichVuHauMai" ColumnName="DichVuHauMai" />
+          <ScalarProperty Name="DichVuGiaoHang" ColumnName="DichVuGiaoHang" />
+          <ScalarProperty Name="Gia" ColumnName="Gia" />
+          <ScalarProperty Name="DatTestHoa" ColumnName="DatTestHoa" />
+          <ScalarProperty Name="DatTestLy" ColumnName="DatTestLy" />
+          <ScalarProperty Name="DungMau" ColumnName="DungMau" />
+          <ScalarProperty Name="DungThoiGian" ColumnName="DungThoiGian" />
+          <ScalarProperty Name="DungYeuCauKyThuat" ColumnName="DungYeuCauKyThuat" />
           <ScalarProperty Name="GopYKhoThanhPham" ColumnName="GopYKhoThanhPham" />
           <ScalarProperty Name="GopYPhuTro" ColumnName="GopYPhuTro" />
           <ScalarProperty Name="GopYKhoVatTu" ColumnName="GopYKhoVatTu" />
@@ -115,6 +297,39 @@
           <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
           <ScalarProperty Name="KhachHangId" ColumnName="KhachHangId" />
           <ScalarProperty Name="MaHang" ColumnName="MaHang" />
+          <ScalarProperty Name="DeId" ColumnName="DeId" />
+          <ScalarProperty Name="DaLotTayId" ColumnName="DaLotTayId" />
+          <ScalarProperty Name="LotId" ColumnName="LotId" />
+          <ScalarProperty Name="MuId" ColumnName="MuId" />
+          <ScalarProperty Name="MaPhomId" ColumnName="MaPhomId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorLogs">
+      <EntityTypeMapping TypeName="GiayTLModel.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLog">
+          <ScalarProperty Name="Messagelog" ColumnName="Messagelog" />
+          <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HuongDanDongGois">
+      <EntityTypeMapping TypeName="GiayTLModel.HuongDanDongGoi">
+        <MappingFragment StoreEntitySet="HuongDanDongGoi">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="SoDoi" ColumnName="SoDoi" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="DongAssorment" ColumnName="DongAssorment" />
+          <ScalarProperty Name="CachDong" ColumnName="CachDong" />
+          <ScalarProperty Name="MauDongGoiId" ColumnName="MauDongGoiId" />
+          <ScalarProperty Name="DonHangId" ColumnName="DonHangId" />
           <ScalarProperty Name="IsActived" ColumnName="IsActived" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -152,14 +367,14 @@
     <EntitySetMapping Name="KhachHangs">
       <EntityTypeMapping TypeName="GiayTLModel.KhachHang">
         <MappingFragment StoreEntitySet="KhachHang">
-          <ScalarProperty Name="DatTestLy" ColumnName="DatTestLy" />
-          <ScalarProperty Name="GhiChuNoiBo" ColumnName="GhiChuNoiBo" />
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="GhiChuNoiBo" ColumnName="GhiChuNoiBo" />
           <ScalarProperty Name="Khac" ColumnName="Khac" />
           <ScalarProperty Name="DichVuHauMai" ColumnName="DichVuHauMai" />
           <ScalarProperty Name="DichVuGiaoHang" ColumnName="DichVuGiaoHang" />
           <ScalarProperty Name="Gia" ColumnName="Gia" />
           <ScalarProperty Name="DatTestHoa" ColumnName="DatTestHoa" />
+          <ScalarProperty Name="DatTestLy" ColumnName="DatTestLy" />
           <ScalarProperty Name="DungMau" ColumnName="DungMau" />
           <ScalarProperty Name="DungThoiGian" ColumnName="DungThoiGian" />
           <ScalarProperty Name="DungYeuCauKyThuat" ColumnName="DungYeuCauKyThuat" />
@@ -194,18 +409,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NguyenLieux">
-      <EntityTypeMapping TypeName="GiayTLModel.NguyenLieu">
-        <MappingFragment StoreEntitySet="NguyenLieu">
-          <ScalarProperty Name="QuyCach" ColumnName="QuyCach" />
-          <ScalarProperty Name="MauId" ColumnName="MauId" />
+    <EntitySetMapping Name="MauDoiHinhs">
+      <EntityTypeMapping TypeName="GiayTLModel.MauDoiHinh">
+        <MappingFragment StoreEntitySet="MauDoiHinh">
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-          <ScalarProperty Name="DacTinh" ColumnName="DacTinh" />
-          <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
-          <ScalarProperty Name="MaNguyenLieu" ColumnName="MaNguyenLieu" />
-          <ScalarProperty Name="Ten" ColumnName="Ten" />
-          <ScalarProperty Name="LoaiNguyenLieuId" ColumnName="LoaiNguyenLieuId" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="MauDoiId" ColumnName="MauDoiId" />
           <ScalarProperty Name="IsActived" ColumnName="IsActived" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -214,96 +423,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="UserAccounts">
-      <EntityTypeMapping TypeName="GiayTLModel.UserAccount">
-        <MappingFragment StoreEntitySet="UserAccount">
+    <EntitySetMapping Name="MauHuongDanDongGois">
+      <EntityTypeMapping TypeName="GiayTLModel.MauHuongDanDongGoi">
+        <MappingFragment StoreEntitySet="MauHuongDanDongGoi">
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-          <ScalarProperty Name="Dienthoai" ColumnName="Dienthoai" />
-          <ScalarProperty Name="CMND" ColumnName="CMND" />
-          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-          <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
-          <ScalarProperty Name="LoaiNguoiDung" ColumnName="LoaiNguoiDung" />
-          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
-          <ScalarProperty Name="TenNguoiDung" ColumnName="TenNguoiDung" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="NguyenLieuChiLenhs">
-      <EntityTypeMapping TypeName="GiayTLModel.NguyenLieuChiLenh">
-        <MappingFragment StoreEntitySet="NguyenLieuChiLenh">
-          <ScalarProperty Name="DinhMucThuc" ColumnName="DinhMucThuc" />
-          <ScalarProperty Name="DinhMucChuan" ColumnName="DinhMucChuan" />
-          <ScalarProperty Name="MauId" ColumnName="MauId" />
-          <ScalarProperty Name="QuyCach" ColumnName="QuyCach" />
-          <ScalarProperty Name="ChiTietId" ColumnName="ChiTietId" />
-          <ScalarProperty Name="ChiLenhId" ColumnName="ChiLenhId" />
-          <ScalarProperty Name="PhanXuongId" ColumnName="PhanXuongId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ErrorLogs">
-      <EntityTypeMapping TypeName="GiayTLModel.ErrorLog">
-        <MappingFragment StoreEntitySet="ErrorLog">
-          <ScalarProperty Name="Messagelog" ColumnName="Messagelog" />
-          <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ChiTietToTrinhs">
-      <EntityTypeMapping TypeName="GiayTLModel.ChiTietToTrinh">
-        <MappingFragment StoreEntitySet="ChiTietToTrinh">
-          <ScalarProperty Name="HaoHut" ColumnName="HaoHut" />
-          <ScalarProperty Name="DuKien" ColumnName="DuKien" />
-          <ScalarProperty Name="TonTheKho" ColumnName="TonTheKho" />
-          <ScalarProperty Name="TonToTrinh" ColumnName="TonToTrinh" />
-          <ScalarProperty Name="ThuHoi" ColumnName="ThuHoi" />
-          <ScalarProperty Name="BoSung" ColumnName="BoSung" />
-          <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
-          <ScalarProperty Name="ThucTe" ColumnName="ThucTe" />
-          <ScalarProperty Name="NhuCau" ColumnName="NhuCau" />
-          <ScalarProperty Name="DonHangId" ColumnName="DonHangId" />
-          <ScalarProperty Name="ToTrinhId" ColumnName="ToTrinhId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ChiTietNhapKhoes">
-      <EntityTypeMapping TypeName="GiayTLModel.ChiTietNhapKho">
-        <MappingFragment StoreEntitySet="ChiTietNhapKho">
-          <ScalarProperty Name="IsUpdateKho" ColumnName="IsUpdateKho" />
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-          <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
-          <ScalarProperty Name="PhieuNhapKhoId" ColumnName="PhieuNhapKhoId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ChiTietXuatKhoes">
-      <EntityTypeMapping TypeName="GiayTLModel.ChiTietXuatKho">
-        <MappingFragment StoreEntitySet="ChiTietXuatKho">
-          <ScalarProperty Name="IsUpdateKho" ColumnName="IsUpdateKho" />
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-          <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
-          <ScalarProperty Name="PhieuXuatKhoId" ColumnName="PhieuXuatKhoId" />
+          <ScalarProperty Name="ApDungDenNgay" ColumnName="ApDungDenNgay" />
+          <ScalarProperty Name="ApDungTuNgay" ColumnName="ApDungTuNgay" />
+          <ScalarProperty Name="TenMau" ColumnName="TenMau" />
+          <ScalarProperty Name="KhachHangId" ColumnName="KhachHangId" />
           <ScalarProperty Name="IsActived" ColumnName="IsActived" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -370,10 +497,10 @@
     <EntitySetMapping Name="MauThuDaos">
       <EntityTypeMapping TypeName="GiayTLModel.MauThuDao">
         <MappingFragment StoreEntitySet="MauThuDao">
-          <ScalarProperty Name="KetQuaXuongGoId" ColumnName="KetQuaXuongGoId" />
-          <ScalarProperty Name="KetQuaXuongDeId" ColumnName="KetQuaXuongDeId" />
-          <ScalarProperty Name="KetQuaXuongMayId" ColumnName="KetQuaXuongMayId" />
-          <ScalarProperty Name="KetQuaXuongChatId" ColumnName="KetQuaXuongChatId" />
+          <ScalarProperty Name="KetQuaXuongGo" ColumnName="KetQuaXuongGo" />
+          <ScalarProperty Name="KetQuaXuongDe" ColumnName="KetQuaXuongDe" />
+          <ScalarProperty Name="KetQuaXuongMay" ColumnName="KetQuaXuongMay" />
+          <ScalarProperty Name="KetQuaXuongChat" ColumnName="KetQuaXuongChat" />
           <ScalarProperty Name="GopYXuongGo" ColumnName="GopYXuongGo" />
           <ScalarProperty Name="GopYXuongDe" ColumnName="GopYXuongDe" />
           <ScalarProperty Name="GopYXuongMay" ColumnName="GopYXuongMay" />
@@ -387,51 +514,6 @@
           <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
           <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
           <ScalarProperty Name="DonHangId" ColumnName="DonHangId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ChiTietDanhGias">
-      <EntityTypeMapping TypeName="GiayTLModel.ChiTietDanhGia">
-        <MappingFragment StoreEntitySet="ChiTietDanhGia">
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-          <ScalarProperty Name="SoLuongKem" ColumnName="SoLuongKem" />
-          <ScalarProperty Name="TieuChiId" ColumnName="TieuChiId" />
-          <ScalarProperty Name="DanhGiaId" ColumnName="DanhGiaId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ChiTietMauDanhGias">
-      <EntityTypeMapping TypeName="GiayTLModel.ChiTietMauDanhGia">
-        <MappingFragment StoreEntitySet="ChiTietMauDanhGia">
-          <ScalarProperty Name="TieuChiId" ColumnName="TieuChiId" />
-          <ScalarProperty Name="MauDanhGiaId" ColumnName="MauDanhGiaId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DanhGias">
-      <EntityTypeMapping TypeName="GiayTLModel.DanhGia">
-        <MappingFragment StoreEntitySet="DanhGia">
-          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
-          <ScalarProperty Name="NgayKiem" ColumnName="NgayKiem" />
-          <ScalarProperty Name="BienPhapXuLy" ColumnName="BienPhapXuLy" />
-          <ScalarProperty Name="SoLuongKiem" ColumnName="SoLuongKiem" />
-          <ScalarProperty Name="MauDanhGiaId" ColumnName="MauDanhGiaId" />
-          <ScalarProperty Name="DonDatHangId" ColumnName="DonDatHangId" />
           <ScalarProperty Name="IsActived" ColumnName="IsActived" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -469,29 +551,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PhieuNhapKhoes">
-      <EntityTypeMapping TypeName="GiayTLModel.PhieuNhapKho">
-        <MappingFragment StoreEntitySet="PhieuNhapKho">
-          <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
-          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
-          <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
-          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
-          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-          <ScalarProperty Name="DanhGiaId" ColumnName="DanhGiaId" />
-          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
-          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
-          <ScalarProperty Name="Kho" ColumnName="Kho" />
-          <ScalarProperty Name="LyDo" ColumnName="LyDo" />
-          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-          <ScalarProperty Name="NguoiGiao" ColumnName="NguoiGiao" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="NhaCungCapVatTus">
       <EntityTypeMapping TypeName="GiayTLModel.NhaCungCapVatTu">
         <MappingFragment StoreEntitySet="NhaCungCapVatTu">
@@ -509,236 +568,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ChiTietDonDatHangs">
-      <EntityTypeMapping TypeName="GiayTLModel.ChiTietDonDatHang">
-        <MappingFragment StoreEntitySet="ChiTietDonDatHang">
-          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-          <ScalarProperty Name="SoLuongThuc" ColumnName="SoLuongThuc" />
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-          <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
-          <ScalarProperty Name="NhaCungCapId" ColumnName="NhaCungCapId" />
-          <ScalarProperty Name="DonDatHangId" ColumnName="DonDatHangId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DonDatHangs">
-      <EntityTypeMapping TypeName="GiayTLModel.DonDatHang">
-        <MappingFragment StoreEntitySet="DonDatHang">
-          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-          <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
-          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
-          <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
-          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
-          <ScalarProperty Name="ToTrinhId" ColumnName="ToTrinhId" />
-          <ScalarProperty Name="Khac" ColumnName="Khac" />
-          <ScalarProperty Name="DichVuHauMai" ColumnName="DichVuHauMai" />
-          <ScalarProperty Name="DichVuGiaoHang" ColumnName="DichVuGiaoHang" />
-          <ScalarProperty Name="Gia" ColumnName="Gia" />
-          <ScalarProperty Name="DatTestHoa" ColumnName="DatTestHoa" />
-          <ScalarProperty Name="DatTestLy" ColumnName="DatTestLy" />
-          <ScalarProperty Name="DungMau" ColumnName="DungMau" />
-          <ScalarProperty Name="DungThoiGian" ColumnName="DungThoiGian" />
-          <ScalarProperty Name="DungYeuCauKyThuat" ColumnName="DungYeuCauKyThuat" />
-          <ScalarProperty Name="SoDH" ColumnName="SoDH" />
-          <ScalarProperty Name="NgayGiaoHang" ColumnName="NgayGiaoHang" />
-          <ScalarProperty Name="NgayDatHang" ColumnName="NgayDatHang" />
-          <ScalarProperty Name="NhaCungCapId" ColumnName="NhaCungCapId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MauDanhGias">
-      <EntityTypeMapping TypeName="GiayTLModel.MauDanhGia">
-        <MappingFragment StoreEntitySet="MauDanhGia">
-          <ScalarProperty Name="TenMau" ColumnName="TenMau" />
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="GiayTLModel.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="definition" ColumnName="definition" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ChiTietHuongDanDongGois">
-      <EntityTypeMapping TypeName="GiayTLModel.ChiTietHuongDanDongGoi">
-        <MappingFragment StoreEntitySet="ChiTietHuongDanDongGoi">
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-          <ScalarProperty Name="HinhMauDinhKem" ColumnName="HinhMauDinhKem" />
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-          <ScalarProperty Name="ViTriSuDung" ColumnName="ViTriSuDung" />
-          <ScalarProperty Name="CachSuDung" ColumnName="CachSuDung" />
-          <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
-          <ScalarProperty Name="MauId" ColumnName="MauId" />
-          <ScalarProperty Name="KichThuoc" ColumnName="KichThuoc" />
-          <ScalarProperty Name="DonViTinhId" ColumnName="DonViTinhId" />
-          <ScalarProperty Name="DanhMucId" ColumnName="DanhMucId" />
-          <ScalarProperty Name="MauHuongDanDongGoiId" ColumnName="MauHuongDanDongGoiId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HuongDanDongGois">
-      <EntityTypeMapping TypeName="GiayTLModel.HuongDanDongGoi">
-        <MappingFragment StoreEntitySet="HuongDanDongGoi">
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-          <ScalarProperty Name="MauDongGoiId" ColumnName="MauDongGoiId" />
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-          <ScalarProperty Name="SoDoi" ColumnName="SoDoi" />
-          <ScalarProperty Name="DongAssorment" ColumnName="DongAssorment" />
-          <ScalarProperty Name="CachDong" ColumnName="CachDong" />
-          <ScalarProperty Name="DonHangId" ColumnName="DonHangId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MauHuongDanDongGois">
-      <EntityTypeMapping TypeName="GiayTLModel.MauHuongDanDongGoi">
-        <MappingFragment StoreEntitySet="MauHuongDanDongGoi">
-          <ScalarProperty Name="TenMau" ColumnName="TenMau" />
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-          <ScalarProperty Name="ApDungDenNgay" ColumnName="ApDungDenNgay" />
-          <ScalarProperty Name="ApDungTuNgay" ColumnName="ApDungTuNgay" />
-          <ScalarProperty Name="KhachHangId" ColumnName="KhachHangId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PhieuXuatKhoes">
-      <EntityTypeMapping TypeName="GiayTLModel.PhieuXuatKho">
-        <MappingFragment StoreEntitySet="PhieuXuatKho">
-          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-          <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
-          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
-          <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
-          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
-          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
-          <ScalarProperty Name="DonHangId" ColumnName="DonHangId" />
-          <ScalarProperty Name="LoaiXuat" ColumnName="LoaiXuat" />
-          <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
-          <ScalarProperty Name="Kho" ColumnName="Kho" />
-          <ScalarProperty Name="LyDo" ColumnName="LyDo" />
-          <ScalarProperty Name="BoPhan" ColumnName="BoPhan" />
-          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-          <ScalarProperty Name="NguoiNhan" ColumnName="NguoiNhan" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="NhatKyThayDois">
       <EntityTypeMapping TypeName="GiayTLModel.NhatKyThayDoi">
         <MappingFragment StoreEntitySet="NhatKyThayDoi">
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="ItemId" ColumnName="ItemId" />
           <ScalarProperty Name="ModelName" ColumnName="ModelName" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MauDoiHinhs">
-      <EntityTypeMapping TypeName="GiayTLModel.MauDoiHinh">
-        <MappingFragment StoreEntitySet="MauDoiHinh">
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
-          <ScalarProperty Name="MauDoiId" ColumnName="MauDoiId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ChiLenhs">
-      <EntityTypeMapping TypeName="GiayTLModel.ChiLenh">
-        <MappingFragment StoreEntitySet="ChiLenh">
-          <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
-          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
-          <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
-          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
-          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
-          <ScalarProperty Name="DonHangId" ColumnName="DonHangId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TongHopToTrinhs">
-      <EntityTypeMapping TypeName="GiayTLModel.TongHopToTrinh">
-        <MappingFragment StoreEntitySet="TongHopToTrinh">
-          <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
-          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
-          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
-          <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
-          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ToTrinhs">
-      <EntityTypeMapping TypeName="GiayTLModel.ToTrinh">
-        <MappingFragment StoreEntitySet="ToTrinh">
-          <ScalarProperty Name="TongHopToTrinhId" ColumnName="TongHopToTrinhId" />
-          <ScalarProperty Name="DonDatHangList" ColumnName="DonDatHangList" />
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-          <ScalarProperty Name="HaoHut" ColumnName="HaoHut" />
-          <ScalarProperty Name="DuKien" ColumnName="DuKien" />
-          <ScalarProperty Name="TonThucTe" ColumnName="TonThucTe" />
-          <ScalarProperty Name="TonTheKho" ColumnName="TonTheKho" />
-          <ScalarProperty Name="TonToTrinh" ColumnName="TonToTrinh" />
-          <ScalarProperty Name="ThuHoi" ColumnName="ThuHoi" />
-          <ScalarProperty Name="BoSung" ColumnName="BoSung" />
-          <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
           <ScalarProperty Name="IsActived" ColumnName="IsActived" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -775,11 +610,157 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="AppConfigs">
-      <EntityTypeMapping TypeName="GiayTLModel.AppConfig">
-        <MappingFragment StoreEntitySet="AppConfig">
-          <ScalarProperty Name="ConfigParam" ColumnName="ConfigParam" />
-          <ScalarProperty Name="ConfigName" ColumnName="ConfigName" />
+    <EntitySetMapping Name="PhieuNhapKhoes">
+      <EntityTypeMapping TypeName="GiayTLModel.PhieuNhapKho">
+        <MappingFragment StoreEntitySet="PhieuNhapKho">
+          <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
+          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+          <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
+          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
+          <ScalarProperty Name="DanhGiaId" ColumnName="DanhGiaId" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
+          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+          <ScalarProperty Name="Kho" ColumnName="Kho" />
+          <ScalarProperty Name="LyDo" ColumnName="LyDo" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="NguoiGiao" ColumnName="NguoiGiao" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhieuXuatKhoes">
+      <EntityTypeMapping TypeName="GiayTLModel.PhieuXuatKho">
+        <MappingFragment StoreEntitySet="PhieuXuatKho">
+          <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
+          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+          <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
+          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
+          <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
+          <ScalarProperty Name="LoaiXuat" ColumnName="LoaiXuat" />
+          <ScalarProperty Name="Kho" ColumnName="Kho" />
+          <ScalarProperty Name="LyDo" ColumnName="LyDo" />
+          <ScalarProperty Name="BoPhan" ColumnName="BoPhan" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="NguoiNhan" ColumnName="NguoiNhan" />
+          <ScalarProperty Name="DonHangId" ColumnName="DonHangId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TongHopToTrinhs">
+      <EntityTypeMapping TypeName="GiayTLModel.TongHopToTrinh">
+        <MappingFragment StoreEntitySet="TongHopToTrinh">
+          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
+          <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
+          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+          <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ToTrinhs">
+      <EntityTypeMapping TypeName="GiayTLModel.ToTrinh">
+        <MappingFragment StoreEntitySet="ToTrinh">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="HaoHut" ColumnName="HaoHut" />
+          <ScalarProperty Name="DuKien" ColumnName="DuKien" />
+          <ScalarProperty Name="TonThucTe" ColumnName="TonThucTe" />
+          <ScalarProperty Name="TonTheKho" ColumnName="TonTheKho" />
+          <ScalarProperty Name="TonToTrinh" ColumnName="TonToTrinh" />
+          <ScalarProperty Name="ThuHoi" ColumnName="ThuHoi" />
+          <ScalarProperty Name="BoSung" ColumnName="BoSung" />
+          <ScalarProperty Name="DonDatHangList" ColumnName="DonDatHangList" />
+          <ScalarProperty Name="NguyenLieuId" ColumnName="NguyenLieuId" />
+          <ScalarProperty Name="TongHopToTrinhId" ColumnName="TongHopToTrinhId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccounts">
+      <EntityTypeMapping TypeName="GiayTLModel.UserAccount">
+        <MappingFragment StoreEntitySet="UserAccount">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="Dienthoai" ColumnName="Dienthoai" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
+          <ScalarProperty Name="LoaiNguoiDung" ColumnName="LoaiNguoiDung" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="TenNguoiDung" ColumnName="TenNguoiDung" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NguyenLieuChiLenhs">
+      <EntityTypeMapping TypeName="GiayTLModel.NguyenLieuChiLenh">
+        <MappingFragment StoreEntitySet="NguyenLieuChiLenh">
+          <ScalarProperty Name="PhanXuong" ColumnName="PhanXuong" />
+          <ScalarProperty Name="DinhMucThuc" ColumnName="DinhMucThuc" />
+          <ScalarProperty Name="DinhMucChuan" ColumnName="DinhMucChuan" />
+          <ScalarProperty Name="MauId" ColumnName="MauId" />
+          <ScalarProperty Name="QuyCach" ColumnName="QuyCach" />
+          <ScalarProperty Name="ChiTietId" ColumnName="ChiTietId" />
+          <ScalarProperty Name="ChiLenhId" ColumnName="ChiLenhId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MauDanhGias">
+      <EntityTypeMapping TypeName="GiayTLModel.MauDanhGia">
+        <MappingFragment StoreEntitySet="MauDanhGia">
+          <ScalarProperty Name="TenMau" ColumnName="TenMau" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NguyenLieux">
+      <EntityTypeMapping TypeName="GiayTLModel.NguyenLieu">
+        <MappingFragment StoreEntitySet="NguyenLieu">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="QuyCach" ColumnName="QuyCach" />
+          <ScalarProperty Name="MauId" ColumnName="MauId" />
+          <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
+          <ScalarProperty Name="MaNguyenLieu" ColumnName="MaNguyenLieu" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="LoaiNguyenLieuId" ColumnName="LoaiNguyenLieuId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

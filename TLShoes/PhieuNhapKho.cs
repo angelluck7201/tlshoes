@@ -22,26 +22,26 @@ namespace TLShoes
     
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
-        public Nullable<long> CreatedDate { get; set; }
-        public Nullable<long> ModifiedDate { get; set; }
-        public Nullable<bool> IsActived { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public bool IsActived { get; set; }
         public string NguoiGiao { get; set; }
         public string DiaChi { get; set; }
         public string LyDo { get; set; }
         public string Kho { get; set; }
-        public Nullable<long> NgayNhap { get; set; }
+        public System.DateTime NgayNhap { get; set; }
         public string SoPhieu { get; set; }
-        public Nullable<long> DanhGiaId { get; set; }
         public string TrangThai { get; set; }
-        public Nullable<long> NgayDuyet { get; set; }
+        public Nullable<long> DanhGiaId { get; set; }
+        public System.DateTime NgayDuyet { get; set; }
         public Nullable<long> NguoiDuyetId { get; set; }
-        public Nullable<long> NgayLap { get; set; }
+        public System.DateTime NgayLap { get; set; }
         public Nullable<long> NguoiLapId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietNhapKho> ChiTietNhapKhoes { get; set; }
-        public virtual UserAccount UserAccount { get; set; }
         public virtual DanhGia DanhGia { get; set; }
+        public virtual UserAccount UserAccount { get; set; }
         public virtual UserAccount NguoiDuyet { get; set; }
         public virtual UserAccount NguoiLap { get; set; }
     }

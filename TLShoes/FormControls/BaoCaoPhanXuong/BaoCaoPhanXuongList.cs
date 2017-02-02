@@ -12,7 +12,6 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
         public ucBaoCaoPhanXuongList()
         {
             InitializeComponent();
-            Init();
             GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
             GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.PKH.ToString(), Color.Honeydew, Color.Green);
         }

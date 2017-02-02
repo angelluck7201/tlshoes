@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using System.Configuration;
+using System.Drawing.Drawing2D;
+using TLShoes.FormControls;
 
 namespace TLShoes.Common
 {
@@ -69,20 +71,17 @@ namespace TLShoes.Common
         public static void ShowImagePopup(Image image)
         {
             if (image == null) return;
-            var imageForm = new DefaultForm();
-            var pictureEdit = new PictureEdit();
 
             var adjustImage = AdjustSize(image.Width, image.Height);
-            pictureEdit.Image = image;
-            pictureEdit.Properties.SizeMode = PictureSizeMode.Squeeze;
-            pictureEdit.Dock = DockStyle.Fill;
 
-            imageForm.Controls.Add(pictureEdit);
+            var imageForm = new ImageForm(image);
             imageForm.Width = adjustImage.Key;
             imageForm.Height = adjustImage.Value;
 
             imageForm.Show();
         }
+
+
 
         public static KeyValuePair<int, int> AdjustSize(int width, int height)
         {
@@ -99,7 +98,7 @@ namespace TLShoes.Common
         {
             if (image == null) return String.Empty;
             var id = name;
-            if (id == null)
+            if (id == null || string.IsNullOrEmpty(id.ToString()))
             {
                 id = Guid.NewGuid().ToString();
             }
@@ -179,6 +178,15 @@ namespace TLShoes.Common
                 image = GetDefaultImage();
             }
             return image;
+        }
+
+        public static void DeleteImage(string fileName)
+        {
+            var filePath = Path.Combine(ImagePath, fileName);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
         }
 
         public static Image GetDefaultImage()

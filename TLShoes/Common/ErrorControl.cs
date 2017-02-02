@@ -5,13 +5,34 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraExport.Xls;
 using TLShoes.ViewModels;
 
 namespace TLShoes.Common
 {
     public class ErrorControl
     {
-
+        public static void DEVException(object sender, ThreadExceptionEventArgs t)
+        {
+            if (t.Exception is System.Data.Entity.Validation.DbEntityValidationException)
+            {
+                var dbEx = t.Exception as System.Data.Entity.Validation.DbEntityValidationException;
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting
+                        // the current instance as InnerException
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
+            }
+        }
         public static void UIThreadException(object sender, ThreadExceptionEventArgs t)
         {
             DialogResult result = DialogResult.Cancel;
@@ -49,7 +70,7 @@ namespace TLShoes.Common
         private static void WriteErrorLog(Exception e)
         {
             var errorLog = new ErrorLog();
-            errorLog.CreatedDate = TimeHelper.TimestampToString(TimeHelper.CurrentTimeStamp());
+            errorLog.CreatedDate = TimeHelper.Current();
             errorLog.Messagelog = e.Message + "\n\nStack Trace:\n" + e.StackTrace;
             errorLog.AppVersion = VersionControl.CURRENT_VERSION.ToString();
             BaseModel.DbContext.ErrorLogs.Add(errorLog);

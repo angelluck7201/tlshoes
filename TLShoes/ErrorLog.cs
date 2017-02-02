@@ -15,7 +15,7 @@ namespace TLShoes
     public partial class ErrorLog
     {
         public long Id { get; set; }
-        public string CreatedDate { get; set; }
+        public System.DateTime CreatedDate { get; set; }
         public string AppVersion { get; set; }
         public string Messagelog { get; set; }
     }

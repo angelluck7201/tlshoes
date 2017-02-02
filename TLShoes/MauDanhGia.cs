@@ -23,9 +23,9 @@ namespace TLShoes
     
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
-        public Nullable<long> CreatedDate { get; set; }
-        public Nullable<long> ModifiedDate { get; set; }
-        public Nullable<bool> IsActived { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public bool IsActived { get; set; }
         public string GhiChu { get; set; }
         public string TenMau { get; set; }
     

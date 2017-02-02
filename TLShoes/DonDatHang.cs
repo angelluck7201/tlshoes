@@ -23,26 +23,26 @@ namespace TLShoes
     
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
-        public Nullable<long> CreatedDate { get; set; }
-        public Nullable<long> ModifiedDate { get; set; }
-        public Nullable<bool> IsActived { get; set; }
-        public Nullable<long> NhaCungCapId { get; set; }
-        public Nullable<long> NgayDatHang { get; set; }
-        public Nullable<long> NgayGiaoHang { get; set; }
-        public string SoDH { get; set; }
-        public Nullable<int> DungYeuCauKyThuat { get; set; }
-        public Nullable<int> DungThoiGian { get; set; }
-        public Nullable<int> DungMau { get; set; }
-        public Nullable<int> DatTestLy { get; set; }
-        public Nullable<int> DatTestHoa { get; set; }
-        public Nullable<int> Gia { get; set; }
-        public Nullable<int> DichVuGiaoHang { get; set; }
-        public Nullable<int> DichVuHauMai { get; set; }
-        public Nullable<int> Khac { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public bool IsActived { get; set; }
         public Nullable<long> ToTrinhId { get; set; }
-        public Nullable<long> NgayDuyet { get; set; }
+        public string SoDH { get; set; }
+        public Nullable<long> NhaCungCapId { get; set; }
+        public System.DateTime NgayDatHang { get; set; }
+        public System.DateTime NgayGiaoHang { get; set; }
+        public int DungYeuCauKyThuat { get; set; }
+        public int DungThoiGian { get; set; }
+        public int DungMau { get; set; }
+        public int DatTestLy { get; set; }
+        public int DatTestHoa { get; set; }
+        public int Gia { get; set; }
+        public int DichVuGiaoHang { get; set; }
+        public int DichVuHauMai { get; set; }
+        public int Khac { get; set; }
+        public System.DateTime NgayDuyet { get; set; }
         public Nullable<long> NguoiDuyetId { get; set; }
-        public Nullable<long> NgayLap { get; set; }
+        public System.DateTime NgayLap { get; set; }
         public Nullable<long> NguoiLapId { get; set; }
         public string TrangThai { get; set; }
     
@@ -51,9 +51,9 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhGia> DanhGias { get; set; }
         public virtual UserAccount UserAccount { get; set; }
+        public virtual UserAccount UserAccount1 { get; set; }
+        public virtual UserAccount UserAccount2 { get; set; }
         public virtual NhaCungCap NhaCungCap { get; set; }
-        public virtual UserAccount NguoiDuyet { get; set; }
-        public virtual UserAccount NguoiLap { get; set; }
-        public virtual ToTrinh ToTrinh { get; set; }
+        public virtual NhaCungCap NhaCungCap1 { get; set; }
     }
 }

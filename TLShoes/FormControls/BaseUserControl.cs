@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraEditors.Repository;
 using TLShoes.Common;
 using TLShoes.ViewModels;
 
@@ -105,7 +107,7 @@ namespace TLShoes.FormControls
                         var defaultData = CRUD.ReflectionGet(data, control.Name);
                         if (defaultData != null)
                         {
-                            CRUD.SetControlValue(control, TimeHelper.TimestampToString((long)defaultData));
+                            CRUD.SetControlValue(control, defaultData);
                         }
                     }
                     else
@@ -143,6 +145,7 @@ namespace TLShoes.FormControls
             if (SaveData())
             {
                 var parentForm = this.ParentForm;
+                ObserverControl.PulishAction(Define.ActionType.SAVE);
                 if (parentForm != null) parentForm.Close();
             }
         }
@@ -172,6 +175,38 @@ namespace TLShoes.FormControls
             customControl.Dock = DockStyle.Fill;
 
             defaultForm.CustomShow(ParentForm);
-        }        
+        }
+
+        public void SetComboboxDataSource(ComboBox comboBox, object dataSource, string display, string key = "Id")
+        {
+            comboBox.DisplayMember = display;
+            comboBox.ValueMember = key;
+            comboBox.DataSource = new BindingSource(dataSource, null);
+        }
+
+        public void SetComboboxDataSource(ComboBox comboBox, object dictDataSource)
+        {
+            comboBox.DisplayMember = "Value";
+            comboBox.ValueMember = "Key";
+            var convertedDict = dictDataSource as Dictionary<string, string>;
+            comboBox.DataSource = new BindingSource(convertedDict, null);
+        }
+
+        public void SetRepositoryItem(RepositoryItemLookUpEdit item, object dataSource, string display, string value = "Id")
+        {
+            item.NullText = "";
+            item.Properties.DataSource = dataSource;
+            item.PopulateColumns();
+            item.ShowHeader = false;
+            foreach (LookUpColumnInfo column in item.Columns)
+            {
+                column.Visible = false;
+            }
+            item.Columns[display].Visible = true;
+            item.Properties.DisplayMember = display;
+            item.Properties.ValueMember = value;
+            item.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+
+        }
     }
 }

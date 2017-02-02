@@ -35,7 +35,7 @@ namespace TLShoes.ViewModels
                 s.MauDanhGia.TenMau,
                 TiLeKiem = Math.Round((double)(s.SoLuongKiem / s.DonDatHang.ChiTietDonDatHangs.Sum(a => a.SoLuong)), 2) * 100,
                 SoLuongKem = s.ChiTietDanhGias.Sum(a => a.SoLuongKem),
-                NgayKiem = TimeHelper.TimeStampToDateTime(s.NgayKiem, "d"),
+                s.NgayKiem,
                 s.UserAccount.LoaiNguoiDung
             }).ToList();
         }

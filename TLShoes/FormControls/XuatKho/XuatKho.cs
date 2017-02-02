@@ -51,7 +51,7 @@ namespace TLShoes.FormControls.XuatKho
                 DonHangChange((long)data.DonHangId);
                 _currentData = data;
                 btnExport.Visible = true;
-                gridNhatKy.DataSource =data.ChiTietXuatKhoes.SelectMany(s => s.NhatKyXuatKhoes).ToList();
+                gridNhatKy.DataSource = data.ChiTietXuatKhoes.SelectMany(s => s.NhatKyXuatKhoes).ToList();
 
             }
             gridNguyenLieu.DataSource = ChiTietXuatKhoList;
@@ -167,18 +167,11 @@ namespace TLShoes.FormControls.XuatKho
             {
                 SF.Get<PhieuXuatKhoViewModel>().Save(saveData);
 
-                // Save chi teit xuat kho
+                // Save chi tiet xuat kho
                 var currentItem = new List<long>();
                 foreach (var chitiet in ChiTietXuatKhoList)
                 {
-                    if (chitiet.IsUpdateKho == null || chitiet.IsUpdateKho == false)
-                    {
-                        var nguyenLieu = chitiet.NguyenLieu;
-                        nguyenLieu.SoLuong -= chitiet.SoLuong;
-                        SF.Get<NguyenLieuViewModel>().Save(nguyenLieu);
-                    }
                     chitiet.PhieuXuatKhoId = saveData.Id;
-                    chitiet.IsUpdateKho = true;
                     CRUD.DecorateSaveData(chitiet);
                     SF.Get<ChiTietXuatKhoViewModel>().Save(chitiet);
                     currentItem.Add(chitiet.Id);
@@ -196,7 +189,6 @@ namespace TLShoes.FormControls.XuatKho
 
                 transaction.Complete();
             }
-
 
             return true;
         }
@@ -250,7 +242,7 @@ namespace TLShoes.FormControls.XuatKho
                         {
                             workSheet.Cells[3, "F"] = chiLenhInfo.SoPhieu;
                         }
-                        var currentDate = TimeHelper.TimeStampToDateTime(_currentData.NgayXuat);
+                        var currentDate = _currentData.NgayXuat;
                         workSheet.Cells[3, "H"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
                         var startRow = 6;
                         foreach (var chiTietXuatKhoe in _currentData.ChiTietXuatKhoes)
@@ -273,7 +265,7 @@ namespace TLShoes.FormControls.XuatKho
                                 if (nguyenLieu.Mau != null) workSheet.Cells[startRow, "E"] = nguyenLieu.Mau.Ten;
                                 workSheet.Cells[startRow, "F"] = nguyenLieu.QuyCach;
                                 workSheet.Cells[startRow, "G"] = chiTietXuatKhoe.SoLuong;
-                                if (nguyenLieu.DanhMuc != null) workSheet.Cells[startRow, "H"] = nguyenLieu.DanhMuc.Ten;
+                                if (nguyenLieu.DVT != null) workSheet.Cells[startRow, "H"] = nguyenLieu.DVT.Ten;
                                 workSheet.Cells[startRow, "I"] = nguyenLieu.GhiChu;
                             }
                             startRow++;
@@ -313,7 +305,7 @@ namespace TLShoes.FormControls.XuatKho
                 using (var transaction = new TransactionScope())
                 {
                     var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentData.TrangThai);
-                    var ngayDuyet = TimeHelper.CurrentTimeStamp();
+                    var ngayDuyet = TimeHelper.Current();
                     // Lock item
                     if (trangThai <= Define.TrangThai.HUY)
                     {
@@ -329,6 +321,7 @@ namespace TLShoes.FormControls.XuatKho
                         _currentData.TrangThai = Define.TrangThai.DUYET_PVT.ToString();
                         _currentData.NgayDuyet = ngayDuyet;
                         _currentData.NguoiDuyetId = Authorization.LoginUser.Id;
+                        SF.Get<NguyenLieuViewModel>().UpdateNguyenLieuXuatKho(_currentData);
                     }
 
                     SF.Get<PhieuXuatKhoViewModel>().Save(_currentData);
@@ -340,11 +333,17 @@ namespace TLShoes.FormControls.XuatKho
 
         public override void btnCancel_Click(object sender, EventArgs e)
         {
-            if (_currentData != null)
+            if (_currentData != null && _currentData.TrangThai == Define.TrangThai.DUYET.ToString())
             {
-                _currentData.TrangThai = Define.TrangThai.HUY.ToString();
-                _currentData.NgayDuyet = TimeHelper.CurrentTimeStamp();
-                _currentData.NguoiDuyetId = Authorization.LoginUser.Id;
+                using (var transaction = new TransactionScope())
+                {
+                    _currentData.TrangThai = Define.TrangThai.HUY.ToString();
+                    _currentData.NgayDuyet = TimeHelper.Current();
+                    _currentData.NguoiDuyetId = Authorization.LoginUser.Id;
+                    SF.Get<PhieuXuatKhoViewModel>().Save(_currentData);
+                    SF.Get<NguyenLieuViewModel>().UpdateNguyenLieuXuatKho(_currentData, true);
+                    transaction.Complete();
+                }
                 InitAuthorize();
             }
         }

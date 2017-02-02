@@ -142,7 +142,7 @@ namespace TLShoes.FormControls.ChiLenh
                 {
                     var nguyenlieuChiLenh = new NguyenLieuChiLenh();
                     nguyenlieuChiLenh.Id = nguyenlieu.Id;
-                    nguyenlieuChiLenh.PhanXuongId = nguyenlieu.PhanXuongId;
+                    nguyenlieuChiLenh.PhanXuong = nguyenlieu.PhanXuong;
                     nguyenlieuChiLenh.ChiLenhId = saveData.Id;
                     nguyenlieuChiLenh.ChiTietId = nguyenlieu.ChiTietId;
                     nguyenlieuChiLenh.QuyCach = nguyenlieu.QuyCach;
@@ -219,7 +219,7 @@ namespace TLShoes.FormControls.ChiLenh
             NguyenLieuChiLenh_DinhMucThuc.Text = data.DinhMucThuc.ToString();
             if (data.MauId != null) NguyenLieuChiLenh_MauId.SelectedValue = data.MauId;
             NguyenLieuChiLenh_QuyCach.Text = data.QuyCach;
-            NguyenLieuChiLenh_PhanXuongId.SelectedValue = data.PhanXuongId;
+            NguyenLieuChiLenh_PhanXuongId.SelectedValue = data.PhanXuong;
             if (data.ChiTietNguyenLieuList != null) ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(data.ChiTietNguyenLieuList.ToList());
 
             gridNguyenLieu.DataSource = ChiTietNguyenLieuList;
@@ -238,7 +238,7 @@ namespace TLShoes.FormControls.ChiLenh
             }
 
             chitiet.ChiTiet = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.ChiTietId).Ten;
-            chitiet.PhanXuong = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.PhanXuongId).Ten;
+            chitiet.PhanXuong = saveData.PhanXuong;
             chitiet.Mau = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.MauId).Ten;
             chitiet.NguyenLieu = tenNguyenLieu;
             chitiet.QuyCach = saveData.QuyCach;
@@ -246,7 +246,7 @@ namespace TLShoes.FormControls.ChiLenh
             chitiet.DinhMucThuc = (float)saveData.DinhMucThuc;
             chitiet.ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(ChiTietNguyenLieuList.ToList());
             chitiet.ChiTietId = saveData.ChiTietId;
-            chitiet.PhanXuongId = saveData.PhanXuongId;
+            chitiet.PhanXuong = saveData.PhanXuong;
             chitiet.MauId = saveData.MauId;
 
             gridControl.RefreshDataSource();
@@ -299,8 +299,8 @@ namespace TLShoes.FormControls.ChiLenh
                         workSheet.Cells[5, "D"] = string.Format("MH: {0}", donHang.MaHang);
                         workSheet.Cells[5, "F"] = string.Format("PHOM: {0}", donHang.Phom.MaNguyenLieu);
                         workSheet.Cells[5, "K"] = string.Format("KH: {0}", donHang.KhachHang.TenCongTy);
-                        workSheet.Cells[5, "M"] = string.Format("XH: {0}", TimeHelper.TimestampToString(donHang.NgayXuat, "d"));
-                        workSheet.Cells[5, "P"] = string.Format("SP: {0}", TimeHelper.TimestampToString(_chiLenh.NgayDuyet, "d"));
+                        workSheet.Cells[5, "M"] = string.Format("XH: {0}", donHang.NgayXuat);
+                        workSheet.Cells[5, "P"] = string.Format("SP: {0}", _chiLenh.NgayDuyet);
 
                         workSheet.Shapes.AddPicture(donHang.HinhAnh, MsoTriState.msoFalse, MsoTriState.msoCTrue, 447, 0, 150, 67);
 
@@ -323,10 +323,10 @@ namespace TLShoes.FormControls.ChiLenh
                             workSheet.Cells[firstRowNguyenLieu, "J"] = lieuChiLenh.QuyCach;
                             if (lieuChiLenh.Mau != null) workSheet.Cells[firstRowNguyenLieu, "K"] = lieuChiLenh.Mau.Ten;
 
-                            var nguyenLieuDaiDien = chitTietNguyenLieu.FirstOrDefault(s => s.NguyenLieu != null && s.NguyenLieu.DanhMuc != null);
+                            var nguyenLieuDaiDien = chitTietNguyenLieu.FirstOrDefault(s => s.NguyenLieu != null && s.NguyenLieu.DVT != null);
                             if (nguyenLieuDaiDien != null)
                             {
-                                workSheet.Cells[firstRowNguyenLieu, "L"] = nguyenLieuDaiDien.NguyenLieu.DanhMuc.Ten;
+                                workSheet.Cells[firstRowNguyenLieu, "L"] = nguyenLieuDaiDien.NguyenLieu.DVT.Ten;
                             }
                             workSheet.Cells[firstRowNguyenLieu, "M"] = lieuChiLenh.DinhMucChuan;
                             workSheet.Cells[firstRowNguyenLieu, "P"] = lieuChiLenh.DinhMucThuc;
@@ -363,7 +363,7 @@ namespace TLShoes.FormControls.ChiLenh
                 using (var transaction = new TransactionScope())
                 {
                     var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_chiLenh.TrangThai);
-                    var ngayDuyet = TimeHelper.CurrentTimeStamp();
+                    var ngayDuyet = TimeHelper.Current();
                     // Lock item
                     if (trangThai <= Define.TrangThai.HUY)
                     {
@@ -396,7 +396,7 @@ namespace TLShoes.FormControls.ChiLenh
                 {
                     SF.Get<NhatKyThayDoiViewModel>().GetDataSource(gridNhatKy, Define.ModelType.CHILENH, _chiLenh.Id);
                     _chiLenh.TrangThai = Define.TrangThai.HUY.ToString();
-                    _chiLenh.NgayDuyet = TimeHelper.CurrentTimeStamp();
+                    _chiLenh.NgayDuyet = TimeHelper.Current();
                     _chiLenh.NguoiDuyetId = Authorization.LoginUser.Id;
                     InitAuthorize();
                 }), "Nhật ký thay đổi");

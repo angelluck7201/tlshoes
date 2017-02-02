@@ -160,10 +160,10 @@ namespace TLShoes.FormControls.MauThuDao
                     MauThuDao_KetQuaXuongDeId.Enabled = false;
                     MauThuDao_KetQuaXuongGoId.Enabled = false;
 
-                    if (daoDaThu.KetQuaXuongChatId != null) MauThuDao_KetQuaXuongChatId.SelectedValue = daoDaThu.KetQuaXuongChatId;
-                    if (daoDaThu.KetQuaXuongMayId != null) MauThuDao_KetQuaXuongMayId.SelectedValue = daoDaThu.KetQuaXuongMayId;
-                    if (daoDaThu.KetQuaXuongDeId != null) MauThuDao_KetQuaXuongDeId.SelectedValue = daoDaThu.KetQuaXuongDeId;
-                    if (daoDaThu.KetQuaXuongGoId != null) MauThuDao_KetQuaXuongGoId.SelectedValue = daoDaThu.KetQuaXuongGoId;
+                    if (daoDaThu.KetQuaXuongChat != null) MauThuDao_KetQuaXuongChatId.SelectedValue = daoDaThu.KetQuaXuongChat;
+                    if (daoDaThu.KetQuaXuongMay != null) MauThuDao_KetQuaXuongMayId.SelectedValue = daoDaThu.KetQuaXuongMay;
+                    if (daoDaThu.KetQuaXuongDe != null) MauThuDao_KetQuaXuongDeId.SelectedValue = daoDaThu.KetQuaXuongDe;
+                    if (daoDaThu.KetQuaXuongGo != null) MauThuDao_KetQuaXuongGoId.SelectedValue = daoDaThu.KetQuaXuongGo;
 
 
                     lblThuDao.Visible = true;
@@ -213,16 +213,16 @@ namespace TLShoes.FormControls.MauThuDao
                             startCol++;
                         }
 
-                        if (CurrentMauThuDao.KetQuaXuongChat != null) workSheet.Cells[9, "B"] = CurrentMauThuDao.KetQuaXuongChat.Ten;
+                        if (CurrentMauThuDao.KetQuaXuongChat != null) workSheet.Cells[9, "B"] = CurrentMauThuDao.KetQuaXuongChat;
                         workSheet.Cells[9, "I"] = CurrentMauThuDao.GopYXuongChat;
 
-                        if (CurrentMauThuDao.KetQuaXuongMay != null) workSheet.Cells[10, "B"] = CurrentMauThuDao.KetQuaXuongMay.Ten;
+                        if (CurrentMauThuDao.KetQuaXuongMay != null) workSheet.Cells[10, "B"] = CurrentMauThuDao.KetQuaXuongMay;
                         workSheet.Cells[10, "I"] = CurrentMauThuDao.GopYXuongMay;
 
-                        if (CurrentMauThuDao.KetQuaXuongDe != null) workSheet.Cells[11, "B"] = CurrentMauThuDao.KetQuaXuongDe.Ten;
+                        if (CurrentMauThuDao.KetQuaXuongDe != null) workSheet.Cells[11, "B"] = CurrentMauThuDao.KetQuaXuongDe;
                         workSheet.Cells[11, "I"] = CurrentMauThuDao.GopYXuongDe;
 
-                        if (CurrentMauThuDao.KetQuaXuongGo != null) workSheet.Cells[12, "B"] = CurrentMauThuDao.KetQuaXuongGo.Ten;
+                        if (CurrentMauThuDao.KetQuaXuongGo != null) workSheet.Cells[12, "B"] = CurrentMauThuDao.KetQuaXuongGo;
                         workSheet.Cells[12, "I"] = CurrentMauThuDao.GopYXuongGo;
 
                         var currentDate = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());

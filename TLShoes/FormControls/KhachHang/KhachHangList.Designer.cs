@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.khachHangInstantFeedbackSource = new DevExpress.Data.Linq.EntityInstantFeedbackSource();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -40,6 +41,15 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemRatingControl1 = new DevExpress.XtraEditors.Repository.RepositoryItemRatingControl();
             this.colLoaiNguoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDungYeuCauKyThuat = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDungThoiGian = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDungMau = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDatTestLy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDatTestHoa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDichVuGiaoHang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDichVuHauMai = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKhac = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRatingControl1)).BeginInit();
@@ -47,6 +57,7 @@
             // 
             // gridControl
             // 
+            this.gridControl.DataSource = this.khachHangInstantFeedbackSource;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
@@ -57,6 +68,12 @@
             this.gridControl.TabIndex = 1;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
+            // 
+            // khachHangInstantFeedbackSource
+            // 
+            this.khachHangInstantFeedbackSource.DefaultSorting = "CreatedDate DESC";
+            this.khachHangInstantFeedbackSource.DesignTimeElementType = typeof(TLShoes.KhachHang);
+            this.khachHangInstantFeedbackSource.KeyExpression = "Id";
             // 
             // gridView
             // 
@@ -69,7 +86,16 @@
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
-            this.colLoaiNguoiDung});
+            this.colLoaiNguoiDung,
+            this.colDungYeuCauKyThuat,
+            this.colDungThoiGian,
+            this.colDungMau,
+            this.colDatTestLy,
+            this.colDatTestHoa,
+            this.colGia,
+            this.colDichVuGiaoHang,
+            this.colDichVuHauMai,
+            this.colKhac});
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
@@ -154,6 +180,9 @@
             this.gridColumn6.ColumnEdit = this.repositoryItemRatingControl1;
             this.gridColumn6.FieldName = "DanhGia";
             this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.UnboundExpression = "([DungYeuCauKyThuat] + [DungThoiGian] + [DungMau] + [DatTestLy] + [DatTestHoa] + " +
+    "[Gia] + [DichVuGiaoHang] + [DichVuHauMai] + [Khac]) / 9.0f";
+            this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 6;
             // 
@@ -167,8 +196,61 @@
             // colLoaiNguoiDung
             // 
             this.colLoaiNguoiDung.Caption = "gridColumn8";
-            this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
+            this.colLoaiNguoiDung.FieldName = "UserAccount.LoaiNguoiDung";
             this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
+            // 
+            // colDungYeuCauKyThuat
+            // 
+            this.colDungYeuCauKyThuat.FieldName = "DungYeuCauKyThuat";
+            this.colDungYeuCauKyThuat.Name = "colDungYeuCauKyThuat";
+            // 
+            // colDungThoiGian
+            // 
+            this.colDungThoiGian.Caption = "gridColumn9";
+            this.colDungThoiGian.FieldName = "DungThoiGian";
+            this.colDungThoiGian.Name = "colDungThoiGian";
+            // 
+            // colDungMau
+            // 
+            this.colDungMau.Caption = "gridColumn10";
+            this.colDungMau.FieldName = "DungMau";
+            this.colDungMau.Name = "colDungMau";
+            // 
+            // colDatTestLy
+            // 
+            this.colDatTestLy.Caption = "gridColumn11";
+            this.colDatTestLy.FieldName = "DatTestLy";
+            this.colDatTestLy.Name = "colDatTestLy";
+            // 
+            // colDatTestHoa
+            // 
+            this.colDatTestHoa.Caption = "gridColumn12";
+            this.colDatTestHoa.FieldName = "DatTestHoa";
+            this.colDatTestHoa.Name = "colDatTestHoa";
+            // 
+            // colGia
+            // 
+            this.colGia.Caption = "gridColumn13";
+            this.colGia.FieldName = "Gia";
+            this.colGia.Name = "colGia";
+            // 
+            // colDichVuGiaoHang
+            // 
+            this.colDichVuGiaoHang.Caption = "gridColumn14";
+            this.colDichVuGiaoHang.FieldName = "DichVuGiaoHang";
+            this.colDichVuGiaoHang.Name = "colDichVuGiaoHang";
+            // 
+            // colDichVuHauMai
+            // 
+            this.colDichVuHauMai.Caption = "gridColumn15";
+            this.colDichVuHauMai.FieldName = "DichVuHauMai";
+            this.colDichVuHauMai.Name = "colDichVuHauMai";
+            // 
+            // colKhac
+            // 
+            this.colKhac.Caption = "gridColumn16";
+            this.colKhac.FieldName = "Khac";
+            this.colKhac.Name = "colKhac";
             // 
             // ucKhachHangList
             // 
@@ -198,5 +280,15 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemRatingControl repositoryItemRatingControl1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn colLoaiNguoiDung;
+        private DevExpress.Data.Linq.EntityInstantFeedbackSource khachHangInstantFeedbackSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colDungYeuCauKyThuat;
+        private DevExpress.XtraGrid.Columns.GridColumn colDungThoiGian;
+        private DevExpress.XtraGrid.Columns.GridColumn colDungMau;
+        private DevExpress.XtraGrid.Columns.GridColumn colDatTestLy;
+        private DevExpress.XtraGrid.Columns.GridColumn colDatTestHoa;
+        private DevExpress.XtraGrid.Columns.GridColumn colGia;
+        private DevExpress.XtraGrid.Columns.GridColumn colDichVuGiaoHang;
+        private DevExpress.XtraGrid.Columns.GridColumn colDichVuHauMai;
+        private DevExpress.XtraGrid.Columns.GridColumn colKhac;
     }
 }

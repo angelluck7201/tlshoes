@@ -10,7 +10,6 @@ namespace TLShoes.FormControls.MauThuDao
         public ucMauThuDaoList()
         {
             InitializeComponent();
-            Init();
             GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDKT.ToString(), Color.Wheat, Color.Red);
         }
 

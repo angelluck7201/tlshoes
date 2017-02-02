@@ -11,7 +11,6 @@ namespace TLShoes.FormControls.KeHoachSanXuat
         public ucKeHoachSanXuatList()
         {
             InitializeComponent();
-            Init();
 
             GenerateFormatRuleByValue(bandedGridView1, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
             GenerateFormatRuleByValue(bandedGridView1, colLoaiNguoiDung, Define.LoaiNguoiDung.CBDH.ToString(), Color.Honeydew, Color.Green);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using DevExpress.XtraGrid;
@@ -28,6 +29,35 @@ namespace TLShoes.ViewModels
                     s.MaNguyenLieu,
                     s.SoLuong
                 }).ToList();
+        }
+
+        public void UpdateNguyenLieuXuatKho(PhieuXuatKho phieuXuatKho, bool isCancel = false)
+        {
+            var incrOrDesc = isCancel ? 1 : -1;
+            foreach (var chiTietXuatKho in phieuXuatKho.ChiTietXuatKhoes)
+            {
+                var soLuong = incrOrDesc*chiTietXuatKho.SoLuong;
+                UpdateSoLuongNguyenLieu(chiTietXuatKho.NguyenLieu, soLuong);
+            }
+            DbContext.SaveChanges();
+        }
+
+        public void UpdateNguyenLieuNhapKho(PhieuNhapKho phieuNhapKho, bool isCancel = false)
+        {
+            var incrOrDesc = isCancel ? -1 : 1;
+            foreach (var nhapKho in phieuNhapKho.ChiTietNhapKhoes)
+            {
+                var soLuong = incrOrDesc * nhapKho.SoLuong;
+                UpdateSoLuongNguyenLieu(nhapKho.NguyenLieu, soLuong);
+            }
+            DbContext.SaveChanges();
+        }
+
+        private void UpdateSoLuongNguyenLieu(NguyenLieu nguyenLieu, float soLuong)
+        {
+            nguyenLieu.SoLuong += soLuong;
+            nguyenLieu.SoLuong = Math.Max(0, nguyenLieu.SoLuong);
+            DbContext.NguyenLieux.AddOrUpdate(nguyenLieu);
         }
 
         public void Save(object data, bool isCommit = true)

@@ -132,15 +132,7 @@ namespace TLShoes.FormControls.NhapKho
                 var currentItem = new List<long>();
                 foreach (var chitiet in ChiTietNhapKhoList)
                 {
-                    if (chitiet.IsUpdateKho == null || chitiet.IsUpdateKho == false)
-                    {
-                        var nguyenLieu = chitiet.NguyenLieu;
-                        nguyenLieu.SoLuong += chitiet.SoLuong;
-                        SF.Get<NguyenLieuViewModel>().Save(nguyenLieu);
-                    }
-
                     chitiet.PhieuNhapKhoId = saveData.Id;
-                    chitiet.IsUpdateKho = true;
                     CRUD.DecorateSaveData(chitiet);
                     SF.Get<ChiTietNhapKhoViewModel>().Save(chitiet);
                     currentItem.Add(chitiet.Id);
@@ -209,7 +201,7 @@ namespace TLShoes.FormControls.NhapKho
                     try
                     {
 
-                        var currentDate = TimeHelper.TimeStampToDateTime(_currentData.NgayNhap);
+                        var currentDate = _currentData.NgayNhap;
                         workSheet.Cells[3, "I"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
                         var startRow = 6;
                         foreach (var chiTiet in _currentData.ChiTietNhapKhoes)
@@ -233,7 +225,7 @@ namespace TLShoes.FormControls.NhapKho
                                 if (nguyenLieu.Mau != null) workSheet.Cells[startRow, "F"] = nguyenLieu.Mau.Ten;
                                 workSheet.Cells[startRow, "G"] = nguyenLieu.QuyCach;
                                 workSheet.Cells[startRow, "H"] = chiTiet.SoLuong;
-                                if (nguyenLieu.DanhMuc != null) workSheet.Cells[startRow, "I"] = nguyenLieu.DanhMuc.Ten;
+                                if (nguyenLieu.DVT != null) workSheet.Cells[startRow, "I"] = nguyenLieu.DVT.Ten;
                                 workSheet.Cells[startRow, "J"] = nguyenLieu.GhiChu;
                             }
                             startRow++;
@@ -265,7 +257,7 @@ namespace TLShoes.FormControls.NhapKho
                 using (var transaction = new TransactionScope())
                 {
                     var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_currentData.TrangThai);
-                    var ngayDuyet = TimeHelper.CurrentTimeStamp();
+                    var ngayDuyet = TimeHelper.Current();
                     var kho = PrimitiveConvert.StringToEnum<Define.Kho>(_currentData.Kho);
 
                     // Lock item
@@ -283,6 +275,7 @@ namespace TLShoes.FormControls.NhapKho
                         _currentData.TrangThai = Define.TrangThai.DUYET_PVT.ToString();
                         _currentData.NgayDuyet = ngayDuyet;
                         _currentData.NguoiDuyetId = Authorization.LoginUser.Id;
+                        SF.Get<NguyenLieuViewModel>().UpdateNguyenLieuNhapKho(_currentData);
                     }
 
                     SF.Get<PhieuNhapKhoViewModel>().Save(_currentData);
@@ -296,9 +289,15 @@ namespace TLShoes.FormControls.NhapKho
         {
             if (_currentData != null)
             {
-                _currentData.TrangThai = Define.TrangThai.HUY.ToString();
-                _currentData.NgayDuyet = TimeHelper.CurrentTimeStamp();
-                _currentData.NguoiDuyetId = Authorization.LoginUser.Id;
+                using (var transaction = new TransactionScope())
+                {
+                    _currentData.TrangThai = Define.TrangThai.HUY.ToString();
+                    _currentData.NgayDuyet = TimeHelper.Current();
+                    _currentData.NguoiDuyetId = Authorization.LoginUser.Id;
+                    SF.Get<PhieuNhapKhoViewModel>().Save(_currentData);
+                    SF.Get<NguyenLieuViewModel>().UpdateNguyenLieuNhapKho(_currentData, true);
+                    transaction.Complete();
+                }
                 InitAuthorize();
             }
         }

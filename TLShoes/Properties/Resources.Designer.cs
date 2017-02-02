@@ -59,5 +59,6 @@ namespace TLShoes.Properties {
                 resourceCulture = value;
             }
         }
+       
     }
 }

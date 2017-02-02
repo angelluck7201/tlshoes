@@ -90,10 +90,10 @@
             this.navBarControlMenu.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.navDanhMucGroup,
             this.navDonHangGroup,
+            this.navBarMauDoi,
             this.navTestGroup,
             this.navKeHoach,
             this.navHuongDanGroup,
-            this.navBarMauDoi,
             this.navBarQuanLyKho,
             this.navBarNguoiDung});
             this.navBarControlMenu.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {

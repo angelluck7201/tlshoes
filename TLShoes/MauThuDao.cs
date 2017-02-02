@@ -16,12 +16,12 @@ namespace TLShoes
     {
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
-        public Nullable<long> CreatedDate { get; set; }
-        public Nullable<long> ModifiedDate { get; set; }
-        public Nullable<bool> IsActived { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public bool IsActived { get; set; }
         public Nullable<long> DonHangId { get; set; }
-        public Nullable<long> NgayBatDau { get; set; }
-        public Nullable<long> NgayHoanThanh { get; set; }
+        public System.DateTime NgayBatDau { get; set; }
+        public System.DateTime NgayHoanThanh { get; set; }
         public string GopYCongNghe { get; set; }
         public string GopYMau { get; set; }
         public string GopYQc { get; set; }
@@ -32,16 +32,12 @@ namespace TLShoes
         public string GopYXuongMay { get; set; }
         public string GopYXuongDe { get; set; }
         public string GopYXuongGo { get; set; }
-        public Nullable<long> KetQuaXuongChatId { get; set; }
-        public Nullable<long> KetQuaXuongMayId { get; set; }
-        public Nullable<long> KetQuaXuongDeId { get; set; }
-        public Nullable<long> KetQuaXuongGoId { get; set; }
+        public string KetQuaXuongChat { get; set; }
+        public string KetQuaXuongMay { get; set; }
+        public string KetQuaXuongDe { get; set; }
+        public string KetQuaXuongGo { get; set; }
     
         public virtual DonHang DonHang { get; set; }
         public virtual UserAccount UserAccount { get; set; }
-        public virtual DanhMuc KetQuaXuongChat { get; set; }
-        public virtual DanhMuc KetQuaXuongMay { get; set; }
-        public virtual DanhMuc KetQuaXuongDe { get; set; }
-        public virtual DanhMuc KetQuaXuongGo { get; set; }
     }
 }

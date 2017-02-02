@@ -530,7 +530,7 @@
             this.KhachHang_DungMau.Size = new System.Drawing.Size(87, 16);
             this.KhachHang_DungMau.TabIndex = 50;
             this.KhachHang_DungMau.Text = "ratingControl2";
-            this.KhachHang_DungMau.EditValueChanged += new System.EventHandler(this.KhachHang_DatTestLy_EditValueChanged);
+            this.KhachHang_DungMau.EditValueChanged += new System.EventHandler(this.KhachHang_DungMau_EditValueChanged);
             // 
             // lblDatTestLy
             // 

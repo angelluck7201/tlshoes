@@ -27,8 +27,7 @@ namespace TLShoes.Form
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject<KhachHang>(FormControls, _domainData);
-            CRUD.DecorateSaveData(saveData, _domainData == null);
+            var saveData = CRUD.GetFormObject(FormControls, _domainData);
             SF.Get<KhachHangViewModel>().Save(saveData);
             return true;
         }

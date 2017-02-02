@@ -31,8 +31,8 @@ namespace TLShoes.ViewModels
                     s.Id,
                     s.DonHang.MaHang,
                     SoDH = s.DonHang.OrderNo,
-                    NgayGuiMauFormat = TimeHelper.TimestampToString(s.NgayGuiMau, "d"),
-                    NgayKetQuaFormat = TimeHelper.TimestampToString(s.NgayKetqua, "d"),
+//                    NgayGuiMauFormat = TimeHelper.TimestampToString(s.NgayGuiMau, "d"),
+//                    NgayKetQuaFormat = TimeHelper.TimestampToString(s.NgayKetqua, "d"),
                     PhanLoaiKetQua = s.DanhMuc.Ten,
                     Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh),
                     s.UserAccount.LoaiNguoiDung
@@ -46,8 +46,8 @@ namespace TLShoes.ViewModels
                 {
                     s.Id,
                     s.DonHang.MaHang,
-                    NgayGuiMauFormat = TimeHelper.TimestampToString(s.NgayGuiMau, "d"),
-                    NgayKetQuaFormat = TimeHelper.TimestampToString(s.NgayKetqua, "d"),
+//                    NgayGuiMauFormat = TimeHelper.TimestampToString(s.NgayGuiMau, "d"),
+//                    NgayKetQuaFormat = TimeHelper.TimestampToString(s.NgayKetqua, "d"),
                     PhanLoaiKetQua = s.DanhMuc.Ten,
                     Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh)
                 }).ToList();

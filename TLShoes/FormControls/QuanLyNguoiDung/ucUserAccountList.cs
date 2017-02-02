@@ -17,7 +17,6 @@ namespace TLShoes.FormControls.QuanLyNguoiDung
         public ucUserAccountList()
         {
             InitializeComponent();
-            Init();
         }
 
         public override void ReloadData()

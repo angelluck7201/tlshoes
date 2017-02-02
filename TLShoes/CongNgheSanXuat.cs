@@ -16,23 +16,21 @@ namespace TLShoes
     {
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
-        public Nullable<long> CreatedDate { get; set; }
-        public Nullable<long> ModifiedDate { get; set; }
-        public Nullable<bool> IsActived { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public bool IsActived { get; set; }
         public Nullable<long> DonHangId { get; set; }
         public Nullable<long> MauDoiId { get; set; }
-        public Nullable<long> PhanLoaiThuRapId { get; set; }
+        public string PhanLoaiThuRap { get; set; }
         public string YKienThuRap { get; set; }
-        public Nullable<long> PhanLoaiThuDao { get; set; }
+        public string PhanLoaiThuDao { get; set; }
         public string YKienThuDao { get; set; }
         public string HinhBangThongSo { get; set; }
-        public Nullable<long> NgayDuyet { get; set; }
         public string HinhCongNgheDuocDuyet { get; set; }
+        public System.DateTime NgayDuyet { get; set; }
     
         public virtual UserAccount UserAccount { get; set; }
         public virtual DonHang DonHang { get; set; }
         public virtual MauDoi MauDoi { get; set; }
-        public virtual DanhMuc DanhMuc { get; set; }
-        public virtual DanhMuc DanhMuc1 { get; set; }
     }
 }

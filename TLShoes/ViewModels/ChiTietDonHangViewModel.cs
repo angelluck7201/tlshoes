@@ -35,5 +35,20 @@ namespace TLShoes.ViewModels
                 Commit();
             }
         }
+
+        public void Delete(ChiTietDonHang chiTietDonHang)
+        {
+            DbContext.ChiTietDonHangs.Remove(chiTietDonHang);
+            DbContext.SaveChanges();
+        }
+
+        public void Delete(List<ChiTietDonHang> chiTietDonHangs)
+        {
+            foreach (var chiTietDonHang in chiTietDonHangs)
+            {
+                DbContext.ChiTietDonHangs.Remove(chiTietDonHang);
+            }
+            DbContext.SaveChanges();
+        }
     }
 }

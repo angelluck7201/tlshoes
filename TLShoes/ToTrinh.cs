@@ -18,32 +18,29 @@ namespace TLShoes
         public ToTrinh()
         {
             this.ChiTietToTrinhs = new HashSet<ChiTietToTrinh>();
-            this.DonDatHangs = new HashSet<DonDatHang>();
         }
     
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
-        public Nullable<long> CreatedDate { get; set; }
-        public Nullable<long> ModifiedDate { get; set; }
-        public Nullable<bool> IsActived { get; set; }
-        public Nullable<long> NguyenLieuId { get; set; }
-        public Nullable<float> BoSung { get; set; }
-        public Nullable<float> ThuHoi { get; set; }
-        public Nullable<float> TonToTrinh { get; set; }
-        public Nullable<float> TonTheKho { get; set; }
-        public Nullable<float> TonThucTe { get; set; }
-        public Nullable<float> DuKien { get; set; }
-        public Nullable<float> HaoHut { get; set; }
-        public string GhiChu { get; set; }
-        public string DonDatHangList { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public bool IsActived { get; set; }
         public Nullable<long> TongHopToTrinhId { get; set; }
+        public Nullable<long> NguyenLieuId { get; set; }
+        public string DonDatHangList { get; set; }
+        public float BoSung { get; set; }
+        public float ThuHoi { get; set; }
+        public float TonToTrinh { get; set; }
+        public float TonTheKho { get; set; }
+        public float TonThucTe { get; set; }
+        public float DuKien { get; set; }
+        public float HaoHut { get; set; }
+        public string GhiChu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DonDatHang> DonDatHangs { get; set; }
-        public virtual NguyenLieu NguyenLieu { get; set; }
         public virtual TongHopToTrinh TongHopToTrinh { get; set; }
         public virtual UserAccount UserAccount { get; set; }
+        public virtual NguyenLieu NguyenLieu { get; set; }
     }
 }

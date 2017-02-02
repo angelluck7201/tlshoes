@@ -12,18 +12,14 @@ namespace TLShoes.FormControls.NguyenLieu
             InitializeComponent();
             _domainData = data;
 
-            NguyenLieu_LoaiNguyenLieuId.DisplayMember = "Ten";
-            NguyenLieu_LoaiNguyenLieuId.ValueMember = "Id";
-            NguyenLieu_LoaiNguyenLieuId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.LOAI_NGUYEN_LIEU), null);
+            var lstNguyenLieu = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.LOAI_NGUYEN_LIEU);
+            SetComboboxDataSource(NguyenLieu_LoaiNguyenLieuId, lstNguyenLieu, "Ten");
 
-            NguyenLieu_DonViTinh.DisplayMember = "Ten";
-            NguyenLieu_DonViTinh.ValueMember = "Id";
-            NguyenLieu_DonViTinh.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.DON_VI_TINH), null);
+            var lstDonViTinh = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.DON_VI_TINH);
+            SetComboboxDataSource(NguyenLieu_DonViTinh, lstDonViTinh, "Ten");
 
-            NguyenLieu_MauId.DisplayMember = "Ten";
-            NguyenLieu_MauId.ValueMember = "Id";
-            NguyenLieu_MauId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU), null);
-
+            var lstMau = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU);
+            SetComboboxDataSource(NguyenLieu_MauId, lstMau, "Ten");
 
             Init(data);
         }
@@ -36,8 +32,7 @@ namespace TLShoes.FormControls.NguyenLieu
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject<TLShoes.NguyenLieu>(FormControls, _domainData);
-            CRUD.DecorateSaveData(saveData, _domainData == null);
+            var saveData = CRUD.GetFormObject(FormControls, _domainData);
             SF.Get<NguyenLieuViewModel>().Save(saveData);
             return true;
         }

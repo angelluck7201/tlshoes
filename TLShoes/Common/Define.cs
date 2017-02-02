@@ -35,15 +35,15 @@ namespace TLShoes.Common
             TO_TRINH,
         }
 
-        public static Dictionary<LoaiDanhMuc, string> LoaiDanhMucDic = new Dictionary<LoaiDanhMuc, string>()
+        public static Dictionary<string, string> LoaiDanhMucDic = new Dictionary<string, string>()
         {
-            {LoaiDanhMuc.MAU, "MÀU"},
-            {LoaiDanhMuc.PHAN_LOAI_TEST, "PHÂN LOẠI TEST"},
-            {LoaiDanhMuc.CHI_TIET, "CHI TIẾT"},
-            {LoaiDanhMuc.DON_VI_TINH, "ĐƠN VỊ TÍNH"},
-            {LoaiDanhMuc.PHAN_XUONG, "PHÂN XƯỞNG"},
-            {LoaiDanhMuc.LOAI_NGUYEN_LIEU, "LOẠI NGUYÊN LIỆU"},
-            {LoaiDanhMuc.TIEU_CHI_QC, "TIÊU CHÍ QC"},
+            {LoaiDanhMuc.MAU.ToString(), "MÀU"},
+            {LoaiDanhMuc.PHAN_LOAI_TEST.ToString(), "PHÂN LOẠI TEST"},
+            {LoaiDanhMuc.CHI_TIET.ToString(), "CHI TIẾT"},
+            {LoaiDanhMuc.DON_VI_TINH.ToString(), "ĐƠN VỊ TÍNH"},
+            {LoaiDanhMuc.PHAN_XUONG.ToString(), "PHÂN XƯỞNG"},
+            {LoaiDanhMuc.LOAI_NGUYEN_LIEU.ToString(), "LOẠI NGUYÊN LIỆU"},
+            {LoaiDanhMuc.TIEU_CHI_QC.ToString(), "TIÊU CHÍ QC"},
         };
 
         public enum TienTe
@@ -155,6 +155,14 @@ namespace TLShoes.Common
             FILE_PATH,
             LASTEST_VERSION,
             UPDATE_PATH,
+        }
+
+        public enum ActionType
+        {
+            SAVE,
+            CLOSE,
+            REFRESH,
+            EXPORT
         }
 
         public static Dictionary<PhanXuong, string> PhanXuongDict = new Dictionary<PhanXuong, string>()

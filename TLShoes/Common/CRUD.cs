@@ -36,13 +36,7 @@ namespace TLShoes.Common
             PropertyInfo prop = data.GetType().GetProperty(pro, BindingFlags.Public | BindingFlags.Instance);
             if (null != prop && prop.CanWrite)
             {
-                var fieldType = prop.PropertyType;
-
-                if (fieldType == typeof(string))
-                {
-                    prop.SetValue(data, value, null);
-                }
-                else
+                if (value.IsNumber())
                 {
                     var targetType = IsNullableType(prop.PropertyType) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType;
                     if (targetType == typeof(float))
@@ -53,9 +47,25 @@ namespace TLShoes.Common
                     {
                         value = Convert.ChangeType(PrimitiveConvert.StringToInt(value), targetType);
                     }
-                    prop.SetValue(data, value, null);
                 }
+                prop.SetValue(data, value, null);
+
             }
+        }
+
+        public static bool IsNumber(this object value)
+        {
+            return value is sbyte
+                    || value is byte
+                    || value is short
+                    || value is ushort
+                    || value is int
+                    || value is uint
+                    || value is long
+                    || value is ulong
+                    || value is float
+                    || value is double
+                    || value is decimal;
         }
 
         private static bool IsNullableType(Type type)
@@ -146,18 +156,18 @@ namespace TLShoes.Common
             {
                 case "ComboBox":
                     var comboboxData = (control as ComboBox).SelectedValue;
-                    if (comboboxData is Enum)
+                    if (comboboxData.IsNumber())
                     {
-                        result = comboboxData.ToString();
+                        result = (long)comboboxData;
                     }
                     else
                     {
-                        result = (long)comboboxData;
+                        result = comboboxData.ToString();
                     }
 
                     break;
                 case "DateTimePicker":
-                    result = TimeHelper.DateTimeToTimeStamp((control as DateTimePicker).Value);
+                    result = (control as DateTimePicker).Value;
                     break;
                 case "RatingControl":
                     result = (int)(control as RatingControl).Rating;
@@ -171,7 +181,7 @@ namespace TLShoes.Common
                     break;
                 case "PictureEdit":
                     var pictureEdit = control as PictureEdit;
-                    if (pictureEdit != null && pictureEdit.Image != null)
+                    if (pictureEdit != null)
                     {
                         result = FileHelper.ImageSave(pictureEdit.Image, pictureEdit.Tag);
                     }
@@ -216,10 +226,11 @@ namespace TLShoes.Common
             switch (controlType.Name)
             {
                 case "ComboBox":
-                    (control as ComboBox).SelectedValue = value;
+                    var combobox = (control as ComboBox);
+                    combobox.SelectedValue = value;
                     break;
                 case "DateTimePicker":
-                    control.Text = TimeHelper.TimestampToString((long)value);
+                    control.Text = value.ToString();
                     break;
                 case "RatingControl":
                     (control as RatingControl).Rating = decimal.Parse(value.ToString());
@@ -244,7 +255,7 @@ namespace TLShoes.Common
 
         public static void DecorateSaveData(object data, bool isNew = true)
         {
-            var currentTime = TimeHelper.CurrentTimeStamp();
+            var currentTime = TimeHelper.Current();
             ReflectionSet(data, "AuthorId", Authorization.LoginUser.Id);
             if (isNew)
             {

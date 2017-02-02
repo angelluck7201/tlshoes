@@ -23,22 +23,22 @@ namespace TLShoes
     
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
-        public Nullable<long> CreatedDate { get; set; }
-        public Nullable<long> ModifiedDate { get; set; }
-        public Nullable<bool> IsActived { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public bool IsActived { get; set; }
         public Nullable<long> DonDatHangId { get; set; }
         public Nullable<long> MauDanhGiaId { get; set; }
-        public Nullable<double> SoLuongKiem { get; set; }
-        public string BienPhapXuLy { get; set; }
-        public Nullable<long> NgayKiem { get; set; }
         public string SoPhieu { get; set; }
+        public double SoLuongKiem { get; set; }
+        public string BienPhapXuLy { get; set; }
+        public System.DateTime NgayKiem { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDanhGia> ChiTietDanhGias { get; set; }
         public virtual UserAccount UserAccount { get; set; }
         public virtual DonDatHang DonDatHang { get; set; }
-        public virtual MauDanhGia MauDanhGia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuNhapKho> PhieuNhapKhoes { get; set; }
+        public virtual MauDanhGia MauDanhGia { get; set; }
     }
 }

@@ -8,30 +8,14 @@ namespace TLShoes
 {
     public partial class ucDanhMuc : BaseUserControl
     {
+        private DanhMuc _domainData;
         public ucDanhMuc(DanhMuc danhMuc = null)
         {
             InitializeComponent();
-            SetToolTip();
+            _domainData = danhMuc;
 
-            DanhMuc_Loai.DisplayMember = "Value";
-            DanhMuc_Loai.ValueMember = "Key";
-            DanhMuc_Loai.DataSource = new BindingSource(Define.LoaiDanhMucDic, null);
-
+            SetComboboxDataSource(DanhMuc_Loai, Define.LoaiDanhMucDic);
             Init(danhMuc);
-            if (danhMuc != null)
-            {
-                DanhMuc_Ten.Text = danhMuc.Ten;
-                DanhMuc_GhiChu.Text = danhMuc.GhiChu;
-                DanhMuc_Loai.SelectedValue = Enum.Parse(typeof(Define.LoaiDanhMuc), danhMuc.Loai);
-            }
-        }
-
-        private void SetToolTip()
-        {
-//            var toolTip = ToolTipHelper.GetToolTip();
-//
-//            toolTip.SetToolTip(lblTen, "Ten danh muc");
-//            toolTip.SetToolTip(lblGhiChu, "ghi chu ne");
         }
 
         public override bool SaveData()
@@ -42,20 +26,8 @@ namespace TLShoes
                 MessageBox.Show(validateResult);
                 return false;
             }
-            var id = PrimitiveConvert.StringToInt(defaultInfo.Controls["Id"].Text);
 
-            var saveData = SF.Get<DanhMucViewModel>().GetDetail(id);
-            var isNew = false;
-            if (saveData == null)
-            {
-                saveData = new DanhMuc();
-                isNew = true;
-            }
-
-            saveData.Ten = DanhMuc_Ten.Text;
-            saveData.Loai = DanhMuc_Loai.SelectedValue.ToString();
-            saveData.GhiChu = DanhMuc_GhiChu.Text;
-            CRUD.DecorateSaveData(saveData, isNew);
+            var saveData = CRUD.GetFormObject(FormControls, _domainData);
             SF.Get<DanhMucViewModel>().Save(saveData);
             return true;
         }

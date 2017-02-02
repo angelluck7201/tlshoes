@@ -36,6 +36,7 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLoaiNguoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.danhMucInstantFeedbackSource = new DevExpress.Data.Linq.EntityInstantFeedbackSource();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
@@ -47,6 +48,7 @@
             // 
             // gridControl
             // 
+            this.gridControl.DataSource = this.danhMucInstantFeedbackSource;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
@@ -116,8 +118,14 @@
             // colLoaiNguoiDung
             // 
             this.colLoaiNguoiDung.Caption = "gridColumn4";
-            this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
+            this.colLoaiNguoiDung.FieldName = "UserAccount.LoaiNguoiDung";
             this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
+            // 
+            // danhMucInstantFeedbackSource
+            // 
+            this.danhMucInstantFeedbackSource.DefaultSorting = null;
+            this.danhMucInstantFeedbackSource.DesignTimeElementType = typeof(TLShoes.DanhMuc);
+            this.danhMucInstantFeedbackSource.KeyExpression = "Id";
             // 
             // ucDanhMucList
             // 
@@ -142,6 +150,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn Id;
         private DevExpress.XtraGrid.Columns.GridColumn colLoaiNguoiDung;
+        private DevExpress.Data.Linq.EntityInstantFeedbackSource danhMucInstantFeedbackSource;
 
     }
 }

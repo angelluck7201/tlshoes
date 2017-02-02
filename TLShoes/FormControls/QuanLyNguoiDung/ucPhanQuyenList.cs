@@ -17,7 +17,6 @@ namespace TLShoes.FormControls.QuanLyNguoiDung
         public ucPhanQuyenList()
         {
             InitializeComponent();
-            Init();
         }
 
         public override void ReloadData()

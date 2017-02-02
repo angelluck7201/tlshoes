@@ -4,6 +4,10 @@ namespace TLShoes.Common
 {
     public static class TimeHelper
     {
+        public static DateTime Current()
+        {
+            return DateTime.Now;
+        }
         public static long CurrentTimeStamp()
         {
             return DateTimeToTimeStamp(DateTime.UtcNow);

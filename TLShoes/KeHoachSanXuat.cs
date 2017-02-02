@@ -16,23 +16,23 @@ namespace TLShoes
     {
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
-        public Nullable<long> CreatedDate { get; set; }
-        public Nullable<long> ModifiedDate { get; set; }
-        public Nullable<bool> IsActived { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public bool IsActived { get; set; }
         public Nullable<long> DonHangId { get; set; }
-        public Nullable<long> NgayKiemHang { get; set; }
-        public Nullable<long> NgayBatDauPxChat { get; set; }
-        public Nullable<long> NgayHoanThanhPxChat { get; set; }
-        public Nullable<long> NgayBatDauToPhuTro { get; set; }
-        public Nullable<long> NgayHoanThanhToPhuTro { get; set; }
-        public Nullable<long> NgayBatDauPxMay { get; set; }
-        public Nullable<long> NgayHoanThanhPxMay { get; set; }
-        public Nullable<long> NgayBatDauPxGo { get; set; }
-        public Nullable<long> NgayHoanThanhPxGo { get; set; }
-        public Nullable<long> NgayBatDauPxDe { get; set; }
-        public Nullable<long> NgayHoanThanhPxDe { get; set; }
-        public Nullable<long> NgayBatDauBpVatTu { get; set; }
-        public Nullable<long> NgayHoanThanhBpVatTu { get; set; }
+        public System.DateTime NgayKiemHang { get; set; }
+        public System.DateTime NgayBatDauPxChat { get; set; }
+        public System.DateTime NgayHoanThanhPxChat { get; set; }
+        public System.DateTime NgayBatDauToPhuTro { get; set; }
+        public System.DateTime NgayHoanThanhToPhuTro { get; set; }
+        public System.DateTime NgayBatDauPxMay { get; set; }
+        public System.DateTime NgayHoanThanhPxMay { get; set; }
+        public System.DateTime NgayBatDauPxGo { get; set; }
+        public System.DateTime NgayHoanThanhPxGo { get; set; }
+        public System.DateTime NgayBatDauPxDe { get; set; }
+        public System.DateTime NgayHoanThanhPxDe { get; set; }
+        public System.DateTime NgayBatDauBpVatTu { get; set; }
+        public System.DateTime NgayHoanThanhBpVatTu { get; set; }
         public string GhiChu { get; set; }
     
         public virtual DonHang DonHang { get; set; }

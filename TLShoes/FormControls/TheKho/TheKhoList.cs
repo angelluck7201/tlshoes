@@ -17,7 +17,6 @@ namespace TLShoes.FormControls.TheKho
         public ucTheKhoList()
         {
             InitializeComponent();
-            Init();
         }
 
         public override void ReloadData()
@@ -31,7 +30,7 @@ namespace TLShoes.FormControls.TheKho
                 foreach (var phieuNhapKho in nhapKhoList)
                 {
                     var theKho = new TheKho();
-                    theKho.Ngay = TimeHelper.TimeStampToDateTime(phieuNhapKho.NgayNhap);
+                    theKho.Ngay = phieuNhapKho.NgayNhap;
                     theKho.ChungTu = string.Format("PNK_{0}", phieuNhapKho.SoPhieu);
                     theKho.DienGiai = phieuNhapKho.LyDo;
                     theKho.Nhap = (double)phieuNhapKho.ChiTietNhapKhoes.Sum(s => s.SoLuong);
@@ -42,7 +41,7 @@ namespace TLShoes.FormControls.TheKho
                 foreach (var phieuXuatKho in xuatKhoList)
                 {
                     var theKho = new TheKho();
-                    theKho.Ngay = TimeHelper.TimeStampToDateTime(phieuXuatKho.NgayXuat);
+                    theKho.Ngay = phieuXuatKho.NgayXuat;
                     theKho.ChungTu = string.Format("{0}_{1}", phieuXuatKho.LoaiXuat, phieuXuatKho.DonHang.OrderNo);
                     theKho.DienGiai = phieuXuatKho.LyDo;
                     theKho.Xuat = (double)phieuXuatKho.ChiTietXuatKhoes.Sum(s => s.SoLuong);

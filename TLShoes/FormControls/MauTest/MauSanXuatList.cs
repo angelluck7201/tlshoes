@@ -10,7 +10,6 @@ namespace TLShoes.FormControls.MauSanXuat
         public ucMauSanXuatList()
         {
             InitializeComponent();
-            Init();
             GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDKT.ToString(), Color.Wheat, Color.Red);
         }
 

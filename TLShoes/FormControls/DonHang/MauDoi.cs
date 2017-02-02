@@ -10,14 +10,16 @@ namespace TLShoes.FormControls.DonHang
     public partial class ucMauDoi : BaseUserControl
     {
         public BindingList<MauDoiHinh> MauDoiHinh = new BindingList<MauDoiHinh>();
+        private MauDoiHinh _currentHinh;
+        private MauDoi _currentData;
 
         public ucMauDoi(MauDoi data = null)
         {
             InitializeComponent();
+            _currentData = data;
 
-            MauDoi_DonHangId.ValueMember = "Id";
-            MauDoi_DonHangId.DisplayMember = "MaHang";
-            MauDoi_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
+            var lstDonhang = SF.Get<DonHangViewModel>().GetList();
+            SetComboboxDataSource(MauDoi_DonHangId, lstDonhang, "MaHang");
 
             Init(data);
             if (data != null)
@@ -26,7 +28,6 @@ namespace TLShoes.FormControls.DonHang
             }
 
             gridHinhAnh.DataSource = MauDoiHinh;
-            gridView1.NewItemRowText = "Click vào đây để thêm hình mới";
             CheckButtonLuuHinh();
         }
 
@@ -35,15 +36,14 @@ namespace TLShoes.FormControls.DonHang
             var validateResult = ValidateInput();
             if (!string.IsNullOrEmpty(validateResult))
             {
-                MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
+                MessageBox.Show(validateResult);
                 return false;
             }
-            var saveData = CRUD.GetFormObject<MauDoi>(FormControls);
+            var saveData = CRUD.GetFormObject(FormControls, _currentData);
             using (var transaction = new TransactionScope())
             {
                 SF.Get<MauDoiViewModel>().Save(saveData);
-
-                SF.Get<MauDoiViewModel>().SaveHinh(MauDoiHinh.ToList(), saveData.Id);
+                SF.Get<MauDoiViewModel>().SaveHinh(saveData, MauDoiHinh.ToList(), saveData.Id);
                 transaction.Complete();
             }
 
@@ -53,15 +53,6 @@ namespace TLShoes.FormControls.DonHang
 
         public string ValidateInput()
         {
-            if (string.IsNullOrEmpty(MauDoi_MauNgay.Text))
-            {
-                return lblMauNgay.Text;
-            }
-            if (string.IsNullOrEmpty(MauDoi_NgayNhan.Text))
-            {
-                return lblNgayNhan.Text;
-            }
-
             return string.Empty;
         }
 
@@ -71,9 +62,9 @@ namespace TLShoes.FormControls.DonHang
             dynamic data = gridView1.GetRow(selectedRow);
             if (data != null)
             {
+                _currentHinh = data;
                 FileHelper.SetImage(HinhHinh, data.HinhAnh);
                 GhiChuHinh.Text = data.GhiChu;
-                HinhId.Text = data.Id.ToString();
             }
             else
             {
@@ -84,38 +75,74 @@ namespace TLShoes.FormControls.DonHang
 
         private void btnSaveHinh_Click(object sender, System.EventArgs e)
         {
-            var id = PrimitiveConvert.StringToInt(HinhId.Text);
-            var newData = MauDoiHinh.FirstOrDefault(s => s.Id == id);
-            if (newData == null)
+            var newData = MauDoiHinh.FirstOrDefault(s => s == _currentHinh);
+            if (newData == null) return;
+
+            if (HinhHinh.Image != null)
             {
-                newData = new MauDoiHinh();
+                newData.GhiChu = GhiChuHinh.Text;
+                newData.Hinh = HinhHinh.Image;
+
+                gridHinhAnh.RefreshDataSource();
+                ClearHinh();
+                CheckButtonLuuHinh();
+            }
+            else
+            {
+                MessageBox.Show("Chưa upload hình!");
+            }
+        }
+
+        private void btnAddHinh_Click(object sender, System.EventArgs e)
+        {
+            if (HinhHinh.Image != null)
+            {
+                var newData = new MauDoiHinh();
                 newData.Id = TimeHelper.CurrentTimeStamp();
                 MauDoiHinh.Add(newData);
+
+                newData.Hinh = HinhHinh.Image;
+                newData.GhiChu = GhiChuHinh.Text;
+                gridHinhAnh.Refresh();
+                ClearHinh();
+                CheckButtonLuuHinh();
             }
-            newData.HinhAnh = CRUD.GetControlValue(HinhHinh).ToString();
-            newData.GhiChu = GhiChuHinh.Text;
-            gridHinhAnh.Refresh();
-            CheckButtonLuuHinh();
+            else
+            {
+                MessageBox.Show("Chưa upload hình!");
+            }
         }
 
         private void ClearHinh()
         {
-            HinhId.Clear();
+            _currentHinh = null;
             GhiChuHinh.Clear();
             HinhHinh.Image = null;
         }
 
         private void CheckButtonLuuHinh()
         {
-            if (string.IsNullOrEmpty(HinhId.Text))
+            btnSaveHinh.Enabled = true;
+            btnDelete.Enabled = true;
+            if (_currentHinh == null)
             {
-                btnSaveHinh.Text = "Thêm Hình";
-            }
-            else
-            {
-                btnSaveHinh.Text = "Lưu Hình";
+                btnSaveHinh.Enabled = false;
+                btnDelete.Enabled = false;
             }
         }
+
+        private void btnDelete_Click(object sender, System.EventArgs e)
+        {
+            if (_currentHinh != null)
+            {
+                MauDoiHinh.Remove(_currentHinh);
+                gridHinhAnh.Refresh();
+                ClearHinh();
+                CheckButtonLuuHinh();
+            }
+        }
+
+
 
     }
 }

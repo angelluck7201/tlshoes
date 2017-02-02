@@ -17,7 +17,6 @@ namespace TLShoes.FormControls.MauDanhGia
         public ucMauDanhGiaList()
         {
             InitializeComponent();
-            Init();
             GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDKT.ToString(), Color.Wheat, Color.Red);
         }
 

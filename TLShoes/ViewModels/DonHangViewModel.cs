@@ -11,13 +11,6 @@ namespace TLShoes.ViewModels
         public List<DonHang> GetList()
         {
             var listDonHang = DbContext.DonHangs.ToList();
-            foreach (var donhang in listDonHang)
-            {
-                if (!donhang.MaHang.Contains("-"))
-                {
-                    donhang.MaHang = string.Format("{0}-{1}", donhang.Phom.MaNguyenLieu, donhang.MaHang);
-                }
-            }
             return listDonHang;
         }
 
@@ -45,8 +38,8 @@ namespace TLShoes.ViewModels
                 s.MaHang,
                 s.OrderNo,
                 s.KhachHang.TenCongTy,
-                NgayNhanFormat = TimeHelper.TimeStampToDateTime(s.NgayNhan, "d"),
-                NgayXuatFormat = TimeHelper.TimeStampToDateTime(s.NgayXuat, "d"),
+                NgayNhanFormat = s.NgayNhan,
+                NgayXuatFormat = s.NgayXuat,
                 SoLuong = s.ChiTietDonHangs.Sum(d => d.SoLuong),
                 Hinh = FileHelper.ImageFromFile(s.HinhAnh),
                 s.UserAccount.LoaiNguoiDung

@@ -11,7 +11,6 @@ namespace TLShoes.FormControls.MauTest
         public ucMauTestList()
         {
             InitializeComponent();
-            Init();
             GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDKT.ToString(), Color.Wheat, Color.Red);
         }
 

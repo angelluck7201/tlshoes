@@ -16,15 +16,15 @@ namespace TLShoes
     {
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
-        public Nullable<long> CreatedDate { get; set; }
-        public Nullable<long> ModifiedDate { get; set; }
-        public Nullable<bool> IsActived { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public bool IsActived { get; set; }
         public Nullable<long> DonHangId { get; set; }
-        public Nullable<long> NgayGuiMau { get; set; }
-        public Nullable<long> NgayKetquaTestLy { get; set; }
+        public System.DateTime NgayGuiMau { get; set; }
+        public System.DateTime NgayKetquaTestLy { get; set; }
         public string KetQuaTestLy { get; set; }
         public Nullable<long> PhanLoaiTestLyId { get; set; }
-        public Nullable<long> NgayKetquaTestHoa { get; set; }
+        public System.DateTime NgayKetquaTestHoa { get; set; }
         public string KetQuaTestHoa { get; set; }
         public Nullable<long> PhanLoaiTestHoaId { get; set; }
         public string GopYCongNghe { get; set; }

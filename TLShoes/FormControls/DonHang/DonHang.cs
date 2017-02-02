@@ -17,9 +17,9 @@ namespace TLShoes
     public partial class ucDonHang : BaseUserControl
     {
         public DonHang _domainData;
-        public static BindingList<ChiTietDonHang> ChiTietDonhang = new BindingList<ChiTietDonHang>();
+        public BindingList<ChiTietDonHang> ChiTietDonhang = new BindingList<ChiTietDonHang>();
 
-        public static Dictionary<string, string> GopYDict = new Dictionary<string, string>()
+        public Dictionary<string, string> GopYDict = new Dictionary<string, string>()
         {
             {"Bp Vật Tư",""},
             {"Px Chặt",""},
@@ -36,34 +36,27 @@ namespace TLShoes
 
         public ucDonHang(DonHang data = null)
         {
-            ChiTietDonhang.Clear();
             InitializeComponent();
 
-            DonHang_KhachHangId.DisplayMember = "TenCongTy";
-            DonHang_KhachHangId.ValueMember = "Id";
-            DonHang_KhachHangId.DataSource = new BindingSource(SF.Get<KhachHangViewModel>().GetList(), null);
+            var lstKhachHang = SF.Get<KhachHangViewModel>().GetList();
+            SetComboboxDataSource(DonHang_KhachHangId, lstKhachHang, "TenCongTy");
 
-            var listNguyenLieu = SF.Get<NguyenLieuViewModel>().GetList();
+            var lstNguyenLieu = SF.Get<NguyenLieuViewModel>().GetList();
 
-            DonHang_MaPhomId.DisplayMember = "MaNguyenLieu";
-            DonHang_MaPhomId.ValueMember = "Id";
-            DonHang_MaPhomId.DataSource = new BindingSource(listNguyenLieu.Where(s => s.LoaiNguyenLieu.Ten == "PHOM").ToList(), null);
+            var lstPhom = lstNguyenLieu.Where(s => s.LoaiNguyenLieu.Ten == "PHOM").ToList();
+            SetComboboxDataSource(DonHang_MaPhomId, lstPhom, "MaNguyenLieu");
 
-            DonHang_DatLotTayId.DisplayMember = "MaNguyenLieu";
-            DonHang_DatLotTayId.ValueMember = "Id";
-            DonHang_DatLotTayId.DataSource = new BindingSource(listNguyenLieu, null);
+            var lstDaLotTay = lstNguyenLieu.Where(s => s.LoaiNguyenLieu.Ten == "DA LÓT TẨY").ToList();
+            SetComboboxDataSource(DonHang_DatLotTayId, lstDaLotTay, "MaNguyenLieu");
 
-            DonHang_DeId.DisplayMember = "MaNguyenLieu";
-            DonHang_DeId.ValueMember = "Id";
-            DonHang_DeId.DataSource = new BindingSource(listNguyenLieu, null);
+            var lstDe = lstNguyenLieu.Where(s => s.LoaiNguyenLieu.Ten == "ĐẾ").ToList();
+            SetComboboxDataSource(DonHang_DeId, lstDe, "MaNguyenLieu");
 
-            DonHang_LotId.DisplayMember = "MaNguyenLieu";
-            DonHang_LotId.ValueMember = "Id";
-            DonHang_LotId.DataSource = new BindingSource(listNguyenLieu, null);
+            var lstLot = lstNguyenLieu.Where(s => s.LoaiNguyenLieu.Ten == "LÓT").ToList();
+            SetComboboxDataSource(DonHang_LotId, lstLot, "MaNguyenLieu");
 
-            DonHang_MuId.DisplayMember = "MaNguyenLieu";
-            DonHang_MuId.ValueMember = "Id";
-            DonHang_MuId.DataSource = new BindingSource(listNguyenLieu, null);
+            var lstMu = lstNguyenLieu.Where(s => s.LoaiNguyenLieu.Ten == "MŨ").ToList();
+            SetComboboxDataSource(DonHang_MuId, lstMu, "MaNguyenLieu");
 
             HideAllGopY();
             _domainData = data;
@@ -87,16 +80,11 @@ namespace TLShoes
 
             gridGopY.DataSource = GopYDict;
 
-            repositoryItemLookUpEdit1.NullText = "";
-            repositoryItemLookUpEdit1.Properties.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU).Select(s => new { s.Ten, s.Id }).ToList();
-            repositoryItemLookUpEdit1.PopulateColumns();
-            repositoryItemLookUpEdit1.ShowHeader = false;
-            repositoryItemLookUpEdit1.Columns["Id"].Visible = false;
-            repositoryItemLookUpEdit1.Properties.DisplayMember = "Ten";
-            repositoryItemLookUpEdit1.Properties.ValueMember = "Id";
-            repositoryItemLookUpEdit1.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            var lstMau = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU);
+            SetRepositoryItem(repositoryItemLookUpEdit1, lstMau, "Ten");
 
             gridControl.DataSource = ChiTietDonhang;
+            btnDelete.Click += btnDelete_Click;
         }
 
         private void HideAllGopY()
@@ -111,7 +99,7 @@ namespace TLShoes
             DonHang_GopYXuongDe.Hide();
             DonHang_GopYXuongMay.Hide();
             DonHang_GopYVatTu.Hide();
-            DonHang_GopYQC.Hide();
+            DonHang_GopYQc.Hide();
 
             lblGopY.Text = "";
         }
@@ -121,15 +109,28 @@ namespace TLShoes
             var validateResult = ValidateInput();
             if (!string.IsNullOrEmpty(validateResult))
             {
-                MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
+                MessageBox.Show(validateResult);
                 return false;
             }
-            var saveData = CRUD.GetFormObject<DonHang>(FormControls, _domainData);
+
             using (var transaction = new TransactionScope())
             {
-                CRUD.DecorateSaveData(saveData, _domainData == null);
+                var saveData = CRUD.GetFormObject(FormControls, _domainData);
+                saveData.SoLuong = ChiTietDonhang.Sum(s => s.SoLuong);
                 SF.Get<DonHangViewModel>().Save(saveData);
                 var id = saveData.Id;
+
+                // Clear old data
+                if (_domainData != null && _domainData.ChiTietDonHangs != null)
+                {
+                    foreach (var chiTietDonHang in _domainData.ChiTietDonHangs.ToList())
+                    {
+                        if (ChiTietDonhang.All(s => s.Id != chiTietDonHang.Id))
+                        {
+                            SF.Get<ChiTietDonHangViewModel>().Delete(chiTietDonHang);
+                        }
+                    }
+                }
 
                 // Save Chi Tiet Don Hang
                 foreach (var chitiet in ChiTietDonhang)
@@ -142,57 +143,104 @@ namespace TLShoes
             }
 
             // Update danh gia nha cung cap
+            UpdateDanhGiaDonHang();
+
+            return true;
+        }
+
+        private void UpdateDanhGiaDonHang()
+        {
             if (DonHang_KhachHangId.SelectedValue != null)
             {
                 var khachHangId = (long)DonHang_KhachHangId.SelectedValue;
                 ThreadHelper.RunBackground(() =>
-                   {
-                       using (var context = new GiayTLEntities())
-                       {
-                           var khachHang = context.KhachHangs.Find(khachHangId);
-                           if (khachHang != null)
-                           {
-                               var donHangKhachHang = khachHang.DonHangs;
-                               khachHang.Gia = (int)donHangKhachHang.Where(s => s.Gia > 0).Average(s => s.Gia);
-                               khachHang.DungThoiGian = (int)donHangKhachHang.Where(s => s.DungThoiGian > 0).Average(s => s.DungThoiGian);
-                               khachHang.DungYeuCauKyThuat = (int)donHangKhachHang.Where(s => s.DungYeuCauKyThuat > 0).Average(s => s.DungYeuCauKyThuat);
-                               khachHang.DungMau = (int)donHangKhachHang.Where(s => s.DungMau > 0).Average(s => s.DungMau);
-                               khachHang.Khac = (int)donHangKhachHang.Where(s => s.Khac > 0).Average(s => s.Khac);
-                               khachHang.DatTestLy = (int)donHangKhachHang.Where(s => s.DatTestLy > 0).Average(s => s.DatTestLy);
-                               khachHang.DatTestHoa = (int)donHangKhachHang.Where(s => s.DatTestHoa > 0).Average(s => s.DatTestHoa);
-                               khachHang.DichVuGiaoHang = (int)donHangKhachHang.Where(s => s.DichVuGiaoHang > 0).Average(s => s.DichVuGiaoHang);
-                               khachHang.DichVuHauMai = (int)donHangKhachHang.Where(s => s.DichVuHauMai > 0).Average(s => s.DichVuHauMai);
-                               context.KhachHangs.AddOrUpdate(khachHang);
-                               context.SaveChanges();
-                           }
-                       }
-                   });
+                {
+                    using (var context = new GiayTLEntities())
+                    {
+                        var khachHang = context.KhachHangs.Find(khachHangId);
+                        if (khachHang != null)
+                        {
+                            var donHangKhachHang = khachHang.DonHangs;
+                            var gia = donHangKhachHang.Where(s => s.Gia > 0).ToList();
+                            if (gia.Any())
+                            {
+                                khachHang.Gia = (int)gia.Average(s => s.Gia);
+                            }
+
+                            var dungThoiGian = donHangKhachHang.Where(s => s.DungThoiGian > 0).ToList();
+                            if (dungThoiGian.Any())
+                            {
+                                khachHang.DungThoiGian = (int)dungThoiGian.Average(s => s.DungThoiGian);
+                            }
+
+                            var dungYeuCauKyThuat = donHangKhachHang.Where(s => s.DungYeuCauKyThuat > 0).ToList();
+                            if (dungYeuCauKyThuat.Any())
+                            {
+                                khachHang.DungYeuCauKyThuat = (int)dungYeuCauKyThuat.Average(s => s.DungYeuCauKyThuat);
+                            }
+
+                            var dungMau = donHangKhachHang.Where(s => s.DungMau > 0).ToList();
+                            if (dungMau.Any())
+                            {
+                                khachHang.DungMau = (int)dungMau.Average(s => s.DungMau);
+                            }
+
+                            var khac = donHangKhachHang.Where(s => s.Khac > 0).ToList();
+                            if (khac.Any())
+                            {
+                                khachHang.Khac = (int)khac.Average(s => s.Khac);
+                            }
+
+                            var datTestLy = donHangKhachHang.Where(s => s.DatTestLy > 0).ToList();
+                            if (datTestLy.Any())
+                            {
+                                khachHang.DatTestLy = (int)datTestLy.Average(s => s.DatTestLy);
+                            }
+
+                            var datTestHoa = donHangKhachHang.Where(s => s.DatTestHoa > 0).ToList();
+                            if (datTestHoa.Any())
+                            {
+                                khachHang.DatTestHoa = (int)datTestHoa.Average(s => s.DatTestHoa);
+                            }
+
+                            var dichVuGiaoHang = donHangKhachHang.Where(s => s.DichVuGiaoHang > 0).ToList();
+                            if (dichVuGiaoHang.Any())
+                            {
+                                khachHang.DichVuGiaoHang = (int)dichVuGiaoHang.Average(s => s.DichVuGiaoHang);
+                            }
+
+                            var dichVuHauMai = donHangKhachHang.Where(s => s.DichVuHauMai > 0).ToList();
+                            if (dichVuHauMai.Any())
+                            {
+                                khachHang.DichVuHauMai = (int)dichVuHauMai.Average(s => s.DichVuHauMai);
+                            }
+                            context.KhachHangs.AddOrUpdate(khachHang);
+                            context.SaveChanges();
+                        }
+                    }
+                });
             }
-            return true;
         }
 
         public string ValidateInput()
         {
             if (string.IsNullOrEmpty(DonHang_KhachHangId.Text))
             {
-                return lblKhacHangId.Text;
+                return "Không được phép để trống Khách Hàng";
             }
             if (string.IsNullOrEmpty(DonHang_MaHang.Text))
             {
-                return lblMaHang.Text;
+                return "Không được phép để trống Mã Hàng";
             }
             if (string.IsNullOrEmpty(DonHang_OrderNo.Text))
             {
-                return lblOrderNo.Text;
+                return "Không được phép để trống Số ĐH";
             }
-            if (string.IsNullOrEmpty(DonHang_NgayNhan.Text))
+            if (string.IsNullOrEmpty(DonHang_MaGiay.Text))
             {
-                return lblNgayNhan.Text;
+                return "Không được phép để trống Mã Giày";
             }
-            if (string.IsNullOrEmpty(DonHang_NgayXuat.Text))
-            {
-                return lblNgayXuat.Text;
-            }
+
             return string.Empty;
         }
 
@@ -224,7 +272,7 @@ namespace TLShoes
                     lblGopY.Text = "Xưởng Đe";
                     break;
                 case "QC":
-                    DonHang_GopYQC.Show();
+                    DonHang_GopYQc.Show();
                     lblGopY.Text = "Bp QC";
                     break;
                 case "Công Nghệ":
@@ -253,7 +301,7 @@ namespace TLShoes
             GopYDict["Px May"] = DonHang_GopYXuongMay.Text;
             GopYDict["Px Gò"] = DonHang_GopYXuongGo.Text;
             GopYDict["Px Đe"] = DonHang_GopYXuongDe.Text;
-            GopYDict["QC"] = DonHang_GopYQC.Text;
+            GopYDict["QC"] = DonHang_GopYQc.Text;
             GopYDict["Công Nghệ"] = DonHang_GopYCongNghe.Text;
             GopYDict["Mẫu"] = DonHang_GopYMau.Text;
             GopYDict["Kho Vật Tư"] = DonHang_GopYKhoVatTu.Text;
@@ -358,5 +406,27 @@ namespace TLShoes
             UpdateTotalAssessment();
         }
         #endregion
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            gridView.DeleteRow(gridView.FocusedRowHandle);
+        }
+
+        private void DonHang_MaGiay_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateMaHang();
+        }
+
+        private void DonHang_MaPhomId_SelectedValueChanged(object sender, EventArgs e)
+        {
+            UpdateMaHang();
+        }
+
+        private void UpdateMaHang()
+        {
+            var maPhom = DonHang_MaPhomId.Text;
+            var maGiay = DonHang_MaGiay.Text;
+            DonHang_MaHang.Text = string.Format("{0}-{1}", maPhom, maGiay);
+        }
     }
 }

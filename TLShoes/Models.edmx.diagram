@@ -5,164 +5,154 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9c1308f2a46f464a85beea642fcd142e" Name="Diagram1" ZoomLevel="57">
-        <EntityTypeShape EntityType="GiayTLModel.BaoCaoPhanXuong" Width="1.5" PointX="7.5" PointY="38" />
-        <EntityTypeShape EntityType="GiayTLModel.ChiTietDonHang" Width="1.5" PointX="13.5" PointY="37.25" />
-        <EntityTypeShape EntityType="GiayTLModel.ChiTietNguyenLieu" Width="1.5" PointX="16.625" PointY="35.125" />
-        <EntityTypeShape EntityType="GiayTLModel.CongNgheSanXuat" Width="1.5" PointX="7.5" PointY="42.625" />
-        <EntityTypeShape EntityType="GiayTLModel.DanhMuc" Width="1.5" PointX="3" PointY="47.25" />
-        <EntityTypeShape EntityType="GiayTLModel.DonHang" Width="3.5" PointX="5.25" PointY="29" />
-        <EntityTypeShape EntityType="GiayTLModel.KeHoachSanXuat" Width="1.5" PointX="7.5" PointY="23.375" />
-        <EntityTypeShape EntityType="GiayTLModel.KhachHang" Width="1.5" PointX="0.5" PointY="29.125" />
-        <EntityTypeShape EntityType="GiayTLModel.MauDoi" Width="1.5" PointX="10.5" PointY="30.25" />
-        <EntityTypeShape EntityType="GiayTLModel.NguyenLieu" Width="1.5" PointX="2.75" PointY="37.875" />
-        <EntityTypeShape EntityType="GiayTLModel.UserAccount" Width="1.5" PointX="2.125" PointY="27.75" />
-        <AssociationConnector Association="GiayTLModel.FK__BaoCaoPha__Autho__52593CB8" />
-        <AssociationConnector Association="GiayTLModel.FK__BaoCaoPha__DonHa__534D60F1" />
-        <AssociationConnector Association="GiayTLModel.FK__BaoCaoPha__PhanX__5441852A" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__Autho__1BFD2C07" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__DonHa__1CF15040" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__MauId__1DE57479" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietNg__Autho__49C3F6B7" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietNg__ChiTi__4BAC3F29" />
-        <AssociationConnector Association="GiayTLModel.FK__CongNgheS__Autho__37A5467C" />
-        <AssociationConnector Association="GiayTLModel.FK__CongNgheS__DonHa__38996AB5" />
-        <AssociationConnector Association="GiayTLModel.FK__CongNgheS__MauDo__398D8EEE" />
-        <AssociationConnector Association="GiayTLModel.FK__CongNgheS__PhanL__3A81B327" />
-        <AssociationConnector Association="GiayTLModel.FK__CongNgheS__PhanL__3B75D760" />
-        <AssociationConnector Association="GiayTLModel.FK__DanhMuc__AuthorI__1273C1CD" />
-        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__DonVi__34C8D9D1" />
-        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__LoaiN__33D4B598" />
-        <AssociationConnector Association="GiayTLModel.FK__DonHang__AuthorI__182C9B23" />
-        <AssociationConnector Association="GiayTLModel.FK__DonHang__KhachHa__1920BF5C" />
-        <AssociationConnector Association="GiayTLModel.FK__KeHoachSa__DonHa__4F7CD00D" />
-        <AssociationConnector Association="GiayTLModel.FK__MauDoi__DonHangI__21B6055D" />
-        <AssociationConnector Association="GiayTLModel.FK__KeHoachSa__Autho__4E88ABD4" />
-        <AssociationConnector Association="GiayTLModel.FK__KhachHang__Autho__15502E78" />
-        <AssociationConnector Association="GiayTLModel.FK__MauDoi__AuthorId__20C1E124" />
-        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__Autho__32E0915F" />
-        <AssociationConnector Association="GiayTLModel.FK__DonHang__MaPhomI__1DE57479" />
-        <EntityTypeShape EntityType="GiayTLModel.NguyenLieuChiLenh" Width="1.5" PointX="12.75" PointY="41.625" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietNg__Nguye__4BAC3F29" />
-        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__ChiTi__46E78A0C" />
-        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__MauId__47DBAE45" />
-        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__PhanX__44FF419A" />
-        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__Autho__440B1D61" />
-        <EntityTypeShape EntityType="GiayTLModel.ErrorLog" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="GiayTLModel.ChiTietToTrinh" Width="1.5" PointX="12.375" PointY="30.75" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietTo__Autho__73BA3083" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietTo__DonHa__75A278F5" />
-        <EntityTypeShape EntityType="GiayTLModel.ChiTietNhapKho" Width="1.5" PointX="15.5" PointY="41.5" />
-        <EntityTypeShape EntityType="GiayTLModel.ChiTietXuatKho" Width="1.5" PointX="19.75" PointY="33.5" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietNh__Autho__0F624AF8" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietNh__Nguye__114A936A" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietXu__Autho__17F790F9" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietXu__Nguye__19DFD96B" />
-        <EntityTypeShape EntityType="GiayTLModel.MauSanXuat" Width="1.5" PointX="10.5" PointY="41.125" />
-        <EntityTypeShape EntityType="GiayTLModel.MauTest" Width="1.5" PointX="15.5" PointY="45.75" />
-        <EntityTypeShape EntityType="GiayTLModel.MauThuDao" Width="2.125" PointX="10.5" PointY="34.875" />
-        <AssociationConnector Association="GiayTLModel.FK__MauSanXua__PhanL__30C33EC3" />
-        <AssociationConnector Association="GiayTLModel.FK__MauTest__PhanLoa__2B0A656D" />
-        <AssociationConnector Association="GiayTLModel.FK__MauTest__PhanLoa__2BFE89A6" />
-        <AssociationConnector Association="GiayTLModel.FK__MauSanXua__DonHa__2FCF1A8A" />
-        <AssociationConnector Association="GiayTLModel.FK__MauTest__DonHang__2A164134" />
-        <AssociationConnector Association="GiayTLModel.FK__MauThuDao__DonHa__3493CFA7" />
-        <AssociationConnector Association="GiayTLModel.FK__MauSanXua__Autho__2EDAF651" />
-        <AssociationConnector Association="GiayTLModel.FK__MauTest__AuthorI__29221CFB" />
-        <AssociationConnector Association="GiayTLModel.FK__MauThuDao__Autho__339FAB6E" />
-        <EntityTypeShape EntityType="GiayTLModel.ChiTietDanhGia" Width="1.5" PointX="21" PointY="38.375" />
-        <EntityTypeShape EntityType="GiayTLModel.ChiTietMauDanhGia" Width="1.5" PointX="5.25" PointY="44.625" />
-        <EntityTypeShape EntityType="GiayTLModel.DanhGia" Width="1.5" PointX="18.75" PointY="28.375" />
-        <EntityTypeShape EntityType="GiayTLModel.NhaCungCap" Width="1.5" PointX="3" PointY="39" />
-        <EntityTypeShape EntityType="GiayTLModel.PhieuNhapKho" Width="1.5" PointX="3" PointY="24.5" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietDa__Autho__55009F39" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietDa__DanhG__55F4C372" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietDa__TieuC__56E8E7AB" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietMa__Autho__4B7734FF" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietMa__TieuC__4D5F7D71" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietNh__Phieu__10566F31" />
-        <AssociationConnector Association="GiayTLModel.FK__DanhGia__AuthorI__503BEA1C" />
-        <AssociationConnector Association="GiayTLModel.FK__NhaCungCa__Autho__3C34F16F" />
-        <AssociationConnector Association="GiayTLModel.FK__PhieuNhap__Autho__0C85DE4D" />
-        <EntityTypeShape EntityType="GiayTLModel.NhaCungCapVatTu" Width="1.5" PointX="16.5" PointY="25.625" />
-        <AssociationConnector Association="GiayTLModel.FK__NhaCungCa__Nguye__5BAD9CC8" />
-        <AssociationConnector Association="GiayTLModel.FK__NhaCungCa__NhaCu__5AB9788F" />
-        <AssociationConnector Association="GiayTLModel.FK__NhaCungCa__Autho__59C55456" />
-        <EntityTypeShape EntityType="GiayTLModel.ChiTietDonDatHang" Width="1.5" PointX="17.75" PointY="39.375" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__Autho__756D6ECB" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__Nguye__7849DB76" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__NhaCu__7755B73D" />
-        <EntityTypeShape EntityType="GiayTLModel.DonDatHang" Width="1.5" PointX="10.25" PointY="25.625" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__DonDa__76619304" />
-        <AssociationConnector Association="GiayTLModel.FK__DanhGia__DonDatH__51300E55" />
-        <AssociationConnector Association="GiayTLModel.FK__DonDatHan__Autho__43D61337" />
-        <AssociationConnector Association="GiayTLModel.FK__DonDatHan__NhaCu__44CA3770" />
-        <EntityTypeShape EntityType="GiayTLModel.MauDanhGia" Width="1.5" PointX="3" PointY="19.875" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietMa__MauDa__4C6B5938" />
-        <AssociationConnector Association="GiayTLModel.FK__DanhGia__MauDanh__5224328E" />
-        <AssociationConnector Association="GiayTLModel.FK__MauDanhGi__Autho__489AC854" />
-        <EntityTypeShape EntityType="GiayTLModel.sysdiagram" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="GiayTLModel.ChiTietHuongDanDongGoi" Width="1.5" PointX="18.5" PointY="44.125" />
-        <EntityTypeShape EntityType="GiayTLModel.HuongDanDongGoi" Width="1.5" PointX="12.5" PointY="21.75" />
-        <EntityTypeShape EntityType="GiayTLModel.MauHuongDanDongGoi" Width="1.5" PointX="5.25" PointY="24.25" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietHu__Autho__32767D0B" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietHu__DanhM__345EC57D" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietHu__DonVi__3552E9B6" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietHu__MauHu__336AA144" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietHu__MauId__36470DEF" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietHu__Nguye__373B3228" />
-        <AssociationConnector Association="GiayTLModel.FK__HuongDanD__DonHa__3B0BC30C" />
-        <AssociationConnector Association="GiayTLModel.FK__HuongDanD__Autho__3A179ED3" />
-        <AssociationConnector Association="GiayTLModel.FK__MauHuongD__Khach__2F9A1060" />
-        <AssociationConnector Association="GiayTLModel.FK__MauHuongD__Autho__2EA5EC27" />
-        <AssociationConnector Association="GiayTLModel.FK__HuongDanD__MauDo__3BFFE745" />
-        <EntityTypeShape EntityType="GiayTLModel.PhieuXuatKho" Width="1.5" PointX="15.5" PointY="20.375" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietXu__Phieu__18EBB532" />
-        <AssociationConnector Association="GiayTLModel.FK__PhieuXuat__DonHa__40C49C62" />
-        <AssociationConnector Association="GiayTLModel.FK__PhieuXuat__Autho__14270015" />
-        <EntityTypeShape EntityType="GiayTLModel.NhatKyThayDoi" Width="1.5" PointX="3" PointY="15.375" />
-        <AssociationConnector Association="GiayTLModel.FK__NhatKyTha__Autho__54CB950F" />
-        <EntityTypeShape EntityType="GiayTLModel.MauDoiHinh" Width="1.5" PointX="14.75" PointY="31.375" />
-        <AssociationConnector Association="GiayTLModel.FK__MauDoiHin__MauDo__68D28DBC" />
-        <AssociationConnector Association="GiayTLModel.FK__MauDoiHin__Autho__67DE6983" />
-        <AssociationConnector Association="GiayTLModel.FK__PhieuNhap__DanhG__6ABAD62E" />
-        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__MauId__7908F585" />
-        <AssociationConnector Association="GiayTLModel.FK__MauThuDao__KetQu__22FF2F51" />
-        <AssociationConnector Association="GiayTLModel.FK__MauThuDao__KetQu__23F3538A" />
-        <AssociationConnector Association="GiayTLModel.FK__MauThuDao__KetQu__24E777C3" />
-        <AssociationConnector Association="GiayTLModel.FK__MauThuDao__KetQu__25DB9BFC" />
-        <AssociationConnector Association="GiayTLModel.FK__DonHang__DaLotTa__2116E6DF" />
-        <AssociationConnector Association="GiayTLModel.FK__DonHang__DeId__220B0B18" />
-        <AssociationConnector Association="GiayTLModel.FK__DonHang__LotId__2022C2A6" />
-        <AssociationConnector Association="GiayTLModel.FK__DonHang__MuId__1F2E9E6D" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietTo__Nguye__324172E1" />
-        <AssociationConnector Association="GiayTLModel.FK__DonDatHan__Nguoi__4DE98D56" />
-        <AssociationConnector Association="GiayTLModel.FK__DonDatHan__Nguoi__4EDDB18F" />
-        <AssociationConnector Association="GiayTLModel.FK__PhieuNhap__Nguoi__51BA1E3A" />
-        <AssociationConnector Association="GiayTLModel.FK__PhieuNhap__Nguoi__52AE4273" />
-        <AssociationConnector Association="GiayTLModel.FK__PhieuXuat__Nguoi__4FD1D5C8" />
-        <AssociationConnector Association="GiayTLModel.FK__PhieuXuat__Nguoi__50C5FA01" />
-        <EntityTypeShape EntityType="GiayTLModel.ChiLenh" Width="1.5" PointX="19.5" PointY="23" />
-        <EntityTypeShape EntityType="GiayTLModel.TongHopToTrinh" Width="1.5" PointX="4.375" PointY="10.25" />
-        <EntityTypeShape EntityType="GiayTLModel.ToTrinh" Width="1.5" PointX="6.625" PointY="17" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiLenh__AuthorI__3F466844" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiLenh__DonHang__403A8C7D" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiLenh__NguoiDu__4C0144E4" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiLenh__NguoiLa__4CF5691D" />
-        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__ChiLe__45F365D3" />
-        <AssociationConnector Association="GiayTLModel.FK__ChiTietTo__ToTri__08B54D69" />
-        <AssociationConnector Association="GiayTLModel.FK__DonDatHan__ToTri__0C1BC9F9" />
-        <AssociationConnector Association="GiayTLModel.FK__ToTrinh__NguyenL__04E4BC85" />
-        <AssociationConnector Association="GiayTLModel.FK__TongHopTo__Autho__4830B400" />
-        <AssociationConnector Association="GiayTLModel.FK__TongHopTo__Nguoi__4924D839" />
-        <AssociationConnector Association="GiayTLModel.FK__TongHopTo__Nguoi__53A266AC" />
-        <AssociationConnector Association="GiayTLModel.FK__ToTrinh__TongHop__4B0D20AB" />
-        <AssociationConnector Association="GiayTLModel.FK__ToTrinh__AuthorI__03F0984C" />
-        <EntityTypeShape EntityType="GiayTLModel.NhatKyXuatKho" Width="1.5" PointX="22" PointY="31.75" />
-        <AssociationConnector Association="GiayTLModel.FK__NhatKyXua__ChiTi__5B438874" />
-        <AssociationConnector Association="GiayTLModel.FK__NhatKyXua__Autho__5A4F643B" />
+        <EntityTypeShape EntityType="GiayTLModel.AppConfig" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GiayTLModel.BaoCaoPhanXuong" Width="1.5" PointX="3" PointY="80.625" />
+        <EntityTypeShape EntityType="GiayTLModel.ChiLenh" Width="1.5" PointX="3" PointY="75.25" />
+        <EntityTypeShape EntityType="GiayTLModel.ChiTietDanhGia" Width="1.5" PointX="7.5" PointY="105.75" />
+        <EntityTypeShape EntityType="GiayTLModel.ChiTietDonDatHang" Width="1.5" PointX="5.25" PointY="95.5" />
+        <EntityTypeShape EntityType="GiayTLModel.ChiTietDonHang" Width="1.5" PointX="8.25" PointY="110.125" />
+        <EntityTypeShape EntityType="GiayTLModel.ChiTietHuongDanDongGoi" Width="1.5" PointX="5.25" PointY="106.25" />
+        <EntityTypeShape EntityType="GiayTLModel.ChiTietMauDanhGia" Width="1.5" PointX="5.25" PointY="101.5" />
+        <EntityTypeShape EntityType="GiayTLModel.ChiTietNguyenLieu" Width="1.5" PointX="16.5" PointY="96.125" />
+        <EntityTypeShape EntityType="GiayTLModel.ChiTietNhapKho" Width="1.5" PointX="6" PointY="79.75" />
+        <EntityTypeShape EntityType="GiayTLModel.ChiTietToTrinh" Width="1.5" PointX="6" PointY="75.625" />
+        <EntityTypeShape EntityType="GiayTLModel.ChiTietXuatKho" Width="1.5" PointX="3" PointY="70.625" />
+        <EntityTypeShape EntityType="GiayTLModel.CongNgheSanXuat" Width="1.5" PointX="8" PointY="70.25" />
+        <EntityTypeShape EntityType="GiayTLModel.DanhGia" Width="1.5" PointX="5.25" PointY="70.5" />
+        <EntityTypeShape EntityType="GiayTLModel.DanhMuc" Width="1.5" PointX="3" PointY="138.75" />
+        <EntityTypeShape EntityType="GiayTLModel.DonDatHang" Width="1.5" PointX="8.25" PointY="95.125" />
+        <EntityTypeShape EntityType="GiayTLModel.DonHang" Width="1.5" PointX="13.5" PointY="107.125" />
+        <EntityTypeShape EntityType="GiayTLModel.ErrorLog" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GiayTLModel.HuongDanDongGoi" Width="1.5" PointX="21.75" PointY="99.125" />
+        <EntityTypeShape EntityType="GiayTLModel.KeHoachSanXuat" Width="1.5" PointX="18.75" PointY="99.375" />
+        <EntityTypeShape EntityType="GiayTLModel.KhachHang" Width="1.5" PointX="3" PointY="148.625" />
+        <EntityTypeShape EntityType="GiayTLModel.MauDoi" Width="1.5" PointX="15.75" PointY="91.125" />
+        <EntityTypeShape EntityType="GiayTLModel.MauDoiHinh" Width="1.5" PointX="18" PointY="81.625" />
+        <EntityTypeShape EntityType="GiayTLModel.MauHuongDanDongGoi" Width="1.5" PointX="8.25" PointY="115.125" />
+        <EntityTypeShape EntityType="GiayTLModel.MauSanXuat" Width="1.5" PointX="5.25" PointY="113.125" />
+        <EntityTypeShape EntityType="GiayTLModel.MauTest" Width="1.5" PointX="11.25" PointY="97.75" />
+        <EntityTypeShape EntityType="GiayTLModel.MauThuDao" Width="1.5" PointX="18.75" PointY="92.25" />
+        <EntityTypeShape EntityType="GiayTLModel.NhaCungCap" Width="1.5" PointX="3" PointY="117.5" />
+        <EntityTypeShape EntityType="GiayTLModel.NhaCungCapVatTu" Width="1.5" PointX="13.5" PointY="95.75" />
+        <EntityTypeShape EntityType="GiayTLModel.NhatKyThayDoi" Width="1.5" PointX="3" PointY="145.125" />
+        <EntityTypeShape EntityType="GiayTLModel.NhatKyXuatKho" Width="1.5" PointX="8.25" PointY="75.5" />
         <EntityTypeShape EntityType="GiayTLModel.PhanQuyenNguoiDung" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="GiayTLModel.AppConfig" Width="1.5" PointX="3.375" PointY="3.75" />
-        </Diagram>
+        <EntityTypeShape EntityType="GiayTLModel.PhieuNhapKho" Width="1.5" PointX="10.5" PointY="73.375" />
+        <EntityTypeShape EntityType="GiayTLModel.PhieuXuatKho" Width="1.5" PointX="21.75" PointY="92.25" />
+        <EntityTypeShape EntityType="GiayTLModel.TongHopToTrinh" Width="1.5" PointX="3" PointY="65.375" />
+        <EntityTypeShape EntityType="GiayTLModel.ToTrinh" Width="1.5" PointX="13.5" PointY="86.375" />
+        <EntityTypeShape EntityType="GiayTLModel.UserAccount" Width="1.5" PointX="0.75" PointY="71.25" />
+        <AssociationConnector Association="GiayTLModel.FK__BaoCaoPha__Autho__1E6F845E" />
+        <AssociationConnector Association="GiayTLModel.FK__BaoCaoPha__DonHa__22401542" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiLenh__AuthorI__690797E6" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiLenh__DonHang__6CD828CA" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiLenh__NguoiDu__72910220" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiLenh__NguoiLa__70A8B9AE" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietDa__Autho__2D7CBDC4" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietDa__DanhG__314D4EA8" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietDa__TieuC__324172E1" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__Autho__0662F0A3" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__DonDa__0A338187" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__NhaCu__0B27A5C0" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__Autho__7D439ABD" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__DonHa__01142BA1" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__MauId__02084FDA" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietHu__Autho__00750D23" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietHu__DanhM__0539C240" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietHu__DonVi__062DE679" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietHu__MauHu__04459E07" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietHu__MauId__08162EEB" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietMa__Autho__1A69E950" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietMa__TieuC__1F2E9E6D" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietNg__Autho__01D345B0" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietNh__Autho__4830B400" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietNh__Phieu__4C0144E4" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietTo__Autho__4589517F" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietTo__DonHa__4A4E069C" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietTo__ToTri__4959E263" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietXu__Autho__63D8CE75" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietXu__Phieu__67A95F59" />
+        <AssociationConnector Association="GiayTLModel.FK__NhatKyXua__ChiTi__703EA55A" />
+        <AssociationConnector Association="GiayTLModel.FK__CongNgheS__Autho__5AB9788F" />
+        <AssociationConnector Association="GiayTLModel.FK__CongNgheS__DonHa__5E8A0973" />
+        <AssociationConnector Association="GiayTLModel.FK__CongNgheS__MauDo__5F7E2DAC" />
+        <AssociationConnector Association="GiayTLModel.FK__DanhGia__AuthorI__220B0B18" />
+        <AssociationConnector Association="GiayTLModel.FK__DanhGia__DonDatH__25DB9BFC" />
+        <AssociationConnector Association="GiayTLModel.FK__PhieuNhap__DanhG__4183B671" />
+        <AssociationConnector Association="GiayTLModel.FK__DanhMuc__AuthorI__2D27B809" />
+        <AssociationConnector Association="GiayTLModel.FK__MauSanXua__PhanL__3864608B" />
+        <AssociationConnector Association="GiayTLModel.FK__MauTest__PhanLoa__2180FB33" />
+        <AssociationConnector Association="GiayTLModel.FK__MauTest__PhanLoa__245D67DE" />
+        <AssociationConnector Association="GiayTLModel.FK__DonDatHan__Autho__6F7F8B4B" />
+        <AssociationConnector Association="GiayTLModel.FK__DonDatHan__Nguoi__00AA174D" />
+        <AssociationConnector Association="GiayTLModel.FK__DonDatHan__Nguoi__02925FBF" />
+        <AssociationConnector Association="GiayTLModel.FK__DonDatHan__NhaCu__74444068" />
+        <AssociationConnector Association="GiayTLModel.FK__DonDatHan__ToTri__73501C2F" />
+        <AssociationConnector Association="GiayTLModel.FK__DonHang__AuthorI__59FA5E80" />
+        <AssociationConnector Association="GiayTLModel.FK__DonHang__KhachHa__6383C8BA" />
+        <AssociationConnector Association="GiayTLModel.FK__HuongDanD__DonHa__147C05D0" />
+        <AssociationConnector Association="GiayTLModel.FK__KeHoachSa__DonHa__0E391C95" />
+        <AssociationConnector Association="GiayTLModel.FK__MauDoi__DonHangI__0A9D95DB" />
+        <AssociationConnector Association="GiayTLModel.FK__MauSanXua__DonHa__3493CFA7" />
+        <AssociationConnector Association="GiayTLModel.FK__MauTest__DonHang__1DB06A4F" />
+        <AssociationConnector Association="GiayTLModel.FK__MauThuDao__DonHa__489AC854" />
+        <AssociationConnector Association="GiayTLModel.FK__PhieuXuat__DonHa__54968AE5" />
+        <AssociationConnector Association="GiayTLModel.FK__HuongDanD__Autho__10AB74EC" />
+        <AssociationConnector Association="GiayTLModel.FK__HuongDanD__MauDo__15702A09" />
+        <AssociationConnector Association="GiayTLModel.FK__KeHoachSa__Autho__0A688BB1" />
+        <AssociationConnector Association="GiayTLModel.FK__KhachHang__Autho__440B1D61" />
+        <AssociationConnector Association="GiayTLModel.FK__MauHuongD__Khach__79C80F94" />
+        <AssociationConnector Association="GiayTLModel.FK__MauDoi__AuthorId__06CD04F7" />
+        <AssociationConnector Association="GiayTLModel.FK__MauDoiHin__MauDo__151B244E" />
+        <AssociationConnector Association="GiayTLModel.FK__MauDoiHin__Autho__114A936A" />
+        <AssociationConnector Association="GiayTLModel.FK__MauHuongD__Autho__75F77EB0" />
+        <AssociationConnector Association="GiayTLModel.FK__MauSanXua__Autho__30C33EC3" />
+        <AssociationConnector Association="GiayTLModel.FK__MauTest__AuthorI__19DFD96B" />
+        <AssociationConnector Association="GiayTLModel.FK__MauThuDao__Autho__44CA3770" />
+        <AssociationConnector Association="GiayTLModel.FK__NhaCungCa__Autho__4F12BBB9" />
+        <AssociationConnector Association="GiayTLModel.FK__NhaCungCa__NhaCu__68D28DBC" />
+        <AssociationConnector Association="GiayTLModel.FK__NhaCungCa__Autho__6501FCD8" />
+        <AssociationConnector Association="GiayTLModel.FK__NhatKyTha__Autho__1D114BD1" />
+        <AssociationConnector Association="GiayTLModel.FK__NhatKyXua__Autho__6C6E1476" />
+        <AssociationConnector Association="GiayTLModel.FK__PhieuNhap__Autho__370627FE" />
+        <AssociationConnector Association="GiayTLModel.FK__PhieuNhap__Nguoi__436BFEE3" />
+        <AssociationConnector Association="GiayTLModel.FK__PhieuNhap__Nguoi__45544755" />
+        <AssociationConnector Association="GiayTLModel.FK__PhieuXuat__Autho__50C5FA01" />
+        <AssociationConnector Association="GiayTLModel.FK__PhieuXuat__Nguoi__5F141958" />
+        <AssociationConnector Association="GiayTLModel.FK__PhieuXuat__Nguoi__60FC61CA" />
+        <AssociationConnector Association="GiayTLModel.FK__TongHopTo__Autho__29E1370A" />
+        <AssociationConnector Association="GiayTLModel.FK__TongHopTo__Nguoi__2F9A1060" />
+        <AssociationConnector Association="GiayTLModel.FK__TongHopTo__Nguoi__318258D2" />
+        <AssociationConnector Association="GiayTLModel.FK__ToTrinh__TongHop__39237A9A" />
+        <AssociationConnector Association="GiayTLModel.FK__ToTrinh__AuthorI__3552E9B6" />
+        <EntityTypeShape EntityType="GiayTLModel.NguyenLieuChiLenh" Width="1.5" PointX="11.25" PointY="113.625" />
+        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__ChiLe__7A3223E8" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietNg__Nguye__05A3D694" />
+        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__ChiTi__7B264821" />
+        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__MauId__7D0E9093" />
+        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__Autho__756D6ECB" />
+        <EntityTypeShape EntityType="GiayTLModel.MauDanhGia" Width="1.5" PointX="3" PointY="85.875" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietMa__MauDa__1E3A7A34" />
+        <AssociationConnector Association="GiayTLModel.FK__DanhGia__MauDanh__26CFC035" />
+        <AssociationConnector Association="GiayTLModel.FK__MauDanhGi__Autho__12C8C788" />
+        <EntityTypeShape EntityType="GiayTLModel.NguyenLieu" Width="1.5" PointX="11.25" PointY="105.375" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietDo__Nguye__0C1BC9F9" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietHu__Nguye__090A5324" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietNg__ChiTi__0697FACD" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietNh__Nguye__4CF5691D" />
+        <AssociationConnector Association="GiayTLModel.FK__ChiTietXu__Nguye__689D8392" />
+        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__DonVi__3C69FB99" />
+        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__LoaiN__398D8EEE" />
+        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__MauId__3D5E1FD2" />
+        <AssociationConnector Association="GiayTLModel.FK__DonHang__DaLotTa__60A75C0F" />
+        <AssociationConnector Association="GiayTLModel.FK__DonHang__DeId__619B8048" />
+        <AssociationConnector Association="GiayTLModel.FK__DonHang__LotId__5FB337D6" />
+        <AssociationConnector Association="GiayTLModel.FK__DonHang__MaPhomI__5DCAEF64" />
+        <AssociationConnector Association="GiayTLModel.FK__DonHang__MuId__5EBF139D" />
+        <AssociationConnector Association="GiayTLModel.FK__NguyenLie__Autho__35BCFE0A" />
+        <AssociationConnector Association="GiayTLModel.FK__NhaCungCa__Nguye__69C6B1F5" />
+        <AssociationConnector Association="GiayTLModel.FK__ToTrinh__NguyenL__3A179ED3" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

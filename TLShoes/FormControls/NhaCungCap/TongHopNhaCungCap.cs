@@ -17,7 +17,6 @@ namespace TLShoes.FormControls.NhaCungCap
         public ucTongHopNhaCungCap()
         {
             InitializeComponent();
-            Init();
         }
 
         public override void ReloadData()

@@ -20,7 +20,7 @@ namespace TLShoes.FormControls.KeHoachSanXuat
         {
             InitializeComponent();
             ReloadData();
-            ObserverControl.Regist("Export", "ucBaoCaoTongHop", Export);
+            ObserverControl.Regist(Define.ActionType.EXPORT, "ucBaoCaoTongHop", Export);
 
         }
 

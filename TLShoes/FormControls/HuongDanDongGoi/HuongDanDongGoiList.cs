@@ -18,7 +18,6 @@ namespace TLShoes.FormControls.HuongDanDongGoi
         public ucHuongDanDongGoiList()
         {
             InitializeComponent();
-            Init();
             GenerateFormatRuleByValue(gridView, colLoaiNguoiDung, Define.LoaiNguoiDung.GDSX.ToString(), Color.Wheat, Color.Red);
         }
 
