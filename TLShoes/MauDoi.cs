@@ -17,8 +17,8 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MauDoi()
         {
-            this.CongNgheSanXuats = new HashSet<CongNgheSanXuat>();
             this.MauDoiHinhs = new HashSet<MauDoiHinh>();
+            this.CongNgheSanXuats = new HashSet<CongNgheSanXuat>();
         }
     
         public long Id { get; set; }
@@ -32,11 +32,11 @@ namespace TLShoes
         public System.DateTime MauNgay { get; set; }
         public string GhiChu { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CongNgheSanXuat> CongNgheSanXuats { get; set; }
         public virtual DonHang DonHang { get; set; }
         public virtual UserAccount UserAccount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MauDoiHinh> MauDoiHinhs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CongNgheSanXuat> CongNgheSanXuats { get; set; }
     }
 }

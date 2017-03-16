@@ -58,15 +58,14 @@ namespace TLShoes.ViewModels
                 listShowData.Add(new ShowData()
                 {
                     Id = item.Id,
-//                    PhanXuongId = item.PhanXuongId,
-//                    PhanXuong = item.PhanXuong.Ten,
+                    PhanXuong = item.PhanXuong,
                     MauId = item.MauId,
                     Mau = item.Mau != null ? item.Mau.Ten : "",
                     QuyCach = item.QuyCach,
                     ChiTietId = item.ChiTietId,
                     ChiTiet = item.ChiTiet != null ? item.ChiTiet.Ten : "",
-                    DinhMucChuan = (float)item.DinhMucChuan,
-                    DinhMucThuc = (float)item.DinhMucThuc,
+                    DinhMucChuan = item.DinhMucChuan,
+                    DinhMucThuc = item.DinhMucThuc,
                     NguyenLieu = NguyenLieuFormat(chiTietNguyenLieu),
                     ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(chiTietNguyenLieu.ToList()),
                 });
@@ -80,7 +79,7 @@ namespace TLShoes.ViewModels
             var tenNguyenLieu = "";
             foreach (var nguyenlieu in data)
             {
-                var nguyenLieuInfo = SF.Get<NguyenLieuViewModel>().GetDetail((long)nguyenlieu.ChiTietNguyenLieuId);
+                var nguyenLieuInfo = SF.Get<NguyenLieuViewModel>().GetDetail(nguyenlieu.ChiTietNguyenLieuId.GetValueOrDefault());
                 if (nguyenLieuInfo != null)
                 {
                     if (string.IsNullOrEmpty(tenNguyenLieu))
@@ -112,14 +111,9 @@ namespace TLShoes.ViewModels
 
         public class ShowData : NguyenLieuChiLenh
         {
-            public long Id { get; set; }
-            public string PhanXuong { get; set; }
-            public string QuyCach { get; set; }
-            public string NguyenLieu { get; set; }
             public string Mau { get; set; }
             public string ChiTiet { get; set; }
-            public float DinhMucChuan { get; set; }
-            public float DinhMucThuc { get; set; }
+            public string NguyenLieu { get; set; }
             public BindingList<ChiTietNguyenLieu> ChiTietNguyenLieuList { get; set; }
         }
     }

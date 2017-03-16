@@ -9,6 +9,7 @@ namespace TLShoes.FormControls.TongHopMauTest
         public ucTongHopMauTestList()
         {
             InitializeComponent();
+            ReloadData();
         }
 
         public override void ReloadData()

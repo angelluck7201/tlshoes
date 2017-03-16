@@ -21,9 +21,9 @@ namespace TLShoes
         public bool IsActived { get; set; }
         public Nullable<long> DonHangId { get; set; }
         public Nullable<long> MauDoiId { get; set; }
-        public string PhanLoaiThuRap { get; set; }
+        public Nullable<long> PhanLoaiThuRapId { get; set; }
         public string YKienThuRap { get; set; }
-        public string PhanLoaiThuDao { get; set; }
+        public Nullable<long> PhanLoaiThuDaoId { get; set; }
         public string YKienThuDao { get; set; }
         public string HinhBangThongSo { get; set; }
         public string HinhCongNgheDuocDuyet { get; set; }
@@ -32,5 +32,7 @@ namespace TLShoes
         public virtual UserAccount UserAccount { get; set; }
         public virtual DonHang DonHang { get; set; }
         public virtual MauDoi MauDoi { get; set; }
+        public virtual DanhMuc PhanLoaiThuRap { get; set; }
+        public virtual DanhMuc PhanLoaiThuDao { get; set; }
     }
 }

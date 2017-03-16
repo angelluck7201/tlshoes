@@ -37,7 +37,7 @@
             this.lblYKienThuRap = new DevExpress.XtraEditors.LabelControl();
             this.CongNgheSanXuat_YKienThuDao = new System.Windows.Forms.RichTextBox();
             this.lblYKienThuDao = new DevExpress.XtraEditors.LabelControl();
-            this.CongNgheSanXuat_PhanLoaiThuDao = new System.Windows.Forms.ComboBox();
+            this.CongNgheSanXuat_PhanLoaiThuDaoId = new System.Windows.Forms.ComboBox();
             this.lblPhanLoaiThuDao = new DevExpress.XtraEditors.LabelControl();
             this.CongNgheSanXuat_NgayDuyet = new System.Windows.Forms.DateTimePicker();
             this.lblNgayDuyet = new DevExpress.XtraEditors.LabelControl();
@@ -136,13 +136,13 @@
             this.lblYKienThuDao.TabIndex = 65;
             this.lblYKienThuDao.Text = "Ý Kiến Thử Dao";
             // 
-            // CongNgheSanXuat_PhanLoaiThuDao
+            // CongNgheSanXuat_PhanLoaiThuDaoId
             // 
-            this.CongNgheSanXuat_PhanLoaiThuDao.FormattingEnabled = true;
-            this.CongNgheSanXuat_PhanLoaiThuDao.Location = new System.Drawing.Point(175, 253);
-            this.CongNgheSanXuat_PhanLoaiThuDao.Name = "CongNgheSanXuat_PhanLoaiThuDao";
-            this.CongNgheSanXuat_PhanLoaiThuDao.Size = new System.Drawing.Size(511, 24);
-            this.CongNgheSanXuat_PhanLoaiThuDao.TabIndex = 4;
+            this.CongNgheSanXuat_PhanLoaiThuDaoId.FormattingEnabled = true;
+            this.CongNgheSanXuat_PhanLoaiThuDaoId.Location = new System.Drawing.Point(175, 253);
+            this.CongNgheSanXuat_PhanLoaiThuDaoId.Name = "CongNgheSanXuat_PhanLoaiThuDaoId";
+            this.CongNgheSanXuat_PhanLoaiThuDaoId.Size = new System.Drawing.Size(511, 24);
+            this.CongNgheSanXuat_PhanLoaiThuDaoId.TabIndex = 4;
             // 
             // lblPhanLoaiThuDao
             // 
@@ -260,7 +260,7 @@
             this.xtraTabPage2.Controls.Add(this.lblYKienThuRap);
             this.xtraTabPage2.Controls.Add(this.CongNgheSanXuat_YKienThuRap);
             this.xtraTabPage2.Controls.Add(this.lblPhanLoaiThuDao);
-            this.xtraTabPage2.Controls.Add(this.CongNgheSanXuat_PhanLoaiThuDao);
+            this.xtraTabPage2.Controls.Add(this.CongNgheSanXuat_PhanLoaiThuDaoId);
             this.xtraTabPage2.Controls.Add(this.CongNgheSanXuat_YKienThuDao);
             this.xtraTabPage2.Controls.Add(this.lblYKienThuDao);
             this.xtraTabPage2.Name = "xtraTabPage2";
@@ -330,7 +330,7 @@
         private DevExpress.XtraEditors.LabelControl lblYKienThuRap;
         private System.Windows.Forms.RichTextBox CongNgheSanXuat_YKienThuDao;
         private DevExpress.XtraEditors.LabelControl lblYKienThuDao;
-        private System.Windows.Forms.ComboBox CongNgheSanXuat_PhanLoaiThuDao;
+        private System.Windows.Forms.ComboBox CongNgheSanXuat_PhanLoaiThuDaoId;
         private DevExpress.XtraEditors.LabelControl lblPhanLoaiThuDao;
         private System.Windows.Forms.DateTimePicker CongNgheSanXuat_NgayDuyet;
         private DevExpress.XtraEditors.LabelControl lblNgayDuyet;

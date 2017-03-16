@@ -36,17 +36,15 @@ namespace TLShoes.Common
             PropertyInfo prop = data.GetType().GetProperty(pro, BindingFlags.Public | BindingFlags.Instance);
             if (null != prop && prop.CanWrite)
             {
-                if (value.IsNumber())
+
+                var targetType = IsNullableType(prop.PropertyType) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType;
+                if (targetType == typeof(float))
                 {
-                    var targetType = IsNullableType(prop.PropertyType) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType;
-                    if (targetType == typeof(float))
-                    {
-                        value = Convert.ChangeType(PrimitiveConvert.StringToFloat(value), targetType);
-                    }
-                    else
-                    {
-                        value = Convert.ChangeType(PrimitiveConvert.StringToInt(value), targetType);
-                    }
+                    value = Convert.ChangeType(PrimitiveConvert.StringToFloat(value), targetType);
+                }
+                else if (value.IsNumber())
+                {
+                    value = Convert.ChangeType(PrimitiveConvert.StringToInt(value), targetType);
                 }
                 prop.SetValue(data, value, null);
 
@@ -55,17 +53,8 @@ namespace TLShoes.Common
 
         public static bool IsNumber(this object value)
         {
-            return value is sbyte
-                    || value is byte
-                    || value is short
-                    || value is ushort
-                    || value is int
-                    || value is uint
-                    || value is long
-                    || value is ulong
-                    || value is float
-                    || value is double
-                    || value is decimal;
+            double tempNum;
+            return double.TryParse(value.ToString(), out tempNum);
         }
 
         private static bool IsNullableType(Type type)

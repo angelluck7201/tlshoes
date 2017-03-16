@@ -15,10 +15,10 @@ namespace TLShoes.FormControls.MauThuDao
 {
     public partial class ucMauThuDao : BaseUserControl
     {
-        public static BindingList<CommonClass.GopYItem> GopYBindingList = new BindingList<CommonClass.GopYItem>();
+        public BindingList<CommonClass.GopYItem> GopYBindingList = new BindingList<CommonClass.GopYItem>();
 
-        public static List<TLShoes.MauThuDao> ListDaoDaThu = new List<TLShoes.MauThuDao>();
-        public static long CurrentDonHang;
+        public List<TLShoes.MauThuDao> ListDaoDaThu = new List<TLShoes.MauThuDao>();
+        public long CurrentDonHang;
         public TLShoes.MauThuDao CurrentMauThuDao;
         public ucMauThuDao(TLShoes.MauThuDao data)
         {
@@ -26,33 +26,23 @@ namespace TLShoes.FormControls.MauThuDao
 
             ListDaoDaThu = SF.Get<MauThuDaoViewModel>().GetList();
 
-            MauThuDao_DonHangId.DisplayMember = "MaHang";
-            MauThuDao_DonHangId.ValueMember = "Id";
-            MauThuDao_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
+            var lstDonhang = SF.Get<DonHangViewModel>().GetList();
+            SetComboboxDataSource(MauThuDao_DonHangId, lstDonhang, "MaHang");
 
             var listPhanLoai = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST);
-            MauThuDao_KetQuaXuongChatId.DisplayMember = "Ten";
-            MauThuDao_KetQuaXuongChatId.ValueMember = "Id";
-            MauThuDao_KetQuaXuongChatId.DataSource = new BindingSource(listPhanLoai, null);
+
             MauThuDao_KetQuaXuongChatId.Text = "CHƯA PHÂN LOẠI";
+            SetComboboxDataSource(MauThuDao_KetQuaXuongChatId, listPhanLoai, "Ten");
 
             MauThuDao_KetQuaXuongMayId.Text = "CHƯA PHÂN LOẠI";
-            MauThuDao_KetQuaXuongMayId.DisplayMember = "Ten";
-            MauThuDao_KetQuaXuongMayId.ValueMember = "Id";
-            MauThuDao_KetQuaXuongMayId.DataSource = new BindingSource(listPhanLoai, null);
+            SetComboboxDataSource(MauThuDao_KetQuaXuongMayId, listPhanLoai, "Ten");
 
             MauThuDao_KetQuaXuongDeId.Text = "CHƯA PHÂN LOẠI";
-            MauThuDao_KetQuaXuongDeId.DisplayMember = "Ten";
-            MauThuDao_KetQuaXuongDeId.ValueMember = "Id";
-            MauThuDao_KetQuaXuongDeId.DataSource = new BindingSource(listPhanLoai, null);
+            SetComboboxDataSource(MauThuDao_KetQuaXuongDeId, listPhanLoai, "Ten");
 
             MauThuDao_KetQuaXuongGoId.Text = "CHƯA PHÂN LOẠI";
-            MauThuDao_KetQuaXuongGoId.DisplayMember = "Ten";
-            MauThuDao_KetQuaXuongGoId.ValueMember = "Id";
-            MauThuDao_KetQuaXuongGoId.DataSource = new BindingSource(listPhanLoai, null);
+            SetComboboxDataSource(MauThuDao_KetQuaXuongGoId, listPhanLoai, "Ten");
 
-
-            GopYBindingList.Clear();
             GopYBindingList.Add(new CommonClass.GopYItem("Bp Vật Tư", data != null ? data.GopYVatTu : ""));
             GopYBindingList.Add(new CommonClass.GopYItem("Px Chặt", data != null ? data.GopYXuongChat : ""));
             GopYBindingList.Add(new CommonClass.GopYItem("Px Gò", data != null ? data.GopYXuongGo : ""));
@@ -101,7 +91,6 @@ namespace TLShoes.FormControls.MauThuDao
             saveData.GopYMau = GopYBindingList[6].GopY;
             saveData.GopYKhoVatTu = GopYBindingList[7].GopY;
             saveData.GopYPhuTro = GopYBindingList[8].GopY;
-            CRUD.DecorateSaveData(saveData, CurrentMauThuDao == null);
             SF.Get<MauThuDaoViewModel>().Save(saveData);
             return true;
         }
@@ -138,19 +127,7 @@ namespace TLShoes.FormControls.MauThuDao
                 if (CurrentDonHang == (long)donHangId) return;
                 var donHang = SF.Get<DonHangViewModel>().GetDetail((long)donHangId);
                 if (donHang == null) return;
-                var daoDaThu = ListDaoDaThu.FirstOrDefault(s => s.DonHang.MaPhomId == donHang.MaPhomId);
-
-                GopYBindingList.Clear();
-                GopYBindingList.Add(new CommonClass.GopYItem("Bp Vật Tư", daoDaThu != null ? daoDaThu.GopYVatTu : ""));
-                GopYBindingList.Add(new CommonClass.GopYItem("Px Chặt", daoDaThu != null ? daoDaThu.GopYXuongChat : ""));
-                GopYBindingList.Add(new CommonClass.GopYItem("Px Gò", daoDaThu != null ? daoDaThu.GopYXuongGo : ""));
-                GopYBindingList.Add(new CommonClass.GopYItem("Px Đe", daoDaThu != null ? daoDaThu.GopYXuongDe : ""));
-                GopYBindingList.Add(new CommonClass.GopYItem("QC", daoDaThu != null ? daoDaThu.GopYQc : ""));
-                GopYBindingList.Add(new CommonClass.GopYItem("Công Nghệ", daoDaThu != null ? daoDaThu.GopYCongNghe : ""));
-                GopYBindingList.Add(new CommonClass.GopYItem("Mẫu", daoDaThu != null ? daoDaThu.GopYMau : ""));
-                GopYBindingList.Add(new CommonClass.GopYItem("Kho Vật Tư", daoDaThu != null ? daoDaThu.GopYKhoVatTu : ""));
-                GopYBindingList.Add(new CommonClass.GopYItem("Tổ Phụ Trợ", daoDaThu != null ? daoDaThu.GopYPhuTro : ""));
-
+                var daoDaThu = ListDaoDaThu.Where(s => s.DonHang.MaPhomId == donHang.MaPhomId).OrderByDescending(s=>s.CreatedDate).FirstOrDefault();
                 if (daoDaThu != null)
                 {
                     MauThuDao_NgayBatDau.Enabled = false;
@@ -160,13 +137,13 @@ namespace TLShoes.FormControls.MauThuDao
                     MauThuDao_KetQuaXuongDeId.Enabled = false;
                     MauThuDao_KetQuaXuongGoId.Enabled = false;
 
-                    if (daoDaThu.KetQuaXuongChat != null) MauThuDao_KetQuaXuongChatId.SelectedValue = daoDaThu.KetQuaXuongChat;
-                    if (daoDaThu.KetQuaXuongMay != null) MauThuDao_KetQuaXuongMayId.SelectedValue = daoDaThu.KetQuaXuongMay;
-                    if (daoDaThu.KetQuaXuongDe != null) MauThuDao_KetQuaXuongDeId.SelectedValue = daoDaThu.KetQuaXuongDe;
-                    if (daoDaThu.KetQuaXuongGo != null) MauThuDao_KetQuaXuongGoId.SelectedValue = daoDaThu.KetQuaXuongGo;
-
+                    if (daoDaThu.KetQuaXuongChatId != null) MauThuDao_KetQuaXuongChatId.SelectedValue = daoDaThu.KetQuaXuongChatId;
+                    if (daoDaThu.KetQuaXuongMayId != null) MauThuDao_KetQuaXuongMayId.SelectedValue = daoDaThu.KetQuaXuongMayId;
+                    if (daoDaThu.KetQuaXuongDeId != null) MauThuDao_KetQuaXuongDeId.SelectedValue = daoDaThu.KetQuaXuongDeId;
+                    if (daoDaThu.KetQuaXuongGoId != null) MauThuDao_KetQuaXuongGoId.SelectedValue = daoDaThu.KetQuaXuongGoId;
 
                     lblThuDao.Visible = true;
+                    btnUpdateKetQua.Enabled = true;
                 }
                 else
                 {
@@ -177,6 +154,7 @@ namespace TLShoes.FormControls.MauThuDao
                     MauThuDao_KetQuaXuongDeId.Enabled = true;
                     MauThuDao_KetQuaXuongGoId.Enabled = true;
                     lblThuDao.Visible = false;
+                    btnUpdateKetQua.Enabled = false;
                 }
             }
         }
@@ -205,27 +183,36 @@ namespace TLShoes.FormControls.MauThuDao
                         var chiTietDonHang = donHang.ChiTietDonHangs.ToList();
                         workSheet.Cells[3, "J"] = chiTietDonHang.Sum(s => s.SoLuong);
                         var startCol = 2;
+                        var lstMau = chiTietDonHang.Select(s => s.Mau.Ten).Distinct();
+                        var mau = string.Join("-", lstMau);
+                        workSheet.Cells[3, "M"] = mau;
                         foreach (var chitiet in chiTietDonHang)
                         {
-                            workSheet.Cells[5, startCol] = string.Format("#{0}", chitiet.Size);
+                            if (chitiet.Mau != null)
+                            {
+                                workSheet.Cells[5, startCol] = string.Format("#{0} ({1})", chitiet.Size, chitiet.Mau.Ten);
+                            }
+                            else
+                            {
+                                workSheet.Cells[5, startCol] = string.Format("#{0}", chitiet.Size);
+                            }
                             workSheet.Cells[6, startCol] = chitiet.SoLuong;
-                            if (chitiet.Mau != null) workSheet.Cells[3, "J"] = chitiet.Mau.Ten;
                             startCol++;
                         }
 
-                        if (CurrentMauThuDao.KetQuaXuongChat != null) workSheet.Cells[9, "B"] = CurrentMauThuDao.KetQuaXuongChat;
+                        if (CurrentMauThuDao.KetQuaXuongChat != null) workSheet.Cells[9, "B"] = CurrentMauThuDao.KetQuaXuongChat.Ten;
                         workSheet.Cells[9, "I"] = CurrentMauThuDao.GopYXuongChat;
 
-                        if (CurrentMauThuDao.KetQuaXuongMay != null) workSheet.Cells[10, "B"] = CurrentMauThuDao.KetQuaXuongMay;
+                        if (CurrentMauThuDao.KetQuaXuongMay != null) workSheet.Cells[10, "B"] = CurrentMauThuDao.KetQuaXuongMay.Ten;
                         workSheet.Cells[10, "I"] = CurrentMauThuDao.GopYXuongMay;
 
-                        if (CurrentMauThuDao.KetQuaXuongDe != null) workSheet.Cells[11, "B"] = CurrentMauThuDao.KetQuaXuongDe;
+                        if (CurrentMauThuDao.KetQuaXuongDe != null) workSheet.Cells[11, "B"] = CurrentMauThuDao.KetQuaXuongDe.Ten;
                         workSheet.Cells[11, "I"] = CurrentMauThuDao.GopYXuongDe;
 
-                        if (CurrentMauThuDao.KetQuaXuongGo != null) workSheet.Cells[12, "B"] = CurrentMauThuDao.KetQuaXuongGo;
+                        if (CurrentMauThuDao.KetQuaXuongGo != null) workSheet.Cells[12, "B"] = CurrentMauThuDao.KetQuaXuongGo.Ten;
                         workSheet.Cells[12, "I"] = CurrentMauThuDao.GopYXuongGo;
 
-                        var currentDate = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
+                        var currentDate = TimeHelper.Current();
                         workSheet.Cells[19, "J"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
 
                         workBook.SaveAs(saveDialog.FileName);
@@ -243,6 +230,16 @@ namespace TLShoes.FormControls.MauThuDao
                 }
                 this.ParentForm.Close();
             }
+        }
+
+        private void btnUpdateKetQua_Click(object sender, System.EventArgs e)
+        {
+            MauThuDao_NgayBatDau.Enabled = true;
+            MauThuDao_NgayHoanThanh.Enabled = true;
+            MauThuDao_KetQuaXuongChatId.Enabled = true;
+            MauThuDao_KetQuaXuongMayId.Enabled = true;
+            MauThuDao_KetQuaXuongDeId.Enabled = true;
+            MauThuDao_KetQuaXuongGoId.Enabled = true;
         }
 
     }

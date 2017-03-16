@@ -165,12 +165,12 @@ namespace TLShoes.Common
             EXPORT
         }
 
-        public static Dictionary<PhanXuong, string> PhanXuongDict = new Dictionary<PhanXuong, string>()
+        public static Dictionary<string, string> PhanXuongDict = new Dictionary<string, string>()
         {
-            {PhanXuong.CHAT, "CHẶT"},
-            {PhanXuong.MAY, "MAY"},
-            {PhanXuong.DE, "ĐẾ"},
-            {PhanXuong.GO, "GÒ"},
+            {PhanXuong.CHAT.ToString(), "CHẶT"},
+            {PhanXuong.MAY.ToString(), "MAY"},
+            {PhanXuong.DE.ToString(), "ĐẾ"},
+            {PhanXuong.GO.ToString(), "GÒ"},
         };
 
         public const string TEMPLATE_DON_DAT_HANG = "DonDatHang_template.xls";
@@ -205,6 +205,8 @@ namespace TLShoes.Common
         public const string MESSAGE_EXPORT_SUCCESS_TITLE = "Export thành công!";
         public const string MESSAGE_EXPORT_SUCCESS_TEXT = "Bạn có muốn mở file vừa export";
         public const string MESSAGE_EXPORT_FAIL_TITLE = "Export thất bại!";
+        public const string MESSAGE_EXPORT_FAIL_TEXT = "Đã xảy ra lỗi trong quá trình export!";
+
 
     }
 }

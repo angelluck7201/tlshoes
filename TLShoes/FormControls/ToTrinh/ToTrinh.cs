@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
+using DevExpress.XtraSplashScreen;
 using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
 using TLShoes.ViewModels;
@@ -24,9 +25,8 @@ namespace TLShoes.FormControls.ToTrinh
         {
             InitializeComponent();
 
-            ToTrinh_NguyenLieuId.DisplayMember = "Ten";
-            ToTrinh_NguyenLieuId.ValueMember = "Id";
-            ToTrinh_NguyenLieuId.DataSource = new BindingSource(SF.Get<NguyenLieuViewModel>().GetList(), null);
+            var lstNguyenLieu = SF.Get<NguyenLieuViewModel>().GetList();
+            SetComboboxDataSource(ToTrinh_NguyenLieuId, lstNguyenLieu, "Ten");
 
             Init(data);
 
@@ -114,12 +114,14 @@ namespace TLShoes.FormControls.ToTrinh
                 if (_currentToTrinh == null)
                 {
                     _currentToTrinh = new TongHopToTrinh { TrangThai = Define.TrangThai.MOI.ToString() };
+                    CRUD.DecorateSaveData(_currentToTrinh);
                     SF.Get<ToTrinhViewModel>().Save(_currentToTrinh);
                 }
 
                 foreach (var toTrinh in _toTrinhList)
                 {
                     toTrinh.TongHopToTrinhId = _currentToTrinh.Id;
+                    CRUD.DecorateSaveData(toTrinh);
                     SF.Get<ToTrinhViewModel>().Save(toTrinh);
 
                     // Clear old data
@@ -140,6 +142,7 @@ namespace TLShoes.FormControls.ToTrinh
                             foreach (var chiTietToTrinh in _dictChiTietToTrinh[nguyenLieuId])
                             {
                                 chiTietToTrinh.ToTrinhId = toTrinh.Id;
+                                CRUD.DecorateSaveData(chiTietToTrinh);
                                 SF.Get<ChiTietToTrinhViewModel>().Save(chiTietToTrinh);
                             }
                         }
@@ -170,6 +173,8 @@ namespace TLShoes.FormControls.ToTrinh
                 var nguyenLieuObj = ToTrinh_NguyenLieuId.SelectedValue;
                 if (nguyenLieuObj != null)
                 {
+                    lblThongBao.Text = string.Format("Các đơn hàng đang sử dụng {0}", ToTrinh_NguyenLieuId.Text);
+
                     var nguyenLieuId = (long)nguyenLieuObj;
                     var chiLenhList = SF.Get<ChiTietNguyenLieuViewModel>().GetList()
                         .Where(s => s.ChiTietNguyenLieuId == nguyenLieuId)
@@ -185,8 +190,8 @@ namespace TLShoes.FormControls.ToTrinh
                     var xuatKhoBoSung = xuatKhoList.Where(s => s.PhieuXuatKho.LoaiXuat == Define.LoaiXuat.NGOAI_CHI_LENH.ToString()).Sum(s => s.SoLuong);
 
                     var tonTheKho = tongNhapKho - tongXuatKho;
-                    ToTrinh_BoSung.Text = xuatKhoBoSung.ToString();
-                    ToTrinh_TonTheKho.Text = tonTheKho.ToString();
+                    ToTrinh_BoSung.Text = xuatKhoBoSung.ToString(CultureInfo.InvariantCulture);
+                    ToTrinh_TonTheKho.Text = tonTheKho.ToString(CultureInfo.InvariantCulture);
                     ToTrinh_DuKien.Text = "0";
 
                     // Tính toán nhu cầu thực tế và xuất kho theo chỉ lệnh của vật tư
@@ -239,121 +244,92 @@ namespace TLShoes.FormControls.ToTrinh
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            var saveDialog = new SaveFileDialog { Filter = Define.EXPORT_EXTENSION };
-            if (saveDialog.ShowDialog() == DialogResult.OK)
+            Export(Define.TEMPLATE_TO_TRINH, (workBook, workSheet) =>
             {
-                ThreadHelper.LoadForm(() =>
+                // Get loai to trinh
+                if (_currentToTrinh != null)
                 {
-                    //Start Excel and get Application object.
-                    var excel = new Application();
-                    //Get a new workbook.
-                    var workBook = excel.Workbooks.Open(Path.Combine(FileHelper.TemplatePath, Define.TEMPLATE_TO_TRINH));
-                    var workSheet = (_Worksheet)workBook.ActiveSheet;
-
-                    try
+                    var groupByNguyenLieu = _toTrinhList.GroupBy(s => s.NguyenLieu.LoaiNguyenLieu).ToList();
+                    var loaiToTrinh = "TỔNG HỢP";
+                    if (groupByNguyenLieu.Count == 1)
                     {
-                        // Get loai to trinh
-                        if (_currentToTrinh != null)
-                        {
-                            var groupByNguyenLieu = _toTrinhList.GroupBy(s => s.NguyenLieu.LoaiNguyenLieu).ToList();
-                            var loaiToTrinh = "TỔNG HỢP";
-                            if (groupByNguyenLieu.Count == 1)
-                            {
-                                loaiToTrinh = groupByNguyenLieu.First().Key.Ten;
-                            }
-                            workSheet.Cells[2, "A"] = string.Format("TỜ TRÌNH {0}", loaiToTrinh.ToUpper());
-                        }
-
-                        // Group by don hang 
-                        var groupedToTrinh = _toTrinhList.SelectMany(s => s.ChiTietToTrinhs).GroupBy(s => s.DonHangId).ToList();
-                        var startColumn = 4;
-                        var startRow = 7;
-                        var dictNguyenLieu = new Dictionary<long, int>();
-                        foreach (var group in groupedToTrinh)
-                        {
-                            if (group.Key != null)
-                            {
-                                var donhang = SF.Get<DonHangViewModel>().GetDetail((long)group.Key);
-                                if (donhang == null) continue;
-
-                                if (startColumn > 4)
-                                {
-                                    var col = workSheet.Columns[startColumn];
-                                    col.EntireColumn.Insert(XlInsertShiftDirection.xlShiftToRight);
-                                }
-
-                                // Thong tin don hang 
-                                workSheet.Cells[4, startColumn] = donhang.MaHang;
-                                workSheet.Cells[5, startColumn] = donhang.ChiTietDonHangs.Sum(s => s.SoLuong);
-                                workSheet.Cells[6, startColumn] = startColumn;
-
-                                foreach (var chiTietToTrinh in group)
-                                {
-                                    var toTrinh = chiTietToTrinh.ToTrinh;
-                                    if (toTrinh == null) continue;
-
-                                    var currentRow = 0;
-                                    if (toTrinh.NguyenLieuId != null && !dictNguyenLieu.ContainsKey((long)toTrinh.NguyenLieuId))
-                                    {
-                                        dictNguyenLieu.Add((long)toTrinh.NguyenLieuId, startRow);
-                                        if (startRow > 7)
-                                        {
-                                            var range = workSheet.Range["A" + (startRow - 2), "A" + (startRow - 1)];
-                                            range.EntireRow.Copy();
-                                            var row = (Range)workSheet.Rows[startRow];
-                                            row.EntireRow.Insert(XlInsertShiftDirection.xlShiftDown, range);
-                                        }
-                                        currentRow = startRow;
-                                        workSheet.Cells[currentRow, 1] = dictNguyenLieu.Count;
-                                        var nguyenLieu = toTrinh.NguyenLieu;
-                                        if (nguyenLieu != null)
-                                        {
-                                            workSheet.Cells[currentRow, 2] = nguyenLieu.Ten;
-                                        }
-
-                                        startRow += 2;
-                                    }
-                                    else
-                                    {
-                                        if (toTrinh.NguyenLieuId != null) currentRow = dictNguyenLieu[(long)toTrinh.NguyenLieuId];
-                                    }
-
-                                    workSheet.Cells[currentRow, startColumn] = chiTietToTrinh.NhuCau;
-                                    workSheet.Cells[currentRow + 1, startColumn] = chiTietToTrinh.ThucTe;
-
-                                    workSheet.Cells[currentRow, startColumn + 1] = toTrinh.BoSung;
-                                    workSheet.Cells[currentRow, startColumn + 3] = toTrinh.ThuHoi;
-                                    workSheet.Cells[currentRow, startColumn + 4] = toTrinh.TonToTrinh;
-                                    workSheet.Cells[currentRow, startColumn + 5] = toTrinh.TonTheKho;
-                                    workSheet.Cells[currentRow, startColumn + 6] = toTrinh.TonThucTe;
-                                    workSheet.Cells[currentRow, startColumn + 8] = toTrinh.DuKien;
-                                }
-
-                                startColumn++;
-                            }
-
-                        }
-
-                        var currentDate = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
-                        workSheet.Cells[startRow + 1, startColumn] = string.Format("Long An. Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
-                        workSheet.Cells[startRow + 4, startColumn] = Authorization.LoginUser.TenNguoiDung;
-
-                        workBook.SaveAs(saveDialog.FileName);
+                        loaiToTrinh = groupByNguyenLieu.First().Key.Ten;
                     }
-                    finally
-                    {
-                        workBook.Close();
-                    }
-
-                });
-
-
-                var confirmDialog = MessageBox.Show(Define.MESSAGE_EXPORT_SUCCESS_TEXT, Define.MESSAGE_EXPORT_SUCCESS_TITLE, MessageBoxButtons.YesNo);
-                if (confirmDialog == DialogResult.Yes)
-                {
-                    Process.Start(saveDialog.FileName);
+                    workSheet.Cells[2, "A"] = string.Format("TỜ TRÌNH {0}", loaiToTrinh.ToUpper());
                 }
-            }
+
+                // Group by don hang 
+                var groupedToTrinh = _toTrinhList.SelectMany(s => s.ChiTietToTrinhs).GroupBy(s => s.DonHangId).ToList();
+                var startColumn = 4;
+                var startRow = 7;
+                var dictNguyenLieu = new Dictionary<long, int>();
+                foreach (var group in groupedToTrinh)
+                {
+                    if (group.Key != null)
+                    {
+                        var donhang = SF.Get<DonHangViewModel>().GetDetail((long)group.Key);
+                        if (donhang == null) continue;
+
+                        if (startColumn > 4)
+                        {
+                            var col = workSheet.Columns[startColumn];
+                            col.EntireColumn.Insert(XlInsertShiftDirection.xlShiftToRight);
+                        }
+
+                        // Thong tin don hang 
+                        workSheet.Cells[4, startColumn] = donhang.MaHang;
+                        workSheet.Cells[5, startColumn] = donhang.ChiTietDonHangs.Sum(s => s.SoLuong);
+                        workSheet.Cells[6, startColumn] = startColumn;
+
+                        foreach (var chiTietToTrinh in group)
+                        {
+                            var toTrinh = chiTietToTrinh.ToTrinh;
+                            if (toTrinh == null) continue;
+
+                            var currentRow = 0;
+                            if (toTrinh.NguyenLieuId != null && !dictNguyenLieu.ContainsKey((long)toTrinh.NguyenLieuId))
+                            {
+                                dictNguyenLieu.Add((long)toTrinh.NguyenLieuId, startRow);
+                                if (startRow > 7)
+                                {
+                                    var range = workSheet.Range["A" + (startRow - 2), "A" + (startRow - 1)];
+                                    range.EntireRow.Copy();
+                                    var row = (Range)workSheet.Rows[startRow];
+                                    row.EntireRow.Insert(XlInsertShiftDirection.xlShiftDown, range);
+                                }
+                                currentRow = startRow;
+                                workSheet.Cells[currentRow, 1] = dictNguyenLieu.Count;
+                                var nguyenLieu = toTrinh.NguyenLieu;
+                                if (nguyenLieu != null)
+                                {
+                                    workSheet.Cells[currentRow, 2] = nguyenLieu.Ten;
+                                }
+
+                                startRow += 2;
+                            }
+                            else
+                            {
+                                if (toTrinh.NguyenLieuId != null) currentRow = dictNguyenLieu[(long)toTrinh.NguyenLieuId];
+                            }
+
+                            workSheet.Cells[currentRow, startColumn] = chiTietToTrinh.NhuCau;
+                            workSheet.Cells[currentRow + 1, startColumn] = chiTietToTrinh.ThucTe;
+
+                            workSheet.Cells[currentRow, startColumn + 1] = toTrinh.BoSung;
+                            workSheet.Cells[currentRow, startColumn + 3] = toTrinh.ThuHoi;
+                            workSheet.Cells[currentRow, startColumn + 4] = toTrinh.TonToTrinh;
+                            workSheet.Cells[currentRow, startColumn + 5] = toTrinh.TonTheKho;
+                            workSheet.Cells[currentRow, startColumn + 6] = toTrinh.TonThucTe;
+                            workSheet.Cells[currentRow, startColumn + 8] = toTrinh.DuKien;
+                        }
+                        startColumn++;
+                    }
+                }
+
+                var currentDate = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
+                workSheet.Cells[startRow + 1, startColumn] = string.Format("Long An. Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
+                workSheet.Cells[startRow + 4, startColumn] = Authorization.LoginUser.TenNguoiDung;
+            });
         }
 
         private void btnDuyet_Click(object sender, EventArgs e)
@@ -384,7 +360,10 @@ namespace TLShoes.FormControls.ToTrinh
                     SF.Get<ToTrinhViewModel>().Save(_currentToTrinh);
                     transaction.Complete();
                 }
-                InitAuthorize();
+                MessageBox.Show("Duyệt thành công!");
+                ObserverControl.PulishAction(Define.ActionType.SAVE);
+                var parentForm = this.ParentForm;
+                if (parentForm != null) parentForm.Close();
             }
         }
 

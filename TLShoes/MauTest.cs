@@ -38,8 +38,8 @@ namespace TLShoes
         public string GopYXuongDe { get; set; }
         public string GopYXuongGo { get; set; }
     
-        public virtual DanhMuc DanhMuc { get; set; }
-        public virtual DanhMuc DanhMuc1 { get; set; }
+        public virtual DanhMuc PhanLoaiTestLy { get; set; }
+        public virtual DanhMuc PhanLoaiTestHoa { get; set; }
         public virtual DonHang DonHang { get; set; }
         public virtual UserAccount UserAccount { get; set; }
     }

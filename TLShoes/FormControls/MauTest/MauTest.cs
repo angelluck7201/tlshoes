@@ -8,25 +8,20 @@ namespace TLShoes.FormControls.MauTest
 {
     public partial class ucMauTest : BaseUserControl
     {
-        public static BindingList<CommonClass.GopYItem> GopYBindingList = new BindingList<CommonClass.GopYItem>();
+        public BindingList<CommonClass.GopYItem> GopYBindingList = new BindingList<CommonClass.GopYItem>();
         private TLShoes.MauTest _domainData;
 
         public ucMauTest(TLShoes.MauTest data)
         {
             InitializeComponent();
-            MauTest_DonHangId.DisplayMember = "MaHang";
-            MauTest_DonHangId.ValueMember = "Id";
-            MauTest_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
 
-            MauTest_PhanLoaiTestHoaId.DisplayMember = "Ten";
-            MauTest_PhanLoaiTestHoaId.ValueMember = "Id";
-            MauTest_PhanLoaiTestHoaId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
+            var lstDonHang = SF.Get<DonHangViewModel>().GetList();
+            SetComboboxDataSource(MauTest_DonHangId, lstDonHang, "MaHang");
 
-            MauTest_PhanLoaiTestLyId.DisplayMember = "Ten";
-            MauTest_PhanLoaiTestLyId.ValueMember = "Id";
-            MauTest_PhanLoaiTestLyId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
+            var lstPhanLoaiTest = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST);
+            SetComboboxDataSource(MauTest_PhanLoaiTestHoaId, lstPhanLoaiTest, "Ten");
+            SetComboboxDataSource(MauTest_PhanLoaiTestLyId, lstPhanLoaiTest, "Ten");
 
-            GopYBindingList.Clear();
             GopYBindingList.Add(new CommonClass.GopYItem("Bp Vật Tư", data != null ? data.GopYVatTu : ""));
             GopYBindingList.Add(new CommonClass.GopYItem("Px Chặt", data != null ? data.GopYXuongChat : ""));
             GopYBindingList.Add(new CommonClass.GopYItem("Px Gò", data != null ? data.GopYXuongGo : ""));
@@ -53,7 +48,7 @@ namespace TLShoes.FormControls.MauTest
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject<TLShoes.MauTest>(FormControls, _domainData);
+            var saveData = CRUD.GetFormObject(FormControls, _domainData);
 
             saveData.GopYVatTu = GopYBindingList[0].GopY;
             saveData.GopYXuongChat = GopYBindingList[1].GopY;
@@ -64,7 +59,6 @@ namespace TLShoes.FormControls.MauTest
             saveData.GopYMau = GopYBindingList[6].GopY;
             saveData.GopYKhoVatTu = GopYBindingList[7].GopY;
             saveData.GopYPhuTro = GopYBindingList[8].GopY;
-            CRUD.DecorateSaveData(saveData, _domainData == null);
             SF.Get<MauTestViewModel>().Save(saveData);
             return true;
         }

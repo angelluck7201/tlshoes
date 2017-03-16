@@ -17,6 +17,11 @@ namespace TLShoes.FormControls.QuanLyNguoiDung
         public ucPhanQuyenList()
         {
             InitializeComponent();
+
+            ReloadData();
+            ObserverControl.Regist(Define.ActionType.SAVE, this.Name, ReloadData);
+            ObserverControl.Regist(Define.ActionType.REFRESH, this.Name, ReloadData);
+
         }
 
         public override void ReloadData()

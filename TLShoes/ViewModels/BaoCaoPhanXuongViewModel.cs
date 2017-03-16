@@ -18,12 +18,18 @@ namespace TLShoes.ViewModels
         /// <summary>
         /// Get list luy ke 
         /// </summary>
+        /// <param name="donHangId"></param>
         /// <param name="phanXuong"></param>
         /// <param name="toDate"></param>
+        /// <param name="isOldBaoCao"></param>
         /// <returns></returns>
-        public List<BaoCaoPhanXuong> GetList(string phanXuong, DateTime toDate)
+        public List<BaoCaoPhanXuong> GetList(long donHangId, string phanXuong, DateTime toDate, bool isOldBaoCao = true)
         {
-            return DbContext.BaoCaoPhanXuongs.Where(s => s.BaoCaoNgay < toDate && s.PhanXuong == phanXuong).ToList();
+            if (isOldBaoCao)
+            {
+                return DbContext.BaoCaoPhanXuongs.Where(s => s.DonHangId == donHangId && s.BaoCaoNgay < toDate && s.PhanXuong == phanXuong).ToList();
+            }
+            return DbContext.BaoCaoPhanXuongs.Where(s => s.DonHangId == donHangId && s.BaoCaoNgay >= toDate && s.PhanXuong == phanXuong).ToList();
         }
 
         public BaoCaoPhanXuong GetDetail(long id)
@@ -31,25 +37,12 @@ namespace TLShoes.ViewModels
             return DbContext.BaoCaoPhanXuongs.Find(id);
         }
 
-        public void GetDataSource(GridControl control)
+        public bool IsDulicateReportInDate(long donHangId, string phanXuong, string shortDate)
         {
-            control.DataSource = GetList()
-                .Select(s => new
-                {
-                    s.Id,
-                    s.DonHang.MaHang,
-                    s.DonHang.OrderNo,
-                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh),
-                    s.PhanXuong,
-                    s.SanLuongThucHien,
-                    s.SanLuongKhoan,
-                    LuyKe = GetList(s.PhanXuong, s.BaoCaoNgay).Sum(l => l.SanLuongThucHien),
-                    SoLuongDonHang = s.DonHang.ChiTietDonHangs.Sum(a => a.SoLuong),
-                    BaoCaoNgayFormat = s.BaoCaoNgay,
-                    s.GhiChu,
-                    s.UserAccount.LoaiNguoiDung
-                }).ToList();
+            var lstBaoCaoPx = DbContext.BaoCaoPhanXuongs.Where(s => s.DonHangId == donHangId && s.PhanXuong == phanXuong).ToList();
+            return lstBaoCaoPx.Any(s => s.BaoCaoNgay.ToShortDateString() == shortDate);
         }
+
 
         public void GetDataSummarySource(GridControl control)
         {

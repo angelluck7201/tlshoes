@@ -25,6 +25,7 @@ namespace TLShoes
         public int SanLuongThucHien { get; set; }
         public System.DateTime BaoCaoNgay { get; set; }
         public string GhiChu { get; set; }
+        public int LuyKe { get; set; }
     
         public virtual UserAccount UserAccount { get; set; }
         public virtual DonHang DonHang { get; set; }

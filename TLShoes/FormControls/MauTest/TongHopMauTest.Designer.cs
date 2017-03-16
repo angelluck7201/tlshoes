@@ -167,7 +167,7 @@
             this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "Phân Loại Test Lý";
-            this.gridColumn2.FieldName = "PhanLoaiTestLy";
+            this.gridColumn2.FieldName = "KetQuaTestLy";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 3;
@@ -178,7 +178,7 @@
             this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn3.AppearanceHeader.Options.UseFont = true;
             this.gridColumn3.Caption = "Ngày Kết Quả Test Lý";
-            this.gridColumn3.FieldName = "NgayKetQuaTestLyFormat";
+            this.gridColumn3.FieldName = "NgayKetquaTestLy";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 6;
@@ -189,7 +189,7 @@
             this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn4.AppearanceHeader.Options.UseFont = true;
             this.gridColumn4.Caption = "Phân Loại Test Hóa";
-            this.gridColumn4.FieldName = "PhanLoaiTestHoa";
+            this.gridColumn4.FieldName = "KetQuaTestHoa";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 5;
@@ -200,7 +200,7 @@
             this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.Caption = "Ngày Kết Quả Test Hóa";
-            this.gridColumn5.FieldName = "NgayKetQuaTestHoaFormat";
+            this.gridColumn5.FieldName = "NgayKetquaTestHoa";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
@@ -211,7 +211,7 @@
             this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn12.AppearanceHeader.Options.UseFont = true;
             this.gridColumn12.Caption = "Số ĐH";
-            this.gridColumn12.FieldName = "SoDH";
+            this.gridColumn12.FieldName = "OrderNo";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 2;
@@ -302,7 +302,7 @@
             this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn9.AppearanceHeader.Options.UseFont = true;
             this.gridColumn9.Caption = "Ngày Gửi Mẫu";
-            this.gridColumn9.FieldName = "NgayGuiMauFormat";
+            this.gridColumn9.FieldName = "NgayGuiMau";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 3;
@@ -312,7 +312,7 @@
             this.gridColumn10.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn10.AppearanceHeader.Options.UseFont = true;
             this.gridColumn10.Caption = "Ngày Kết Quả";
-            this.gridColumn10.FieldName = "NgayKetQuaFormat";
+            this.gridColumn10.FieldName = "NgayKetqua";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 5;
@@ -332,7 +332,7 @@
             this.gridColumn13.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn13.AppearanceHeader.Options.UseFont = true;
             this.gridColumn13.Caption = "Số ĐH";
-            this.gridColumn13.FieldName = "SoDH";
+            this.gridColumn13.FieldName = "OrderNo";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 2;

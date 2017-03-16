@@ -8,22 +8,20 @@ namespace TLShoes.FormControls.MauSanXuat
 {
     public partial class ucMauSanXuat : BaseUserControl
     {
-        public static BindingList<CommonClass.GopYItem> GopYBindingList = new BindingList<CommonClass.GopYItem>();
+        public BindingList<CommonClass.GopYItem> GopYBindingList = new BindingList<CommonClass.GopYItem>();
         private TLShoes.MauSanXuat _domainData;
 
         public ucMauSanXuat(TLShoes.MauSanXuat data)
         {
             InitializeComponent();
-            MauSanXuat_DonHangId.DisplayMember = "MaHang";
-            MauSanXuat_DonHangId.ValueMember = "Id";
-            MauSanXuat_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
 
-            MauSanXuat_PhanLoaiKetQua.DisplayMember = "Ten";
-            MauSanXuat_PhanLoaiKetQua.ValueMember = "Id";
-            MauSanXuat_PhanLoaiKetQua.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
+            var lstDonhang = SF.Get<DonHangViewModel>().GetList();
+            SetComboboxDataSource(MauSanXuat_DonHangId, lstDonhang, "MaHang");
+
+            var lstPhanLoaiTest = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST);
+            SetComboboxDataSource(MauSanXuat_PhanLoaiKetQua,lstPhanLoaiTest,"Ten");
 
 
-            GopYBindingList.Clear();
             GopYBindingList.Add(new CommonClass.GopYItem("Bp Vật Tư", data != null ? data.GopYVatTu : ""));
             GopYBindingList.Add(new CommonClass.GopYItem("Px Chặt", data != null ? data.GopYXuongChat : ""));
             GopYBindingList.Add(new CommonClass.GopYItem("Px Gò", data != null ? data.GopYXuongGo : ""));
@@ -61,7 +59,6 @@ namespace TLShoes.FormControls.MauSanXuat
             saveData.GopYMau = GopYBindingList[6].GopY;
             saveData.GopYKhoVatTu = GopYBindingList[7].GopY;
             saveData.GopYPhuTro = GopYBindingList[8].GopY;
-            CRUD.DecorateSaveData(saveData, _domainData == null);
             SF.Get<MauSanXuatViewModel>().Save(saveData);
             return true;
         }

@@ -56,6 +56,7 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUpdateKetQua = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -70,7 +71,7 @@
             this.MauThuDao_DonHangId.FormattingEnabled = true;
             this.MauThuDao_DonHangId.Location = new System.Drawing.Point(205, 42);
             this.MauThuDao_DonHangId.Name = "MauThuDao_DonHangId";
-            this.MauThuDao_DonHangId.Size = new System.Drawing.Size(489, 24);
+            this.MauThuDao_DonHangId.Size = new System.Drawing.Size(220, 24);
             this.MauThuDao_DonHangId.TabIndex = 0;
             this.MauThuDao_DonHangId.SelectedValueChanged += new System.EventHandler(this.MauThuDao_DonHangId_SelectedValueChanged);
             // 
@@ -85,7 +86,7 @@
             // 
             // MauThuDao_NgayHoanThanh
             // 
-            this.MauThuDao_NgayHoanThanh.Location = new System.Drawing.Point(203, 140);
+            this.MauThuDao_NgayHoanThanh.Location = new System.Drawing.Point(205, 140);
             this.MauThuDao_NgayHoanThanh.Name = "MauThuDao_NgayHoanThanh";
             this.MauThuDao_NgayHoanThanh.Size = new System.Drawing.Size(489, 23);
             this.MauThuDao_NgayHoanThanh.TabIndex = 2;
@@ -147,6 +148,7 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.xtraTabPage2.Controls.Add(this.btnUpdateKetQua);
             this.xtraTabPage2.Controls.Add(this.labelControl3);
             this.xtraTabPage2.Controls.Add(this.MauThuDao_KetQuaXuongGoId);
             this.xtraTabPage2.Controls.Add(this.lblKetQuaXuongDeId);
@@ -349,7 +351,7 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSave.Location = new System.Drawing.Point(621, 476);
+            this.btnSave.Location = new System.Drawing.Point(630, 476);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 1;
@@ -364,13 +366,29 @@
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnExport.Location = new System.Drawing.Point(20, 476);
+            this.btnExport.Location = new System.Drawing.Point(4, 476);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);
             this.btnExport.TabIndex = 2;
             this.btnExport.Text = "Export";
             this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnUpdateKetQua
+            // 
+            this.btnUpdateKetQua.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnUpdateKetQua.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnUpdateKetQua.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnUpdateKetQua.Appearance.Options.UseBackColor = true;
+            this.btnUpdateKetQua.Appearance.Options.UseFont = true;
+            this.btnUpdateKetQua.Appearance.Options.UseForeColor = true;
+            this.btnUpdateKetQua.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnUpdateKetQua.Location = new System.Drawing.Point(456, 40);
+            this.btnUpdateKetQua.Name = "btnUpdateKetQua";
+            this.btnUpdateKetQua.Size = new System.Drawing.Size(238, 30);
+            this.btnUpdateKetQua.TabIndex = 78;
+            this.btnUpdateKetQua.Text = "Sửa Kết Quả Thử Dao";
+            this.btnUpdateKetQua.Click += new System.EventHandler(this.btnUpdateKetQua_Click);
             // 
             // ucMauThuDao
             // 
@@ -425,5 +443,6 @@
         private DevExpress.XtraEditors.LabelControl lblKetQuaXuongMayId;
         private System.Windows.Forms.ComboBox MauThuDao_KetQuaXuongMayId;
         private DevExpress.XtraEditors.SimpleButton btnExport;
+        private DevExpress.XtraEditors.SimpleButton btnUpdateKetQua;
     }
 }

@@ -13,20 +13,15 @@ namespace TLShoes.FormControls.CongNgheSanXuat
         {
             InitializeComponent();
 
-            CongNgheSanXuat_DonHangId.DisplayMember = "MaHang";
-            CongNgheSanXuat_DonHangId.ValueMember = "Id";
-            CongNgheSanXuat_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
+            var lstDonHang = SF.Get<DonHangViewModel>().GetList();
+            SetComboboxDataSource(CongNgheSanXuat_DonHangId, lstDonHang, "MaHang");
 
             CongNgheSanXuat_MauDoiId.ValueMember = "Id";
             CongNgheSanXuat_MauDoiId.DisplayMember = "MauDoiNgayFormat";
 
-            CongNgheSanXuat_PhanLoaiThuRapId.DisplayMember = "Ten";
-            CongNgheSanXuat_PhanLoaiThuRapId.ValueMember = "Id";
-            CongNgheSanXuat_PhanLoaiThuRapId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
-
-            CongNgheSanXuat_PhanLoaiThuDao.DisplayMember = "Ten";
-            CongNgheSanXuat_PhanLoaiThuDao.ValueMember = "Id";
-            CongNgheSanXuat_PhanLoaiThuDao.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST), null);
+            var lstPhanLoai = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST);
+            SetComboboxDataSource(CongNgheSanXuat_PhanLoaiThuRapId, lstPhanLoai, "Ten");
+            SetComboboxDataSource(CongNgheSanXuat_PhanLoaiThuDaoId, lstPhanLoai, "Ten");
 
             _domainData = data;
             Init(data);
@@ -42,7 +37,6 @@ namespace TLShoes.FormControls.CongNgheSanXuat
             }
 
             var saveData = CRUD.GetFormObject(FormControls, _domainData);
-            CRUD.DecorateSaveData(saveData, _domainData == null);
             SF.Get<CongNgheSanXuatViewModel>().Save(saveData);
             return true;
         }

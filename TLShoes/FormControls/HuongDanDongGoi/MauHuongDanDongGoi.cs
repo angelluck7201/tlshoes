@@ -19,10 +19,8 @@ namespace TLShoes.FormControls.HuongDanDongGoi
         {
             InitializeComponent();
 
-            MauHuongDanDongGoi_KhachHangId.DisplayMember = "TenCongTy";
-            MauHuongDanDongGoi_KhachHangId.ValueMember = "Id";
-            MauHuongDanDongGoi_KhachHangId.DataSource = new BindingSource(SF.Get<KhachHangViewModel>().GetList(), null);
-
+            var lstKhachHang = SF.Get<KhachHangViewModel>().GetList();
+            SetComboboxDataSource(MauHuongDanDongGoi_KhachHangId, lstKhachHang, "TenCongTy");
 
             Init(data);
             if (data != null)
@@ -32,21 +30,17 @@ namespace TLShoes.FormControls.HuongDanDongGoi
 
             gridHuongDan.DataSource = ChiTietHuongDanList;
 
-            DanhMucId.DisplayMember = "Ten";
-            DanhMucId.ValueMember = "Id";
-            DanhMucId.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.CHI_TIET).Select(s => new { s.Ten, s.Id }).ToList();
+            var lstDanhMucChiTiet = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.CHI_TIET);
+            SetComboboxDataSource(DanhMucId, lstDanhMucChiTiet, "Ten");
 
-            DonViTinhId.DisplayMember = "Ten";
-            DonViTinhId.ValueMember = "Id";
-            DonViTinhId.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.DON_VI_TINH).Select(s => new { s.Ten, s.Id }).ToList();
+            var lstDvt = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.DON_VI_TINH);
+            SetComboboxDataSource(DonViTinhId, lstDvt, "Ten");
 
-            MauId.DisplayMember = "Ten";
-            MauId.ValueMember = "Id";
-            MauId.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU).Select(s => new { s.Ten, s.Id }).ToList();
+            var lstMau = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU);
+            SetComboboxDataSource(MauId, lstMau, "Ten");
 
-            NguyenLieuId.DisplayMember = "Ten";
-            NguyenLieuId.ValueMember = "Id";
-            NguyenLieuId.DataSource = SF.Get<NguyenLieuViewModel>().GetList().Select(s => new { s.Ten, s.Id }).ToList();
+            var lstNguyenLieu = SF.Get<NguyenLieuViewModel>().GetList();
+            SetComboboxDataSource(NguyenLieuId, lstNguyenLieu, "Ten");
 
             btnDeleteHuongDan.Click += btnDeleteHuongDan_Click;
 

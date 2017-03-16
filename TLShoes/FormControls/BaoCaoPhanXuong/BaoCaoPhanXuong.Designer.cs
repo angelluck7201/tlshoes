@@ -38,7 +38,7 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
             this.BaoCaoPhanXuong_SanLuongKhoan = new System.Windows.Forms.TextBox();
             this.lblSanLuongThucHien = new DevExpress.XtraEditors.LabelControl();
             this.lblSanLuongKhoan = new DevExpress.XtraEditors.LabelControl();
-            this.BaoCaoPhanXuong_PhanXuongId = new System.Windows.Forms.ComboBox();
+            this.BaoCaoPhanXuong_PhanXuong = new System.Windows.Forms.ComboBox();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.BaoCaoPhanXuong_DonHangId = new System.Windows.Forms.ComboBox();
             this.lblDonHangId = new DevExpress.XtraEditors.LabelControl();
@@ -120,13 +120,13 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
             this.lblSanLuongKhoan.TabIndex = 82;
             this.lblSanLuongKhoan.Text = "Sản lượng Khoán";
             // 
-            // BaoCaoPhanXuong_PhanXuongId
+            // BaoCaoPhanXuong_PhanXuong
             // 
-            this.BaoCaoPhanXuong_PhanXuongId.FormattingEnabled = true;
-            this.BaoCaoPhanXuong_PhanXuongId.Location = new System.Drawing.Point(201, 65);
-            this.BaoCaoPhanXuong_PhanXuongId.Name = "BaoCaoPhanXuong_PhanXuongId";
-            this.BaoCaoPhanXuong_PhanXuongId.Size = new System.Drawing.Size(476, 24);
-            this.BaoCaoPhanXuong_PhanXuongId.TabIndex = 1;
+            this.BaoCaoPhanXuong_PhanXuong.FormattingEnabled = true;
+            this.BaoCaoPhanXuong_PhanXuong.Location = new System.Drawing.Point(201, 65);
+            this.BaoCaoPhanXuong_PhanXuong.Name = "BaoCaoPhanXuong_PhanXuong";
+            this.BaoCaoPhanXuong_PhanXuong.Size = new System.Drawing.Size(476, 24);
+            this.BaoCaoPhanXuong_PhanXuong.TabIndex = 1;
             // 
             // labelControl1
             // 
@@ -192,7 +192,7 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
             this.xtraTabPage2.Controls.Add(this.BaoCaoPhanXuong_BaoCaoNgay);
             this.xtraTabPage2.Controls.Add(this.labelControl1);
             this.xtraTabPage2.Controls.Add(this.lblBaoCaoNgay);
-            this.xtraTabPage2.Controls.Add(this.BaoCaoPhanXuong_PhanXuongId);
+            this.xtraTabPage2.Controls.Add(this.BaoCaoPhanXuong_PhanXuong);
             this.xtraTabPage2.Controls.Add(this.BaoCaoPhanXuong_SanLuongThucHien);
             this.xtraTabPage2.Controls.Add(this.lblSanLuongKhoan);
             this.xtraTabPage2.Controls.Add(this.BaoCaoPhanXuong_SanLuongKhoan);
@@ -261,7 +261,7 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
         private System.Windows.Forms.TextBox BaoCaoPhanXuong_SanLuongKhoan;
         private DevExpress.XtraEditors.LabelControl lblSanLuongThucHien;
         private DevExpress.XtraEditors.LabelControl lblSanLuongKhoan;
-        private System.Windows.Forms.ComboBox BaoCaoPhanXuong_PhanXuongId;
+        private System.Windows.Forms.ComboBox BaoCaoPhanXuong_PhanXuong;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.ComboBox BaoCaoPhanXuong_DonHangId;
         private DevExpress.XtraEditors.LabelControl lblDonHangId;

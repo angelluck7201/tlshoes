@@ -36,12 +36,14 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLoaiNguoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.chiLenhInstantFeedbackSource = new DevExpress.Data.Linq.EntityInstantFeedbackSource();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
             // 
+            this.gridControl.DataSource = this.chiLenhInstantFeedbackSource;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
@@ -81,7 +83,7 @@
             this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "Mã Hàng";
-            this.gridColumn6.FieldName = "MaHang";
+            this.gridColumn6.FieldName = "DonHang.MaHang";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 0;
@@ -91,7 +93,7 @@
             this.gridColumn8.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn8.AppearanceHeader.Options.UseFont = true;
             this.gridColumn8.Caption = "Ngày Duyệt";
-            this.gridColumn8.FieldName = "NgayDuyetFormat";
+            this.gridColumn8.FieldName = "NgayDuyet";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 3;
@@ -101,7 +103,7 @@
             this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn9.AppearanceHeader.Options.UseFont = true;
             this.gridColumn9.Caption = "Người Duyệt";
-            this.gridColumn9.FieldName = "NguoiDuyet";
+            this.gridColumn9.FieldName = "NguoiDuyet.TenNguoiDung";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 2;
@@ -111,7 +113,7 @@
             this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn1.AppearanceHeader.Options.UseFont = true;
             this.gridColumn1.Caption = "Số ĐH";
-            this.gridColumn1.FieldName = "SoDH";
+            this.gridColumn1.FieldName = "DonHang.OrderNo";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
@@ -121,6 +123,12 @@
             this.colLoaiNguoiDung.Caption = "gridColumn2";
             this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
             this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
+            // 
+            // chiLenhInstantFeedbackSource
+            // 
+            this.chiLenhInstantFeedbackSource.DefaultSorting = "NgayDuyet DESC";
+            this.chiLenhInstantFeedbackSource.DesignTimeElementType = typeof(TLShoes.ChiLenh);
+            this.chiLenhInstantFeedbackSource.KeyExpression = "Id";
             // 
             // ucChiLenhList
             // 
@@ -145,5 +153,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn colLoaiNguoiDung;
+        private DevExpress.Data.Linq.EntityInstantFeedbackSource chiLenhInstantFeedbackSource;
     }
 }

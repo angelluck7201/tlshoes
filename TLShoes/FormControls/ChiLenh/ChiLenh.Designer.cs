@@ -52,7 +52,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.lblMauId = new DevExpress.XtraEditors.LabelControl();
             this.lblQuyCach = new DevExpress.XtraEditors.LabelControl();
             this.lblChiTietId = new DevExpress.XtraEditors.LabelControl();
-            this.NguyenLieuChiLenh_PhanXuongId = new System.Windows.Forms.ComboBox();
+            this.NguyenLieuChiLenh_PhanXuong = new System.Windows.Forms.ComboBox();
             this.lblPhanXuongId = new DevExpress.XtraEditors.LabelControl();
             this.NguyenLieuChiLenh_ChiTietId = new System.Windows.Forms.ComboBox();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
@@ -314,13 +314,13 @@ namespace TLShoes.FormControls.ChiLenh
             this.lblChiTietId.TabIndex = 60;
             this.lblChiTietId.Text = "Tên Chi Tiết";
             // 
-            // NguyenLieuChiLenh_PhanXuongId
+            // NguyenLieuChiLenh_PhanXuong
             // 
-            this.NguyenLieuChiLenh_PhanXuongId.FormattingEnabled = true;
-            this.NguyenLieuChiLenh_PhanXuongId.Location = new System.Drawing.Point(183, 147);
-            this.NguyenLieuChiLenh_PhanXuongId.Name = "NguyenLieuChiLenh_PhanXuongId";
-            this.NguyenLieuChiLenh_PhanXuongId.Size = new System.Drawing.Size(495, 24);
-            this.NguyenLieuChiLenh_PhanXuongId.TabIndex = 59;
+            this.NguyenLieuChiLenh_PhanXuong.FormattingEnabled = true;
+            this.NguyenLieuChiLenh_PhanXuong.Location = new System.Drawing.Point(183, 147);
+            this.NguyenLieuChiLenh_PhanXuong.Name = "NguyenLieuChiLenh_PhanXuong";
+            this.NguyenLieuChiLenh_PhanXuong.Size = new System.Drawing.Size(495, 24);
+            this.NguyenLieuChiLenh_PhanXuong.TabIndex = 59;
             // 
             // lblPhanXuongId
             // 
@@ -384,7 +384,7 @@ namespace TLShoes.FormControls.ChiLenh
             this.xtraTabPage2.Controls.Add(this.lblDinhMucChuan);
             this.xtraTabPage2.Controls.Add(this.lblPhanXuongId);
             this.xtraTabPage2.Controls.Add(this.lblDinhMucThuc);
-            this.xtraTabPage2.Controls.Add(this.NguyenLieuChiLenh_PhanXuongId);
+            this.xtraTabPage2.Controls.Add(this.NguyenLieuChiLenh_PhanXuong);
             this.xtraTabPage2.Controls.Add(this.NguyenLieuChiLenh_DinhMucThuc);
             this.xtraTabPage2.Controls.Add(this.lblChiTietId);
             this.xtraTabPage2.Controls.Add(this.NguyenLieuChiLenh_DinhMucChuan);
@@ -799,7 +799,7 @@ namespace TLShoes.FormControls.ChiLenh
         private DevExpress.XtraEditors.LabelControl lblMauId;
         private DevExpress.XtraEditors.LabelControl lblQuyCach;
         private DevExpress.XtraEditors.LabelControl lblChiTietId;
-        private System.Windows.Forms.ComboBox NguyenLieuChiLenh_PhanXuongId;
+        private System.Windows.Forms.ComboBox NguyenLieuChiLenh_PhanXuong;
         private DevExpress.XtraEditors.LabelControl lblPhanXuongId;
         private System.Windows.Forms.ComboBox NguyenLieuChiLenh_ChiTietId;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;

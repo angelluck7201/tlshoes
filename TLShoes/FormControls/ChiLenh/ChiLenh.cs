@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraSplashScreen;
 using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
 using TLShoes.ViewModels;
@@ -28,21 +30,16 @@ namespace TLShoes.FormControls.ChiLenh
         {
             InitializeComponent();
 
-            ChiLenh_DonHangId.DisplayMember = "MaHang";
-            ChiLenh_DonHangId.ValueMember = "Id";
-            ChiLenh_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
+            var lstDonHang = SF.Get<DonHangViewModel>().GetList();
+            SetComboboxDataSource(ChiLenh_DonHangId, lstDonHang, "MaHang");
 
-            NguyenLieuChiLenh_PhanXuongId.DisplayMember = "Ten";
-            NguyenLieuChiLenh_PhanXuongId.ValueMember = "Id";
-            NguyenLieuChiLenh_PhanXuongId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_XUONG), null);
+            SetComboboxDataSource(NguyenLieuChiLenh_PhanXuong, Define.PhanXuongDict);
 
-            NguyenLieuChiLenh_MauId.DisplayMember = "Ten";
-            NguyenLieuChiLenh_MauId.ValueMember = "Id";
-            NguyenLieuChiLenh_MauId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU), null);
+            var lstMau = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.MAU);
+            SetComboboxDataSource(NguyenLieuChiLenh_MauId, lstMau, "Ten");
 
-            NguyenLieuChiLenh_ChiTietId.DisplayMember = "Ten";
-            NguyenLieuChiLenh_ChiTietId.ValueMember = "Id";
-            NguyenLieuChiLenh_ChiTietId.DataSource = new BindingSource(SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.CHI_TIET), null);
+            var lstChiTiet = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.CHI_TIET);
+            SetComboboxDataSource(NguyenLieuChiLenh_ChiTietId, lstChiTiet, "Ten");
 
             Init(data);
 
@@ -56,14 +53,7 @@ namespace TLShoes.FormControls.ChiLenh
             gridControl.DataSource = NguyenLieuChiLenhList;
             gridNguyenLieu.DataSource = ChiTietNguyenLieuList;
 
-            NguyenLieuLookUp.NullText = "";
-            NguyenLieuLookUp.DataSource = SF.Get<NguyenLieuViewModel>().GetList().Select(s => new { s.Ten, s.Id }).ToList();
-            NguyenLieuLookUp.PopulateColumns();
-            NguyenLieuLookUp.ShowHeader = false;
-            NguyenLieuLookUp.Columns["Id"].Visible = false;
-            NguyenLieuLookUp.DisplayMember = "Ten";
-            NguyenLieuLookUp.ValueMember = "Id";
-            NguyenLieuLookUp.TextEditStyle = TextEditStyles.DisableTextEditor;
+            SetRepositoryItem(NguyenLieuLookUp, SF.Get<NguyenLieuViewModel>().GetList(), "Ten");
 
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
 
@@ -134,7 +124,7 @@ namespace TLShoes.FormControls.ChiLenh
             using (var transaction = new TransactionScope())
             {
                 var saveData = CRUD.GetFormObject(FormControls, _chiLenh);
-                CRUD.DecorateSaveData(saveData, _chiLenh == null);
+                CRUD.DecorateSaveData(saveData);
                 SF.Get<ChiLenhViewModel>().Save(saveData);
 
                 // Save nguyen lieu chi lenh
@@ -196,6 +186,14 @@ namespace TLShoes.FormControls.ChiLenh
 
         public string ValidateInput()
         {
+            var donHangId = ChiLenh_DonHangId.SelectedValue;
+            if (donHangId == null) return "Chưa chọn đơn hàng!";
+            var id = _chiLenh != null ? _chiLenh.Id : 0;
+            if (SF.Get<ChiLenhViewModel>().IsDuplicate((long)donHangId, id))
+            {
+                return string.Format("Chỉ lệnh cho Đơn Hàng {0} đã được tạo", ChiLenh_DonHangId.Text);
+            }
+
             if (_chiLenh != null)
             {
                 var trangThai = PrimitiveConvert.StringToEnum<Define.TrangThai>(_chiLenh.TrangThai);
@@ -214,15 +212,18 @@ namespace TLShoes.FormControls.ChiLenh
         private void gridView_Click(object sender, EventArgs e)
         {
             var data = gridView.GetRow(gridView.FocusedRowHandle) as NguyenLieuChiLenhViewModel.ShowData;
-            if (data.ChiTietId != null) NguyenLieuChiLenh_ChiTietId.SelectedValue = data.ChiTietId;
-            NguyenLieuChiLenh_DinhMucChuan.Text = data.DinhMucChuan.ToString();
-            NguyenLieuChiLenh_DinhMucThuc.Text = data.DinhMucThuc.ToString();
-            if (data.MauId != null) NguyenLieuChiLenh_MauId.SelectedValue = data.MauId;
-            NguyenLieuChiLenh_QuyCach.Text = data.QuyCach;
-            NguyenLieuChiLenh_PhanXuongId.SelectedValue = data.PhanXuong;
-            if (data.ChiTietNguyenLieuList != null) ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(data.ChiTietNguyenLieuList.ToList());
+            if (data != null)
+            {
+                if (data.ChiTietId != null) NguyenLieuChiLenh_ChiTietId.SelectedValue = data.ChiTietId;
+                NguyenLieuChiLenh_DinhMucChuan.Text = data.DinhMucChuan.ToString(CultureInfo.InvariantCulture);
+                NguyenLieuChiLenh_DinhMucThuc.Text = data.DinhMucThuc.ToString(CultureInfo.InvariantCulture);
+                if (data.MauId != null) NguyenLieuChiLenh_MauId.SelectedValue = data.MauId;
+                NguyenLieuChiLenh_QuyCach.Text = data.QuyCach;
+                if (data.PhanXuong != null) NguyenLieuChiLenh_PhanXuong.SelectedValue = data.PhanXuong;
+                if (data.ChiTietNguyenLieuList != null) ChiTietNguyenLieuList = new BindingList<ChiTietNguyenLieu>(data.ChiTietNguyenLieuList.ToList());
 
-            gridNguyenLieu.DataSource = ChiTietNguyenLieuList;
+                gridNguyenLieu.DataSource = ChiTietNguyenLieuList;
+            }
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -237,9 +238,9 @@ namespace TLShoes.FormControls.ChiLenh
                 NguyenLieuChiLenhList.Add(chitiet);
             }
 
-            chitiet.ChiTiet = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.ChiTietId).Ten;
+            chitiet.ChiTiet = SF.Get<DanhMucViewModel>().GetDetail(saveData.ChiTietId.GetValueOrDefault()).Ten;
             chitiet.PhanXuong = saveData.PhanXuong;
-            chitiet.Mau = SF.Get<DanhMucViewModel>().GetDetail((long)saveData.MauId).Ten;
+            chitiet.Mau = SF.Get<DanhMucViewModel>().GetDetail(saveData.MauId.GetValueOrDefault()).Ten;
             chitiet.NguyenLieu = tenNguyenLieu;
             chitiet.QuyCach = saveData.QuyCach;
             chitiet.DinhMucChuan = (float)saveData.DinhMucChuan;
@@ -278,82 +279,67 @@ namespace TLShoes.FormControls.ChiLenh
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            var saveDialog = new SaveFileDialog();
-            saveDialog.Filter = Define.EXPORT_EXTENSION;
-            if (saveDialog.ShowDialog() == DialogResult.OK)
+            Export(Define.TEMPLATE_CHI_LENH, (workBook, workSheet) =>
             {
-                ThreadHelper.LoadForm(() =>
+                var donHang = _chiLenh.DonHang;
+
+                workSheet.Cells[5, "A"] = string.Format("ĐH: {0}", donHang.OrderNo);
+                workSheet.Cells[5, "D"] = string.Format("MH: {0}", donHang.MaHang);
+                workSheet.Cells[5, "F"] = string.Format("PHOM: {0}", donHang.Phom.MaNguyenLieu);
+                workSheet.Cells[5, "K"] = string.Format("KH: {0}", donHang.KhachHang.TenCongTy);
+                workSheet.Cells[5, "M"] = string.Format("XH: {0}", donHang.NgayXuat);
+                workSheet.Cells[5, "P"] = string.Format("SP: {0}", _chiLenh.NgayDuyet);
+
+                var imagePath = FileHelper.GetImagePath(donHang.HinhAnh);
+                if (File.Exists(imagePath))
                 {
-                    //Start Excel and get Application object.
-                    var excel = new Application();
-
-                    //Get a new workbook.
-                    var workBook = excel.Workbooks.Open(Path.Combine(FileHelper.TemplatePath, Define.TEMPLATE_CHI_LENH));
-                    var workSheet = (_Worksheet)workBook.ActiveSheet;
-
-                    try
-                    {
-                        var donHang = _chiLenh.DonHang;
-
-                        workSheet.Cells[5, "A"] = string.Format("ĐH: {0}", donHang.OrderNo);
-                        workSheet.Cells[5, "D"] = string.Format("MH: {0}", donHang.MaHang);
-                        workSheet.Cells[5, "F"] = string.Format("PHOM: {0}", donHang.Phom.MaNguyenLieu);
-                        workSheet.Cells[5, "K"] = string.Format("KH: {0}", donHang.KhachHang.TenCongTy);
-                        workSheet.Cells[5, "M"] = string.Format("XH: {0}", donHang.NgayXuat);
-                        workSheet.Cells[5, "P"] = string.Format("SP: {0}", _chiLenh.NgayDuyet);
-
-                        workSheet.Shapes.AddPicture(donHang.HinhAnh, MsoTriState.msoFalse, MsoTriState.msoCTrue, 447, 0, 150, 67);
-
-
-                        var chiTietDonhang = donHang.ChiTietDonHangs.OrderBy(s => s.Size).ToList();
-                        var firstColSize = 4;
-                        foreach (var chitiet in chiTietDonhang)
-                        {
-                            workSheet.Cells[6, firstColSize] = string.Format("{0}#", chitiet.Size);
-                            workSheet.Cells[7, firstColSize] = chitiet.SoLuong;
-                            firstColSize++;
-                        }
-
-                        var nguyenLieuChiLenh = _chiLenh.NguyenLieuChiLenhs;
-                        var firstRowNguyenLieu = 11;
-                        foreach (var lieuChiLenh in nguyenLieuChiLenh)
-                        {
-                            var chitTietNguyenLieu = lieuChiLenh.ChiTietNguyenLieux.ToList();
-                            workSheet.Cells[firstRowNguyenLieu, "D"] = SF.Get<NguyenLieuChiLenhViewModel>().NguyenLieuFormat(chitTietNguyenLieu);
-                            workSheet.Cells[firstRowNguyenLieu, "J"] = lieuChiLenh.QuyCach;
-                            if (lieuChiLenh.Mau != null) workSheet.Cells[firstRowNguyenLieu, "K"] = lieuChiLenh.Mau.Ten;
-
-                            var nguyenLieuDaiDien = chitTietNguyenLieu.FirstOrDefault(s => s.NguyenLieu != null && s.NguyenLieu.DVT != null);
-                            if (nguyenLieuDaiDien != null)
-                            {
-                                workSheet.Cells[firstRowNguyenLieu, "L"] = nguyenLieuDaiDien.NguyenLieu.DVT.Ten;
-                            }
-                            workSheet.Cells[firstRowNguyenLieu, "M"] = lieuChiLenh.DinhMucChuan;
-                            workSheet.Cells[firstRowNguyenLieu, "P"] = lieuChiLenh.DinhMucThuc;
-                            firstRowNguyenLieu++;
-                        }
-
-                        var currentDate = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
-                        workSheet.Cells[44, "K"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
-                        workSheet.Cells[48, "K"] = Authorization.LoginUser.TenNguoiDung;
-
-                        workBook.SaveAs(saveDialog.FileName);
-                    }
-                    finally
-                    {
-                        workBook.Close();
-                    }
-
-                });
-
-
-                var confirmDialog = MessageBox.Show(Define.MESSAGE_EXPORT_SUCCESS_TEXT, Define.MESSAGE_EXPORT_SUCCESS_TITLE, MessageBoxButtons.YesNo);
-                if (confirmDialog == DialogResult.Yes)
-                {
-                    Process.Start(saveDialog.FileName);
+                    workSheet.Shapes.AddPicture(imagePath, MsoTriState.msoFalse, MsoTriState.msoCTrue, 447, 0, 150, 67);
                 }
-                this.ParentForm.Close();
-            }
+
+                var chiTietDonhang = donHang.ChiTietDonHangs.OrderBy(s => s.Size).ToList();
+                var firstColSize = 4;
+                foreach (var chitiet in chiTietDonhang)
+                {
+                    workSheet.Cells[6, firstColSize] = string.Format("{0}#", chitiet.Size);
+                    workSheet.Cells[7, firstColSize] = chitiet.SoLuong;
+                    firstColSize++;
+                }
+
+                var nguyenLieuChiLenh = _chiLenh.NguyenLieuChiLenhs;
+                var firstRowNguyenLieu = 11;
+                var groupedByPhanXuong = nguyenLieuChiLenh.GroupBy(s => s.PhanXuong).ToList();
+                foreach (var groupPhanXuong in groupedByPhanXuong)
+                {
+                    var tenPhanXuong = Define.PhanXuongDict[groupPhanXuong.Key];
+                    workSheet.Cells[firstRowNguyenLieu, "A"] = tenPhanXuong;
+
+                    foreach (var lieuChiLenh in groupPhanXuong)
+                    {
+                        var range = workSheet.Range["A" + firstRowNguyenLieu + 1].EntireRow;
+                        range.Insert(XlInsertShiftDirection.xlShiftDown, range.Copy(Type.Missing));
+
+                        var chiTietNguyenLieu = lieuChiLenh.ChiTietNguyenLieux.ToList();
+                        workSheet.Cells[firstRowNguyenLieu, "B"] = lieuChiLenh.ChiTiet.Ten;
+                        workSheet.Cells[firstRowNguyenLieu, "D"] = SF.Get<NguyenLieuChiLenhViewModel>().NguyenLieuFormat(chiTietNguyenLieu);
+                        workSheet.Cells[firstRowNguyenLieu, "J"] = lieuChiLenh.QuyCach;
+                        if (lieuChiLenh.Mau != null) workSheet.Cells[firstRowNguyenLieu, "K"] = lieuChiLenh.Mau.Ten;
+
+                        var nguyenLieuDaiDien = chiTietNguyenLieu.FirstOrDefault(s => s.NguyenLieu != null && s.NguyenLieu.DVT != null);
+                        if (nguyenLieuDaiDien != null)
+                        {
+                            workSheet.Cells[firstRowNguyenLieu, "L"] = nguyenLieuDaiDien.NguyenLieu.DVT.Ten;
+                        }
+                        workSheet.Cells[firstRowNguyenLieu, "M"] = lieuChiLenh.DinhMucChuan;
+                        workSheet.Cells[firstRowNguyenLieu, "P"] = lieuChiLenh.DinhMucThuc;
+                        firstRowNguyenLieu++;
+                    }
+                }
+
+
+                var currentDate = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
+                workSheet.Cells[firstRowNguyenLieu + 2, "K"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
+                workSheet.Cells[firstRowNguyenLieu + 4, "K"] = Authorization.LoginUser.TenNguoiDung;
+            });
         }
 
         private void btnDuyet_Click(object sender, EventArgs e)
@@ -385,6 +371,10 @@ namespace TLShoes.FormControls.ChiLenh
                     transaction.Complete();
                 }
                 InitAuthorize();
+                MessageBox.Show("Duyệt thành công!");
+                ObserverControl.PulishAction(Define.ActionType.SAVE);
+                var parentForm = this.ParentForm;
+                if (parentForm != null) parentForm.Close();
             }
         }
 

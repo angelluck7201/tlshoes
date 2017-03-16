@@ -31,6 +31,12 @@ namespace TLShoes
             this.NguyenLieux = new HashSet<NguyenLieu>();
             this.NguyenLieux1 = new HashSet<NguyenLieu>();
             this.NguyenLieux2 = new HashSet<NguyenLieu>();
+            this.CongNgheSanXuats = new HashSet<CongNgheSanXuat>();
+            this.CongNgheSanXuats1 = new HashSet<CongNgheSanXuat>();
+            this.MauThuDaos = new HashSet<MauThuDao>();
+            this.MauThuDaos1 = new HashSet<MauThuDao>();
+            this.MauThuDaos2 = new HashSet<MauThuDao>();
+            this.MauThuDaos3 = new HashSet<MauThuDao>();
         }
     
         public long Id { get; set; }
@@ -71,5 +77,17 @@ namespace TLShoes
         public virtual ICollection<NguyenLieu> NguyenLieux1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NguyenLieu> NguyenLieux2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CongNgheSanXuat> CongNgheSanXuats { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CongNgheSanXuat> CongNgheSanXuats1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MauThuDao> MauThuDaos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MauThuDao> MauThuDaos1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MauThuDao> MauThuDaos2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MauThuDao> MauThuDaos3 { get; set; }
     }
 }

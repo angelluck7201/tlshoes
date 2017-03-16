@@ -32,7 +32,7 @@ namespace TLShoes
             // our handler.
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 #else
-                    Application.ThreadException += new ThreadExceptionEventHandler(ErrorControl.DEVException);
+//                    Application.ThreadException += new ThreadExceptionEventHandler(ErrorControl.DEVException);
 #endif
 
                     Application.Run(FormFactory<Main>.Get());

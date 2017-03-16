@@ -32,6 +32,7 @@ namespace TLShoes.Common
                 }
                 throw raise;
             }
+            throw t.Exception;
         }
         public static void UIThreadException(object sender, ThreadExceptionEventArgs t)
         {

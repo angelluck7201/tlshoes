@@ -25,7 +25,7 @@ namespace TLShoes.FormControls.KeHoachSanXuat
             var validateResult = ValidateInput();
             if (!string.IsNullOrEmpty(validateResult))
             {
-                MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
+                MessageBox.Show(validateResult);
                 return false;
             }
             var saveData = CRUD.GetFormObject(FormControls, _domainData);
@@ -37,6 +37,20 @@ namespace TLShoes.FormControls.KeHoachSanXuat
 
         public string ValidateInput()
         {
+            if (_domainData == null)
+            {
+                var donHangId = KeHoachSanXuat_DonHangId.SelectedValue;
+                if (donHangId == null)
+                {
+                    return "Chưa chọn đơn hàng.";
+                }
+                if (SF.Get<KeHoachSanXuatViewModel>().IsDuplicateDonhang((long) donHangId))
+                {
+                    var donHang = SF.Get<DonHangViewModel>().GetDetail((long) donHangId);
+
+                    return string.Format("Đơn hàng số {0} đã được tạo kế hoạch rồi.", donHang.MaHang);
+                }
+            }
             return string.Empty;
         }
 

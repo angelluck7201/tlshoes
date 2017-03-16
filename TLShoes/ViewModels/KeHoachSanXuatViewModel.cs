@@ -18,6 +18,11 @@ namespace TLShoes.ViewModels
             return DbContext.KeHoachSanXuats.Find(id);
         }
 
+        public bool IsDuplicateDonhang(long donHangId)
+        {
+            return DbContext.KeHoachSanXuats.Any(s => s.DonHangId == donHangId);
+        }
+
         public void GetDataSource(GridControl control)
         {
             control.DataSource = GetList()

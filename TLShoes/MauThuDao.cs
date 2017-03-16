@@ -32,11 +32,15 @@ namespace TLShoes
         public string GopYXuongMay { get; set; }
         public string GopYXuongDe { get; set; }
         public string GopYXuongGo { get; set; }
-        public string KetQuaXuongChat { get; set; }
-        public string KetQuaXuongMay { get; set; }
-        public string KetQuaXuongDe { get; set; }
-        public string KetQuaXuongGo { get; set; }
+        public Nullable<long> KetQuaXuongChatId { get; set; }
+        public Nullable<long> KetQuaXuongMayId { get; set; }
+        public Nullable<long> KetQuaXuongDeId { get; set; }
+        public Nullable<long> KetQuaXuongGoId { get; set; }
     
+        public virtual DanhMuc KetQuaXuongChat { get; set; }
+        public virtual DanhMuc KetQuaXuongMay { get; set; }
+        public virtual DanhMuc KetQuaXuongDe { get; set; }
+        public virtual DanhMuc KetQuaXuongGo { get; set; }
         public virtual DonHang DonHang { get; set; }
         public virtual UserAccount UserAccount { get; set; }
     }

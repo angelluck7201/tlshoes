@@ -9,6 +9,8 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using System.Configuration;
 using System.Drawing.Drawing2D;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using TLShoes.FormControls;
 
 namespace TLShoes.Common
@@ -34,6 +36,14 @@ namespace TLShoes.Common
         public static string TemplatePath
         {
             get { return Path.Combine(ResourcePath, "ExportTemplate"); }
+        }
+
+        public static string TempPath
+        {
+            get
+            {
+                return Path.Combine(ResourcePath, "Temp");
+            }
         }
 
         public static string ResourcePath
@@ -155,12 +165,17 @@ namespace TLShoes.Common
             //}
         }
 
+        public static string GetImagePath(string fileName)
+        {
+            return Path.Combine(ImagePath, fileName);
+        }
+
         public static Image ImageFromFile(string fileName)
         {
             Image image = null;
             try
             {
-                var filePath = Path.Combine(ImagePath, fileName);
+                var filePath = GetImagePath(fileName);
                 if (File.Exists(filePath))
                 {
                     using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
@@ -244,6 +259,33 @@ namespace TLShoes.Common
 
             // Force a reload of a changed section.
             ConfigurationManager.RefreshSection("appSettings");
+        }
+
+        public static string CloneFile(string srcDir, string fileName)
+        {
+            var tempFolder = TempPath;
+            if (!Directory.Exists(tempFolder))
+            {
+                Directory.CreateDirectory(tempFolder);
+            }
+
+            var srcPath = Path.Combine(srcDir, fileName);
+            var desPath = Path.Combine(tempFolder, fileName);
+            File.Copy(srcPath, desPath, true);
+            return desPath;
+        }
+
+        public static string GetExportTemplate(string exportFileName)
+        {
+            return CloneFile(TemplatePath, exportFileName);
+        }
+
+        private void GrantAccess(string fullPath)
+        {
+            DirectoryInfo dInfo = new DirectoryInfo(fullPath);
+            DirectorySecurity dSecurity = dInfo.GetAccessControl();
+            dSecurity.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier(WellKnownSidType.WorldSid, null), FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
+            dInfo.SetAccessControl(dSecurity);
         }
 
     }

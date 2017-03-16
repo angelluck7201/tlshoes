@@ -32,6 +32,11 @@ namespace TLShoes.ViewModels
                 }).ToList();
         }
 
+        public bool IsDuplicate(long donHangId, long? chiLenhId)
+        {
+            return DbContext.ChiLenhs.Any(s => s.DonHangId == donHangId && s.Id != chiLenhId);
+        }
+
         public string GenerateSoPhieu()
         {
             var currentItemNum = DbContext.ChiLenhs.Count(s => !string.IsNullOrEmpty(s.SoPhieu));

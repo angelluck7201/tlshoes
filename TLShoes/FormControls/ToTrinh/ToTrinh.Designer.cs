@@ -32,6 +32,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.lblThongBao = new DevExpress.XtraEditors.LabelControl();
             this.lblSoPhieu = new DevExpress.XtraEditors.LabelControl();
             this.gridToTrinh = new DevExpress.XtraGrid.GridControl();
             this.gridViewToTrinh = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -140,6 +141,7 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.xtraTabPage2.Controls.Add(this.lblThongBao);
             this.xtraTabPage2.Controls.Add(this.lblSoPhieu);
             this.xtraTabPage2.Controls.Add(this.gridToTrinh);
             this.xtraTabPage2.Controls.Add(this.btnSelect);
@@ -162,6 +164,14 @@
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1570, 742);
             this.xtraTabPage2.Text = "Tờ Trình";
+            // 
+            // lblThongBao
+            // 
+            this.lblThongBao.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Italic);
+            this.lblThongBao.Location = new System.Drawing.Point(34, 385);
+            this.lblThongBao.Name = "lblThongBao";
+            this.lblThongBao.Size = new System.Drawing.Size(0, 16);
+            this.lblThongBao.TabIndex = 113;
             // 
             // lblSoPhieu
             // 
@@ -235,7 +245,7 @@
             this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn12.AppearanceHeader.Options.UseFont = true;
             this.gridColumn12.Caption = "Nguyên Liệu";
-            this.gridColumn12.FieldName = "Ten";
+            this.gridColumn12.FieldName = "NguyenLieu.Ten";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 0;
@@ -479,7 +489,7 @@
             // 
             // ToTrinh_DuKien
             // 
-            this.ToTrinh_DuKien.Location = new System.Drawing.Point(191, 231);
+            this.ToTrinh_DuKien.Location = new System.Drawing.Point(193, 310);
             this.ToTrinh_DuKien.Name = "ToTrinh_DuKien";
             this.ToTrinh_DuKien.Size = new System.Drawing.Size(330, 23);
             this.ToTrinh_DuKien.TabIndex = 7;
@@ -512,7 +522,7 @@
             // ToTrinh_TonTheKho
             // 
             this.ToTrinh_TonTheKho.Enabled = false;
-            this.ToTrinh_TonTheKho.Location = new System.Drawing.Point(191, 159);
+            this.ToTrinh_TonTheKho.Location = new System.Drawing.Point(191, 158);
             this.ToTrinh_TonTheKho.Name = "ToTrinh_TonTheKho";
             this.ToTrinh_TonTheKho.Size = new System.Drawing.Size(330, 23);
             this.ToTrinh_TonTheKho.TabIndex = 4;
@@ -529,7 +539,7 @@
             // ToTrinh_BoSung
             // 
             this.ToTrinh_BoSung.Enabled = false;
-            this.ToTrinh_BoSung.Location = new System.Drawing.Point(191, 121);
+            this.ToTrinh_BoSung.Location = new System.Drawing.Point(191, 120);
             this.ToTrinh_BoSung.Name = "ToTrinh_BoSung";
             this.ToTrinh_BoSung.Size = new System.Drawing.Size(330, 23);
             this.ToTrinh_BoSung.TabIndex = 1;
@@ -546,7 +556,7 @@
             // ToTrinh_ThuHoi
             // 
             this.ToTrinh_ThuHoi.Enabled = false;
-            this.ToTrinh_ThuHoi.Location = new System.Drawing.Point(191, 271);
+            this.ToTrinh_ThuHoi.Location = new System.Drawing.Point(191, 234);
             this.ToTrinh_ThuHoi.Name = "ToTrinh_ThuHoi";
             this.ToTrinh_ThuHoi.Size = new System.Drawing.Size(330, 23);
             this.ToTrinh_ThuHoi.TabIndex = 2;
@@ -579,7 +589,7 @@
             // 
             // ToTrinh_HaoHut
             // 
-            this.ToTrinh_HaoHut.Location = new System.Drawing.Point(191, 310);
+            this.ToTrinh_HaoHut.Location = new System.Drawing.Point(191, 272);
             this.ToTrinh_HaoHut.Name = "ToTrinh_HaoHut";
             this.ToTrinh_HaoHut.Size = new System.Drawing.Size(330, 23);
             this.ToTrinh_HaoHut.TabIndex = 6;
@@ -919,5 +929,6 @@
         private System.Windows.Forms.TextBox ToTrinh_NguoiDuyet;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
+        private DevExpress.XtraEditors.LabelControl lblThongBao;
     }
 }

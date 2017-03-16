@@ -23,21 +23,6 @@ namespace TLShoes.ViewModels
             return DbContext.MauSanXuats.Find(id);
         }
 
-        public void GetDataSource(GridControl control)
-        {
-            control.DataSource = GetList()
-                .Select(s => new
-                {
-                    s.Id,
-                    s.DonHang.MaHang,
-                    SoDH = s.DonHang.OrderNo,
-//                    NgayGuiMauFormat = TimeHelper.TimestampToString(s.NgayGuiMau, "d"),
-//                    NgayKetQuaFormat = TimeHelper.TimestampToString(s.NgayKetqua, "d"),
-                    PhanLoaiKetQua = s.DanhMuc.Ten,
-                    Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh),
-                    s.UserAccount.LoaiNguoiDung
-                }).ToList();
-        }
 
         public void GetDataSource(GridControl control, long donHangId)
         {
@@ -46,8 +31,9 @@ namespace TLShoes.ViewModels
                 {
                     s.Id,
                     s.DonHang.MaHang,
-//                    NgayGuiMauFormat = TimeHelper.TimestampToString(s.NgayGuiMau, "d"),
-//                    NgayKetQuaFormat = TimeHelper.TimestampToString(s.NgayKetqua, "d"),
+                    s.DonHang.OrderNo,
+                    s.NgayGuiMau,
+                    s.NgayKetqua,
                     PhanLoaiKetQua = s.DanhMuc.Ten,
                     Hinh = FileHelper.ImageFromFile(s.DonHang.HinhAnh)
                 }).ToList();

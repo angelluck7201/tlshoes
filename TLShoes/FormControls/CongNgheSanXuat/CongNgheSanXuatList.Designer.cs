@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.congNgheSanXuatInstantFeedbackSource = new DevExpress.Data.Linq.EntityInstantFeedbackSource();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -44,6 +45,7 @@
             // 
             // gridControl
             // 
+            this.gridControl.DataSource = this.congNgheSanXuatInstantFeedbackSource;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
@@ -52,6 +54,12 @@
             this.gridControl.TabIndex = 5;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
+            // 
+            // congNgheSanXuatInstantFeedbackSource
+            // 
+            this.congNgheSanXuatInstantFeedbackSource.DefaultSorting = "CreatedDate DESC";
+            this.congNgheSanXuatInstantFeedbackSource.DesignTimeElementType = typeof(TLShoes.CongNgheSanXuat);
+            this.congNgheSanXuatInstantFeedbackSource.KeyExpression = "Id";
             // 
             // gridView
             // 
@@ -86,7 +94,7 @@
             this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn1.AppearanceHeader.Options.UseFont = true;
             this.gridColumn1.Caption = "Mã Hàng";
-            this.gridColumn1.FieldName = "MaHang";
+            this.gridColumn1.FieldName = "DonHang.MaHang";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
@@ -95,8 +103,8 @@
             // 
             this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn2.Caption = "Mẫu Đối";
-            this.gridColumn2.FieldName = "MauDoiNgayFormat";
+            this.gridColumn2.Caption = "Mẫu Đối Ngày";
+            this.gridColumn2.FieldName = "MauDoi.MauNgay";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
@@ -106,7 +114,7 @@
             this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn3.AppearanceHeader.Options.UseFont = true;
             this.gridColumn3.Caption = "Thử Rập";
-            this.gridColumn3.FieldName = "PhanLoaiThuRap";
+            this.gridColumn3.FieldName = "PhanLoaiThuRap.Ten";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 5;
@@ -116,7 +124,7 @@
             this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn4.AppearanceHeader.Options.UseFont = true;
             this.gridColumn4.Caption = "Thử Dao";
-            this.gridColumn4.FieldName = "PhanLoaiThuDao";
+            this.gridColumn4.FieldName = "PhanLoaiThuDao.Ten";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 4;
@@ -126,7 +134,7 @@
             this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.Caption = "Ngày Duyệt";
-            this.gridColumn5.FieldName = "NgayDuyetFormat";
+            this.gridColumn5.FieldName = "NgayDuyet";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn5.Visible = true;
@@ -137,7 +145,7 @@
             this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "Số ĐH";
-            this.gridColumn6.FieldName = "SoDH";
+            this.gridColumn6.FieldName = "DonHang.OrderNo";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 1;
@@ -173,5 +181,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn colLoaiNguoiDung;
+        private DevExpress.Data.Linq.EntityInstantFeedbackSource congNgheSanXuatInstantFeedbackSource;
     }
 }

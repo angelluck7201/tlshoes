@@ -17,6 +17,9 @@ namespace TLShoes.FormControls.QuanLyNguoiDung
         public ucUserAccountList()
         {
             InitializeComponent();
+            ReloadData();
+            ObserverControl.Regist(Define.ActionType.SAVE, this.Name, ReloadData);
+            ObserverControl.Regist(Define.ActionType.REFRESH, this.Name, ReloadData);
         }
 
         public override void ReloadData()

@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraSplashScreen;
+using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
 using TLShoes.ViewModels;
+using Action = System.Action;
+using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace TLShoes.FormControls
 {
@@ -70,7 +76,10 @@ namespace TLShoes.FormControls
                 var controlType = control.GetType();
                 if (controlType.Name == "ComboBox")
                 {
-                    (control as ComboBox).DropDownStyle = ComboBoxStyle.DropDownList;
+                    var combobox = control as ComboBox;
+                    combobox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    combobox.AutoCompleteSource = AutoCompleteSource.ListItems;
+                    combobox.Leave += Combobox_Leave;
                 }
             }
         }
@@ -121,6 +130,19 @@ namespace TLShoes.FormControls
                             CRUD.SetControlValue(control, modelData);
                         }
                     }
+                }
+            }
+        }
+
+        public virtual void Combobox_Leave(object sender, EventArgs e)
+        {
+            var combobox = sender as ComboBox;
+            if (combobox != null)
+            {
+                var selectedValue = combobox.SelectedValue;
+                if (selectedValue == null)
+                {
+                    combobox.SelectedIndex = 0;
                 }
             }
         }
@@ -206,7 +228,51 @@ namespace TLShoes.FormControls
             item.Properties.DisplayMember = display;
             item.Properties.ValueMember = value;
             item.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+        }
 
+        public void Export(string template, Action<Workbook, _Worksheet> action)
+        {
+            var saveDialog = new SaveFileDialog();
+            saveDialog.Filter = Define.EXPORT_EXTENSION;
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                ThreadHelper.LoadForm(() =>
+                {
+                    var templatePath = FileHelper.GetExportTemplate(template);
+
+                    //Start Excel and get Application object.
+                    var excel = new Application();
+
+                    //Get a new workbook.
+                    var workBook = excel.Workbooks.Open(templatePath);
+                    var workSheet = (_Worksheet)workBook.ActiveSheet;
+
+                    try
+                    {
+                        action(workBook, workSheet);
+                        workBook.SaveAs(saveDialog.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(Define.MESSAGE_EXPORT_FAIL_TITLE, Define.MESSAGE_EXPORT_FAIL_TITLE);
+                        SplashScreenManager.CloseDefaultWaitForm();
+                    }
+                    finally
+                    {
+                        workBook.Close();
+                    }
+
+                });
+
+                var confirmDialog = MessageBox.Show(Define.MESSAGE_EXPORT_SUCCESS_TEXT, Define.MESSAGE_EXPORT_SUCCESS_TITLE, MessageBoxButtons.YesNo);
+                if (confirmDialog == DialogResult.Yes)
+                {
+                    Process.Start(saveDialog.FileName);
+                }
+
+                var parentForm = this.ParentForm;
+                if (parentForm != null) parentForm.Close();
+            }
         }
     }
 }

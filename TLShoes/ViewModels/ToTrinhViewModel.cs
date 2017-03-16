@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Globalization;
 using System.Linq;
 using DevExpress.XtraGrid;
 using DevExpress.XtraPrinting.Native;
@@ -18,6 +19,11 @@ namespace TLShoes.ViewModels
         public ToTrinh GetDetail(long id)
         {
             return DbContext.ToTrinhs.Find(id);
+        }
+
+        public TongHopToTrinh GetDetailTongHopToTrinh(long id)
+        {
+            return DbContext.TongHopToTrinhs.Find(id);
         }
 
         public List<ToTrinh> GetList(DonDatHang donDatHang)
@@ -68,23 +74,6 @@ namespace TLShoes
 {
     public partial class ToTrinh
     {
-        public string SoPhieu
-        {
-            get
-            {
-                if (TongHopToTrinh != null)
-                {
-                    return TongHopToTrinh.SoPhieu;
-                }
-                return "";
-            }
-        }
-
-        public string Ten
-        {
-            get { return NguyenLieu != null ? NguyenLieu.Ten : ""; }
-        }
-
         public List<long> DonDatHangFormatList
         {
             get
@@ -97,10 +86,26 @@ namespace TLShoes
                 return result;
             }
         }
+    }
 
-        public string LoaiNguoiDung
+    public partial class TongHopToTrinh
+    {
+        public string NgayLapFormat
         {
-            get { return UserAccount.LoaiNguoiDung; }
+            get
+            {
+                if (NgayLap.Year == 1) return string.Empty;
+                return NgayLap.ToString(CultureInfo.InvariantCulture);
+            }
+        }
+
+        public string NgayDuyetFormat
+        {
+            get
+            {
+                if (NgayDuyet.Year == 1) return string.Empty;
+                return NgayDuyet.ToString(CultureInfo.InvariantCulture);
+            }
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             this.colLoaiNguoiDung = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.keHoachSanXuatInstantFeedbackSource = new DevExpress.Data.Linq.EntityInstantFeedbackSource();
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.Id = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -57,6 +58,7 @@
             this.gridBand7 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -70,6 +72,7 @@
             // 
             // gridControl
             // 
+            this.gridControl.DataSource = this.keHoachSanXuatInstantFeedbackSource;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.bandedGridView1;
@@ -80,6 +83,12 @@
             this.gridControl.TabIndex = 7;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
+            // 
+            // keHoachSanXuatInstantFeedbackSource
+            // 
+            this.keHoachSanXuatInstantFeedbackSource.DefaultSorting = "ModifiedDate DESC";
+            this.keHoachSanXuatInstantFeedbackSource.DesignTimeElementType = typeof(TLShoes.KeHoachSanXuat);
+            this.keHoachSanXuatInstantFeedbackSource.KeyExpression = "Id";
             // 
             // bandedGridView1
             // 
@@ -110,7 +119,8 @@
             this.bandedGridColumn3,
             this.bandedGridColumn4,
             this.bandedGridColumn5,
-            this.colLoaiNguoiDung});
+            this.colLoaiNguoiDung,
+            this.bandedGridColumn6});
             this.bandedGridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.bandedGridView1.GridControl = this.gridControl;
             this.bandedGridView1.GroupCount = 1;
@@ -122,6 +132,7 @@
             this.bandedGridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.Id, DevExpress.Data.ColumnSortOrder.Descending)});
+            this.bandedGridView1.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.bandedGridView1_CustomUnboundColumnData);
             this.bandedGridView1.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
             // 
             // gridBand1
@@ -153,6 +164,7 @@
             this.bandedGridColumn1.ColumnEdit = this.repositoryItemPictureEdit1;
             this.bandedGridColumn1.FieldName = "Hinh";
             this.bandedGridColumn1.Name = "bandedGridColumn1";
+            this.bandedGridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.Object;
             this.bandedGridColumn1.Visible = true;
             this.bandedGridColumn1.Width = 57;
             // 
@@ -175,7 +187,7 @@
             this.bandedGridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.bandedGridColumn2.AppearanceHeader.Options.UseFont = true;
             this.bandedGridColumn2.Caption = "Số ĐH";
-            this.bandedGridColumn2.FieldName = "OrderNo";
+            this.bandedGridColumn2.FieldName = "DonHang.OrderNo";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.Visible = true;
             this.bandedGridColumn2.Width = 57;
@@ -185,7 +197,7 @@
             this.bandedGridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.bandedGridColumn5.AppearanceHeader.Options.UseFont = true;
             this.bandedGridColumn5.Caption = "Số Lượng";
-            this.bandedGridColumn5.FieldName = "SoLuong";
+            this.bandedGridColumn5.FieldName = "DonHang.SoLuong";
             this.bandedGridColumn5.Name = "bandedGridColumn5";
             this.bandedGridColumn5.Visible = true;
             this.bandedGridColumn5.Width = 57;
@@ -195,7 +207,7 @@
             this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "Kiểm Hàng";
-            this.gridColumn2.FieldName = "NgayKiemHangFormat";
+            this.gridColumn2.FieldName = "NgayKiemHang";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.Width = 61;
@@ -216,7 +228,7 @@
             this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn9.AppearanceHeader.Options.UseFont = true;
             this.gridColumn9.Caption = "Bắt Đầu";
-            this.gridColumn9.FieldName = "NgayBatDauBpVatTuFormat";
+            this.gridColumn9.FieldName = "NgayBatDauBpVatTu";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn9.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
@@ -228,7 +240,7 @@
             this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn12.AppearanceHeader.Options.UseFont = true;
             this.gridColumn12.Caption = "Hoàn Thành";
-            this.gridColumn12.FieldName = "NgayHoanThanhBpVatTuFormat";
+            this.gridColumn12.FieldName = "NgayHoanThanhBpVatTu";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn12.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
@@ -251,7 +263,7 @@
             this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn3.AppearanceHeader.Options.UseFont = true;
             this.gridColumn3.Caption = "Bắt Đầu";
-            this.gridColumn3.FieldName = "NgayBatDauPxChatFormat";
+            this.gridColumn3.FieldName = "NgayBatDauPxChat";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn3.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
@@ -263,7 +275,7 @@
             this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn4.AppearanceHeader.Options.UseFont = true;
             this.gridColumn4.Caption = "Hoàn Thành";
-            this.gridColumn4.FieldName = "NgayHoanThanhPxChatFormat";
+            this.gridColumn4.FieldName = "NgayHoanThanhPxChat";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
@@ -286,7 +298,7 @@
             this.gridColumn7.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn7.AppearanceHeader.Options.UseFont = true;
             this.gridColumn7.Caption = "Bắt Đầu";
-            this.gridColumn7.FieldName = "NgayBatDauToPhuTroFormat";
+            this.gridColumn7.FieldName = "NgayBatDauToPhuTro";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
@@ -298,7 +310,7 @@
             this.gridColumn8.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn8.AppearanceHeader.Options.UseFont = true;
             this.gridColumn8.Caption = "Hoàn Thành";
-            this.gridColumn8.FieldName = "NgayHoanThanhToPhuTroFormat";
+            this.gridColumn8.FieldName = "NgayHoanThanhToPhuTro";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
@@ -321,7 +333,7 @@
             this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.Caption = "Bắt Đầu";
-            this.gridColumn5.FieldName = "NgayBatDauPxMayFormat";
+            this.gridColumn5.FieldName = "NgayBatDauPxMay";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
@@ -333,7 +345,7 @@
             this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "Hoàn Thành";
-            this.gridColumn6.FieldName = "NgayHoanThanhPxMayFormat";
+            this.gridColumn6.FieldName = "NgayHoanThanhPxMay";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
@@ -356,7 +368,7 @@
             this.gridColumn10.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn10.AppearanceHeader.Options.UseFont = true;
             this.gridColumn10.Caption = "Bắt Đầu";
-            this.gridColumn10.FieldName = "NgayBatDauPxDeFormat";
+            this.gridColumn10.FieldName = "NgayBatDauPxDe";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn10.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
@@ -368,7 +380,7 @@
             this.gridColumn11.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn11.AppearanceHeader.Options.UseFont = true;
             this.gridColumn11.Caption = "Hoàn Thành";
-            this.gridColumn11.FieldName = "NgayHoanThanhPxDeFormat";
+            this.gridColumn11.FieldName = "NgayHoanThanhPxDe";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.List;
             this.gridColumn11.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
@@ -391,7 +403,7 @@
             this.bandedGridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.bandedGridColumn3.AppearanceHeader.Options.UseFont = true;
             this.bandedGridColumn3.Caption = "Bắt Đầu";
-            this.bandedGridColumn3.FieldName = "NgayBatDauPxGoFormat";
+            this.bandedGridColumn3.FieldName = "NgayBatDauPxGo";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
             this.bandedGridColumn3.Visible = true;
             this.bandedGridColumn3.Width = 74;
@@ -401,10 +413,16 @@
             this.bandedGridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.bandedGridColumn4.AppearanceHeader.Options.UseFont = true;
             this.bandedGridColumn4.Caption = "Hoàn Thành";
-            this.bandedGridColumn4.FieldName = "NgayHoanThanhPxGoFormat";
+            this.bandedGridColumn4.FieldName = "NgayHoanThanhPxGo";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
             this.bandedGridColumn4.Width = 87;
+            // 
+            // bandedGridColumn6
+            // 
+            this.bandedGridColumn6.Caption = "bandedGridColumn6";
+            this.bandedGridColumn6.FieldName = "DonHang.HinhAnh";
+            this.bandedGridColumn6.Name = "bandedGridColumn6";
             // 
             // ucKeHoachSanXuatList
             // 
@@ -451,5 +469,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand7;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colLoaiNguoiDung;
+        private DevExpress.Data.Linq.EntityInstantFeedbackSource keHoachSanXuatInstantFeedbackSource;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn6;
     }
 }

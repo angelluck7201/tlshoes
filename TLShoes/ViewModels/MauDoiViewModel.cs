@@ -61,14 +61,14 @@ namespace TLShoes.ViewModels
                 item.MaHang = maudoi.DonHang.MaHang;
                 item.SoDonHang = maudoi.DonHang.OrderNo;
                 item.SoLuong = maudoi.DonHang.ChiTietDonHangs.Sum(s => (int)s.SoLuong);
-                //                item.MauDoiNgayGui = TimeHelper.TimeStampToDateTime(maudoi.NgayNhan, "d");
-                //                item.MauDoiNgayXacNhan = TimeHelper.TimeStampToDateTime(maudoi.MauNgay, "d");
+                item.MauDoiNgayGui = maudoi.NgayNhan;
+                item.MauDoiNgayXacNhan = maudoi.MauNgay;
                 item.Hinh = FileHelper.ImageFromFile(maudoi.DonHang.HinhAnh);
 
                 var mauTestList = SF.Get<MauTestViewModel>().GetList((long)maudoi.DonHangId).Take(3);
                 foreach (var mauTest in mauTestList)
                 {
-                    var ketQuaTestly = mauTest.DanhMuc.Ten;
+                    var ketQuaTestly = mauTest.PhanLoaiTestLy.Ten;
                     if (string.IsNullOrEmpty(item.TestLy))
                     {
                         item.TestLy = ketQuaTestly;
@@ -78,7 +78,7 @@ namespace TLShoes.ViewModels
                         item.TestLy += "/" + ketQuaTestly;
                     }
 
-                    var ketQuaTestHoa = mauTest.DanhMuc1.Ten;
+                    var ketQuaTestHoa = mauTest.PhanLoaiTestHoa.Ten;
                     if (string.IsNullOrEmpty(item.TestHoa))
                     {
                         item.TestHoa = ketQuaTestHoa;
