@@ -129,3 +129,17 @@ namespace TLShoes.ViewModels
         }
     }
 }
+
+namespace TLShoes
+{
+    public partial class DonDatHang
+    {
+        public float DanhGia
+        {
+            get
+            {
+                return (DatTestHoa + DatTestHoa + DichVuGiaoHang + DichVuHauMai + DungMau + DungThoiGian + DungYeuCauKyThuat + Gia + Khac) / 9f;
+            }
+        }
+    }
+}

@@ -33,12 +33,14 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLoaiNguoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.mauDanhGiaInstantFeedbackSource = new DevExpress.Data.Linq.EntityInstantFeedbackSource();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl
             // 
+            this.gridControl.DataSource = this.mauDanhGiaInstantFeedbackSource;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
@@ -84,6 +86,12 @@
             this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
             this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
             // 
+            // mauDanhGiaInstantFeedbackSource
+            // 
+            this.mauDanhGiaInstantFeedbackSource.DefaultSorting = "ModifiedDate DESC";
+            this.mauDanhGiaInstantFeedbackSource.DesignTimeElementType = typeof(TLShoes.MauDanhGia);
+            this.mauDanhGiaInstantFeedbackSource.KeyExpression = "Id";
+            // 
             // ucMauDanhGiaList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -104,5 +112,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn colLoaiNguoiDung;
+        private DevExpress.Data.Linq.EntityInstantFeedbackSource mauDanhGiaInstantFeedbackSource;
     }
 }

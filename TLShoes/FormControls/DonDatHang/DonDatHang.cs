@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
-using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
 using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
@@ -32,9 +27,8 @@ namespace TLShoes.FormControls.DonDatHang
         {
             InitializeComponent();
 
-            DonDatHang_NhaCungCapId.DisplayMember = "TenCongTy";
-            DonDatHang_NhaCungCapId.ValueMember = "Id";
-            DonDatHang_NhaCungCapId.DataSource = new BindingSource(SF.Get<NhaCungCapViewModel>().GetList(), null);
+            var lstNhaCungCap = SF.Get<NhaCungCapViewModel>().GetList();
+            SetComboboxDataSource(DonDatHang_NhaCungCapId,lstNhaCungCap,"TenCongTy");
 
             Init(data);
             ToTrinhList = SF.Get<ToTrinhViewModel>().GetList(data);
@@ -46,17 +40,9 @@ namespace TLShoes.FormControls.DonDatHang
                 _donDatHang = data;
             }
             gridToTrinh.DataSource = ToTrinhList;
-
             gridNguyenLieu.DataSource = DatHangVatTuList;
 
-            NguyenLieuLookUp.NullText = "";
-            NguyenLieuLookUp.Properties.DataSource = SF.Get<NguyenLieuViewModel>().GetList().Select(s => new { s.Ten, s.Id }).ToList();
-            NguyenLieuLookUp.PopulateColumns();
-            NguyenLieuLookUp.ShowHeader = false;
-            NguyenLieuLookUp.Columns["Id"].Visible = false;
-            NguyenLieuLookUp.Properties.DisplayMember = "Ten";
-            NguyenLieuLookUp.Properties.ValueMember = "Id";
-            NguyenLieuLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            SetRepositoryItem(NguyenLieuLookUp, SF.Get<NguyenLieuViewModel>().GetList(), "Ten");
 
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
 
@@ -201,15 +187,59 @@ namespace TLShoes.FormControls.DonDatHang
                         if (nhaCungCap != null)
                         {
                             var donHangNhaCungCap = context.DonDatHangs.Where(s => s.NhaCungCapId == nhaCungCapId).ToList();
-                            nhaCungCap.Gia = (int)donHangNhaCungCap.Where(s => s.Gia > 0).Average(s => s.Gia);
-                            nhaCungCap.DungThoiGian = (int)donHangNhaCungCap.Where(s => s.DungThoiGian > 0).Average(s => s.DungThoiGian);
-                            nhaCungCap.DungYeuCauKyThuat = (int)donHangNhaCungCap.Where(s => s.DungYeuCauKyThuat > 0).Average(s => s.DungYeuCauKyThuat);
-                            nhaCungCap.DungMau = (int)donHangNhaCungCap.Where(s => s.DungMau > 0).Average(s => s.DungMau);
-                            nhaCungCap.Khac = (int)donHangNhaCungCap.Where(s => s.Khac > 0).Average(s => s.Khac);
-                            nhaCungCap.DatTestLy = (int)donHangNhaCungCap.Where(s => s.DatTestLy > 0).Average(s => s.DatTestLy);
-                            nhaCungCap.DatTestHoa = (int)donHangNhaCungCap.Where(s => s.DatTestHoa > 0).Average(s => s.DatTestHoa);
-                            nhaCungCap.DichVuGiaoHang = (int)donHangNhaCungCap.Where(s => s.DichVuGiaoHang > 0).Average(s => s.DichVuGiaoHang);
-                            nhaCungCap.DichVuHauMai = (int)donHangNhaCungCap.Where(s => s.DichVuHauMai > 0).Average(s => s.DichVuHauMai);
+                            var gia = donHangNhaCungCap.Where(s => s.Gia > 0).ToList();
+                            if (gia.Any())
+                            {
+                                nhaCungCap.Gia = (int)gia.Average(s => s.Gia);                                
+                            }
+
+                            var dungThoiGian = donHangNhaCungCap.Where(s => s.DungThoiGian > 0).ToList();
+                            if (dungThoiGian.Any())
+                            {
+                                nhaCungCap.DungThoiGian = (int)dungThoiGian.Average(s => s.DungThoiGian);
+                            }
+
+                            var dungYeuCauKyThuat = donHangNhaCungCap.Where(s => s.DungYeuCauKyThuat > 0).ToList();
+                            if (dungYeuCauKyThuat.Any())
+                            {
+                                nhaCungCap.DungYeuCauKyThuat = (int)dungYeuCauKyThuat.Average(s => s.DungYeuCauKyThuat);                                
+                            }
+
+                            var dungMau = donHangNhaCungCap.Where(s => s.DungMau > 0).ToList();
+                            if (dungMau.Any())
+                            {
+                                nhaCungCap.DungMau = (int)dungMau.Average(s => s.DungMau);                                
+                            }
+
+                            var khac = donHangNhaCungCap.Where(s => s.Khac > 0).ToList();
+                            if (khac.Any())
+                            {
+                                nhaCungCap.Khac = (int)khac.Average(s => s.Khac);                                
+                            }
+
+                            var datTestLy = donHangNhaCungCap.Where(s => s.DatTestLy > 0).ToList();
+                            if (datTestLy.Any())
+                            {
+                                nhaCungCap.DatTestLy = (int)datTestLy.Average(s => s.DatTestLy);                                
+                            }
+
+                            var datTestHoa = donHangNhaCungCap.Where(s => s.DatTestHoa > 0).ToList();
+                            if (datTestHoa.Any())
+                            {
+                                nhaCungCap.DatTestHoa = (int)datTestHoa.Average(s => s.DatTestHoa);                                
+                            }
+
+                            var dichVuGiaoHang = donHangNhaCungCap.Where(s => s.DichVuGiaoHang > 0).ToList();
+                            if (dichVuGiaoHang.Any())
+                            {
+                                nhaCungCap.DichVuGiaoHang = (int)dichVuGiaoHang.Average(s => s.DichVuGiaoHang);                                
+                            }
+
+                            var dichVuHauMai = donHangNhaCungCap.Where(s => s.DichVuHauMai > 0).ToList();
+                            if (dichVuHauMai.Any())
+                            {
+                                nhaCungCap.DichVuHauMai = (int)dichVuHauMai.Average(s => s.DichVuHauMai);                                
+                            }
                             context.NhaCungCaps.AddOrUpdate(nhaCungCap);
                             context.SaveChanges();
                         }

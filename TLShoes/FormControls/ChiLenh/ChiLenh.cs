@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
-using DevExpress.XtraEditors.Controls;
-using DevExpress.XtraSplashScreen;
 using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
 using TLShoes.ViewModels;
-using Application = Microsoft.Office.Interop.Excel.Application;
 using Microsoft.Office.Core;
 using TLShoes.Form;
 
@@ -370,7 +366,6 @@ namespace TLShoes.FormControls.ChiLenh
                     SF.Get<ChiLenhViewModel>().Save(_chiLenh);
                     transaction.Complete();
                 }
-                InitAuthorize();
                 MessageBox.Show("Duyệt thành công!");
                 ObserverControl.PulishAction(Define.ActionType.SAVE);
                 var parentForm = this.ParentForm;

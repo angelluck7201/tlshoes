@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
@@ -11,40 +12,31 @@ namespace TLShoes.FormControls.DanhGia
 {
     public partial class ucDanhGia : BaseUserControl
     {
-        BindingList<ChiTietDanhGia> ChiTietDanhGia = new BindingList<ChiTietDanhGia>();
-        private TLShoes.DanhGia _domainData;
+        readonly BindingList<ChiTietDanhGia> _chiTietDanhGia = new BindingList<ChiTietDanhGia>();
+        private readonly TLShoes.DanhGia _domainData;
 
         public ucDanhGia(TLShoes.DanhGia data = null)
         {
             InitializeComponent();
 
-            DanhGia_DonDatHangId.DisplayMember = "SoDH";
-            DanhGia_DonDatHangId.ValueMember = "Id";
-            DanhGia_DonDatHangId.DataSource = new BindingSource(SF.Get<DonDatHangViewModel>().GetList(), null);
+            var lstDonDatHang = SF.Get<DonDatHangViewModel>().GetList();
+            SetComboboxDataSource(DanhGia_DonDatHangId,lstDonDatHang,"SoDH");
 
-            DanhGia_MauDanhGiaId.DisplayMember = "TenMau";
-            DanhGia_MauDanhGiaId.ValueMember = "Id";
-            DanhGia_MauDanhGiaId.DataSource = new BindingSource(SF.Get<MauDanhGiaViewModel>().GetList(), null);
+            var lstMauDanhGia = SF.Get<MauDanhGiaViewModel>().GetList();
+            SetComboboxDataSource(DanhGia_MauDanhGiaId, lstMauDanhGia, "TenMau");
 
             _domainData = data;
             Init(data);
             if (data != null)
             {
-                ChiTietDanhGia = new BindingList<ChiTietDanhGia>(data.ChiTietDanhGias.ToList());
+                _chiTietDanhGia = new BindingList<ChiTietDanhGia>(data.ChiTietDanhGias.ToList());
                 DanhGia_MauDanhGiaId.Enabled = false;
             }
 
-            gridTieuChi.DataSource = ChiTietDanhGia;
+            gridTieuChi.DataSource = _chiTietDanhGia;
 
-
-            TieuChiLookUp.NullText = "";
-            TieuChiLookUp.Properties.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.TIEU_CHI_QC).Select(s => new { s.Ten, s.Id }).ToList();
-            TieuChiLookUp.PopulateColumns();
-            TieuChiLookUp.ShowHeader = false;
-            TieuChiLookUp.Columns["Id"].Visible = false;
-            TieuChiLookUp.Properties.DisplayMember = "Ten";
-            TieuChiLookUp.Properties.ValueMember = "Id";
-            TieuChiLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            var lstTieuChi = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.TIEU_CHI_QC);
+            SetRepositoryItem(TieuChiLookUp, lstTieuChi,"Ten");
 
             LoadTieuChi();
             LoadDonHang();
@@ -67,7 +59,7 @@ namespace TLShoes.FormControls.DanhGia
                 CRUD.DecorateSaveData(saveData, _domainData == null);
                 SF.Get<DanhGiaViewModel>().Save(saveData);
 
-                foreach (var chitiet in ChiTietDanhGia)
+                foreach (var chitiet in _chiTietDanhGia)
                 {
                     chitiet.DanhGiaId = saveData.Id;
                     CRUD.DecorateSaveData(chitiet);
@@ -78,7 +70,7 @@ namespace TLShoes.FormControls.DanhGia
                 var listChiTietDelete = saveData.ChiTietDanhGias;
                 foreach (var deleteItem in listChiTietDelete)
                 {
-                    if (ChiTietDanhGia.All(s => s.Id != deleteItem.Id))
+                    if (_chiTietDanhGia.All(s => s.Id != deleteItem.Id))
                     {
                         SF.Get<DanhGiaViewModel>().Delete(deleteItem);
                     }
@@ -106,11 +98,11 @@ namespace TLShoes.FormControls.DanhGia
                     var tieuChiList = mauDanhGia.ChiTietMauDanhGias.Select(s => s.DanhMuc);
                     foreach (var tieuChi in tieuChiList)
                     {
-                        if (ChiTietDanhGia.All(s => s.DanhGiaId != tieuChi.Id))
+                        if (_chiTietDanhGia.All(s => s.DanhGiaId != tieuChi.Id))
                         {
                             var danhgia = new ChiTietDanhGia();
                             danhgia.TieuChiId = tieuChi.Id;
-                            ChiTietDanhGia.Add(danhgia);
+                            _chiTietDanhGia.Add(danhgia);
                         }
                     }
                 }
@@ -125,7 +117,7 @@ namespace TLShoes.FormControls.DanhGia
                 var donHang = SF.Get<DonDatHangViewModel>().GetDetail((long)donHangId);
                 if (donHang != null)
                 {
-                    SoLuongDat.Text = donHang.ChiTietDonDatHangs.Sum(s => s.SoLuong).ToString();
+                    SoLuongDat.Text = donHang.ChiTietDonDatHangs.Sum(s => s.SoLuong).ToString(CultureInfo.InvariantCulture);
                 }
             }
         }

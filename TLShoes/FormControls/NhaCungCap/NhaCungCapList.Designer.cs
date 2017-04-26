@@ -40,6 +40,7 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemRatingControl1 = new DevExpress.XtraEditors.Repository.RepositoryItemRatingControl();
             this.colLoaiNguoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.nhaCungCapInstantFeedbackSource = new DevExpress.Data.Linq.EntityInstantFeedbackSource();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRatingControl1)).BeginInit();
@@ -47,6 +48,7 @@
             // 
             // gridControl
             // 
+            this.gridControl.DataSource = this.nhaCungCapInstantFeedbackSource;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
@@ -172,6 +174,12 @@
             this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
             this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
             // 
+            // nhaCungCapInstantFeedbackSource
+            // 
+            this.nhaCungCapInstantFeedbackSource.DefaultSorting = "ModifiedDate DESC";
+            this.nhaCungCapInstantFeedbackSource.DesignTimeElementType = typeof(TLShoes.NhaCungCap);
+            this.nhaCungCapInstantFeedbackSource.KeyExpression = "Id";
+            // 
             // ucNhaCungCapList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -200,5 +208,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.Repository.RepositoryItemRatingControl repositoryItemRatingControl1;
         private DevExpress.XtraGrid.Columns.GridColumn colLoaiNguoiDung;
+        private DevExpress.Data.Linq.EntityInstantFeedbackSource nhaCungCapInstantFeedbackSource;
     }
 }

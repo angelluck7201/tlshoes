@@ -28,8 +28,7 @@ namespace TLShoes.ViewModels
 
         public List<ToTrinh> GetList(DonDatHang donDatHang)
         {
-            return DbContext.ToTrinhs.ToList().Where(s =>
-                string.IsNullOrEmpty(s.DonDatHangList)
+            return GetList().Where(s =>string.IsNullOrEmpty(s.DonDatHangList)
                 || (donDatHang != null && s.DonDatHangFormatList.Contains(donDatHang.Id))).ToList();
         }
 

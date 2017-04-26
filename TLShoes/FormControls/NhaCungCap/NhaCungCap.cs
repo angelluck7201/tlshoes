@@ -23,7 +23,9 @@ namespace TLShoes.FormControls.NhaCungCap
         {
             InitializeComponent();
             _domainData = data;
+
             Init(data);
+
             if (data != null)
             {
                 ChiTietNguyenLieuList = new BindingList<NhaCungCapVatTu>(data.NhaCungCapVatTus.ToList());
@@ -31,20 +33,7 @@ namespace TLShoes.FormControls.NhaCungCap
 
             gridNguyenLieu.DataSource = ChiTietNguyenLieuList;
 
-            NguyenLieuLookUp.NullText = "";
-            NguyenLieuLookUp.Properties.DataSource = SF.Get<NguyenLieuViewModel>().GetList().Select(s => new { s.Ten, s.Id }).ToList();
-            NguyenLieuLookUp.PopulateColumns();
-            NguyenLieuLookUp.ShowHeader = false;
-            NguyenLieuLookUp.Columns["Id"].Visible = false;
-            NguyenLieuLookUp.Properties.DisplayMember = "Ten";
-            NguyenLieuLookUp.Properties.ValueMember = "Id";
-            NguyenLieuLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
-
-            DonViLookup.NullText = "";
-            DonViLookup.Properties.DataSource = Define.ListString<Define.TienTe>();
-            DonViLookup.PopulateColumns();
-            DonViLookup.ShowHeader = false;
-            DonViLookup.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            SetRepositoryItem(NguyenLieuLookUp, SF.Get<NguyenLieuViewModel>().GetList(), "Ten");
 
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
         }

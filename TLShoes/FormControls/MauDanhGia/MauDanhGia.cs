@@ -32,14 +32,7 @@ namespace TLShoes.FormControls.MauDanhGia
 
             gridTieuChi.DataSource = TieuChiList;
 
-            TieuChiLookUp.NullText = "";
-            TieuChiLookUp.Properties.DataSource = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.TIEU_CHI_QC).Select(s => new { s.Ten, s.Id }).ToList();
-            TieuChiLookUp.PopulateColumns();
-            TieuChiLookUp.ShowHeader = false;
-            TieuChiLookUp.Columns["Id"].Visible = false;
-            TieuChiLookUp.Properties.DisplayMember = "Ten";
-            TieuChiLookUp.Properties.ValueMember = "Id";
-            TieuChiLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            SetRepositoryItem(TieuChiLookUp, SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.TIEU_CHI_QC), "Ten");
 
             btnDeleteTieuChi.Click += btnDeleteTieuChi_Click;
         }
