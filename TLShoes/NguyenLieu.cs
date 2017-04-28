@@ -17,7 +17,6 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NguyenLieu()
         {
-            this.ChiTietDonDatHangs = new HashSet<ChiTietDonDatHang>();
             this.ChiTietHuongDanDongGois = new HashSet<ChiTietHuongDanDongGoi>();
             this.ChiTietNguyenLieux = new HashSet<ChiTietNguyenLieu>();
             this.ChiTietNhapKhoes = new HashSet<ChiTietNhapKho>();
@@ -29,6 +28,7 @@ namespace TLShoes
             this.DonHangs4 = new HashSet<DonHang>();
             this.NhaCungCapVatTus = new HashSet<NhaCungCapVatTu>();
             this.ToTrinhs = new HashSet<ToTrinh>();
+            this.ChiTietDonDatHangs = new HashSet<ChiTietDonDatHang>();
         }
     
         public long Id { get; set; }
@@ -45,8 +45,6 @@ namespace TLShoes
         public float SoLuong { get; set; }
         public string GhiChu { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHuongDanDongGoi> ChiTietHuongDanDongGois { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -73,5 +71,7 @@ namespace TLShoes
         public virtual ICollection<NhaCungCapVatTu> NhaCungCapVatTus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ToTrinh> ToTrinhs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
     }
 }

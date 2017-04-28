@@ -17,8 +17,8 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DanhGia()
         {
-            this.ChiTietDanhGias = new HashSet<ChiTietDanhGia>();
             this.PhieuNhapKhoes = new HashSet<PhieuNhapKho>();
+            this.ChiTietDanhGias = new HashSet<ChiTietDanhGia>();
         }
     
         public long Id { get; set; }
@@ -29,16 +29,17 @@ namespace TLShoes
         public Nullable<long> DonDatHangId { get; set; }
         public Nullable<long> MauDanhGiaId { get; set; }
         public string SoPhieu { get; set; }
-        public double SoLuongKiem { get; set; }
+        public float SoLuongKiem { get; set; }
         public string BienPhapXuLy { get; set; }
         public System.DateTime NgayKiem { get; set; }
+        public float SoLuongKem { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietDanhGia> ChiTietDanhGias { get; set; }
         public virtual UserAccount UserAccount { get; set; }
         public virtual DonDatHang DonDatHang { get; set; }
+        public virtual MauDanhGia MauDanhGia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuNhapKho> PhieuNhapKhoes { get; set; }
-        public virtual MauDanhGia MauDanhGia { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietDanhGia> ChiTietDanhGias { get; set; }
     }
 }

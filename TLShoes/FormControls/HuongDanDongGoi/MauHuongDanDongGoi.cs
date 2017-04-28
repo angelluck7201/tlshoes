@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
@@ -100,7 +101,7 @@ namespace TLShoes.FormControls.HuongDanDongGoi
 
         private void cardView1_Click(object sender, EventArgs e)
         {
-            var selectedRow = cardView1.GetRow(cardView1.FocusedRowHandle) as ChiTietHuongDanDongGoi;
+            var selectedRow = layoutView1.GetRow(layoutView1.FocusedRowHandle) as ChiTietHuongDanDongGoi;
             if (selectedRow != null)
             {
                 _curSelectedCard = selectedRow;
@@ -112,18 +113,28 @@ namespace TLShoes.FormControls.HuongDanDongGoi
                 CachSuDung.Text = selectedRow.CachSuDung;
                 ViTriSuDung.Text = selectedRow.ViTriSuDung;
                 SoLuong.Text = selectedRow.SoLuong.ToString();
-                FileHelper.SetImage(HinhAnh, selectedRow.HinhMauDinhKem);
+                if (selectedRow.HinhMauDinhKemFormat != null)
+                {
+                    HinhAnh.Image = selectedRow.HinhMauDinhKemFormat;
+                }
+                else if (selectedRow.HinhMauDinhKem != null)
+                {
+                    FileHelper.SetImage(HinhAnh, selectedRow.HinhMauDinhKem);
+                }
                 btnDelete.Visible = true;
+                btnUpdateHinh.Enabled = true;
             }
             else
             {
                 btnDelete.Visible = false;
+                btnUpdateHinh.Enabled = false;
             }
         }
 
         private void btnThemHinh_Click(object sender, EventArgs e)
         {
             MapChiTietHuongDanDongGoi(true);
+            layoutView1.Refresh();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -132,12 +143,14 @@ namespace TLShoes.FormControls.HuongDanDongGoi
             {
                 ChiTietHuongDanList.Remove(_curSelectedCard);
                 _curSelectedCard = null;
+                layoutView1.Refresh();
             }
         }
 
         private void btnUpdateHinh_Click(object sender, EventArgs e)
         {
             MapChiTietHuongDanDongGoi(false);
+            layoutView1.Refresh();
         }
 
         private void MapChiTietHuongDanDongGoi(bool isNew = false)
@@ -148,14 +161,19 @@ namespace TLShoes.FormControls.HuongDanDongGoi
                 ChiTietHuongDanList.Add(_curSelectedCard);
             }
             _curSelectedCard.DanhMucId = (long)DanhMucId.SelectedValue;
+            _curSelectedCard.DanhMuc = SF.Get<DanhMucViewModel>().GetDetail(_curSelectedCard.DanhMucId.GetValueOrDefault());
             _curSelectedCard.DonViTinhId = (long)DonViTinhId.SelectedValue;
+            _curSelectedCard.DonViTinh = SF.Get<DanhMucViewModel>().GetDetail(_curSelectedCard.DonViTinhId.GetValueOrDefault());
             _curSelectedCard.KichThuoc = KichThuoc.Text;
             _curSelectedCard.MauId = (long)MauId.SelectedValue;
+            _curSelectedCard.Mau = SF.Get<DanhMucViewModel>().GetDetail(_curSelectedCard.MauId.GetValueOrDefault());
             _curSelectedCard.NguyenLieuId = (long)NguyenLieuId.SelectedValue;
+            _curSelectedCard.NguyenLieu = SF.Get<NguyenLieuViewModel>().GetDetail(_curSelectedCard.NguyenLieuId.GetValueOrDefault());
             _curSelectedCard.CachSuDung = CachSuDung.Text;
             _curSelectedCard.ViTriSuDung = ViTriSuDung.Text;
             _curSelectedCard.SoLuong = (int)PrimitiveConvert.StringToInt(SoLuong.Text);
-            _curSelectedCard.HinhMauDinhKemFormat = HinhAnh.Image;
+            _curSelectedCard.HinhMauDinhKemFormat = (Image)HinhAnh.Image.Clone();
         }
+
     }
 }

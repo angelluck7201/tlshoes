@@ -17,7 +17,6 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DanhMuc()
         {
-            this.ChiTietDanhGias = new HashSet<ChiTietDanhGia>();
             this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
             this.ChiTietHuongDanDongGois = new HashSet<ChiTietHuongDanDongGoi>();
             this.ChiTietHuongDanDongGois1 = new HashSet<ChiTietHuongDanDongGoi>();
@@ -37,6 +36,7 @@ namespace TLShoes
             this.MauThuDaos1 = new HashSet<MauThuDao>();
             this.MauThuDaos2 = new HashSet<MauThuDao>();
             this.MauThuDaos3 = new HashSet<MauThuDao>();
+            this.ChiTietDanhGias = new HashSet<ChiTietDanhGia>();
         }
     
         public long Id { get; set; }
@@ -48,8 +48,6 @@ namespace TLShoes
         public string Loai { get; set; }
         public string GhiChu { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietDanhGia> ChiTietDanhGias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -89,5 +87,7 @@ namespace TLShoes
         public virtual ICollection<MauThuDao> MauThuDaos2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MauThuDao> MauThuDaos3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietDanhGia> ChiTietDanhGias { get; set; }
     }
 }

@@ -71,6 +71,7 @@
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnXuatLe = new DevExpress.XtraEditors.SimpleButton();
             this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
@@ -477,11 +478,12 @@
             this.gridColumn16,
             this.gridColumn17,
             this.gridColumn1,
-            this.gridColumn2});
+            this.gridColumn2,
+            this.gridColumn4});
             this.gridView1.GridControl = this.gridNhatKy;
             this.gridView1.GroupCount = 1;
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", null, "{0}")});
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", null, "({0})")});
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView1.OptionsBehavior.Editable = false;
@@ -497,12 +499,12 @@
             this.NgayXuat.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.NgayXuat.AppearanceHeader.Options.UseFont = true;
             this.NgayXuat.Caption = "Ngày Xuất";
-            this.NgayXuat.FieldName = "NgayXuat";
+            this.NgayXuat.FieldName = "CreatedDate";
             this.NgayXuat.Name = "NgayXuat";
             this.NgayXuat.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.NgayXuat.Visible = true;
             this.NgayXuat.VisibleIndex = 0;
-            this.NgayXuat.Width = 118;
+            this.NgayXuat.Width = 135;
             // 
             // gridColumn15
             // 
@@ -512,8 +514,8 @@
             this.gridColumn15.FieldName = "GhiChu";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 3;
-            this.gridColumn15.Width = 173;
+            this.gridColumn15.VisibleIndex = 4;
+            this.gridColumn15.Width = 199;
             // 
             // gridColumn16
             // 
@@ -527,19 +529,19 @@
             // 
             this.gridColumn17.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn17.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn17.Caption = "Thủ Kho";
-            this.gridColumn17.FieldName = "ThuKho";
+            this.gridColumn17.Caption = "Người Nhận";
+            this.gridColumn17.FieldName = "NguoiNhan";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 2;
-            this.gridColumn17.Width = 149;
+            this.gridColumn17.Width = 148;
             // 
             // gridColumn1
             // 
             this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn1.AppearanceHeader.Options.UseFont = true;
             this.gridColumn1.Caption = "Vật Tư";
-            this.gridColumn1.FieldName = "VatTu";
+            this.gridColumn1.FieldName = "ChiTietXuatKho.NguyenLieu.Ten";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
@@ -554,7 +556,18 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 78;
+            this.gridColumn2.Width = 89;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn4.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn4.Caption = "Người Xuất";
+            this.gridColumn4.FieldName = "UserAccount.TenNhanVien";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 110;
             // 
             // btnSave
             // 
@@ -717,5 +730,6 @@
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnExport;
         private DevExpress.XtraEditors.LabelControl lblSoPhieu;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
     }
 }

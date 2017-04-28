@@ -31,8 +31,8 @@ namespace TLShoes
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietMauDanhGia> ChiTietMauDanhGias { get; set; }
+        public virtual UserAccount UserAccount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhGia> DanhGias { get; set; }
-        public virtual UserAccount UserAccount { get; set; }
     }
 }

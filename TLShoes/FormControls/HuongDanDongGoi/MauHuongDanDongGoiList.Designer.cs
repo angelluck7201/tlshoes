@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.entityInstantFeedbackSource1 = new DevExpress.Data.Linq.EntityInstantFeedbackSource();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -43,6 +44,7 @@
             // 
             // gridControl
             // 
+            this.gridControl.DataSource = this.entityInstantFeedbackSource1;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
@@ -51,6 +53,12 @@
             this.gridControl.TabIndex = 1;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
+            // 
+            // entityInstantFeedbackSource1
+            // 
+            this.entityInstantFeedbackSource1.DefaultSorting = "ModifiedDate DESC";
+            this.entityInstantFeedbackSource1.DesignTimeElementType = typeof(TLShoes.MauHuongDanDongGoi);
+            this.entityInstantFeedbackSource1.KeyExpression = "Id";
             // 
             // gridView
             // 
@@ -81,7 +89,7 @@
             this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "Khách Hàng";
-            this.gridColumn2.FieldName = "KhachHang";
+            this.gridColumn2.FieldName = "KhachHang.TenCongTy";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
@@ -156,5 +164,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn colLoaiNguoiDung;
+        private DevExpress.Data.Linq.EntityInstantFeedbackSource entityInstantFeedbackSource1;
     }
 }

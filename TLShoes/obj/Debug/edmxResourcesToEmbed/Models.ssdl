@@ -68,9 +68,9 @@
     <Property Name="DonDatHangId" Type="bigint" />
     <Property Name="NhaCungCapId" Type="bigint" />
     <Property Name="NguyenLieuId" Type="bigint" />
-    <Property Name="DonGia" Type="float" Nullable="false" />
-    <Property Name="SoLuong" Type="float" Nullable="false" />
-    <Property Name="SoLuongThuc" Type="float" Nullable="false" />
+    <Property Name="DonGia" Type="real" Nullable="false" />
+    <Property Name="SoLuong" Type="real" Nullable="false" />
+    <Property Name="SoLuongThuc" Type="real" Nullable="false" />
     <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
   </EntityType>
   <EntityType Name="ChiTietDonHang">
@@ -204,9 +204,10 @@
     <Property Name="DonDatHangId" Type="bigint" />
     <Property Name="MauDanhGiaId" Type="bigint" />
     <Property Name="SoPhieu" Type="nvarchar" MaxLength="100" />
-    <Property Name="SoLuongKiem" Type="float" Nullable="false" />
     <Property Name="BienPhapXuLy" Type="nvarchar" MaxLength="1000" />
     <Property Name="NgayKiem" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="SoLuongKiem" Type="float" Nullable="false" />
+    <Property Name="SoLuongKem" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="DanhMuc">
     <Key>
@@ -249,6 +250,7 @@
     <Property Name="NgayLap" Type="datetime2" Precision="7" Nullable="false" />
     <Property Name="NguoiLapId" Type="bigint" />
     <Property Name="TrangThai" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoLuongDat" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="DonHang">
     <Key>
@@ -797,7 +799,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietDa__Autho__2C88998B">
+  <Association Name="FK__ChiTietDa__Autho__3B60C8C7">
     <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
     <End Role="ChiTietDanhGia" Type="Self.ChiTietDanhGia" Multiplicity="*" />
     <ReferentialConstraint>
@@ -809,7 +811,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietDa__DanhG__30592A6F">
+  <Association Name="FK__ChiTietDa__DanhG__3F3159AB">
     <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="0..1" />
     <End Role="ChiTietDanhGia" Type="Self.ChiTietDanhGia" Multiplicity="*" />
     <ReferentialConstraint>
@@ -821,7 +823,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietDa__TieuC__314D4EA8">
+  <Association Name="FK__ChiTietDa__TieuC__40257DE4">
     <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1" />
     <End Role="ChiTietDanhGia" Type="Self.ChiTietDanhGia" Multiplicity="*" />
     <ReferentialConstraint>
@@ -833,7 +835,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietDo__Autho__056ECC6A">
+  <Association Name="FK__ChiTietDo__Autho__2EFAF1E2">
     <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
     <End Role="ChiTietDonDatHang" Type="Self.ChiTietDonDatHang" Multiplicity="*" />
     <ReferentialConstraint>
@@ -857,7 +859,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietDo__DonDa__093F5D4E">
+  <Association Name="FK__ChiTietDo__DonDa__32CB82C6">
     <End Role="DonDatHang" Type="Self.DonDatHang" Multiplicity="0..1" />
     <End Role="ChiTietDonDatHang" Type="Self.ChiTietDonDatHang" Multiplicity="*" />
     <ReferentialConstraint>
@@ -893,7 +895,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietDo__Nguye__0B27A5C0">
+  <Association Name="FK__ChiTietDo__Nguye__34B3CB38">
     <End Role="NguyenLieu" Type="Self.NguyenLieu" Multiplicity="0..1" />
     <End Role="ChiTietDonDatHang" Type="Self.ChiTietDonDatHang" Multiplicity="*" />
     <ReferentialConstraint>
@@ -905,7 +907,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietDo__NhaCu__0A338187">
+  <Association Name="FK__ChiTietDo__NhaCu__33BFA6FF">
     <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
     <End Role="ChiTietDonDatHang" Type="Self.ChiTietDonDatHang" Multiplicity="*" />
     <ReferentialConstraint>
@@ -2146,19 +2148,19 @@
       <End Role="UserAccount" EntitySet="UserAccount" />
       <End Role="ChiLenh" EntitySet="ChiLenh" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietDa__Autho__2C88998B" Association="Self.FK__ChiTietDa__Autho__2C88998B">
+    <AssociationSet Name="FK__ChiTietDa__Autho__3B60C8C7" Association="Self.FK__ChiTietDa__Autho__3B60C8C7">
       <End Role="UserAccount" EntitySet="UserAccount" />
       <End Role="ChiTietDanhGia" EntitySet="ChiTietDanhGia" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietDa__DanhG__30592A6F" Association="Self.FK__ChiTietDa__DanhG__30592A6F">
+    <AssociationSet Name="FK__ChiTietDa__DanhG__3F3159AB" Association="Self.FK__ChiTietDa__DanhG__3F3159AB">
       <End Role="DanhGia" EntitySet="DanhGia" />
       <End Role="ChiTietDanhGia" EntitySet="ChiTietDanhGia" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietDa__TieuC__314D4EA8" Association="Self.FK__ChiTietDa__TieuC__314D4EA8">
+    <AssociationSet Name="FK__ChiTietDa__TieuC__40257DE4" Association="Self.FK__ChiTietDa__TieuC__40257DE4">
       <End Role="DanhMuc" EntitySet="DanhMuc" />
       <End Role="ChiTietDanhGia" EntitySet="ChiTietDanhGia" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietDo__Autho__056ECC6A" Association="Self.FK__ChiTietDo__Autho__056ECC6A">
+    <AssociationSet Name="FK__ChiTietDo__Autho__2EFAF1E2" Association="Self.FK__ChiTietDo__Autho__2EFAF1E2">
       <End Role="UserAccount" EntitySet="UserAccount" />
       <End Role="ChiTietDonDatHang" EntitySet="ChiTietDonDatHang" />
     </AssociationSet>
@@ -2166,7 +2168,7 @@
       <End Role="UserAccount" EntitySet="UserAccount" />
       <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietDo__DonDa__093F5D4E" Association="Self.FK__ChiTietDo__DonDa__093F5D4E">
+    <AssociationSet Name="FK__ChiTietDo__DonDa__32CB82C6" Association="Self.FK__ChiTietDo__DonDa__32CB82C6">
       <End Role="DonDatHang" EntitySet="DonDatHang" />
       <End Role="ChiTietDonDatHang" EntitySet="ChiTietDonDatHang" />
     </AssociationSet>
@@ -2178,11 +2180,11 @@
       <End Role="DanhMuc" EntitySet="DanhMuc" />
       <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietDo__Nguye__0B27A5C0" Association="Self.FK__ChiTietDo__Nguye__0B27A5C0">
+    <AssociationSet Name="FK__ChiTietDo__Nguye__34B3CB38" Association="Self.FK__ChiTietDo__Nguye__34B3CB38">
       <End Role="NguyenLieu" EntitySet="NguyenLieu" />
       <End Role="ChiTietDonDatHang" EntitySet="ChiTietDonDatHang" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietDo__NhaCu__0A338187" Association="Self.FK__ChiTietDo__NhaCu__0A338187">
+    <AssociationSet Name="FK__ChiTietDo__NhaCu__33BFA6FF" Association="Self.FK__ChiTietDo__NhaCu__33BFA6FF">
       <End Role="NhaCungCap" EntitySet="NhaCungCap" />
       <End Role="ChiTietDonDatHang" EntitySet="ChiTietDonDatHang" />
     </AssociationSet>

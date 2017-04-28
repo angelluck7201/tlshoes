@@ -24,30 +24,20 @@ namespace TLShoes.FormControls.XuatKho
         {
             InitializeComponent();
 
-            PhieuXuatKho_DonHangId.DisplayMember = "MaHang";
-            PhieuXuatKho_DonHangId.ValueMember = "Id";
-            PhieuXuatKho_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
+            var lstDonHang = SF.Get<DonHangViewModel>().GetList();
+            SetComboboxDataSource(PhieuXuatKho_DonHangId, lstDonHang, "MaHang");
 
-            PhieuXuatKho_Kho.DisplayMember = "Value";
-            PhieuXuatKho_Kho.ValueMember = "Key";
-            PhieuXuatKho_Kho.DataSource = new BindingSource(Define.KhoDic, null);
+            SetComboboxDataSource(PhieuXuatKho_Kho, Define.KhoDic);
 
-            PhieuXuatKho_LoaiXuat.DisplayMember = "Value";
-            PhieuXuatKho_LoaiXuat.ValueMember = "Key";
-            PhieuXuatKho_LoaiXuat.DataSource = new BindingSource(Define.LoaiXuatDic, null);
+            SetComboboxDataSource(PhieuXuatKho_LoaiXuat, Define.LoaiXuatDic);
 
-            PhieuXuatKho_BoPhan.DisplayMember = "Value";
-            PhieuXuatKho_BoPhan.ValueMember = "Key";
-            PhieuXuatKho_BoPhan.DataSource = new BindingSource(Define.PhanXuongDict, null);
+            SetComboboxDataSource(PhieuXuatKho_BoPhan, Define.PhanXuongDict);
 
             Init(data);
 
             if (data != null)
             {
                 SF.Get<ChiTietXuatKhoViewModel>().GetDataSource(data.Id, ref ChiTietXuatKhoList);
-                PhieuXuatKho_Kho.SelectedValue = PrimitiveConvert.StringToEnum<Define.Kho>(data.Kho);
-                PhieuXuatKho_LoaiXuat.SelectedValue = PrimitiveConvert.StringToEnum<Define.LoaiXuat>(data.LoaiXuat);
-                PhieuXuatKho_BoPhan.SelectedValue = PrimitiveConvert.StringToEnum<Define.PhanXuong>(data.BoPhan);
                 DonHangChange((long)data.DonHangId);
                 _currentData = data;
                 btnExport.Visible = true;
@@ -56,14 +46,7 @@ namespace TLShoes.FormControls.XuatKho
             }
             gridNguyenLieu.DataSource = ChiTietXuatKhoList;
 
-            NguyenLieuLookUp.NullText = "";
-            NguyenLieuLookUp.Properties.DataSource = SF.Get<NguyenLieuViewModel>().GetList().Select(s => new { s.Ten, s.Id }).ToList();
-            NguyenLieuLookUp.PopulateColumns();
-            NguyenLieuLookUp.ShowHeader = false;
-            NguyenLieuLookUp.Columns["Id"].Visible = false;
-            NguyenLieuLookUp.Properties.DisplayMember = "Ten";
-            NguyenLieuLookUp.Properties.ValueMember = "Id";
-            NguyenLieuLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            SetRepositoryItem(NguyenLieuLookUp, SF.Get<NguyenLieuViewModel>().GetList(), "Ten");
 
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
 

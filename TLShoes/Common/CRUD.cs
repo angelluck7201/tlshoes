@@ -38,23 +38,29 @@ namespace TLShoes.Common
             {
 
                 var targetType = IsNullableType(prop.PropertyType) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType;
-                if (targetType == typeof(float))
+                if (targetType != typeof (string))
                 {
-                    value = Convert.ChangeType(PrimitiveConvert.StringToFloat(value), targetType);
-                }
-                else if (value.IsNumber())
-                {
-                    value = Convert.ChangeType(PrimitiveConvert.StringToInt(value), targetType);
+                    if (targetType == typeof(float))
+                    {
+                        value = Convert.ChangeType(PrimitiveConvert.StringToFloat(value), targetType);
+                    }
+                    else if (value.IsNumber())
+                    {
+                        value = Convert.ChangeType(PrimitiveConvert.StringToInt(value), targetType);
+                    }
                 }
                 prop.SetValue(data, value, null);
-
             }
         }
 
         public static bool IsNumber(this object value)
         {
-            double tempNum;
-            return double.TryParse(value.ToString(), out tempNum);
+            if (value != null)
+            {
+                double tempNum;
+                return double.TryParse(value.ToString(), out tempNum);
+            }
+            return false;
         }
 
         private static bool IsNullableType(Type type)

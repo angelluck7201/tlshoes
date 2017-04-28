@@ -60,9 +60,7 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -403,21 +401,6 @@
             this.gridColumn3.FieldName = "Id";
             this.gridColumn3.Name = "gridColumn3";
             // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.ForestGreen;
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.simpleButton1.Location = new System.Drawing.Point(684, 562);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(179, 30);
-            this.simpleButton1.TabIndex = 1;
-            this.simpleButton1.Text = "Lưu Và Tiếp Tục";
-            // 
             // btnSave
             // 
             this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
@@ -427,35 +410,18 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSave.Location = new System.Drawing.Point(598, 562);
+            this.btnSave.Location = new System.Drawing.Point(788, 563);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Lưu";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Appearance.BackColor = System.Drawing.Color.Silver;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancel.Appearance.Options.UseBackColor = true;
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Appearance.Options.UseForeColor = true;
-            this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(0, 562);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Hủy";
             // 
             // ucHuongDanDongGoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucHuongDanDongGoi";
             this.Size = new System.Drawing.Size(876, 620);
@@ -490,9 +456,7 @@
         private DevExpress.XtraEditors.LabelControl lblSoDoi;
         private System.Windows.Forms.TextBox HuongDanDongGoi_SoDoi;
         private System.Windows.Forms.TextBox HuongDanDongGoi_DongAssorment;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private System.Windows.Forms.TextBox TenCongTy;
         private DevExpress.XtraEditors.SimpleButton btnLayMau;
         private DevExpress.XtraEditors.LabelControl labelControl2;

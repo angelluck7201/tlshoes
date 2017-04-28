@@ -45,15 +45,16 @@ namespace TLShoes
         public System.DateTime NgayLap { get; set; }
         public Nullable<long> NguoiLapId { get; set; }
         public string TrangThai { get; set; }
+        public float SoLuongDat { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DanhGia> DanhGias { get; set; }
         public virtual UserAccount UserAccount { get; set; }
         public virtual UserAccount UserAccount1 { get; set; }
         public virtual UserAccount UserAccount2 { get; set; }
         public virtual NhaCungCap NhaCungCap { get; set; }
         public virtual NhaCungCap NhaCungCap1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DanhGia> DanhGias { get; set; }
     }
 }

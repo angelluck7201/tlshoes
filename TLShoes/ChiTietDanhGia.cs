@@ -21,7 +21,7 @@ namespace TLShoes
         public bool IsActived { get; set; }
         public Nullable<long> DanhGiaId { get; set; }
         public Nullable<long> TieuChiId { get; set; }
-        public double SoLuongKem { get; set; }
+        public float SoLuongKem { get; set; }
         public string GhiChu { get; set; }
     
         public virtual UserAccount UserAccount { get; set; }

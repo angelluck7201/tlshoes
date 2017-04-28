@@ -107,6 +107,8 @@
             this.gridColumn7.Caption = "Tỉ Lệ Kiểm(%)";
             this.gridColumn7.FieldName = "TiLeKiem";
             this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.UnboundExpression = "[SoLuongKiem] * 100 % [DonDatHang.SoLuongDat]";
+            this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 4;
             // 
@@ -128,7 +130,7 @@
             this.gridColumn2.FieldName = "SoLuongKiem";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.VisibleIndex = 3;
             // 
             // gridColumn3
             // 
@@ -156,17 +158,17 @@
             this.gridColumn5.FieldName = "NgayKiem";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 1;
+            this.gridColumn5.VisibleIndex = 0;
             // 
             // gridColumn6
             // 
             this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "Số Lượng Đặt";
-            this.gridColumn6.FieldName = "SoLuongDat";
+            this.gridColumn6.FieldName = "DonDatHang.SoLuongDat";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 0;
+            this.gridColumn6.VisibleIndex = 2;
             // 
             // gridColumn8
             // 
@@ -176,7 +178,7 @@
             this.gridColumn8.FieldName = "MauDanhGia.TenMau";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 3;
+            this.gridColumn8.VisibleIndex = 1;
             // 
             // colLoaiNguoiDung
             // 

@@ -17,6 +17,7 @@ namespace TLShoes.FormControls.TheKho
         public ucTheKhoList()
         {
             InitializeComponent();
+            ReloadData();
         }
 
         public override void ReloadData()

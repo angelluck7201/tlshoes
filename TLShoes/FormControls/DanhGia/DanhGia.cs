@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
@@ -30,7 +31,6 @@ namespace TLShoes.FormControls.DanhGia
             if (data != null)
             {
                 _chiTietDanhGia = new BindingList<ChiTietDanhGia>(data.ChiTietDanhGias.ToList());
-                DanhGia_MauDanhGiaId.Enabled = false;
             }
 
             gridTieuChi.DataSource = _chiTietDanhGia;
@@ -51,11 +51,12 @@ namespace TLShoes.FormControls.DanhGia
                 return false;
             }
 
-            // Save Don hang
-            var saveData = CRUD.GetFormObject(FormControls, _domainData);
 
             using (var transaction = new TransactionScope())
             {
+                // Save Don hang
+                var saveData = CRUD.GetFormObject(FormControls, _domainData);
+                saveData.SoLuongKem = _chiTietDanhGia.Sum(s => s.SoLuongKem);
                 CRUD.DecorateSaveData(saveData, _domainData == null);
                 SF.Get<DanhGiaViewModel>().Save(saveData);
 
@@ -94,10 +95,12 @@ namespace TLShoes.FormControls.DanhGia
                 var mauDanhGia = SF.Get<MauDanhGiaViewModel>().GetDetail((long)mauDanhGiaId);
                 if (mauDanhGia != null)
                 {
-
                     var tieuChiList = mauDanhGia.ChiTietMauDanhGias.Select(s => s.DanhMuc);
                     foreach (var tieuChi in tieuChiList)
                     {
+                        // Add them cac tieu chi khong co trong list tieu chi hien tai 
+                        // Xu ly cho truong hop co update them moi tieu chi danh gia trong mau danh gia 
+                        // Chi xu ly voi cac tieu chi duoc them vao, van giu nguyen neu cac tieu chi bi xoa di
                         if (_chiTietDanhGia.All(s => s.DanhGiaId != tieuChi.Id))
                         {
                             var danhgia = new ChiTietDanhGia();
@@ -117,21 +120,32 @@ namespace TLShoes.FormControls.DanhGia
                 var donHang = SF.Get<DonDatHangViewModel>().GetDetail((long)donHangId);
                 if (donHang != null)
                 {
-                    SoLuongDat.Text = donHang.ChiTietDonDatHangs.Sum(s => s.SoLuong).ToString(CultureInfo.InvariantCulture);
+                    SoLuongDat.Text = donHang.SoLuongDat.ToString(CultureInfo.InvariantCulture);
                 }
             }
         }
 
-        private void DanhGia_DonDatHangId_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnChonDDH_Click(object sender, EventArgs e)
         {
             LoadDonHang();
         }
 
-        private void DanhGia_MauDanhGiaId_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnChonMDG_Click(object sender, EventArgs e)
         {
-            LoadTieuChi();
+            if (_chiTietDanhGia != null && _chiTietDanhGia.Count > 0)
+            {
+                var confirmDialog = MessageBox.Show("Đơn đặt hàng này hiện tại đã được đánh giá rồi. Nếu thay đổi mẫu đánh giá khác thì những đánh giá hiện tại sẽ bị thay thế. Bạn có chắc không?",
+                    "Xác nhận đổi mẫu đánh giá", MessageBoxButtons.YesNo);
+                if (confirmDialog == DialogResult.Yes)
+                {
+                    _chiTietDanhGia.Clear();
+                    LoadTieuChi();
+                }
+            }
+            else
+            {
+                LoadTieuChi();
+            }
         }
-
-
     }
 }

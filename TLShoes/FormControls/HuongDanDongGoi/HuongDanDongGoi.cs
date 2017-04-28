@@ -10,7 +10,8 @@ namespace TLShoes.FormControls.HuongDanDongGoi
 {
     public partial class ucHuongDanDongGoi : BaseUserControl
     {
-        private static int SoLuong = 0;
+        private int SoLuong = 0;
+        private TLShoes.HuongDanDongGoi _curData;
         public ucHuongDanDongGoi(TLShoes.HuongDanDongGoi data = null)
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace TLShoes.FormControls.HuongDanDongGoi
 
             if (data != null)
             {
+                _curData = data;
                 HuongDanDongGoi_CachDong.SelectedValue = PrimitiveConvert.StringToEnum<Define.LoaiDong>(data.CachDong);
                 SF.Get<NhatKyThayDoiViewModel>().GetDataSource(gridNhatKy, Define.ModelType.HUONG_DAN_DONG_GOI, data.Id);
             }
@@ -45,15 +47,15 @@ namespace TLShoes.FormControls.HuongDanDongGoi
                 return false;
             }
 
-            // Save huong dan 
-            var saveData = CRUD.GetFormObject<TLShoes.HuongDanDongGoi>(FormControls);
-            if (saveData.CachDong == "SOLID")
-            {
-                saveData.DongAssorment = "";
-            }
-
             using (var transaction = new TransactionScope())
             {
+                // Save huong dan 
+                var saveData = CRUD.GetFormObject(FormControls, _curData);
+                if (saveData.CachDong == "SOLID")
+                {
+                    saveData.DongAssorment = "";
+                }
+                CRUD.DecorateSaveData(saveData, _curData == null);
                 SF.Get<HuongDanDongGoiViewModel>().Save(saveData);
 
                 var nhatKyThayDoi = new NhatKyThayDoi();
@@ -127,7 +129,6 @@ namespace TLShoes.FormControls.HuongDanDongGoi
                     HuongDanDongGoi_MauDongGoiId.ValueMember = "Id";
 
                     TenCongTy.Text = donHang.KhachHang.TenCongTy;
-                    //SoLuong = donHang.ChiTietDonHangs.Sum(s => (int)s.SoLuong);
                 }
             }
         }

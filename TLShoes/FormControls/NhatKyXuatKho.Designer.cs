@@ -69,7 +69,7 @@
             this.btnSave.Location = new System.Drawing.Point(459, 301);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 77;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Lưu";
             // 
             // NhatKyXuatKho_SoLuong
@@ -77,7 +77,7 @@
             this.NhatKyXuatKho_SoLuong.Location = new System.Drawing.Point(156, 88);
             this.NhatKyXuatKho_SoLuong.Name = "NhatKyXuatKho_SoLuong";
             this.NhatKyXuatKho_SoLuong.Size = new System.Drawing.Size(378, 22);
-            this.NhatKyXuatKho_SoLuong.TabIndex = 80;
+            this.NhatKyXuatKho_SoLuong.TabIndex = 1;
             // 
             // lblNguyenLieuId
             // 
@@ -94,7 +94,7 @@
             this.NhatKyXuatKho_ChiTietXuatKhoId.Location = new System.Drawing.Point(156, 39);
             this.NhatKyXuatKho_ChiTietXuatKhoId.Name = "NhatKyXuatKho_ChiTietXuatKhoId";
             this.NhatKyXuatKho_ChiTietXuatKhoId.Size = new System.Drawing.Size(378, 24);
-            this.NhatKyXuatKho_ChiTietXuatKhoId.TabIndex = 81;
+            this.NhatKyXuatKho_ChiTietXuatKhoId.TabIndex = 0;
             // 
             // lblSoLuong
             // 
@@ -119,14 +119,14 @@
             this.NhatKyXuatKho_NguoiNhan.Location = new System.Drawing.Point(156, 139);
             this.NhatKyXuatKho_NguoiNhan.Name = "NhatKyXuatKho_NguoiNhan";
             this.NhatKyXuatKho_NguoiNhan.Size = new System.Drawing.Size(378, 22);
-            this.NhatKyXuatKho_NguoiNhan.TabIndex = 84;
+            this.NhatKyXuatKho_NguoiNhan.TabIndex = 2;
             // 
             // NhatKyXuatKho_GhiChu
             // 
             this.NhatKyXuatKho_GhiChu.Location = new System.Drawing.Point(156, 184);
             this.NhatKyXuatKho_GhiChu.Name = "NhatKyXuatKho_GhiChu";
             this.NhatKyXuatKho_GhiChu.Size = new System.Drawing.Size(378, 89);
-            this.NhatKyXuatKho_GhiChu.TabIndex = 85;
+            this.NhatKyXuatKho_GhiChu.TabIndex = 3;
             this.NhatKyXuatKho_GhiChu.Text = "";
             // 
             // lblGhiChu

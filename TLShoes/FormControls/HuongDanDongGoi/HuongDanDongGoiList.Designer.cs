@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.entityInstantFeedbackSource1 = new DevExpress.Data.Linq.EntityInstantFeedbackSource();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -43,6 +43,8 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLoaiNguoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
@@ -50,6 +52,7 @@
             // 
             // gridControl
             // 
+            this.gridControl.DataSource = this.entityInstantFeedbackSource1;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
@@ -60,6 +63,12 @@
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
+            // 
+            // entityInstantFeedbackSource1
+            // 
+            this.entityInstantFeedbackSource1.DefaultSorting = "ModifiedDate DESC";
+            this.entityInstantFeedbackSource1.DesignTimeElementType = typeof(TLShoes.HuongDanDongGoi);
+            this.entityInstantFeedbackSource1.KeyExpression = "Id";
             // 
             // gridView
             // 
@@ -75,16 +84,16 @@
             this.gridColumn8,
             this.gridColumn3,
             this.gridColumn11,
-            this.colLoaiNguoiDung});
+            this.colLoaiNguoiDung,
+            this.gridColumn12});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsCustomization.AllowGroup = false;
-            this.gridView.OptionsView.AllowCellMerge = true;
             this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.RowHeight = 80;
-            this.gridView.CellMerge += new DevExpress.XtraGrid.Views.Grid.CellMergeEventHandler(this.gridView_CellMerge);
+            this.gridView.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.gridView_CustomUnboundColumnData);
             this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
             // 
             // gridColumn10
@@ -92,7 +101,7 @@
             this.gridColumn10.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn10.AppearanceHeader.Options.UseFont = true;
             this.gridColumn10.Caption = "Khách Hàng";
-            this.gridColumn10.FieldName = "TenCongTy";
+            this.gridColumn10.FieldName = "DonHang.KhachHang.TenCongTy";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 0;
@@ -102,7 +111,7 @@
             this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn9.AppearanceHeader.Options.UseFont = true;
             this.gridColumn9.Caption = "Số Đôi/Thùng";
-            this.gridColumn9.FieldName = "DoiThung";
+            this.gridColumn9.FieldName = "SoDoi";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 9;
@@ -118,7 +127,7 @@
             this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "Mã Hàng";
-            this.gridColumn2.FieldName = "MaHang";
+            this.gridColumn2.FieldName = "DonHang.MaHang";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 3;
@@ -128,16 +137,8 @@
             this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn4.AppearanceHeader.Options.UseFont = true;
             this.gridColumn4.Caption = "Hình";
-            this.gridColumn4.ColumnEdit = this.repositoryItemPictureEdit1;
-            this.gridColumn4.FieldName = "Hinh";
+            this.gridColumn4.FieldName = "DonHang.HinhAnh";
             this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 1;
-            // 
-            // repositoryItemPictureEdit1
-            // 
-            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
-            this.repositoryItemPictureEdit1.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             // 
             // gridColumn5
             // 
@@ -146,6 +147,8 @@
             this.gridColumn5.Caption = "Số Thùng";
             this.gridColumn5.FieldName = "SoThung";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.UnboundExpression = "[SoLuong] / [SoDoi]";
+            this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 8;
             // 
@@ -154,7 +157,7 @@
             this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "Số Đơn Hàng";
-            this.gridColumn6.FieldName = "SoDH";
+            this.gridColumn6.FieldName = "DonHang.OrderNo";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 2;
@@ -194,7 +197,7 @@
             this.gridColumn11.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn11.AppearanceHeader.Options.UseFont = true;
             this.gridColumn11.Caption = "Tổng Đơn Hàng";
-            this.gridColumn11.FieldName = "SoLuongDonHang";
+            this.gridColumn11.FieldName = "DonHang.SoLuong";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 6;
@@ -204,6 +207,23 @@
             this.colLoaiNguoiDung.Caption = "gridColumn12";
             this.colLoaiNguoiDung.FieldName = "LoaiNguoiDung";
             this.colLoaiNguoiDung.Name = "colLoaiNguoiDung";
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn12.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn12.Caption = "Hình";
+            this.gridColumn12.ColumnEdit = this.repositoryItemPictureEdit1;
+            this.gridColumn12.FieldName = "Hinh";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.UnboundType = DevExpress.Data.UnboundColumnType.Object;
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 1;
+            // 
+            // repositoryItemPictureEdit1
+            // 
+            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
+            this.repositoryItemPictureEdit1.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             // 
             // ucHuongDanDongGoiList
             // 
@@ -236,5 +256,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn colLoaiNguoiDung;
+        private DevExpress.Data.Linq.EntityInstantFeedbackSource entityInstantFeedbackSource1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
     }
 }

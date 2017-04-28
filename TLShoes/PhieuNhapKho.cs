@@ -40,9 +40,9 @@ namespace TLShoes
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietNhapKho> ChiTietNhapKhoes { get; set; }
-        public virtual DanhGia DanhGia { get; set; }
         public virtual UserAccount UserAccount { get; set; }
         public virtual UserAccount NguoiDuyet { get; set; }
         public virtual UserAccount NguoiLap { get; set; }
+        public virtual DanhGia DanhGia { get; set; }
     }
 }

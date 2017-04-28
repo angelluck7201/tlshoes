@@ -114,6 +114,7 @@ namespace TLShoes.FormControls.DonDatHang
             using (var transaction = new TransactionScope())
             {
                 var saveData = CRUD.GetFormObject(FormControls, _donDatHang);
+                saveData.SoLuongDat = DatHangVatTuList.Sum(s => s.SoLuong);
                 CRUD.DecorateSaveData(saveData, _donDatHang == null);
                 SF.Get<DonDatHangViewModel>().Save(saveData);
 

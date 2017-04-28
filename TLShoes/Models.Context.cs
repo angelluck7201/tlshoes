@@ -28,8 +28,6 @@ namespace TLShoes
         public virtual DbSet<AppConfig> AppConfigs { get; set; }
         public virtual DbSet<BaoCaoPhanXuong> BaoCaoPhanXuongs { get; set; }
         public virtual DbSet<ChiLenh> ChiLenhs { get; set; }
-        public virtual DbSet<ChiTietDanhGia> ChiTietDanhGias { get; set; }
-        public virtual DbSet<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
         public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public virtual DbSet<ChiTietHuongDanDongGoi> ChiTietHuongDanDongGois { get; set; }
         public virtual DbSet<ChiTietMauDanhGia> ChiTietMauDanhGias { get; set; }
@@ -37,9 +35,7 @@ namespace TLShoes
         public virtual DbSet<ChiTietNhapKho> ChiTietNhapKhoes { get; set; }
         public virtual DbSet<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
         public virtual DbSet<ChiTietXuatKho> ChiTietXuatKhoes { get; set; }
-        public virtual DbSet<DanhGia> DanhGias { get; set; }
         public virtual DbSet<DanhMuc> DanhMucs { get; set; }
-        public virtual DbSet<DonDatHang> DonDatHangs { get; set; }
         public virtual DbSet<DonHang> DonHangs { get; set; }
         public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
         public virtual DbSet<HuongDanDongGoi> HuongDanDongGois { get; set; }
@@ -65,5 +61,9 @@ namespace TLShoes
         public virtual DbSet<NguyenLieu> NguyenLieux { get; set; }
         public virtual DbSet<CongNgheSanXuat> CongNgheSanXuats { get; set; }
         public virtual DbSet<MauThuDao> MauThuDaos { get; set; }
+        public virtual DbSet<DonDatHang> DonDatHangs { get; set; }
+        public virtual DbSet<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
+        public virtual DbSet<DanhGia> DanhGias { get; set; }
+        public virtual DbSet<ChiTietDanhGia> ChiTietDanhGias { get; set; }
     }
 }

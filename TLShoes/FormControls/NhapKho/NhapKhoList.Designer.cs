@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.pnkInstantFeedbackSource = new DevExpress.Data.Linq.EntityInstantFeedbackSource();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -43,6 +44,7 @@
             // 
             // gridControl
             // 
+            this.gridControl.DataSource = this.pnkInstantFeedbackSource;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 0);
             this.gridControl.MainView = this.gridView;
@@ -51,7 +53,12 @@
             this.gridControl.TabIndex = 7;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
-            this.gridControl.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
+            // 
+            // pnkInstantFeedbackSource
+            // 
+            this.pnkInstantFeedbackSource.DefaultSorting = "ModifiedDate DESC";
+            this.pnkInstantFeedbackSource.DesignTimeElementType = typeof(TLShoes.PhieuNhapKho);
+            this.pnkInstantFeedbackSource.KeyExpression = "Id";
             // 
             // gridView
             // 
@@ -71,6 +78,7 @@
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.Id, DevExpress.Data.ColumnSortOrder.Descending)});
+            this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
             // 
             // Id
             // 
@@ -123,7 +131,7 @@
             this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.Caption = "Ngày Nhập";
-            this.gridColumn5.FieldName = "NgayNhapFormat";
+            this.gridColumn5.FieldName = "NgayNhap";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 2;
@@ -158,5 +166,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn colLoaiNguoiDung;
+        private DevExpress.Data.Linq.EntityInstantFeedbackSource pnkInstantFeedbackSource;
     }
 }

@@ -33,9 +33,9 @@ namespace TLShoes
     
         public virtual UserAccount UserAccount { get; set; }
         public virtual DanhMuc DanhMuc { get; set; }
-        public virtual DanhMuc DanhMuc1 { get; set; }
+        public virtual DanhMuc DonViTinh { get; set; }
         public virtual MauHuongDanDongGoi MauHuongDanDongGoi { get; set; }
-        public virtual DanhMuc DanhMuc2 { get; set; }
+        public virtual DanhMuc Mau { get; set; }
         public virtual NguyenLieu NguyenLieu { get; set; }
     }
 }

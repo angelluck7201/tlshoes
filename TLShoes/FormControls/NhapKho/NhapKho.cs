@@ -25,35 +25,22 @@ namespace TLShoes.FormControls.NhapKho
             InitializeComponent();
             Init(data);
 
-            PhieuNhapKho_Kho.DisplayMember = "Value";
-            PhieuNhapKho_Kho.ValueMember = "Key";
-            PhieuNhapKho_Kho.DataSource = new BindingSource(Define.KhoDic, null);
+            SetComboboxDataSource(PhieuNhapKho_Kho, Define.KhoDic);
 
-            PhieuNhapKho_DanhGiaId.DisplayMember = "SoPhieu";
-            PhieuNhapKho_DanhGiaId.ValueMember = "Id";
-            PhieuNhapKho_DanhGiaId.DataSource = new BindingSource(SF.Get<DanhGiaViewModel>().GetList(), null);
+            var lstDanhGia = SF.Get<DanhGiaViewModel>().GetList();
+            SetComboboxDataSource(PhieuNhapKho_DanhGiaId, lstDanhGia, "SoPhieu");
 
 
             if (data != null)
             {
                 SF.Get<ChiTietNhapKhoViewModel>().GetDataSource(data.Id, ref ChiTietNhapKhoList);
-                Define.Kho selectedKho;
-                Enum.TryParse<Define.Kho>(data.Kho, out selectedKho);
-                PhieuNhapKho_Kho.SelectedValue = selectedKho;
                 _currentData = data;
                 btnExport.Visible = true;
             }
 
             gridNguyenLieu.DataSource = ChiTietNhapKhoList;
 
-            NguyenLieuLookUp.NullText = "";
-            NguyenLieuLookUp.Properties.DataSource = SF.Get<NguyenLieuViewModel>().GetList().Select(s => new { s.Ten, s.Id }).ToList();
-            NguyenLieuLookUp.PopulateColumns();
-            NguyenLieuLookUp.ShowHeader = false;
-            NguyenLieuLookUp.Columns["Id"].Visible = false;
-            NguyenLieuLookUp.Properties.DisplayMember = "Ten";
-            NguyenLieuLookUp.Properties.ValueMember = "Id";
-            NguyenLieuLookUp.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            SetRepositoryItem(NguyenLieuLookUp, SF.Get<NguyenLieuViewModel>().GetList(), "Ten");
 
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
 
@@ -119,13 +106,14 @@ namespace TLShoes.FormControls.NhapKho
                 MessageBox.Show(string.Format("{0} {1}!", "Không được phép để trống", validateResult));
                 return false;
             }
-            var saveData = CRUD.GetFormObject<PhieuNhapKho>(FormControls, _currentData);
             using (var transaction = new TransactionScope())
             {
+                var saveData = CRUD.GetFormObject(FormControls, _currentData);
                 if (!string.IsNullOrEmpty(saveData.SoPhieu))
                 {
                     saveData.SoPhieu = SF.Get<PhieuNhapKhoViewModel>().GenerateSoPhieuDoiKho(saveData.SoPhieu, PrimitiveConvert.StringToEnum<Define.Kho>(saveData.Kho));
                 }
+                CRUD.DecorateSaveData(saveData, _currentData == null);
                 SF.Get<PhieuNhapKhoViewModel>().Save(saveData);
 
                 // Save chi teit Nhap kho

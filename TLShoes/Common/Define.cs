@@ -111,11 +111,11 @@ namespace TLShoes.Common
             KHO_BAN_THANH_PHAM,
         }
 
-        public static Dictionary<Kho, string> KhoDic = new Dictionary<Kho, string>()
+        public static Dictionary<string, string> KhoDic = new Dictionary<string, string>()
         {
-            {Kho.KHO_VAT_TU, "KHO VẬT TƯ"},
-            {Kho.KHO_THANH_PHAM, "KHO THÀNH PHẨM"},
-            {Kho.KHO_BAN_THANH_PHAM, "KHO BÁN THÀNH PHẨM"},
+            {Kho.KHO_VAT_TU.ToString(), "KHO VẬT TƯ"},
+            {Kho.KHO_THANH_PHAM.ToString(), "KHO THÀNH PHẨM"},
+            {Kho.KHO_BAN_THANH_PHAM.ToString(), "KHO BÁN THÀNH PHẨM"},
         };
 
         public enum LoaiXuat
@@ -124,10 +124,10 @@ namespace TLShoes.Common
             NGOAI_CHI_LENH,
         }
 
-        public static Dictionary<LoaiXuat, string> LoaiXuatDic = new Dictionary<LoaiXuat, string>()
+        public static Dictionary<string, string> LoaiXuatDic = new Dictionary<string, string>()
         {
-            {LoaiXuat.TRONG_CHI_LENH, "TRONG CHỈ LỆNH"},
-            {LoaiXuat.NGOAI_CHI_LENH, "NGOÀI CHỈ LỆNH"},
+            {LoaiXuat.TRONG_CHI_LENH.ToString(), "TRONG CHỈ LỆNH"},
+            {LoaiXuat.NGOAI_CHI_LENH.ToString(), "NGOÀI CHỈ LỆNH"},
          };
 
         public enum LoaiDong

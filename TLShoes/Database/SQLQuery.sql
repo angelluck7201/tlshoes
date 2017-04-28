@@ -506,7 +506,10 @@ NguoiDuyetId bigint foreign key references UserAccount(Id),
 NgayLap datetime2 default getdate() not null,
 NguoiLapId bigint foreign key references UserAccount(Id),
 TrangThai nvarchar(100) default '',
+SoLuongDat float default 0 not null
 );
+
+
 
 create table ChiTietDonDatHang(
 Id bigint primary key identity(1,1),
@@ -518,9 +521,9 @@ IsActived bit default 1 not null,
 DonDatHangId bigint foreign key references DonDatHang(Id),
 NhaCungCapId bigint foreign key references NhaCungCap(Id),
 NguyenLieuId bigint foreign key references NguyenLieu(Id),
-DonGia float default 0 not null,
-SoLuong float default 0 not null,
-SoLuongThuc float default 0 not null,
+DonGia real default 0 not null,
+SoLuong real default 0 not null,
+SoLuongThuc real default 0 not null,
 GhiChu nvarchar(1000) default '',
 )
 
@@ -546,6 +549,7 @@ MauDanhGiaId bigint foreign key references MauDanhGia(Id),
 TieuChiId bigint foreign key references DanhMuc(Id),
 );
 
+
 create table DanhGia(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -557,6 +561,7 @@ DonDatHangId bigint foreign key references DonDatHang(Id),
 MauDanhGiaId bigint foreign key references MauDanhGia(Id),
 SoPhieu nvarchar(100) default '',
 SoLuongKiem float default 0 not null,
+SoLuongKem float default 0 not null,
 BienPhapXuLy nvarchar(1000) default '',
 NgayKiem datetime2 default getdate() not null,
 );
