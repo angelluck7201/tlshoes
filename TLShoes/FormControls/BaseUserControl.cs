@@ -140,7 +140,7 @@ namespace TLShoes.FormControls
             if (combobox != null)
             {
                 var selectedValue = combobox.SelectedValue;
-                if (selectedValue == null)
+                if (selectedValue == null && combobox.Items.Count > 0)
                 {
                     combobox.SelectedIndex = 0;
                 }

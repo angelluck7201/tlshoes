@@ -61,6 +61,7 @@ namespace TLShoes.FormControls.DonHang
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.HinhHinh = new DevExpress.XtraEditors.PictureEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.lblMessage = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.MauDoi_HinhAnh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -438,11 +439,22 @@ namespace TLShoes.FormControls.DonHang
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Lưu";
             // 
+            // lblMessage
+            // 
+            this.lblMessage.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblMessage.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.lblMessage.Location = new System.Drawing.Point(27, 630);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(167, 17);
+            this.lblMessage.TabIndex = 72;
+            this.lblMessage.Text = "Dao này đã được thử rồi";
+            // 
             // ucMauDoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucMauDoi";
@@ -467,6 +479,7 @@ namespace TLShoes.FormControls.DonHang
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HinhHinh.Properties)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -503,5 +516,6 @@ namespace TLShoes.FormControls.DonHang
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
         private DevExpress.XtraEditors.SimpleButton btnAddHinh;
         private DevExpress.XtraEditors.SimpleButton btnDelete;
+        private DevExpress.XtraEditors.LabelControl lblMessage;
     }
 }

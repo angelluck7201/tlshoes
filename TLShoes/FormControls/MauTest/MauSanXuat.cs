@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using TLShoes.Common;
@@ -15,7 +16,15 @@ namespace TLShoes.FormControls.MauSanXuat
         {
             InitializeComponent();
 
-            var lstDonhang = SF.Get<DonHangViewModel>().GetList();
+            var lstDonhang = new List<TLShoes.DonHang>();
+            if (data != null && !data.DonHang.IsAvailable)
+            {
+                lstDonhang.Add(data.DonHang);
+            }
+            else
+            {
+                lstDonhang = SF.Get<DonHangViewModel>().GetListAvailable();
+            }
             SetComboboxDataSource(MauSanXuat_DonHangId, lstDonhang, "MaHang");
 
             var lstPhanLoaiTest = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST);
@@ -38,6 +47,15 @@ namespace TLShoes.FormControls.MauSanXuat
 
             _domainData = data;
             Init(data);
+            InitAuthorize();
+        }
+
+        private void InitAuthorize()
+        {
+            if (_domainData != null)
+            {
+                SF.Get<DonHangViewModel>().CheckAvailableBaseOnDonHang(_domainData.DonHangId.GetValueOrDefault(), btnSave, lblMessage);
+            }
         }
 
         public override bool SaveData()
@@ -67,6 +85,10 @@ namespace TLShoes.FormControls.MauSanXuat
 
         public string ValidateInput()
         {
+            if (MauSanXuat_DonHangId.SelectedValue == null)
+            {
+                return "Đơn Hàng";
+            }
             return string.Empty;
         }
 

@@ -48,7 +48,7 @@ namespace TLShoes.Common
 
         public static string ResourcePath
         {
-            get { return Path.Combine(Directory.GetParent(SourcePath).Parent.FullName, "Resources"); }
+            get { return Path.Combine(SourcePath, "Resources"); }
         }
 
         public static string DefaultImagePath

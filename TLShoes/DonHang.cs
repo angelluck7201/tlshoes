@@ -69,6 +69,7 @@ namespace TLShoes
         public int Khac { get; set; }
         public int SoLuong { get; set; }
         public string MaGiay { get; set; }
+        public string TrangThai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaoCaoPhanXuong> BaoCaoPhanXuongs { get; set; }

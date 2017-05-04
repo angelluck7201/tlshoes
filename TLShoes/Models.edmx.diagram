@@ -158,6 +158,7 @@
         <AssociationConnector Association="GiayTLModel.FK__ChiTietDa__Autho__3B60C8C7" />
         <AssociationConnector Association="GiayTLModel.FK__ChiTietDa__DanhG__3F3159AB" />
         <AssociationConnector Association="GiayTLModel.FK__ChiTietDa__TieuC__40257DE4" />
+        <AssociationConnector Association="GiayTLModel.FK__PhieuNhap__ChiLe__6462DE5A" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

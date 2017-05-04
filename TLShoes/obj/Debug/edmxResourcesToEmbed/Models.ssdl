@@ -294,6 +294,7 @@
     <Property Name="Khac" Type="int" Nullable="false" />
     <Property Name="SoLuong" Type="int" Nullable="false" />
     <Property Name="MaGiay" Type="varchar" MaxLength="50" />
+    <Property Name="TrangThai" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="ErrorLog">
     <Key>
@@ -648,6 +649,8 @@
     <Property Name="NguoiDuyetId" Type="bigint" />
     <Property Name="NgayLap" Type="datetime2" Precision="7" Nullable="false" />
     <Property Name="NguoiLapId" Type="bigint" />
+    <Property Name="LoaiPhieu" Type="nvarchar" MaxLength="50" />
+    <Property Name="ChiLenhId" Type="bigint" />
   </EntityType>
   <EntityType Name="PhieuXuatKho">
     <Key>
@@ -1927,6 +1930,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__PhieuNhap__ChiLe__6462DE5A">
+    <End Role="ChiLenh" Type="Self.ChiLenh" Multiplicity="0..1" />
+    <End Role="PhieuNhapKho" Type="Self.PhieuNhapKho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChiLenh">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhieuNhapKho">
+        <PropertyRef Name="ChiLenhId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__PhieuNhap__DanhG__408F9238">
     <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="0..1" />
     <End Role="PhieuNhapKho" Type="Self.PhieuNhapKho" Multiplicity="*" />
@@ -2522,6 +2537,10 @@
     </AssociationSet>
     <AssociationSet Name="FK__PhieuNhap__Autho__361203C5" Association="Self.FK__PhieuNhap__Autho__361203C5">
       <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="PhieuNhapKho" EntitySet="PhieuNhapKho" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuNhap__ChiLe__6462DE5A" Association="Self.FK__PhieuNhap__ChiLe__6462DE5A">
+      <End Role="ChiLenh" EntitySet="ChiLenh" />
       <End Role="PhieuNhapKho" EntitySet="PhieuNhapKho" />
     </AssociationSet>
     <AssociationSet Name="FK__PhieuNhap__DanhG__408F9238" Association="Self.FK__PhieuNhap__DanhG__408F9238">

@@ -26,7 +26,16 @@ namespace TLShoes.FormControls.ChiLenh
         {
             InitializeComponent();
 
-            var lstDonHang = SF.Get<DonHangViewModel>().GetList();
+            // Get available DonHang
+            var lstDonHang = new List<TLShoes.DonHang>();
+            if (data != null && data.TrangThai == Define.TrangThai.DUYET_PKT.ToString())
+            {
+                lstDonHang.Add(data.DonHang);
+            }
+            else
+            {
+                lstDonHang = SF.Get<DonHangViewModel>().GetList(Define.TrangThai.DUYET);
+            }
             SetComboboxDataSource(ChiLenh_DonHangId, lstDonHang, "MaHang");
 
             SetComboboxDataSource(NguyenLieuChiLenh_PhanXuong, Define.PhanXuongDict);
@@ -63,6 +72,7 @@ namespace TLShoes.FormControls.ChiLenh
             btnDuyet.Visible = false;
             btnExport.Visible = false;
             btnSave.Enabled = true;
+            lblMessage.Text = "";
 
             if (_chiLenh != null)
             {
@@ -99,6 +109,15 @@ namespace TLShoes.FormControls.ChiLenh
                     btnExport.Visible = true;
                     btnDuyet.Visible = true;
                     btnDuyet.Enabled = false;
+                }
+
+                if (_chiLenh.DonHang.TrangThai == Define.TrangThai.DONE.ToString())
+                {
+                    btnExport.Visible = true;
+                    btnDuyet.Visible = true;
+                    btnDuyet.Enabled = false;
+                    btnCancel.Enabled = false;
+                    lblMessage.Text = Define.MESSAGE_NOT_AVAILABLE_DON_HANG_DONE;
                 }
 
                 var verifyAuthorize = Authorization.CheckAuthorization("ChiLenh", Define.Authorization.VERIFY);
@@ -361,6 +380,7 @@ namespace TLShoes.FormControls.ChiLenh
                         _chiLenh.NguoiDuyetId = Authorization.LoginUser.Id;
                         _chiLenh.SoPhieu = SF.Get<ChiLenhViewModel>().GenerateSoPhieu();
                         _chiLenh.TrangThai = Define.TrangThai.DUYET_PKT.ToString();
+                        SF.Get<DonHangViewModel>().UpdateTrangThai(Define.TrangThai.DUYET, _chiLenh.DonHangId.GetValueOrDefault());
                     }
 
                     SF.Get<ChiLenhViewModel>().Save(_chiLenh);
@@ -383,6 +403,7 @@ namespace TLShoes.FormControls.ChiLenh
                     _chiLenh.TrangThai = Define.TrangThai.HUY.ToString();
                     _chiLenh.NgayDuyet = TimeHelper.Current();
                     _chiLenh.NguoiDuyetId = Authorization.LoginUser.Id;
+                    SF.Get<DonHangViewModel>().UpdateTrangThai(Define.TrangThai.HUY, _chiLenh.DonHangId.GetValueOrDefault());
                     InitAuthorize();
                 }), "Nhật ký thay đổi");
             }

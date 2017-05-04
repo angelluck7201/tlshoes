@@ -29,9 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucNhapKho));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.btnChiTiet = new DevExpress.XtraEditors.SimpleButton();
+            this.PhieuNhapKho_ChiLenhId = new System.Windows.Forms.ComboBox();
+            this.lblChiLenhId = new DevExpress.XtraEditors.LabelControl();
+            this.PhieuNhapKho_LoaiPhieu = new System.Windows.Forms.ComboBox();
+            this.lblLoaiPhieu = new DevExpress.XtraEditors.LabelControl();
+            this.lblSoPhieu = new DevExpress.XtraEditors.LabelControl();
             this.lblSoDonHang = new DevExpress.XtraEditors.LabelControl();
             this.lblDanhGiaId = new DevExpress.XtraEditors.LabelControl();
             this.PhieuNhapKho_DanhGiaId = new System.Windows.Forms.ComboBox();
@@ -60,7 +66,6 @@
             this.btnDuyet = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
-            this.lblSoPhieu = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -83,7 +88,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(3, 3);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(708, 596);
+            this.xtraTabControl1.Size = new System.Drawing.Size(708, 655);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -104,6 +109,11 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.xtraTabPage2.Controls.Add(this.btnChiTiet);
+            this.xtraTabPage2.Controls.Add(this.PhieuNhapKho_ChiLenhId);
+            this.xtraTabPage2.Controls.Add(this.lblChiLenhId);
+            this.xtraTabPage2.Controls.Add(this.PhieuNhapKho_LoaiPhieu);
+            this.xtraTabPage2.Controls.Add(this.lblLoaiPhieu);
             this.xtraTabPage2.Controls.Add(this.lblSoPhieu);
             this.xtraTabPage2.Controls.Add(this.lblSoDonHang);
             this.xtraTabPage2.Controls.Add(this.lblDanhGiaId);
@@ -119,13 +129,80 @@
             this.xtraTabPage2.Controls.Add(this.lblNgayNhap);
             this.xtraTabPage2.Controls.Add(this.lblKho);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(701, 560);
+            this.xtraTabPage2.Size = new System.Drawing.Size(701, 619);
             this.xtraTabPage2.Text = "Phiếu Nhập Kho";
+            // 
+            // btnChiTiet
+            // 
+            this.btnChiTiet.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnChiTiet.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnChiTiet.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnChiTiet.Appearance.Options.UseBackColor = true;
+            this.btnChiTiet.Appearance.Options.UseFont = true;
+            this.btnChiTiet.Appearance.Options.UseForeColor = true;
+            this.btnChiTiet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnChiTiet.Location = new System.Drawing.Point(252, 571);
+            this.btnChiTiet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
+            this.btnChiTiet.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.btnChiTiet.Name = "btnChiTiet";
+            this.btnChiTiet.Size = new System.Drawing.Size(107, 30);
+            this.btnChiTiet.TabIndex = 130;
+            this.btnChiTiet.Text = "Khởi Tạo";
+            this.btnChiTiet.Click += new System.EventHandler(this.btnChiTiet_Click);
+            // 
+            // PhieuNhapKho_ChiLenhId
+            // 
+            this.PhieuNhapKho_ChiLenhId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.PhieuNhapKho_ChiLenhId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.PhieuNhapKho_ChiLenhId.FormattingEnabled = true;
+            this.PhieuNhapKho_ChiLenhId.Location = new System.Drawing.Point(180, 529);
+            this.PhieuNhapKho_ChiLenhId.Name = "PhieuNhapKho_ChiLenhId";
+            this.PhieuNhapKho_ChiLenhId.Size = new System.Drawing.Size(180, 24);
+            this.PhieuNhapKho_ChiLenhId.TabIndex = 129;
+            this.PhieuNhapKho_ChiLenhId.SelectedIndexChanged += new System.EventHandler(this.PhieuNhapKho_ChiLenhId_SelectedIndexChanged);
+            // 
+            // lblChiLenhId
+            // 
+            this.lblChiLenhId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblChiLenhId.Location = new System.Drawing.Point(30, 531);
+            this.lblChiLenhId.Name = "lblChiLenhId";
+            this.lblChiLenhId.Size = new System.Drawing.Size(60, 17);
+            this.lblChiLenhId.TabIndex = 128;
+            this.lblChiLenhId.Text = "Chỉ Lệnh";
+            // 
+            // PhieuNhapKho_LoaiPhieu
+            // 
+            this.PhieuNhapKho_LoaiPhieu.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.PhieuNhapKho_LoaiPhieu.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.PhieuNhapKho_LoaiPhieu.FormattingEnabled = true;
+            this.PhieuNhapKho_LoaiPhieu.Location = new System.Drawing.Point(179, 477);
+            this.PhieuNhapKho_LoaiPhieu.Name = "PhieuNhapKho_LoaiPhieu";
+            this.PhieuNhapKho_LoaiPhieu.Size = new System.Drawing.Size(509, 24);
+            this.PhieuNhapKho_LoaiPhieu.TabIndex = 127;
+            this.PhieuNhapKho_LoaiPhieu.SelectedIndexChanged += new System.EventHandler(this.PhieuNhapKho_LoaiPhieu_SelectedIndexChanged);
+            // 
+            // lblLoaiPhieu
+            // 
+            this.lblLoaiPhieu.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblLoaiPhieu.Location = new System.Drawing.Point(30, 480);
+            this.lblLoaiPhieu.Name = "lblLoaiPhieu";
+            this.lblLoaiPhieu.Size = new System.Drawing.Size(70, 17);
+            this.lblLoaiPhieu.TabIndex = 126;
+            this.lblLoaiPhieu.Text = "Loại Phiếu";
+            // 
+            // lblSoPhieu
+            // 
+            this.lblSoPhieu.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.lblSoPhieu.Location = new System.Drawing.Point(28, 32);
+            this.lblSoPhieu.Name = "lblSoPhieu";
+            this.lblSoPhieu.Size = new System.Drawing.Size(88, 24);
+            this.lblSoPhieu.TabIndex = 125;
+            this.lblSoPhieu.Text = "Số Phiếu";
             // 
             // lblSoDonHang
             // 
             this.lblSoDonHang.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblSoDonHang.Location = new System.Drawing.Point(420, 490);
+            this.lblSoDonHang.Location = new System.Drawing.Point(421, 530);
             this.lblSoDonHang.Name = "lblSoDonHang";
             this.lblSoDonHang.Size = new System.Drawing.Size(24, 16);
             this.lblSoDonHang.TabIndex = 118;
@@ -134,7 +211,7 @@
             // lblDanhGiaId
             // 
             this.lblDanhGiaId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDanhGiaId.Location = new System.Drawing.Point(30, 488);
+            this.lblDanhGiaId.Location = new System.Drawing.Point(31, 528);
             this.lblDanhGiaId.Name = "lblDanhGiaId";
             this.lblDanhGiaId.Size = new System.Drawing.Size(113, 17);
             this.lblDanhGiaId.TabIndex = 117;
@@ -145,7 +222,7 @@
             this.PhieuNhapKho_DanhGiaId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.PhieuNhapKho_DanhGiaId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.PhieuNhapKho_DanhGiaId.FormattingEnabled = true;
-            this.PhieuNhapKho_DanhGiaId.Location = new System.Drawing.Point(179, 488);
+            this.PhieuNhapKho_DanhGiaId.Location = new System.Drawing.Point(180, 528);
             this.PhieuNhapKho_DanhGiaId.Name = "PhieuNhapKho_DanhGiaId";
             this.PhieuNhapKho_DanhGiaId.Size = new System.Drawing.Size(180, 24);
             this.PhieuNhapKho_DanhGiaId.TabIndex = 5;
@@ -242,7 +319,7 @@
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.defaultInfo);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(701, 560);
+            this.xtraTabPage1.Size = new System.Drawing.Size(701, 619);
             this.xtraTabPage1.Text = "Thông tin người dùng";
             // 
             // defaultInfo
@@ -250,7 +327,7 @@
             this.defaultInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defaultInfo.Location = new System.Drawing.Point(0, 0);
             this.defaultInfo.Name = "defaultInfo";
-            this.defaultInfo.Size = new System.Drawing.Size(701, 560);
+            this.defaultInfo.Size = new System.Drawing.Size(701, 619);
             this.defaultInfo.TabIndex = 11;
             // 
             // xtraTabPage3
@@ -265,7 +342,7 @@
             this.xtraTabPage3.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage3.Controls.Add(this.gridNguyenLieu);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(701, 560);
+            this.xtraTabPage3.Size = new System.Drawing.Size(701, 619);
             this.xtraTabPage3.Text = "Chi Tiết";
             // 
             // gridNguyenLieu
@@ -277,7 +354,7 @@
             this.gridNguyenLieu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.NguyenLieuLookUp,
             this.btnDeleteNguyenLieu});
-            this.gridNguyenLieu.Size = new System.Drawing.Size(701, 560);
+            this.gridNguyenLieu.Size = new System.Drawing.Size(701, 619);
             this.gridNguyenLieu.TabIndex = 59;
             this.gridNguyenLieu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewNguyenLieu});
@@ -353,14 +430,14 @@
             this.btnDeleteNguyenLieu.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Appearance.Image")));
             this.btnDeleteNguyenLieu.Appearance.Options.UseImage = true;
             this.btnDeleteNguyenLieu.AutoHeight = false;
-            serializableAppearanceObject3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject3.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject3.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject3.Image")));
-            serializableAppearanceObject3.Options.UseBackColor = true;
-            serializableAppearanceObject3.Options.UseBorderColor = true;
-            serializableAppearanceObject3.Options.UseImage = true;
+            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
+            serializableAppearanceObject1.Options.UseBackColor = true;
+            serializableAppearanceObject1.Options.UseBorderColor = true;
+            serializableAppearanceObject1.Options.UseImage = true;
             this.btnDeleteNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.Default, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteNguyenLieu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteNguyenLieu.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDeleteNguyenLieu.Name = "btnDeleteNguyenLieu";
@@ -375,7 +452,7 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnSave.Location = new System.Drawing.Point(630, 626);
+            this.btnSave.Location = new System.Drawing.Point(632, 686);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 1;
@@ -383,7 +460,6 @@
             // 
             // btnDuyet
             // 
-            this.btnDuyet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDuyet.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
             this.btnDuyet.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -391,7 +467,7 @@
             this.btnDuyet.Appearance.Options.UseFont = true;
             this.btnDuyet.Appearance.Options.UseForeColor = true;
             this.btnDuyet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnDuyet.Location = new System.Drawing.Point(96, 626);
+            this.btnDuyet.Location = new System.Drawing.Point(101, 686);
             this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDuyet.Name = "btnDuyet";
@@ -410,7 +486,7 @@
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
             this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(15, 626);
+            this.btnCancel.Location = new System.Drawing.Point(17, 686);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 123;
@@ -425,22 +501,13 @@
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnExport.Location = new System.Drawing.Point(214, 626);
+            this.btnExport.Location = new System.Drawing.Point(216, 686);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);
             this.btnExport.TabIndex = 122;
             this.btnExport.Text = "Export";
             this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // lblSoPhieu
-            // 
-            this.lblSoPhieu.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.lblSoPhieu.Location = new System.Drawing.Point(28, 32);
-            this.lblSoPhieu.Name = "lblSoPhieu";
-            this.lblSoPhieu.Size = new System.Drawing.Size(88, 24);
-            this.lblSoPhieu.TabIndex = 125;
-            this.lblSoPhieu.Text = "Số Phiếu";
             // 
             // ucNhapKho
             // 
@@ -453,7 +520,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucNhapKho";
-            this.Size = new System.Drawing.Size(715, 690);
+            this.Size = new System.Drawing.Size(718, 745);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
@@ -501,5 +568,10 @@
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnExport;
         private DevExpress.XtraEditors.LabelControl lblSoPhieu;
+        private System.Windows.Forms.ComboBox PhieuNhapKho_ChiLenhId;
+        private DevExpress.XtraEditors.LabelControl lblChiLenhId;
+        private System.Windows.Forms.ComboBox PhieuNhapKho_LoaiPhieu;
+        private DevExpress.XtraEditors.LabelControl lblLoaiPhieu;
+        private DevExpress.XtraEditors.SimpleButton btnChiTiet;
     }
 }

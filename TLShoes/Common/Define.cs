@@ -118,6 +118,18 @@ namespace TLShoes.Common
             {Kho.KHO_BAN_THANH_PHAM.ToString(), "KHO BÁN THÀNH PHẨM"},
         };
 
+        public enum LoaiNhap
+        {
+            DON_DAT_HANG,
+            THU_HOI_CHI_LENH
+        }
+
+        public static Dictionary<string, string> LoaiNhapDict = new Dictionary<string, string>()
+        {
+            {LoaiNhap.DON_DAT_HANG.ToString(), "ĐƠN ĐẶT HÀNG"},
+            {LoaiNhap.THU_HOI_CHI_LENH.ToString(), "THU HỒI CHỈ LỆNH"},
+        };
+
         public enum LoaiXuat
         {
             TRONG_CHI_LENH,
@@ -136,10 +148,10 @@ namespace TLShoes.Common
             SOLID
         }
 
-        public static Dictionary<LoaiDong, string> LoaiDongDic = new Dictionary<LoaiDong, string>()
+        public static Dictionary<string, string> LoaiDongDic = new Dictionary<string, string>()
         {
-            {LoaiDong.ASSORTMENT, "ASSORTMENT"},
-            {LoaiDong.SOLID, "SOLID"},
+            {LoaiDong.ASSORTMENT.ToString(), "ASSORTMENT"},
+            {LoaiDong.SOLID.ToString(), "SOLID"},
          };
 
         public enum PhanXuong
@@ -206,6 +218,8 @@ namespace TLShoes.Common
         public const string MESSAGE_EXPORT_SUCCESS_TEXT = "Bạn có muốn mở file vừa export";
         public const string MESSAGE_EXPORT_FAIL_TITLE = "Export thất bại!";
         public const string MESSAGE_EXPORT_FAIL_TEXT = "Đã xảy ra lỗi trong quá trình export!";
+        public const string MESSAGE_NOT_AVAILABLE_DON_HANG_DUYET = "Chỉ lệnh của đơn hàng này đã được duyệt nên không thể chỉnh sửa!";
+        public const string MESSAGE_NOT_AVAILABLE_DON_HANG_DONE = "Đơn hàng đã hoàn thành nên không thể chỉnh sửa!";
 
 
     }

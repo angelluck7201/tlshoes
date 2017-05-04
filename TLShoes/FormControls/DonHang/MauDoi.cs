@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
@@ -11,14 +12,22 @@ namespace TLShoes.FormControls.DonHang
     {
         public BindingList<MauDoiHinh> MauDoiHinh = new BindingList<MauDoiHinh>();
         private MauDoiHinh _currentHinh;
-        private MauDoi _currentData;
+        private MauDoi _domainData;
 
         public ucMauDoi(MauDoi data = null)
         {
             InitializeComponent();
-            _currentData = data;
+            _domainData = data;
 
-            var lstDonhang = SF.Get<DonHangViewModel>().GetList();
+            var lstDonhang = new List<TLShoes.DonHang>();
+            if (data != null && !data.DonHang.IsAvailable)
+            {
+                lstDonhang.Add(data.DonHang);
+            }
+            else
+            {
+                lstDonhang = SF.Get<DonHangViewModel>().GetListAvailable();
+            }
             SetComboboxDataSource(MauDoi_DonHangId, lstDonhang, "MaHang");
 
             Init(data);
@@ -29,6 +38,15 @@ namespace TLShoes.FormControls.DonHang
 
             gridHinhAnh.DataSource = MauDoiHinh;
             CheckButtonLuuHinh();
+            InitAuthorize();
+        }
+
+        private void InitAuthorize()
+        {
+            if (_domainData != null)
+            {
+                SF.Get<DonHangViewModel>().CheckAvailableBaseOnDonHang(_domainData.DonHangId.GetValueOrDefault(), btnSave, lblMessage);
+            }
         }
 
         public override bool SaveData()
@@ -39,7 +57,7 @@ namespace TLShoes.FormControls.DonHang
                 MessageBox.Show(validateResult);
                 return false;
             }
-            var saveData = CRUD.GetFormObject(FormControls, _currentData);
+            var saveData = CRUD.GetFormObject(FormControls, _domainData);
             using (var transaction = new TransactionScope())
             {
                 SF.Get<MauDoiViewModel>().Save(saveData);
@@ -53,6 +71,10 @@ namespace TLShoes.FormControls.DonHang
 
         public string ValidateInput()
         {
+            if (MauDoi_DonHangId.SelectedValue == null)
+            {
+                return string.Format("{0} {1}!", "Không được phép để trống", "Đơn Hàng");
+            }
             return string.Empty;
         }
 

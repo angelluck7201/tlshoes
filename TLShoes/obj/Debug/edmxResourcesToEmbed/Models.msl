@@ -170,6 +170,7 @@
     <EntitySetMapping Name="DonHangs">
       <EntityTypeMapping TypeName="GiayTLModel.DonHang">
         <MappingFragment StoreEntitySet="DonHang">
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
           <ScalarProperty Name="MaGiay" ColumnName="MaGiay" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="Khac" ColumnName="Khac" />
@@ -486,6 +487,8 @@
     <EntitySetMapping Name="PhieuNhapKhoes">
       <EntityTypeMapping TypeName="GiayTLModel.PhieuNhapKho">
         <MappingFragment StoreEntitySet="PhieuNhapKho">
+          <ScalarProperty Name="ChiLenhId" ColumnName="ChiLenhId" />
+          <ScalarProperty Name="LoaiPhieu" ColumnName="LoaiPhieu" />
           <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
           <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
           <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />

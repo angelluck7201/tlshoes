@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using TLShoes.Common;
@@ -15,8 +16,16 @@ namespace TLShoes.FormControls.MauTest
         {
             InitializeComponent();
 
-            var lstDonHang = SF.Get<DonHangViewModel>().GetList();
-            SetComboboxDataSource(MauTest_DonHangId, lstDonHang, "MaHang");
+            var lstDonhang = new List<TLShoes.DonHang>();
+            if (data != null && !data.DonHang.IsAvailable)
+            {
+                lstDonhang.Add(data.DonHang);
+            }
+            else
+            {
+                lstDonhang = SF.Get<DonHangViewModel>().GetListAvailable();
+            }
+            SetComboboxDataSource(MauTest_DonHangId, lstDonhang, "MaHang");
 
             var lstPhanLoaiTest = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST);
             SetComboboxDataSource(MauTest_PhanLoaiTestHoaId, lstPhanLoaiTest, "Ten");
@@ -37,6 +46,15 @@ namespace TLShoes.FormControls.MauTest
             txtGopY.Text = GopYBindingList[0].GopY;
             _domainData = data;
             Init(data);
+            InitAuthorize();
+        }
+
+        private void InitAuthorize()
+        {
+           if (_domainData != null)
+            {
+                SF.Get<DonHangViewModel>().CheckAvailableBaseOnDonHang(_domainData.DonHangId.GetValueOrDefault(), btnSave, lblMessage);           
+            }
         }
 
         public override bool SaveData()
@@ -67,6 +85,10 @@ namespace TLShoes.FormControls.MauTest
 
         public string ValidateInput()
         {
+            if (MauTest_DonHangId.SelectedValue == null)
+            {
+                return "Đơn Hàng";
+            }
             return string.Empty;
         }
 

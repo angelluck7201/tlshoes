@@ -19,14 +19,22 @@ namespace TLShoes.FormControls.MauThuDao
 
         public List<TLShoes.MauThuDao> ListDaoDaThu = new List<TLShoes.MauThuDao>();
         public long CurrentDonHang;
-        public TLShoes.MauThuDao CurrentMauThuDao;
+        public TLShoes.MauThuDao _domainData;
         public ucMauThuDao(TLShoes.MauThuDao data)
         {
             InitializeComponent();
 
             ListDaoDaThu = SF.Get<MauThuDaoViewModel>().GetList();
 
-            var lstDonhang = SF.Get<DonHangViewModel>().GetList();
+            var lstDonhang = new List<TLShoes.DonHang>();
+            if (data != null && !data.DonHang.IsAvailable)
+            {
+                lstDonhang.Add(data.DonHang);
+            }
+            else
+            {
+                lstDonhang = SF.Get<DonHangViewModel>().GetListAvailable();
+            }
             SetComboboxDataSource(MauThuDao_DonHangId, lstDonhang, "MaHang");
 
             var listPhanLoai = SF.Get<DanhMucViewModel>().GetList(Define.LoaiDanhMuc.PHAN_LOAI_TEST);
@@ -61,13 +69,24 @@ namespace TLShoes.FormControls.MauThuDao
 
             if (data != null)
             {
-                CurrentDonHang = (long)data.DonHangId;
-                CurrentMauThuDao = data;
-                btnExport.Visible = true;
+                CurrentDonHang = data.DonHangId.GetValueOrDefault();
+                _domainData = data;
             }
             else
             {
                 CurrentDonHang = 0;
+            }
+            InitAuthorize();
+        }
+
+        private void InitAuthorize()
+        {
+            btnExport.Visible = false;
+
+            if (_domainData != null)
+            {
+                SF.Get<DonHangViewModel>().CheckAvailableBaseOnDonHang(_domainData.DonHangId.GetValueOrDefault(), btnSave, lblMessage);
+                btnExport.Visible = true;
             }
         }
 
@@ -80,7 +99,7 @@ namespace TLShoes.FormControls.MauThuDao
                 return false;
             }
 
-            var saveData = CRUD.GetFormObject(FormControls, CurrentMauThuDao);
+            var saveData = CRUD.GetFormObject(FormControls, _domainData);
 
             saveData.GopYVatTu = GopYBindingList[0].GopY;
             saveData.GopYXuongChat = GopYBindingList[1].GopY;
@@ -97,6 +116,10 @@ namespace TLShoes.FormControls.MauThuDao
 
         public string ValidateInput()
         {
+            if (MauThuDao_DonHangId.SelectedValue == null)
+            {
+                return "Đơn Hàng";
+            }
             return string.Empty;
         }
 
@@ -161,7 +184,7 @@ namespace TLShoes.FormControls.MauThuDao
 
         private void btnExport_Click(object sender, System.EventArgs e)
         {
-            if (CurrentMauThuDao == null) return;
+            if (_domainData == null) return;
             var saveDialog = new SaveFileDialog();
             saveDialog.Filter = Define.EXPORT_EXTENSION;
             if (saveDialog.ShowDialog() == DialogResult.OK)
@@ -177,7 +200,7 @@ namespace TLShoes.FormControls.MauThuDao
 
                     try
                     {
-                        var donHang = CurrentMauThuDao.DonHang;
+                        var donHang = _domainData.DonHang;
                         workSheet.Cells[3, "D"] = donHang.MaHang;
                         workSheet.Cells[3, "G"] = donHang.KhachHang.TenCongTy;
                         var chiTietDonHang = donHang.ChiTietDonHangs.ToList();
@@ -200,17 +223,17 @@ namespace TLShoes.FormControls.MauThuDao
                             startCol++;
                         }
 
-                        if (CurrentMauThuDao.KetQuaXuongChat != null) workSheet.Cells[9, "B"] = CurrentMauThuDao.KetQuaXuongChat.Ten;
-                        workSheet.Cells[9, "I"] = CurrentMauThuDao.GopYXuongChat;
+                        if (_domainData.KetQuaXuongChat != null) workSheet.Cells[9, "B"] = _domainData.KetQuaXuongChat.Ten;
+                        workSheet.Cells[9, "I"] = _domainData.GopYXuongChat;
 
-                        if (CurrentMauThuDao.KetQuaXuongMay != null) workSheet.Cells[10, "B"] = CurrentMauThuDao.KetQuaXuongMay.Ten;
-                        workSheet.Cells[10, "I"] = CurrentMauThuDao.GopYXuongMay;
+                        if (_domainData.KetQuaXuongMay != null) workSheet.Cells[10, "B"] = _domainData.KetQuaXuongMay.Ten;
+                        workSheet.Cells[10, "I"] = _domainData.GopYXuongMay;
 
-                        if (CurrentMauThuDao.KetQuaXuongDe != null) workSheet.Cells[11, "B"] = CurrentMauThuDao.KetQuaXuongDe.Ten;
-                        workSheet.Cells[11, "I"] = CurrentMauThuDao.GopYXuongDe;
+                        if (_domainData.KetQuaXuongDe != null) workSheet.Cells[11, "B"] = _domainData.KetQuaXuongDe.Ten;
+                        workSheet.Cells[11, "I"] = _domainData.GopYXuongDe;
 
-                        if (CurrentMauThuDao.KetQuaXuongGo != null) workSheet.Cells[12, "B"] = CurrentMauThuDao.KetQuaXuongGo.Ten;
-                        workSheet.Cells[12, "I"] = CurrentMauThuDao.GopYXuongGo;
+                        if (_domainData.KetQuaXuongGo != null) workSheet.Cells[12, "B"] = _domainData.KetQuaXuongGo.Ten;
+                        workSheet.Cells[12, "I"] = _domainData.GopYXuongGo;
 
                         var currentDate = TimeHelper.Current();
                         workSheet.Cells[19, "J"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);

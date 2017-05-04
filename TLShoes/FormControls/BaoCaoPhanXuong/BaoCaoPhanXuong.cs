@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
 using TLShoes.Common;
@@ -13,8 +14,16 @@ namespace TLShoes.FormControls.BaoCaoPhanXuong
         {
             InitializeComponent();
 
-            var lstDonHang = SF.Get<DonHangViewModel>().GetList();
-            SetComboboxDataSource(BaoCaoPhanXuong_DonHangId, lstDonHang, "MaHang");
+            var lstDonhang = new List<TLShoes.DonHang>();
+            if (data != null && data.DonHang.TrangThai == Define.TrangThai.DONE.ToString())
+            {
+                lstDonhang.Add(data.DonHang);
+            }
+            else
+            {
+                lstDonhang = SF.Get<DonHangViewModel>().GetListAvailable();
+            }
+            SetComboboxDataSource(BaoCaoPhanXuong_DonHangId, lstDonhang, "MaHang");
 
             SetComboboxDataSource(BaoCaoPhanXuong_PhanXuong, Define.PhanXuongDict);
 

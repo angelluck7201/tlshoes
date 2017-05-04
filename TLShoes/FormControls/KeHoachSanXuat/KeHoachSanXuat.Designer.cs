@@ -29,6 +29,23 @@
         private void InitializeComponent()
         {
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.btnLoadDonHang = new DevExpress.XtraEditors.SimpleButton();
+            this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSize = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMau = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ChiTietDonHang_Mau = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.DonHangImage = new DevExpress.XtraEditors.PictureEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.SoDH = new System.Windows.Forms.TextBox();
+            this.lblDonHangId = new DevExpress.XtraEditors.LabelControl();
+            this.KeHoachSanXuat_DonHangId = new System.Windows.Forms.ComboBox();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.defaultInfo = new TLShoes.Form.DefaultInfo();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.KeHoachSanXuat_NgayKiemHang = new System.Windows.Forms.DateTimePicker();
             this.KeHoachSanXuat_NgayHoanThanhBpVatTu = new System.Windows.Forms.DateTimePicker();
@@ -52,33 +69,17 @@
             this.KeHoachSanXuat_NgayBatDauPxMay = new System.Windows.Forms.DateTimePicker();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.KeHoachSanXuat_NgayBatDauPxGo = new System.Windows.Forms.DateTimePicker();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.defaultInfo = new TLShoes.Form.DefaultInfo();
-            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
-            this.gridControl = new DevExpress.XtraGrid.GridControl();
-            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSize = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMau = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ChiTietDonHang_Mau = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.DonHangImage = new DevExpress.XtraEditors.PictureEdit();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.SoDH = new System.Windows.Forms.TextBox();
-            this.lblDonHangId = new DevExpress.XtraEditors.LabelControl();
-            this.KeHoachSanXuat_DonHangId = new System.Windows.Forms.ComboBox();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
-            this.xtraTabPage2.SuspendLayout();
-            this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChiTietDonHang_Mau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DonHangImage.Properties)).BeginInit();
+            this.xtraTabPage1.SuspendLayout();
+            this.xtraTabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -91,13 +92,192 @@
             this.xtraTabControl1.Appearance.Options.UseForeColor = true;
             this.xtraTabControl1.Location = new System.Drawing.Point(3, 3);
             this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage3;
             this.xtraTabControl1.Size = new System.Drawing.Size(854, 740);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage3,
             this.xtraTabPage2});
+            // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Appearance.Header.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage3.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage3.Appearance.Header.Options.UseBackColor = true;
+            this.xtraTabPage3.Appearance.Header.Options.UseFont = true;
+            this.xtraTabPage3.Appearance.HeaderActive.BackColor = System.Drawing.SystemColors.Highlight;
+            this.xtraTabPage3.Appearance.HeaderActive.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.xtraTabPage3.Appearance.HeaderActive.Options.UseBackColor = true;
+            this.xtraTabPage3.Appearance.HeaderActive.Options.UseFont = true;
+            this.xtraTabPage3.Controls.Add(this.btnLoadDonHang);
+            this.xtraTabPage3.Controls.Add(this.gridControl);
+            this.xtraTabPage3.Controls.Add(this.DonHangImage);
+            this.xtraTabPage3.Controls.Add(this.labelControl5);
+            this.xtraTabPage3.Controls.Add(this.SoDH);
+            this.xtraTabPage3.Controls.Add(this.lblDonHangId);
+            this.xtraTabPage3.Controls.Add(this.KeHoachSanXuat_DonHangId);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(847, 704);
+            this.xtraTabPage3.Text = "Đơn Hàng";
+            // 
+            // btnLoadDonHang
+            // 
+            this.btnLoadDonHang.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnLoadDonHang.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnLoadDonHang.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLoadDonHang.Appearance.Options.UseBackColor = true;
+            this.btnLoadDonHang.Appearance.Options.UseFont = true;
+            this.btnLoadDonHang.Appearance.Options.UseForeColor = true;
+            this.btnLoadDonHang.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnLoadDonHang.Location = new System.Drawing.Point(310, 27);
+            this.btnLoadDonHang.Name = "btnLoadDonHang";
+            this.btnLoadDonHang.Size = new System.Drawing.Size(75, 30);
+            this.btnLoadDonHang.TabIndex = 88;
+            this.btnLoadDonHang.Text = "Chọn";
+            this.btnLoadDonHang.Click += new System.EventHandler(this.btnLoadDonHang_Click);
+            // 
+            // gridControl
+            // 
+            this.gridControl.Location = new System.Drawing.Point(11, 246);
+            this.gridControl.MainView = this.gridView;
+            this.gridControl.Name = "gridControl";
+            this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.ChiTietDonHang_Mau,
+            this.repositoryItemLookUpEdit1});
+            this.gridControl.Size = new System.Drawing.Size(833, 438);
+            this.gridControl.TabIndex = 87;
+            this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView});
+            // 
+            // gridView
+            // 
+            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Id,
+            this.colSize,
+            this.colMau,
+            this.colSoLuong});
+            this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
+            this.gridView.GridControl = this.gridControl;
+            this.gridView.GroupCount = 1;
+            this.gridView.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", null, "(TỔNG={0:0.##})")});
+            this.gridView.Name = "gridView";
+            this.gridView.OptionsBehavior.AutoExpandAllGroups = true;
+            this.gridView.OptionsBehavior.Editable = false;
+            this.gridView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Inplace;
+            this.gridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
+            this.gridView.OptionsView.ShowFooter = true;
+            this.gridView.OptionsView.ShowGroupedColumns = true;
+            this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colMau, DevExpress.Data.ColumnSortOrder.Ascending)});
+            // 
+            // Id
+            // 
+            this.Id.Caption = "Id";
+            this.Id.FieldName = "Id";
+            this.Id.Name = "Id";
+            // 
+            // colSize
+            // 
+            this.colSize.Caption = "Size";
+            this.colSize.FieldName = "Size";
+            this.colSize.Name = "colSize";
+            this.colSize.Visible = true;
+            this.colSize.VisibleIndex = 0;
+            // 
+            // colMau
+            // 
+            this.colMau.Caption = "Màu";
+            this.colMau.FieldName = "MauId";
+            this.colMau.Name = "colMau";
+            this.colMau.Visible = true;
+            this.colMau.VisibleIndex = 1;
+            // 
+            // colSoLuong
+            // 
+            this.colSoLuong.Caption = "Số Lượng";
+            this.colSoLuong.FieldName = "SoLuong";
+            this.colSoLuong.Name = "colSoLuong";
+            this.colSoLuong.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", "TỔNG={0:0.##}")});
+            this.colSoLuong.Visible = true;
+            this.colSoLuong.VisibleIndex = 2;
+            // 
+            // ChiTietDonHang_Mau
+            // 
+            this.ChiTietDonHang_Mau.AutoHeight = false;
+            this.ChiTietDonHang_Mau.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ChiTietDonHang_Mau.Name = "ChiTietDonHang_Mau";
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            // 
+            // DonHangImage
+            // 
+            this.DonHangImage.Location = new System.Drawing.Point(445, 30);
+            this.DonHangImage.Name = "DonHangImage";
+            this.DonHangImage.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.DonHangImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.DonHangImage.Size = new System.Drawing.Size(355, 188);
+            this.DonHangImage.TabIndex = 86;
+            this.DonHangImage.TabStop = true;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.labelControl5.Location = new System.Drawing.Point(28, 86);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(44, 17);
+            this.labelControl5.TabIndex = 85;
+            this.labelControl5.Text = "Số ĐH";
+            // 
+            // SoDH
+            // 
+            this.SoDH.Enabled = false;
+            this.SoDH.Location = new System.Drawing.Point(108, 80);
+            this.SoDH.Name = "SoDH";
+            this.SoDH.Size = new System.Drawing.Size(277, 23);
+            this.SoDH.TabIndex = 84;
+            // 
+            // lblDonHangId
+            // 
+            this.lblDonHangId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblDonHangId.Location = new System.Drawing.Point(28, 35);
+            this.lblDonHangId.Name = "lblDonHangId";
+            this.lblDonHangId.Size = new System.Drawing.Size(56, 16);
+            this.lblDonHangId.TabIndex = 82;
+            this.lblDonHangId.Text = "Mã Hàng";
+            // 
+            // KeHoachSanXuat_DonHangId
+            // 
+            this.KeHoachSanXuat_DonHangId.FormattingEnabled = true;
+            this.KeHoachSanXuat_DonHangId.Location = new System.Drawing.Point(108, 30);
+            this.KeHoachSanXuat_DonHangId.Name = "KeHoachSanXuat_DonHangId";
+            this.KeHoachSanXuat_DonHangId.Size = new System.Drawing.Size(184, 24);
+            this.KeHoachSanXuat_DonHangId.TabIndex = 83;
+            // 
+            // xtraTabPage1
+            // 
+            this.xtraTabPage1.Appearance.Header.BackColor = System.Drawing.Color.Silver;
+            this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
+            this.xtraTabPage1.Controls.Add(this.defaultInfo);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(847, 704);
+            this.xtraTabPage1.Text = "Thông tin người dùng";
+            // 
+            // defaultInfo
+            // 
+            this.defaultInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.defaultInfo.Location = new System.Drawing.Point(0, 0);
+            this.defaultInfo.Name = "defaultInfo";
+            this.defaultInfo.Size = new System.Drawing.Size(847, 704);
+            this.defaultInfo.TabIndex = 11;
             // 
             // xtraTabPage2
             // 
@@ -310,169 +490,6 @@
             this.KeHoachSanXuat_NgayBatDauPxGo.Size = new System.Drawing.Size(286, 23);
             this.KeHoachSanXuat_NgayBatDauPxGo.TabIndex = 11;
             // 
-            // xtraTabPage1
-            // 
-            this.xtraTabPage1.Appearance.Header.BackColor = System.Drawing.Color.Silver;
-            this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
-            this.xtraTabPage1.Controls.Add(this.defaultInfo);
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(847, 704);
-            this.xtraTabPage1.Text = "Thông tin người dùng";
-            // 
-            // defaultInfo
-            // 
-            this.defaultInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.defaultInfo.Location = new System.Drawing.Point(0, 0);
-            this.defaultInfo.Name = "defaultInfo";
-            this.defaultInfo.Size = new System.Drawing.Size(847, 704);
-            this.defaultInfo.TabIndex = 11;
-            // 
-            // xtraTabPage3
-            // 
-            this.xtraTabPage3.Appearance.Header.BackColor = System.Drawing.SystemColors.Highlight;
-            this.xtraTabPage3.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.xtraTabPage3.Appearance.Header.Options.UseBackColor = true;
-            this.xtraTabPage3.Appearance.Header.Options.UseFont = true;
-            this.xtraTabPage3.Appearance.HeaderActive.BackColor = System.Drawing.SystemColors.Highlight;
-            this.xtraTabPage3.Appearance.HeaderActive.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.xtraTabPage3.Appearance.HeaderActive.Options.UseBackColor = true;
-            this.xtraTabPage3.Appearance.HeaderActive.Options.UseFont = true;
-            this.xtraTabPage3.Controls.Add(this.gridControl);
-            this.xtraTabPage3.Controls.Add(this.DonHangImage);
-            this.xtraTabPage3.Controls.Add(this.labelControl5);
-            this.xtraTabPage3.Controls.Add(this.SoDH);
-            this.xtraTabPage3.Controls.Add(this.lblDonHangId);
-            this.xtraTabPage3.Controls.Add(this.KeHoachSanXuat_DonHangId);
-            this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(847, 704);
-            this.xtraTabPage3.Text = "Đơn Hàng";
-            // 
-            // gridControl
-            // 
-            this.gridControl.Location = new System.Drawing.Point(11, 246);
-            this.gridControl.MainView = this.gridView;
-            this.gridControl.Name = "gridControl";
-            this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.ChiTietDonHang_Mau,
-            this.repositoryItemLookUpEdit1});
-            this.gridControl.Size = new System.Drawing.Size(833, 438);
-            this.gridControl.TabIndex = 87;
-            this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView});
-            // 
-            // gridView
-            // 
-            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.Id,
-            this.colSize,
-            this.colMau,
-            this.colSoLuong});
-            this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
-            this.gridView.GridControl = this.gridControl;
-            this.gridView.GroupCount = 1;
-            this.gridView.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", null, "(TỔNG={0:0.##})")});
-            this.gridView.Name = "gridView";
-            this.gridView.OptionsBehavior.AutoExpandAllGroups = true;
-            this.gridView.OptionsBehavior.Editable = false;
-            this.gridView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Inplace;
-            this.gridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
-            this.gridView.OptionsView.ShowFooter = true;
-            this.gridView.OptionsView.ShowGroupedColumns = true;
-            this.gridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colMau, DevExpress.Data.ColumnSortOrder.Ascending)});
-            // 
-            // Id
-            // 
-            this.Id.Caption = "Id";
-            this.Id.FieldName = "Id";
-            this.Id.Name = "Id";
-            // 
-            // colSize
-            // 
-            this.colSize.Caption = "Size";
-            this.colSize.FieldName = "Size";
-            this.colSize.Name = "colSize";
-            this.colSize.Visible = true;
-            this.colSize.VisibleIndex = 0;
-            // 
-            // colMau
-            // 
-            this.colMau.Caption = "Màu";
-            this.colMau.FieldName = "MauId";
-            this.colMau.Name = "colMau";
-            this.colMau.Visible = true;
-            this.colMau.VisibleIndex = 1;
-            // 
-            // colSoLuong
-            // 
-            this.colSoLuong.Caption = "Số Lượng";
-            this.colSoLuong.FieldName = "SoLuong";
-            this.colSoLuong.Name = "colSoLuong";
-            this.colSoLuong.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SoLuong", "TỔNG={0:0.##}")});
-            this.colSoLuong.Visible = true;
-            this.colSoLuong.VisibleIndex = 2;
-            // 
-            // ChiTietDonHang_Mau
-            // 
-            this.ChiTietDonHang_Mau.AutoHeight = false;
-            this.ChiTietDonHang_Mau.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ChiTietDonHang_Mau.Name = "ChiTietDonHang_Mau";
-            // 
-            // repositoryItemLookUpEdit1
-            // 
-            this.repositoryItemLookUpEdit1.AutoHeight = false;
-            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
-            // 
-            // DonHangImage
-            // 
-            this.DonHangImage.Location = new System.Drawing.Point(445, 30);
-            this.DonHangImage.Name = "DonHangImage";
-            this.DonHangImage.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.DonHangImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.DonHangImage.Size = new System.Drawing.Size(355, 188);
-            this.DonHangImage.TabIndex = 86;
-            this.DonHangImage.TabStop = true;
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.labelControl5.Location = new System.Drawing.Point(28, 86);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(44, 17);
-            this.labelControl5.TabIndex = 85;
-            this.labelControl5.Text = "Số ĐH";
-            // 
-            // SoDH
-            // 
-            this.SoDH.Enabled = false;
-            this.SoDH.Location = new System.Drawing.Point(108, 80);
-            this.SoDH.Name = "SoDH";
-            this.SoDH.Size = new System.Drawing.Size(277, 23);
-            this.SoDH.TabIndex = 84;
-            // 
-            // lblDonHangId
-            // 
-            this.lblDonHangId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblDonHangId.Location = new System.Drawing.Point(28, 35);
-            this.lblDonHangId.Name = "lblDonHangId";
-            this.lblDonHangId.Size = new System.Drawing.Size(56, 16);
-            this.lblDonHangId.TabIndex = 82;
-            this.lblDonHangId.Text = "Mã Hàng";
-            // 
-            // KeHoachSanXuat_DonHangId
-            // 
-            this.KeHoachSanXuat_DonHangId.FormattingEnabled = true;
-            this.KeHoachSanXuat_DonHangId.Location = new System.Drawing.Point(108, 30);
-            this.KeHoachSanXuat_DonHangId.Name = "KeHoachSanXuat_DonHangId";
-            this.KeHoachSanXuat_DonHangId.Size = new System.Drawing.Size(277, 24);
-            this.KeHoachSanXuat_DonHangId.TabIndex = 83;
-            this.KeHoachSanXuat_DonHangId.SelectedIndexChanged += new System.EventHandler(this.KeHoachSanXuat_DonHangId_SelectedIndexChanged);
-            // 
             // btnSave
             // 
             this.btnSave.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
@@ -499,9 +516,6 @@
             this.Size = new System.Drawing.Size(857, 800);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
-            this.xtraTabPage2.ResumeLayout(false);
-            this.xtraTabPage2.PerformLayout();
-            this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
             this.xtraTabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
@@ -509,6 +523,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ChiTietDonHang_Mau)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DonHangImage.Properties)).EndInit();
+            this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPage2.ResumeLayout(false);
+            this.xtraTabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -556,5 +573,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn colSoLuong;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox ChiTietDonHang_Mau;
+        private DevExpress.XtraEditors.SimpleButton btnLoadDonHang;
     }
 }

@@ -11,31 +11,44 @@ namespace TLShoes.FormControls.HuongDanDongGoi
     public partial class ucHuongDanDongGoi : BaseUserControl
     {
         private int SoLuong = 0;
-        private TLShoes.HuongDanDongGoi _curData;
+        private TLShoes.HuongDanDongGoi _domainData;
         public ucHuongDanDongGoi(TLShoes.HuongDanDongGoi data = null)
         {
             InitializeComponent();
 
-            HuongDanDongGoi_DonHangId.DisplayMember = "MaHang";
-            HuongDanDongGoi_DonHangId.ValueMember = "Id";
-            HuongDanDongGoi_DonHangId.DataSource = new BindingSource(SF.Get<DonHangViewModel>().GetList(), null);
+            var lstDonhang = new List<TLShoes.DonHang>();
+            if (data != null && data.DonHang.TrangThai == Define.TrangThai.DONE.ToString())
+            {
+                lstDonhang.Add(data.DonHang);
+            }
+            else
+            {
+                lstDonhang = SF.Get<DonHangViewModel>().GetListAvailable();
+            }
+            SetComboboxDataSource(HuongDanDongGoi_DonHangId, lstDonhang, "MaHang");
 
-            HuongDanDongGoi_CachDong.DisplayMember = "Value";
-            HuongDanDongGoi_CachDong.ValueMember = "Key";
-            HuongDanDongGoi_CachDong.DataSource = new BindingSource(Define.LoaiDongDic, null);
+            SetComboboxDataSource(HuongDanDongGoi_CachDong, Define.LoaiDongDic);
 
             Init(data);
 
             if (data != null)
             {
-                _curData = data;
-                HuongDanDongGoi_CachDong.SelectedValue = PrimitiveConvert.StringToEnum<Define.LoaiDong>(data.CachDong);
+                _domainData = data;
                 SF.Get<NhatKyThayDoiViewModel>().GetDataSource(gridNhatKy, Define.ModelType.HUONG_DAN_DONG_GOI, data.Id);
             }
 
             CachDongChange();
             LayMau();
             SoDoiChange();
+            InitAuthorize();
+        }
+
+        private void InitAuthorize()
+        {
+            if (_domainData != null)
+            {
+                SF.Get<DonHangViewModel>().CheckDoneBaseOnDonHang(_domainData.DonHangId.GetValueOrDefault(), btnSave, lblMessage);
+            }
         }
 
         public override bool SaveData()
@@ -50,12 +63,12 @@ namespace TLShoes.FormControls.HuongDanDongGoi
             using (var transaction = new TransactionScope())
             {
                 // Save huong dan 
-                var saveData = CRUD.GetFormObject(FormControls, _curData);
+                var saveData = CRUD.GetFormObject(FormControls, _domainData);
                 if (saveData.CachDong == "SOLID")
                 {
                     saveData.DongAssorment = "";
                 }
-                CRUD.DecorateSaveData(saveData, _curData == null);
+                CRUD.DecorateSaveData(saveData, _domainData == null);
                 SF.Get<HuongDanDongGoiViewModel>().Save(saveData);
 
                 var nhatKyThayDoi = new NhatKyThayDoi();

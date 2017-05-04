@@ -51,6 +51,8 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.defaultInfo = new TLShoes.Form.DefaultInfo();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.lblMessage = new DevExpress.XtraEditors.LabelControl();
+            this.btnSelect = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.CongNgheSanXuat_HinhCongNgheDuocDuyet.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CongNgheSanXuat_HinhBangThongSo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -64,9 +66,8 @@
             this.CongNgheSanXuat_DonHangId.FormattingEnabled = true;
             this.CongNgheSanXuat_DonHangId.Location = new System.Drawing.Point(175, 23);
             this.CongNgheSanXuat_DonHangId.Name = "CongNgheSanXuat_DonHangId";
-            this.CongNgheSanXuat_DonHangId.Size = new System.Drawing.Size(511, 24);
+            this.CongNgheSanXuat_DonHangId.Size = new System.Drawing.Size(419, 24);
             this.CongNgheSanXuat_DonHangId.TabIndex = 0;
-            this.CongNgheSanXuat_DonHangId.SelectedValueChanged += new System.EventHandler(this.CongNgheSanXuat_DonHangId_SelectedValueChanged);
             // 
             // CongNgheSanXuat_MauDoiId
             // 
@@ -245,6 +246,7 @@
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseBackColor = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseFont = true;
             this.xtraTabPage2.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.xtraTabPage2.Controls.Add(this.btnSelect);
             this.xtraTabPage2.Controls.Add(this.lblDonHangId);
             this.xtraTabPage2.Controls.Add(this.CongNgheSanXuat_HinhBangThongSo);
             this.xtraTabPage2.Controls.Add(this.CongNgheSanXuat_DonHangId);
@@ -299,11 +301,38 @@
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Lưu";
             // 
+            // lblMessage
+            // 
+            this.lblMessage.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblMessage.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.lblMessage.Location = new System.Drawing.Point(31, 671);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(167, 17);
+            this.lblMessage.TabIndex = 72;
+            this.lblMessage.Text = "Dao này đã được thử rồi";
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnSelect.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnSelect.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSelect.Appearance.Options.UseBackColor = true;
+            this.btnSelect.Appearance.Options.UseFont = true;
+            this.btnSelect.Appearance.Options.UseForeColor = true;
+            this.btnSelect.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnSelect.Location = new System.Drawing.Point(611, 21);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(75, 30);
+            this.btnSelect.TabIndex = 81;
+            this.btnSelect.Text = "Chọn";
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
             // ucCongNgheSanXuat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.btnSave);
             this.Name = "ucCongNgheSanXuat";
@@ -316,6 +345,7 @@
             this.xtraTabPage2.PerformLayout();
             this.xtraTabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -344,5 +374,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private Form.DefaultInfo defaultInfo;
         private DevExpress.XtraEditors.SimpleButton btnSave;
+        private DevExpress.XtraEditors.LabelControl lblMessage;
+        private DevExpress.XtraEditors.SimpleButton btnSelect;
     }
 }

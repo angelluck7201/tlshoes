@@ -24,8 +24,16 @@ namespace TLShoes.FormControls.XuatKho
         {
             InitializeComponent();
 
-            var lstDonHang = SF.Get<DonHangViewModel>().GetList();
-            SetComboboxDataSource(PhieuXuatKho_DonHangId, lstDonHang, "MaHang");
+            var lstDonhang = new List<TLShoes.DonHang>();
+            if (data != null && data.TrangThai == Define.TrangThai.DUYET_PVT.ToString())
+            {
+                lstDonhang.Add(data.DonHang);
+            }
+            else
+            {
+                lstDonhang = SF.Get<DonHangViewModel>().GetList(Define.TrangThai.DUYET);
+            }
+            SetComboboxDataSource(PhieuXuatKho_DonHangId, lstDonhang, "MaHang");
 
             SetComboboxDataSource(PhieuXuatKho_Kho, Define.KhoDic);
 
@@ -38,11 +46,10 @@ namespace TLShoes.FormControls.XuatKho
             if (data != null)
             {
                 SF.Get<ChiTietXuatKhoViewModel>().GetDataSource(data.Id, ref ChiTietXuatKhoList);
-                DonHangChange((long)data.DonHangId);
+                DonHangChange(data.DonHangId.GetValueOrDefault());
                 _currentData = data;
                 btnExport.Visible = true;
                 gridNhatKy.DataSource = data.ChiTietXuatKhoes.SelectMany(s => s.NhatKyXuatKhoes).ToList();
-
             }
             gridNguyenLieu.DataSource = ChiTietXuatKhoList;
 
@@ -61,6 +68,7 @@ namespace TLShoes.FormControls.XuatKho
             btnExport.Visible = false;
             btnSave.Enabled = true;
             btnXuatLe.Visible = false;
+            lblMessage.Text = "";
 
             if (_currentData != null)
             {
@@ -98,6 +106,16 @@ namespace TLShoes.FormControls.XuatKho
                     btnXuatLe.Visible = true;
                     btnDuyet.Visible = true;
                     btnDuyet.Enabled = false;
+                }
+
+                if (_currentData.DonHang.TrangThai == Define.TrangThai.DONE.ToString())
+                {
+                    btnExport.Visible = true;
+                    btnDuyet.Visible = true;
+                    btnDuyet.Enabled = false;
+                    btnCancel.Enabled = false;
+                    btnXuatLe.Enabled = false;
+                    lblMessage.Text = Define.MESSAGE_NOT_AVAILABLE_DON_HANG_DONE;
                 }
 
                 var verifyAuthorize = Authorization.CheckAuthorization("PhieuXuatKho", Define.Authorization.VERIFY);
@@ -178,7 +196,10 @@ namespace TLShoes.FormControls.XuatKho
 
         public string ValidateInput()
         {
-
+            if (PhieuXuatKho_DonHangId.SelectedValue == null)
+            {
+                return "Đơn Hàng";
+            }
             return string.Empty;
         }
 
@@ -204,73 +225,43 @@ namespace TLShoes.FormControls.XuatKho
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            var saveDialog = new SaveFileDialog();
-            saveDialog.Filter = Define.EXPORT_EXTENSION;
-            if (saveDialog.ShowDialog() == DialogResult.OK)
+            Export(Define.TEMPLATE_XUAT_KHO, (workBook, workSheet) =>
             {
-                ThreadHelper.LoadForm(() =>
+                workSheet.Cells[3, "B"] = _currentData.BoPhan;
+                var chiLenhInfo = SF.Get<DonHangViewModel>().GetDetail((long)_currentData.DonHangId).ChiLenhs.FirstOrDefault();
+                if (chiLenhInfo != null)
                 {
-                    //Start Excel and get Application object.
-                    var excel = new Application();
-
-                    //Get a new workbook.
-                    var workBook = excel.Workbooks.Open(Path.Combine(FileHelper.TemplatePath, Define.TEMPLATE_XUAT_KHO));
-                    var workSheet = (_Worksheet)workBook.ActiveSheet;
-
-                    try
-                    {
-                        workSheet.Cells[3, "B"] = _currentData.BoPhan;
-                        var chiLenhInfo = SF.Get<DonHangViewModel>().GetDetail((long)_currentData.DonHangId).ChiLenhs.FirstOrDefault();
-                        if (chiLenhInfo != null)
-                        {
-                            workSheet.Cells[3, "F"] = chiLenhInfo.SoPhieu;
-                        }
-                        var currentDate = _currentData.NgayXuat;
-                        workSheet.Cells[3, "H"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
-                        var startRow = 6;
-                        foreach (var chiTietXuatKhoe in _currentData.ChiTietXuatKhoes)
-                        {
-                            if (startRow > 15)
-                            {
-                                var range = workSheet.Range["A" + (startRow - 1), "B" + (startRow - 1)];
-                                range.EntireRow.Copy();
-                                var row = (Range)workSheet.Rows[startRow];
-                                row.EntireRow.Insert(XlInsertShiftDirection.xlShiftDown, range);
-                            }
-
-                            workSheet.Cells[startRow, "A"] = _currentData.DonHang.OrderNo;
-                            workSheet.Cells[startRow, "B"] = _currentData.DonHang.MaHang;
-
-                            var nguyenLieu = chiTietXuatKhoe.NguyenLieu;
-                            if (nguyenLieu != null)
-                            {
-                                workSheet.Cells[startRow, "C"] = nguyenLieu.Ten;
-                                if (nguyenLieu.Mau != null) workSheet.Cells[startRow, "E"] = nguyenLieu.Mau.Ten;
-                                workSheet.Cells[startRow, "F"] = nguyenLieu.QuyCach;
-                                workSheet.Cells[startRow, "G"] = chiTietXuatKhoe.SoLuong;
-                                if (nguyenLieu.DVT != null) workSheet.Cells[startRow, "H"] = nguyenLieu.DVT.Ten;
-                                workSheet.Cells[startRow, "I"] = nguyenLieu.GhiChu;
-                            }
-                            startRow++;
-                        }
-
-                        workBook.SaveAs(saveDialog.FileName);
-                    }
-                    finally
-                    {
-                        workBook.Close();
-                    }
-
-                });
-
-
-                var confirmDialog = MessageBox.Show(Define.MESSAGE_EXPORT_SUCCESS_TEXT, Define.MESSAGE_EXPORT_SUCCESS_TITLE, MessageBoxButtons.YesNo);
-                if (confirmDialog == DialogResult.Yes)
-                {
-                    Process.Start(saveDialog.FileName);
+                    workSheet.Cells[3, "F"] = chiLenhInfo.SoPhieu;
                 }
-                this.ParentForm.Close();
-            }
+                var currentDate = _currentData.NgayXuat;
+                workSheet.Cells[3, "H"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
+                var startRow = 6;
+                foreach (var chiTietXuatKhoe in _currentData.ChiTietXuatKhoes)
+                {
+                    if (startRow > 15)
+                    {
+                        var range = workSheet.Range["A" + (startRow - 1), "B" + (startRow - 1)];
+                        range.EntireRow.Copy();
+                        var row = (Range)workSheet.Rows[startRow];
+                        row.EntireRow.Insert(XlInsertShiftDirection.xlShiftDown, range);
+                    }
+
+                    workSheet.Cells[startRow, "A"] = _currentData.DonHang.OrderNo;
+                    workSheet.Cells[startRow, "B"] = _currentData.DonHang.MaHang;
+
+                    var nguyenLieu = chiTietXuatKhoe.NguyenLieu;
+                    if (nguyenLieu != null)
+                    {
+                        workSheet.Cells[startRow, "C"] = nguyenLieu.Ten;
+                        if (nguyenLieu.Mau != null) workSheet.Cells[startRow, "E"] = nguyenLieu.Mau.Ten;
+                        workSheet.Cells[startRow, "F"] = nguyenLieu.QuyCach;
+                        workSheet.Cells[startRow, "G"] = chiTietXuatKhoe.SoLuong;
+                        if (nguyenLieu.DVT != null) workSheet.Cells[startRow, "H"] = nguyenLieu.DVT.Ten;
+                        workSheet.Cells[startRow, "I"] = nguyenLieu.GhiChu;
+                    }
+                    startRow++;
+                }
+            });
         }
 
         private void btnXuatLe_Click(object sender, EventArgs e)

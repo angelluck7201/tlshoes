@@ -125,6 +125,7 @@ GhiChuNoiBo nvarchar(1000) default '',
 GhiChu nvarchar(1000) default '',
 );
 
+alter table DonHang add TrangThai varchar(20) default ''
 create table DonHang(
 Id bigint primary key identity(1,1),
 AuthorId bigint foreign key references UserAccount(Id),
@@ -145,6 +146,7 @@ NgayNhan datetime2 default getdate() not null,
 NgayXuat datetime2 default getdate() not null,
 HinhAnh text default '',
 SoLuong int default 0 not null,
+TrangThai varchar(20) default '',
 
 GopYVatTu nvarchar(1000) default '',
 GopYXuongChat nvarchar(1000) default '',
@@ -591,10 +593,12 @@ NguoiGiao nvarchar(50) default '',
 DiaChi nvarchar(100) default '',
 LyDo nvarchar(100) default '',
 Kho nvarchar(50) default '',
+LoaiPhieu nvarchar(50) default '',
 NgayNhap datetime2 default getdate() not null,
 SoPhieu nvarchar(100) default '',
 TrangThai nvarchar(100) default '',
 DanhGiaId bigint foreign key references DanhGia(Id),
+ChiLenhId bigint foreign key references ChiLenh(Id),
 NgayDuyet datetime2 default getdate() not null,
 NguoiDuyetId bigint foreign key references UserAccount(Id),
 NgayLap datetime2 default getdate() not null,

@@ -2,16 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
-using DevExpress.XtraEditors.Controls;
 using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
 using TLShoes.ViewModels;
-using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace TLShoes.FormControls.NhapKho
 {
@@ -26,10 +22,13 @@ namespace TLShoes.FormControls.NhapKho
             Init(data);
 
             SetComboboxDataSource(PhieuNhapKho_Kho, Define.KhoDic);
+            SetComboboxDataSource(PhieuNhapKho_LoaiPhieu, Define.LoaiNhapDict);
+
+            var lstChiLenh = SF.Get<ChiLenhViewModel>().GetList(Define.TrangThai.DONE);
+            SetComboboxDataSource(PhieuNhapKho_ChiLenhId, lstChiLenh, "SoPhieu");
 
             var lstDanhGia = SF.Get<DanhGiaViewModel>().GetList();
             SetComboboxDataSource(PhieuNhapKho_DanhGiaId, lstDanhGia, "SoPhieu");
-
 
             if (data != null)
             {
@@ -45,6 +44,8 @@ namespace TLShoes.FormControls.NhapKho
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
 
             DanhGiaChange();
+            ChiLenhChange();
+            LoaiPhieuChange();
             InitAuthorize();
         }
 
@@ -55,6 +56,7 @@ namespace TLShoes.FormControls.NhapKho
             btnDuyet.Visible = false;
             btnExport.Visible = false;
             btnSave.Enabled = true;
+            btnChiTiet.Enabled = true;
 
             if (_currentData != null)
             {
@@ -83,6 +85,7 @@ namespace TLShoes.FormControls.NhapKho
                 if (trangThai > Define.TrangThai.HUY)
                 {
                     btnSave.Enabled = false;
+                    btnChiTiet.Enabled = false;
                 }
 
                 // Allow export after final verify
@@ -163,7 +166,7 @@ namespace TLShoes.FormControls.NhapKho
             if (selectedValue != null)
             {
                 var danhGiaInfo = SF.Get<DanhGiaViewModel>().GetDetail((long)selectedValue);
-                lblSoDonHang.Text = string.Format("Số đơn hàng: {0}", danhGiaInfo.DonDatHang.SoDH);
+                lblSoDonHang.Text = string.Format("Số đơn đặt hàng: {0}", danhGiaInfo.DonDatHang.SoDH);
             }
             else
             {
@@ -171,71 +174,135 @@ namespace TLShoes.FormControls.NhapKho
             }
         }
 
-        private void btnExport_Click(object sender, EventArgs e)
+        private void ChiLenhChange()
         {
-            var saveDialog = new SaveFileDialog();
-            saveDialog.Filter = Define.EXPORT_EXTENSION;
-            if (saveDialog.ShowDialog() == DialogResult.OK)
+            var selectedValue = PhieuNhapKho_ChiLenhId.SelectedValue;
+            if (selectedValue != null)
+            {
+                var chilenhInfo = SF.Get<ChiLenhViewModel>().GetDetail((long)selectedValue);
+                lblSoDonHang.Text = string.Format("Số đơn hàng: {0}", chilenhInfo.DonHang.OrderNo);
+            }
+            else
+            {
+                lblSoDonHang.Text = "";
+            }
+        }
+
+        private void LoaiPhieuChange()
+        {
+            var selectedValue = PhieuNhapKho_LoaiPhieu.SelectedValue;
+            if (selectedValue != null)
+            {
+                if (selectedValue.ToString() == Define.LoaiNhap.THU_HOI_CHI_LENH.ToString())
+                {
+                    lblChiLenhId.Visible = true;
+                    PhieuNhapKho_ChiLenhId.Visible = true;
+
+                    lblDanhGiaId.Visible = false;
+                    PhieuNhapKho_DanhGiaId.Visible = false;
+
+                }
+                else
+                {
+                    lblChiLenhId.Visible = false;
+                    PhieuNhapKho_ChiLenhId.Visible = false;
+
+                    lblDanhGiaId.Visible = true;
+                    PhieuNhapKho_DanhGiaId.Visible = true;
+                }
+            }
+        }
+
+        private void InitChiTietFromChiLenh()
+        {
+            var selectedValue = PhieuNhapKho_LoaiPhieu.SelectedValue;
+            if (selectedValue != null && selectedValue.ToString() == Define.LoaiNhap.THU_HOI_CHI_LENH.ToString())
             {
                 ThreadHelper.LoadForm(() =>
                 {
-                    //Start Excel and get Application object.
-                    var excel = new Application();
-
-                    //Get a new workbook.
-                    var workBook = excel.Workbooks.Open(Path.Combine(FileHelper.TemplatePath, Define.TEMPLATE_NHAP_KHO));
-                    var workSheet = (_Worksheet)workBook.ActiveSheet;
-
-                    try
+                    var chiLenhId = PhieuNhapKho_ChiLenhId.SelectedValue;
+                    if (chiLenhId != null)
                     {
-
-                        var currentDate = _currentData.NgayNhap;
-                        workSheet.Cells[3, "I"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
-                        var startRow = 6;
-                        foreach (var chiTiet in _currentData.ChiTietNhapKhoes)
+                        var chilenh = SF.Get<ChiLenhViewModel>().GetDetail((long)chiLenhId);
+                        if (chilenh != null)
                         {
-                            if (startRow > 15)
+                            ChiTietNhapKhoList.Clear();
+                            foreach (var nguyenLieuChiLenh in chilenh.NguyenLieuChiLenhs.SelectMany(s=>s.ChiTietNguyenLieux))
                             {
-                                var range = workSheet.Range["A" + (startRow - 1), "B" + (startRow - 1)];
-                                range.EntireRow.Copy();
-                                var row = (Range)workSheet.Rows[startRow];
-                                row.EntireRow.Insert(XlInsertShiftDirection.xlShiftDown, range);
+                                var chiTietNhapKho = new ChiTietNhapKho();
+                                chiTietNhapKho.NguyenLieuId = nguyenLieuChiLenh.NguyenLieuChiLenhId;
+                                chiTietNhapKho.SoLuong = nguyenLieuChiLenh.NguyenLieuChiLenh.DinhMucThuc;
+                                ChiTietNhapKhoList.Add(chiTietNhapKho);
+                                gridViewNguyenLieu.RefreshData();
                             }
-                            if (_currentData.DanhGia == null || _currentData.DanhGia.DonDatHang == null) continue;
-                            var donDatHang = _currentData.DanhGia.DonDatHang;
-                            workSheet.Cells[startRow, "A"] = donDatHang.NhaCungCap.TenCongTy;
-                            workSheet.Cells[startRow, "B"] = donDatHang.SoDH;
-                            var nguyenLieu = chiTiet.NguyenLieu;
-                            if (nguyenLieu != null)
-                            {
-                                workSheet.Cells[startRow, "C"] = nguyenLieu.MaNguyenLieu;
-                                workSheet.Cells[startRow, "D"] = nguyenLieu.Ten;
-                                if (nguyenLieu.Mau != null) workSheet.Cells[startRow, "F"] = nguyenLieu.Mau.Ten;
-                                workSheet.Cells[startRow, "G"] = nguyenLieu.QuyCach;
-                                workSheet.Cells[startRow, "H"] = chiTiet.SoLuong;
-                                if (nguyenLieu.DVT != null) workSheet.Cells[startRow, "I"] = nguyenLieu.DVT.Ten;
-                                workSheet.Cells[startRow, "J"] = nguyenLieu.GhiChu;
-                            }
-                            startRow++;
                         }
-
-                        workBook.SaveAs(saveDialog.FileName);
                     }
-                    finally
-                    {
-                        workBook.Close();
-                    }
-
                 });
-
-
-                var confirmDialog = MessageBox.Show(Define.MESSAGE_EXPORT_SUCCESS_TEXT, Define.MESSAGE_EXPORT_SUCCESS_TITLE, MessageBoxButtons.YesNo);
-                if (confirmDialog == DialogResult.Yes)
-                {
-                    Process.Start(saveDialog.FileName);
-                }
-                this.ParentForm.Close();
             }
+        }
+
+        private void InitChiTietFromDonDatHang()
+        {
+            var selectedValue = PhieuNhapKho_LoaiPhieu.SelectedValue;
+            if (selectedValue != null && selectedValue.ToString() == Define.LoaiNhap.DON_DAT_HANG.ToString())
+            {
+                ThreadHelper.LoadForm(() =>
+                {
+                    var phieuDanhGiaId = PhieuNhapKho_DanhGiaId.SelectedValue;
+                    if (phieuDanhGiaId != null)
+                    {
+                        var danhGia = SF.Get<DanhGiaViewModel>().GetDetail((long)phieuDanhGiaId);
+                        if (danhGia != null)
+                        {
+                            ChiTietNhapKhoList.Clear();
+                            foreach (var nguyenLieuDatHang in danhGia.DonDatHang.ChiTietDonDatHangs)
+                            {
+                                var chiTietNhapKho = new ChiTietNhapKho();
+                                chiTietNhapKho.NguyenLieuId = nguyenLieuDatHang.NguyenLieuId;
+                                chiTietNhapKho.SoLuong = nguyenLieuDatHang.SoLuong;
+                                ChiTietNhapKhoList.Add(chiTietNhapKho);
+                                gridViewNguyenLieu.RefreshData();
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            Export(Define.TEMPLATE_NHAP_KHO, (workBook, workSheet) =>
+            {
+                var currentDate = _currentData.NgayNhap;
+                workSheet.Cells[3, "I"] = string.Format("Ngày {0} Tháng {1} Năm {2}", currentDate.Day, currentDate.Month, currentDate.Year);
+                var startRow = 6;
+                foreach (var chiTiet in _currentData.ChiTietNhapKhoes)
+                {
+                    if (startRow > 15)
+                    {
+                        var range = workSheet.Range["A" + (startRow - 1), "B" + (startRow - 1)];
+                        range.EntireRow.Copy();
+                        var row = (Range)workSheet.Rows[startRow];
+                        row.EntireRow.Insert(XlInsertShiftDirection.xlShiftDown, range);
+                    }
+                    if (_currentData.DanhGia == null || _currentData.DanhGia.DonDatHang == null) continue;
+                    var donDatHang = _currentData.DanhGia.DonDatHang;
+                    workSheet.Cells[startRow, "A"] = donDatHang.NhaCungCap.TenCongTy;
+                    workSheet.Cells[startRow, "B"] = donDatHang.SoDH;
+                    var nguyenLieu = chiTiet.NguyenLieu;
+                    if (nguyenLieu != null)
+                    {
+                        workSheet.Cells[startRow, "C"] = nguyenLieu.MaNguyenLieu;
+                        workSheet.Cells[startRow, "D"] = nguyenLieu.Ten;
+                        if (nguyenLieu.Mau != null) workSheet.Cells[startRow, "F"] = nguyenLieu.Mau.Ten;
+                        workSheet.Cells[startRow, "G"] = nguyenLieu.QuyCach;
+                        workSheet.Cells[startRow, "H"] = chiTiet.SoLuong;
+                        if (nguyenLieu.DVT != null) workSheet.Cells[startRow, "I"] = nguyenLieu.DVT.Ten;
+                        workSheet.Cells[startRow, "J"] = nguyenLieu.GhiChu;
+                    }
+                    startRow++;
+                }
+            });
         }
 
         private void btnDuyet_Click(object sender, EventArgs e)
@@ -269,7 +336,11 @@ namespace TLShoes.FormControls.NhapKho
                     SF.Get<PhieuNhapKhoViewModel>().Save(_currentData);
                     transaction.Complete();
                 }
-                InitAuthorize();
+
+                MessageBox.Show("Duyệt thành công!");
+                ObserverControl.PulishAction(Define.ActionType.SAVE);
+                var parentForm = this.ParentForm;
+                if (parentForm != null) parentForm.Close();
             }
         }
 
@@ -287,6 +358,51 @@ namespace TLShoes.FormControls.NhapKho
                     transaction.Complete();
                 }
                 InitAuthorize();
+            }
+        }
+
+        private void PhieuNhapKho_LoaiPhieu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoaiPhieuChange();
+        }
+
+        private void PhieuNhapKho_ChiLenhId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChiLenhChange();
+        }
+
+        private void btnChiTiet_Click(object sender, EventArgs e)
+        {
+            if (ChiTietNhapKhoList != null && ChiTietNhapKhoList.Count > 0)
+            {
+                var confirmDialog = MessageBox.Show("Khởi tạo danh sách nhập kho từ Chỉ Lệnh/Đơn Đặt Hàng. Lưu ý, những dữ liệu hiện tại sẽ bị thay thế.",
+                    "Khởi tạo danh sách", MessageBoxButtons.YesNo);
+                if (confirmDialog == DialogResult.Yes)
+                {
+                    InitChiTiet();
+                }
+            }
+            else
+            {
+                InitChiTiet();
+            }
+           
+        }
+
+        private void InitChiTiet()
+        {
+            var loaiPhieu = PhieuNhapKho_LoaiPhieu.SelectedValue;
+            if (loaiPhieu != null)
+            {
+                if (loaiPhieu.ToString() == Define.LoaiNhap.THU_HOI_CHI_LENH.ToString())
+                {
+                    InitChiTietFromChiLenh();
+                }
+                else
+                {
+                    InitChiTietFromDonDatHang();
+                }
+                MessageBox.Show("Khởi tạo thành công, chuyển qua tab Chi Tiết để chỉnh sửa danh sách nhập kho!");
             }
         }
     }

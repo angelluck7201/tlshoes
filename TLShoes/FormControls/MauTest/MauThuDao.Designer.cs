@@ -36,6 +36,7 @@
             this.lblNgayBatDau = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.btnUpdateKetQua = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.MauThuDao_KetQuaXuongGoId = new System.Windows.Forms.ComboBox();
             this.lblKetQuaXuongDeId = new DevExpress.XtraEditors.LabelControl();
@@ -56,7 +57,7 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
-            this.btnUpdateKetQua = new DevExpress.XtraEditors.SimpleButton();
+            this.lblMessage = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -167,6 +168,22 @@
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(701, 420);
             this.xtraTabPage2.Text = "Mẫu Thử Dao";
+            // 
+            // btnUpdateKetQua
+            // 
+            this.btnUpdateKetQua.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnUpdateKetQua.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
+            this.btnUpdateKetQua.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnUpdateKetQua.Appearance.Options.UseBackColor = true;
+            this.btnUpdateKetQua.Appearance.Options.UseFont = true;
+            this.btnUpdateKetQua.Appearance.Options.UseForeColor = true;
+            this.btnUpdateKetQua.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.btnUpdateKetQua.Location = new System.Drawing.Point(456, 40);
+            this.btnUpdateKetQua.Name = "btnUpdateKetQua";
+            this.btnUpdateKetQua.Size = new System.Drawing.Size(238, 30);
+            this.btnUpdateKetQua.TabIndex = 78;
+            this.btnUpdateKetQua.Text = "Sửa Kết Quả Thử Dao";
+            this.btnUpdateKetQua.Click += new System.EventHandler(this.btnUpdateKetQua_Click);
             // 
             // labelControl3
             // 
@@ -359,14 +376,14 @@
             // 
             // btnExport
             // 
-            this.btnExport.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.btnExport.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnExport.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
             this.btnExport.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExport.Appearance.Options.UseBackColor = true;
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnExport.Location = new System.Drawing.Point(4, 476);
+            this.btnExport.Location = new System.Drawing.Point(549, 476);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);
             this.btnExport.TabIndex = 2;
@@ -374,27 +391,22 @@
             this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // btnUpdateKetQua
+            // lblMessage
             // 
-            this.btnUpdateKetQua.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnUpdateKetQua.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
-            this.btnUpdateKetQua.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdateKetQua.Appearance.Options.UseBackColor = true;
-            this.btnUpdateKetQua.Appearance.Options.UseFont = true;
-            this.btnUpdateKetQua.Appearance.Options.UseForeColor = true;
-            this.btnUpdateKetQua.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnUpdateKetQua.Location = new System.Drawing.Point(456, 40);
-            this.btnUpdateKetQua.Name = "btnUpdateKetQua";
-            this.btnUpdateKetQua.Size = new System.Drawing.Size(238, 30);
-            this.btnUpdateKetQua.TabIndex = 78;
-            this.btnUpdateKetQua.Text = "Sửa Kết Quả Thử Dao";
-            this.btnUpdateKetQua.Click += new System.EventHandler(this.btnUpdateKetQua_Click);
+            this.lblMessage.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.lblMessage.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.lblMessage.Location = new System.Drawing.Point(39, 484);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(167, 17);
+            this.lblMessage.TabIndex = 73;
+            this.lblMessage.Text = "Dao này đã được thử rồi";
             // 
             // ucMauThuDao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.xtraTabControl1);
@@ -410,6 +422,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridGopY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -444,5 +457,6 @@
         private System.Windows.Forms.ComboBox MauThuDao_KetQuaXuongMayId;
         private DevExpress.XtraEditors.SimpleButton btnExport;
         private DevExpress.XtraEditors.SimpleButton btnUpdateKetQua;
+        private DevExpress.XtraEditors.LabelControl lblMessage;
     }
 }

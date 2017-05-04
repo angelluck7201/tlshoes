@@ -85,6 +85,40 @@ namespace TLShoes
 
             gridControl.DataSource = ChiTietDonhang;
             btnDelete.Click += btnDelete_Click;
+            InitAuthorize();
+        }
+
+        private void InitAuthorize()
+        {
+            btnSave.Enabled = false;
+            btnDone.Enabled = false;
+            lblMessage.Visible = false;
+
+            if (_domainData != null)
+            {
+                if (_domainData.TrangThai == Define.TrangThai.DUYET.ToString())
+                {
+                    if (Authorization.LoginUser.LoaiNguoiDung == Define.LoaiNguoiDung.GDSX.ToString())
+                    {
+                        btnDone.Enabled = true;
+                    }
+                    SetMessage(Define.MESSAGE_NOT_AVAILABLE_DON_HANG_DUYET);
+                }
+                if (string.IsNullOrEmpty(_domainData.TrangThai) || _domainData.TrangThai == Define.TrangThai.MOI.ToString())
+                {
+                    btnSave.Enabled = true;
+                }
+                if (_domainData.TrangThai == Define.TrangThai.DONE.ToString())
+                {
+                    SetMessage(Define.MESSAGE_NOT_AVAILABLE_DON_HANG_DONE);
+                }
+            }
+        }
+
+        private void SetMessage(string messsage)
+        {
+            lblMessage.Visible = true;
+            lblMessage.Text = messsage;
         }
 
         private void HideAllGopY()
@@ -427,6 +461,20 @@ namespace TLShoes
             var maPhom = DonHang_MaPhomId.Text;
             var maGiay = DonHang_MaGiay.Text;
             DonHang_MaHang.Text = string.Format("{0}-{1}", maPhom, maGiay);
+        }
+
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+            if (_domainData != null)
+            {
+                var confirmDialog = MessageBox.Show("Đánh dấu đơn hàng đã hoàn thành. Đơn hàng sau khi đã hoàn thành thì tất cả những dữ liệu liên quan không thể thay đổi nữa," +
+                                                    " bạn có chắc muốn lưu lại!", "Hoàn thành đơn hàng", MessageBoxButtons.YesNo);
+                if (confirmDialog == DialogResult.Yes)
+                {
+                    SF.Get<DonHangViewModel>().UpdateTrangThai(Define.TrangThai.DONE, _domainData.Id);
+                    InitAuthorize();
+                }
+            }
         }
     }
 }

@@ -26,7 +26,6 @@ namespace TLShoes.Common
             }
             catch (Exception e)
             {
-                SplashScreenManager.CloseDefaultWaitForm();
                 throw e;
             }
             finally

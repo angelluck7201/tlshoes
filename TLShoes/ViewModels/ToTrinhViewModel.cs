@@ -28,8 +28,10 @@ namespace TLShoes.ViewModels
 
         public List<ToTrinh> GetList(DonDatHang donDatHang)
         {
-            return GetList().Where(s =>string.IsNullOrEmpty(s.DonDatHangList)
-                || (donDatHang != null && s.DonDatHangFormatList.Contains(donDatHang.Id))).ToList();
+            return GetList().Where(s => s.TongHopToTrinh != null 
+                && s.TongHopToTrinh.TrangThai == Define.TrangThai.DUYET_PVT.ToString() 
+                && (string.IsNullOrEmpty(s.DonDatHangList)
+                || (donDatHang != null && s.DonDatHangFormatList.Contains(donDatHang.Id)))).ToList();
         }
 
         public void GetDataSource(GridControl control, DonDatHang donDatHang)

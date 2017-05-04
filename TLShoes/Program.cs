@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -24,16 +25,18 @@ namespace TLShoes
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-#if !DEBUG
+//#if !DEBUG
             // Add the event handler for handling UI thread exceptions to the event.
             Application.ThreadException += new ThreadExceptionEventHandler(ErrorControl.UIThreadException);
 
             // Set the unhandled exception mode to force all Windows Forms errors to go through
             // our handler.
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-#else
+//#else
 //                    Application.ThreadException += new ThreadExceptionEventHandler(ErrorControl.DEVException);
-#endif
+//#endif
+
+                    Localization();
 
                     Application.Run(FormFactory<Main>.Get());
                 }
@@ -50,6 +53,12 @@ namespace TLShoes
                     }
                 }
             }
+        }
+
+        static void Localization()
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VI");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("vi-VI");
         }
 
         [DllImport("user32.dll")]

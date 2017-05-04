@@ -299,6 +299,7 @@
           <Property Name="Khac" Type="int" Nullable="false" />
           <Property Name="SoLuong" Type="int" Nullable="false" />
           <Property Name="MaGiay" Type="varchar" MaxLength="50" />
+          <Property Name="TrangThai" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="ErrorLog">
           <Key>
@@ -653,6 +654,8 @@
           <Property Name="NguoiDuyetId" Type="bigint" />
           <Property Name="NgayLap" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="NguoiLapId" Type="bigint" />
+          <Property Name="LoaiPhieu" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChiLenhId" Type="bigint" />
         </EntityType>
         <EntityType Name="PhieuXuatKho">
           <Key>
@@ -1932,6 +1935,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PhieuNhap__ChiLe__6462DE5A">
+          <End Role="ChiLenh" Type="Self.ChiLenh" Multiplicity="0..1" />
+          <End Role="PhieuNhapKho" Type="Self.PhieuNhapKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChiLenh">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhieuNhapKho">
+              <PropertyRef Name="ChiLenhId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PhieuNhap__DanhG__408F9238">
           <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="0..1" />
           <End Role="PhieuNhapKho" Type="Self.PhieuNhapKho" Multiplicity="*" />
@@ -2529,6 +2544,10 @@
             <End Role="UserAccount" EntitySet="UserAccount" />
             <End Role="PhieuNhapKho" EntitySet="PhieuNhapKho" />
           </AssociationSet>
+          <AssociationSet Name="FK__PhieuNhap__ChiLe__6462DE5A" Association="Self.FK__PhieuNhap__ChiLe__6462DE5A">
+            <End Role="ChiLenh" EntitySet="ChiLenh" />
+            <End Role="PhieuNhapKho" EntitySet="PhieuNhapKho" />
+          </AssociationSet>
           <AssociationSet Name="FK__PhieuNhap__DanhG__408F9238" Association="Self.FK__PhieuNhap__DanhG__408F9238">
             <End Role="DanhGia" EntitySet="DanhGia" />
             <End Role="PhieuNhapKho" EntitySet="PhieuNhapKho" />
@@ -3079,6 +3098,10 @@
             <End Role="DanhMuc" EntitySet="DanhMucs" />
             <End Role="ChiTietDanhGia" EntitySet="ChiTietDanhGias" />
           </AssociationSet>
+          <AssociationSet Name="FK__PhieuNhap__ChiLe__6462DE5A" Association="GiayTLModel.FK__PhieuNhap__ChiLe__6462DE5A">
+            <End Role="ChiLenh" EntitySet="ChiLenhs" />
+            <End Role="PhieuNhapKho" EntitySet="PhieuNhapKhoes" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="AppConfig">
           <Key>
@@ -3128,6 +3151,7 @@
           <NavigationProperty Name="NguoiDuyet" Relationship="GiayTLModel.FK__ChiLenh__NguoiDu__72910220" FromRole="ChiLenh" ToRole="UserAccount" />
           <NavigationProperty Name="NguoiLap" Relationship="GiayTLModel.FK__ChiLenh__NguoiLa__70A8B9AE" FromRole="ChiLenh" ToRole="UserAccount" />
           <NavigationProperty Name="NguyenLieuChiLenhs" Relationship="GiayTLModel.FK__NguyenLie__ChiLe__7A3223E8" FromRole="ChiLenh" ToRole="NguyenLieuChiLenh" />
+          <NavigationProperty Name="PhieuNhapKhoes" Relationship="GiayTLModel.FK__PhieuNhap__ChiLe__6462DE5A" FromRole="ChiLenh" ToRole="PhieuNhapKho" />
         </EntityType>
         <EntityType Name="ChiTietDonHang">
           <Key>
@@ -3349,6 +3373,7 @@
           <Property Name="MaGiay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CongNgheSanXuats" Relationship="GiayTLModel.FK__CongNgheS__DonHa__0ABD916C" FromRole="DonHang" ToRole="CongNgheSanXuat" />
           <NavigationProperty Name="MauThuDaos" Relationship="GiayTLModel.FK__MauThuDao__DonHa__74CE504D" FromRole="DonHang" ToRole="MauThuDao" />
+          <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ErrorLog">
           <Key>
@@ -3670,6 +3695,9 @@
           <NavigationProperty Name="NguoiDuyet" Relationship="GiayTLModel.FK__PhieuNhap__Nguoi__436BFEE3" FromRole="PhieuNhapKho" ToRole="UserAccount" />
           <NavigationProperty Name="NguoiLap" Relationship="GiayTLModel.FK__PhieuNhap__Nguoi__45544755" FromRole="PhieuNhapKho" ToRole="UserAccount" />
           <NavigationProperty Name="DanhGia" Relationship="GiayTLModel.FK__PhieuNhap__DanhG__408F9238" FromRole="PhieuNhapKho" ToRole="DanhGia" />
+          <Property Name="LoaiPhieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChiLenhId" Type="Int64" />
+          <NavigationProperty Name="ChiLenh" Relationship="GiayTLModel.FK__PhieuNhap__ChiLe__6462DE5A" FromRole="PhieuNhapKho" ToRole="ChiLenh" />
         </EntityType>
         <EntityType Name="PhieuXuatKho">
           <Key>
@@ -5389,6 +5417,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PhieuNhap__ChiLe__6462DE5A">
+          <End Type="GiayTLModel.ChiLenh" Role="ChiLenh" Multiplicity="0..1" />
+          <End Type="GiayTLModel.PhieuNhapKho" Role="PhieuNhapKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChiLenh">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhieuNhapKho">
+              <PropertyRef Name="ChiLenhId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5564,6 +5604,7 @@
           <EntitySetMapping Name="DonHangs">
             <EntityTypeMapping TypeName="GiayTLModel.DonHang">
               <MappingFragment StoreEntitySet="DonHang">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="MaGiay" ColumnName="MaGiay" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="Khac" ColumnName="Khac" />
@@ -5880,6 +5921,8 @@
           <EntitySetMapping Name="PhieuNhapKhoes">
             <EntityTypeMapping TypeName="GiayTLModel.PhieuNhapKho">
               <MappingFragment StoreEntitySet="PhieuNhapKho">
+                <ScalarProperty Name="ChiLenhId" ColumnName="ChiLenhId" />
+                <ScalarProperty Name="LoaiPhieu" ColumnName="LoaiPhieu" />
                 <ScalarProperty Name="NguoiLapId" ColumnName="NguoiLapId" />
                 <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
                 <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />

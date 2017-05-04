@@ -13,6 +13,11 @@ namespace TLShoes.ViewModels
             return DbContext.ChiLenhs.ToList();
         }
 
+        public List<ChiLenh> GetList(Define.TrangThai trangThai)
+        {
+            return DbContext.ChiLenhs.Where(s=>s.TrangThai==trangThai.ToString()).ToList();
+        }
+
         public ChiLenh GetDetail(long id)
         {
             return DbContext.ChiLenhs.Find(id);

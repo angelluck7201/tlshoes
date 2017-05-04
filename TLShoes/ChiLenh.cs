@@ -18,6 +18,7 @@ namespace TLShoes
         public ChiLenh()
         {
             this.NguyenLieuChiLenhs = new HashSet<NguyenLieuChiLenh>();
+            this.PhieuNhapKhoes = new HashSet<PhieuNhapKho>();
         }
     
         public long Id { get; set; }
@@ -39,5 +40,7 @@ namespace TLShoes
         public virtual UserAccount NguoiLap { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NguyenLieuChiLenh> NguyenLieuChiLenhs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuNhapKho> PhieuNhapKhoes { get; set; }
     }
 }
