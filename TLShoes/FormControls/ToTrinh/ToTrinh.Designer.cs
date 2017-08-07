@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucToTrinh));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.lblThongBao = new DevExpress.XtraEditors.LabelControl();
@@ -120,7 +120,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(3, 3);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1577, 778);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1465, 700);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -162,7 +162,7 @@
             this.xtraTabPage2.Controls.Add(this.lblHaoHut);
             this.xtraTabPage2.Controls.Add(this.ToTrinh_HaoHut);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1570, 742);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1458, 664);
             this.xtraTabPage2.Text = "Tờ Trình";
             // 
             // lblThongBao
@@ -184,13 +184,14 @@
             // 
             // gridToTrinh
             // 
-            this.gridToTrinh.Location = new System.Drawing.Point(566, 30);
+            this.gridToTrinh.Dock = System.Windows.Forms.DockStyle.Right;
+            this.gridToTrinh.Location = new System.Drawing.Point(569, 0);
             this.gridToTrinh.MainView = this.gridViewToTrinh;
             this.gridToTrinh.Name = "gridToTrinh";
             this.gridToTrinh.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.NguyenLieuLookUp,
             this.btnDeleteNguyenLieu});
-            this.gridToTrinh.Size = new System.Drawing.Size(1001, 690);
+            this.gridToTrinh.Size = new System.Drawing.Size(889, 664);
             this.gridToTrinh.TabIndex = 111;
             this.gridToTrinh.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewToTrinh});
@@ -270,21 +271,21 @@
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 7;
-            this.gridColumn14.Width = 47;
+            this.gridColumn14.Width = 45;
             // 
             // btnDeleteNguyenLieu
             // 
             this.btnDeleteNguyenLieu.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Appearance.Image")));
             this.btnDeleteNguyenLieu.Appearance.Options.UseImage = true;
             this.btnDeleteNguyenLieu.AutoHeight = false;
-            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
-            serializableAppearanceObject1.Options.UseBackColor = true;
-            serializableAppearanceObject1.Options.UseBorderColor = true;
-            serializableAppearanceObject1.Options.UseImage = true;
+            serializableAppearanceObject2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject2.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
+            serializableAppearanceObject2.Options.UseBackColor = true;
+            serializableAppearanceObject2.Options.UseBorderColor = true;
+            serializableAppearanceObject2.Options.UseImage = true;
             this.btnDeleteNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteNguyenLieu.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnDeleteNguyenLieu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteNguyenLieu.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -388,7 +389,7 @@
             this.btnUpdateToTrinh.Appearance.Options.UseFont = true;
             this.btnUpdateToTrinh.Appearance.Options.UseForeColor = true;
             this.btnUpdateToTrinh.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnUpdateToTrinh.Location = new System.Drawing.Point(326, 355);
+            this.btnUpdateToTrinh.Location = new System.Drawing.Point(326, 348);
             this.btnUpdateToTrinh.Name = "btnUpdateToTrinh";
             this.btnUpdateToTrinh.Size = new System.Drawing.Size(195, 30);
             this.btnUpdateToTrinh.TabIndex = 109;
@@ -397,12 +398,12 @@
             // 
             // gridChiTietToTrinh
             // 
-            this.gridChiTietToTrinh.Location = new System.Drawing.Point(34, 408);
+            this.gridChiTietToTrinh.Location = new System.Drawing.Point(29, 391);
             this.gridChiTietToTrinh.MainView = this.gridViewNguyenLieu;
             this.gridChiTietToTrinh.Name = "gridChiTietToTrinh";
             this.gridChiTietToTrinh.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.DonHangLookUp});
-            this.gridChiTietToTrinh.Size = new System.Drawing.Size(494, 312);
+            this.gridChiTietToTrinh.Size = new System.Drawing.Size(494, 252);
             this.gridChiTietToTrinh.TabIndex = 106;
             this.gridChiTietToTrinh.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewNguyenLieu});
@@ -505,7 +506,7 @@
             // 
             // ToTrinh_TonThucTe
             // 
-            this.ToTrinh_TonThucTe.Location = new System.Drawing.Point(191, 196);
+            this.ToTrinh_TonThucTe.Location = new System.Drawing.Point(193, 196);
             this.ToTrinh_TonThucTe.Name = "ToTrinh_TonThucTe";
             this.ToTrinh_TonThucTe.Size = new System.Drawing.Size(330, 23);
             this.ToTrinh_TonThucTe.TabIndex = 5;
@@ -522,7 +523,7 @@
             // ToTrinh_TonTheKho
             // 
             this.ToTrinh_TonTheKho.Enabled = false;
-            this.ToTrinh_TonTheKho.Location = new System.Drawing.Point(191, 158);
+            this.ToTrinh_TonTheKho.Location = new System.Drawing.Point(193, 158);
             this.ToTrinh_TonTheKho.Name = "ToTrinh_TonTheKho";
             this.ToTrinh_TonTheKho.Size = new System.Drawing.Size(330, 23);
             this.ToTrinh_TonTheKho.TabIndex = 4;
@@ -539,7 +540,7 @@
             // ToTrinh_BoSung
             // 
             this.ToTrinh_BoSung.Enabled = false;
-            this.ToTrinh_BoSung.Location = new System.Drawing.Point(191, 120);
+            this.ToTrinh_BoSung.Location = new System.Drawing.Point(193, 120);
             this.ToTrinh_BoSung.Name = "ToTrinh_BoSung";
             this.ToTrinh_BoSung.Size = new System.Drawing.Size(330, 23);
             this.ToTrinh_BoSung.TabIndex = 1;
@@ -556,7 +557,7 @@
             // ToTrinh_ThuHoi
             // 
             this.ToTrinh_ThuHoi.Enabled = false;
-            this.ToTrinh_ThuHoi.Location = new System.Drawing.Point(191, 234);
+            this.ToTrinh_ThuHoi.Location = new System.Drawing.Point(193, 234);
             this.ToTrinh_ThuHoi.Name = "ToTrinh_ThuHoi";
             this.ToTrinh_ThuHoi.Size = new System.Drawing.Size(330, 23);
             this.ToTrinh_ThuHoi.TabIndex = 2;
@@ -573,7 +574,7 @@
             // ToTrinh_NguyenLieuId
             // 
             this.ToTrinh_NguyenLieuId.FormattingEnabled = true;
-            this.ToTrinh_NguyenLieuId.Location = new System.Drawing.Point(191, 76);
+            this.ToTrinh_NguyenLieuId.Location = new System.Drawing.Point(193, 76);
             this.ToTrinh_NguyenLieuId.Name = "ToTrinh_NguyenLieuId";
             this.ToTrinh_NguyenLieuId.Size = new System.Drawing.Size(195, 24);
             this.ToTrinh_NguyenLieuId.TabIndex = 0;
@@ -589,7 +590,7 @@
             // 
             // ToTrinh_HaoHut
             // 
-            this.ToTrinh_HaoHut.Location = new System.Drawing.Point(191, 272);
+            this.ToTrinh_HaoHut.Location = new System.Drawing.Point(193, 272);
             this.ToTrinh_HaoHut.Name = "ToTrinh_HaoHut";
             this.ToTrinh_HaoHut.Size = new System.Drawing.Size(330, 23);
             this.ToTrinh_HaoHut.TabIndex = 6;
@@ -600,7 +601,7 @@
             this.xtraTabPage1.Appearance.Header.Options.UseBackColor = true;
             this.xtraTabPage1.Controls.Add(this.defaultInfo1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1570, 742);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1458, 664);
             this.xtraTabPage1.Text = "Thông tin người dùng";
             // 
             // defaultInfo1
@@ -608,7 +609,7 @@
             this.defaultInfo1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defaultInfo1.Location = new System.Drawing.Point(0, 0);
             this.defaultInfo1.Name = "defaultInfo1";
-            this.defaultInfo1.Size = new System.Drawing.Size(1570, 742);
+            this.defaultInfo1.Size = new System.Drawing.Size(1458, 664);
             this.defaultInfo1.TabIndex = 11;
             // 
             // xtraTabPage3
@@ -631,13 +632,13 @@
             this.xtraTabPage3.Controls.Add(this.ToTrinh_NguoiLap);
             this.xtraTabPage3.Controls.Add(this.gridNhatKy);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1570, 742);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1458, 664);
             this.xtraTabPage3.Text = "Nhật Ký Thay Đổi";
             // 
             // lblNgayDuyet
             // 
             this.lblNgayDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNgayDuyet.Location = new System.Drawing.Point(648, 111);
+            this.lblNgayDuyet.Location = new System.Drawing.Point(574, 69);
             this.lblNgayDuyet.Name = "lblNgayDuyet";
             this.lblNgayDuyet.Size = new System.Drawing.Size(81, 17);
             this.lblNgayDuyet.TabIndex = 107;
@@ -646,7 +647,7 @@
             // ToTrinh_NgayDuyet
             // 
             this.ToTrinh_NgayDuyet.Enabled = false;
-            this.ToTrinh_NgayDuyet.Location = new System.Drawing.Point(753, 108);
+            this.ToTrinh_NgayDuyet.Location = new System.Drawing.Point(679, 66);
             this.ToTrinh_NgayDuyet.Name = "ToTrinh_NgayDuyet";
             this.ToTrinh_NgayDuyet.Size = new System.Drawing.Size(385, 23);
             this.ToTrinh_NgayDuyet.TabIndex = 106;
@@ -654,7 +655,7 @@
             // lblNguoiDuyetId
             // 
             this.lblNguoiDuyetId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNguoiDuyetId.Location = new System.Drawing.Point(64, 111);
+            this.lblNguoiDuyetId.Location = new System.Drawing.Point(46, 69);
             this.lblNguoiDuyetId.Name = "lblNguoiDuyetId";
             this.lblNguoiDuyetId.Size = new System.Drawing.Size(87, 17);
             this.lblNguoiDuyetId.TabIndex = 105;
@@ -663,7 +664,7 @@
             // ToTrinh_NguoiDuyet
             // 
             this.ToTrinh_NguoiDuyet.Enabled = false;
-            this.ToTrinh_NguoiDuyet.Location = new System.Drawing.Point(169, 108);
+            this.ToTrinh_NguoiDuyet.Location = new System.Drawing.Point(151, 66);
             this.ToTrinh_NguoiDuyet.Name = "ToTrinh_NguoiDuyet";
             this.ToTrinh_NguoiDuyet.Size = new System.Drawing.Size(385, 23);
             this.ToTrinh_NguoiDuyet.TabIndex = 104;
@@ -671,7 +672,7 @@
             // lblNgayLap
             // 
             this.lblNgayLap.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNgayLap.Location = new System.Drawing.Point(648, 49);
+            this.lblNgayLap.Location = new System.Drawing.Point(574, 28);
             this.lblNgayLap.Name = "lblNgayLap";
             this.lblNgayLap.Size = new System.Drawing.Size(65, 17);
             this.lblNgayLap.TabIndex = 103;
@@ -680,7 +681,7 @@
             // ToTrinh_NgayLap
             // 
             this.ToTrinh_NgayLap.Enabled = false;
-            this.ToTrinh_NgayLap.Location = new System.Drawing.Point(753, 46);
+            this.ToTrinh_NgayLap.Location = new System.Drawing.Point(679, 25);
             this.ToTrinh_NgayLap.Name = "ToTrinh_NgayLap";
             this.ToTrinh_NgayLap.Size = new System.Drawing.Size(385, 23);
             this.ToTrinh_NgayLap.TabIndex = 102;
@@ -688,7 +689,7 @@
             // lblNguoiLapId
             // 
             this.lblNguoiLapId.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.lblNguoiLapId.Location = new System.Drawing.Point(64, 49);
+            this.lblNguoiLapId.Location = new System.Drawing.Point(46, 31);
             this.lblNguoiLapId.Name = "lblNguoiLapId";
             this.lblNguoiLapId.Size = new System.Drawing.Size(71, 17);
             this.lblNguoiLapId.TabIndex = 101;
@@ -697,17 +698,18 @@
             // ToTrinh_NguoiLap
             // 
             this.ToTrinh_NguoiLap.Enabled = false;
-            this.ToTrinh_NguoiLap.Location = new System.Drawing.Point(169, 46);
+            this.ToTrinh_NguoiLap.Location = new System.Drawing.Point(151, 28);
             this.ToTrinh_NguoiLap.Name = "ToTrinh_NguoiLap";
             this.ToTrinh_NguoiLap.Size = new System.Drawing.Size(385, 23);
             this.ToTrinh_NguoiLap.TabIndex = 100;
             // 
             // gridNhatKy
             // 
-            this.gridNhatKy.Location = new System.Drawing.Point(0, 187);
+            this.gridNhatKy.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gridNhatKy.Location = new System.Drawing.Point(0, 157);
             this.gridNhatKy.MainView = this.gridView1;
             this.gridNhatKy.Name = "gridNhatKy";
-            this.gridNhatKy.Size = new System.Drawing.Size(1570, 555);
+            this.gridNhatKy.Size = new System.Drawing.Size(1458, 507);
             this.gridNhatKy.TabIndex = 95;
             this.gridNhatKy.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -775,7 +777,7 @@
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnExport.Location = new System.Drawing.Point(197, 801);
+            this.btnExport.Location = new System.Drawing.Point(232, 709);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);
             this.btnExport.TabIndex = 84;
@@ -792,7 +794,7 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSave.Location = new System.Drawing.Point(1503, 801);
+            this.btnSave.Location = new System.Drawing.Point(1368, 709);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 85;
@@ -800,7 +802,6 @@
             // 
             // btnDuyet
             // 
-            this.btnDuyet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDuyet.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnDuyet.Appearance.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Bold);
             this.btnDuyet.Appearance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -808,7 +809,7 @@
             this.btnDuyet.Appearance.Options.UseFont = true;
             this.btnDuyet.Appearance.Options.UseForeColor = true;
             this.btnDuyet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnDuyet.Location = new System.Drawing.Point(84, 801);
+            this.btnDuyet.Location = new System.Drawing.Point(119, 709);
             this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDuyet.Name = "btnDuyet";
@@ -827,7 +828,7 @@
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
             this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(3, 801);
+            this.btnCancel.Location = new System.Drawing.Point(38, 709);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 81;
@@ -844,7 +845,7 @@
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ucToTrinh";
-            this.Size = new System.Drawing.Size(1587, 861);
+            this.Size = new System.Drawing.Size(1473, 753);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);

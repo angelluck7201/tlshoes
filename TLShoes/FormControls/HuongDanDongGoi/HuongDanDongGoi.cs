@@ -117,7 +117,7 @@ namespace TLShoes.FormControls.HuongDanDongGoi
 
         public void CachDongChange()
         {
-            if (Define.LoaiDong.ASSORTMENT.Equals(HuongDanDongGoi_CachDong.SelectedValue))
+            if (Define.LoaiDong.ASSORTMENT.ToString().Equals(HuongDanDongGoi_CachDong.SelectedValue))
             {
                 HuongDanDongGoi_DongAssorment.Visible = true;
                 lblDongAssorment.Visible = true;

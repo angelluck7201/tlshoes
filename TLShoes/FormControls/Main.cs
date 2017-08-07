@@ -44,7 +44,6 @@ namespace TLShoes
         {
             InitializeComponent();
             this.AutoScaleDimensions = new SizeF(6f, 13f);
-            ThreadHelper.MainThreadCheck();
 
             FeaturesDict.Add(btnSave.Name, btnSave);
             FeaturesDict.Add(btnRefresh.Name, btnRefresh);
