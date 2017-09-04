@@ -59,3 +59,15 @@ namespace TLShoes.ViewModels
         }
     }
 }
+
+namespace TLShoes
+{
+    public partial class ChiLenh
+    {
+        public bool IsDuyet
+        {
+            get { return TrangThai == Define.TrangThai.DUYET.ToString(); }
+        }
+    }
+}
+

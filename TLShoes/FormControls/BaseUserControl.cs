@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraReports.UI;
 using DevExpress.XtraSplashScreen;
 using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
@@ -267,7 +268,10 @@ namespace TLShoes.FormControls
                 var confirmDialog = MessageBox.Show(Define.MESSAGE_EXPORT_SUCCESS_TEXT, Define.MESSAGE_EXPORT_SUCCESS_TITLE, MessageBoxButtons.YesNo);
                 if (confirmDialog == DialogResult.Yes)
                 {
-                    Process.Start(saveDialog.FileName);
+                    var report = new XtraReport();
+                    report.DataSourceSchema = saveDialog.FileName;
+                    report.ShowPreview();
+                    //Process.Start(saveDialog.FileName);
                 }
 
                 var parentForm = this.ParentForm;

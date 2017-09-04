@@ -177,7 +177,7 @@ namespace TLShoes.FormControls.ToTrinh
 
                     var nguyenLieuId = (long)nguyenLieuObj;
                     var chiLenhList = SF.Get<ChiTietNguyenLieuViewModel>().GetList()
-                        .Where(s => s.ChiTietNguyenLieuId == nguyenLieuId)
+                        .Where(s => s.ChiTietNguyenLieuId == nguyenLieuId && s.NguyenLieuChiLenh.ChiLenh.IsDuyet)
                         .GroupBy(s => s.NguyenLieuChiLenh.ChiLenh.DonHang);
 
                     var xuatKhoList = SF.Get<ChiTietXuatKhoViewModel>().GetListByNguyenLieu(nguyenLieuId);

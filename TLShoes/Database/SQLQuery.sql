@@ -1,742 +1,1354 @@
-Drop database GiayTL;
-Create database GiayTL;
-use GiayTL;
-
-create table AppConfig(
-Id bigint primary key identity(1,1),
-ConfigName nvarchar(100) default '',
-ConfigParam text default '', 
-);
-
-insert AppConfig(ConfigName, ConfigParam) values('FILE_PATH','\\LONGNGUYEN\Users\nguye\Desktop\Share Folder\image\'); 
-insert AppConfig(ConfigName, ConfigParam) values('LASTEST_VERSION','1'); 
-insert AppConfig(ConfigName, ConfigParam) values('UPDATE_PATH','\\LONGNGUYEN\Users\nguye\Desktop\Share Folder\update\'); 
-
-
-create table ErrorLog(
-Id bigint primary key identity(1,1),
-CreatedDate datetime2 default getdate() not null,
-AppVersion nvarchar(20) default '' not null,
-Messagelog nvarchar(max) default '' not null,
-);
-
-create table UserAccount(
-Id bigint primary key identity(1,1),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-TenNguoiDung nvarchar(50) default '',
-MatKhau text default '',
-LoaiNguoiDung text default '',
-TenNhanVien nvarchar(100) default '',
-DiaChi nvarchar(100) default '',
-CMND varchar(20) default '',
-Dienthoai varchar(20) default '',
-GhiChu nvarchar(1000) default '',
-);
-
-create table PhanQuyenNguoiDung(
-Id bigint primary key identity(1,1),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-LoaiNguoiDung text default '',
-Feature nvarchar(50) default '',
-Permission nvarchar (50) default 'VIEW' not null,
+IF EXISTS
+(
+    SELECT name
+    FROM   master.dbo.sysdatabases
+    WHERE  '['+name+']' = 'GiayTL'
+           OR name = 'GiayTL'
 )
+    USE GiayTL;
 
-insert PhanQuyenNguoiDung(LoaiNguoiDung, Feature, Permission) values ('NV', 'DanhMuc', 'VIEW')
-insert PhanQuyenNguoiDung(LoaiNguoiDung, Feature, Permission) values ('CBDH', 'DanhMuc', 'VIEW')
-insert PhanQuyenNguoiDung(LoaiNguoiDung, Feature, Permission) values ('PVT', 'DanhMuc', 'VIEW')
-insert PhanQuyenNguoiDung(LoaiNguoiDung, Feature, Permission) values ('PKT', 'DanhMuc', 'VIEW')
-insert PhanQuyenNguoiDung(LoaiNguoiDung, Feature, Permission) values ('QC', 'DanhMuc', 'VIEW')
-insert PhanQuyenNguoiDung(LoaiNguoiDung, Feature, Permission) values ('PKH', 'DanhMuc', 'VIEW')
-insert PhanQuyenNguoiDung(LoaiNguoiDung, Feature, Permission) values ('THU_KHO', 'DanhMuc', 'VIEW')
-insert PhanQuyenNguoiDung(LoaiNguoiDung, Feature, Permission) values ('TRUONG_PKT', 'DanhMuc', 'VIEW')
-insert PhanQuyenNguoiDung(LoaiNguoiDung, Feature, Permission) values ('TRUONG_PVT', 'DanhMuc', 'VIEW')
-insert PhanQuyenNguoiDung(LoaiNguoiDung, Feature, Permission) values ('PX', 'DanhMuc', 'VIEW')
-insert PhanQuyenNguoiDung(LoaiNguoiDung, Feature, Permission) values ('GDKT', 'DanhMuc', 'VIEW')
-insert PhanQuyenNguoiDung(LoaiNguoiDung, Feature, Permission) values ('GDSX', 'DanhMuc', 'VIEW')
-
-
-insert UserAccount(TenNguoiDung, MatKhau, LoaiNguoiDung) values ('admin', '123456', 'ADMIN')
-insert UserAccount(TenNguoiDung, MatKhau, LoaiNguoiDung) values ('phongvattu', '123456', 'PVT')
-insert UserAccount(TenNguoiDung, MatKhau, LoaiNguoiDung) values ('phongvattu', '123456', 'PKT')
-insert UserAccount(TenNguoiDung, MatKhau, LoaiNguoiDung) values ('truongphongvattu', '123456', 'TRUONG_PVT')
-insert UserAccount(TenNguoiDung, MatKhau, LoaiNguoiDung) values ('phongkythuat', '123456', 'TRUONG_PKT')
-insert UserAccount(TenNguoiDung, MatKhau, LoaiNguoiDung) values ('thukho', '123456', 'THU_KHO')
-
-create table DanhMuc(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-Ten nvarchar(100) default '',
-Loai nvarchar(20) default '' not null,
-GhiChu nvarchar(1000) default '',
-);
-
-
-create table NguyenLieu(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-LoaiNguyenLieuId bigint foreign key references DanhMuc(Id),
-Ten nvarchar(100) default '',
-MaNguyenLieu nvarchar(50) default '',
-DonViTinh bigint foreign key references DanhMuc(Id),
-MauId bigint foreign key references DanhMuc(Id),
-QuyCach nvarchar(100) default '',
-SoLuong real default 0 not null,
-GhiChu nvarchar(1000) default '',
-);
-
-create table KhachHang(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-TenCongTy nvarchar(100) default '',
-TenNguoiDaiDien nvarchar(100) default '',
-DiaChi nvarchar(100) default '',
-Dienthoai varchar(20),
-Fax nvarchar(100) default '',
-Email nvarchar(100) default '',
-MatHang nvarchar(100) default '',
-DungYeuCauKyThuat int default 0 not null,
-DungThoiGian int default 0 not null,
-DungMau int default 0 not null,
-DatTestLy int default 0 not null,
-DatTestHoa int default 0 not null,
-Gia int default 0 not null,
-DichVuGiaoHang int default 0 not null,
-DichVuHauMai int default 0 not null,
-Khac int default 0 not null,
-GhiChuNoiBo nvarchar(1000) default '',
-GhiChu nvarchar(1000) default '',
-);
-
-alter table DonHang add TrangThai varchar(20) default ''
-create table DonHang(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-MaPhomId bigint foreign key references NguyenLieu(Id),
-MuId bigint foreign key references NguyenLieu(Id),
-LotId bigint foreign key references NguyenLieu(Id),
-DaLotTayId bigint foreign key references NguyenLieu(Id),
-DeId bigint foreign key references NguyenLieu(Id),
-MaHang varchar(50) default '',
-MaGiay varchar(50) default '',
-KhachHangId bigint foreign key references KhachHang(id),
-OrderNo varchar(50) default '',
-NgayNhan datetime2 default getdate() not null,
-NgayXuat datetime2 default getdate() not null,
-HinhAnh text default '',
-SoLuong int default 0 not null,
-TrangThai varchar(20) default '',
-
-GopYVatTu nvarchar(1000) default '',
-GopYXuongChat nvarchar(1000) default '',
-GopYXuongMay nvarchar(1000) default '',
-GopYXuongDe nvarchar(1000) default '',
-GopYXuongGo nvarchar(1000) default '',
-GopYQc nvarchar(1000) default '',
-GopYCongNghe nvarchar(1000) default '',
-GopYMau nvarchar(1000) default '',
-GopYKhoVatTu nvarchar(1000) default '',
-GopYPhuTro nvarchar(1000) default '',
-GopYKhoThanhPham nvarchar(1000) default '',
-
-DungYeuCauKyThuat int default 0 not null,
-DungThoiGian int default 0 not null,
-DungMau int default 0 not null,
-DatTestLy int default 0 not null,
-DatTestHoa int default 0 not null,
-Gia int default 0 not null,
-DichVuGiaoHang int default 0 not null,
-DichVuHauMai int default 0 not null,
-Khac int default 0 not null,
-);
-
-create table ChiTietDonHang(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonHangId bigint foreign key references DonHang(Id),
-MauId bigint foreign key references DanhMuc(Id),
-Size int default 0 not null,
-SoLuong int default 0 not null,
-);
-
-
-create table MauDoi(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonHangId bigint foreign key references DonHang(Id),
-HinhAnh text default '',
-NgayNhan datetime2 default getdate() not null,
-MauNgay datetime2 default getdate() not null,
-GhiChu nvarchar(1000) default '',
-);
-
-create table MauDoiHinh(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-MauDoiId bigint foreign key references MauDoi(Id),
-HinhAnh text default '',
-GhiChu nvarchar(1000) default '',
-);
-
-create table MauTest(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonHangId bigint foreign key references DonHang(Id),
-NgayGuiMau datetime2 default getdate() not null,
-NgayKetquaTestLy datetime2 default getdate() not null,
-KetQuaTestLy nvarchar(1000) default '',
-PhanLoaiTestLyId bigint foreign key references DanhMuc(Id),
-NgayKetquaTestHoa datetime2 default getdate() not null,
-KetQuaTestHoa nvarchar(1000) default '',
-PhanLoaiTestHoaId bigint foreign key references DanhMuc(Id),
-
-GopYCongNghe nvarchar(1000) default '',
-GopYMau nvarchar(1000) default '',
-GopYQc nvarchar(1000) default '',
-GopYKhoVatTu nvarchar(1000) default '',
-GopYVatTu nvarchar(1000) default '',
-GopYPhuTro nvarchar(1000) default '',
-GopYXuongChat nvarchar(1000) default '',
-GopYXuongMay nvarchar(1000) default '',
-GopYXuongDe nvarchar(1000) default '',
-GopYXuongGo nvarchar(1000) default '',
-);
-
-create table MauSanXuat(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonHangId bigint foreign key references DonHang(Id),
-NgayGuiMau datetime2 default getdate() not null,
-NgayKetqua datetime2 default getdate() not null,
-KetQua nvarchar(1000) default '',
-PhanLoaiKetQua bigint foreign key references DanhMuc(Id),
-GopYCongNghe nvarchar(1000) default '',
-GopYMau nvarchar(1000) default '',
-GopYQc nvarchar(1000) default '',
-GopYKhoVatTu nvarchar(1000) default '',
-GopYVatTu nvarchar(1000) default '',
-GopYPhuTro nvarchar(1000) default '',
-GopYXuongChat nvarchar(1000) default '',
-GopYXuongMay nvarchar(1000) default '',
-GopYXuongDe nvarchar(1000) default '',
-GopYXuongGo nvarchar(1000) default '',
-);
-
-
-create table MauThuDao(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonHangId bigint foreign key references DonHang(Id),
-NgayBatDau datetime2 default getdate() not null,
-NgayHoanThanh datetime2 default getdate() not null,
-GopYCongNghe nvarchar(1000) default '',
-GopYMau nvarchar(1000) default '',
-GopYQc nvarchar(1000) default '',
-GopYKhoVatTu nvarchar(1000) default '',
-GopYVatTu nvarchar(1000) default '',
-GopYPhuTro nvarchar(1000) default '',
-GopYXuongChat nvarchar(1000) default '',
-GopYXuongMay nvarchar(1000) default '',
-GopYXuongDe nvarchar(1000) default '',
-GopYXuongGo nvarchar(1000) default '',
-KetQuaXuongChatId bigint foreign key references DanhMuc(Id),
-KetQuaXuongMayId bigint foreign key references DanhMuc(Id),
-KetQuaXuongDeId bigint foreign key references DanhMuc(Id),
-KetQuaXuongGoId bigint foreign key references DanhMuc(Id),
-);
-
-create table CongNgheSanXuat(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonHangId bigint foreign key references DonHang(Id),
-MauDoiId bigint foreign key references MauDoi(Id),
-PhanLoaiThuRapId bigint foreign key references DanhMuc(Id),
-YKienThuRap nvarchar(1000) default '',
-PhanLoaiThuDaoId bigint foreign key references DanhMuc(Id),
-YKienThuDao nvarchar(1000) default '',
-HinhBangThongSo text default '',
-HinhCongNgheDuocDuyet text default '',
-NgayDuyet datetime2 default getdate() not null,
-);
-
-create table ChiLenh(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonHangId bigint foreign key references DonHang(Id),
-SoPhieu nvarchar(50) default '',
-TrangThai nvarchar(50) default '',
-NgayLap datetime2 default getdate() not null,
-NguoiLapId bigint foreign key references UserAccount(Id),
-NgayDuyet datetime2 default getdate() not null,
-NguoiDuyetId bigint foreign key references UserAccount(Id),
-);
-
-create table NguyenLieuChiLenh(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-PhanXuong nvarchar(50) default '',
-ChiLenhId bigint foreign key references ChiLenh(Id),
-ChiTietId bigint foreign key references DanhMuc(Id),
-QuyCach nvarchar(10) default '' not null,
-MauId bigint foreign key references DanhMuc(Id),
-DinhMucChuan real default 0 not null,
-DinhMucThuc real default 0 not null,
-);
-
-create table ChiTietNguyenLieu(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-NguyenLieuChiLenhId bigint foreign key references NguyenLieuChiLenh(Id),
-ChiTietNguyenLieuId bigint foreign key references NguyenLieu(Id),
-GhiChu nvarchar(1000) default '',
-);
-
-create table KeHoachSanXuat(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonHangId bigint foreign key references DonHang(Id),
-NgayKiemHang datetime2 default getdate() not null,
-NgayBatDauPxChat datetime2 default getdate() not null,
-NgayHoanThanhPxChat datetime2 default getdate() not null,
-NgayBatDauToPhuTro datetime2 default getdate() not null,
-NgayHoanThanhToPhuTro datetime2 default getdate() not null,
-NgayBatDauPxMay datetime2 default getdate() not null,
-NgayHoanThanhPxMay datetime2 default getdate() not null,
-NgayBatDauPxGo datetime2 default getdate() not null,
-NgayHoanThanhPxGo datetime2 default getdate() not null,
-NgayBatDauPxDe datetime2 default getdate() not null,
-NgayHoanThanhPxDe datetime2 default getdate() not null,
-NgayBatDauBpVatTu datetime2 default getdate() not null,
-NgayHoanThanhBpVatTu datetime2 default getdate() not null,
-GhiChu nvarchar(1000) default '',
-);
-
-create table BaoCaoPhanXuong(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),	
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonHangId bigint foreign key references DonHang(Id),
-PhanXuong nvarchar(50) default '',
-SanLuongKhoan int default 0 not null,
-SanLuongThucHien int default 0 not null,
-LuyKe int default 0 not null,
-BaoCaoNgay datetime2 default getdate() not null,
-GhiChu nvarchar(1000) default '',
-);
-
-create table TongHopToTrinh(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),	
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null, 
-IsActived bit default 1 not null,
-
-SoPhieu nvarchar(50) default '',
-TrangThai nvarchar(100) default '',
-NguoiLapId bigint foreign key references UserAccount(Id),	
-NgayLap datetime2 default getdate() not null,
-NguoiDuyetId bigint foreign key references UserAccount(Id),
-NgayDuyet datetime2 default getdate() not null,
-);
-
-create table ToTrinh(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),	
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null, 
-IsActived bit default 1 not null,
-
-TongHopToTrinhId bigint foreign key references TongHopToTrinh(Id),
-NguyenLieuId bigint foreign key references NguyenLieu(Id),
-DonDatHangList text default '',
-BoSung real default 0 not null,
-ThuHoi real default 0 not null,
-TonToTrinh real default 0 not null,
-TonTheKho real default 0 not null,
-TonThucTe real default 0 not null,
-DuKien real default 0 not null,
-HaoHut real default 0 not null,
-GhiChu nvarchar(1000) default '',
-);
-
-create table ChiTietToTrinh(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),	
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-ToTrinhId bigint foreign key references ToTrinh(Id),
-DonHangId bigint foreign key references DonHang(Id),
-NhuCau real default 0 not null,
-ThucTe real default 0 not null,
-);
-
-create table NhaCungCap(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-TenCongTy nvarchar(100) default '',
-TenNguoiDaiDien nvarchar(100) default '',
-DiaChi nvarchar(100) default '',
-Dienthoai varchar(20),
-Fax nvarchar(100) default '',
-Email nvarchar(100) default '',
-MatHang nvarchar(100) default '',
-DungYeuCauKyThuat int default 0 not null,
-DungThoiGian int default 0 not null,
-DungMau int default 0 not null,
-DatTestLy int default 0 not null,
-DatTestHoa int default 0 not null,
-Gia int default 0 not null,
-DichVuGiaoHang int default 0 not null,
-DichVuHauMai int default 0 not null,
-Khac int default 0 not null,
-GhiChuNoiBo nvarchar(1000) default '',
-GhiChu nvarchar(1000) default '',
-);
-
-create table NhaCungCapVatTu(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-NhaCungCapId bigint foreign key references NhaCungCap(Id),
-NguyenLieuId bigint foreign key references NguyenLieu(Id),
-DonGia float default 0 not null,
-DonVi nvarchar(10),
-GiaBanTuNgay datetime2 default getdate() not null, 
-GiaBanDenNgay datetime2 default getdate() not null,
-);
-
-create table DonDatHang(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-ToTrinhId bigint foreign key references NhaCungCap(Id),
-SoDH varchar(50),
-NhaCungCapId bigint foreign key references NhaCungCap(Id),
-NgayDatHang datetime2 default getdate() not null,
-NgayGiaoHang datetime2 default getdate() not null,
-DungYeuCauKyThuat int default 0 not null,
-DungThoiGian int default 0 not null,
-DungMau int default 0 not null,
-DatTestLy int default 0 not null,
-DatTestHoa int default 0 not null,
-Gia int default 0 not null,
-DichVuGiaoHang int default 0 not null,
-DichVuHauMai int default 0 not null,
-Khac int default 0 not null,
-NgayDuyet datetime2 default getdate() not null,
-NguoiDuyetId bigint foreign key references UserAccount(Id),
-NgayLap datetime2 default getdate() not null,
-NguoiLapId bigint foreign key references UserAccount(Id),
-TrangThai nvarchar(100) default '',
-SoLuongDat float default 0 not null
-);
-
-
-
-create table ChiTietDonDatHang(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonDatHangId bigint foreign key references DonDatHang(Id),
-NhaCungCapId bigint foreign key references NhaCungCap(Id),
-NguyenLieuId bigint foreign key references NguyenLieu(Id),
-DonGia real default 0 not null,
-SoLuong real default 0 not null,
-SoLuongThuc real default 0 not null,
-GhiChu nvarchar(1000) default '',
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[AppConfig]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
 )
-
-create table MauDanhGia(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-TenMau nvarchar(100) default '',
-GhiChu nvarchar(1000) default '',
-);
-
-create table ChiTietMauDanhGia(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-MauDanhGiaId bigint foreign key references MauDanhGia(Id),
-TieuChiId bigint foreign key references DanhMuc(Id),
-);
-
-
-create table DanhGia(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonDatHangId bigint foreign key references DonDatHang(Id),
-MauDanhGiaId bigint foreign key references MauDanhGia(Id),
-SoPhieu nvarchar(100) default '',
-SoLuongKiem float default 0 not null,
-SoLuongKem float default 0 not null,
-BienPhapXuLy nvarchar(1000) default '',
-NgayKiem datetime2 default getdate() not null,
-);
-
-
-create table ChiTietDanhGia(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DanhGiaId bigint foreign key references DanhGia(Id),
-TieuChiId bigint foreign key references DanhMuc(Id),
-SoLuongKem float default 0 not null,
-GhiChu nvarchar(1000) default '',
-);
-
-create table PhieuNhapKho(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-NguoiGiao nvarchar(50) default '',
-DiaChi nvarchar(100) default '',
-LyDo nvarchar(100) default '',
-Kho nvarchar(50) default '',
-LoaiPhieu nvarchar(50) default '',
-NgayNhap datetime2 default getdate() not null,
-SoPhieu nvarchar(100) default '',
-TrangThai nvarchar(100) default '',
-DanhGiaId bigint foreign key references DanhGia(Id),
-ChiLenhId bigint foreign key references ChiLenh(Id),
-NgayDuyet datetime2 default getdate() not null,
-NguoiDuyetId bigint foreign key references UserAccount(Id),
-NgayLap datetime2 default getdate() not null,
-NguoiLapId bigint foreign key references UserAccount(Id),
-);
-
-create table ChiTietNhapKho(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),	
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-PhieuNhapKhoId bigint foreign key references PhieuNhapKho(Id),
-NguyenLieuId bigint foreign key references NguyenLieu(Id),
-SoLuong real default 0 not null,
-);
-
-create table PhieuXuatKho(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),	
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-DonHangId bigint foreign key references DonHang(Id),
-NguoiNhan nvarchar(50) default '',
-DiaChi nvarchar(100) default '',
-BoPhan nvarchar(50) default '',
-LyDo nvarchar(100) default '',
-Kho nvarchar(50) default '',
-LoaiXuat nvarchar(50) default '',
-NgayXuat datetime2 default getdate() not null,
-SoPhieu nvarchar(100) default '',
-TrangThai nvarchar(100) default '',
-NgayDuyet datetime2 default getdate() not null,
-NguoiDuyetId bigint foreign key references UserAccount(Id),
-NgayLap datetime2 default getdate() not null,
-NguoiLapId bigint foreign key references UserAccount(Id),
-);
-
-create table ChiTietXuatKho(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),	
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-PhieuXuatKhoId bigint foreign key references PhieuXuatKho(Id),
-NguyenLieuId bigint foreign key references NguyenLieu(Id),
-SoLuong real default 0 not null,
-);
-
-create table NhatKyXuatKho(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),	
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-ChiTietXuatKhoId bigint foreign key references ChiTietXuatKho(Id),
-SoLuong real default 0 not null,
-NguoiNhan nvarchar(100) default '',
-GhiChu nvarchar(100) default '',
-);
+    BEGIN
+        CREATE TABLE AppConfig
+        (Id          BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         ConfigName  NVARCHAR(100) DEFAULT '',
+         ConfigParam TEXT DEFAULT '',
+        );
+END;
 
 
 
-create table MauHuongDanDongGoi(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
-
-KhachHangId bigint foreign key references KhachHang(Id),
-TenMau nvarchar(50) default '',
-ApDungTuNgay datetime2 default getdate() not null,
-ApDungDenNgay datetime2 default getdate() not null,
-GhiChu nvarchar(1000) default '',
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[ErrorLog]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
 )
+    BEGIN
+        CREATE TABLE ErrorLog
+        (Id          BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         CreatedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         AppVersion  NVARCHAR(20) DEFAULT '' NOT NULL,
+         Messagelog  NVARCHAR(MAX) DEFAULT '' NOT NULL,
+        );
+END;
 
-create table ChiTietHuongDanDongGoi(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[UserAccount]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE UserAccount
+        (Id            BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         CreatedDate   DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived     BIT DEFAULT 1 NOT NULL,
+         TenNguoiDung  NVARCHAR(50) DEFAULT '',
+         MatKhau       TEXT DEFAULT '',
+         LoaiNguoiDung TEXT DEFAULT '',
+         TenNhanVien   NVARCHAR(100) DEFAULT '',
+         DiaChi        NVARCHAR(100) DEFAULT '',
+         CMND          VARCHAR(20) DEFAULT '',
+         Dienthoai     VARCHAR(20) DEFAULT '',
+         GhiChu        NVARCHAR(1000) DEFAULT '',
+        );
+END;
 
-MauHuongDanDongGoiId bigint foreign key references MauHuongDanDongGoi(Id),
-DanhMucId bigint foreign key references DanhMuc(Id),
-DonViTinhId bigint foreign key references DanhMuc(Id),
-KichThuoc nvarchar(50) default '',
-MauId bigint foreign key references DanhMuc(Id),
-NguyenLieuId bigint foreign key references NguyenLieu(Id),
-CachSuDung text default '',
-ViTriSuDung nvarchar(100) default '',
-SoLuong int default 0 not null,
-HinhMauDinhKem text default '',
-GhiChu nvarchar(1000) default '',
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[PhanQuyenNguoiDung]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE dbo.PhanQuyenNguoiDung
+        (Id            BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         CreatedDate   DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived     BIT DEFAULT 1 NOT NULL,
+         LoaiNguoiDung TEXT DEFAULT '',
+         Feature       NVARCHAR(50) DEFAULT '',
+         Permission    NVARCHAR(50) DEFAULT 'VIEW' NOT NULL,
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         PhanQuyenNguoiDung
+    WHERE        LoaiNguoiDung = 'NV'
+                 AND Feature = 'DanhMuc'
+                 AND Permission = 'VIEW'
+)
+    INSERT INTO PhanQuyenNguoiDung
+    (LoaiNguoiDung,
+     Feature,
+     Permission
+    )
+    VALUES
+    ('NV',
+     'DanhMuc',
+     'VIEW'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         PhanQuyenNguoiDung
+    WHERE        LoaiNguoiDung = 'CBDH'
+                 AND Feature = 'DanhMuc'
+                 AND Permission = 'VIEW'
+)
+    INSERT INTO PhanQuyenNguoiDung
+    (LoaiNguoiDung,
+     Feature,
+     Permission
+    )
+    VALUES
+    ('CBDH',
+     'DanhMuc',
+     'VIEW'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         PhanQuyenNguoiDung
+    WHERE        LoaiNguoiDung = 'PVT'
+                 AND Feature = 'DanhMuc'
+                 AND Permission = 'VIEW'
+)
+    INSERT INTO PhanQuyenNguoiDung
+    (LoaiNguoiDung,
+     Feature,
+     Permission
+    )
+    VALUES
+    ('PVT',
+     'DanhMuc',
+     'VIEW'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         PhanQuyenNguoiDung
+    WHERE        LoaiNguoiDung = 'PKT'
+                 AND Feature = 'DanhMuc'
+                 AND Permission = 'VIEW'
+)
+    INSERT INTO PhanQuyenNguoiDung
+    (LoaiNguoiDung,
+     Feature,
+     Permission
+    )
+    VALUES
+    ('PKT',
+     'DanhMuc',
+     'VIEW'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         PhanQuyenNguoiDung
+    WHERE        LoaiNguoiDung = 'QC'
+                 AND Feature = 'DanhMuc'
+                 AND Permission = 'VIEW'
+)
+    INSERT INTO PhanQuyenNguoiDung
+    (LoaiNguoiDung,
+     Feature,
+     Permission
+    )
+    VALUES
+    ('QC',
+     'DanhMuc',
+     'VIEW'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         PhanQuyenNguoiDung
+    WHERE        LoaiNguoiDung = 'PKH'
+                 AND Feature = 'DanhMuc'
+                 AND Permission = 'VIEW'
+)
+    INSERT INTO PhanQuyenNguoiDung
+    (LoaiNguoiDung,
+     Feature,
+     Permission
+    )
+    VALUES
+    ('PKH',
+     'DanhMuc',
+     'VIEW'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         PhanQuyenNguoiDung
+    WHERE        LoaiNguoiDung = 'THU_KHO'
+                 AND Feature = 'DanhMuc'
+                 AND Permission = 'VIEW'
+)
+    INSERT INTO PhanQuyenNguoiDung
+    (LoaiNguoiDung,
+     Feature,
+     Permission
+    )
+    VALUES
+    ('THU_KHO',
+     'DanhMuc',
+     'VIEW'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         PhanQuyenNguoiDung
+    WHERE        LoaiNguoiDung = 'TRUONG_PKT'
+                 AND Feature = 'DanhMuc'
+                 AND Permission = 'VIEW'
+)
+    INSERT INTO PhanQuyenNguoiDung
+    (LoaiNguoiDung,
+     Feature,
+     Permission
+    )
+    VALUES
+    ('TRUONG_PKT',
+     'DanhMuc',
+     'VIEW'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         PhanQuyenNguoiDung
+    WHERE        LoaiNguoiDung = 'TRUONG_PVT'
+                 AND Feature = 'DanhMuc'
+                 AND Permission = 'VIEW'
+)
+    INSERT INTO PhanQuyenNguoiDung
+    (LoaiNguoiDung,
+     Feature,
+     Permission
+    )
+    VALUES
+    ('TRUONG_PVT',
+     'DanhMuc',
+     'VIEW'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         PhanQuyenNguoiDung
+    WHERE        LoaiNguoiDung = 'PX'
+                 AND Feature = 'DanhMuc'
+                 AND Permission = 'VIEW'
+)
+    INSERT INTO PhanQuyenNguoiDung
+    (LoaiNguoiDung,
+     Feature,
+     Permission
+    )
+    VALUES
+    ('PX',
+     'DanhMuc',
+     'VIEW'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         PhanQuyenNguoiDung
+    WHERE        LoaiNguoiDung = 'GDKT'
+                 AND Feature = 'DanhMuc'
+                 AND Permission = 'VIEW'
+)
+    INSERT INTO PhanQuyenNguoiDung
+    (LoaiNguoiDung,
+     Feature,
+     Permission
+    )
+    VALUES
+    ('GDKT',
+     'DanhMuc',
+     'VIEW'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         PhanQuyenNguoiDung
+    WHERE        LoaiNguoiDung = 'GDSX'
+                 AND Feature = 'DanhMuc'
+                 AND Permission = 'VIEW'
+)
+    INSERT INTO PhanQuyenNguoiDung
+    (LoaiNguoiDung,
+     Feature,
+     Permission
+    )
+    VALUES
+    ('GDSX',
+     'DanhMuc',
+     'VIEW'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         UserAccount
+    WHERE        TenNguoiDung = 'admin'
+)
+    INSERT INTO UserAccount
+    (TenNguoiDung,
+     MatKhau,
+     LoaiNguoiDung
+    )
+    VALUES
+    ('admin',
+     '123456',
+     'ADMIN'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         UserAccount
+    WHERE        TenNguoiDung = 'phongvattu'
+)
+    INSERT INTO UserAccount
+    (TenNguoiDung,
+     MatKhau,
+     LoaiNguoiDung
+    )
+    VALUES
+    ('phongvattu',
+     '123456',
+     'PVT'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         UserAccount
+    WHERE        TenNguoiDung = 'truongphongvattu'
+)
+    INSERT INTO UserAccount
+    (TenNguoiDung,
+     MatKhau,
+     LoaiNguoiDung
+    )
+    VALUES
+    ('truongphongvattu',
+     '123456',
+     'TRUONG_PVT'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         UserAccount
+    WHERE        TenNguoiDung = 'phongkythuat'
+)
+    INSERT INTO UserAccount
+    (TenNguoiDung,
+     MatKhau,
+     LoaiNguoiDung
+    )
+    VALUES
+    ('phongkythuat',
+     '123456',
+     'TRUONG_PKT'
+    );
+
+IF NOT EXISTS
+(
+    SELECT TOP 1 *
+    FROM         UserAccount
+    WHERE        TenNguoiDung = 'thukho'
+)
+    INSERT INTO UserAccount
+    (TenNguoiDung,
+     MatKhau,
+     LoaiNguoiDung
+    )
+    VALUES
+    ('thukho',
+     '123456',
+     'THU_KHO'
+    );
+
+CREATE TABLE DanhMuc
+(Id           BIGINT
+ PRIMARY KEY IDENTITY(1, 1),
+ AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+ CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+ ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+ IsActived    BIT DEFAULT 1 NOT NULL,
+ Ten          NVARCHAR(100) DEFAULT '',
+ Loai         NVARCHAR(20) DEFAULT '' NOT NULL,
+ GhiChu       NVARCHAR(1000) DEFAULT '',
 );
 
-create table HuongDanDongGoi(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[NguyenLieu]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE NguyenLieu
+        (Id               BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId         BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived        BIT DEFAULT 1 NOT NULL,
+         LoaiNguyenLieuId BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         Ten              NVARCHAR(100) DEFAULT '',
+         MaNguyenLieu     NVARCHAR(50) DEFAULT '',
+         DonViTinh        BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         MauId            BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         QuyCach          NVARCHAR(100) DEFAULT '',
+         SoLuong          REAL DEFAULT 0 NOT NULL,
+         GhiChu           NVARCHAR(1000) DEFAULT '',
+        );
+END;
 
-DonHangId bigint foreign key references DonHang(Id),
-MauDongGoiId bigint foreign key references MauHuongDanDongGoi(Id),
-CachDong nvarchar(50) default '',
-DongAssorment text default '',
-SoLuong int default 0 not null,
-SoDoi int default 0 not null,
-GhiChu nvarchar(1000) default '',
-);
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[KhachHang]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE KhachHang
+        (Id                BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId          BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate       DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived         BIT DEFAULT 1 NOT NULL,
+         TenCongTy         NVARCHAR(100) DEFAULT '',
+         TenNguoiDaiDien   NVARCHAR(100) DEFAULT '',
+         DiaChi            NVARCHAR(100) DEFAULT '',
+         Dienthoai         VARCHAR(20),
+         Fax               NVARCHAR(100) DEFAULT '',
+         Email             NVARCHAR(100) DEFAULT '',
+         MatHang           NVARCHAR(100) DEFAULT '',
+         DungYeuCauKyThuat INT DEFAULT 0 NOT NULL,
+         DungThoiGian      INT DEFAULT 0 NOT NULL,
+         DungMau           INT DEFAULT 0 NOT NULL,
+         DatTestLy         INT DEFAULT 0 NOT NULL,
+         DatTestHoa        INT DEFAULT 0 NOT NULL,
+         Gia               INT DEFAULT 0 NOT NULL,
+         DichVuGiaoHang    INT DEFAULT 0 NOT NULL,
+         DichVuHauMai      INT DEFAULT 0 NOT NULL,
+         Khac              INT DEFAULT 0 NOT NULL,
+         GhiChuNoiBo       NVARCHAR(1000) DEFAULT '',
+         GhiChu            NVARCHAR(1000) DEFAULT '',
+        );
+END;
 
-create table NhatKyThayDoi(
-Id bigint primary key identity(1,1),
-AuthorId bigint foreign key references UserAccount(Id),
-CreatedDate datetime2 default getdate() not null,
-ModifiedDate datetime2 default getdate() not null,
-IsActived bit default 1 not null,
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[DonHang]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE DonHang
+        (Id                BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId          BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate       DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived         BIT DEFAULT 1 NOT NULL,
+         MaPhomId          BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
+         MuId              BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
+         LotId             BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
+         DaLotTayId        BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
+         DeId              BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
+         MaHang            VARCHAR(50) DEFAULT '',
+         MaGiay            VARCHAR(50) DEFAULT '',
+         KhachHangId       BIGINT FOREIGN KEY REFERENCES KhachHang(id),
+         OrderNo           VARCHAR(50) DEFAULT '',
+         NgayNhan          DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayXuat          DATETIME2 DEFAULT GETDATE() NOT NULL,
+         HinhAnh           TEXT DEFAULT '',
+         SoLuong           INT DEFAULT 0 NOT NULL,
+         TrangThai         VARCHAR(20) DEFAULT '',
+         GopYVatTu         NVARCHAR(1000) DEFAULT '',
+         GopYXuongChat     NVARCHAR(1000) DEFAULT '',
+         GopYXuongMay      NVARCHAR(1000) DEFAULT '',
+         GopYXuongDe       NVARCHAR(1000) DEFAULT '',
+         GopYXuongGo       NVARCHAR(1000) DEFAULT '',
+         GopYQc            NVARCHAR(1000) DEFAULT '',
+         GopYCongNghe      NVARCHAR(1000) DEFAULT '',
+         GopYMau           NVARCHAR(1000) DEFAULT '',
+         GopYKhoVatTu      NVARCHAR(1000) DEFAULT '',
+         GopYPhuTro        NVARCHAR(1000) DEFAULT '',
+         GopYKhoThanhPham  NVARCHAR(1000) DEFAULT '',
+         DungYeuCauKyThuat INT DEFAULT 0 NOT NULL,
+         DungThoiGian      INT DEFAULT 0 NOT NULL,
+         DungMau           INT DEFAULT 0 NOT NULL,
+         DatTestLy         INT DEFAULT 0 NOT NULL,
+         DatTestHoa        INT DEFAULT 0 NOT NULL,
+         Gia               INT DEFAULT 0 NOT NULL,
+         DichVuGiaoHang    INT DEFAULT 0 NOT NULL,
+         DichVuHauMai      INT DEFAULT 0 NOT NULL,
+         Khac              INT DEFAULT 0 NOT NULL,
+        );
+END;
 
-ModelName nvarchar(50) default '',
-ItemId bigint default 0 not null,
-GhiChu nvarchar(1000) default '',
-);
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[ChiTietDonHang]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE ChiTietDonHang
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         DonHangId    BIGINT FOREIGN KEY REFERENCES DonHang(Id),
+         MauId        BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         Size         INT DEFAULT 0 NOT NULL,
+         SoLuong      INT DEFAULT 0 NOT NULL,
+        );
+        CREATE TABLE MauDoi
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         DonHangId    BIGINT FOREIGN KEY REFERENCES DonHang(Id),
+         HinhAnh      TEXT DEFAULT '',
+         NgayNhan     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         MauNgay      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         GhiChu       NVARCHAR(1000) DEFAULT '',
+        );
+END;
 
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[MauDoiHinh]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE MauDoiHinh
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         MauDoiId     BIGINT FOREIGN KEY REFERENCES MauDoi(Id),
+         HinhAnh      TEXT DEFAULT '',
+         GhiChu       NVARCHAR(1000) DEFAULT '',
+        );
+END;
 
- 
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[MauTest]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE MauTest
+        (Id                BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId          BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate       DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived         BIT DEFAULT 1 NOT NULL,
+         DonHangId         BIGINT FOREIGN KEY REFERENCES DonHang(Id),
+         NgayGuiMau        DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayKetquaTestLy  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         KetQuaTestLy      NVARCHAR(1000) DEFAULT '',
+         PhanLoaiTestLyId  BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         NgayKetquaTestHoa DATETIME2 DEFAULT GETDATE() NOT NULL,
+         KetQuaTestHoa     NVARCHAR(1000) DEFAULT '',
+         PhanLoaiTestHoaId BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         GopYCongNghe      NVARCHAR(1000) DEFAULT '',
+         GopYMau           NVARCHAR(1000) DEFAULT '',
+         GopYQc            NVARCHAR(1000) DEFAULT '',
+         GopYKhoVatTu      NVARCHAR(1000) DEFAULT '',
+         GopYVatTu         NVARCHAR(1000) DEFAULT '',
+         GopYPhuTro        NVARCHAR(1000) DEFAULT '',
+         GopYXuongChat     NVARCHAR(1000) DEFAULT '',
+         GopYXuongMay      NVARCHAR(1000) DEFAULT '',
+         GopYXuongDe       NVARCHAR(1000) DEFAULT '',
+         GopYXuongGo       NVARCHAR(1000) DEFAULT '',
+        );
+END;
 
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[MauSanXuat]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE MauSanXuat
+        (Id             BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId       BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate    DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate   DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived      BIT DEFAULT 1 NOT NULL,
+         DonHangId      BIGINT FOREIGN KEY REFERENCES DonHang(Id),
+         NgayGuiMau     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayKetqua     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         KetQua         NVARCHAR(1000) DEFAULT '',
+         PhanLoaiKetQua BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         GopYCongNghe   NVARCHAR(1000) DEFAULT '',
+         GopYMau        NVARCHAR(1000) DEFAULT '',
+         GopYQc         NVARCHAR(1000) DEFAULT '',
+         GopYKhoVatTu   NVARCHAR(1000) DEFAULT '',
+         GopYVatTu      NVARCHAR(1000) DEFAULT '',
+         GopYPhuTro     NVARCHAR(1000) DEFAULT '',
+         GopYXuongChat  NVARCHAR(1000) DEFAULT '',
+         GopYXuongMay   NVARCHAR(1000) DEFAULT '',
+         GopYXuongDe    NVARCHAR(1000) DEFAULT '',
+         GopYXuongGo    NVARCHAR(1000) DEFAULT '',
+        );
+END;
 
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[MauThuDao]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE MauThuDao
+        (Id                BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId          BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate       DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived         BIT DEFAULT 1 NOT NULL,
+         DonHangId         BIGINT FOREIGN KEY REFERENCES DonHang(Id),
+         NgayBatDau        DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayHoanThanh     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         GopYCongNghe      NVARCHAR(1000) DEFAULT '',
+         GopYMau           NVARCHAR(1000) DEFAULT '',
+         GopYQc            NVARCHAR(1000) DEFAULT '',
+         GopYKhoVatTu      NVARCHAR(1000) DEFAULT '',
+         GopYVatTu         NVARCHAR(1000) DEFAULT '',
+         GopYPhuTro        NVARCHAR(1000) DEFAULT '',
+         GopYXuongChat     NVARCHAR(1000) DEFAULT '',
+         GopYXuongMay      NVARCHAR(1000) DEFAULT '',
+         GopYXuongDe       NVARCHAR(1000) DEFAULT '',
+         GopYXuongGo       NVARCHAR(1000) DEFAULT '',
+         KetQuaXuongChatId BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         KetQuaXuongMayId  BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         KetQuaXuongDeId   BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         KetQuaXuongGoId   BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+        );
+END;
 
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[CongNgheSanXuat]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE CongNgheSanXuat
+        (Id                    BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId              BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate           DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate          DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived             BIT DEFAULT 1 NOT NULL,
+         DonHangId             BIGINT FOREIGN KEY REFERENCES DonHang(Id),
+         MauDoiId              BIGINT FOREIGN KEY REFERENCES MauDoi(Id),
+         PhanLoaiThuRapId      BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         YKienThuRap           NVARCHAR(1000) DEFAULT '',
+         PhanLoaiThuDaoId      BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         YKienThuDao           NVARCHAR(1000) DEFAULT '',
+         HinhBangThongSo       TEXT DEFAULT '',
+         HinhCongNgheDuocDuyet TEXT DEFAULT '',
+         NgayDuyet             DATETIME2 DEFAULT GETDATE() NOT NULL,
+        );
+END;
 
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[ChiLenh]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE ChiLenh
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         DonHangId    BIGINT FOREIGN KEY REFERENCES DonHang(Id),
+         SoPhieu      NVARCHAR(50) DEFAULT '',
+         TrangThai    NVARCHAR(50) DEFAULT '',
+         NgayLap      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NguoiLapId   BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         NgayDuyet    DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NguoiDuyetId BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+        );
+END;
 
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[NguyenLieuChiLenh]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE NguyenLieuChiLenh
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         PhanXuong    NVARCHAR(50) DEFAULT '',
+         ChiLenhId    BIGINT FOREIGN KEY REFERENCES ChiLenh(Id),
+         ChiTietId    BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         QuyCach      NVARCHAR(10) DEFAULT '' NOT NULL,
+         MauId        BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         DinhMucChuan REAL DEFAULT 0 NOT NULL,
+         DinhMucThuc  REAL DEFAULT 0 NOT NULL,
+        );
+END;
 
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[ChiTietNguyenLieu]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE ChiTietNguyenLieu
+        (Id                  BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId            BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate         DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate        DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived           BIT DEFAULT 1 NOT NULL,
+         NguyenLieuChiLenhId BIGINT FOREIGN KEY REFERENCES NguyenLieuChiLenh(Id),
+         ChiTietNguyenLieuId BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
+         GhiChu              NVARCHAR(1000) DEFAULT '',
+        );
+END;
 
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[KeHoachSanXuat]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE KeHoachSanXuat
+        (Id                    BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId              BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate           DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate          DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived             BIT DEFAULT 1 NOT NULL,
+         DonHangId             BIGINT FOREIGN KEY REFERENCES DonHang(Id),
+         NgayKiemHang          DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayBatDauPxChat      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayHoanThanhPxChat   DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayBatDauToPhuTro    DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayHoanThanhToPhuTro DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayBatDauPxMay       DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayHoanThanhPxMay    DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayBatDauPxGo        DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayHoanThanhPxGo     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayBatDauPxDe        DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayHoanThanhPxDe     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayBatDauBpVatTu     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayHoanThanhBpVatTu  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         GhiChu                NVARCHAR(1000) DEFAULT '',
+        );
+END;
 
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[BaoCaoPhanXuong]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE BaoCaoPhanXuong
+        (Id               BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId         BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived        BIT DEFAULT 1 NOT NULL,
+         DonHangId        BIGINT FOREIGN KEY REFERENCES DonHang(Id),
+         PhanXuong        NVARCHAR(50) DEFAULT '',
+         SanLuongKhoan    INT DEFAULT 0 NOT NULL,
+         SanLuongThucHien INT DEFAULT 0 NOT NULL,
+         LuyKe            INT DEFAULT 0 NOT NULL,
+         BaoCaoNgay       DATETIME2 DEFAULT GETDATE() NOT NULL,
+         GhiChu           NVARCHAR(1000) DEFAULT '',
+        );
+END;
 
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[TongHopToTrinh]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE TongHopToTrinh
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         SoPhieu      NVARCHAR(50) DEFAULT '',
+         TrangThai    NVARCHAR(100) DEFAULT '',
+         NguoiLapId   BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         NgayLap      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NguoiDuyetId BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         NgayDuyet    DATETIME2 DEFAULT GETDATE() NOT NULL,
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[ToTrinh]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE ToTrinh
+        (Id               BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId         BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived        BIT DEFAULT 1 NOT NULL,
+         TongHopToTrinhId BIGINT FOREIGN KEY REFERENCES TongHopToTrinh(Id),
+         NguyenLieuId     BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
+         DonDatHangList   TEXT DEFAULT '',
+         BoSung           REAL DEFAULT 0 NOT NULL,
+         ThuHoi           REAL DEFAULT 0 NOT NULL,
+         TonToTrinh       REAL DEFAULT 0 NOT NULL,
+         TonTheKho        REAL DEFAULT 0 NOT NULL,
+         TonThucTe        REAL DEFAULT 0 NOT NULL,
+         DuKien           REAL DEFAULT 0 NOT NULL,
+         HaoHut           REAL DEFAULT 0 NOT NULL,
+         GhiChu           NVARCHAR(1000) DEFAULT '',
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[ChiTietToTrinh]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE ChiTietToTrinh
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         ToTrinhId    BIGINT FOREIGN KEY REFERENCES ToTrinh(Id),
+         DonHangId    BIGINT FOREIGN KEY REFERENCES DonHang(Id),
+         NhuCau       REAL DEFAULT 0 NOT NULL,
+         ThucTe       REAL DEFAULT 0 NOT NULL,
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[NhaCungCap]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE NhaCungCap
+        (Id                BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId          BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate       DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived         BIT DEFAULT 1 NOT NULL,
+         TenCongTy         NVARCHAR(100) DEFAULT '',
+         TenNguoiDaiDien   NVARCHAR(100) DEFAULT '',
+         DiaChi            NVARCHAR(100) DEFAULT '',
+         Dienthoai         VARCHAR(20),
+         Fax               NVARCHAR(100) DEFAULT '',
+         Email             NVARCHAR(100) DEFAULT '',
+         MatHang           NVARCHAR(100) DEFAULT '',
+         DungYeuCauKyThuat INT DEFAULT 0 NOT NULL,
+         DungThoiGian      INT DEFAULT 0 NOT NULL,
+         DungMau           INT DEFAULT 0 NOT NULL,
+         DatTestLy         INT DEFAULT 0 NOT NULL,
+         DatTestHoa        INT DEFAULT 0 NOT NULL,
+         Gia               INT DEFAULT 0 NOT NULL,
+         DichVuGiaoHang    INT DEFAULT 0 NOT NULL,
+         DichVuHauMai      INT DEFAULT 0 NOT NULL,
+         Khac              INT DEFAULT 0 NOT NULL,
+         GhiChuNoiBo       NVARCHAR(1000) DEFAULT '',
+         GhiChu            NVARCHAR(1000) DEFAULT '',
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[NhaCungCapVatTu]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE NhaCungCapVatTu
+        (Id            BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId      BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate   DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived     BIT DEFAULT 1 NOT NULL,
+         NhaCungCapId  BIGINT FOREIGN KEY REFERENCES NhaCungCap(Id),
+         NguyenLieuId  BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
+         DonGia        FLOAT DEFAULT 0 NOT NULL,
+         DonVi         NVARCHAR(10),
+         GiaBanTuNgay  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         GiaBanDenNgay DATETIME2 DEFAULT GETDATE() NOT NULL,
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[DonDatHang]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE DonDatHang
+        (Id                BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId          BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate       DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived         BIT DEFAULT 1 NOT NULL,
+         ToTrinhId         BIGINT FOREIGN KEY REFERENCES NhaCungCap(Id),
+         SoDH              VARCHAR(50),
+         NhaCungCapId      BIGINT FOREIGN KEY REFERENCES NhaCungCap(Id),
+         NgayDatHang       DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NgayGiaoHang      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         DungYeuCauKyThuat INT DEFAULT 0 NOT NULL,
+         DungThoiGian      INT DEFAULT 0 NOT NULL,
+         DungMau           INT DEFAULT 0 NOT NULL,
+         DatTestLy         INT DEFAULT 0 NOT NULL,
+         DatTestHoa        INT DEFAULT 0 NOT NULL,
+         Gia               INT DEFAULT 0 NOT NULL,
+         DichVuGiaoHang    INT DEFAULT 0 NOT NULL,
+         DichVuHauMai      INT DEFAULT 0 NOT NULL,
+         Khac              INT DEFAULT 0 NOT NULL,
+         NgayDuyet         DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NguoiDuyetId      BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         NgayLap           DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NguoiLapId        BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         TrangThai         NVARCHAR(100) DEFAULT '',
+         SoLuongDat        FLOAT DEFAULT 0 NOT NULL
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[ChiTietDonDatHang]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE ChiTietDonDatHang
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         DonDatHangId BIGINT FOREIGN KEY REFERENCES DonDatHang(Id),
+         NhaCungCapId BIGINT FOREIGN KEY REFERENCES NhaCungCap(Id),
+         NguyenLieuId BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
+         DonGia       REAL DEFAULT 0 NOT NULL,
+         SoLuong      REAL DEFAULT 0 NOT NULL,
+         SoLuongThuc  REAL DEFAULT 0 NOT NULL,
+         GhiChu       NVARCHAR(1000) DEFAULT '',
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[MauDanhGia]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE MauDanhGia
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         TenMau       NVARCHAR(100) DEFAULT '',
+         GhiChu       NVARCHAR(1000) DEFAULT '',
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[ChiTietMauDanhGia]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE ChiTietMauDanhGia
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         MauDanhGiaId BIGINT FOREIGN KEY REFERENCES MauDanhGia(Id),
+         TieuChiId    BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[DanhGia]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE DanhGia
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         DonDatHangId BIGINT FOREIGN KEY REFERENCES DonDatHang(Id),
+         MauDanhGiaId BIGINT FOREIGN KEY REFERENCES MauDanhGia(Id),
+         SoPhieu      NVARCHAR(100) DEFAULT '',
+         SoLuongKiem  FLOAT DEFAULT 0 NOT NULL,
+         SoLuongKem   FLOAT DEFAULT 0 NOT NULL,
+         BienPhapXuLy NVARCHAR(1000) DEFAULT '',
+         NgayKiem     DATETIME2 DEFAULT GETDATE() NOT NULL,
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[ChiTietDanhGia]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE ChiTietDanhGia
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         DanhGiaId    BIGINT FOREIGN KEY REFERENCES DanhGia(Id),
+         TieuChiId    BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         SoLuongKem   FLOAT DEFAULT 0 NOT NULL,
+         GhiChu       NVARCHAR(1000) DEFAULT '',
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[PhieuNhapKho]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE PhieuNhapKho
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         NguoiGiao    NVARCHAR(50) DEFAULT '',
+         DiaChi       NVARCHAR(100) DEFAULT '',
+         LyDo         NVARCHAR(100) DEFAULT '',
+         Kho          NVARCHAR(50) DEFAULT '',
+         LoaiPhieu    NVARCHAR(50) DEFAULT '',
+         NgayNhap     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         SoPhieu      NVARCHAR(100) DEFAULT '',
+         TrangThai    NVARCHAR(100) DEFAULT '',
+         DanhGiaId    BIGINT FOREIGN KEY REFERENCES DanhGia(Id),
+         ChiLenhId    BIGINT FOREIGN KEY REFERENCES ChiLenh(Id),
+         NgayDuyet    DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NguoiDuyetId BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         NgayLap      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NguoiLapId   BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[ChiTietNhapKho]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE ChiTietNhapKho
+        (Id             BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId       BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate    DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate   DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived      BIT DEFAULT 1 NOT NULL,
+         PhieuNhapKhoId BIGINT FOREIGN KEY REFERENCES PhieuNhapKho(Id),
+         NguyenLieuId   BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
+         SoLuong        REAL DEFAULT 0 NOT NULL,
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[PhieuXuatKho]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE PhieuXuatKho
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         DonHangId    BIGINT FOREIGN KEY REFERENCES DonHang(Id),
+         NguoiNhan    NVARCHAR(50) DEFAULT '',
+         DiaChi       NVARCHAR(100) DEFAULT '',
+         BoPhan       NVARCHAR(50) DEFAULT '',
+         LyDo         NVARCHAR(100) DEFAULT '',
+         Kho          NVARCHAR(50) DEFAULT '',
+         LoaiXuat     NVARCHAR(50) DEFAULT '',
+         NgayXuat     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         SoPhieu      NVARCHAR(100) DEFAULT '',
+         TrangThai    NVARCHAR(100) DEFAULT '',
+         NgayDuyet    DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NguoiDuyetId BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         NgayLap      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         NguoiLapId   BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[ChiTietXuatKho]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE ChiTietXuatKho
+        (Id             BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId       BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate    DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate   DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived      BIT DEFAULT 1 NOT NULL,
+         PhieuXuatKhoId BIGINT FOREIGN KEY REFERENCES PhieuXuatKho(Id),
+         NguyenLieuId   BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
+         SoLuong        REAL DEFAULT 0 NOT NULL,
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[NhatKyXuatKho]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE NhatKyXuatKho
+        (Id               BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId         BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate      DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate     DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived        BIT DEFAULT 1 NOT NULL,
+         ChiTietXuatKhoId BIGINT FOREIGN KEY REFERENCES ChiTietXuatKho(Id),
+         SoLuong          REAL DEFAULT 0 NOT NULL,
+         NguoiNhan        NVARCHAR(100) DEFAULT '',
+         GhiChu           NVARCHAR(100) DEFAULT '',
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[MauHuongDanDongGoi]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE MauHuongDanDongGoi
+        (Id            BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId      BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate   DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived     BIT DEFAULT 1 NOT NULL,
+         KhachHangId   BIGINT FOREIGN KEY REFERENCES KhachHang(Id),
+         TenMau        NVARCHAR(50) DEFAULT '',
+         ApDungTuNgay  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ApDungDenNgay DATETIME2 DEFAULT GETDATE() NOT NULL,
+         GhiChu        NVARCHAR(1000) DEFAULT '',
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[ChiTietHuongDanDongGoi]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE ChiTietHuongDanDongGoi
+        (Id                   BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId             BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate          DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate         DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived            BIT DEFAULT 1 NOT NULL,
+         MauHuongDanDongGoiId BIGINT FOREIGN KEY REFERENCES MauHuongDanDongGoi(Id),
+         DanhMucId            BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         DonViTinhId          BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         KichThuoc            NVARCHAR(50) DEFAULT '',
+         MauId                BIGINT FOREIGN KEY REFERENCES DanhMuc(Id),
+         NguyenLieuId         BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
+         CachSuDung           TEXT DEFAULT '',
+         ViTriSuDung          NVARCHAR(100) DEFAULT '',
+         SoLuong              INT DEFAULT 0 NOT NULL,
+         HinhMauDinhKem       TEXT DEFAULT '',
+         GhiChu               NVARCHAR(1000) DEFAULT '',
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[HuongDanDongGoi]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE HuongDanDongGoi
+        (Id            BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId      BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate   DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived     BIT DEFAULT 1 NOT NULL,
+         DonHangId     BIGINT FOREIGN KEY REFERENCES DonHang(Id),
+         MauDongGoiId  BIGINT FOREIGN KEY REFERENCES MauHuongDanDongGoi(Id),
+         CachDong      NVARCHAR(50) DEFAULT '',
+         DongAssorment TEXT DEFAULT '',
+         SoLuong       INT DEFAULT 0 NOT NULL,
+         SoDoi         INT DEFAULT 0 NOT NULL,
+         GhiChu        NVARCHAR(1000) DEFAULT '',
+        );
+END;
+
+IF NOT EXISTS
+(
+    SELECT *
+    FROM   dbo.sysobjects
+    WHERE  id = OBJECT_ID(N'dbo.[NhatKyThayDoi]')
+           AND OBJECTPROPERTY(id, N'IsTable') = 1
+)
+    BEGIN
+        CREATE TABLE NhatKyThayDoi
+        (Id           BIGINT
+         PRIMARY KEY IDENTITY(1, 1),
+         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived    BIT DEFAULT 1 NOT NULL,
+         ModelName    NVARCHAR(50) DEFAULT '',
+         ItemId       BIGINT DEFAULT 0 NOT NULL,
+         GhiChu       NVARCHAR(1000) DEFAULT '',
+        );
+END;
