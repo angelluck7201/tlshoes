@@ -116,7 +116,7 @@ namespace TLShoes.FormControls.NhapKho
                 {
                     saveData.SoPhieu = SF.Get<PhieuNhapKhoViewModel>().GenerateSoPhieuDoiKho(saveData.SoPhieu, PrimitiveConvert.StringToEnum<Define.Kho>(saveData.Kho));
                 }
-                CRUD.DecorateSaveData(saveData, _currentData == null);
+                CRUD.DecorateSaveData(saveData);
                 SF.Get<PhieuNhapKhoViewModel>().Save(saveData);
 
                 // Save chi teit Nhap kho

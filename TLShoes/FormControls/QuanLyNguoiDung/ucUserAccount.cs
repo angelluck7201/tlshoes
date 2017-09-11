@@ -45,7 +45,7 @@ namespace TLShoes.FormControls.QuanLyNguoiDung
             }
 
             var saveData = CRUD.GetFormObject<UserAccount>(FormControls);
-            CRUD.DecorateSaveData(saveData, _domainData == null);
+            CRUD.DecorateSaveData(saveData);
             SF.Get<UserAccountViewModel>().Save(saveData);
             return true;
         }

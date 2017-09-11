@@ -54,16 +54,21 @@ namespace TLShoes
 {
     public partial class ChiTietToTrinh
     {
+        public bool IsChon { get; set; }
+
+        public string SoPhieu
+        {
+            get { return ChiTietNguyenLieu.NguyenLieuChiLenh.ChiLenh.SoPhieu; }
+        }
+
         public string MaHang
         {
-            get
-            {
-                if (DonHang != null)
-                {
-                    return DonHang.MaHang;
-                }
-                return string.Empty;
-            }
+            get { return ChiTietNguyenLieu.NguyenLieuChiLenh.ChiLenh.DonHang.MaHang; }
+        }
+
+        public string OrderNo
+        {
+            get { return ChiTietNguyenLieu.NguyenLieuChiLenh.ChiLenh.DonHang.OrderNo; }
         }
     }
 }

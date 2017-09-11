@@ -20,7 +20,6 @@ namespace TLShoes
             this.BaoCaoPhanXuongs = new HashSet<BaoCaoPhanXuong>();
             this.ChiLenhs = new HashSet<ChiLenh>();
             this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
-            this.ChiTietToTrinhs = new HashSet<ChiTietToTrinh>();
             this.HuongDanDongGois = new HashSet<HuongDanDongGoi>();
             this.KeHoachSanXuats = new HashSet<KeHoachSanXuat>();
             this.MauDois = new HashSet<MauDoi>();
@@ -77,8 +76,6 @@ namespace TLShoes
         public virtual ICollection<ChiLenh> ChiLenhs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
         public virtual UserAccount UserAccount { get; set; }
         public virtual KhachHang KhachHang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

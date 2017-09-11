@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucToTrinh));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.lblThongBao = new DevExpress.XtraEditors.LabelControl();
@@ -38,7 +38,7 @@
             this.gridViewToTrinh = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repNguyenLieuToTrinhId = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnDeleteNguyenLieu = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
@@ -57,6 +57,9 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ChiTietToTrinh_NhuCau = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ChiTietToTrinh_ThucTe = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repCheckEditGridNguyenLieu = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.DonHangLookUp = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.lblDuKien = new DevExpress.XtraEditors.LabelControl();
             this.ToTrinh_DuKien = new System.Windows.Forms.TextBox();
@@ -98,10 +101,12 @@
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridToTrinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewToTrinh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repNguyenLieuToTrinhId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDeleteNguyenLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuLookUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridChiTietToTrinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewNguyenLieu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repCheckEditGridNguyenLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DonHangLookUp)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage3.SuspendLayout();
@@ -190,7 +195,8 @@
             this.gridToTrinh.Name = "gridToTrinh";
             this.gridToTrinh.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.NguyenLieuLookUp,
-            this.btnDeleteNguyenLieu});
+            this.btnDeleteNguyenLieu,
+            this.repNguyenLieuToTrinhId});
             this.gridToTrinh.Size = new System.Drawing.Size(889, 664);
             this.gridToTrinh.TabIndex = 111;
             this.gridToTrinh.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -201,7 +207,6 @@
             this.gridViewToTrinh.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
-            this.gridColumn12,
             this.gridColumn8,
             this.gridColumn14,
             this.gridColumn4,
@@ -237,20 +242,19 @@
             this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "Nguyên Liệu";
+            this.gridColumn2.ColumnEdit = this.repNguyenLieuToTrinhId;
             this.gridColumn2.FieldName = "NguyenLieuId";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
             this.gridColumn2.Width = 166;
             // 
-            // gridColumn12
+            // repNguyenLieuToTrinhId
             // 
-            this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.gridColumn12.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn12.Caption = "Nguyên Liệu";
-            this.gridColumn12.FieldName = "NguyenLieu.Ten";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 0;
-            this.gridColumn12.Width = 165;
+            this.repNguyenLieuToTrinhId.AutoHeight = false;
+            this.repNguyenLieuToTrinhId.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repNguyenLieuToTrinhId.Name = "repNguyenLieuToTrinhId";
             // 
             // gridColumn8
             // 
@@ -278,14 +282,14 @@
             this.btnDeleteNguyenLieu.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Appearance.Image")));
             this.btnDeleteNguyenLieu.Appearance.Options.UseImage = true;
             this.btnDeleteNguyenLieu.AutoHeight = false;
-            serializableAppearanceObject2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            serializableAppearanceObject2.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
-            serializableAppearanceObject2.Options.UseBackColor = true;
-            serializableAppearanceObject2.Options.UseBorderColor = true;
-            serializableAppearanceObject2.Options.UseImage = true;
+            serializableAppearanceObject1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            serializableAppearanceObject1.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
+            serializableAppearanceObject1.Options.UseBackColor = true;
+            serializableAppearanceObject1.Options.UseBorderColor = true;
+            serializableAppearanceObject1.Options.UseImage = true;
             this.btnDeleteNguyenLieu.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "Nhấp đúp để xóa", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnDeleteNguyenLieu.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "Nhấp đúp để xóa", null, null, true)});
             this.btnDeleteNguyenLieu.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.btnDeleteNguyenLieu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.btnDeleteNguyenLieu.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -402,7 +406,8 @@
             this.gridChiTietToTrinh.MainView = this.gridViewNguyenLieu;
             this.gridChiTietToTrinh.Name = "gridChiTietToTrinh";
             this.gridChiTietToTrinh.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.DonHangLookUp});
+            this.DonHangLookUp,
+            this.repCheckEditGridNguyenLieu});
             this.gridChiTietToTrinh.Size = new System.Drawing.Size(494, 252);
             this.gridChiTietToTrinh.TabIndex = 106;
             this.gridChiTietToTrinh.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -414,7 +419,9 @@
             this.gridColumn3,
             this.gridColumn6,
             this.ChiTietToTrinh_NhuCau,
-            this.ChiTietToTrinh_ThucTe});
+            this.ChiTietToTrinh_ThucTe,
+            this.gridColumn12,
+            this.gridColumn18});
             this.gridViewNguyenLieu.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridViewNguyenLieu.GridControl = this.gridChiTietToTrinh;
             this.gridViewNguyenLieu.Name = "gridViewNguyenLieu";
@@ -444,7 +451,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 0;
-            this.gridColumn6.Width = 221;
+            this.gridColumn6.Width = 121;
             // 
             // ChiTietToTrinh_NhuCau
             // 
@@ -456,8 +463,8 @@
             this.ChiTietToTrinh_NhuCau.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NhuCau", "NHU CẦU={0:0.##}")});
             this.ChiTietToTrinh_NhuCau.Visible = true;
-            this.ChiTietToTrinh_NhuCau.VisibleIndex = 1;
-            this.ChiTietToTrinh_NhuCau.Width = 188;
+            this.ChiTietToTrinh_NhuCau.VisibleIndex = 2;
+            this.ChiTietToTrinh_NhuCau.Width = 92;
             // 
             // ChiTietToTrinh_ThucTe
             // 
@@ -469,8 +476,33 @@
             this.ChiTietToTrinh_ThucTe.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ThucTe", "THỰC TẾ={0:0.##}")});
             this.ChiTietToTrinh_ThucTe.Visible = true;
-            this.ChiTietToTrinh_ThucTe.VisibleIndex = 2;
-            this.ChiTietToTrinh_ThucTe.Width = 165;
+            this.ChiTietToTrinh_ThucTe.VisibleIndex = 3;
+            this.ChiTietToTrinh_ThucTe.Width = 79;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn12.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn12.Caption = "Chỉ Lệnh";
+            this.gridColumn12.FieldName = "SoPhieu";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 1;
+            this.gridColumn12.Width = 138;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.ColumnEdit = this.repCheckEditGridNguyenLieu;
+            this.gridColumn18.FieldName = "IsChon";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 4;
+            this.gridColumn18.Width = 44;
+            // 
+            // repCheckEditGridNguyenLieu
+            // 
+            this.repCheckEditGridNguyenLieu.AutoHeight = false;
+            this.repCheckEditGridNguyenLieu.Name = "repCheckEditGridNguyenLieu";
             // 
             // DonHangLookUp
             // 
@@ -777,11 +809,11 @@
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnExport.Location = new System.Drawing.Point(232, 709);
+            this.btnExport.Location = new System.Drawing.Point(213, 709);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 30);
             this.btnExport.TabIndex = 84;
-            this.btnExport.Text = "Export";
+            this.btnExport.Text = "In";
             this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
@@ -794,7 +826,7 @@
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Appearance.Options.UseForeColor = true;
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnSave.Location = new System.Drawing.Point(1368, 709);
+            this.btnSave.Location = new System.Drawing.Point(1376, 709);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
             this.btnSave.TabIndex = 85;
@@ -809,7 +841,7 @@
             this.btnDuyet.Appearance.Options.UseFont = true;
             this.btnDuyet.Appearance.Options.UseForeColor = true;
             this.btnDuyet.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnDuyet.Location = new System.Drawing.Point(119, 709);
+            this.btnDuyet.Location = new System.Drawing.Point(100, 709);
             this.btnDuyet.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.btnDuyet.LookAndFeel.UseDefaultLookAndFeel = false;
             this.btnDuyet.Name = "btnDuyet";
@@ -828,7 +860,7 @@
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Appearance.Options.UseForeColor = true;
             this.btnCancel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
-            this.btnCancel.Location = new System.Drawing.Point(38, 709);
+            this.btnCancel.Location = new System.Drawing.Point(19, 709);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 81;
@@ -852,10 +884,12 @@
             this.xtraTabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridToTrinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewToTrinh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repNguyenLieuToTrinhId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDeleteNguyenLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NguyenLieuLookUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridChiTietToTrinh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewNguyenLieu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repCheckEditGridNguyenLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DonHangLookUp)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
@@ -909,7 +943,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraEditors.LabelControl lblSoPhieu;
         private DevExpress.XtraEditors.SimpleButton btnExport;
         private DevExpress.XtraEditors.SimpleButton btnSave;
@@ -931,5 +964,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.LabelControl lblThongBao;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repNguyenLieuToTrinhId;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repCheckEditGridNguyenLieu;
     }
 }

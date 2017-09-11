@@ -37,10 +37,10 @@ namespace TLShoes
         public float HaoHut { get; set; }
         public string GhiChu { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
         public virtual TongHopToTrinh TongHopToTrinh { get; set; }
         public virtual UserAccount UserAccount { get; set; }
         public virtual NguyenLieu NguyenLieu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
     }
 }

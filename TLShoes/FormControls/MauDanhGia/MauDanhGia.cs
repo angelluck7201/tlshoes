@@ -49,7 +49,7 @@ namespace TLShoes.FormControls.MauDanhGia
             var saveData = CRUD.GetFormObject(FormControls, _domainData);
             using (var transaction = new TransactionScope())
             {
-                CRUD.DecorateSaveData(saveData, _domainData == null);
+                CRUD.DecorateSaveData(saveData);
                 _viewModel.Save(saveData);
 
                 foreach (var nguyenlieu in TieuChiList)

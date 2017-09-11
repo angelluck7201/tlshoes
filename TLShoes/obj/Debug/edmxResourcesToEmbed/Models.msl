@@ -124,21 +124,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ChiTietToTrinhs">
-      <EntityTypeMapping TypeName="GiayTLModel.ChiTietToTrinh">
-        <MappingFragment StoreEntitySet="ChiTietToTrinh">
-          <ScalarProperty Name="ThucTe" ColumnName="ThucTe" />
-          <ScalarProperty Name="NhuCau" ColumnName="NhuCau" />
-          <ScalarProperty Name="DonHangId" ColumnName="DonHangId" />
-          <ScalarProperty Name="ToTrinhId" ColumnName="ToTrinhId" />
-          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ChiTietXuatKhoes">
       <EntityTypeMapping TypeName="GiayTLModel.ChiTietXuatKho">
         <MappingFragment StoreEntitySet="ChiTietXuatKho">
@@ -763,6 +748,21 @@
           <ScalarProperty Name="SoLuongKem" ColumnName="SoLuongKem" />
           <ScalarProperty Name="TieuChiId" ColumnName="TieuChiId" />
           <ScalarProperty Name="DanhGiaId" ColumnName="DanhGiaId" />
+          <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietToTrinhs">
+      <EntityTypeMapping TypeName="GiayTLModel.ChiTietToTrinh">
+        <MappingFragment StoreEntitySet="ChiTietToTrinh">
+          <ScalarProperty Name="ChiTietNguyenLieuId" ColumnName="ChiTietNguyenLieuId" />
+          <ScalarProperty Name="ThucTe" ColumnName="ThucTe" />
+          <ScalarProperty Name="NhuCau" ColumnName="NhuCau" />
+          <ScalarProperty Name="ToTrinhId" ColumnName="ToTrinhId" />
           <ScalarProperty Name="IsActived" ColumnName="IsActived" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />

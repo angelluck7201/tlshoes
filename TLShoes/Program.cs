@@ -25,7 +25,7 @@ namespace TLShoes
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-//#if !DEBUG
+#if !DEBUG
             // Add the event handler for handling UI thread exceptions to the event.
             Application.ThreadException += new ThreadExceptionEventHandler(ErrorControl.UIThreadException);
 
@@ -34,7 +34,7 @@ namespace TLShoes
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 //#else
 //                    Application.ThreadException += new ThreadExceptionEventHandler(ErrorControl.DEVException);
-//#endif
+#endif
 
                     Localization();
 

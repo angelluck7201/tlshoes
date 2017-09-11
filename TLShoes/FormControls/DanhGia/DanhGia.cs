@@ -57,7 +57,7 @@ namespace TLShoes.FormControls.DanhGia
                 // Save Don hang
                 var saveData = CRUD.GetFormObject(FormControls, _domainData);
                 saveData.SoLuongKem = _chiTietDanhGia.Sum(s => s.SoLuongKem);
-                CRUD.DecorateSaveData(saveData, _domainData == null);
+                CRUD.DecorateSaveData(saveData);
                 SF.Get<DanhGiaViewModel>().Save(saveData);
 
                 foreach (var chitiet in _chiTietDanhGia)

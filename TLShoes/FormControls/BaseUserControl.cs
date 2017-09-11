@@ -21,6 +21,17 @@ namespace TLShoes.FormControls
         public const string FormButton = "panelButtons";
         public const string FormData = "navBarData";
         public List<Control> FormControls = new List<Control>();
+        private GiayTLEntities _dbContext;
+
+        public GiayTLEntities DbContext
+        {
+            get
+            {
+                if (_dbContext == null)
+                    _dbContext = new GiayTLEntities();
+                return _dbContext;
+            }
+        }
 
         public void Init(object data = null)
         {
@@ -29,6 +40,21 @@ namespace TLShoes.FormControls
             if (data != null)
             {
                 InitFormData(data);
+            }
+        }
+
+        public void BindingData<T>(T data)
+        {
+            if (FormControls == null || FormControls.Count == 0)
+            {
+                FormControls = CRUD.GetAllChild(this);
+            }
+            var modelName = CRUD.GetModelName(data);
+            foreach (var formControl in FormControls)
+            {
+                var splitControl = formControl.Name.Split('_');
+                if (splitControl.Length != 2 || splitControl[0] != modelName) continue;
+                CRUD.BindingControl(formControl, data, splitControl[1]);
             }
         }
 
@@ -85,8 +111,10 @@ namespace TLShoes.FormControls
             }
         }
 
-        public void InitFormData(object data)
+        public void InitFormData<T>(T data)
         {
+            var modelName = CRUD.GetModelName(data);
+
             if (data != null)
             {
                 foreach (Control control in FormControls)
@@ -122,14 +150,9 @@ namespace TLShoes.FormControls
                     }
                     else
                     {
-                        var fieldName = CRUD.GetUIModelName(control.Name);
-                        if (string.IsNullOrEmpty(fieldName)) continue;
-
-                        var modelData = CRUD.ReflectionGet(data, fieldName);
-                        if (modelData != null)
-                        {
-                            CRUD.SetControlValue(control, modelData);
-                        }
+                        var splitControl = control.Name.Split('_');
+                        if (splitControl.Length != 2 || splitControl[0] != modelName) continue;
+                        CRUD.BindingControl(control, data, splitControl[1]);
                     }
                 }
             }

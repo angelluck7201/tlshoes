@@ -33,10 +33,10 @@ namespace TLShoes.FormControls.ToTrinh
         {
             ThreadHelper.LoadForm(() =>
             {
-                var info = SF.Get<ToTrinhViewModel>().GetDetailTongHopToTrinh(GetFocusRowId(sender));
-                if (info != null)
+                var id = GetFocusRowId(sender);
+                if (id != 0)
                 {
-                    FormFactory<Main>.Get().ShowPopupInfo(info);
+                    FormFactory<Main>.Get().ShowPopupInfo(id);
                 }
             });
         }

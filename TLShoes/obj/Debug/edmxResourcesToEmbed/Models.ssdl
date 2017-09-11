@@ -156,9 +156,9 @@
     <Property Name="ModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
     <Property Name="IsActived" Type="bit" Nullable="false" />
     <Property Name="ToTrinhId" Type="bigint" />
-    <Property Name="DonHangId" Type="bigint" />
     <Property Name="NhuCau" Type="real" Nullable="false" />
     <Property Name="ThucTe" Type="real" Nullable="false" />
+    <Property Name="ChiTietNguyenLieuId" Type="bigint" />
   </EntityType>
   <EntityType Name="ChiTietXuatKho">
     <Key>
@@ -1114,15 +1114,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietTo__DonHa__4959E263">
-    <End Role="DonHang" Type="Self.DonHang" Multiplicity="0..1" />
+  <Association Name="FK__ChiTietTo__ChiTi__09946309">
+    <End Role="ChiTietNguyenLieu" Type="Self.ChiTietNguyenLieu" Multiplicity="0..1" />
     <End Role="ChiTietToTrinh" Type="Self.ChiTietToTrinh" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="DonHang">
+      <Principal Role="ChiTietNguyenLieu">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ChiTietToTrinh">
-        <PropertyRef Name="DonHangId" />
+        <PropertyRef Name="ChiTietNguyenLieuId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2267,8 +2267,8 @@
       <End Role="UserAccount" EntitySet="UserAccount" />
       <End Role="ChiTietToTrinh" EntitySet="ChiTietToTrinh" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietTo__DonHa__4959E263" Association="Self.FK__ChiTietTo__DonHa__4959E263">
-      <End Role="DonHang" EntitySet="DonHang" />
+    <AssociationSet Name="FK__ChiTietTo__ChiTi__09946309" Association="Self.FK__ChiTietTo__ChiTi__09946309">
+      <End Role="ChiTietNguyenLieu" EntitySet="ChiTietNguyenLieu" />
       <End Role="ChiTietToTrinh" EntitySet="ChiTietToTrinh" />
     </AssociationSet>
     <AssociationSet Name="FK__ChiTietTo__ToTri__4865BE2A" Association="Self.FK__ChiTietTo__ToTri__4865BE2A">

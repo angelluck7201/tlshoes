@@ -20,12 +20,12 @@ namespace TLShoes
         public System.DateTime ModifiedDate { get; set; }
         public bool IsActived { get; set; }
         public Nullable<long> ToTrinhId { get; set; }
-        public Nullable<long> DonHangId { get; set; }
         public float NhuCau { get; set; }
         public float ThucTe { get; set; }
+        public Nullable<long> ChiTietNguyenLieuId { get; set; }
     
+        public virtual ChiTietNguyenLieu ChiTietNguyenLieu { get; set; }
         public virtual UserAccount UserAccount { get; set; }
-        public virtual DonHang DonHang { get; set; }
         public virtual ToTrinh ToTrinh { get; set; }
     }
 }

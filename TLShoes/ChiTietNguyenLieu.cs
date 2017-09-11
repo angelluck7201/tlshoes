@@ -14,6 +14,12 @@ namespace TLShoes
     
     public partial class ChiTietNguyenLieu
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ChiTietNguyenLieu()
+        {
+            this.ChiTietToTrinhs = new HashSet<ChiTietToTrinh>();
+        }
+    
         public long Id { get; set; }
         public Nullable<long> AuthorId { get; set; }
         public System.DateTime CreatedDate { get; set; }
@@ -26,5 +32,7 @@ namespace TLShoes
         public virtual UserAccount UserAccount { get; set; }
         public virtual NguyenLieuChiLenh NguyenLieuChiLenh { get; set; }
         public virtual NguyenLieu NguyenLieu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
     }
 }

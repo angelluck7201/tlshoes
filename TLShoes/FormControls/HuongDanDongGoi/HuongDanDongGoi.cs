@@ -68,7 +68,7 @@ namespace TLShoes.FormControls.HuongDanDongGoi
                 {
                     saveData.DongAssorment = "";
                 }
-                CRUD.DecorateSaveData(saveData, _domainData == null);
+                CRUD.DecorateSaveData(saveData);
                 SF.Get<HuongDanDongGoiViewModel>().Save(saveData);
 
                 var nhatKyThayDoi = new NhatKyThayDoi();

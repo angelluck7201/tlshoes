@@ -115,7 +115,7 @@ namespace TLShoes.FormControls.DonDatHang
             {
                 var saveData = CRUD.GetFormObject(FormControls, _donDatHang);
                 saveData.SoLuongDat = DatHangVatTuList.Sum(s => s.SoLuong);
-                CRUD.DecorateSaveData(saveData, _donDatHang == null);
+                CRUD.DecorateSaveData(saveData);
                 SF.Get<DonDatHangViewModel>().Save(saveData);
 
                 // Clear deleted data

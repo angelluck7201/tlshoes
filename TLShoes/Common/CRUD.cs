@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
@@ -11,7 +12,7 @@ namespace TLShoes.Common
 {
     public static class CRUD
     {
-        public static string GetUIModelName(string uiName)
+        public static string GetUIFieldName(string uiName)
         {
             var modelName = uiName.Split('_');
             if (modelName.Length > 1)
@@ -19,6 +20,16 @@ namespace TLShoes.Common
                 return modelName[1];
             }
             return string.Empty;
+        }
+
+        public static string GetModelName<T>(T data)
+        {
+            var modelName = typeof(T).ToString();
+            if (modelName.Contains("."))
+            {
+                return modelName.Split('.').Last();
+            }
+            return modelName;
         }
 
         public static bool IsSaveData(string uiName, Type model)
@@ -86,7 +97,7 @@ namespace TLShoes.Common
             {
                 if (!IsSaveData(data.Name, Main.currentModel)) continue;
                 object saveData = null;
-                string saveName = GetUIModelName(data.Name);
+                string saveName = GetUIFieldName(data.Name);
                 saveData = data.Text;
                 if (saveData != null)
                 {
@@ -125,14 +136,14 @@ namespace TLShoes.Common
                 if (controlName == "Id")
                 {
                     ReflectionSet(data, "Id", PrimitiveConvert.StringToInt(control.Text));
-                    DecorateSaveData(data, control.Text.IsEmpty());
+                    DecorateSaveData(data);
                     continue;
                 }
 
                 if (!IsSaveData(controlName, modelName)) continue;
 
                 object fieldData = GetControlValue(control);
-                var saveName = GetUIModelName(controlName);
+                var saveName = GetUIFieldName(controlName);
 
                 if (fieldData != null)
                 {
@@ -248,11 +259,38 @@ namespace TLShoes.Common
             }
         }
 
-        public static void DecorateSaveData(object data, bool isNew = true)
+        public static void BindingControl(Control control, object data, string fieldName)
+        {
+            var controlType = control.GetType();
+            switch (controlType.Name)
+            {
+                case "ComboBox":
+                    control.DataBindings.Add("SelectedValue", data, fieldName);
+                    break;
+                case "RatingControl":
+                    control.DataBindings.Add("Rating", data, fieldName);
+                    break;
+                case "PictureEdit":
+                    var imageContainer = (control as PictureEdit);
+                    var value = ReflectionGet(data, fieldName);
+                    if (value != null)
+                    {
+                        FileHelper.SetImage(imageContainer, value.ToString());
+                    }
+                    break;
+                default:
+                    control.DataBindings.Add("Text", data, fieldName);
+                    break;
+            }
+        }
+
+        public static void DecorateSaveData(object data)
         {
             var currentTime = TimeHelper.Current();
             ReflectionSet(data, "AuthorId", Authorization.LoginUser.Id);
-            if (isNew)
+
+            var createdDate = (DateTime)ReflectionGet(data, "CreatedDate");
+            if (createdDate.Year == 1 )
             {
                 ReflectionSet(data, "CreatedDate", currentTime);
             }

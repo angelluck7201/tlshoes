@@ -50,7 +50,7 @@ namespace TLShoes.FormControls.NhaCungCap
             var saveData = CRUD.GetFormObject<TLShoes.NhaCungCap>(FormControls, _domainData);
             using (var transaction = new TransactionScope())
             {
-                CRUD.DecorateSaveData(saveData, _domainData == null);
+                CRUD.DecorateSaveData(saveData);
                 _viewModel.Save(saveData);
 
                 foreach (var nguyenlieu in ChiTietNguyenLieuList)

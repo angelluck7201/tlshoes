@@ -38,7 +38,7 @@ namespace TLShoes.FormControls.KeHoachSanXuat
                 return false;
             }
             var saveData = CRUD.GetFormObject(FormControls, _domainData);
-            CRUD.DecorateSaveData(saveData, _domainData == null);
+            CRUD.DecorateSaveData(saveData);
             SF.Get<KeHoachSanXuatViewModel>().Save(saveData);
             return true;
         }

@@ -904,16 +904,16 @@ IF NOT EXISTS
 )
     BEGIN
         CREATE TABLE ChiTietToTrinh
-        (Id           BIGINT
+        (Id				  BIGINT
          PRIMARY KEY IDENTITY(1, 1),
-         AuthorId     BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
-         CreatedDate  DATETIME2 DEFAULT GETDATE() NOT NULL,
-         ModifiedDate DATETIME2 DEFAULT GETDATE() NOT NULL,
-         IsActived    BIT DEFAULT 1 NOT NULL,
-         ToTrinhId    BIGINT FOREIGN KEY REFERENCES ToTrinh(Id),
-         DonHangId    BIGINT FOREIGN KEY REFERENCES DonHang(Id),
-         NhuCau       REAL DEFAULT 0 NOT NULL,
-         ThucTe       REAL DEFAULT 0 NOT NULL,
+         AuthorId			  BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
+         CreatedDate		  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         ModifiedDate		  DATETIME2 DEFAULT GETDATE() NOT NULL,
+         IsActived			  BIT DEFAULT 1 NOT NULL,
+         ToTrinhId			  BIGINT FOREIGN KEY REFERENCES ToTrinh(Id),
+	    ChiTietNguyenLieuId    BIGINT FOREIGN KEY REFERENCES ChiTietNguyenLieu(Id),
+         NhuCau			  REAL DEFAULT 0 NOT NULL,
+         ThucTe			  REAL DEFAULT 0 NOT NULL,
         );
 END;
 
