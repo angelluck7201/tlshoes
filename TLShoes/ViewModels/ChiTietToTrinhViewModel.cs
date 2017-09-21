@@ -54,7 +54,19 @@ namespace TLShoes
 {
     public partial class ChiTietToTrinh
     {
-        public bool IsChon { get; set; }
+        private bool? _isChon;
+        public bool IsChon
+        {
+            get
+            {
+                if (_isChon == null)
+                {
+                    return Id != 0;                    
+                }
+                return _isChon.Value;
+            }
+            set { _isChon = value; }
+        }
 
         public string SoPhieu
         {

@@ -54,6 +54,8 @@ namespace TLShoes.FormControls
             {
                 var splitControl = formControl.Name.Split('_');
                 if (splitControl.Length != 2 || splitControl[0] != modelName) continue;
+                // Clear previous binding to prevent duplicate binding
+                formControl.DataBindings.Clear();
                 CRUD.BindingControl(formControl, data, splitControl[1]);
             }
         }

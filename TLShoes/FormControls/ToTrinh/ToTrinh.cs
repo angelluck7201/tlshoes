@@ -24,10 +24,10 @@ namespace TLShoes.FormControls.ToTrinh
         {
             InitializeComponent();
 
-            var lstNguyenLieu = SF.Get<NguyenLieuViewModel>().GetList();
-            SetComboboxDataSource(ToTrinh_NguyenLieuId, lstNguyenLieu, "Ten");
-
             _currentTongHopToTrinh = DbContext.TongHopToTrinhs.Find(tongHopTroTrinhId);
+
+            var lstNguyenLieu = SF.Get<NguyenLieuViewModel>().GetListNguyenLieuToTrinh(DbContext);
+
 
             Init(_currentTongHopToTrinh);
             if (_currentTongHopToTrinh == null)
@@ -37,27 +37,34 @@ namespace TLShoes.FormControls.ToTrinh
             }
             else
             {
-                ToTrinh_NgayLap.Text = _currentTongHopToTrinh.NgayLap.ToString(CultureInfo.InvariantCulture);
-                ToTrinh_NgayDuyet.Text = _currentTongHopToTrinh.NgayDuyet.ToString(CultureInfo.InvariantCulture);
+                TongHopToTrinh_NgayLap.Text = _currentTongHopToTrinh.NgayLap.ToString(CultureInfo.InvariantCulture);
+                TongHopToTrinh_NgayDuyet.Text = _currentTongHopToTrinh.NgayDuyet.ToString(CultureInfo.InvariantCulture);
                 if (_currentTongHopToTrinh.NguoiLap != null)
                 {
-                    ToTrinh_NguoiLap.Text = _currentTongHopToTrinh.NguoiLap.TenNguoiDung;
+                    TongHopToTrinh_NguoiLap.Text = _currentTongHopToTrinh.NguoiLap.TenNguoiDung;
                 }
                 if (_currentTongHopToTrinh.NguoiDuyet != null)
                 {
-                    ToTrinh_NguoiDuyet.Text = _currentTongHopToTrinh.NguoiDuyet.TenNguoiDung;
+                    TongHopToTrinh_NguoiDuyet.Text = _currentTongHopToTrinh.NguoiDuyet.TenNguoiDung;
                 }
 
                 SF.Get<NhatKyThayDoiViewModel>().GetDataSource(gridNhatKy, Define.ModelType.TO_TRINH, _currentTongHopToTrinh.Id);
+                
+                // Get nguyen lieu cua to trinh hien tai de hien thi tren Combobox
+                var nguyenLieuToTrinh = _currentTongHopToTrinh.ToTrinhs
+                                            .SelectMany(s => s.ChiTietToTrinhs)
+                                            .Select(s => s.ChiTietNguyenLieu.NguyenLieu).Distinct().ToList();
+                lstNguyenLieu.AddRange(nguyenLieuToTrinh);
             }
-            InitAuthorize();
+
             _currentTongHopToTrinh.ToTrinhs = new BindingList<TLShoes.ToTrinh>(_currentTongHopToTrinh.ToTrinhs.ToList());
 
             gridToTrinh.DataSource = _currentTongHopToTrinh.ToTrinhs;
-
-            SetRepositoryItem(repNguyenLieuToTrinhId, lstNguyenLieu, "Ten");
+            SetComboboxDataSource(ToTrinh_NguyenLieuId, lstNguyenLieu, "Ten");
 
             btnDeleteNguyenLieu.Click += btnDeleteNguyenLieu_Click;
+
+            InitAuthorize();
         }
 
         private void InitAuthorize()
@@ -123,7 +130,17 @@ namespace TLShoes.FormControls.ToTrinh
                     CRUD.DecorateSaveData(toTrinh);
                 }
                 CRUD.DecorateSaveData(_currentTongHopToTrinh);
+
                 DbContext.TongHopToTrinhs.AddOrUpdate(_currentTongHopToTrinh);
+
+                // Delete unselected to trinh
+                var deleteChiTietToTrinh = new List<ChiTietToTrinh>();
+                foreach (var toTrinh in _currentTongHopToTrinh.ToTrinhs)
+                {
+                    deleteChiTietToTrinh.AddRange(toTrinh.ChiTietToTrinhs.Where(s => !s.IsChon));
+                }
+
+                DbContext.ChiTietToTrinhs.RemoveRange(deleteChiTietToTrinh);
 
                 //Delete removed data
                 DbContext.ToTrinhs.RemoveRange(_deletedToTrinh);
@@ -161,6 +178,18 @@ namespace TLShoes.FormControls.ToTrinh
                     var duyetChiLenhStatus = Define.TrangThai.DUYET_PKT.ToString();
                     var duyetKhoStatus = Define.TrangThai.DUYET_PVT.ToString();
 
+                    // Check tao moi hoac update to trinh
+                    if (_currentToTrinh == null || _currentToTrinh.NguyenLieuId != nguyenLieuId)
+                    {
+                        _currentToTrinh = new TLShoes.ToTrinh();
+                        _currentToTrinh.ChiTietToTrinhs = new BindingList<ChiTietToTrinh>();
+                        _currentToTrinh.NguyenLieuId = nguyenLieuId;
+                        _currentToTrinh.NguyenLieu = DbContext.NguyenLieux.Find(nguyenLieuId);
+                        BindingData(_currentToTrinh);
+                        // Not binding data
+                        ToTrinh_NguyenLieuId.DataBindings.Clear();
+                    }
+
                     // Get danh sach cac don hang chua hoan thanh
                     var unDoneDonHang = DbContext.DonHangs
                         .Where(s => s.TrangThai != doneStatus);
@@ -180,7 +209,7 @@ namespace TLShoes.FormControls.ToTrinh
 
                     // Bổ sung là tổng xuất kho ngoài chỉ lệnh
                     var xuatKhoBoSung = xuatKhoList.Where(s => s.PhieuXuatKho.LoaiXuat == Define.LoaiXuat.NGOAI_CHI_LENH.ToString()).ToList().Sum(s => s.SoLuong);
-                    ToTrinh_BoSung.Text = xuatKhoBoSung.ToString(CultureInfo.InvariantCulture);
+                    _currentToTrinh.BoSung = xuatKhoBoSung;
 
                     // Danh sach nhap kho theo don hang da duoc duyet
                     var nhapKhoList = unDoneDonHang.SelectMany(s => s.ChiLenhs)
@@ -190,28 +219,17 @@ namespace TLShoes.FormControls.ToTrinh
                     var tongNhapKho = nhapKhoList.ToList().Sum(s => s.SoLuong);
 
                     var tonTheKho = tongNhapKho - tongXuatKho;
-                    ToTrinh_TonTheKho.Text = tonTheKho.ToString(CultureInfo.InvariantCulture);
-                    ToTrinh_DuKien.Text = "0";
+                    _currentToTrinh.TonTheKho = tonTheKho;
 
                     // Tính toán nhu cầu thực tế và xuất kho theo chỉ lệnh của vật tư
-                    ICollection<ChiTietToTrinh> lstChiTietToTrinh;
-                    if (_currentToTrinh != null)
-                    {
-                        lstChiTietToTrinh = _currentToTrinh.ChiTietToTrinhs;
-                    }
-                    else
-                    {
-                        lstChiTietToTrinh = new List<ChiTietToTrinh>();
-                    }
-
                     foreach (var chitietNguyenLieu in chitietNguyenLieuList)
                     {
                         var chiTietNguyenLieuId = chitietNguyenLieu.Id;
-                        var chitiet = lstChiTietToTrinh.FirstOrDefault(s => s.ChiTietNguyenLieuId == chiTietNguyenLieuId);
+                        var chitiet = _currentToTrinh.ChiTietToTrinhs.FirstOrDefault(s => s.ChiTietNguyenLieuId == chiTietNguyenLieuId);
                         if (chitiet == null)
                         {
                             chitiet = new ChiTietToTrinh();
-                            lstChiTietToTrinh.Add(chitiet);
+                            _currentToTrinh.ChiTietToTrinhs.Add(chitiet);
                         }
                         chitiet.ChiTietNguyenLieu = chitietNguyenLieu;
                         chitiet.ChiTietNguyenLieuId = chitietNguyenLieu.Id;
@@ -220,22 +238,28 @@ namespace TLShoes.FormControls.ToTrinh
                         chitiet.ThucTe = xuatKhoList.Where(s => s.PhieuXuatKho.DonHangId == donHangId
                                                              && s.PhieuXuatKho.LoaiXuat == Define.LoaiXuat.TRONG_CHI_LENH.ToString()).ToList()
                                                     .Sum(s => s.SoLuong);
-                        if (_currentToTrinh == null)
-                        {
-                            chitiet.IsChon = true;
-                        }
+
+                        // Neu la to trinh moi thi defaul la chon het
+                        chitiet.IsChon = _currentToTrinh.Id == 0;
                     }
 
-                    gridChiTietToTrinh.DataSource = lstChiTietToTrinh;
+                    gridChiTietToTrinh.DataSource = new BindingList<ChiTietToTrinh>(_currentToTrinh.ChiTietToTrinhs.ToList());
                 }
             }, ParentForm);
         }
 
         private void btnUpdateToTrinh_Click(object sender, EventArgs e)
         {
-            var toTrinh = CRUD.GetFormObject<TLShoes.ToTrinh>(FormControls);
-            if (toTrinh.NguyenLieuId != null) toTrinh.NguyenLieu = SF.Get<NguyenLieuViewModel>().GetDetail((long)toTrinh.NguyenLieuId);
-            _currentTongHopToTrinh.ToTrinhs.Add(toTrinh);
+            if (_currentToTrinh == null)
+            {
+                MessageBox.Show("Vui lòng chọn nguyên liệu cho tờ trình!");
+                return;
+            }
+
+            if (!_currentTongHopToTrinh.ToTrinhs.Contains(_currentToTrinh))
+            {
+                _currentTongHopToTrinh.ToTrinhs.Add(_currentToTrinh);                
+            }
         }
 
         private void btnDeleteNguyenLieu_Click(object sender, EventArgs e)
@@ -393,8 +417,15 @@ namespace TLShoes.FormControls.ToTrinh
             var data = gridViewToTrinh.GetRow(gridViewToTrinh.FocusedRowHandle) as TLShoes.ToTrinh;
             if (data != null)
             {
+                if (_currentToTrinh != null && _currentToTrinh.NguyenLieuId == data.NguyenLieuId) return;
+
                 _currentToTrinh = data;
+                _currentToTrinh.PreviousNguyenLieuId = data.NguyenLieuId.GetValueOrDefault();
+                gridChiTietToTrinh.DataSource = _currentToTrinh.ChiTietToTrinhs;
                 BindingData(_currentToTrinh);
+
+                // Not bind 
+                ToTrinh_NguyenLieuId.DataBindings.Clear();
             }
         }
     }

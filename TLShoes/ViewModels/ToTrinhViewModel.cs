@@ -90,7 +90,12 @@ namespace TLShoes
             }
         }
 
-      
+        public long PreviousNguyenLieuId { get; set; }
+
+        public bool IsChangeNguyenLieu
+        {
+            get { return NguyenLieuId.GetValueOrDefault() != PreviousNguyenLieuId; }
+        }
     }
 
     public partial class TongHopToTrinh

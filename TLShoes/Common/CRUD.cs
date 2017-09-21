@@ -265,9 +265,9 @@ namespace TLShoes.Common
             switch (controlType.Name)
             {
                 case "ComboBox":
-                    control.DataBindings.Add("SelectedValue", data, fieldName);
+                    control.DataBindings.Add("SelectedValue", data, fieldName, true, DataSourceUpdateMode.OnPropertyChanged);
                     break;
-                case "RatingControl":
+;                case "RatingControl":
                     control.DataBindings.Add("Rating", data, fieldName);
                     break;
                 case "PictureEdit":
