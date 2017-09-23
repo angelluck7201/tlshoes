@@ -53,7 +53,6 @@ namespace TLShoes
         public virtual DbSet<PhieuNhapKho> PhieuNhapKhoes { get; set; }
         public virtual DbSet<PhieuXuatKho> PhieuXuatKhoes { get; set; }
         public virtual DbSet<TongHopToTrinh> TongHopToTrinhs { get; set; }
-        public virtual DbSet<ToTrinh> ToTrinhs { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
         public virtual DbSet<NguyenLieuChiLenh> NguyenLieuChiLenhs { get; set; }
         public virtual DbSet<MauDanhGia> MauDanhGias { get; set; }
@@ -65,5 +64,6 @@ namespace TLShoes
         public virtual DbSet<DanhGia> DanhGias { get; set; }
         public virtual DbSet<ChiTietDanhGia> ChiTietDanhGias { get; set; }
         public virtual DbSet<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
+        public virtual DbSet<ToTrinh> ToTrinhs { get; set; }
     }
 }

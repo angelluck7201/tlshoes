@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Transactions;
 using System.Windows.Forms;
+using DevExpress.Mvvm.Native;
 using Microsoft.Office.Interop.Excel;
 using TLShoes.Common;
 using TLShoes.ViewModels;
@@ -125,11 +126,7 @@ namespace TLShoes.FormControls.ToTrinh
 
             using (var transaction = new TransactionScope())
             {
-                foreach (var toTrinh in _currentTongHopToTrinh.ToTrinhs)
-                {
-                    CRUD.DecorateSaveData(toTrinh);
-                }
-                CRUD.DecorateSaveData(_currentTongHopToTrinh);
+                CRUD.DecorateSaveData(DbContext);
 
                 DbContext.TongHopToTrinhs.AddOrUpdate(_currentTongHopToTrinh);
 
@@ -141,9 +138,6 @@ namespace TLShoes.FormControls.ToTrinh
                 }
 
                 DbContext.ChiTietToTrinhs.RemoveRange(deleteChiTietToTrinh);
-
-                //Delete removed data
-                DbContext.ToTrinhs.RemoveRange(_deletedToTrinh);
 
                 DbContext.SaveChanges();
                 transaction.Complete();
@@ -268,7 +262,7 @@ namespace TLShoes.FormControls.ToTrinh
             if (data != null)
             {
                 _currentTongHopToTrinh.ToTrinhs.Remove(data);
-                _deletedToTrinh.Add(data);
+                DbContext.ToTrinhs.Remove(data);
             }
         }
 

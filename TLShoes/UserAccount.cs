@@ -50,7 +50,6 @@ namespace TLShoes
             this.TongHopToTrinhs = new HashSet<TongHopToTrinh>();
             this.TongHopToTrinhs1 = new HashSet<TongHopToTrinh>();
             this.TongHopToTrinhs2 = new HashSet<TongHopToTrinh>();
-            this.ToTrinhs = new HashSet<ToTrinh>();
             this.NguyenLieuChiLenhs = new HashSet<NguyenLieuChiLenh>();
             this.MauDanhGias = new HashSet<MauDanhGia>();
             this.NguyenLieux = new HashSet<NguyenLieu>();
@@ -63,6 +62,7 @@ namespace TLShoes
             this.DanhGias = new HashSet<DanhGia>();
             this.ChiTietDanhGias = new HashSet<ChiTietDanhGia>();
             this.ChiTietToTrinhs = new HashSet<ChiTietToTrinh>();
+            this.ToTrinhs = new HashSet<ToTrinh>();
         }
     
         public long Id { get; set; }
@@ -145,8 +145,6 @@ namespace TLShoes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TongHopToTrinh> TongHopToTrinhs2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ToTrinh> ToTrinhs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NguyenLieuChiLenh> NguyenLieuChiLenhs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MauDanhGia> MauDanhGias { get; set; }
@@ -170,5 +168,7 @@ namespace TLShoes
         public virtual ICollection<ChiTietDanhGia> ChiTietDanhGias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ToTrinh> ToTrinhs { get; set; }
     }
 }

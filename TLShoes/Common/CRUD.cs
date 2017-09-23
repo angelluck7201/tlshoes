@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -281,6 +282,15 @@ namespace TLShoes.Common
                 default:
                     control.DataBindings.Add("Text", data, fieldName);
                     break;
+            }
+        }
+
+        public static void DecorateSaveData(GiayTLEntities dbContext)
+        {
+            var changedEntities = dbContext.ChangeTracker.Entries().Where(s => s.State != EntityState.Unchanged);
+            foreach (var changedEntity in changedEntities)
+            {
+                DecorateSaveData(changedEntity.Entity);
             }
         }
 

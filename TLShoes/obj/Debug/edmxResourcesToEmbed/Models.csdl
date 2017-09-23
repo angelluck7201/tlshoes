@@ -29,7 +29,6 @@
     <EntitySet Name="PhieuNhapKhoes" EntityType="GiayTLModel.PhieuNhapKho" />
     <EntitySet Name="PhieuXuatKhoes" EntityType="GiayTLModel.PhieuXuatKho" />
     <EntitySet Name="TongHopToTrinhs" EntityType="GiayTLModel.TongHopToTrinh" />
-    <EntitySet Name="ToTrinhs" EntityType="GiayTLModel.ToTrinh" />
     <EntitySet Name="UserAccounts" EntityType="GiayTLModel.UserAccount" />
     <AssociationSet Name="FK__BaoCaoPha__Autho__1E6F845E" Association="GiayTLModel.FK__BaoCaoPha__Autho__1E6F845E">
       <End Role="UserAccount" EntitySet="UserAccounts" />
@@ -267,14 +266,6 @@
       <End Role="UserAccount" EntitySet="UserAccounts" />
       <End Role="TongHopToTrinh" EntitySet="TongHopToTrinhs" />
     </AssociationSet>
-    <AssociationSet Name="FK__ToTrinh__TongHop__39237A9A" Association="GiayTLModel.FK__ToTrinh__TongHop__39237A9A">
-      <End Role="TongHopToTrinh" EntitySet="TongHopToTrinhs" />
-      <End Role="ToTrinh" EntitySet="ToTrinhs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ToTrinh__AuthorI__3552E9B6" Association="GiayTLModel.FK__ToTrinh__AuthorI__3552E9B6">
-      <End Role="UserAccount" EntitySet="UserAccounts" />
-      <End Role="ToTrinh" EntitySet="ToTrinhs" />
-    </AssociationSet>
     <EntitySet Name="NguyenLieuChiLenhs" EntityType="GiayTLModel.NguyenLieuChiLenh" />
     <AssociationSet Name="FK__NguyenLie__ChiLe__7A3223E8" Association="GiayTLModel.FK__NguyenLie__ChiLe__7A3223E8">
       <End Role="ChiLenh" EntitySet="ChiLenhs" />
@@ -361,10 +352,6 @@
     <AssociationSet Name="FK__NhaCungCa__Nguye__69C6B1F5" Association="GiayTLModel.FK__NhaCungCa__Nguye__69C6B1F5">
       <End Role="NguyenLieu" EntitySet="NguyenLieux" />
       <End Role="NhaCungCapVatTu" EntitySet="NhaCungCapVatTus" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ToTrinh__NguyenL__3A179ED3" Association="GiayTLModel.FK__ToTrinh__NguyenL__3A179ED3">
-      <End Role="NguyenLieu" EntitySet="NguyenLieux" />
-      <End Role="ToTrinh" EntitySet="ToTrinhs" />
     </AssociationSet>
     <EntitySet Name="CongNgheSanXuats" EntityType="GiayTLModel.CongNgheSanXuat" />
     <EntitySet Name="MauThuDaos" EntityType="GiayTLModel.MauThuDao" />
@@ -485,6 +472,7 @@
       <End Role="PhieuNhapKho" EntitySet="PhieuNhapKhoes" />
     </AssociationSet>
     <EntitySet Name="ChiTietToTrinhs" EntityType="GiayTLModel.ChiTietToTrinh" />
+    <EntitySet Name="ToTrinhs" EntityType="GiayTLModel.ToTrinh" />
     <AssociationSet Name="FK__ChiTietTo__ChiTi__09946309" Association="GiayTLModel.FK__ChiTietTo__ChiTi__09946309">
       <End Role="ChiTietNguyenLieu" EntitySet="ChiTietNguyenLieux" />
       <End Role="ChiTietToTrinh" EntitySet="ChiTietToTrinhs" />
@@ -493,9 +481,21 @@
       <End Role="UserAccount" EntitySet="UserAccounts" />
       <End Role="ChiTietToTrinh" EntitySet="ChiTietToTrinhs" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietTo__ToTri__4865BE2A" Association="GiayTLModel.FK__ChiTietTo__ToTri__4865BE2A">
+    <AssociationSet Name="FK_ChiTietToTrinh_ToTrinh" Association="GiayTLModel.FK_ChiTietToTrinh_ToTrinh">
       <End Role="ToTrinh" EntitySet="ToTrinhs" />
       <End Role="ChiTietToTrinh" EntitySet="ChiTietToTrinhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ToTrinh__NguyenL__39237A9A" Association="GiayTLModel.FK__ToTrinh__NguyenL__39237A9A">
+      <End Role="NguyenLieu" EntitySet="NguyenLieux" />
+      <End Role="ToTrinh" EntitySet="ToTrinhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ToTrinh_TongHopToTrinh" Association="GiayTLModel.FK_ToTrinh_TongHopToTrinh">
+      <End Role="TongHopToTrinh" EntitySet="TongHopToTrinhs" />
+      <End Role="ToTrinh" EntitySet="ToTrinhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ToTrinh__AuthorI__345EC57D" Association="GiayTLModel.FK__ToTrinh__AuthorI__345EC57D">
+      <End Role="UserAccount" EntitySet="UserAccounts" />
+      <End Role="ToTrinh" EntitySet="ToTrinhs" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="AppConfig">
@@ -1124,32 +1124,7 @@
     <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__TongHopTo__Autho__29E1370A" FromRole="TongHopToTrinh" ToRole="UserAccount" />
     <NavigationProperty Name="NguoiLap" Relationship="GiayTLModel.FK__TongHopTo__Nguoi__2F9A1060" FromRole="TongHopToTrinh" ToRole="UserAccount" />
     <NavigationProperty Name="NguoiDuyet" Relationship="GiayTLModel.FK__TongHopTo__Nguoi__318258D2" FromRole="TongHopToTrinh" ToRole="UserAccount" />
-    <NavigationProperty Name="ToTrinhs" Relationship="GiayTLModel.FK__ToTrinh__TongHop__39237A9A" FromRole="TongHopToTrinh" ToRole="ToTrinh" />
-  </EntityType>
-  <EntityType Name="ToTrinh">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AuthorId" Type="Int64" />
-    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
-    <Property Name="IsActived" Type="Boolean" Nullable="false" />
-    <Property Name="TongHopToTrinhId" Type="Int64" />
-    <Property Name="NguyenLieuId" Type="Int64" />
-    <Property Name="DonDatHangList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="BoSung" Type="Single" Nullable="false" />
-    <Property Name="ThuHoi" Type="Single" Nullable="false" />
-    <Property Name="TonToTrinh" Type="Single" Nullable="false" />
-    <Property Name="TonTheKho" Type="Single" Nullable="false" />
-    <Property Name="TonThucTe" Type="Single" Nullable="false" />
-    <Property Name="DuKien" Type="Single" Nullable="false" />
-    <Property Name="HaoHut" Type="Single" Nullable="false" />
-    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="TongHopToTrinh" Relationship="GiayTLModel.FK__ToTrinh__TongHop__39237A9A" FromRole="ToTrinh" ToRole="TongHopToTrinh" />
-    <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__ToTrinh__AuthorI__3552E9B6" FromRole="ToTrinh" ToRole="UserAccount" />
-    <NavigationProperty Name="NguyenLieu" Relationship="GiayTLModel.FK__ToTrinh__NguyenL__3A179ED3" FromRole="ToTrinh" ToRole="NguyenLieu" />
-    <NavigationProperty Name="ChiTietToTrinhs" Relationship="GiayTLModel.FK__ChiTietTo__ToTri__4865BE2A" FromRole="ToTrinh" ToRole="ChiTietToTrinh" />
+    <NavigationProperty Name="ToTrinhs" Relationship="GiayTLModel.FK_ToTrinh_TongHopToTrinh" FromRole="TongHopToTrinh" ToRole="ToTrinh" />
   </EntityType>
   <EntityType Name="UserAccount">
     <Key>
@@ -1200,7 +1175,6 @@
     <NavigationProperty Name="TongHopToTrinhs" Relationship="GiayTLModel.FK__TongHopTo__Autho__29E1370A" FromRole="UserAccount" ToRole="TongHopToTrinh" />
     <NavigationProperty Name="TongHopToTrinhs1" Relationship="GiayTLModel.FK__TongHopTo__Nguoi__2F9A1060" FromRole="UserAccount" ToRole="TongHopToTrinh" />
     <NavigationProperty Name="TongHopToTrinhs2" Relationship="GiayTLModel.FK__TongHopTo__Nguoi__318258D2" FromRole="UserAccount" ToRole="TongHopToTrinh" />
-    <NavigationProperty Name="ToTrinhs" Relationship="GiayTLModel.FK__ToTrinh__AuthorI__3552E9B6" FromRole="UserAccount" ToRole="ToTrinh" />
     <NavigationProperty Name="NguyenLieuChiLenhs" Relationship="GiayTLModel.FK__NguyenLie__Autho__756D6ECB" FromRole="UserAccount" ToRole="NguyenLieuChiLenh" />
     <NavigationProperty Name="MauDanhGias" Relationship="GiayTLModel.FK__MauDanhGi__Autho__12C8C788" FromRole="UserAccount" ToRole="MauDanhGia" />
     <NavigationProperty Name="NguyenLieux" Relationship="GiayTLModel.FK__NguyenLie__Autho__35BCFE0A" FromRole="UserAccount" ToRole="NguyenLieu" />
@@ -1213,6 +1187,7 @@
     <NavigationProperty Name="DanhGias" Relationship="GiayTLModel.FK__DanhGia__AuthorI__2116E6DF" FromRole="UserAccount" ToRole="DanhGia" />
     <NavigationProperty Name="ChiTietDanhGias" Relationship="GiayTLModel.FK__ChiTietDa__Autho__3B60C8C7" FromRole="UserAccount" ToRole="ChiTietDanhGia" />
     <NavigationProperty Name="ChiTietToTrinhs" Relationship="GiayTLModel.FK__ChiTietTo__Autho__44952D46" FromRole="UserAccount" ToRole="ChiTietToTrinh" />
+    <NavigationProperty Name="ToTrinhs" Relationship="GiayTLModel.FK__ToTrinh__AuthorI__345EC57D" FromRole="UserAccount" ToRole="ToTrinh" />
   </EntityType>
   <Association Name="FK__BaoCaoPha__Autho__1E6F845E">
     <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
@@ -1922,30 +1897,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ToTrinh__TongHop__39237A9A">
-    <End Type="GiayTLModel.TongHopToTrinh" Role="TongHopToTrinh" Multiplicity="0..1" />
-    <End Type="GiayTLModel.ToTrinh" Role="ToTrinh" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TongHopToTrinh">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ToTrinh">
-        <PropertyRef Name="TongHopToTrinhId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ToTrinh__AuthorI__3552E9B6">
-    <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
-    <End Type="GiayTLModel.ToTrinh" Role="ToTrinh" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="UserAccount">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ToTrinh">
-        <PropertyRef Name="AuthorId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="NguyenLieuChiLenh">
     <Key>
       <PropertyRef Name="Id" />
@@ -2098,8 +2049,8 @@
     <NavigationProperty Name="DonHangs4" Relationship="GiayTLModel.FK__DonHang__MuId__5EBF139D" FromRole="NguyenLieu" ToRole="DonHang" />
     <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__NguyenLie__Autho__35BCFE0A" FromRole="NguyenLieu" ToRole="UserAccount" />
     <NavigationProperty Name="NhaCungCapVatTus" Relationship="GiayTLModel.FK__NhaCungCa__Nguye__69C6B1F5" FromRole="NguyenLieu" ToRole="NhaCungCapVatTu" />
-    <NavigationProperty Name="ToTrinhs" Relationship="GiayTLModel.FK__ToTrinh__NguyenL__3A179ED3" FromRole="NguyenLieu" ToRole="ToTrinh" />
     <NavigationProperty Name="ChiTietDonDatHangs" Relationship="GiayTLModel.FK__ChiTietDo__Nguye__34B3CB38" FromRole="NguyenLieu" ToRole="ChiTietDonDatHang" />
+    <NavigationProperty Name="ToTrinhs" Relationship="GiayTLModel.FK__ToTrinh__NguyenL__39237A9A" FromRole="NguyenLieu" ToRole="ToTrinh" />
   </EntityType>
   <Association Name="FK__ChiTietHu__Nguye__090A5324">
     <End Type="GiayTLModel.NguyenLieu" Role="NguyenLieu" Multiplicity="0..1" />
@@ -2265,18 +2216,6 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="NhaCungCapVatTu">
-        <PropertyRef Name="NguyenLieuId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ToTrinh__NguyenL__3A179ED3">
-    <End Type="GiayTLModel.NguyenLieu" Role="NguyenLieu" Multiplicity="0..1" />
-    <End Type="GiayTLModel.ToTrinh" Role="ToTrinh" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NguyenLieu">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ToTrinh">
         <PropertyRef Name="NguyenLieuId" />
       </Dependent>
     </ReferentialConstraint>
@@ -2786,7 +2725,31 @@
     <Property Name="ChiTietNguyenLieuId" Type="Int64" />
     <NavigationProperty Name="ChiTietNguyenLieu" Relationship="GiayTLModel.FK__ChiTietTo__ChiTi__09946309" FromRole="ChiTietToTrinh" ToRole="ChiTietNguyenLieu" />
     <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__ChiTietTo__Autho__44952D46" FromRole="ChiTietToTrinh" ToRole="UserAccount" />
-    <NavigationProperty Name="ToTrinh" Relationship="GiayTLModel.FK__ChiTietTo__ToTri__4865BE2A" FromRole="ChiTietToTrinh" ToRole="ToTrinh" />
+    <NavigationProperty Name="ToTrinh" Relationship="GiayTLModel.FK_ChiTietToTrinh_ToTrinh" FromRole="ChiTietToTrinh" ToRole="ToTrinh" />
+  </EntityType>
+  <EntityType Name="ToTrinh">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorId" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="IsActived" Type="Boolean" Nullable="false" />
+    <Property Name="TongHopToTrinhId" Type="Int64" />
+    <Property Name="NguyenLieuId" Type="Int64" />
+    <Property Name="BoSung" Type="Single" Nullable="false" />
+    <Property Name="ThuHoi" Type="Single" Nullable="false" />
+    <Property Name="TonToTrinh" Type="Single" Nullable="false" />
+    <Property Name="TonTheKho" Type="Single" Nullable="false" />
+    <Property Name="TonThucTe" Type="Single" Nullable="false" />
+    <Property Name="DuKien" Type="Single" Nullable="false" />
+    <Property Name="HaoHut" Type="Single" Nullable="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChiTietToTrinhs" Relationship="GiayTLModel.FK_ChiTietToTrinh_ToTrinh" FromRole="ToTrinh" ToRole="ChiTietToTrinh" />
+    <NavigationProperty Name="NguyenLieu" Relationship="GiayTLModel.FK__ToTrinh__NguyenL__39237A9A" FromRole="ToTrinh" ToRole="NguyenLieu" />
+    <NavigationProperty Name="TongHopToTrinh" Relationship="GiayTLModel.FK_ToTrinh_TongHopToTrinh" FromRole="ToTrinh" ToRole="TongHopToTrinh" />
+    <NavigationProperty Name="UserAccount" Relationship="GiayTLModel.FK__ToTrinh__AuthorI__345EC57D" FromRole="ToTrinh" ToRole="UserAccount" />
   </EntityType>
   <Association Name="FK__ChiTietTo__ChiTi__09946309">
     <End Type="GiayTLModel.ChiTietNguyenLieu" Role="ChiTietNguyenLieu" Multiplicity="0..1" />
@@ -2812,8 +2775,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietTo__ToTri__4865BE2A">
-    <End Type="GiayTLModel.ToTrinh" Role="ToTrinh" Multiplicity="0..1" />
+  <Association Name="FK_ChiTietToTrinh_ToTrinh">
+    <End Type="GiayTLModel.ToTrinh" Role="ToTrinh" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Type="GiayTLModel.ChiTietToTrinh" Role="ChiTietToTrinh" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ToTrinh">
@@ -2821,6 +2786,44 @@
       </Principal>
       <Dependent Role="ChiTietToTrinh">
         <PropertyRef Name="ToTrinhId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ToTrinh__NguyenL__39237A9A">
+    <End Type="GiayTLModel.NguyenLieu" Role="NguyenLieu" Multiplicity="0..1" />
+    <End Type="GiayTLModel.ToTrinh" Role="ToTrinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguyenLieu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ToTrinh">
+        <PropertyRef Name="NguyenLieuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToTrinh_TongHopToTrinh">
+    <End Type="GiayTLModel.TongHopToTrinh" Role="TongHopToTrinh" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GiayTLModel.ToTrinh" Role="ToTrinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TongHopToTrinh">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ToTrinh">
+        <PropertyRef Name="TongHopToTrinhId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ToTrinh__AuthorI__345EC57D">
+    <End Type="GiayTLModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+    <End Type="GiayTLModel.ToTrinh" Role="ToTrinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ToTrinh">
+        <PropertyRef Name="AuthorId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

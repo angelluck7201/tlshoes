@@ -36,7 +36,6 @@ namespace TLShoes.FormControls.DonDatHang
             {
                 SF.Get<DonDatHangViewModel>().GetChiTietDatHang(data, ref DatHangVatTuList);
                 btnExport.Visible = true;
-                SelectedList = ToTrinhList.Where(s => s.DonDatHangFormatList.Contains(data.Id)).Select(s => s.Id).ToList();
                 _donDatHang = data;
             }
             gridToTrinh.DataSource = ToTrinhList;
@@ -132,19 +131,7 @@ namespace TLShoes.FormControls.DonDatHang
                 foreach (var totrinh in ToTrinhList)
                 {
                     var isUpdateToTrinh = false;
-                    if (SelectedList.Contains(totrinh.Id))
-                    {
-                        if (!totrinh.DonDatHangFormatList.Contains(saveData.Id))
-                        {
-                            totrinh.DonDatHangList += saveData.Id + ",";
-                            isUpdateToTrinh = true;
-                        }
-                    }
-                    else if (!string.IsNullOrEmpty(totrinh.DonDatHangList))
-                    {
-                        totrinh.DonDatHangList = "";
-                        isUpdateToTrinh = true;
-                    }
+                   
 
                     if (isUpdateToTrinh)
                     {

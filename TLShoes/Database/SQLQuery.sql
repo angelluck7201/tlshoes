@@ -866,6 +866,8 @@ IF NOT EXISTS
         );
 END;
 
+
+ALTER TABLE TOTRINH ADD CONSTRAINT FK_ToTrinh_TongHopToTrinh FOREIGN KEY (TongHopToTrinhId) REFERENCES TongHopToTrinh(Id) ON DELETE CASCADE
 IF NOT EXISTS
 (
     SELECT *
@@ -881,9 +883,8 @@ IF NOT EXISTS
          CreatedDate      DATETIME2 DEFAULT GETDATE() NOT NULL,
          ModifiedDate     DATETIME2 DEFAULT GETDATE() NOT NULL,
          IsActived        BIT DEFAULT 1 NOT NULL,
-         TongHopToTrinhId BIGINT FOREIGN KEY REFERENCES TongHopToTrinh(Id),
+         TongHopToTrinhId BIGINT FOREIGN KEY REFERENCES TongHopToTrinh(Id) ON DELETE CASCADE,
          NguyenLieuId     BIGINT FOREIGN KEY REFERENCES NguyenLieu(Id),
-         DonDatHangList   TEXT DEFAULT '',
          BoSung           REAL DEFAULT 0 NOT NULL,
          ThuHoi           REAL DEFAULT 0 NOT NULL,
          TonToTrinh       REAL DEFAULT 0 NOT NULL,
@@ -894,6 +895,7 @@ IF NOT EXISTS
          GhiChu           NVARCHAR(1000) DEFAULT '',
         );
 END;
+
 
 IF NOT EXISTS
 (
@@ -910,7 +912,7 @@ IF NOT EXISTS
          CreatedDate		  DATETIME2 DEFAULT GETDATE() NOT NULL,
          ModifiedDate		  DATETIME2 DEFAULT GETDATE() NOT NULL,
          IsActived			  BIT DEFAULT 1 NOT NULL,
-         ToTrinhId			  BIGINT FOREIGN KEY REFERENCES ToTrinh(Id),
+         ToTrinhId			  BIGINT FOREIGN KEY REFERENCES ToTrinh(Id) ON DELETE CASCADE,
 	    ChiTietNguyenLieuId    BIGINT FOREIGN KEY REFERENCES ChiTietNguyenLieu(Id),
          NhuCau			  REAL DEFAULT 0 NOT NULL,
          ThucTe			  REAL DEFAULT 0 NOT NULL,

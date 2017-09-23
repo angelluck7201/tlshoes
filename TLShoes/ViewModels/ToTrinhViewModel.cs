@@ -31,9 +31,7 @@ namespace TLShoes.ViewModels
         public List<ToTrinh> GetList(DonDatHang donDatHang)
         {
             return GetList().Where(s => s.TongHopToTrinh != null 
-                && s.TongHopToTrinh.TrangThai == Define.TrangThai.DUYET_PVT.ToString() 
-                && (string.IsNullOrEmpty(s.DonDatHangList)
-                || (donDatHang != null && s.DonDatHangFormatList.Contains(donDatHang.Id)))).ToList();
+                && s.TongHopToTrinh.TrangThai == Define.TrangThai.DUYET_PVT.ToString()).ToList();
         }
 
         public void GetDataSource(GridControl control, DonDatHang donDatHang)
@@ -77,19 +75,6 @@ namespace TLShoes
 {
     public partial class ToTrinh
     {
-        public List<long> DonDatHangFormatList
-        {
-            get
-            {
-                var result = new List<long>();
-                if (DonDatHangList != null)
-                {
-                    result = DonDatHangList.Split(',').Select(s => PrimitiveConvert.StringToInt(s)).ToList();
-                }
-                return result;
-            }
-        }
-
         public long PreviousNguyenLieuId { get; set; }
 
         public bool IsChangeNguyenLieu

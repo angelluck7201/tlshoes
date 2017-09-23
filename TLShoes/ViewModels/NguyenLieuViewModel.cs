@@ -20,12 +20,13 @@ namespace TLShoes.ViewModels
         public List<NguyenLieu> GetListNguyenLieuToTrinh(GiayTLEntities dbContext)
         {
             var duyetChiLenhStatus = Define.TrangThai.DUYET_PKT.ToString();
+            var doneStatus = Define.TrangThai.DONE.ToString();
 
-            return dbContext.DonHangs
+            return dbContext.DonHangs.Where(s => s.TrangThai != doneStatus)
                 .SelectMany(s => s.ChiLenhs).Where(s => s.TrangThai == duyetChiLenhStatus)
                 .SelectMany(s => s.NguyenLieuChiLenhs)
                 .SelectMany(s => s.ChiTietNguyenLieux).Where(s => !s.ChiTietToTrinhs.Any())
-                .Select(s => s.NguyenLieu).ToList();
+                .Select(s => s.NguyenLieu).Distinct().ToList();
         }
 
 

@@ -703,7 +703,6 @@
     <Property Name="IsActived" Type="bit" Nullable="false" />
     <Property Name="TongHopToTrinhId" Type="bigint" />
     <Property Name="NguyenLieuId" Type="bigint" />
-    <Property Name="DonDatHangList" Type="text" />
     <Property Name="BoSung" Type="real" Nullable="false" />
     <Property Name="ThuHoi" Type="real" Nullable="false" />
     <Property Name="TonToTrinh" Type="real" Nullable="false" />
@@ -1123,18 +1122,6 @@
       </Principal>
       <Dependent Role="ChiTietToTrinh">
         <PropertyRef Name="ChiTietNguyenLieuId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ChiTietTo__ToTri__4865BE2A">
-    <End Role="ToTrinh" Type="Self.ToTrinh" Multiplicity="0..1" />
-    <End Role="ChiTietToTrinh" Type="Self.ChiTietToTrinh" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ToTrinh">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ChiTietToTrinh">
-        <PropertyRef Name="ToTrinhId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2086,8 +2073,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ToTrinh__TongHop__382F5661">
-    <End Role="TongHopToTrinh" Type="Self.TongHopToTrinh" Multiplicity="0..1" />
+  <Association Name="FK_ChiTietToTrinh_ToTrinh">
+    <End Role="ToTrinh" Type="Self.ToTrinh" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ChiTietToTrinh" Type="Self.ChiTietToTrinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ToTrinh">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChiTietToTrinh">
+        <PropertyRef Name="ToTrinhId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToTrinh_TongHopToTrinh">
+    <End Role="TongHopToTrinh" Type="Self.TongHopToTrinh" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ToTrinh" Type="Self.ToTrinh" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TongHopToTrinh">
@@ -2269,10 +2272,6 @@
     </AssociationSet>
     <AssociationSet Name="FK__ChiTietTo__ChiTi__09946309" Association="Self.FK__ChiTietTo__ChiTi__09946309">
       <End Role="ChiTietNguyenLieu" EntitySet="ChiTietNguyenLieu" />
-      <End Role="ChiTietToTrinh" EntitySet="ChiTietToTrinh" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ChiTietTo__ToTri__4865BE2A" Association="Self.FK__ChiTietTo__ToTri__4865BE2A">
-      <End Role="ToTrinh" EntitySet="ToTrinh" />
       <End Role="ChiTietToTrinh" EntitySet="ChiTietToTrinh" />
     </AssociationSet>
     <AssociationSet Name="FK__ChiTietXu__Autho__62E4AA3C" Association="Self.FK__ChiTietXu__Autho__62E4AA3C">
@@ -2591,7 +2590,11 @@
       <End Role="NguyenLieu" EntitySet="NguyenLieu" />
       <End Role="ToTrinh" EntitySet="ToTrinh" />
     </AssociationSet>
-    <AssociationSet Name="FK__ToTrinh__TongHop__382F5661" Association="Self.FK__ToTrinh__TongHop__382F5661">
+    <AssociationSet Name="FK_ChiTietToTrinh_ToTrinh" Association="Self.FK_ChiTietToTrinh_ToTrinh">
+      <End Role="ToTrinh" EntitySet="ToTrinh" />
+      <End Role="ChiTietToTrinh" EntitySet="ChiTietToTrinh" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ToTrinh_TongHopToTrinh" Association="Self.FK_ToTrinh_TongHopToTrinh">
       <End Role="TongHopToTrinh" EntitySet="TongHopToTrinh" />
       <End Role="ToTrinh" EntitySet="ToTrinh" />
     </AssociationSet>

@@ -27,7 +27,6 @@ namespace TLShoes
         public bool IsActived { get; set; }
         public Nullable<long> TongHopToTrinhId { get; set; }
         public Nullable<long> NguyenLieuId { get; set; }
-        public string DonDatHangList { get; set; }
         public float BoSung { get; set; }
         public float ThuHoi { get; set; }
         public float TonToTrinh { get; set; }
@@ -37,10 +36,10 @@ namespace TLShoes
         public float HaoHut { get; set; }
         public string GhiChu { get; set; }
     
-        public virtual TongHopToTrinh TongHopToTrinh { get; set; }
-        public virtual UserAccount UserAccount { get; set; }
-        public virtual NguyenLieu NguyenLieu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietToTrinh> ChiTietToTrinhs { get; set; }
+        public virtual NguyenLieu NguyenLieu { get; set; }
+        public virtual TongHopToTrinh TongHopToTrinh { get; set; }
+        public virtual UserAccount UserAccount { get; set; }
     }
 }
