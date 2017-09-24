@@ -696,6 +696,7 @@
           <Property Name="NgayLap" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="NguoiDuyetId" Type="bigint" />
           <Property Name="NgayDuyet" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="ToTrinh">
           <Key>
@@ -3733,6 +3734,7 @@
           <NavigationProperty Name="NguoiLap" Relationship="GiayTLModel.FK__TongHopTo__Nguoi__2F9A1060" FromRole="TongHopToTrinh" ToRole="UserAccount" />
           <NavigationProperty Name="NguoiDuyet" Relationship="GiayTLModel.FK__TongHopTo__Nguoi__318258D2" FromRole="TongHopToTrinh" ToRole="UserAccount" />
           <NavigationProperty Name="ToTrinhs" Relationship="GiayTLModel.FK_ToTrinh_TongHopToTrinh" FromRole="TongHopToTrinh" ToRole="ToTrinh" />
+          <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -5962,6 +5964,7 @@
           <EntitySetMapping Name="TongHopToTrinhs">
             <EntityTypeMapping TypeName="GiayTLModel.TongHopToTrinh">
               <MappingFragment StoreEntitySet="TongHopToTrinh">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
                 <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
                 <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />

@@ -53,6 +53,7 @@
     <ApplicationIcon>app_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Charts.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.CodeParser.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
@@ -69,6 +70,7 @@
     </Reference>
     <Reference Include="DevExpress.RichEdit.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Spreadsheet.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
@@ -99,6 +101,7 @@
     <Reference Include="DevExpress.XtraReports.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v15.1.Extensions, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraRichEdit.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraVerticalGrid.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework">
@@ -589,6 +592,11 @@
     <Compile Include="FormControls\ToTrinh\ToTrinh.Designer.cs">
       <DependentUpon>ToTrinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="GiayTLDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GiayTLDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="HuongDanDongGoi.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -719,6 +727,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\BaoCaoPhanXuong\BaoCaoPhanXuongList.resx">
       <DependentUpon>BaoCaoPhanXuongList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormControls\BaseUserControl.resx">
+      <DependentUpon>BaseUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormControls\ChiLenh\ChiLenh.resx">
       <DependentUpon>ChiLenh.cs</DependentUpon>
@@ -909,6 +920,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Models.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="GiayTLDataSet.xsc">
+      <DependentUpon>GiayTLDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GiayTLDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GiayTLDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GiayTLDataSet.xss">
+      <DependentUpon>GiayTLDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Models.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Models.edmx</DependentUpon>

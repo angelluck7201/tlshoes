@@ -270,7 +270,9 @@ namespace TLShoes.Common
             }
 
             var srcPath = Path.Combine(srcDir, fileName);
-            var desPath = Path.Combine(tempFolder, fileName);
+            var prefix = TimeHelper.CurrentTimeStamp().ToString();
+            var tempFileName = string.Format("{0}_{1}", prefix, fileName);
+            var desPath = Path.Combine(tempFolder, tempFileName);
             File.Copy(srcPath, desPath, true);
             return desPath;
         }

@@ -251,3 +251,4 @@ C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.exe.licenses
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.exe
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.pdb
 C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.csprojResolveAssemblyReference.cache
+C:\Users\nguye\Desktop\tlshoes\TLShoes\obj\Debug\TLShoes.FormControls.BaseUserControl.resources

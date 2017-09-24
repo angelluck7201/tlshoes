@@ -14,6 +14,8 @@ namespace TLShoes.Common
 
         public static void LoadForm(Action action, System.Windows.Forms.Form form = null)
         {
+            if (SplashScreenManager.Default != null && SplashScreenManager.Default.IsSplashFormVisible) return;
+
             if (form == null)
             {
                 form = FormFactory<Main>.Get();
@@ -30,7 +32,10 @@ namespace TLShoes.Common
             }
             finally
             {
-                SplashScreenManager.CloseDefaultWaitForm();
+                if (SplashScreenManager.Default != null &&  SplashScreenManager.Default.IsSplashFormVisible)
+                {
+                    SplashScreenManager.CloseDefaultWaitForm();
+                }
             }
         }
 

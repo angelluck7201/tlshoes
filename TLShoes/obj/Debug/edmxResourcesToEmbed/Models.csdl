@@ -1125,6 +1125,7 @@
     <NavigationProperty Name="NguoiLap" Relationship="GiayTLModel.FK__TongHopTo__Nguoi__2F9A1060" FromRole="TongHopToTrinh" ToRole="UserAccount" />
     <NavigationProperty Name="NguoiDuyet" Relationship="GiayTLModel.FK__TongHopTo__Nguoi__318258D2" FromRole="TongHopToTrinh" ToRole="UserAccount" />
     <NavigationProperty Name="ToTrinhs" Relationship="GiayTLModel.FK_ToTrinh_TongHopToTrinh" FromRole="TongHopToTrinh" ToRole="ToTrinh" />
+    <Property Name="GhiChu" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="UserAccount">
     <Key>

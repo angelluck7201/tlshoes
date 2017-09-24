@@ -863,6 +863,7 @@ IF NOT EXISTS
          NgayLap      DATETIME2 DEFAULT GETDATE() NOT NULL,
          NguoiDuyetId BIGINT FOREIGN KEY REFERENCES UserAccount(Id),
          NgayDuyet    DATETIME2 DEFAULT GETDATE() NOT NULL,
+	    GhiChu           NVARCHAR(1000) DEFAULT '',
         );
 END;
 

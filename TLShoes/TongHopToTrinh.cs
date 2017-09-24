@@ -31,6 +31,7 @@ namespace TLShoes
         public System.DateTime NgayLap { get; set; }
         public Nullable<long> NguoiDuyetId { get; set; }
         public System.DateTime NgayDuyet { get; set; }
+        public string GhiChu { get; set; }
     
         public virtual UserAccount UserAccount { get; set; }
         public virtual UserAccount NguoiLap { get; set; }

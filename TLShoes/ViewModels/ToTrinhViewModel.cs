@@ -30,7 +30,7 @@ namespace TLShoes.ViewModels
 
         public List<ToTrinh> GetList(DonDatHang donDatHang)
         {
-            return GetList().Where(s => s.TongHopToTrinh != null 
+            return GetList().Where(s => s.TongHopToTrinh != null
                 && s.TongHopToTrinh.TrangThai == Define.TrangThai.DUYET_PVT.ToString()).ToList();
         }
 
@@ -62,9 +62,9 @@ namespace TLShoes.ViewModels
             }
         }
 
-        public string GenerateSoPhieu()
+        public string GenerateSoPhieu(GiayTLEntities dbContext)
         {
-            var currentItemNum = DbContext.TongHopToTrinhs.Count();
+            var currentItemNum = dbContext.TongHopToTrinhs.Count();
             var currentTime = TimeHelper.TimeStampToDateTime(TimeHelper.CurrentTimeStamp());
             return string.Format(Define.SO_PHIEU_TO_TRINH, currentItemNum + 1, currentTime.Month.ToString("00"), currentTime.Year);
         }
@@ -75,12 +75,7 @@ namespace TLShoes
 {
     public partial class ToTrinh
     {
-        public long PreviousNguyenLieuId { get; set; }
 
-        public bool IsChangeNguyenLieu
-        {
-            get { return NguyenLieuId.GetValueOrDefault() != PreviousNguyenLieuId; }
-        }
     }
 
     public partial class TongHopToTrinh
@@ -101,6 +96,26 @@ namespace TLShoes
             {
                 if (NgayDuyet.Year == 1) return string.Empty;
                 return NgayDuyet.ToString(CultureInfo.InvariantCulture);
+            }
+        }
+
+        public string TrangThaiDisplay
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(TrangThai))
+                {
+                    if (TrangThai == Define.TrangThai.DUYET.ToString())
+                    {
+                        return "Duyệt";
+                    }
+                    if (TrangThai == Define.TrangThai.DUYET_PVT.ToString())
+                    {
+                        return "Duyệt Phòng Vật Tư";
+                    }
+                }
+
+                return "Mới";
             }
         }
     }

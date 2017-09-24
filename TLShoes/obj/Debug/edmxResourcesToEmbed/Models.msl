@@ -522,6 +522,7 @@
     <EntitySetMapping Name="TongHopToTrinhs">
       <EntityTypeMapping TypeName="GiayTLModel.TongHopToTrinh">
         <MappingFragment StoreEntitySet="TongHopToTrinh">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
           <ScalarProperty Name="NguoiDuyetId" ColumnName="NguoiDuyetId" />
           <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
